@@ -4,6 +4,9 @@ abstract class Vehicle {
   double value;
   String type;
   String rarity;
+  String? brand;
+  double fuelConsumption;
+  double monthlyFuelCost;
 
   Vehicle({
     required this.name,
@@ -11,15 +14,26 @@ abstract class Vehicle {
     required this.value,
     required this.type,
     required this.rarity,
+    this.brand,
+    required this.fuelConsumption,
+    required this.monthlyFuelCost,
   });
 
   double getMonthlyMaintenanceCost();
 
+  double calculateMonthlyFuelCost(double fuelPricePerLiter, double kilometersDrivenPerMonth) {
+    if (fuelConsumption == 0) {
+      return 0; // Electric vehicle
+    }
+    return (fuelConsumption / 100) * kilometersDrivenPerMonth * fuelPricePerLiter;
+  }
+
   @override
-  toString() {
-    return '$name ($type) - Age: $age, Value: \$${value.toStringAsFixed(2)}, Rarity: $rarity';
+  String toString() {
+    return '$name ($type) - Age: $age, Value: \$${value.toStringAsFixed(2)}, Rarity: $rarity, Brand: $brand';
   }
 }
+
 
 class Moto extends Vehicle {
   Moto({
@@ -27,7 +41,18 @@ class Moto extends Vehicle {
     required int age,
     required double value,
     required String rarity,
-  }) : super(name: name, age: age, value: value, type: 'Moto', rarity: rarity);
+    String? brand,
+    required double fuelConsumption,
+  }) : super(
+    name: name,
+    age: age,
+    value: value,
+    type: 'Moto',
+    rarity: rarity,
+    brand: brand,
+    fuelConsumption: fuelConsumption,
+    monthlyFuelCost: 0,
+  );
 
   @override
   double getMonthlyMaintenanceCost() {
@@ -35,13 +60,24 @@ class Moto extends Vehicle {
   }
 }
 
-class Car extends Vehicle {
-  Car({
+class Voiture extends Vehicle {
+  Voiture({
     required String name,
     required int age,
     required double value,
     required String rarity,
-  }) : super(name: name, age: age, value: value, type: 'Car', rarity: rarity);
+    String? brand,
+    required double fuelConsumption,
+  }) : super(
+    name: name,
+    age: age,
+    value: value,
+    type: 'Car',
+    rarity: rarity,
+    brand: brand,
+    fuelConsumption: fuelConsumption,
+    monthlyFuelCost: 0,
+  );
 
   @override
   double getMonthlyMaintenanceCost() {
@@ -49,13 +85,24 @@ class Car extends Vehicle {
   }
 }
 
-class Boat extends Vehicle {
-  Boat({
+class Bateau extends Vehicle {
+  Bateau({
     required String name,
     required int age,
     required double value,
     required String rarity,
-  }) : super(name: name, age: age, value: value, type: 'Boat', rarity: rarity);
+    String? brand,
+    required double fuelConsumption,
+  }) : super(
+    name: name,
+    age: age,
+    value: value,
+    type: 'Boat',
+    rarity: rarity,
+    brand: brand,
+    fuelConsumption: fuelConsumption,
+    monthlyFuelCost: 0,
+  );
 
   @override
   double getMonthlyMaintenanceCost() {
@@ -63,18 +110,25 @@ class Boat extends Vehicle {
   }
 }
 
-class Airplane extends Vehicle {
-  Airplane({
+
+class Avion extends Vehicle {
+  Avion({
     required String name,
     required int age,
     required double value,
     required String rarity,
+    String? brand,
+    required double fuelConsumption,
   }) : super(
-            name: name,
-            age: age,
-            value: value,
-            type: 'Airplane',
-            rarity: rarity);
+    name: name,
+    age: age,
+    value: value,
+    type: 'Airplane',
+    rarity: rarity,
+    brand: brand,
+    fuelConsumption: fuelConsumption,
+    monthlyFuelCost: 0,
+  );
 
   @override
   double getMonthlyMaintenanceCost() {

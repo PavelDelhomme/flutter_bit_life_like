@@ -1,29 +1,32 @@
-import 'package:bit_life_like/Classes/job.dart';
+import '../services/band_account.dart';
+import 'job.dart';
+import 'vehicle.dart';
+import 'vehicle_collection.dart';
 
 class Person {
-  String namme;
+  String name;
   String gender;
   String country;
   int age = 0;
-  double bankAccount = 0;
+  BankAccount bankAccount;
 
   // Work
   List<Job> jobs = [];
 
   // Studies
-  List<Etudes> etudes = [];
+  List<Etude> etudes = [];
 
-  List<Motos> motos = [];
-  List<Voitures> voitures = [];
-  List<Bateaux> bateaux = [];
-  List<Avions> avions = [];
-  List<VehiculesExotiquzes> vehicules_exotiques = [];
-  List<VoituresDeCollections> collections_voitures = [];
-  List<MotosDeCollections> collections_motos = [];
-  List<BateauxDeCollections> collections_bateaux = [];
-  List<AvionsDeCollections> collections_avions = [];
+  List<Moto> motos = [];
+  List<Voiture> voitures = [];
+  List<Bateau> bateaux = [];
+  List<Avion> avions = [];
+  List<VehiculeExotique> vehicules_exotiques = [];
+  List<VoitureDeCollection> collections_voitures = [];
+  List<MotoDeCollection> collections_motos = [];
+  List<BateauDeCollection> collections_bateaux = [];
+  List<AvionDeCollection> collections_avions = [];
 
-  Person({required this.name, required this.gender, required this.country});
+  Person({required this.name, required this.gender, required this.country, required this.bankAccount});
 
   void ageOneYear() {
     age += 1;

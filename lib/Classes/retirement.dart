@@ -1,3 +1,5 @@
+import 'package:bit_life_like/Classes/person.dart';
+
 import 'job.dart';
 
 class RetirementRules {

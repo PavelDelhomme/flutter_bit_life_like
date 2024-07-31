@@ -1,0 +1,2146 @@
+{
+  "jewelry": [
+    {
+      "name": "Diamond Ring",
+      "value": 10000,
+      "rarity": "Rare",
+      "brand": "Tiffany & Co."
+    },
+    {
+      "name": "Gold Necklace",
+      "value": 5000,
+      "rarity": "Common",
+      "brand": "Cartier"
+    },
+    {
+      "name": "Platinum Bracelet",
+      "value": 15000,
+      "rarity": "Uncommon",
+      "brand": "Bvlgari"
+    },
+    {
+      "name": "Emerald Earrings",
+      "value": 12000,
+      "rarity": "Rare",
+      "brand": "Harry Winston"
+    },
+    {
+      "name": "Sapphire Pendant",
+      "value": 8000,
+      "rarity": "Uncommon",
+      "brand": "Chopard"
+    },
+    {
+      "name": "Or Ring",
+      "value": 160,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Creoles Or Blanc",
+      "value": 99,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Bague Acier",
+      "value": 40,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Chaine Argent Blanc",
+      "value": 140,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Bague Or Blanc 375 entrelacée diamant",
+      "value": 240,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Collier Or 750 Jaune Maille Royale",
+      "value": 3650,
+      "rarity": "Rare",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Pendentif Or Jaune Emeraude et Diamant",
+      "value": 1300,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Bague Or Blanc Oxyde de Zirconium",
+      "value": 189,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Collier Argent",
+      "value": 25,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Bague Or 375",
+      "value": 500,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Pendentif Or Blanc Saphir et Diamant",
+      "value": 1200,
+      "rarity": "Uncommon",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Pendentif Or Jaune Améthyste",
+      "value": 100,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Pendentif Or Jaune Emmeraude",
+      "value": 100,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Pendentif Or Jaune Emeraude",
+      "value": 160,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Pendentif Or Blanc Saphir et Diamant",
+      "value": 400,
+      "rarity": "Rare",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Boucle d'oreilles Or Blanc",
+      "value": 300,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Boucles d'oreilles Or Jaune et Emeraude",
+      "value": 300,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Boucles d'oreilles Or et Emeraude et Diamant",
+      "value": 200,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Boucles d'oreilles Or et Emeraude et Diamant",
+      "value": 900,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Bracelet Or Jaune",
+      "value": 210,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Chaine Or Jaune",
+      "value": 210,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Chaine Or Jaune",
+      "value": 170,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Chaine Or Jaune",
+      "value": 250,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Boucle d'oreillles Or Jaune Diamant et Emeuraude",
+      "value": 900,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Boucles d'oreilles Or",
+      "value": 220,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Chaine Or Jaune",
+      "value": 250,
+      "rarity": "Common",
+      "brand": "Histoire d'Or"
+    },
+    {
+      "name": "Bague Or Jaune",
+      "value": 200,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Or Plaque Jaune",
+      "value": 40,
+      "rarity": "Fausse",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 159,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Or Recyclé Jaune",
+      "value": 1000,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Or et Diamant",
+      "value": 11000,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Solitaire Or Blanc",
+      "value": 10000,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Solitaire Or Jaune Diamant",
+      "value": 9000,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 290,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Acier",
+      "value": 20,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 60,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 263,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 219,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Acier",
+      "value": 59,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 205,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 205,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 180,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 105,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 170,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 143,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 113,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague acier",
+      "value": 39,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 141,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Argent",
+      "value": 89,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Argent",
+      "value": 297,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague acier",
+      "value": 63,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 1469,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Or Blanc",
+      "value": 835,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or Diamant",
+      "value": 1338,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 173,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Tungstene Rose Noir",
+      "value": 97,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Baguue Tungstene Noir",
+      "value": 83,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 1675,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Acier Cable Noir",
+      "value": 35,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 305,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Acier",
+      "value": 15,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or Jaune",
+      "value": 1323,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or Diamant",
+      "value": 1565,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague céramique acier",
+      "value": 67,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent Lapis Lazulis",
+      "value": 189,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Plaque Or",
+      "value": 71,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 561,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Argent",
+      "value": 115,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Acier Noir",
+      "value": 39,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Acier Carbone",
+      "value": 38,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Acier Noir",
+      "value": 35,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Acier Noir",
+      "value": 29,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Bague Acier",
+      "value": 23,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Argent",
+      "value": 227,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 955,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Argent",
+      "value": 261,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Argent",
+      "value": 196,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 471,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Argent",
+      "value": 211,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 1468,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 1148,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 526,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Or",
+      "value": 599,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Argent",
+      "value": 125,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chevaliere Argent",
+      "value": 75,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Collier Or",
+      "value": 569,
+      "rarity": "Rare",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chaine Or",
+      "value": 129,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chaine Argent",
+      "value": 85,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chaine Argent",
+      "value": 53,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Collier Acier",
+      "value": 35,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Collier Or",
+      "value": 135,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Collier Argent",
+      "value": 229,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Collier Or",
+      "value": 2767,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Collier acier",
+      "value": 35,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chaine Or",
+      "value": 1239,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chaine Or",
+      "value": 1335,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Collier acier",
+      "value": 79,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chaine Argent",
+      "value": 81,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chaine Argent",
+      "value": 43,
+      "rarity": "Common",
+      "brand": "MATY"
+    },
+    {
+      "name": "Chaine Or",
+      "value": 303,
+      "rarity": "Rare",
+      "brand": "MATY"
+    }
+
+  ],
+  "precious_stones": [
+    {
+      "name": "Ruby",
+      "value": 2000,
+      "rarity": "Uncommon",
+      "origin": "Burma"
+    },
+    {
+      "name": "Emerald",
+      "value": 3000,
+      "rarity": "Rare",
+      "origin": "Colombia"
+    }
+  ],
+  "airplanes": [
+    {
+      "name": "Wright Flyer",
+      "age": 117,
+      "value": 20000000,
+      "type": "Historic",
+      "rarity": "Legendary",
+      "brand": "Wright Brothers",
+      "fuel_consumption": 30
+    },
+    {
+      "name": "Boeing 747",
+      "age": 50,
+      "value": 150000000,
+      "type": "Commercial",
+      "rarity": "Common",
+      "brand": "Boeing",
+      "fuel_consumption": 10
+    }
+  ],
+  "motorcycles": [
+    {
+      "name": "Yamaha MT-09",
+      "age": 2,
+      "value": 10000,
+      "rarity": "Common",
+      "brand": "Yamaha",
+      "fuel_consumption": 5.5
+    }
+  ],
+  "boats": [
+    {
+      "name": "Rackam's Pirate Ship",
+      "age": 300,
+      "value": 5000000,
+      "rarity": "Legendary",
+      "brand": null,
+      "fuel_consumption": 20
+    }
+  ],
+  "real_estate": [
+    {
+      "name": "Luxury Villa",
+      "age": 2,
+      "value": 2000000,
+      "type": "Villa",
+      "condition": "New",
+      "monthly_maintenance_cost": 2000
+    },
+    {
+      "name": "City Apartment",
+      "age": 5,
+      "value": 500000,
+      "type": "Apartment",
+      "condition": "Good",
+      "monthly_maintenance_cost": 500
+    }
+  ],
+  "antiques": [
+    {
+      "name": "Ming Vase",
+      "value": 150000,
+      "rarity": "Rare",
+      "age": 500
+    },
+    {
+      "name": "Ancient Greek Amphora",
+      "value": 100000,
+      "rarity": "Rare",
+      "age": 2500
+    },
+    {
+      "name": "Roman Bust",
+      "value": 120000,
+      "rarity": "Uncommon",
+      "age": 2000
+    },
+    {
+      "name": "Egyptian Sarcophagus",
+      "value": 300000,
+      "rarity": "Legendary",
+      "age": 3500
+    },
+    {
+      "name": "Medieval Knight Armor",
+      "value": 50000,
+      "rarity": "Common",
+      "age": 600
+    },
+    {
+      "name": "Renaissance Tapestry",
+      "value": 200000,
+      "rarity": "Rare",
+      "age": 500
+    },
+    {
+      "name": "Chinese Porcelain",
+      "value": 90000,
+      "rarity": "Uncommon",
+      "age": 400
+    },
+    {
+      "name": "Viking Shield",
+      "value": 110000,
+      "rarity": "Rare",
+      "age": 1200
+    },
+    {
+      "name": "Ming Dynasty Plate",
+      "value": 150000,
+      "rarity": "Rare",
+      "age": 600
+    },
+    {
+      "name": "Aztec Calendar Stone",
+      "value": 250000,
+      "rarity": "Legendary",
+      "age": 800
+    },
+    {
+      "name": "Etruscan Bronze Mirror",
+      "value": 130000,
+      "rarity": "Uncommon",
+      "age": 2300
+    },
+    {
+      "name": "Napoleonic Sword",
+      "value": 85000,
+      "rarity": "Common",
+      "age": 200
+    },
+    {
+      "name": "Byzantine Icon",
+      "value": 90000,
+      "rarity": "Rare",
+      "age": 1500
+    },
+    {
+      "name": "Persian Rug",
+      "value": 100000,
+      "rarity": "Uncommon",
+      "age": 400
+    },
+    {
+      "name": "Renaissance Clock",
+      "value": 175000,
+      "rarity": "Rare",
+      "age": 500
+    },
+    {
+      "name": "Globe Terrestre sur pied",
+      "value": 950,
+      "rarity": "Common",
+      "epoque": "20eme siecle"
+    },
+    {
+      "name": "Pendentif Porte Souvenir en Or 750/1000 Eme",
+      "value": 750,
+      "rarity": "Common",
+      "epoque": "20eme siecle"
+    },
+    {
+      "name": "Petite Lampe Bouillote à deux feux",
+      "value": 320,
+      "rarity": "Common",
+      "epoque": "20eme siecle"
+    },
+    {
+      "name": "Saint Jean Au Calvaire en bois",
+      "value": 18000,
+      "rarity": "Rare",
+      "epoque": "16eme siecle"
+    },
+    {
+      "name": "Ancien Pendentif Style Art Deco En Or, Diamants Et Email",
+      "value": 1800,
+      "rarity": "Common",
+      "epoque": "20eme siecle"
+    },
+    {
+      "name": "Commode d'époque Lous XVI",
+      "value": 5300,
+      "rarity": "Common",
+      "epoque": "18eme siecle"
+    },
+    {
+      "name": "Bracelet Napoléon III Perles et Diamant",
+      "value": 2650,
+      "rarity": "Common",
+      "epoque": "19eme siecle"
+    },
+    {
+      "name": "Collier en Cristal Facettes, Fermoir Argent 925/1000 Eme",
+      "value": 100,
+      "rarity": "Common",
+      "epoque": "20eme siecle"
+    },
+    {
+      "name": "Table à cartess - HV940",
+      "value": 550,
+      "rarity": "Common",
+      "epoque": "19eme siecle"
+    },
+    {
+      "name": "Chist de cricifix en bois de buis sculpté époque XVIIIe",
+      "value": 650,
+      "rarity": "Common",
+      "epoque": "18eme siecle"
+    },
+    {
+      "name": "Broche style art deco en or, platine, aigues marine et diamant",
+      "value": 1200,
+      "rarity": "Common",
+      "epoque": "20eme siecle"
+    },
+    {
+      "name"
+    }
+  ],
+  "electronics": [
+    {
+      "name": "MacBook Pro",
+      "value": 2500,
+      "rarity": "Common",
+      "brand": "Apple"
+    },
+    {
+      "name": "iPhone 13",
+      "value": 1000,
+      "rarity": "Common",
+      "brand": "Apple"
+    }
+  ],
+  "arts": {
+    "tableaux": [
+      {
+        "name": "Portait d'Adele Bloch-Bauer",
+        "value": 158000000,
+        "date_de_creation": 1907,
+        "artiste": "Klimt",
+        "type": "tableau"
+      },
+      {
+        "name": "Salvador Mundi",
+        "value": 450000000,
+        "date_de_creation": 1500,
+        "artiste": "Léonard de Vinci",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Joueurs de cartes",
+        "value": 274000000,
+        "date_de_creation": 1892,
+        "artiste": "Paul Cézanne",
+        "type": "tableau"
+      },
+      {
+        "name": "Bal du moulin de la Galette",
+        "value": 143000000,
+        "date_de_creation": 1876,
+        "artiste": "Pierre-Auguste Renoir",
+        "type": "tableau"
+      },
+      {
+        "name": "Quand te maries-tu",
+        "value": 300000000,
+        "date_de_creation": 1892,
+        "artiste": "Paul Gauguin",
+        "type": "tableau"
+      },
+      {
+        "name": "No. 5",
+        "value": 165000000,
+        "date_de_creation": 1948,
+        "artiste": "Jackson Pollock",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Rêve",
+        "value": 158000000,
+        "date_de_creation": 1932,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Nu couché",
+        "value": 170000000,
+        "date_de_creation": 1917,
+        "artiste": "Amedeo Modigliani",
+        "type": "tableau"
+      },
+      {
+        "name": "Interchage",
+        "value": 300000000,
+        "date_de_creation": 1955,
+        "artiste": "Willem de Kooning",
+        "type": "tableau"
+      },
+      {
+        "name": "Portrait du docteur Gachet",
+        "value": 152000000,
+        "date_de_creation": 1890,
+        "artiste": "Vincent Van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "Shot Sage Blue Marilyn",
+        "value": 195000000,
+        "date_de_creation": 1964,
+        "artiste": "Andy Warhol",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Porte-drapeau",
+        "value": 195000000,
+        "date_de_creation": 1636,
+        "artiste": "Rembrandt",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Femmes d'Alger",
+        "value": 179440000,
+        "date_de_creation": 1955,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Woman III",
+        "value": 158800000,
+        "date_de_creation": 1953,
+        "artiste": "Willem de Kooning",
+        "type": "tableau"
+      },
+      {
+        "name": "Trois études de Lucian Freud",
+        "value": 142400000,
+        "date_de_creation": 1969,
+        "artiste": "Francis Bacon",
+        "type": "tableau"
+      },
+      {
+        "name": "Femme à la montre",
+        "value": 139300000,
+        "date_de_creation": 1932,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Cri",
+        "value": 119920000,
+        "date_de_creation": 1893,
+        "artiste": "Edvard Munch",
+        "type": "tableau"
+      },
+      {
+        "name": "La Fillette à la corbeille fleurie",
+        "value": 115000000,
+        "date_de_creation": 1905,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Meules",
+        "value": 110700000,
+        "date_de_creation": 1891,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "Sans titre",
+        "value": 110500000,
+        "date_de_creation": 9999,
+        "artiste": "Jean-Michel Basquiat",
+        "type": "tableau"
+      },
+      {
+        "name": "Garçon à la pipe",
+        "value": 104200000,
+        "date_de_creation": 1905,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Nu au plateau de sculpteur",
+        "value": 106500000,
+        "date_de_creation": 1932,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Silver Car Crash (Double Disaster)",
+        "value": 105400000,
+        "date_de_creation": 1963,
+        "artiste": "Andy Warhol",
+        "type": "tableau"
+      },
+      {
+        "name": "Nurse",
+        "value": 95370000,
+        "date_de_creation": 1964,
+        "artiste": "Roy Lichtenstein",
+        "type": "tableau"
+      },
+      {
+        "name": "Dora Maar au chat",
+        "value": 95000000,
+        "date_de_creation": 1941,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "In this case",
+        "value": 93100000,
+        "date_de_creation": 1983,
+        "artiste": "Jean-Michel Basquiat",
+        "type": "tableau"
+      },
+      {
+        "name": "Jeune homme tenant un médaillon",
+        "value": 92200000,
+        "date_de_creation": "1470-1480",
+        "artiste": "Sandro Botticelli",
+        "type": "tableau"
+      },
+      {
+        "name": "Portrait of an Artist (Pool with Two Figures)",
+        "value": 90300000,
+        "date_de_creation": 1972,
+        "artiste": "David Hockney",
+        "type": "tableau"
+      },
+      {
+        "name": "Portrait d'Adèle Bloch-Bauer II",
+        "value": 88000000,
+        "date_de_creation": 1912,
+        "artiste": "Gustav Klimt",
+        "type": "tableau"
+      },
+      {
+        "name": "Nymphéas en fleurs",
+        "value": 84600000,
+        "date_de_creation": "1914-1917",
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "Meules",
+        "value": 81400000,
+        "date_de_creation": "1890-1891",
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "Odalisque couchée aux magnolias",
+        "value": 80700000,
+        "date_de_creation": 1923,
+        "artiste": "Henri Matisse",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Bassin aux nymphéas",
+        "value": 80400000,
+        "date_de_creation": 1919,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "False Start",
+        "value": 80000000,
+        "date_de_creation": 1959,
+        "artiste": "Jasper Johns",
+        "type": "tableau"
+      },
+      {
+        "name": "Iris",
+        "value": 78000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Massacre des Innocents",
+        "value": 78000000,
+        "date_de_creation": 1611,
+        "artiste": "Pierre Paul Rubens",
+        "type": "tableau"
+      },
+      {
+        "name": "White Center",
+        "value": 72800000,
+        "date_de_creation": 1950,
+        "artiste": "Mark Rothko",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Noces de Pierrette",
+        "value": 72000000,
+        "date_de_creation": 1905,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Portrait de l'artiste sans barbe",
+        "value": 72000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "Femme au béret et à la robe quadrillée",
+        "value": 69400000,
+        "date_de_creation": 1937,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Nu assis sur un divan",
+        "value": 68900000,
+        "date_de_creation": 1917,
+        "artiste": "Amedeo Modigliani",
+        "type": "tableau"
+      },
+      {
+        "name": "Juin Octobre 1985",
+        "value": 65000000,
+        "date_de_creation": 1985,
+        "artiste": "Zao Wou-Ki",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Printemps",
+        "value": 65000000,
+        "date_de_creation": 1862,
+        "artiste": "Édouard Manet",
+        "type": "tableau"
+      },
+      {
+        "name": "Police Gazette",
+        "value": 63000000,
+        "date_de_creation": 1955,
+        "artiste": "Willem de Kooning",
+        "type": "tableau"
+      },
+      {
+        "name": "Sixty last suppers",
+        "value": 61000000,
+        "date_de_creation": 1986,
+        "artiste": "Andy Warhol",
+        "type": "tableau"
+      },
+      {
+        "name": "Rideau, cruche et compotier",
+        "value": 60000000,
+        "date_de_creation": "1893-1894",
+        "artiste": "Paul Cézanne",
+        "type": "tableau"
+      },
+      {
+        "name": "Champ de blé avec cyprès",
+        "value": 57000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "Femme aux bras croisés",
+        "value": 55000000,
+        "date_de_creation": "1901-1902",
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Étude d'après le portrait du pape Innocent X par Velázquez",
+        "value": 52000000,
+        "date_de_creation": 1962,
+        "artiste": "Francis Bacon",
+        "type": "tableau"
+      },
+      {
+        "name": "La Joconde",
+        "value": 1000000000,
+        "date_de_creation": "1503-1519",
+        "artiste": "Leonardo Da Vinci",
+        "type": "tableau"
+      },
+      {
+        "name": "La Nuit étoilée",
+        "value": 100000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "La jeune fille à la perle",
+        "value": 850000000,
+        "date_de_creation": 1665,
+        "artiste": "Johannes Vermeer",
+        "type": "tableau"
+      },
+      {
+        "name": "La cène",
+        "value": 700000000,
+        "date_de_creation": "1495-1498",
+        "artiste": "Leonardo Da Vinci",
+        "type": "tableau"
+      },
+      {
+        "name": "Guernica",
+        "value": 200000000,
+        "date_de_creation": 1937,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "La persistance de la mémoire",
+        "value": 600000000,
+        "date_de_creation": 1931,
+        "artiste": "Salvador Dali",
+        "type": "tableau"
+      },
+      {
+        "name": "La Ronde de nuit",
+        "value": 550000000,
+        "date_de_creation": "1640-1642",
+        "artiste": "Rembrandt",
+        "type": "tableau"
+      },
+      {
+        "name": "Le baiser",
+        "value": 200000000,
+        "date_de_creation": "1907-1908",
+        "artiste": "Gustav Klimt",
+        "type": "tableau"
+      },
+      {
+        "name": "American Gothic",
+        "value": 6000000,
+        "date_de_creation": 1930,
+        "artiste": "Grant Wood",
+        "type": "tableau"
+      },
+      {
+        "name": "La Naissance de Vénus",
+        "value": 100000000,
+        "date_de_creation": "1484-1486",
+        "artiste": "Sandro Botticceli",
+        "type": "tableau"
+      },
+      {
+        "name": "Arrangement en gris et noir n°1",
+        "value": 10000000,
+        "date_de_creation": 1871,
+        "artiste": "James Abbott McNeill Whistler",
+        "type": "tableau"
+      },
+      {
+        "name": "Impression, soleil levant",
+        "value": 70000000,
+        "date_de_creation": 1872,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Ménines",
+        "value": 300000000,
+        "date_de_creation": 1656,
+        "artiste": "Diego Velázquez",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Demoiselles d'Avignon",
+        "value": 800000000,
+        "date_de_creation": 1907,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Terrasse du café le soir",
+        "value": 50000000,
+        "date_de_creation": 1888,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "Un dimanche après-midi à l'île de la Grande Jatte",
+        "value": 100000000,
+        "date_de_creation": 1884,
+        "artiste": "Georges Seurat",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Époux Arnolfini",
+        "value": 700000000,
+        "date_de_creation": 1434,
+        "artiste": "Jan van Eyck",
+        "type": "tableau"
+      },
+      {
+        "name": "La Dame à l’hermine",
+        "value": 300000000,
+        "date_de_creation": 1490,
+        "artiste": "Leonardo Da Vinci",
+        "type": "tableau"
+      },
+      {
+        "name": "L'École d'Athènes",
+        "value": 700000000,
+        "date_de_creation": "1510-1511",
+        "artiste": "Raphaël",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Déjeuner sur l'herbe",
+        "value": 65000000,
+        "date_de_creation": "1862-1863",
+        "artiste": "Édouard Manet",
+        "type": "tableau"
+      },
+      {
+        "name": "L'autoportrait",
+        "value": 85000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "La Liberté guidant le peuple",
+        "value": 300000000,
+        "date_de_creation": 1830,
+        "artiste": "Eugène Delacroix",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Café de nuit",
+        "value": 30000000,
+        "date_de_creation": 1888,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "Nighthawks",
+        "value": 30000000,
+        "date_de_creation": 1942,
+        "artiste": "Edward Hopper",
+        "type": "tableau"
+      },
+      {
+        "name": "Le trois mai",
+        "value": 400000000,
+        "date_de_creation": 1814,
+        "artiste": "Francisco de Goya",
+        "type": "tableau"
+      },
+      {
+        "name": "Portrait d'Adele Bloch-Bauer I",
+        "value": 135000000,
+        "date_de_creation": 1907,
+        "artiste": "Gustav Klimt",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Fils de l'homme",
+        "value": 150000000,
+        "date_de_creation": 1964,
+        "artiste": "René Magritte",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Déjeuner des canotiers",
+        "value": 70000000,
+        "date_de_creation": 1881,
+        "artiste": "Pierre-Auguste Renoir",
+        "type": "tableau"
+      },
+      {
+        "name": "No. 5, 1948",
+        "value": 140000000,
+        "date_de_creation": 1948,
+        "artiste": "Jackson Pollock",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Printemps",
+        "value": 150000000,
+        "date_de_creation": "1477-1482",
+        "artiste": "Sandro Botticelli",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Vieux Guitariste aveugle",
+        "value": 50000000,
+        "date_de_creation": 1903,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Christ dans la tempête sur la mer de Galilée",
+        "value": 50000000,
+        "date_de_creation": 1633,
+        "artiste": "Rembrandt",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Jardin des délices",
+        "value": 200000000,
+        "date_de_creation": "1490-1510",
+        "artiste": "Jérôme Bosch",
+        "type": "tableau"
+      },
+      {
+        "name": "Salvator Mundi",
+        "value": 450000000,
+        "date_de_creation": 1500,
+        "artiste": "Leonardo Da Vinci",
+        "type": "tableau"
+      },
+      {
+        "name": "Les iris",
+        "value": 53900000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Radeau de La Méduse",
+        "value": 250000000,
+        "date_de_creation": "1818-1819",
+        "artiste": "Théodore Géricault",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Ambassadeurs",
+        "value": 250000000,
+        "date_de_creation": 1533,
+        "artiste": "Hans Holbein le Jeune",
+        "type": "tableau"
+      },
+      {
+        "name": "Christina's World",
+        "value": 15000000,
+        "date_de_creation": 1948,
+        "artiste": "Andrew Wyeth",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Mangeurs de pommes de terre",
+        "value": 60000000,
+        "date_de_creation": 1885,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Jardin de l'artiste à Giverny",
+        "value": 20000000,
+        "date_de_creation": 1900,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "Saturne dévorant un de ses fils",
+        "value": 90000000,
+        "date_de_creation": "1819-1823",
+        "artiste": "Francisco de Goya",
+        "type": "tableau"
+      },
+      {
+        "name": "La Bohémienne endormie",
+        "value": 50000000,
+        "date_de_creation": 1897,
+        "artiste": "Henri Rousseau",
+        "type": "tableau"
+      },
+      {
+        "name": "Boîtes de soupe Campbell",
+        "value": 100000000,
+        "date_de_creation": 1962,
+        "artiste": "Andy Warhol",
+        "type": "tableau"
+      },
+      {
+        "name": "Olympia",
+        "value": 80000000,
+        "date_de_creation": 1863,
+        "artiste": "Édouard Manet",
+        "type": "tableau"
+      },
+      {
+        "name": "June flamboyante",
+        "value": 50000000,
+        "date_de_creation": 1895,
+        "artiste": "Frederic Leighton",
+        "type": "tableau"
+      },
+      {
+        "name": "L'Art de la peinture",
+        "value": 200000000,
+        "date_de_creation": "1666-1668",
+        "artiste": "Johannes Vermeer",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Champ de Coquelicots près d'Argenteuil",
+        "value": 40000000,
+        "date_de_creation": 1873,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Noces de Cana",
+        "value": 100000000,
+        "date_de_creation": "1562-1563",
+        "artiste": "Paul Véronèse",
+        "type": "tableau"
+      },
+      {
+        "name": "La Promenade",
+        "value": 65000000,
+        "date_de_creation": 1875,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "La Classe de danse",
+        "value": 50000000,
+        "date_de_creation": "1873-1876",
+        "artiste": "Edgar Degas",
+        "type": "tableau"
+      },
+      {
+        "name": "Nu descendant un escalier (N°2)",
+        "value": 100000000,
+        "date_de_creation": 1912,
+        "artiste": "Marcel Duchamp",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Désespéré",
+        "value": 50000000,
+        "date_de_creation": "1843-1845",
+        "artiste": "Gustave Courbet",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Deux Fridas",
+        "value": 50000000,
+        "date_de_creation": 1939,
+        "artiste": "Frida Kahlo",
+        "type": "tableau"
+      },
+      {
+        "name": "L'Origine du monde",
+        "value": 50000000,
+        "date_de_creation": 1866,
+        "artiste": "Gustave Courbet",
+        "type": "tableau"
+      },
+      {
+        "name": "La Nuit étoilée sur le Rhône",
+        "value": 90000000,
+        "date_de_creation": 1888,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "name": "La Création d'Adam",
+        "value": 700000000,
+        "date_de_creation": "1511-1512",
+        "artiste": "Michel-Ange",
+        "type": "tableau"
+      },
+      {
+        "name": "Le cri",
+        "value": 119920000,
+        "date_de_creation": 1893,
+        "artiste": "Edvard Munch",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Nymphéas",
+        "value": 100000000,
+        "date_de_creation": "1915-1926",
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "Chiens jouant au poker",
+        "value": 1000000,
+        "date_de_creation": 1903,
+        "artiste": "Cassius Marcellus Coolidge",
+        "type": "tableau"
+      },
+      {
+        "name": "La Maja nue",
+        "value": 200000000,
+        "date_de_creation": "1797-1800",
+        "artiste": "Francisco de Goya",
+        "type": "tableau"
+      },
+      {
+        "name": "La Grande Odalisque",
+        "value": 80000000,
+        "date_de_creation": 1814,
+        "artiste": "Jean Auguste Dominique Ingres",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Voyageur contemplant une mer de nuages",
+        "value": 70000000,
+        "date_de_creation": 1818,
+        "artiste": "Caspar David Friedrich",
+        "type": "tableau"
+      },
+      {
+        "name": "La Chute d'Icare",
+        "value": 70000000,
+        "date_de_creation": 1558,
+        "artiste": "Pieter Brueghel l'Ancien",
+        "type": "tableau"
+      },
+      {
+        "name": "les 3 musiciens",
+        "value": 70000000,
+        "date_de_creation": 1921,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Triomphe de Galatée",
+        "value": 70000000,
+        "date_de_creation": "1512-1514",
+        "artiste": "Raphaël",
+        "type": "tableau"
+      },
+      {
+        "name": "Tour de Babel",
+        "value": 70000000,
+        "date_de_creation": 1563,
+        "artiste": "Pieter Brueghel l'Ancien",
+        "type": "tableau"
+      },
+      {
+        "name": "Dance",
+        "value": 70000000,
+        "date_de_creation": 1910,
+        "artiste": "Henri Matisse",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Hasards heureux de l'escarpolette",
+        "value": 70000000,
+        "date_de_creation": 1767,
+        "artiste": "Jean Honoré Fragonard",
+        "type": "tableau"
+      },
+      {
+        "name": "Des glaneuses",
+        "value": 70000000,
+        "date_de_creation": 1857,
+        "artiste": "Jean-François Millet",
+        "type": "tableau"
+      },
+      {
+        "name": "Bonaparte franchissant le Grand-Saint-Bernard",
+        "value": 70000000,
+        "date_de_creation": 1801,
+        "artiste": "Jacques-Louis David",
+        "type": "tableau"
+      },
+      {
+        "name": "La Grande Vague de Kanagawa",
+        "value": 70000000,
+        "date_de_creation": "1830-1833",
+        "artiste": "Hokusai",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Joueurs de cartes",
+        "value": 70000000,
+        "date_de_creation": "1890-1895",
+        "artiste": "Paul Cézanne",
+        "type": "tableau"
+      },
+      {
+        "name": "La Naissance de Vénus",
+        "value": 70000000,
+        "date_de_creation": 1879,
+        "artiste": "William-Adolphe Bouguereau",
+        "type": "tableau"
+      },
+      {
+        "name": "Un bar aux Folies Bergère",
+        "value": 70000000,
+        "date_de_creation": 1882,
+        "artiste": "Édouard Manet",
+        "type": "tableau"
+      },
+      {
+        "name": "La Dame de Shalott",
+        "value": 70000000,
+        "date_de_creation": 1888,
+        "artiste": "John William Waterhouse",
+        "type": "tableau"
+      },
+      {
+        "name": "Washington traversant le Delaware",
+        "value": 70000000,
+        "date_de_creation": 1851,
+        "artiste": "Emanuel Leutze",
+        "type": "tableau"
+      },
+      {
+        "name": "Portrait de Madame X",
+        "value": 70000000,
+        "date_de_creation": 1884,
+        "artiste": "John Singer Sargent",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Grandes Baigneuses",
+        "value": 70000000,
+        "date_de_creation": 1906,
+        "artiste": "Paul Cézanne",
+        "type": "tableau"
+      },
+      {
+        "name": "Quand te maries-tu ?",
+        "value": 300000000,
+        "date_de_creation": 1892,
+        "artiste": "Paul Gauguin",
+        "type": "tableau"
+      },
+      {
+        "name": "Rue de Paris, temps de pluie",
+        "value": 70000000,
+        "date_de_creation": 1877,
+        "artiste": "Gustav Caillebote",
+        "type": "tableau"
+      },
+      {
+        "name": "L'Astronome",
+        "value": 70000000,
+        "date_de_creation": 1668,
+        "artiste": "Johannes Vermeer",
+        "type": "tableau"
+      },
+      {
+        "name": "Les Musiciens",
+        "value": 70000000,
+        "date_de_creation": 1595,
+        "artiste": "Caravage",
+        "type": "tableau"
+      },
+      {
+        "name": "L'Arbre de Vie, Stoclet Frieze",
+        "value": 70000000,
+        "date_de_creation": 1909,
+        "artiste": "Gustav Klimt",
+        "type": "tableau"
+      },
+      {
+        "name": "L'Arrestation du Christ",
+        "value": 70000000,
+        "date_de_creation": 1602,
+        "artiste": "Caravage",
+        "type": "tableau"
+      },
+      {
+        "name": "Parmi la Sierra Nevada",
+        "value": 70000000,
+        "date_de_creation": 1868,
+        "artiste": "Albert Bierstadt",
+        "type": "tableau"
+      },
+      {
+        "name": "La Mer de glace",
+        "value": 70000000,
+        "date_de_creation": "1823-1824",
+        "artiste": "Caspar David Friedrich",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Rêve",
+        "value": 158000000,
+        "date_de_creation": 1932,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "name": "La Madone",
+        "value": 70000000,
+        "date_de_creation": "1894-1895",
+        "artiste": "Edvard Munch",
+        "type": "tableau"
+      },
+      {
+        "name": "L'Annonciation",
+        "value": 70000000,
+        "date_de_creation": "1472-1475",
+        "artiste": "Léonard de Vinci",
+        "type": "tableau"
+      },
+      {
+        "name": "Le Retour du fils prodigue",
+        "value": 70000000,
+        "date_de_creation": 1662,
+        "artiste": "Rembrandt",
+        "type": "tableau"
+      },
+      {
+        "name": "Lady Godiva",
+        "value": 70000000,
+        "date_de_creation": 1897,
+        "artiste": "John Collier",
+        "type": "tableau"
+      },
+      {
+        "name": "La Jeune Martyre",
+        "value": 70000000,
+        "date_de_creation": 1855,
+        "artiste": "Paul Delaroche",
+        "type": "tableau"
+      },
+      {
+        "name": "Philosophe en méditation",
+        "value": 70000000,
+        "date_de_creation": 1632,
+        "artiste": "Rembrandt",
+        "type": "tableau"
+      },
+      {
+        "name": "La Tempête",
+        "value": 70000000,
+        "date_de_creation": 1880,
+        "artiste": "Pierre Auguste Cot",
+        "type": "tableau"
+      },
+      {
+        "name": "Bashi-Bazouk",
+        "value": 70000000,
+        "date_de_creation": 1868,
+        "artiste": "Jean-Léon Gérôme",
+        "type": "tableau"
+      },
+      {
+        "name": "Judith et Holopherne",
+        "value": 70000000,
+        "date_de_creation": 1599,
+        "artiste": "Caravage",
+        "type": "tableau"
+      },
+      {
+        "name": "La Liseuse",
+        "value": 70000000,
+        "date_de_creation": 1770,
+        "artiste": "Jean-Honoré Fragonard",
+        "type": "tableau"
+      },
+      {
+        "name": "La pie",
+        "value": 70000000,
+        "date_de_creation": "1868-1869",
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "name": "Vénus à son miroir",
+        "value": 70000000,
+        "date_de_creation": "1647-1651",
+        "artiste": "Diego Vélasquez",
+        "type": "tableau"
+      },
+      {
+        "name": "La danse à Bougival",
+        "value": 70000000,
+        "date_de_creation": 1883,
+        "artiste": "Pierre-Auguste Renoir",
+        "type": "tableau"
+      },
+      {
+        "name": "Police",
+        "value": 10,
+        "date_de_creation": 2014,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Insane Clown",
+        "value": 10,
+        "date_de_creation": 2001,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Laugh Now",
+        "value": 10,
+        "date_de_creation": 2002,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Parachuting Rat",
+        "value": 10,
+        "date_de_creation": 2003,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Brick Lane, East End",
+        "value": 10,
+        "date_de_creation": 2004,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Think Tank",
+        "value": 10,
+        "date_de_creation": 2003,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Death",
+        "value": 10,
+        "date_de_creation": 2005,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name" : "Bethlehem",
+        "value": 10,
+        "date_de_creation": 2005,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Vandalised Phone Box",
+        "value": 10,
+        "date_de_creation": 2005,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Warning",
+        "value": 10,
+        "date_de_creation": 2006,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Warning Sign",
+        "value": 10,
+        "date_de_creation": 2006,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Pie Face",
+        "value": 10,
+        "date_de_creation": 2006,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Hitchhiker to Anywhere Archway",
+        "value": 10,
+        "date_de_creation": 2005,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Girl siezed by an ATM",
+        "value": 10,
+        "date_de_creation": 2008,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Ruined Landscape",
+        "value": 10,
+        "date_de_creation": 2007,
+        "artiste": "Bansky",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Keep It Spotless (Defaced Hirst)",
+        "value": 10,
+        "date_de_creation": 2007,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "I Can't Believe You Morons Actually Buy This Shit",
+        "value": 10,
+        "date_de_creation": 2007,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "It's Not A Race",
+        "value": 10,
+        "date_de_creation": 2008,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "No Loitering",
+        "value": 10,
+        "date_de_creation": 2008,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Borodyanka, Tsentralna 253",
+        "value": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "One nation under CCTV",
+        "value": 10,
+        "date_de_creation": 2008,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Hostomel, Proskurivskaa 2",
+        "value": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Borodyanka, Tsentralna 427",
+        "value": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Irprn, Hostomelske Shose 15",
+        "value": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Kyiv, Velyka Zhytomyrska 13",
+        "value": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Kyiv, Khreshchyatyk 9",
+        "value": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Girl With Balloon",
+        "value": 10,
+        "date_de_creation": 2002,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Red Carpet Dinner Service",
+        "value": 10,
+        "date_de_creation": 2014,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Flower thrower",
+        "value": 10,
+        "date_de_creation": 2016,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "French maid",
+        "value": 10,
+        "date_de_creation": 2016,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "name": "Stop and Search",
+        "value": 10,
+        "date_de_creation": 2016,
+        "artiste": "Bansky",
+        "type": "Graffiti"
+      },
+    ]
+  }
+}
