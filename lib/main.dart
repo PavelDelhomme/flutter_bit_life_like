@@ -1,10 +1,10 @@
 import 'package:bit_life_like/screens/marketplace_menu_screen.dart';
 import 'package:bit_life_like/services/DecisionService.dart';
 import 'package:bit_life_like/services/FinancialService.dart';
-import 'package:bit_life_like/services/band_account.dart';
+import 'package:bit_life_like/services/bank_account.dart';
 import 'package:bit_life_like/services/career_service.dart';
 import 'package:bit_life_like/services/justice_service.dart';
-import 'package:bit_life_like/services/load_service.dart';
+import 'package:bit_life_like/services/loan_service.dart';
 import 'package:bit_life_like/services/transaction_service.dart';
 import 'package:flutter/material.dart';
 

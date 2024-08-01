@@ -1,14 +1,13 @@
-
-import 'band_account.dart';
+import 'bank_account.dart';
 
 class TransactionService {
-  void transferFunds(BankAccount fromAccount, BankAccount toAccount, double amount) {
-    if (fromAccount.balance >= amount) {
-      fromAccount.withdraw(amount);
-      toAccount.deposit(amount);
-      print('Transferred $amount from ${fromAccount.toString()} to ${toAccount.toString()}.');
+  void purchaseItem(BankAccount account, double price, Function onSuccess,
+      Function onFailure) {
+    if (account.balance >= price) {
+      account.withdraw(price);
+      onSuccess();
     } else {
-      print('Insufficient funds to transfer.');
+      onFailure("Insufficient funds.");
     }
   }
 }

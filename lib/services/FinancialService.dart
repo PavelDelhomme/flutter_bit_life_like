@@ -1,5 +1,5 @@
 
-import 'band_account.dart';
+import 'bank_account.dart';
 
 class FinancialService {
   void investInStock(BankAccount account, double amount) {
