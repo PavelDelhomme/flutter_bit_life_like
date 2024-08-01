@@ -1,18 +1,18 @@
-import 'package:bit_life_like/screens/marketplace_menu_screen.dart';
-import 'package:bit_life_like/services/DecisionService.dart';
+import 'package:bit_life_like/screens/market_place/marketplace_menu_screen.dart';
+import 'package:bit_life_like/services/events_decision/DecisionService.dart';
 import 'package:bit_life_like/services/FinancialService.dart';
-import 'package:bit_life_like/services/bank_account.dart';
-import 'package:bit_life_like/services/career_service.dart';
-import 'package:bit_life_like/services/justice_service.dart';
+import 'package:bit_life_like/services/bank/bank_account.dart';
+import 'package:bit_life_like/services/work/career_service.dart';
+import 'package:bit_life_like/services/justice/justice_service.dart';
 import 'package:bit_life_like/services/loan_service.dart';
-import 'package:bit_life_like/services/transaction_service.dart';
+import 'package:bit_life_like/services/bank/transaction_service.dart';
 import 'package:flutter/material.dart';
 
-import 'Classes/jewelry.dart';
-import 'Classes/job.dart';
-import 'Classes/marketplace.dart';
+import 'Classes/objects/jewelry.dart';
+import 'screens/work/object/job.dart';
+import 'screens/market_place/marketplace.dart';
 import 'Classes/person.dart';
-import 'Classes/real_estate.dart';
+import 'Classes/objects/real_estate.dart';
 import 'Classes/vehicle.dart';
 
 

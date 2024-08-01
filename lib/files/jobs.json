@@ -1,0 +1,22 @@
+{
+  "jobs": [
+    {
+      "employerName": "Google",
+      "jobTitle": "Software Engineer",
+      "yearsRequired": 3,
+      "educationRequired": "Bachelor's Degree in Computer Science",
+      "annualSalary": 120000,
+      "monthlySalary": 10000,
+      "jobType": "full-time"
+    },
+    {
+      "employerName": "Part-time Tutoring",
+      "jobTitle": "Math Tutor",
+      "yearsRequired": 0,
+      "educationRequired": "High School",
+      "annualSalary": 30000,
+      "monthlySalary": 2500,
+      "jobType": "part-time"
+    }
+  ]
+}

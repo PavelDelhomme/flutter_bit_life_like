@@ -1,9 +1,9 @@
 import 'package:bit_life_like/screens/relationship_screen.dart';
 import 'package:flutter/material.dart';
-import 'marketplace_menu_screen.dart';
+import 'market_place/marketplace_menu_screen.dart';
 import 'capital_screen.dart';
 import 'relationships_screen.dart';
-import 'activities_screen.dart';
+import 'activities/activities_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

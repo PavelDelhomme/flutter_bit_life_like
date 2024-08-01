@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../services/loan_service.dart';
-import '../services/real_estate/real_estate.dart';
-import '../services/transaction_service.dart';
-import 'dealers/boat_dealership_screen.dart';
-import 'dealers/car_dealership_screen.dart';
-import 'dealers/enchere_house_screen.dart';
-import 'dealers/jewelry_market_screen.dart';
-import 'dealers/real_estate_dealership_screen.dart';
-import 'dealers/seconde_main_market_screen.dart';
+import '../../services/loan_service.dart';
+import '../../services/real_estate/real_estate.dart';
+import '../../services/bank/transaction_service.dart';
+import '../dealers/boat_dealership_screen.dart';
+import '../dealers/car_dealership_screen.dart';
+import '../dealers/enchere_house_screen.dart';
+import '../dealers/jewelry_market_screen.dart';
+import '../dealers/real_estate_dealership_screen.dart';
+import '../dealers/seconde_main_market_screen.dart';
 
 class MarketplaceMenuScreen extends StatelessWidget {
   @override

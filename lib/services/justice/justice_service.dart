@@ -1,5 +1,5 @@
 
-import '../Classes/person.dart';
+import '../../Classes/person.dart';
 
 class JusticeService {
   void defendInCourt(Person person, String crime) {

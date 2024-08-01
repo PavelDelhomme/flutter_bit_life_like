@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import '../Classes/person.dart';
+import '../../Classes/person.dart';
 
 class EventService {
   void triggerRandomEvent(Person person) {

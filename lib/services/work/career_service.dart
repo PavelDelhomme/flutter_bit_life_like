@@ -1,5 +1,5 @@
-import '../Classes/job.dart';
-import '../Classes/person.dart';
+import '../../screens/work/object/job.dart';
+import '../../Classes/person.dart';
 
 class CareerService {
   void applyForJob(Person person, Job job) {

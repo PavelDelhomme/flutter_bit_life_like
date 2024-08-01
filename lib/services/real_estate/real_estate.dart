@@ -1,5 +1,5 @@
 
-import '../../Classes/real_estate.dart';
+import '../../Classes/objects/real_estate.dart';
 
 class RealEstateService {
   Future<List<RealEstate>> getAvailableRealEstate() async {

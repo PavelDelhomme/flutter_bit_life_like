@@ -54,6 +54,17 @@ class Moto extends Vehicle {
     monthlyFuelCost: 0,
   );
 
+  static Moto fromJson(Map<String, dynamic> json) {
+    return Moto(
+      name: json['name'],
+      age: json['age'],
+      value: json['value'],
+      rarity: json['rarity'],
+      brand: json['brand'],
+      fuelConsumption: json['fuelConsumption'],
+    );
+  }
+
   @override
   double getMonthlyMaintenanceCost() {
     return value * 0.01; // 1% of the value as maintenance cost
@@ -79,11 +90,23 @@ class Voiture extends Vehicle {
     monthlyFuelCost: 0,
   );
 
+  static Voiture fromJson(Map<String, dynamic> json) {
+    return Voiture(
+      name: json['name'],
+      age: json['age'],
+      value: json['value'],
+      rarity: json['rarity'],
+      brand: json['brand'],
+      fuelConsumption: json['fuelConsumption'],
+    );
+  }
+
   @override
   double getMonthlyMaintenanceCost() {
-    return value * 0.015; // 1.5% of the value as maintenance cost
+    return value * 0.015;
   }
 }
+
 
 class Bateau extends Vehicle {
   Bateau({
@@ -103,6 +126,17 @@ class Bateau extends Vehicle {
     fuelConsumption: fuelConsumption,
     monthlyFuelCost: 0,
   );
+
+  static Bateau fromJson(Map<String, dynamic> json) {
+    return Bateau(
+      name: json['name'],
+      age: json['age'],
+      value: json['value'],
+      rarity: json['rarity'],
+      brand: json['brand'],
+      fuelConsumption: json['fuelConsumption'],
+    );
+  }
 
   @override
   double getMonthlyMaintenanceCost() {
@@ -129,6 +163,17 @@ class Avion extends Vehicle {
     fuelConsumption: fuelConsumption,
     monthlyFuelCost: 0,
   );
+
+  static Avion fromJson(Map<String, dynamic> json) {
+    return Avion(
+      name: json['name'],
+      age: json['age'],
+      value: json['value'],
+      rarity: json['rarity'],
+      brand: json['brand'],
+      fuelConsumption: json['fuelConsumption'],
+    );
+  }
 
   @override
   double getMonthlyMaintenanceCost() {

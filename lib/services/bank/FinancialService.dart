@@ -1,7 +1,28 @@
 
+import '../../Classes/person.dart';
 import 'bank_account.dart';
 
 class FinancialService {
+  void handleDefault(Person person) {
+    double debtAmont = person.bankAccounts.fold(0.0, (sum, account) => sum + account.totalDebt());
+
+    for (var account in person.bankAccounts) {
+      if (account.balance >= debtAmont) {
+        account.withdraw(debtAmont);
+        print("Debt of \$${debtAmont} recovered from account ${account.accountNumber}");
+        return;
+      }
+    }
+
+    // Si les comptes ne suffisent pas, saisir les biens
+    seizeAssets(person, debtAmont);
+  }
+
+  void seizeAssets(Person person, double debtAmont) {
+    // Logique poue saisir les bien ici a voir après
+    print("Seizing assets to recover \$${debtAmont}");
+  }
+
   void investInStock(BankAccount account, double amount) {
     if (account.balance >= amount) {
       // Logic to handle stock purchase

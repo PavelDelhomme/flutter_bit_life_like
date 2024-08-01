@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import '../Classes/person.dart';
+import '../../Classes/person.dart';
 
 class DecisionService {
   void makeDecision(Person person, String decision) {

@@ -1,4 +1,4 @@
-import '../Classes/person.dart';
+import '../../Classes/person.dart';
 
 class CarceralService {
   void imprison(Person person, double debtAmount) {

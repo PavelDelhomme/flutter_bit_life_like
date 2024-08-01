@@ -1,17 +1,17 @@
-import 'package:bit_life_like/screens/activities/adoption_activites_screen.dart';
-import 'package:bit_life_like/screens/activities/blackmarket_activites_screen.dart';
-import 'package:bit_life_like/screens/activities/sport_activites_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/adoption_activites_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/blackmarket/blackmarket_activites_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/sport/sport_activites_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'activities/criminal_activites_screen.dart';
-import 'activities/emigration_screen.dart';
-import 'activities/health_check_screen.dart';
-import 'activities/inheritance_screen.dart';
-import 'activities/legal_action_screen.dart';
-import 'activities/love_dating_screen.dart';
-import 'activities/permits_screen.dart';
-import 'activities/shopping_screen.dart';
-import 'activities/time_machine_screen.dart';
+import 'activity/criminal/criminal_activites_screen.dart';
+import 'activity/legal/emigration_screen.dart';
+import 'activity/health_check_screen.dart';
+import 'activity/legal/inheritance_screen.dart';
+import 'activity/legal_action_screen.dart';
+import 'activity/love_dating_screen.dart';
+import 'activity/permits_screen.dart';
+import 'activity/shopping/shopping_screen.dart';
+import 'activity/time_machine_screen.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   @override

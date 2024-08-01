@@ -5,10 +5,10 @@ class ShoppingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sport Activities'),
+        title: Text('Shopping SCreen'),
       ),
       body: Center(
-        child: Text('List of sport activities here'),
+        child: Text('Liste des différent market d\'achat : acaht de voiture, bateau, avion, immobilier et otu et tout'),
       ),
     );
   }
