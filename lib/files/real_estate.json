@@ -17,1086 +17,1295 @@
       "monthly_maintenance_cost": 500
     },
     {
-      "nom": "Antilia",
+      "nom": "Appartement Moderne Centre-Ville",
+      "age": 5,
+      "valeur": 350000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 300
+    },
+    {
+      "nom": "Maison de Banlieue",
       "age": 10,
-      "valeur": 2000000000,
-      "type": "Résidence Privée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 250000
+      "valeur": 450000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 200
     },
     {
-      "nom": "Villa Leopolda",
-      "age": 115,
-      "valeur": 750000000,
-      "type": "Villa",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "The One",
-      "age": 1,
-      "valeur": 500000000,
-      "type": "Manoir",
+      "nom": "Studio Urbain",
+      "age": 3,
+      "valeur": 250000,
+      "type": "Studio",
       "condition": "New",
-      "monthly_maintenance_cost": 100000
+      "monthly_maintenance_cost": 150
     },
     {
-      "nom": "Les Palais Bulles",
-      "age": 36,
-      "valeur": 390000000,
+      "nom": "Cottage Champêtre",
+      "age": 15,
+      "valeur": 300000,
+      "type": "Cottage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Duplex en Périphérie",
+      "age": 8,
+      "valeur": 500000,
+      "type": "Duplex",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 350
+    },
+    {
+      "nom": "Loft Industriel",
+      "age": 12,
+      "valeur": 600000,
+      "type": "Loft",
+      "condition": "Good",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Villa avec Piscine",
+      "age": 20,
+      "valeur": 750000,
       "type": "Villa",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "condition": "Good",
+      "monthly_maintenance_cost": 600
     },
     {
-      "nom": "Four Fairfield Pond",
-      "age": 18,
-      "valeur": 248000000,
-      "type": "Manoir",
+      "nom": "Bungalow en Bord de Mer",
+      "age": 22,
+      "valeur": 480000,
+      "type": "Bungalow",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 250
     },
     {
-      "nom": "Ellison Estate",
-      "age": 16,
-      "valeur": 200000000,
-      "type": "Estate",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
-    },
-    {
-      "nom": "Kensington Palace Gardens",
-      "age": 176,
-      "valeur": 180000000,
-      "type": "Townhouse",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "Seven The Pinnacle",
-      "age": 9,
-      "valeur": 1550000000,
-      "type": "Ski Lodge",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
-    },
-    {
-      "nom": "Palazzo di Amore",
-      "age": 6,
-      "valeur": 129000000,
-      "type": "Villa",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
-    },
-    {
-      "nom": "18-19 Kensington Gardens",
-      "age": 160,
-      "valeur": 128000000,
-      "type": "Maison de ville",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
-    },
-    {
-      "nom": "The Manor",
-      "age": 31,
-      "valeur": 119000000,
-      "type": "Mansion",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
-    },
-    {
-      "nom": "Buckingham Palace",
-      "age": 318,
-      "valeur": 5000000000,
-      "type": "Palace",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 300000
-    },
-    {
-      "nom": "One Hyde Park Penthouse",
-      "age": 11,
-      "valeur": 2200000000,
+      "nom": "Penthouse Vue Cité",
+      "age": 7,
+      "valeur": 1200000,
       "type": "Penthouse",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "condition": "New",
+      "monthly_maintenance_cost": 700
     },
     {
-      "nom": "Hearst Castle",
-      "age": 96,
-      "valeur": 16500000000,
-      "type": "Castle",
-      "condition": "Good",
-      "monthly_maintenance_cost": 15000
-    },
-    {
-      "nom": "Xanadu 2.0",
-      "age": 17,
-      "valeur": 125000000,
-      "type": "Mansion",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-
-    {
-      "nom": "Grande Muraille de Chine",
-      "age": 2300,
-      "valeur": 10000000000,
-      "type": "Site historique",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "Pétra",
-      "age": 2300,
-      "valeur": 4500000000,
-      "type": "Site archéologique",
-      "condition": "Good",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "Christ Rédempteur",
-      "age": 91,
-      "valeur": 1000000000,
-      "type": "Statue",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
-    },
-    {
-      "nom": "Machu Picchu",
-      "age": 600,
-      "valeur": 7000000000,
-      "type": "Site archéologique",
-      "condition": "Good",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "Chichén Itzá",
-      "age": 1200,
-      "valeur": 6000000000,
-      "type": "Site archéologique",
-      "condition": "Good",
-      "monthly_maintenance_cost": 20000
-    },
-    {
-      "nom": "Colisée",
-      "age": 1949,
-      "valeur": 7000000000,
-      "type": "Amphithéâtre",
-      "condition": "Good",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "Taj Mahal",
-      "age": 388,
-      "valeur": 10000000000,
-      "type": "Mausolée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "Tour Eiffel",
-      "age": 135,
-      "valeur": 6500000000,
-      "type": "Monument",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
-    },
-    {
-      "nom": "Empire State Building",
-      "age": 92,
-      "valeur": 2000000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
-    },
-    {
-      "nom": "Palais de Westminster",
-      "age": 187,
-      "valeur": 5000000000,
-      "type": "Bâtiment gouvernemental",
-      "condition": "Good",
-      "monthly_maintenance_cost": 60000
-    },
-    {
-      "nom": "Burj Khalifa",
-      "age": 13,
-      "valeur": 1500000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 100000
-    },
-    {
-      "nom": "La Sagrada Familia",
-      "age": 140,
-      "valeur": 3200000000,
-      "type": "Église",
-      "condition": "Under Construction",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "Le Kremlin",
-      "age": 520,
-      "valeur": 5500000000,
-      "type": "Complexe fortifié",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "Sydney Opera House",
+      "nom": "Maison de Ville Historique",
       "age": 50,
-      "valeur": 5000000000,
-      "type": "Opéra",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "Le Louvre",
-      "age": 227,
-      "valeur": 8000000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
-    },
-    {
-      "nom": "Palais de Buckingham",
-      "age": 318,
-      "valeur": 5000000000,
-      "type": "Résidence royale",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 100000
-    },
-    {
-      "nom": "Tour de Londres",
-      "age": 950,
-      "valeur": 2500000000,
-      "type": "Château historique",
+      "valeur": 550000,
+      "type": "Maison de ville",
       "condition": "Good",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 450
     },
     {
-      "nom": "Château de Neuschwanstein",
-      "age": 137,
-      "valeur": 3000000000,
-      "type": "Château",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "nom": "Condo Moderne",
+      "age": 3,
+      "valeur": 400000,
+      "type": "Condo",
+      "condition": "New",
+      "monthly_maintenance_cost": 200
     },
     {
-      "nom": "Alhambra",
-      "age": 1258,
-      "valeur": 3500000000,
-      "type": "Palais",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "Château de Versailles",
-      "age": 390,
-      "valeur": 8000000000,
-      "type": "Château",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 90000
-    },
-    {
-      "nom": "Statue de la Liberté",
-      "age": 137,
-      "valeur": 3000000000,
-      "type": "Monument",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
-    },
-    {
-      "nom": "Cité Interdite",
-      "age": 600,
-      "valeur": 7000000000,
-      "type": "Palais impérial",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
-    },
-    {
-      "nom": "Notre-Dame de Paris",
-      "age": 858,
-      "valeur": 6800000000,
-      "type": "Cathédrale",
-      "condition": "Under Restoration",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "Palais de Potala",
-      "age": 1300,
-      "valeur": 2500000000,
-      "type": "Palais",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
-    },
-    {
-      "nom": "St. Peter's Basilica",
-      "age": 532,
-      "valeur": 10000000000,
-      "type": "Basilique",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
-    },
-    {
-      "nom": "Golden Gate Bridge",
-      "age": 85,
-      "valeur": 3200000000,
-      "type": "Pont",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
-    },
-
-    {
-      "nom": "Guggenheim Museum Bilbao",
-      "age": 26,
-      "valeur": 1000000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
-    },
-    {
-      "nom": "Fallingwater (Maison sur la cascade)",
-      "age": 86,
-      "valeur": 500000000,
+      "nom": "Maison sur Pilotis",
+      "age": 18,
+      "valeur": 650000,
       "type": "Maison",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 5000
+      "monthly_maintenance_cost": 500
     },
     {
-      "nom": "Marina Bay Sands",
-      "age": 13,
-      "valeur": 5500000000,
-      "type": "Complexe hôtelier",
+      "nom": "Appartement Terrasse",
+      "age": 6,
+      "valeur": 300000,
+      "type": "Appartement",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 150000
+      "monthly_maintenance_cost": 250
     },
     {
-      "nom": "Kremlin de Moscou",
-      "age": 520,
-      "valeur": 5500000000,
-      "type": "Complexe historique",
+      "nom": "Maison Familiale Suburbaine",
+      "age": 12,
+      "valeur": 360000,
+      "type": "Maison",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 80000
+      "monthly_maintenance_cost": 300
     },
     {
-      "nom": "Pantheon",
-      "age": 1900,
-      "valeur": 4000000000,
-      "type": "Édifice religieux",
+      "nom": "Chalet de Montagne",
+      "age": 30,
+      "valeur": 700000,
+      "type": "Chalet",
+      "condition": "Good",
+      "monthly_maintenance_cost": 550
+    },
+    {
+      "nom": "Résidence Secondaire à la Campagne",
+      "age": 25,
+      "valeur": 310000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 350
+    },
+    {
+      "nom": "Appartement de Luxe en Centre-Ville",
+      "age": 5,
+      "valeur": 900000,
+      "type": "Appartement",
+      "condition": "New",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Villa Méditerranéenne",
+      "age": 15,
+      "valeur": 820000,
+      "type": "Villa",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 650
     },
     {
-      "nom": "Temple du Lotus",
-      "age": 37,
-      "valeur": 800000000,
-      "type": "Temple",
+      "nom": "Appartement en Attique",
+      "age": 10,
+      "valeur": 1100000,
+      "type": "Appartement",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 750
     },
     {
-      "nom": "Space Needle",
-      "age": 61,
-      "valeur": 300000000,
-      "type": "Tour d'observation",
+      "nom": "Manoir Rural",
+      "age": 75,
+      "valeur": 980000,
+      "type": "Manoir",
+      "condition": "Good",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Appartement Central avec Balcon",
+      "age": 8,
+      "valeur": 470000,
+      "type": "Appartement",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 300
     },
     {
-      "nom": "Atomium",
-      "age": 65,
-      "valeur": 250000000,
-      "type": "Monument",
+      "nom": "Maison de Campagne Traditionnelle",
+      "age": 35,
+      "valeur": 580000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Appartement de Charme Ancien",
+      "age": 80,
+      "valeur": 350000,
+      "type": "Appartement",
+      "condition": "Good",
+      "monthly_maintenance_cost": 250
+    },
+    {
+      "nom": "Villa de Bord de Mer",
+      "age": 20,
+      "valeur": 1500000,
+      "type": "Villa",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 8000
+      "monthly_maintenance_cost": 800
     },
     {
-      "nom": "Shard London Bridge",
-      "age": 11,
-      "valeur": 1500000000,
-      "type": "Gratte-ciel",
+      "nom": "Maison Jumelée en Périphérie",
+      "age": 12,
+      "valeur": 420000,
+      "type": "Maison jumelée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 350
     },
     {
-      "nom": "Rijksmuseum",
-      "age": 138,
-      "valeur": 2000000000,
-      "type": "Musée",
+      "nom": "Maisonnette en Zone Rurale",
+      "age": 25,
+      "valeur": 230000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 200
+    },
+    {
+      "nom": "Loft Converti en Centre-Ville",
+      "age": 15,
+      "valeur": 650000,
+      "type": "Loft",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 450
     },
     {
-      "nom": "Mont Saint-Michel",
-      "age": 1058,
-      "valeur": 3500000000,
-      "type": "Île monastique",
+      "nom": "Condominium de Luxe",
+      "age": 5,
+      "valeur": 800000,
+      "type": "Condominium",
+      "condition": "New",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Penthouse Panoramique",
+      "age": 3,
+      "valeur": 2000000,
+      "type": "Penthouse",
+      "condition": "New",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Résidence Urbaine Moderne",
+      "age": 10,
+      "valeur": 520000,
+      "type": "Maison de ville",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 350
     },
     {
-      "nom": "Opéra de Sydney",
+      "nom": "Studio en Centre Urbain",
+      "age": 5,
+      "valeur": 300000,
+      "type": "Studio",
+      "condition": "New",
+      "monthly_maintenance_cost": 150
+    },
+    {
+      "nom": "Appartement Familial Spacieux",
+      "age": 20,
+      "valeur": 470000,
+      "type": "Appartement",
+      "condition": "Good",
+      "monthly_maintenance_cost": 320
+    },
+    {
+      "nom": "Cottage de Charme",
+      "age": 70,
+      "valeur": 410000,
+      "type": "Cottage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 350
+    },
+    {
+      "nom": "Bungalow de Retraite",
+      "age": 30,
+      "valeur": 360000,
+      "type": "Bungalow",
+      "condition": "Good",
+      "monthly_maintenance_cost": 250
+    },
+    {
+      "nom": "Duplex en Quartier Résidentiel",
+      "age": 15,
+      "valeur": 500000,
+      "type": "Duplex",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Villa Méditerranéenne avec Jardin",
+      "age": 18,
+      "valeur": 850000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Appartement Minimaliste",
+      "age": 12,
+      "valeur": 430000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 280
+    },
+    {
+      "nom": "Maison Éco-Responsable",
+      "age": 8,
+      "valeur": 620000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 300
+    },
+    {
+      "nom": "Propriété de Prestige en Banlieue",
+      "age": 12,
+      "valeur": 1100000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 550
+    },
+    {
+      "nom": "Maison sur le Lac",
+      "age": 22,
+      "valeur": 960000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 450
+    },
+
+    {
+      "nom": "Appartement de Standing en Centre-Ville",
+      "age": 2,
+      "valeur": 1200000,
+      "type": "Appartement",
+      "condition": "New",
+      "monthly_maintenance_cost": 650
+    },
+    {
+      "nom": "Grande Villa Provençale",
+      "age": 15,
+      "valeur": 1500000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 900
+    },
+    {
+      "nom": "Maison de Luxe en Banlieue Huppée",
+      "age": 20,
+      "valeur": 1800000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Loft d'Architecte",
+      "age": 10,
+      "valeur": 1300000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Propriété Équestre",
+      "age": 25,
+      "valeur": 2200000,
+      "type": "Domaine",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Duplex de Prestige avec Vue sur la Mer",
+      "age": 5,
+      "valeur": 2000000,
+      "type": "Duplex",
+      "condition": "New",
+      "monthly_maintenance_cost": 750
+    },
+    {
+      "nom": "Manoir avec Terrain de Golf Privé",
       "age": 50,
-      "valeur": 5000000000,
-      "type": "Opéra",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "valeur": 4500000,
+      "type": "Manoir",
+      "condition": "Good",
+      "monthly_maintenance_cost": 1500
     },
     {
-      "nom": "Willis Tower (Sears Tower)",
-      "age": 49,
-      "valeur": 1700000000,
+      "nom": "Condominium de Luxe en Bord de Rivière",
+      "age": 3,
+      "valeur": 1350000,
+      "type": "Condominium",
+      "condition": "New",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Villa Bord de Lac avec Ponton Privé",
+      "age": 12,
+      "valeur": 2500000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Penthouse avec Terrasse Panoramique",
+      "age": 8,
+      "valeur": 3000000,
+      "type": "Penthouse",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 850
+    },
+    {
+      "nom": "Grande Maison Victorienne Restaurée",
+      "age": 120,
+      "valeur": 1600000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Appartement Haute Couture avec Services",
+      "age": 1,
+      "valeur": 1400000,
+      "type": "Appartement",
+      "condition": "New",
+      "monthly_maintenance_cost": 650
+    },
+    {
+      "nom": "Résidence avec Accès Plage Privée",
+      "age": 30,
+      "valeur": 1750000,
+      "type": "Résidence",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Maison Contemporaine avec Cinéma Privé",
+      "age": 5,
+      "valeur": 2100000,
+      "type": "Maison",
+      "condition": "New",
+      "monthly_maintenance_cost": 900
+    },
+    {
+      "nom": "Appartement en Attique de Luxe",
+      "age": 15,
+      "valeur": 2500000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 850
+    },
+    {
+      "nom": "Cottage de Luxe en Zone Rurale",
+      "age": 18,
+      "valeur": 850000,
+      "type": "Cottage",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Villa Ultra Moderne avec Système Domotique",
+      "age": 3,
+      "valeur": 3200000,
+      "type": "Villa",
+      "condition": "New",
+      "monthly_maintenance_cost": 1100
+    },
+    {
+      "nom": "Maisonnette Urbaine avec Jardin Privatif",
+      "age": 20,
+      "valeur": 950000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Bungalow Haut de Gamme sur le Front de Mer",
+      "age": 25,
+      "valeur": 1900000,
+      "type": "Bungalow",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 650
+    },
+    {
+      "nom": "Appartement de Luxe dans Tour Iconique",
+      "age": 10,
+      "valeur": 2800000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 800
+    },
+
+    {
+      "nom": "Maison avec Vignoble",
+      "age": 50,
+      "valeur": 3000000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Villa Contemporaine avec Vue sur Mer",
+      "age": 8,
+      "valeur": 2750000,
+      "type": "Villa",
+      "condition": "New",
+      "monthly_maintenance_cost": 1100
+    },
+    {
+      "nom": "Appartement Duplex dans Quartier Historique",
+      "age": 90,
+      "valeur": 2200000,
+      "type": "Duplex",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Penthouse de Luxe en Centre Urbain",
+      "age": 12,
+      "valeur": 4000000,
+      "type": "Penthouse",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Château Rénové avec Parc Privé",
+      "age": 300,
+      "valeur": 7500000,
+      "type": "Château",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 3000
+    },
+    {
+      "nom": "Résidence d'Architecte avec Terrain de Tennis",
+      "age": 15,
+      "valeur": 3500000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1800
+    },
+    {
+      "nom": "Loft de Luxe dans Ancienne Manufacture",
+      "age": 20,
+      "valeur": 1500000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 900
+    },
+    {
+      "nom": "Manoir dans Quartier Exclusif",
+      "age": 75,
+      "valeur": 6000000,
+      "type": "Manoir",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2500
+    },
+    {
+      "nom": "Condominium avec Services Complets",
+      "age": 5,
+      "valeur": 2000000,
+      "type": "Condominium",
+      "condition": "New",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Grande Propriété avec Lac Privé",
+      "age": 50,
+      "valeur": 5000000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 2500
+    },
+    {
+      "nom": "Appartement de Prestige avec Conciergerie",
+      "age": 10,
+      "valeur": 2800000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 950
+    },
+    {
+      "nom": "Villa Méditerranéenne avec Olive Grove",
+      "age": 35,
+      "valeur": 3200000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Chalet de Ski Haut de Gamme",
+      "age": 25,
+      "valeur": 3800000,
+      "type": "Chalet",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2200
+    },
+    {
+      "nom": "Propriété de Luxe en Bord de Rivière",
+      "age": 30,
+      "valeur": 4500000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2000
+    },
+    {
+      "nom": "Penthouse avec Vue Panoramique sur la Ville",
+      "age": 3,
+      "valeur": 3200000,
+      "type": "Penthouse",
+      "condition": "New",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Villa en Front de Mer avec Jetée Privée",
+      "age": 18,
+      "valeur": 6800000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2500
+    },
+    {
+      "nom": "Maison Historique avec Jardins à la Française",
+      "age": 120,
+      "valeur": 4700000,
+      "type": "Maison",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 3000
+    },
+    {
+      "nom": "Domaine de Campagne avec Écuries",
+      "age": 40,
+      "valeur": 5250000,
+      "type": "Domaine",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 3500
+    },
+    {
+      "nom": "Appartement Art Déco dans Quartier Patrimonial",
+      "age": 90,
+      "valeur": 2400000,
+      "type": "Appartement",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Villa avec Orangerie et Piscine Intérieure",
+      "age": 15,
+      "valeur": 4900000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2800
+    },
+
+    {
+      "nom": "Studio Centre-Ville",
+      "age": 5,
+      "valeur": 200000,
+      "type": "Studio",
+      "condition": "Good",
+      "monthly_maintenance_cost": 150
+    },
+    {
+      "nom": "Garage Individuel",
+      "age": 10,
+      "valeur": 25000,
+      "type": "Garage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 30
+    },
+    {
+      "nom": "Appartement en Périphérie",
+      "age": 15,
+      "valeur": 300000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 200
+    },
+    {
+      "nom": "Maison avec Grand Jardin",
+      "age": 20,
+      "valeur": 450000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Petit Immeuble Locatif",
+      "age": 25,
+      "valeur": 800000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Gratte-ciel de Bureaux",
+      "age": 30,
+      "valeur": 5000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "La Basilique Saint-Marc",
-      "age": 1092,
-      "valeur": 4300000000,
-      "type": "Basilique",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "Potala Palace",
-      "age": 1300,
-      "valeur": 2500000000,
-      "type": "Palais",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
-    },
-    {
-      "nom": "Stonehenge",
-      "age": 5000,
-      "valeur": 3000000000,
-      "type": "Site préhistorique",
-      "condition": "Good",
       "monthly_maintenance_cost": 5000
     },
     {
-      "nom": "Hagia Sophia",
-      "age": 1483,
-      "valeur": 4100000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "nom": "Garage Collectif en Zone Urbaine",
+      "age": 5,
+      "valeur": 100000,
+      "type": "Garage",
+      "condition": "New",
+      "monthly_maintenance_cost": 100
     },
     {
-      "nom": "Angkor War",
-      "age": 900,
-      "valeur": 6000000000,
-      "type": "Temple",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "nom": "Maison de Ville Moderne",
+      "age": 10,
+      "valeur": 600000,
+      "type": "Maison de ville",
+      "condition": "New",
+      "monthly_maintenance_cost": 300
     },
     {
-      "nom": "Palais de l'Alhambra",
-      "age": 1258,
-      "valeur": 3500000000,
-      "type": "Château",
+      "nom": "Penthouse avec Vue sur la Ville",
+      "age": 8,
+      "valeur": 1500000,
+      "type": "Penthouse",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 45000
+      "monthly_maintenance_cost": 800
     },
     {
-      "nom": "La Pyramide du Louvre",
-      "age": 34,
-      "valeur": 8000000000,
-      "type": "Monument",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
-    },
-    {
-      "nom": "Château de Windsor",
-      "age": 951,
-      "valeur": 4000000000,
-      "type": "Château",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
-    },
-    {
-      "nom": "Tour CN",
-      "age": 46,
-      "valeur": 1100000000,
-      "type": "Tour d'observation",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
-    },
-    {
-      "nom": "El Castillo (Chichen Itza)",
-      "age": 1200,
-      "valeur": 4000000000,
-      "type": "Pyramide",
+      "nom": "Cottage en Bord de Lac",
+      "age": 30,
+      "valeur": 350000,
+      "type": "Cottage",
       "condition": "Good",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 450
     },
     {
-      "nom": "Le Capitole des États-Unis",
-      "age": 229,
-      "valeur": 3000000000,
-      "type": "Bâtiment gouvernemental",
+      "nom": "Bâtiment Commercial avec Locataires",
+      "age": 20,
+      "valeur": 2000000,
+      "type": "Immeuble commercial",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
+      "monthly_maintenance_cost": 2500
     },
     {
-      "nom": "Tour Eiffel",
-      "age": 134,
-      "valeur": 6500000000,
-      "type": "Monument",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "nom": "Garage en Sous-sol de Copropriété",
+      "age": 15,
+      "valeur": 30000,
+      "type": "Garage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 25
     },
     {
-      "nom": "La Casa Batlló",
-      "age": 116,
-      "valeur": 1200000000,
-      "type": "Bâtiment",
+      "nom": "Loft Industriel",
+      "age": 12,
+      "valeur": 700000,
+      "type": "Loft",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 500
     },
     {
-      "nom": "Palais de Schönbrunn",
-      "age": 345,
-      "valeur": 3000000000,
-      "type": "Palais",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
-    },
-    {
-      "nom": "Château de Chambord",
-      "age": 484,
-      "valeur": 1800000000,
-      "type": "Château",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
-    },
-    {
-      "nom": "Pont de Brooklyn",
-      "age": 140,
-      "valeur": 2500000000,
-      "type": "Pont",
-      "condition": "Excellent",
+      "nom": "Gratte-ciel Résidentiel",
+      "age": 5,
+      "valeur": 25000000,
+      "type": "Gratte-ciel",
+      "condition": "New",
       "monthly_maintenance_cost": 10000
     },
     {
-      "nom": "Wat Arun",
-      "age": 270,
-      "valeur": 750000000,
-      "type": "Temple",
+      "nom": "Villa de Luxe avec Vue Montagne",
+      "age": 15,
+      "valeur": 2000000,
+      "type": "Villa",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 7000
+      "monthly_maintenance_cost": 1200
     },
     {
-      "nom": "Palais des Beaux-Arts de Lille",
-      "age": 124,
-      "valeur": 850000000,
-      "type": "Musée",
+      "nom": "Appartement en Zone Touristique",
+      "age": 10,
+      "valeur": 550000,
+      "type": "Appartement",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 18000
+      "monthly_maintenance_cost": 400
     },
     {
-      "nom": "Palais Royal de Madrid",
-      "age": 281,
-      "valeur": 5500000000,
-      "type": "Palais",
+      "nom": "Grand Garage pour Collections de Voitures",
+      "age": 20,
+      "valeur": 200000,
+      "type": "Garage",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 200
     },
     {
-      "nom": "Dôme du Rocher",
-      "age": 1322,
-      "valeur": 3000000000,
-      "type": "Sanctuaire",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "nom": "Immeuble de Bureaux Standard",
+      "age": 25,
+      "valeur": 3000000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 3500
     },
     {
-      "nom": "Palais de l'Élysée",
-      "age": 300,
-      "valeur": 2100000000,
-      "type": "Résidence présidentielle",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "nom": "Condo en Centre-ville",
+      "age": 5,
+      "valeur": 750000,
+      "type": "Condo",
+      "condition": "New",
+      "monthly_maintenance_cost": 600
     },
     {
-      "nom": "La Basilique du Sacré-Cœur",
-      "age": 108,
-      "valeur": 1700000000,
-      "type": "Basilique",
+      "nom": "Domaine avec Ferme et Terres Agricoles",
+      "age": 50,
+      "valeur": 2500000,
+      "type": "Domaine",
+      "condition": "Good",
+      "monthly_maintenance_cost": 1800
+    },
+
+    {
+      "nom": "Appartement Loft Converti",
+      "age": 10,
+      "valeur": 800000,
+      "type": "Loft",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 550
     },
     {
-      "nom": "Gateway Arch",
-      "age": 57,
-      "valeur": 700000000,
-      "type": "Monument",
+      "nom": "Garage Multiple en Centre-Ville",
+      "age": 5,
+      "valeur": 120000,
+      "type": "Garage",
+      "condition": "New",
+      "monthly_maintenance_cost": 150
+    },
+    {
+      "nom": "Petit Immeuble de Bureaux",
+      "age": 15,
+      "valeur": 1800000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 3000
+    },
+    {
+      "nom": "Maison Suburbaine avec Studio Indépendant",
+      "age": 20,
+      "valeur": 950000,
+      "type": "Maison",
       "condition": "Excellent",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Villa de Luxe en Banlieue",
+      "age": 12,
+      "valeur": 3200000,
+      "type": "Villa",
+      "condition": "New",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Appartement en Résidence Sécurisée",
+      "age": 8,
+      "valeur": 500000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Gratte-ciel de Luxe avec Piscine sur le Toit",
+      "age": 3,
+      "valeur": 25000000,
+      "type": "Gratte-ciel",
+      "condition": "New",
       "monthly_maintenance_cost": 12000
     },
     {
-      "nom": "La Grande Bibliothèque d'Alexandrie (Bibliotheca Alexandrina)",
-      "age": 20,
-      "valeur": 800000000,
-      "type": "Bibliothèque",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "Banque de Chine Tower",
-      "age": 33,
-      "valeur": 2000000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "La Tour de Tokyo",
-      "age": 65,
-      "valeur": 850000000,
-      "type": "Tour d'observation",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
-    },
-    {
-      "nom": "Palais de Justice de Bruxelles",
-      "age": 138,
-      "valeur": 1200000000,
-      "type": "Palais de justice",
+      "nom": "Grande Propriété avec Forêt Privée",
+      "age": 40,
+      "valeur": 4500000,
+      "type": "Domaine",
       "condition": "Good",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 4000
     },
     {
-      "nom": "Le Centre Pompidou",
-      "age": 45,
-      "valeur": 950000000,
-      "type": "Centre culturel",
+      "nom": "Penthouse avec Jardin Suspendu",
+      "age": 7,
+      "valeur": 2800000,
+      "type": "Penthouse",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 850
     },
     {
-      "nom": "La Tour Montparnasse",
-      "age": 50,
-      "valeur": 900000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
-    },
-    {
-      "nom": "Le Château Frontenac",
-      "age": 129,
-      "valeur": 700000000,
-      "type": "Hôtel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "Sagrada Familia",
-      "age": 140,
-      "valeur": 3200000000,
-      "type": "Basilique",
-      "condition": "Under Construction",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "La Cathédrale de Milan",
-      "age": 639,
-      "valeur": 5000000000,
-      "type": "Cathédrale",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "Le Palais de Dolmabahçe",
-      "age": 168,
-      "valeur": 1500000000,
-      "type": "Palais",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 55000
-    },
-    {
-      "nom": "Edificio Copan",
-      "age": 60,
-      "valeur": 500000000,
-      "type": "Bâtiment résidentiel",
-      "condition": "Good",
-      "monthly_maintenance_cost": 20000
-    },
-    {
-      "nom": "La Rotonde de La Villette",
-      "age": 238,
-      "valeur": 750000000,
-      "type": "Monument historique",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
-    },
-    {
-      "nom": "Le Château de Peleș",
-      "age": 142,
-      "valeur": 1000000000,
-      "type": "Château",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "Aon Center (Chicago)",
-      "age": 46,
-      "valeur": 1200000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
-    },
-    {
-      "nom": "Le Musée d'Orsay",
-      "age": 116,
-      "valeur": 1900000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "Le Musée Solomon R. Guggenheim",
-      "age": 64,
-      "valeur": 830000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "Le Pont Vasco da Gama",
+      "nom": "Maison avec Accès Privé à la Plage",
       "age": 25,
-      "valeur": 1800000000,
-      "type": "Pont",
+      "valeur": 2300000,
+      "type": "Maison",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 950
     },
     {
-      "nom": "L'Hôtel de Glace (Québec)",
-      "age": 21,
-      "valeur": 250000000,
-      "type": "Hôtel",
+      "nom": "Immeuble de Rapport en Centre-Ville",
+      "age": 30,
+      "valeur": 3500000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 5000
+    },
+    {
+      "nom": "Garage Souterrain sous Complexe Résidentiel",
+      "age": 15,
+      "valeur": 140000,
+      "type": "Garage",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 100
+    },
+    {
+      "nom": "Bungalow Moderne avec Vue sur la Vallée",
+      "age": 10,
+      "valeur": 850000,
+      "type": "Bungalow",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Chalet de Montagne Près des Pistes",
+      "age": 20,
+      "valeur": 1900000,
+      "type": "Chalet",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Résidence avec Terrains de Tennis",
+      "age": 18,
+      "valeur": 2750000,
+      "type": "Résidence",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2000
+    },
+    {
+      "nom": "Maison de Campagne avec Étang",
+      "age": 35,
+      "valeur": 1500000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Appartement Duplex avec Terrasse",
+      "age": 12,
+      "valeur": 980000,
+      "type": "Duplex",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Condominium de Standing avec Concierge",
+      "age": 5,
+      "valeur": 1350000,
+      "type": "Condominium",
+      "condition": "New",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Villa avec Parcours de Golf",
+      "age": 15,
+      "valeur": 3500000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1800
+    },
+    {
+      "nom": "Immeuble Résidentiel avec Local Commercial",
+      "age": 22,
+      "valeur": 2400000,
+      "type": "Immeuble mixte",
+      "condition": "Good",
+      "monthly_maintenance_cost": 2500
+    },
+    {
+      "nom": "Résidence à Cape Idokopas",
+      "age": 50,
+      "valeur": 1300000000
+    },
+
+    {
+      "nom": "Condo Urbain avec Toit Terrasse",
+      "age": 3,
+      "valeur": 750000,
+      "type": "Condo",
+      "condition": "New",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Maison avec Verger et Serre",
+      "age": 40,
+      "valeur": 1200000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Petit Gratte-ciel Commercial",
+      "age": 25,
+      "valeur": 4000000,
+      "type": "Gratte-ciel",
+      "condition": "Good",
+      "monthly_maintenance_cost": 3000
+    },
+    {
+      "nom": "Garage en Bloc Urbain",
+      "age": 15,
+      "valeur": 80000,
+      "type": "Garage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 50
+    },
+    {
+      "nom": "Maison de Style Colonial avec Piscine",
+      "age": 20,
+      "valeur": 850000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Immeuble de Bureaux Standard en Périphérie",
+      "age": 30,
+      "valeur": 2800000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 3500
+    },
+    {
+      "nom": "Penthouse Luxueux avec Services",
+      "age": 10,
+      "valeur": 3200000,
+      "type": "Penthouse",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Villa Bord de Mer avec Accès Privé",
+      "age": 18,
+      "valeur": 3000000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Duplex avec Jardin en Ville",
+      "age": 12,
+      "valeur": 980000,
+      "type": "Duplex",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Cottage de Montagne avec Vue Panoramique",
+      "age": 25,
+      "valeur": 750000,
+      "type": "Cottage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Garage Collectif pour Résidents",
+      "age": 10,
+      "valeur": 120000,
+      "type": "Garage",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 100
+    },
+    {
+      "nom": "Gratte-ciel Résidentiel Moderne",
+      "age": 5,
+      "valeur": 22000000,
+      "type": "Gratte-ciel",
+      "condition": "New",
+      "monthly_maintenance_cost": 5000
+    },
+    {
+      "nom": "Appartement avec Finitions Haut de Gamme",
+      "age": 8,
+      "valeur": 650000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 300
+    },
+    {
+      "nom": "Propriété avec Écuries et Manège",
+      "age": 35,
+      "valeur": 4500000,
+      "type": "Propriété",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 4000
+    },
+    {
+      "nom": "Condominium en Zone Gentrifiée",
+      "age": 20,
+      "valeur": 500000,
+      "type": "Condominium",
+      "condition": "Good",
+      "monthly_maintenance_cost": 250
+    },
+    {
+      "nom": "Loft avec Exposition d'Art Intégrée",
+      "age": 12,
+      "valeur": 1300000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Maison Bungalow avec Atelier d'Artiste",
+      "age": 30,
+      "valeur": 890000,
+      "type": "Bungalow",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Immeuble avec Local Commercial au Rez-de-Chaussée",
+      "age": 22,
+      "valeur": 3100000,
+      "type": "Immeuble mixte",
+      "condition": "Good",
+      "monthly_maintenance_cost": 2200
+    },
+    {
+      "nom": "Villa avec Salle de Cinéma Privée",
+      "age": 7,
+      "valeur": 2700000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Domaine avec Lac Privatif et Forêt",
+      "age": 45,
+      "valeur": 6000000,
+      "type": "Domaine",
       "condition": "Excellent",
       "monthly_maintenance_cost": 5000
     },
     {
-      "nom": "30 St Mary Axe (The Gherkin)",
+      "nom": "Appartement en Attique avec Vue sur la Mer",
+      "age": 7,
+      "valeur": 2100000,
+      "type": "Attique",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1100
+    },
+    {
+      "nom": "Résidence Urbaine avec Toit Végétalisé",
+      "age": 3,
+      "valeur": 1800000,
+      "type": "Résidence",
+      "condition": "New",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Maison avec Parc Privé et Étang",
       "age": 20,
-      "valeur": 1100000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "Le Musée du Prado",
-      "age": 203,
-      "valeur": 2100000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "La Cité Radieuse de Le Corbusier",
-      "age": 69,
-      "valeur": 550000000,
-      "type": "Bâtiment résidentiel",
+      "valeur": 2600000,
+      "type": "Maison",
       "condition": "Good",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 1500
     },
     {
-      "nom": "The Shard",
-      "age": 11,
-      "valeur": 1500000000,
-      "type": "Gratte-ciel",
+      "nom": "Villa de Luxe avec Terrain Multisport",
+      "age": 15,
+      "valeur": 3500000,
+      "type": "Villa",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 2000
     },
     {
-      "nom": "Le Musée Van Gogh",
-      "age": 47,
-      "valeur": 780000000,
-      "type": "Musée",
+      "nom": "Garage en Résidence de Luxe",
+      "age": 10,
+      "valeur": 150000,
+      "type": "Garage",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 75
     },
     {
-      "nom": "La Grande Arche de la Défense",
-      "age": 35,
-      "valeur": 800000000,
-      "type": "Monument",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "nom": "Penthouse Urbain avec Piscine Privative",
+      "age": 5,
+      "valeur": 4200000,
+      "type": "Penthouse",
+      "condition": "New",
+      "monthly_maintenance_cost": 2000
     },
     {
-      "nom": "Zaha Hadid's MAXXI",
-      "age": 13,
-      "valeur": 900000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 28000
-    },
-    {
-      "nom": "Le Pavillon de Barcelone",
-      "age": 93,
-      "valeur": 450000000,
-      "type": "Exposition",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
-    },
-    {
-      "nom": "L'Opéra Garnier",
-      "age": 152,
-      "valeur": 1900000000,
-      "type": "Opéra",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "The Flatiron Building",
+      "nom": "Duplex dans Quartier Historique",
       "age": 120,
-      "valeur": 800000000,
-      "type": "Bâtiment",
+      "valeur": 1350000,
+      "type": "Duplex",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Loft Moderne en Centre-Ville",
+      "age": 8,
+      "valeur": 1100000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 650
+    },
+    {
+      "nom": "Château Restauré avec Vignoble",
+      "age": 250,
+      "valeur": 7500000,
+      "type": "Château",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 3500
+    },
+    {
+      "nom": "Condominium avec Salle de Sport",
+      "age": 12,
+      "valeur": 950000,
+      "type": "Condominium",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Maison Écologique en Bois",
+      "age": 5,
+      "valeur": 1200000,
+      "type": "Maison",
+      "condition": "New",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Villa Balnéaire avec Accès Privé à la Plage",
+      "age": 18,
+      "valeur": 4800000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2200
+    },
+    {
+      "nom": "Bungalow avec Jardin Tropical",
+      "age": 25,
+      "valeur": 890000,
+      "type": "Bungalow",
       "condition": "Good",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 400
     },
     {
-      "nom": "Palais de Tokyo",
-      "age": 85,
-      "valeur": 700000000,
-      "type": "Centre d'art contemporain",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "nom": "Appartement avec Service de Conciergerie",
+      "age": 3,
+      "valeur": 1600000,
+      "type": "Appartement",
+      "condition": "New",
+      "monthly_maintenance_cost": 900
     },
     {
-      "nom": "The Hoover Dam",
-      "age": 87,
-      "valeur": 3000000000,
-      "type": "Barrage",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "The Lloyd’s Building",
-      "age": 36,
-      "valeur": 950000000,
-      "type": "Bureau",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "The Walt Disney Concert Hall",
-      "age": 20,
-      "valeur": 1100000000,
-      "type": "Salle de concert",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "Kingdom Centre Tower",
-      "age": 20,
-      "valeur": 1000000000,
+      "nom": "Gratte-ciel avec Espaces Commerciaux",
+      "age": 15,
+      "valeur": 20000000,
       "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
-    },
-    {
-      "nom": "Belem Tower",
-      "age": 504,
-      "valeur": 650000000,
-      "type": "Tour",
       "condition": "Excellent",
       "monthly_maintenance_cost": 8000
     },
     {
-      "nom": "Bibliothèque nationale de France (BNF)",
-      "age": 29,
-      "valeur": 1100000000,
-      "type": "Bibliothèque",
+      "nom": "Domaine de Campagne avec Manège Équestre",
+      "age": 40,
+      "valeur": 6200000,
+      "type": "Domaine",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 5000
     },
     {
-      "nom": "Niterói Contemporary Art Museum",
-      "age": 26,
-      "valeur": 500000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "nom": "Immeuble Résidentiel avec Locaux Commerciaux",
+      "age": 30,
+      "valeur": 3500000,
+      "type": "Immeuble mixte",
+      "condition": "Good",
+      "monthly_maintenance_cost": 4200
     },
     {
-      "nom": "The High Line",
-      "age": 12,
-      "valeur": 850000000,
-      "type": "Parc public",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
-    },
-    {
-      "nom": "Reichstag Building",
-      "age": 130,
-      "valeur": 1800000000,
-      "type": "Bâtiment gouvernemental",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "Burj Al Arab",
-      "age": 24,
-      "valeur": 1500000000,
-      "type": "Hôtel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
-    },
-    {
-      "nom": "Taipei 101",
-      "age": 19,
-      "valeur": 1600000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "Oslo Opera House",
-      "age": 15,
-      "valeur": 850000000,
-      "type": "Opéra",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "The Shard",
-      "age": 11,
-      "valeur": 1500000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
-    },
-    {
-      "nom": "Petronas Twin Towers",
-      "age": 25,
-      "valeur": 1800000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
-    },
-    {
-      "nom": "Capitole des États-Unis",
-      "age": 229,
-      "valeur": 3000000000,
-      "type": "Bâtiment gouvernemental",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
-    },
-    {
-      "nom": "Musée du Louvre Abu Dhabi",
-      "age": 6,
-      "valeur": 1000000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "Musée d'Art Moderne de San Francisco (SFMOMA)",
-      "age": 26,
-      "valeur": 900000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "One World Trade Center",
+      "nom": "Villa avec Vue sur la Montagne",
       "age": 10,
-      "valeur": 4000000000,
-      "type": "Gratte-ciel",
+      "valeur": 2300000,
+      "type": "Villa",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 100000
+      "monthly_maintenance_cost": 1200
     },
     {
-      "nom": "Fondation Louis Vuitton",
-      "age": 8,
-      "valeur": 850000000,
-      "type": "Musée",
+      "nom": "Maison avec Atrium Central et Verrière",
+      "age": 20,
+      "valeur": 1900000,
+      "type": "Maison",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 900
     },
     {
-      "nom": "Apple Park",
-      "age": 5,
-      "valeur": 5000000000,
-      "type": "Siège social",
+      "nom": "Appartement de Luxe avec Salle de Cinéma Privée",
+      "age": 12,
+      "valeur": 2500000,
+      "type": "Appartement",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 200000
-    },
-    {
-      "nom": "Palais de Westminster",
-      "age": 187,
-      "valeur": 5000000000,
-      "type": "Bâtiment gouvernemental",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 100000
-    },
-    {
-      "nom": "Le Musée de l'Ermitage",
-      "age": 257,
-      "valeur": 4000000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
-    },
-    {
-      "nom": "Château de Prague",
-      "age": 1088,
-      "valeur": 3500000000,
-      "type": "Château",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
-    },
-    {
-      "nom": "J. Paul Getty Museum",
-      "age": 25,
-      "valeur": 1900000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
-    },
-    {
-      "nom": "Museum of Islamic Art, Doha",
-      "age": 15,
-      "valeur": 800000000,
-      "type": "Musée",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
-    },
-    {
-      "nom": "Centre Georges Pompidou",
-      "age": 46,
-      "valeur": 2100000000,
-      "type": "Centre culturel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
-    },
-    {
-      "nom": "Torre Agbar",
-      "age": 18,
-      "valeur": 1500000000,
-      "type": "Gratte-ciel",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
-    },
-    {
-      "nom": "Millau Viaduct",
-      "age": 19,
-      "valeur": 600000000,
-      "type": "Pont",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
-    },
-    {
-      "nom": "Sydney Harbour Bridge",
-      "age": 91,
-      "valeur": 2500000000,
-      "type": "Pont",
-      "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 1100
     }
+
   ]
 }
