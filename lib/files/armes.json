@@ -1,0 +1,70 @@
+{
+  "armes": [
+    {
+      "nom": "Dague de Projection de la police de l'eau par Wkc",
+      "valeur": 3350,
+      "rarete": "Rare",
+      "epoque": "20eme siecle"
+    },
+    {
+      "nom": "Dague Italienne du Mvsn Modele 1932",
+      "valeur": 850,
+      "rarete": "Commun",
+      "epoque": "20eme siecle"
+    },
+    {
+      "nom": "Pistolet à Silec Decoré de l'empire ottoman",
+      "valeur": 3600,
+      "rarete": "Commun",
+      "epoque": "19eme siecle"
+    },
+    {
+      "nom": "Pistolet de Voyage à Silex",
+      "valeur": 580,
+      "rarete": "Commun",
+      "epoque": "18eme siecle"
+    },
+    {
+      "nom": "Ancien couteau lié au sacrifice du Zébu durant les cérémonise",
+      "valeur": 730,
+      "rarete": "Rare",
+      "epoque": "20eme siecle"
+    },
+    {
+      "nom": "Pistolet de carrosse à percussion XVIIIeme",
+      "valeur": 270,
+      "rarete": "Commun",
+      "epoque": "18eme siecle"
+    },
+    {
+      "nom": "Couteau Dague de l'arme finlandaise des année 30",
+      "valeur": 1150,
+      "rarete": "Commun",
+      "epoque": "20eme siecle"
+    },
+    {
+      "nom": "Couteau Bowie de Toledo",
+      "valeur": 750,
+      "rarete": "Commun",
+      "epoque": "20eme siecle"
+    },
+    {
+      "nom": "Dague Maconnique de Grand ELU",
+      "valeur": 1200,
+      "rarete": "Commun",
+      "epoque": "19eme siecle"
+    },
+    {
+      "nom": "Epée de cour en argent décorée de profile de César",
+      "valeur": 1480,
+      "rarete": "Rare",
+      "epoque": "18eme siecle"
+    },
+    {
+      "nom": "Dague de chasse Bavaroise",
+      "valeur": 1500,
+      "rarete": "Commun",
+      "epoque": "20eme siecle"
+    }
+  ]
+}

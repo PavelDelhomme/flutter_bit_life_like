@@ -1,0 +1,22 @@
+{
+  "vetements": [
+    {
+      "nom": "Chasuble",
+      "valeur": 850,
+      "rarete": "Commun",
+      "epoque": "19eme siecle"
+    },
+    {
+      "nom": "Chasuble",
+      "valeur": 60,
+      "rarete": "Commun",
+      "epoque": "19eme siecle"
+    },
+    {
+      "nom": "Chasuble",
+      "valeur": 380,
+      "rarete": "Commun",
+      "epoque": "19eme siecle"
+    }
+  ]
+}
