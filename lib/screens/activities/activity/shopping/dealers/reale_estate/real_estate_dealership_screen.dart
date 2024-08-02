@@ -20,7 +20,7 @@ class RealEstateMarketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Real Estate Market'),
+        title: Text('Immobilier'),
       ),
       body: FutureBuilder<List<RealEstate>>(
         future: realEstateService.getAvailableRealEstate(),

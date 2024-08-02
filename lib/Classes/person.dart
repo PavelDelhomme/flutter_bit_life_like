@@ -207,6 +207,13 @@ class Person {
     }
   }
 
+  factory Person.fromJson(Map<String, dynamic> json) {
+    return Person(
+      name: json['name'] as String,
+      age: json['age'] as int,
+      gender: json['gender'] as String,
+    )
+  }
 
 
   void workJob(Job job, int hoursWorked) {
@@ -217,5 +224,7 @@ class Person {
     double totalPay = regularPay + overtimePay;
     print("Total pay for the week: \$${totalPay}");
   }
+
+
 
 }

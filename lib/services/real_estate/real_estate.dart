@@ -4,19 +4,16 @@ import '../../Classes/objects/real_estate.dart';
 
 class RealEstateService {
   Future<List<RealEstate>> getAvailableRealEstate() async {
-    return _loadRealEstate();
+    String jsonString = await rootBundle.loadString('assets/real_estate.json');
+    Map<String, dynamic> jsonResponse = json.decode(jsonString);
+    List<dynamic> realEstates = jsonResponse['real_estate'];
+    return realEstates.map<RealEstate>((json) => RealEstate.fromJson(json)).toList();
   }
 
-  Future<List<RealEstate>> getPropertiesByType(String type) async {
-    List<RealEstate> allEstates = await _loadRealEstate();
-    return allEstates.where((estate) => estate.type == type).toList();
-  }
-
-  Future<List<RealEstate>> _loadRealEstate() async {
-    String jsonString = await rootBundle.loadString('lib/files/real_estate.json');
-    Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-
-    List<dynamic> jsonList = jsonMap['real_estate'];
-    return jsonList.map((jsonItem) => RealEstate.fromJson(jsonItem)).toList();
+  Future<List<RealEstate>> getAvailableExoticRealEstate() async {
+    String jsonString = await rootBundle.loadString('assets/real_estate_exotic.json');
+    Map<String, dynamic> jsonResponse = json.decode(jsonString);
+    List<dynamic> realEstates = jsonResponse['real_estate_exotique'];
+    return realEstates.map<RealEstate>((json) => RealEstate.fromJson(json)).toList();
   }
 }
