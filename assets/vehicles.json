@@ -1,21 +1,19 @@
 {
   "airplanes": [
     {
-      "nom": "Wright Flyer",
+      "name": "Wright Flyer",
       "age": 117,
-      "valeur": 20000000,
-      "type": "Historic",
-      "rarete": "Legendary",
-      "marque": "Wright Brothers",
-      "fuel_consumption": 30
+      "value": 20000000,
+      "rarity": "Legendary",
+      "brand": "Wright Brothers",
+      "fuelConsumption": 30
     },
     {
-      "nom": "Boeing 747",
+      "name": "Boeing 747",
       "age": 50,
-      "valeur": 150000000,
-      "type": "Commercial",
-      "rarete": "Commun",
-      "marque": "Boeing",
+      "value": 150000000,
+      "rarity": "Commun",
+      "brand": "Boeing",
       "fuel_consumption": 10
     }
   ],

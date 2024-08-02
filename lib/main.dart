@@ -68,6 +68,7 @@ Person setupDemo() {
   vehicleMarketplace.addItemToMarket(Moto(name: 'Yamaha MT-09', age: 2, value: 10000, rarity: 'Common', brand: 'Yamaha', fuelConsumption: 0));
   vehicleMarketplace.addItemToMarket(Voiture(name: 'Tesla Model S', age: 1, value: 80000, rarity: 'Rare', brand: 'Tesla', fuelConsumption: 0));
   vehicleMarketplace.addItemToMarket(Bateau(name: 'Bateau 1', age: 1, value: 80000, rarity: 'Rare', brand: 'Bat', fuelConsumption: 0));
+  vehicleMarketplace.addItemToMarket(Avion(name: 'Avion 1', age: 4, value: 70000, rarity: 'Rare', brand: 'Avi', fuelConsumption: 0));
 
   realEstateMarketplace.addItemToMarket(RealEstate(name: 'Luxury Villa', age: 2, value: 2000000, type: 'Villa', condition: 'New', monthlyMaintenanceCost: 2000, estLouee: false));
   jewelryMarketplace.addItemToMarket(Jewelry(name: 'Diamond Ring', value: 10000, rarity: 'Rare', brand: 'Tiffany & Co.', carat: 2.0, epoch: '1745'));

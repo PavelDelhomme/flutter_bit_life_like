@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/vehicle_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -6,12 +9,33 @@ import 'package:flutter/services.dart';
 
 import '../../../../../../Classes/objects/vehicle.dart';
 
-class AvionDealershipScreen extends StatelessWidget {
-  Future<List<Avion>> loadAirplanes() async {
-    String jsonString = await rootBundle.loadString('lib/files/vehicles.json');
-    Map<String, dynamic> jsonResponse = json.decode(jsonString);
-    List<dynamic> airplanesJson = jsonResponse['airplanes'];
-    return airplanesJson.map((v) => Avion.fromJson(v)).toList();
+class AirplaineDealershipScreen extends StatelessWidget {
+  final Person person;
+
+  AirplaineDealershipScreen({required this.person});
+
+  Future<List<Vehicle>> loadAirplanes() async {
+    try {
+      String jsonString = await rootBundle.loadString('assets/vehicles.json');
+      Map<String, dynamic> jsonResponse = json.decode(jsonString);
+
+      List<Vehicle> vehicles = [];
+      if (jsonResponse['airplanes'] != null) {
+        vehicles.addAll(
+            jsonResponse['airplanes']
+                .map<Vehicle>((a) => Avion.fromJson(a))
+                .toList()
+        );
+        log("Airplanes loaded successfully");
+      } else {
+        log("No airplaines found in JSON");
+        log("In JSON : ${jsonResponse}");
+      }
+      return vehicles;
+    } catch (e) {
+      log("Failed to load vehicle in AirplaineDealerShipScreen: $e");
+      throw Exception("Failed to load vehicles: $e");
+    }
   }
 
   @override
@@ -20,17 +44,21 @@ class AvionDealershipScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Airplane Dealerships'),
       ),
-      body: FutureBuilder<List<Avion>>(
+      body: FutureBuilder<List<Vehicle>>(
         future: loadAirplanes(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
-              return Center(child: Text("Error loading vehicles"));
+              log("Error loading airplaines: ${snapshot.error}");
+              return Center(child: Text("Error loading airplaines"));
+            }
+            if (snapshot.data != null && snapshot.data!.isEmpty) {
+              return Center(child: Text("No airplaines available"));
             }
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                Avion avion = snapshot.data![index];
+                Vehicle avion = snapshot.data![index];
                 return ListTile(
                   title: Text(avion.name),
                   subtitle: Text('Price: \$${avion.value.toStringAsFixed(2)}'),

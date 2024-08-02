@@ -165,12 +165,12 @@ class Avion extends Vehicle {
 
   static Avion fromJson(Map<String, dynamic> json) {
     return Avion(
-      name: json['name'],
-      age: json['age'],
-      value: json['value'],
-      rarity: json['rarity'],
-      brand: json['brand'],
-      fuelConsumption: json['fuelConsumption'],
+      name: json['name'] ?? 'Unknown',
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] ?? 'Unknown',
+      brand: json['brand'] as String?,
+      fuelConsumption: (json['fuelConsumption'] as num?)?.toDouble() ?? 0.0,
     );
   }
 

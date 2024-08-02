@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/airplaine_dealership.dart';
 import 'package:flutter/material.dart';
 
 import '../../Classes/person.dart';
@@ -40,6 +41,12 @@ class MarketplaceMenuScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => BoatDealershipScreen(person: person)))),
+          ListTile(
+              title: Text('Airplaines Dealerships'),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AirplaineDealershipScreen(person: person)))),
           ListTile(
               title: Text('Real Estate Market'),
               onTap: () => Navigator.push(
