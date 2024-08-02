@@ -25,4 +25,16 @@ class RealEstate {
   String toString() {
     return '$name ($type) - Age: $age, Value: \$${value.toStringAsFixed(2)}, Condition: $condition, Monthly Maintenance Cost: \$${monthlyMaintenanceCost.toStringAsFixed(2)}';
   }
+
+  factory RealEstate.fromJson(Map<String, dynamic> json) {
+    return RealEstate(
+      name: json['nom'],
+      age: json['age'],
+      value: json['valeur'],
+      type: json['type'],
+      condition: json['condition'],
+      monthlyMaintenanceCost: json['monthly_maintenance_cost'],
+      estLouee: json['estLouee'],
+    );
+  }
 }

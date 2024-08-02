@@ -1,0 +1,16 @@
+{
+  "precious_stones": [
+    {
+      "nom": "Ruby",
+      "valeur": 2000,
+      "rarete": "Uncommon",
+      "origin": "Burma"
+    },
+    {
+      "nom": "Emerald",
+      "valeur": 3000,
+      "rarete": "Rare",
+      "origin": "Colombia"
+    }
+  ]
+}

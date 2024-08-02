@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../../../Classes/objects/vehicle.dart';
+import 'vehicle_details_screen.dart';
 
 class MotoDealershipScreen extends StatelessWidget {
   Future<List<Moto>> loadMotos() async {
@@ -34,7 +35,10 @@ class MotoDealershipScreen extends StatelessWidget {
                   title: Text(moto.name),
                   subtitle: Text('Price: \$${moto.value.toStringAsFixed(2)}'),
                   onTap: () {
-                    // Actions on tap, like showing details or initiating a purchase
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => VehicleDetailsScreen(vehicle: moto)),
+                    );
                   },
                 );
               },

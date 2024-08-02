@@ -7,7 +7,7 @@ import 'activity/criminal/criminal_activites_screen.dart';
 import 'activity/legal/emigration_screen.dart';
 import 'activity/health_check_screen.dart';
 import 'activity/legal/inheritance_screen.dart';
-import 'activity/legal_action_screen.dart';
+import 'activity/legal/legal_action_screen.dart';
 import 'activity/love_dating_screen.dart';
 import 'activity/permits_screen.dart';
 import 'activity/shopping/shopping_screen.dart';

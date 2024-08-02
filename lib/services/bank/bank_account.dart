@@ -1,4 +1,5 @@
 import '../../Classes/person.dart';
+import 'FinancialService.dart';
 
 class BankAccount {
   String accountNumber;
@@ -127,8 +128,19 @@ class Bank {
     return newAccount;
   }
 
-  double getInterestRate(String accountType) {
-
+  bool evaluateBusinessLoan(Person person, double amount, int termYears, double projectedRevenue) {
+    // Basic logic to evaluate loan based on projected revenue and other factors
+    double minimumRequiredRevenue = amount * 0.8;
+    if (projectedRevenue >= minimumRequiredRevenue) {
+      return true;
+    }
+    return false;
   }
+
+  double getInterestRate(String accountType) {
+    var accountDetails = FinancialService.getBankAccountDetails(this.name, accountType);
+    return accountDetails != null ? accountDetails['interestRate'] : 0.0;
+  }
+
 }
 

@@ -54,7 +54,19 @@ dev_dependencies:
 flutter:
 
   assets:
-    - lib/files/banks.json
+    - assets/antiques.json
+    - assets/armes.json
+    - assets/arts.json
+    - assets/banks.json
+    - assets/intruments.json
+    - assets/jewelry.json
+    - assets/jobs.json
+    - assets/objects.json
+    - assets/precious_stones.json
+    - assets/real_estate.json
+    - assets/real_estate_exotic.json
+    - assets/vehicles.json
+    - assets/vetements.json
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

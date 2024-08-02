@@ -1,4 +1,5 @@
-import 'work/object/job.dart';
+import 'package:bit_life_like/screens/work/classes/job.dart';
+
 import '../Classes/person.dart';
 
 class JobMarket {

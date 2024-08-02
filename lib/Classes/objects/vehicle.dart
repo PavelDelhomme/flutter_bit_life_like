@@ -53,15 +53,14 @@ class Moto extends Vehicle {
     fuelConsumption: fuelConsumption,
     monthlyFuelCost: 0,
   );
-
   static Moto fromJson(Map<String, dynamic> json) {
     return Moto(
-      name: json['name'],
-      age: json['age'],
-      value: json['value'],
-      rarity: json['rarity'],
-      brand: json['brand'],
-      fuelConsumption: json['fuelConsumption'],
+      name: json['name'] as String ?? 'Unknown',
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] as String? ?? 'Unknown',
+      brand: json['brand'] as String?,
+      fuelConsumption: (json['fuel_consumption'] as num?)?.toDouble() ?? 0.0,
     );
   }
 
@@ -70,7 +69,6 @@ class Moto extends Vehicle {
     return value * 0.01; // 1% of the value as maintenance cost
   }
 }
-
 class Voiture extends Vehicle {
   Voiture({
     required String name,
@@ -92,12 +90,12 @@ class Voiture extends Vehicle {
 
   static Voiture fromJson(Map<String, dynamic> json) {
     return Voiture(
-      name: json['name'],
-      age: json['age'],
-      value: json['value'],
-      rarity: json['rarity'],
-      brand: json['brand'],
-      fuelConsumption: json['fuelConsumption'],
+      name: json['name'] as String? ?? 'Unknown',  // Assurez-vous que le champ 'name' est bien 'name' et pas 'nom'
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] as String? ?? 'Unknown',
+      brand: json['brand'] as String?,
+      fuelConsumption: (json['fuelConsumption'] as num?)?.toDouble() ?? 0.0,
     );
   }
 
@@ -106,6 +104,7 @@ class Voiture extends Vehicle {
     return value * 0.015;
   }
 }
+
 
 
 class Bateau extends Vehicle {
@@ -129,12 +128,12 @@ class Bateau extends Vehicle {
 
   static Bateau fromJson(Map<String, dynamic> json) {
     return Bateau(
-      name: json['name'],
-      age: json['age'],
-      value: json['value'],
-      rarity: json['rarity'],
-      brand: json['brand'],
-      fuelConsumption: json['fuelConsumption'],
+      name: json['name'] ?? 'Unknown',
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] ?? 'Unknown',
+      brand: json['brand'] as String?,
+      fuelConsumption: (json['fuelConsumption'] as num?)?.toDouble() ?? 0.0,
     );
   }
 

@@ -1,0 +1,39 @@
+{
+  "instruments": [
+    {
+      "nom": "Stradivarius Violin",
+      "valeur": 16000000,
+      "rarete": "Legendary",
+      "date_de_creation": "1713",
+      "fabricant": "Antonio Stradivari"
+    },
+    {
+      "nom": "Steinway Grand Piano",
+      "valeur": 200000,
+      "rarete": "Rare",
+      "date_de_creation": "1880",
+      "fabricant": "Steinway & Sons"
+    },
+    {
+      "nom": "Guarneri del Gesu Violin",
+      "valeur": 10000000,
+      "rarete": "Legendary",
+      "date_de_creation": "1741",
+      "fabricant": "Giuseppe Guarneri"
+    },
+    {
+      "nom": "Gibson Les Paul Guitar",
+      "valeur": 500000,
+      "rarete": "Rare",
+      "date_de_creation": "1959",
+      "fabricant": "Gibson"
+    },
+    {
+      "nom": "Fazioli Brunei Grand Piano",
+      "valeur": 400000,
+      "rarete": "Rare",
+      "date_de_creation": "2010",
+      "fabricant": "Fazioli"
+    }
+  ]
+}

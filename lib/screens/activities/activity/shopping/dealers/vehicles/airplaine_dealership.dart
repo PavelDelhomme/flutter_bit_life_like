@@ -1,3 +1,4 @@
+import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/vehicle_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
@@ -24,17 +25,20 @@ class AvionDealershipScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
-              return Center(child: Text("Error loading airplanes"));
+              return Center(child: Text("Error loading vehicles"));
             }
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                Avion airplane = snapshot.data![index];
+                Avion avion = snapshot.data![index];
                 return ListTile(
-                  title: Text(airplane.name),
-                  subtitle: Text('Price: \$${airplane.value.toStringAsFixed(2)}'),
+                  title: Text(avion.name),
+                  subtitle: Text('Price: \$${avion.value.toStringAsFixed(2)}'),
                   onTap: () {
-                    // Actions on tap, like showing details or initiating a purchase
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => VehicleDetailsScreen(vehicle: avion)),
+                    );
                   },
                 );
               },

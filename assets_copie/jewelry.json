@@ -1,0 +1,641 @@
+{
+  "jewelry": [
+    {
+      "nom": "Diamond Ring",
+      "valeur": 10000,
+      "rarete": "Rare",
+      "marque": "Tiffany & Co."
+    },
+    {
+      "nom": "Gold Necklace",
+      "valeur": 5000,
+      "rarete": "Commun",
+      "marque": "Cartier"
+    },
+    {
+      "nom": "Platinum Bracelet",
+      "valeur": 15000,
+      "rarete": "Uncommon",
+      "marque": "Bvlgari"
+    },
+    {
+      "nom": "Emerald Earrings",
+      "valeur": 12000,
+      "rarete": "Rare",
+      "marque": "Harry Winston"
+    },
+    {
+      "nom": "Sapphire Pendant",
+      "valeur": 8000,
+      "rarete": "Uncommon",
+      "marque": "Chopard"
+    },
+    {
+      "nom": "Or Ring",
+      "valeur": 160,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Creoles Or Blanc",
+      "valeur": 99,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Bague Acier",
+      "valeur": 40,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Chaine Argent Blanc",
+      "valeur": 140,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Bague Or Blanc 375 entrelacée diamant",
+      "valeur": 240,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Collier Or 750 Jaune Maille Royale",
+      "valeur": 3650,
+      "rarete": "Rare",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Pendentif Or Jaune Emeraude et Diamant",
+      "valeur": 1300,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Bague Or Blanc Oxyde de Zirconium",
+      "valeur": 189,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Collier Argent",
+      "valeur": 25,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Bague Or 375",
+      "valeur": 500,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Pendentif Or Blanc Saphir et Diamant",
+      "valeur": 1200,
+      "rarete": "Uncommon",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Pendentif Or Jaune Améthyste",
+      "valeur": 100,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Pendentif Or Jaune Emmeraude",
+      "valeur": 100,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Pendentif Or Jaune Emeraude",
+      "valeur": 160,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Pendentif Or Blanc Saphir et Diamant",
+      "valeur": 400,
+      "rarete": "Rare",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Boucle d'oreilles Or Blanc",
+      "valeur": 300,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Boucles d'oreilles Or Jaune et Emeraude",
+      "valeur": 300,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Boucles d'oreilles Or et Emeraude et Diamant",
+      "valeur": 200,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Boucles d'oreilles Or et Emeraude et Diamant",
+      "valeur": 900,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Bracelet Or Jaune",
+      "valeur": 210,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Chaine Or Jaune",
+      "valeur": 210,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Chaine Or Jaune",
+      "valeur": 170,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Chaine Or Jaune",
+      "valeur": 250,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Boucle d'oreillles Or Jaune Diamant et Emeuraude",
+      "valeur": 900,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Boucles d'oreilles Or",
+      "valeur": 220,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Chaine Or Jaune",
+      "valeur": 250,
+      "rarete": "Commun",
+      "marque": "Histoire d'Or"
+    },
+    {
+      "nom": "Bague Or Jaune",
+      "valeur": 200,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Or Plaque Jaune",
+      "valeur": 40,
+      "rarete": "Fausse",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 159,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Or Recyclé Jaune",
+      "valeur": 1000,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Or et Diamant",
+      "valeur": 11000,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Solitaire Or Blanc",
+      "valeur": 10000,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Solitaire Or Jaune Diamant",
+      "valeur": 9000,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 290,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Acier",
+      "valeur": 20,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 60,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 263,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 219,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Acier",
+      "valeur": 59,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 205,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 205,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 180,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 105,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 170,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 143,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 113,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague acier",
+      "valeur": 39,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 141,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Argent",
+      "valeur": 89,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Argent",
+      "valeur": 297,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague acier",
+      "valeur": 63,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 1469,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Or Blanc",
+      "valeur": 835,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or Diamant",
+      "valeur": 1338,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 173,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Tungstene Rose Noir",
+      "valeur": 97,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Baguue Tungstene Noir",
+      "valeur": 83,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 1675,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Acier Cable Noir",
+      "valeur": 35,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 305,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Acier",
+      "valeur": 15,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or Jaune",
+      "valeur": 1323,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or Diamant",
+      "valeur": 1565,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague céramique acier",
+      "valeur": 67,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent Lapis Lazulis",
+      "valeur": 189,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Plaque Or",
+      "valeur": 71,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 561,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Argent",
+      "valeur": 115,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Acier Noir",
+      "valeur": 39,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Acier Carbone",
+      "valeur": 38,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Acier Noir",
+      "valeur": 35,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Acier Noir",
+      "valeur": 29,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bague Acier",
+      "valeur": 23,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Argent",
+      "valeur": 227,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 955,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Argent",
+      "valeur": 261,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Argent",
+      "valeur": 196,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 471,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Argent",
+      "valeur": 211,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 1468,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 1148,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 526,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Or",
+      "valeur": 599,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Argent",
+      "valeur": 125,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chevaliere Argent",
+      "valeur": 75,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Collier Or",
+      "valeur": 569,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chaine Or",
+      "valeur": 129,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chaine Argent",
+      "valeur": 85,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chaine Argent",
+      "valeur": 53,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Collier Acier",
+      "valeur": 35,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Collier Or",
+      "valeur": 135,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Collier Argent",
+      "valeur": 229,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Collier Or",
+      "valeur": 2767,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Collier acier",
+      "valeur": 35,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chaine Or",
+      "valeur": 1239,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chaine Or",
+      "valeur": 1335,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Collier acier",
+      "valeur": 79,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chaine Argent",
+      "valeur": 81,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chaine Argent",
+      "valeur": 43,
+      "rarete": "Commun",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Chaine Or",
+      "valeur": 303,
+      "rarete": "Rare",
+      "marque": "MATY"
+    },
+    {
+      "nom": "Bracelet Vintage Italien en Or",
+      "valeur": 3600,
+      "rarete": "Rare",
+      "marque": "Unknown"
+    }
+
+  ]
+}

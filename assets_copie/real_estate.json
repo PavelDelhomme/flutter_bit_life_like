@@ -1,0 +1,1311 @@
+{
+  "real_estate": [
+    {
+      "nom": "Luxury Villa",
+      "age": 2,
+      "valeur": 2000000,
+      "type": "Villa",
+      "condition": "New",
+      "monthly_maintenance_cost": 2000
+    },
+    {
+      "nom": "City Apartment",
+      "age": 5,
+      "valeur": 500000,
+      "type": "Appartement",
+      "condition": "Good",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Appartement Moderne Centre-Ville",
+      "age": 5,
+      "valeur": 350000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 300
+    },
+    {
+      "nom": "Maison de Banlieue",
+      "age": 10,
+      "valeur": 450000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 200
+    },
+    {
+      "nom": "Studio Urbain",
+      "age": 3,
+      "valeur": 250000,
+      "type": "Studio",
+      "condition": "New",
+      "monthly_maintenance_cost": 150
+    },
+    {
+      "nom": "Cottage Champêtre",
+      "age": 15,
+      "valeur": 300000,
+      "type": "Cottage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Duplex en Périphérie",
+      "age": 8,
+      "valeur": 500000,
+      "type": "Duplex",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 350
+    },
+    {
+      "nom": "Loft Industriel",
+      "age": 12,
+      "valeur": 600000,
+      "type": "Loft",
+      "condition": "Good",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Villa avec Piscine",
+      "age": 20,
+      "valeur": 750000,
+      "type": "Villa",
+      "condition": "Good",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Bungalow en Bord de Mer",
+      "age": 22,
+      "valeur": 480000,
+      "type": "Bungalow",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 250
+    },
+    {
+      "nom": "Penthouse Vue Cité",
+      "age": 7,
+      "valeur": 1200000,
+      "type": "Penthouse",
+      "condition": "New",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Maison de Ville Historique",
+      "age": 50,
+      "valeur": 550000,
+      "type": "Maison de ville",
+      "condition": "Good",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Condo Moderne",
+      "age": 3,
+      "valeur": 400000,
+      "type": "Condo",
+      "condition": "New",
+      "monthly_maintenance_cost": 200
+    },
+    {
+      "nom": "Maison sur Pilotis",
+      "age": 18,
+      "valeur": 650000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Appartement Terrasse",
+      "age": 6,
+      "valeur": 300000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 250
+    },
+    {
+      "nom": "Maison Familiale Suburbaine",
+      "age": 12,
+      "valeur": 360000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 300
+    },
+    {
+      "nom": "Chalet de Montagne",
+      "age": 30,
+      "valeur": 700000,
+      "type": "Chalet",
+      "condition": "Good",
+      "monthly_maintenance_cost": 550
+    },
+    {
+      "nom": "Résidence Secondaire à la Campagne",
+      "age": 25,
+      "valeur": 310000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 350
+    },
+    {
+      "nom": "Appartement de Luxe en Centre-Ville",
+      "age": 5,
+      "valeur": 900000,
+      "type": "Appartement",
+      "condition": "New",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Villa Méditerranéenne",
+      "age": 15,
+      "valeur": 820000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 650
+    },
+    {
+      "nom": "Appartement en Attique",
+      "age": 10,
+      "valeur": 1100000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 750
+    },
+    {
+      "nom": "Manoir Rural",
+      "age": 75,
+      "valeur": 980000,
+      "type": "Manoir",
+      "condition": "Good",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Appartement Central avec Balcon",
+      "age": 8,
+      "valeur": 470000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 300
+    },
+    {
+      "nom": "Maison de Campagne Traditionnelle",
+      "age": 35,
+      "valeur": 580000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Appartement de Charme Ancien",
+      "age": 80,
+      "valeur": 350000,
+      "type": "Appartement",
+      "condition": "Good",
+      "monthly_maintenance_cost": 250
+    },
+    {
+      "nom": "Villa de Bord de Mer",
+      "age": 20,
+      "valeur": 1500000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Maison Jumelée en Périphérie",
+      "age": 12,
+      "valeur": 420000,
+      "type": "Maison jumelée",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 350
+    },
+    {
+      "nom": "Maisonnette en Zone Rurale",
+      "age": 25,
+      "valeur": 230000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 200
+    },
+    {
+      "nom": "Loft Converti en Centre-Ville",
+      "age": 15,
+      "valeur": 650000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Condominium de Luxe",
+      "age": 5,
+      "valeur": 800000,
+      "type": "Condominium",
+      "condition": "New",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Penthouse Panoramique",
+      "age": 3,
+      "valeur": 2000000,
+      "type": "Penthouse",
+      "condition": "New",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Résidence Urbaine Moderne",
+      "age": 10,
+      "valeur": 520000,
+      "type": "Maison de ville",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 350
+    },
+    {
+      "nom": "Studio en Centre Urbain",
+      "age": 5,
+      "valeur": 300000,
+      "type": "Studio",
+      "condition": "New",
+      "monthly_maintenance_cost": 150
+    },
+    {
+      "nom": "Appartement Familial Spacieux",
+      "age": 20,
+      "valeur": 470000,
+      "type": "Appartement",
+      "condition": "Good",
+      "monthly_maintenance_cost": 320
+    },
+    {
+      "nom": "Cottage de Charme",
+      "age": 70,
+      "valeur": 410000,
+      "type": "Cottage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 350
+    },
+    {
+      "nom": "Bungalow de Retraite",
+      "age": 30,
+      "valeur": 360000,
+      "type": "Bungalow",
+      "condition": "Good",
+      "monthly_maintenance_cost": 250
+    },
+    {
+      "nom": "Duplex en Quartier Résidentiel",
+      "age": 15,
+      "valeur": 500000,
+      "type": "Duplex",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Villa Méditerranéenne avec Jardin",
+      "age": 18,
+      "valeur": 850000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Appartement Minimaliste",
+      "age": 12,
+      "valeur": 430000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 280
+    },
+    {
+      "nom": "Maison Éco-Responsable",
+      "age": 8,
+      "valeur": 620000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 300
+    },
+    {
+      "nom": "Propriété de Prestige en Banlieue",
+      "age": 12,
+      "valeur": 1100000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 550
+    },
+    {
+      "nom": "Maison sur le Lac",
+      "age": 22,
+      "valeur": 960000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 450
+    },
+
+    {
+      "nom": "Appartement de Standing en Centre-Ville",
+      "age": 2,
+      "valeur": 1200000,
+      "type": "Appartement",
+      "condition": "New",
+      "monthly_maintenance_cost": 650
+    },
+    {
+      "nom": "Grande Villa Provençale",
+      "age": 15,
+      "valeur": 1500000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 900
+    },
+    {
+      "nom": "Maison de Luxe en Banlieue Huppée",
+      "age": 20,
+      "valeur": 1800000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Loft d'Architecte",
+      "age": 10,
+      "valeur": 1300000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Propriété Équestre",
+      "age": 25,
+      "valeur": 2200000,
+      "type": "Domaine",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Duplex de Prestige avec Vue sur la Mer",
+      "age": 5,
+      "valeur": 2000000,
+      "type": "Duplex",
+      "condition": "New",
+      "monthly_maintenance_cost": 750
+    },
+    {
+      "nom": "Manoir avec Terrain de Golf Privé",
+      "age": 50,
+      "valeur": 4500000,
+      "type": "Manoir",
+      "condition": "Good",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Condominium de Luxe en Bord de Rivière",
+      "age": 3,
+      "valeur": 1350000,
+      "type": "Condominium",
+      "condition": "New",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Villa Bord de Lac avec Ponton Privé",
+      "age": 12,
+      "valeur": 2500000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Penthouse avec Terrasse Panoramique",
+      "age": 8,
+      "valeur": 3000000,
+      "type": "Penthouse",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 850
+    },
+    {
+      "nom": "Grande Maison Victorienne Restaurée",
+      "age": 120,
+      "valeur": 1600000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Appartement Haute Couture avec Services",
+      "age": 1,
+      "valeur": 1400000,
+      "type": "Appartement",
+      "condition": "New",
+      "monthly_maintenance_cost": 650
+    },
+    {
+      "nom": "Résidence avec Accès Plage Privée",
+      "age": 30,
+      "valeur": 1750000,
+      "type": "Résidence",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Maison Contemporaine avec Cinéma Privé",
+      "age": 5,
+      "valeur": 2100000,
+      "type": "Maison",
+      "condition": "New",
+      "monthly_maintenance_cost": 900
+    },
+    {
+      "nom": "Appartement en Attique de Luxe",
+      "age": 15,
+      "valeur": 2500000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 850
+    },
+    {
+      "nom": "Cottage de Luxe en Zone Rurale",
+      "age": 18,
+      "valeur": 850000,
+      "type": "Cottage",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Villa Ultra Moderne avec Système Domotique",
+      "age": 3,
+      "valeur": 3200000,
+      "type": "Villa",
+      "condition": "New",
+      "monthly_maintenance_cost": 1100
+    },
+    {
+      "nom": "Maisonnette Urbaine avec Jardin Privatif",
+      "age": 20,
+      "valeur": 950000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Bungalow Haut de Gamme sur le Front de Mer",
+      "age": 25,
+      "valeur": 1900000,
+      "type": "Bungalow",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 650
+    },
+    {
+      "nom": "Appartement de Luxe dans Tour Iconique",
+      "age": 10,
+      "valeur": 2800000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 800
+    },
+
+    {
+      "nom": "Maison avec Vignoble",
+      "age": 50,
+      "valeur": 3000000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Villa Contemporaine avec Vue sur Mer",
+      "age": 8,
+      "valeur": 2750000,
+      "type": "Villa",
+      "condition": "New",
+      "monthly_maintenance_cost": 1100
+    },
+    {
+      "nom": "Appartement Duplex dans Quartier Historique",
+      "age": 90,
+      "valeur": 2200000,
+      "type": "Duplex",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Penthouse de Luxe en Centre Urbain",
+      "age": 12,
+      "valeur": 4000000,
+      "type": "Penthouse",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Château Rénové avec Parc Privé",
+      "age": 300,
+      "valeur": 7500000,
+      "type": "Château",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 3000
+    },
+    {
+      "nom": "Résidence d'Architecte avec Terrain de Tennis",
+      "age": 15,
+      "valeur": 3500000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1800
+    },
+    {
+      "nom": "Loft de Luxe dans Ancienne Manufacture",
+      "age": 20,
+      "valeur": 1500000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 900
+    },
+    {
+      "nom": "Manoir dans Quartier Exclusif",
+      "age": 75,
+      "valeur": 6000000,
+      "type": "Manoir",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2500
+    },
+    {
+      "nom": "Condominium avec Services Complets",
+      "age": 5,
+      "valeur": 2000000,
+      "type": "Condominium",
+      "condition": "New",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Grande Propriété avec Lac Privé",
+      "age": 50,
+      "valeur": 5000000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 2500
+    },
+    {
+      "nom": "Appartement de Prestige avec Conciergerie",
+      "age": 10,
+      "valeur": 2800000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 950
+    },
+    {
+      "nom": "Villa Méditerranéenne avec Olive Grove",
+      "age": 35,
+      "valeur": 3200000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Chalet de Ski Haut de Gamme",
+      "age": 25,
+      "valeur": 3800000,
+      "type": "Chalet",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2200
+    },
+    {
+      "nom": "Propriété de Luxe en Bord de Rivière",
+      "age": 30,
+      "valeur": 4500000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2000
+    },
+    {
+      "nom": "Penthouse avec Vue Panoramique sur la Ville",
+      "age": 3,
+      "valeur": 3200000,
+      "type": "Penthouse",
+      "condition": "New",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Villa en Front de Mer avec Jetée Privée",
+      "age": 18,
+      "valeur": 6800000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2500
+    },
+    {
+      "nom": "Maison Historique avec Jardins à la Française",
+      "age": 120,
+      "valeur": 4700000,
+      "type": "Maison",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 3000
+    },
+    {
+      "nom": "Domaine de Campagne avec Écuries",
+      "age": 40,
+      "valeur": 5250000,
+      "type": "Domaine",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 3500
+    },
+    {
+      "nom": "Appartement Art Déco dans Quartier Patrimonial",
+      "age": 90,
+      "valeur": 2400000,
+      "type": "Appartement",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Villa avec Orangerie et Piscine Intérieure",
+      "age": 15,
+      "valeur": 4900000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2800
+    },
+
+    {
+      "nom": "Studio Centre-Ville",
+      "age": 5,
+      "valeur": 200000,
+      "type": "Studio",
+      "condition": "Good",
+      "monthly_maintenance_cost": 150
+    },
+    {
+      "nom": "Garage Individuel",
+      "age": 10,
+      "valeur": 25000,
+      "type": "Garage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 30
+    },
+    {
+      "nom": "Appartement en Périphérie",
+      "age": 15,
+      "valeur": 300000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 200
+    },
+    {
+      "nom": "Maison avec Grand Jardin",
+      "age": 20,
+      "valeur": 450000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Petit Immeuble Locatif",
+      "age": 25,
+      "valeur": 800000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 1000
+    },
+    {
+      "nom": "Gratte-ciel de Bureaux",
+      "age": 30,
+      "valeur": 5000000,
+      "type": "Gratte-ciel",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 5000
+    },
+    {
+      "nom": "Garage Collectif en Zone Urbaine",
+      "age": 5,
+      "valeur": 100000,
+      "type": "Garage",
+      "condition": "New",
+      "monthly_maintenance_cost": 100
+    },
+    {
+      "nom": "Maison de Ville Moderne",
+      "age": 10,
+      "valeur": 600000,
+      "type": "Maison de ville",
+      "condition": "New",
+      "monthly_maintenance_cost": 300
+    },
+    {
+      "nom": "Penthouse avec Vue sur la Ville",
+      "age": 8,
+      "valeur": 1500000,
+      "type": "Penthouse",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Cottage en Bord de Lac",
+      "age": 30,
+      "valeur": 350000,
+      "type": "Cottage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Bâtiment Commercial avec Locataires",
+      "age": 20,
+      "valeur": 2000000,
+      "type": "Immeuble commercial",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2500
+    },
+    {
+      "nom": "Garage en Sous-sol de Copropriété",
+      "age": 15,
+      "valeur": 30000,
+      "type": "Garage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 25
+    },
+    {
+      "nom": "Loft Industriel",
+      "age": 12,
+      "valeur": 700000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Gratte-ciel Résidentiel",
+      "age": 5,
+      "valeur": 25000000,
+      "type": "Gratte-ciel",
+      "condition": "New",
+      "monthly_maintenance_cost": 10000
+    },
+    {
+      "nom": "Villa de Luxe avec Vue Montagne",
+      "age": 15,
+      "valeur": 2000000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Appartement en Zone Touristique",
+      "age": 10,
+      "valeur": 550000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Grand Garage pour Collections de Voitures",
+      "age": 20,
+      "valeur": 200000,
+      "type": "Garage",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 200
+    },
+    {
+      "nom": "Immeuble de Bureaux Standard",
+      "age": 25,
+      "valeur": 3000000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 3500
+    },
+    {
+      "nom": "Condo en Centre-ville",
+      "age": 5,
+      "valeur": 750000,
+      "type": "Condo",
+      "condition": "New",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Domaine avec Ferme et Terres Agricoles",
+      "age": 50,
+      "valeur": 2500000,
+      "type": "Domaine",
+      "condition": "Good",
+      "monthly_maintenance_cost": 1800
+    },
+
+    {
+      "nom": "Appartement Loft Converti",
+      "age": 10,
+      "valeur": 800000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 550
+    },
+    {
+      "nom": "Garage Multiple en Centre-Ville",
+      "age": 5,
+      "valeur": 120000,
+      "type": "Garage",
+      "condition": "New",
+      "monthly_maintenance_cost": 150
+    },
+    {
+      "nom": "Petit Immeuble de Bureaux",
+      "age": 15,
+      "valeur": 1800000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 3000
+    },
+    {
+      "nom": "Maison Suburbaine avec Studio Indépendant",
+      "age": 20,
+      "valeur": 950000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Villa de Luxe en Banlieue",
+      "age": 12,
+      "valeur": 3200000,
+      "type": "Villa",
+      "condition": "New",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Appartement en Résidence Sécurisée",
+      "age": 8,
+      "valeur": 500000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Gratte-ciel de Luxe avec Piscine sur le Toit",
+      "age": 3,
+      "valeur": 25000000,
+      "type": "Gratte-ciel",
+      "condition": "New",
+      "monthly_maintenance_cost": 12000
+    },
+    {
+      "nom": "Grande Propriété avec Forêt Privée",
+      "age": 40,
+      "valeur": 4500000,
+      "type": "Domaine",
+      "condition": "Good",
+      "monthly_maintenance_cost": 4000
+    },
+    {
+      "nom": "Penthouse avec Jardin Suspendu",
+      "age": 7,
+      "valeur": 2800000,
+      "type": "Penthouse",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 850
+    },
+    {
+      "nom": "Maison avec Accès Privé à la Plage",
+      "age": 25,
+      "valeur": 2300000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 950
+    },
+    {
+      "nom": "Immeuble de Rapport en Centre-Ville",
+      "age": 30,
+      "valeur": 3500000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 5000
+    },
+    {
+      "nom": "Garage Souterrain sous Complexe Résidentiel",
+      "age": 15,
+      "valeur": 140000,
+      "type": "Garage",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 100
+    },
+    {
+      "nom": "Bungalow Moderne avec Vue sur la Vallée",
+      "age": 10,
+      "valeur": 850000,
+      "type": "Bungalow",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Chalet de Montagne Près des Pistes",
+      "age": 20,
+      "valeur": 1900000,
+      "type": "Chalet",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Résidence avec Terrains de Tennis",
+      "age": 18,
+      "valeur": 2750000,
+      "type": "Résidence",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2000
+    },
+    {
+      "nom": "Maison de Campagne avec Étang",
+      "age": 35,
+      "valeur": 1500000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Appartement Duplex avec Terrasse",
+      "age": 12,
+      "valeur": 980000,
+      "type": "Duplex",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Condominium de Standing avec Concierge",
+      "age": 5,
+      "valeur": 1350000,
+      "type": "Condominium",
+      "condition": "New",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Villa avec Parcours de Golf",
+      "age": 15,
+      "valeur": 3500000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1800
+    },
+    {
+      "nom": "Immeuble Résidentiel avec Local Commercial",
+      "age": 22,
+      "valeur": 2400000,
+      "type": "Immeuble mixte",
+      "condition": "Good",
+      "monthly_maintenance_cost": 2500
+    },
+    {
+      "nom": "Résidence à Cape Idokopas",
+      "age": 50,
+      "valeur": 1300000000
+    },
+
+    {
+      "nom": "Condo Urbain avec Toit Terrasse",
+      "age": 3,
+      "valeur": 750000,
+      "type": "Condo",
+      "condition": "New",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Maison avec Verger et Serre",
+      "age": 40,
+      "valeur": 1200000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Petit Gratte-ciel Commercial",
+      "age": 25,
+      "valeur": 4000000,
+      "type": "Gratte-ciel",
+      "condition": "Good",
+      "monthly_maintenance_cost": 3000
+    },
+    {
+      "nom": "Garage en Bloc Urbain",
+      "age": 15,
+      "valeur": 80000,
+      "type": "Garage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 50
+    },
+    {
+      "nom": "Maison de Style Colonial avec Piscine",
+      "age": 20,
+      "valeur": 850000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Immeuble de Bureaux Standard en Périphérie",
+      "age": 30,
+      "valeur": 2800000,
+      "type": "Immeuble",
+      "condition": "Good",
+      "monthly_maintenance_cost": 3500
+    },
+    {
+      "nom": "Penthouse Luxueux avec Services",
+      "age": 10,
+      "valeur": 3200000,
+      "type": "Penthouse",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Villa Bord de Mer avec Accès Privé",
+      "age": 18,
+      "valeur": 3000000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Duplex avec Jardin en Ville",
+      "age": 12,
+      "valeur": 980000,
+      "type": "Duplex",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Cottage de Montagne avec Vue Panoramique",
+      "age": 25,
+      "valeur": 750000,
+      "type": "Cottage",
+      "condition": "Good",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Garage Collectif pour Résidents",
+      "age": 10,
+      "valeur": 120000,
+      "type": "Garage",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 100
+    },
+    {
+      "nom": "Gratte-ciel Résidentiel Moderne",
+      "age": 5,
+      "valeur": 22000000,
+      "type": "Gratte-ciel",
+      "condition": "New",
+      "monthly_maintenance_cost": 5000
+    },
+    {
+      "nom": "Appartement avec Finitions Haut de Gamme",
+      "age": 8,
+      "valeur": 650000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 300
+    },
+    {
+      "nom": "Propriété avec Écuries et Manège",
+      "age": 35,
+      "valeur": 4500000,
+      "type": "Propriété",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 4000
+    },
+    {
+      "nom": "Condominium en Zone Gentrifiée",
+      "age": 20,
+      "valeur": 500000,
+      "type": "Condominium",
+      "condition": "Good",
+      "monthly_maintenance_cost": 250
+    },
+    {
+      "nom": "Loft avec Exposition d'Art Intégrée",
+      "age": 12,
+      "valeur": 1300000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Maison Bungalow avec Atelier d'Artiste",
+      "age": 30,
+      "valeur": 890000,
+      "type": "Bungalow",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 450
+    },
+    {
+      "nom": "Immeuble avec Local Commercial au Rez-de-Chaussée",
+      "age": 22,
+      "valeur": 3100000,
+      "type": "Immeuble mixte",
+      "condition": "Good",
+      "monthly_maintenance_cost": 2200
+    },
+    {
+      "nom": "Villa avec Salle de Cinéma Privée",
+      "age": 7,
+      "valeur": 2700000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Domaine avec Lac Privatif et Forêt",
+      "age": 45,
+      "valeur": 6000000,
+      "type": "Domaine",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 5000
+    },
+    {
+      "nom": "Appartement en Attique avec Vue sur la Mer",
+      "age": 7,
+      "valeur": 2100000,
+      "type": "Attique",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1100
+    },
+    {
+      "nom": "Résidence Urbaine avec Toit Végétalisé",
+      "age": 3,
+      "valeur": 1800000,
+      "type": "Résidence",
+      "condition": "New",
+      "monthly_maintenance_cost": 800
+    },
+    {
+      "nom": "Maison avec Parc Privé et Étang",
+      "age": 20,
+      "valeur": 2600000,
+      "type": "Maison",
+      "condition": "Good",
+      "monthly_maintenance_cost": 1500
+    },
+    {
+      "nom": "Villa de Luxe avec Terrain Multisport",
+      "age": 15,
+      "valeur": 3500000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2000
+    },
+    {
+      "nom": "Garage en Résidence de Luxe",
+      "age": 10,
+      "valeur": 150000,
+      "type": "Garage",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 75
+    },
+    {
+      "nom": "Penthouse Urbain avec Piscine Privative",
+      "age": 5,
+      "valeur": 4200000,
+      "type": "Penthouse",
+      "condition": "New",
+      "monthly_maintenance_cost": 2000
+    },
+    {
+      "nom": "Duplex dans Quartier Historique",
+      "age": 120,
+      "valeur": 1350000,
+      "type": "Duplex",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 700
+    },
+    {
+      "nom": "Loft Moderne en Centre-Ville",
+      "age": 8,
+      "valeur": 1100000,
+      "type": "Loft",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 650
+    },
+    {
+      "nom": "Château Restauré avec Vignoble",
+      "age": 250,
+      "valeur": 7500000,
+      "type": "Château",
+      "condition": "Restored",
+      "monthly_maintenance_cost": 3500
+    },
+    {
+      "nom": "Condominium avec Salle de Sport",
+      "age": 12,
+      "valeur": 950000,
+      "type": "Condominium",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 600
+    },
+    {
+      "nom": "Maison Écologique en Bois",
+      "age": 5,
+      "valeur": 1200000,
+      "type": "Maison",
+      "condition": "New",
+      "monthly_maintenance_cost": 500
+    },
+    {
+      "nom": "Villa Balnéaire avec Accès Privé à la Plage",
+      "age": 18,
+      "valeur": 4800000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 2200
+    },
+    {
+      "nom": "Bungalow avec Jardin Tropical",
+      "age": 25,
+      "valeur": 890000,
+      "type": "Bungalow",
+      "condition": "Good",
+      "monthly_maintenance_cost": 400
+    },
+    {
+      "nom": "Appartement avec Service de Conciergerie",
+      "age": 3,
+      "valeur": 1600000,
+      "type": "Appartement",
+      "condition": "New",
+      "monthly_maintenance_cost": 900
+    },
+    {
+      "nom": "Gratte-ciel avec Espaces Commerciaux",
+      "age": 15,
+      "valeur": 20000000,
+      "type": "Gratte-ciel",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 8000
+    },
+    {
+      "nom": "Domaine de Campagne avec Manège Équestre",
+      "age": 40,
+      "valeur": 6200000,
+      "type": "Domaine",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 5000
+    },
+    {
+      "nom": "Immeuble Résidentiel avec Locaux Commerciaux",
+      "age": 30,
+      "valeur": 3500000,
+      "type": "Immeuble mixte",
+      "condition": "Good",
+      "monthly_maintenance_cost": 4200
+    },
+    {
+      "nom": "Villa avec Vue sur la Montagne",
+      "age": 10,
+      "valeur": 2300000,
+      "type": "Villa",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1200
+    },
+    {
+      "nom": "Maison avec Atrium Central et Verrière",
+      "age": 20,
+      "valeur": 1900000,
+      "type": "Maison",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 900
+    },
+    {
+      "nom": "Appartement de Luxe avec Salle de Cinéma Privée",
+      "age": 12,
+      "valeur": 2500000,
+      "type": "Appartement",
+      "condition": "Excellent",
+      "monthly_maintenance_cost": 1100
+    }
+
+  ]
+}

@@ -7,15 +7,19 @@ class EventService {
     int eventIndex = Random().nextInt(3);
     switch (eventIndex) {
       case 0:
-        person.bankAccount += 1000;
-        print('${person.name} found 1000\$^ !');
+        if (person.bankAccounts.isNotEmpty) {
+          person.bankAccounts.first.deposit(1000);
+          print('${person.name} found \$1000!');
+        }
         break;
       case 1:
-        person.bankAccount -= 500;
-        print('${person.name} lost 500\$ !');
+        if (person.bankAccounts.isNotEmpty) {
+          person.bankAccounts.first.withdraw(500);
+          print('${person.name} lost \$500!');
+        }
         break;
       case 2:
-        // Other case ?? for random event to create
+      // Other case for a random event
         break;
     }
   }

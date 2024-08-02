@@ -1,0 +1,1266 @@
+{
+  "arts": {
+    "tableaux": [
+      {
+        "nom": "Portait d'Adele Bloch-Bauer",
+        "valeur": 158000000,
+        "date_de_creation": 1907,
+        "artiste": "Klimt",
+        "type": "tableau"
+      },
+      {
+        "nom": "Salvador Mundi",
+        "valeur": 450000000,
+        "date_de_creation": 1500,
+        "artiste": "Léonard de Vinci",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Joueurs de cartes",
+        "valeur": 274000000,
+        "date_de_creation": 1892,
+        "artiste": "Paul Cézanne",
+        "type": "tableau"
+      },
+      {
+        "nom": "Bal du moulin de la Galette",
+        "valeur": 143000000,
+        "date_de_creation": 1876,
+        "artiste": "Pierre-Auguste Renoir",
+        "type": "tableau"
+      },
+      {
+        "nom": "Quand te maries-tu",
+        "valeur": 300000000,
+        "date_de_creation": 1892,
+        "artiste": "Paul Gauguin",
+        "type": "tableau"
+      },
+      {
+        "nom": "No. 5",
+        "valeur": 165000000,
+        "date_de_creation": 1948,
+        "artiste": "Jackson Pollock",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Rêve",
+        "valeur": 158000000,
+        "date_de_creation": 1932,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Nu couché",
+        "valeur": 170000000,
+        "date_de_creation": 1917,
+        "artiste": "Amedeo Modigliani",
+        "type": "tableau"
+      },
+      {
+        "nom": "Interchage",
+        "valeur": 300000000,
+        "date_de_creation": 1955,
+        "artiste": "Willem de Kooning",
+        "type": "tableau"
+      },
+      {
+        "nom": "Portrait du docteur Gachet",
+        "valeur": 152000000,
+        "date_de_creation": 1890,
+        "artiste": "Vincent Van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "Shot Sage Blue Marilyn",
+        "valeur": 195000000,
+        "date_de_creation": 1964,
+        "artiste": "Andy Warhol",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Porte-drapeau",
+        "valeur": 195000000,
+        "date_de_creation": 1636,
+        "artiste": "Remmarquet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Femmes d'Alger",
+        "valeur": 179440000,
+        "date_de_creation": 1955,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Woman III",
+        "valeur": 158800000,
+        "date_de_creation": 1953,
+        "artiste": "Willem de Kooning",
+        "type": "tableau"
+      },
+      {
+        "nom": "Trois études de Lucian Freud",
+        "valeur": 142400000,
+        "date_de_creation": 1969,
+        "artiste": "Francis Bacon",
+        "type": "tableau"
+      },
+      {
+        "nom": "Femme à la montre",
+        "valeur": 139300000,
+        "date_de_creation": 1932,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Cri",
+        "valeur": 119920000,
+        "date_de_creation": 1893,
+        "artiste": "Edvard Munch",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Fillette à la corbeille fleurie",
+        "valeur": 115000000,
+        "date_de_creation": 1905,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Meules",
+        "valeur": 110700000,
+        "date_de_creation": 1891,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Sans titre",
+        "valeur": 110500000,
+        "date_de_creation": 9999,
+        "artiste": "Jean-Michel Basquiat",
+        "type": "tableau"
+      },
+      {
+        "nom": "Garçon à la pipe",
+        "valeur": 104200000,
+        "date_de_creation": 1905,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Nu au plateau de sculpteur",
+        "valeur": 106500000,
+        "date_de_creation": 1932,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Silver Car Crash (Double Disaster)",
+        "valeur": 105400000,
+        "date_de_creation": 1963,
+        "artiste": "Andy Warhol",
+        "type": "tableau"
+      },
+      {
+        "nom": "Nurse",
+        "valeur": 95370000,
+        "date_de_creation": 1964,
+        "artiste": "Roy Lichtenstein",
+        "type": "tableau"
+      },
+      {
+        "nom": "Dora Maar au chat",
+        "valeur": 95000000,
+        "date_de_creation": 1941,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "In this case",
+        "valeur": 93100000,
+        "date_de_creation": 1983,
+        "artiste": "Jean-Michel Basquiat",
+        "type": "tableau"
+      },
+      {
+        "nom": "Jeune homme tenant un médaillon",
+        "valeur": 92200000,
+        "date_de_creation": "1470-1480",
+        "artiste": "Sandro Botticelli",
+        "type": "tableau"
+      },
+      {
+        "nom": "Portrait of an Artist (Pool with Two Figures)",
+        "valeur": 90300000,
+        "date_de_creation": 1972,
+        "artiste": "David Hockney",
+        "type": "tableau"
+      },
+      {
+        "nom": "Portrait d'Adèle Bloch-Bauer II",
+        "valeur": 88000000,
+        "date_de_creation": 1912,
+        "artiste": "Gustav Klimt",
+        "type": "tableau"
+      },
+      {
+        "nom": "Nymphéas en fleurs",
+        "valeur": 84600000,
+        "date_de_creation": "1914-1917",
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Meules",
+        "valeur": 81400000,
+        "date_de_creation": "1890-1891",
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Odalisque couchée aux magnolias",
+        "valeur": 80700000,
+        "date_de_creation": 1923,
+        "artiste": "Henri Matisse",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Bassin aux nymphéas",
+        "valeur": 80400000,
+        "date_de_creation": 1919,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "False Start",
+        "valeur": 80000000,
+        "date_de_creation": 1959,
+        "artiste": "Jasper Johns",
+        "type": "tableau"
+      },
+      {
+        "nom": "Iris",
+        "valeur": 78000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Massacre des Innocents",
+        "valeur": 78000000,
+        "date_de_creation": 1611,
+        "artiste": "Pierre Paul Rubens",
+        "type": "tableau"
+      },
+      {
+        "nom": "White Center",
+        "valeur": 72800000,
+        "date_de_creation": 1950,
+        "artiste": "Mark Rothko",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Noces de Pierrette",
+        "valeur": 72000000,
+        "date_de_creation": 1905,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Portrait de l'artiste sans barbe",
+        "valeur": 72000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "Femme au béret et à la robe quadrillée",
+        "valeur": 69400000,
+        "date_de_creation": 1937,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Nu assis sur un divan",
+        "valeur": 68900000,
+        "date_de_creation": 1917,
+        "artiste": "Amedeo Modigliani",
+        "type": "tableau"
+      },
+      {
+        "nom": "Juin Octobre 1985",
+        "valeur": 65000000,
+        "date_de_creation": 1985,
+        "artiste": "Zao Wou-Ki",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Printemps",
+        "valeur": 65000000,
+        "date_de_creation": 1862,
+        "artiste": "Édouard Manet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Police Gazette",
+        "valeur": 63000000,
+        "date_de_creation": 1955,
+        "artiste": "Willem de Kooning",
+        "type": "tableau"
+      },
+      {
+        "nom": "Sixty last suppers",
+        "valeur": 61000000,
+        "date_de_creation": 1986,
+        "artiste": "Andy Warhol",
+        "type": "tableau"
+      },
+      {
+        "nom": "Rideau, cruche et compotier",
+        "valeur": 60000000,
+        "date_de_creation": "1893-1894",
+        "artiste": "Paul Cézanne",
+        "type": "tableau"
+      },
+      {
+        "nom": "Champ de blé avec cyprès",
+        "valeur": 57000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "Femme aux bras croisés",
+        "valeur": 55000000,
+        "date_de_creation": "1901-1902",
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Étude d'après le portrait du pape Innocent X par Velázquez",
+        "valeur": 52000000,
+        "date_de_creation": 1962,
+        "artiste": "Francis Bacon",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Joconde",
+        "valeur": 1000000000,
+        "date_de_creation": "1503-1519",
+        "artiste": "Leonardo Da Vinci",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Nuit étoilée",
+        "valeur": 100000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "La jeune fille à la perle",
+        "valeur": 850000000,
+        "date_de_creation": 1665,
+        "artiste": "Johannes Vermeer",
+        "type": "tableau"
+      },
+      {
+        "nom": "La cène",
+        "valeur": 700000000,
+        "date_de_creation": "1495-1498",
+        "artiste": "Leonardo Da Vinci",
+        "type": "tableau"
+      },
+      {
+        "nom": "Guernica",
+        "valeur": 200000000,
+        "date_de_creation": 1937,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "La persistance de la mémoire",
+        "valeur": 600000000,
+        "date_de_creation": 1931,
+        "artiste": "Salvador Dali",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Ronde de nuit",
+        "valeur": 550000000,
+        "date_de_creation": "1640-1642",
+        "artiste": "Remmarquet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le baiser",
+        "valeur": 200000000,
+        "date_de_creation": "1907-1908",
+        "artiste": "Gustav Klimt",
+        "type": "tableau"
+      },
+      {
+        "nom": "American Gothic",
+        "valeur": 6000000,
+        "date_de_creation": 1930,
+        "artiste": "Grant Wood",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Naissance de Vénus",
+        "valeur": 100000000,
+        "date_de_creation": "1484-1486",
+        "artiste": "Sandro Botticceli",
+        "type": "tableau"
+      },
+      {
+        "nom": "Arrangement en gris et noir n°1",
+        "valeur": 10000000,
+        "date_de_creation": 1871,
+        "artiste": "James Abbott McNeill Whistler",
+        "type": "tableau"
+      },
+      {
+        "nom": "Impression, soleil levant",
+        "valeur": 70000000,
+        "date_de_creation": 1872,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Ménines",
+        "valeur": 300000000,
+        "date_de_creation": 1656,
+        "artiste": "Diego Velázquez",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Demoiselles d'Avignon",
+        "valeur": 800000000,
+        "date_de_creation": 1907,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Terrasse du café le soir",
+        "valeur": 50000000,
+        "date_de_creation": 1888,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "Un dimanche après-midi à l'île de la Grande Jatte",
+        "valeur": 100000000,
+        "date_de_creation": 1884,
+        "artiste": "Georges Seurat",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Époux Arnolfini",
+        "valeur": 700000000,
+        "date_de_creation": 1434,
+        "artiste": "Jan van Eyck",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Dame à l’hermine",
+        "valeur": 300000000,
+        "date_de_creation": 1490,
+        "artiste": "Leonardo Da Vinci",
+        "type": "tableau"
+      },
+      {
+        "nom": "L'École d'Athènes",
+        "valeur": 700000000,
+        "date_de_creation": "1510-1511",
+        "artiste": "Raphaël",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Déjeuner sur l'herbe",
+        "valeur": 65000000,
+        "date_de_creation": "1862-1863",
+        "artiste": "Édouard Manet",
+        "type": "tableau"
+      },
+      {
+        "nom": "L'autoportrait",
+        "valeur": 85000000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Liberté guidant le peuple",
+        "valeur": 300000000,
+        "date_de_creation": 1830,
+        "artiste": "Eugène Delacroix",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Café de nuit",
+        "valeur": 30000000,
+        "date_de_creation": 1888,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "Nighthawks",
+        "valeur": 30000000,
+        "date_de_creation": 1942,
+        "artiste": "Edward Hopper",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le trois mai",
+        "valeur": 400000000,
+        "date_de_creation": 1814,
+        "artiste": "Francisco de Goya",
+        "type": "tableau"
+      },
+      {
+        "nom": "Portrait d'Adele Bloch-Bauer I",
+        "valeur": 135000000,
+        "date_de_creation": 1907,
+        "artiste": "Gustav Klimt",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Fils de l'homme",
+        "valeur": 150000000,
+        "date_de_creation": 1964,
+        "artiste": "René Magritte",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Déjeuner des canotiers",
+        "valeur": 70000000,
+        "date_de_creation": 1881,
+        "artiste": "Pierre-Auguste Renoir",
+        "type": "tableau"
+      },
+      {
+        "nom": "No. 5, 1948",
+        "valeur": 140000000,
+        "date_de_creation": 1948,
+        "artiste": "Jackson Pollock",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Printemps",
+        "valeur": 150000000,
+        "date_de_creation": "1477-1482",
+        "artiste": "Sandro Botticelli",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Vieux Guitariste aveugle",
+        "valeur": 50000000,
+        "date_de_creation": 1903,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Christ dans la tempête sur la mer de Galilée",
+        "valeur": 50000000,
+        "date_de_creation": 1633,
+        "artiste": "Remmarquet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Jardin des délices",
+        "valeur": 200000000,
+        "date_de_creation": "1490-1510",
+        "artiste": "Jérôme Bosch",
+        "type": "tableau"
+      },
+      {
+        "nom": "Salvator Mundi",
+        "valeur": 450000000,
+        "date_de_creation": 1500,
+        "artiste": "Leonardo Da Vinci",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les iris",
+        "valeur": 53900000,
+        "date_de_creation": 1889,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Radeau de La Méduse",
+        "valeur": 250000000,
+        "date_de_creation": "1818-1819",
+        "artiste": "Théodore Géricault",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Ambassadeurs",
+        "valeur": 250000000,
+        "date_de_creation": 1533,
+        "artiste": "Hans Holbein le Jeune",
+        "type": "tableau"
+      },
+      {
+        "nom": "Christina's World",
+        "valeur": 15000000,
+        "date_de_creation": 1948,
+        "artiste": "Andrew Wyeth",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Mangeurs de pommes de terre",
+        "valeur": 60000000,
+        "date_de_creation": 1885,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Jardin de l'artiste à Giverny",
+        "valeur": 20000000,
+        "date_de_creation": 1900,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Saturne dévorant un de ses fils",
+        "valeur": 90000000,
+        "date_de_creation": "1819-1823",
+        "artiste": "Francisco de Goya",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Bohémienne endormie",
+        "valeur": 50000000,
+        "date_de_creation": 1897,
+        "artiste": "Henri Rousseau",
+        "type": "tableau"
+      },
+      {
+        "nom": "Boîtes de soupe Campbell",
+        "valeur": 100000000,
+        "date_de_creation": 1962,
+        "artiste": "Andy Warhol",
+        "type": "tableau"
+      },
+      {
+        "nom": "Olympia",
+        "valeur": 80000000,
+        "date_de_creation": 1863,
+        "artiste": "Édouard Manet",
+        "type": "tableau"
+      },
+      {
+        "nom": "June flamboyante",
+        "valeur": 50000000,
+        "date_de_creation": 1895,
+        "artiste": "Frederic Leighton",
+        "type": "tableau"
+      },
+      {
+        "nom": "L'Art de la peinture",
+        "valeur": 200000000,
+        "date_de_creation": "1666-1668",
+        "artiste": "Johannes Vermeer",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Champ de Coquelicots près d'Argenteuil",
+        "valeur": 40000000,
+        "date_de_creation": 1873,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Noces de Cana",
+        "valeur": 100000000,
+        "date_de_creation": "1562-1563",
+        "artiste": "Paul Véronèse",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Promenade",
+        "valeur": 65000000,
+        "date_de_creation": 1875,
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Classe de danse",
+        "valeur": 50000000,
+        "date_de_creation": "1873-1876",
+        "artiste": "Edgar Degas",
+        "type": "tableau"
+      },
+      {
+        "nom": "Nu descendant un escalier (N°2)",
+        "valeur": 100000000,
+        "date_de_creation": 1912,
+        "artiste": "Marcel Duchamp",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Désespéré",
+        "valeur": 50000000,
+        "date_de_creation": "1843-1845",
+        "artiste": "Gustave Courbet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Deux Fridas",
+        "valeur": 50000000,
+        "date_de_creation": 1939,
+        "artiste": "Frida Kahlo",
+        "type": "tableau"
+      },
+      {
+        "nom": "L'Origine du monde",
+        "valeur": 50000000,
+        "date_de_creation": 1866,
+        "artiste": "Gustave Courbet",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Nuit étoilée sur le Rhône",
+        "valeur": 90000000,
+        "date_de_creation": 1888,
+        "artiste": "Vincent van Gogh",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Création d'Adam",
+        "valeur": 700000000,
+        "date_de_creation": "1511-1512",
+        "artiste": "Michel-Ange",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le cri",
+        "valeur": 119920000,
+        "date_de_creation": 1893,
+        "artiste": "Edvard Munch",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Nymphéas",
+        "valeur": 100000000,
+        "date_de_creation": "1915-1926",
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Chiens jouant au poker",
+        "valeur": 1000000,
+        "date_de_creation": 1903,
+        "artiste": "Cassius Marcellus Coolidge",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Maja nue",
+        "valeur": 200000000,
+        "date_de_creation": "1797-1800",
+        "artiste": "Francisco de Goya",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Grande Odalisque",
+        "valeur": 80000000,
+        "date_de_creation": 1814,
+        "artiste": "Jean Auguste Dominique Ingres",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Voyageur contemplant une mer de nuages",
+        "valeur": 70000000,
+        "date_de_creation": 1818,
+        "artiste": "Caspar David Friedrich",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Chute d'Icare",
+        "valeur": 70000000,
+        "date_de_creation": 1558,
+        "artiste": "Pieter Brueghel l'Ancien",
+        "type": "tableau"
+      },
+      {
+        "nom": "les 3 musiciens",
+        "valeur": 70000000,
+        "date_de_creation": 1921,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Triomphe de Galatée",
+        "valeur": 70000000,
+        "date_de_creation": "1512-1514",
+        "artiste": "Raphaël",
+        "type": "tableau"
+      },
+      {
+        "nom": "Tour de Babel",
+        "valeur": 70000000,
+        "date_de_creation": 1563,
+        "artiste": "Pieter Brueghel l'Ancien",
+        "type": "tableau"
+      },
+      {
+        "nom": "Dance",
+        "valeur": 70000000,
+        "date_de_creation": 1910,
+        "artiste": "Henri Matisse",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Hasards heureux de l'escarpolette",
+        "valeur": 70000000,
+        "date_de_creation": 1767,
+        "artiste": "Jean Honoré Fragonard",
+        "type": "tableau"
+      },
+      {
+        "nom": "Des glaneuses",
+        "valeur": 70000000,
+        "date_de_creation": 1857,
+        "artiste": "Jean-François Millet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Bonaparte franchissant le Grand-Saint-Bernard",
+        "valeur": 70000000,
+        "date_de_creation": 1801,
+        "artiste": "Jacques-Louis David",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Grande Vague de Kanagawa",
+        "valeur": 70000000,
+        "date_de_creation": "1830-1833",
+        "artiste": "Hokusai",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Joueurs de cartes",
+        "valeur": 70000000,
+        "date_de_creation": "1890-1895",
+        "artiste": "Paul Cézanne",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Naissance de Vénus",
+        "valeur": 70000000,
+        "date_de_creation": 1879,
+        "artiste": "William-Adolphe Bouguereau",
+        "type": "tableau"
+      },
+      {
+        "nom": "Un bar aux Folies Bergère",
+        "valeur": 70000000,
+        "date_de_creation": 1882,
+        "artiste": "Édouard Manet",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Dame de Shalott",
+        "valeur": 70000000,
+        "date_de_creation": 1888,
+        "artiste": "John William Waterhouse",
+        "type": "tableau"
+      },
+      {
+        "nom": "Washington traversant le Delaware",
+        "valeur": 70000000,
+        "date_de_creation": 1851,
+        "artiste": "Emanuel Leutze",
+        "type": "tableau"
+      },
+      {
+        "nom": "Portrait de Madame X",
+        "valeur": 70000000,
+        "date_de_creation": 1884,
+        "artiste": "John Singer Sargent",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Grandes Baigneuses",
+        "valeur": 70000000,
+        "date_de_creation": 1906,
+        "artiste": "Paul Cézanne",
+        "type": "tableau"
+      },
+      {
+        "nom": "Quand te maries-tu ?",
+        "valeur": 300000000,
+        "date_de_creation": 1892,
+        "artiste": "Paul Gauguin",
+        "type": "tableau"
+      },
+      {
+        "nom": "Rue de Paris, temps de pluie",
+        "valeur": 70000000,
+        "date_de_creation": 1877,
+        "artiste": "Gustav Caillebote",
+        "type": "tableau"
+      },
+      {
+        "nom": "L'Astronome",
+        "valeur": 70000000,
+        "date_de_creation": 1668,
+        "artiste": "Johannes Vermeer",
+        "type": "tableau"
+      },
+      {
+        "nom": "Les Musiciens",
+        "valeur": 70000000,
+        "date_de_creation": 1595,
+        "artiste": "Caravage",
+        "type": "tableau"
+      },
+      {
+        "nom": "L'Arbre de Vie, Stoclet Frieze",
+        "valeur": 70000000,
+        "date_de_creation": 1909,
+        "artiste": "Gustav Klimt",
+        "type": "tableau"
+      },
+      {
+        "nom": "L'Arrestation du Christ",
+        "valeur": 70000000,
+        "date_de_creation": 1602,
+        "artiste": "Caravage",
+        "type": "tableau"
+      },
+      {
+        "nom": "Parmi la Sierra Nevada",
+        "valeur": 70000000,
+        "date_de_creation": 1868,
+        "artiste": "Albert Bierstadt",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Mer de glace",
+        "valeur": 70000000,
+        "date_de_creation": "1823-1824",
+        "artiste": "Caspar David Friedrich",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Rêve",
+        "valeur": 158000000,
+        "date_de_creation": 1932,
+        "artiste": "Pablo Picasso",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Madone",
+        "valeur": 70000000,
+        "date_de_creation": "1894-1895",
+        "artiste": "Edvard Munch",
+        "type": "tableau"
+      },
+      {
+        "nom": "L'Annonciation",
+        "valeur": 70000000,
+        "date_de_creation": "1472-1475",
+        "artiste": "Léonard de Vinci",
+        "type": "tableau"
+      },
+      {
+        "nom": "Le Retour du fils prodigue",
+        "valeur": 70000000,
+        "date_de_creation": 1662,
+        "artiste": "Remmarquet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Lady Godiva",
+        "valeur": 70000000,
+        "date_de_creation": 1897,
+        "artiste": "John Collier",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Jeune Martyre",
+        "valeur": 70000000,
+        "date_de_creation": 1855,
+        "artiste": "Paul Delaroche",
+        "type": "tableau"
+      },
+      {
+        "nom": "Philosophe en méditation",
+        "valeur": 70000000,
+        "date_de_creation": 1632,
+        "artiste": "Remmarquet",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Tempête",
+        "valeur": 70000000,
+        "date_de_creation": 1880,
+        "artiste": "Pierre Auguste Cot",
+        "type": "tableau"
+      },
+      {
+        "nom": "Bashi-Bazouk",
+        "valeur": 70000000,
+        "date_de_creation": 1868,
+        "artiste": "Jean-Léon Gérôme",
+        "type": "tableau"
+      },
+      {
+        "nom": "Judith et Holopherne",
+        "valeur": 70000000,
+        "date_de_creation": 1599,
+        "artiste": "Caravage",
+        "type": "tableau"
+      },
+      {
+        "nom": "La Liseuse",
+        "valeur": 70000000,
+        "date_de_creation": 1770,
+        "artiste": "Jean-Honoré Fragonard",
+        "type": "tableau"
+      },
+      {
+        "nom": "La pie",
+        "valeur": 70000000,
+        "date_de_creation": "1868-1869",
+        "artiste": "Claude Monet",
+        "type": "tableau"
+      },
+      {
+        "nom": "Vénus à son miroir",
+        "valeur": 70000000,
+        "date_de_creation": "1647-1651",
+        "artiste": "Diego Vélasquez",
+        "type": "tableau"
+      },
+      {
+        "nom": "La danse à Bougival",
+        "valeur": 70000000,
+        "date_de_creation": 1883,
+        "artiste": "Pierre-Auguste Renoir",
+        "type": "tableau"
+      },
+      {
+        "nom": "Police",
+        "valeur": 10,
+        "date_de_creation": 2014,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Insane Clown",
+        "valeur": 10,
+        "date_de_creation": 2001,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Laugh Now",
+        "valeur": 10,
+        "date_de_creation": 2002,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Parachuting Rat",
+        "valeur": 10,
+        "date_de_creation": 2003,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Brick Lane, East End",
+        "valeur": 10,
+        "date_de_creation": 2004,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Think Tank",
+        "valeur": 10,
+        "date_de_creation": 2003,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Death",
+        "valeur": 10,
+        "date_de_creation": 2005,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom" : "Bethlehem",
+        "valeur": 10,
+        "date_de_creation": 2005,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Vandalised Phone Box",
+        "valeur": 10,
+        "date_de_creation": 2005,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Warning",
+        "valeur": 10,
+        "date_de_creation": 2006,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Warning Sign",
+        "valeur": 10,
+        "date_de_creation": 2006,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Pie Face",
+        "valeur": 10,
+        "date_de_creation": 2006,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Hitchhiker to Anywhere Archway",
+        "valeur": 10,
+        "date_de_creation": 2005,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Girl siezed by an ATM",
+        "valeur": 10,
+        "date_de_creation": 2008,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Ruined Landscape",
+        "valeur": 10,
+        "date_de_creation": 2007,
+        "artiste": "Bansky",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Keep It Spotless (Defaced Hirst)",
+        "valeur": 10,
+        "date_de_creation": 2007,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "I Can't Believe You Morons Actually Buy This Shit",
+        "valeur": 10,
+        "date_de_creation": 2007,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "It's Not A Race",
+        "valeur": 10,
+        "date_de_creation": 2008,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "No Loitering",
+        "valeur": 10,
+        "date_de_creation": 2008,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Borodyanka, Tsentralna 253",
+        "valeur": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "One nation under CCTV",
+        "valeur": 10,
+        "date_de_creation": 2008,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Hostomel, Proskurivskaa 2",
+        "valeur": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Borodyanka, Tsentralna 427",
+        "valeur": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Irprn, Hostomelske Shose 15",
+        "valeur": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Kyiv, Velyka Zhytomyrska 13",
+        "valeur": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Kyiv, Khreshchyatyk 9",
+        "valeur": 10,
+        "date_de_creation": 2022,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Girl With Balloon",
+        "valeur": 10,
+        "date_de_creation": 2002,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Red Carpet Dinner Service",
+        "valeur": 10,
+        "date_de_creation": 2014,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Flower thrower",
+        "valeur": 10,
+        "date_de_creation": 2016,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "French maid",
+        "valeur": 10,
+        "date_de_creation": 2016,
+        "artiste": "Banksy",
+        "type": "Graffiti"
+      },
+      {
+        "nom": "Stop and Search",
+        "valeur": 10,
+        "date_de_creation": 2016,
+        "artiste": "Bansky",
+        "type": "Graffiti"
+      }
+    ]
+  }
+}

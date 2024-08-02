@@ -9,6 +9,7 @@ import 'package:bit_life_like/Classes/objects/vehicle_collection.dart';
 import '../screens/work/classes/business.dart';
 import '../screens/work/classes/education.dart';
 import '../screens/work/classes/job.dart';
+import '../services/bank/FinancialService.dart';
 import '../services/bank/bank_account.dart';
 import 'objects/antique.dart';
 import 'objects/instrument.dart';
@@ -189,22 +190,23 @@ class Person {
     total += businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance());
     return total;
   }
-
   void applyForBusinessLoan(Bank bank, double amount, int termYears) {
-    double projectedRevenue = businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance()); // Estimation simplifiée
+    double projectedRevenue = businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance());
     BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
-    if (primaryAccount != null && projectedRevenue > amount * 0.8) {
-      bool approved = bank.evaluateBusinessLoan(this, amount, termYears, projectedRevenue);
-      if (approved) {
+
+    if (primaryAccount != null) {
+      FinancialService financialService = FinancialService.instance;
+      if (financialService.applyForLoan(primaryAccount, amount, termYears, projectedRevenue)) {
         primaryAccount.deposit(amount);
         print("Business loan of \$${amount} approved and deposited into account ${primaryAccount.accountNumber}");
       } else {
-        print("Business loan application denied due to insufficient projected revenue.");
+        print("Business loan application denied due to insufficient projected revenue or credit policies.");
       }
     } else {
-      print("Insufficient projected revenue or no account available for loan deposit.");
+      print("No account available for loan deposit.");
     }
   }
+
 
 
   void workJob(Job job, int hoursWorked) {

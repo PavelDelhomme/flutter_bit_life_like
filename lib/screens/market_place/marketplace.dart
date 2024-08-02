@@ -1,6 +1,6 @@
-import '../../Classes/vehicle.dart';
 import '../../Classes/objects/real_estate.dart';
 import '../../Classes/objects/jewelry.dart';
+import '../../Classes/objects/vehicle.dart';
 
 class Marketplace<T> {
   List<T> availableItems = [];

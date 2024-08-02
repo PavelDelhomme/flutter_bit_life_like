@@ -1,8 +1,35 @@
 
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+
 import '../../Classes/person.dart';
 import 'bank_account.dart';
 
 class FinancialService {
+  FinancialService._privateConstructor();
+
+  static final FinancialService _instance = FinancialService._privateConstructor();
+
+  static FinancialService get instance => _instance;
+
+
+  static List<dynamic> bankData = [];
+
+  static Future<void> loadBankData() async {
+    final String response = await rootBundle.loadString('assets/banks.json');
+    bankData = json.decode(response)['banks'];
+  }
+
+  static double getInterestRate(String bankName, String accountType) {
+    var foundBank = bankData.firstWhere((bank) => bank['name' == bankName], orElse: () => null);
+    if (foundBank != null) {
+      var foundAccount = foundBank['accounts'].firstWhere((account) => account['type'] == accountType, orElse: () => null);
+      return foundAccount != null ? foundAccount['interestRate'] : 0.0;
+    }
+    return 0.0;
+  }
+
   void handleDefault(Person person) {
     double debtAmont = person.bankAccounts.fold(0.0, (sum, account) => sum + account.totalDebt());
 
@@ -51,10 +78,30 @@ class FinancialService {
       print("Insufficient funds to buy bonds.");
     }
   }
-
-  void applyLoan(BankAccount account, double amount) {
-    account.applyLoan(amount);
-    // Logic for demande de pret terms et repayment
-    print("Pret d'un montant de ${amount} approuvé.");
+  bool applyForLoan(BankAccount account, double amount, int years, double rate) {
+    if (account.canApplyForLoan(amount, amount / (years * 12))) {
+      Loan newLoan = Loan(amount: amount, termYears: years, interestRate: rate);
+      account.loans.add(newLoan);
+      account.balance += amount;  // Assuming the loan amount is immediately available in the balance
+      print("Loan of \$${amount} approved for $years years at $rate% interest.");
+      return true;  // Indicate success
+    } else {
+      print("Loan application denied due to credit policies.");
+      return false;  // Indicate failure
+    }
   }
+
+
+
+
+  static Map<String, dynamic>? getBankAccountDetails(String bankName, String accountType) {
+    var foundBank = bankData.firstWhere((bank) => bank['name'] == bankName, orElse: () => null);
+    if (foundBank != null) {
+      var foundAccount = foundBank['accounts'].firstWhere((account) => account['type'] == accountType, orElse: () => null);
+      return foundAccount;
+    }
+    return null;
+  }
+
+
 }

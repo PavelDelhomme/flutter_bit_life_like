@@ -5,8 +5,10 @@ class Job {
   int hoursPerWeek;
   int workedSemesters = 0;
   int stressLevel = 0;
+  String companyName;
+  bool isFullTime;
 
-  Job({required this.title, required this.country, required this.salary, required this.hoursPerWeek});
+  Job({required this.title, required this.country, required this.salary, required this.hoursPerWeek, required this.companyName, required this.isFullTime});
 
   void workSemester() {
     workedSemesters += 1;

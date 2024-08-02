@@ -1,18 +1,27 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
-import '../../services/loan_service.dart';
+import '../../Classes/person.dart';
 import '../../services/real_estate/real_estate.dart';
 import '../../services/bank/transaction_service.dart';
-import '../dealers/boat_dealership_screen.dart';
-import '../dealers/car_dealership_screen.dart';
-import '../dealers/enchere_house_screen.dart';
-import '../dealers/jewelry_market_screen.dart';
-import '../dealers/real_estate_dealership_screen.dart';
-import '../dealers/seconde_main_market_screen.dart';
+import '../activities/activity/shopping/dealers/jewelry_market_screen.dart';
+import '../activities/activity/shopping/dealers/reale_estate/real_estate_dealership_screen.dart';
+import '../activities/activity/shopping/dealers/seconde_main_market_screen.dart';
+import '../activities/activity/shopping/dealers/vehicles/boat_dealership_screen.dart';
+import '../activities/activity/shopping/dealers/vehicles/car_dealership_screen.dart';
+import '../activities/activity/shopping/real_estate/enchere_house_screen.dart';
 
 class MarketplaceMenuScreen extends StatelessWidget {
+  late final Person person;
+
+
+  MarketplaceMenuScreen({required this.person}); // Add constructor to take person
+
   @override
   Widget build(BuildContext context) {
+    log("marketplace_menu_screen.dart : person : ${person}");
+    log("marketplace_menu_screen.dart : person name : ${person.name}");
     return Scaffold(
       appBar: AppBar(
         title: Text('Marketplace Menu'),
@@ -24,22 +33,19 @@ class MarketplaceMenuScreen extends StatelessWidget {
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => CarDealershipScreen()))),
+                      builder: (context) => CarDealershipScreen(person: person)))),
           ListTile(
               title: Text('Boat Dealerships'),
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BoatDealershipScreen()))),
+                      builder: (context) => BoatDealershipScreen(person: person)))),
           ListTile(
               title: Text('Real Estate Market'),
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => RealEstateMarketScreen(
-                          realEstateService: RealEstateService(),
-                          loanService: LoanService(),
-                          transactionService: TransactionService())))),
+                      builder: (context) => RealEstateMarketScreen(realEstateService: RealEstateService(), transactionService: TransactionService(), person: person)))),
           ListTile(
               title: Text('Auction House'),
               onTap: () => Navigator.push(

@@ -1,0 +1,16 @@
+{
+  "electronics": [
+    {
+      "nom": "MacBook Pro",
+      "valeur": 2500,
+      "rarete": "Commun",
+      "marque": "Apple"
+    },
+    {
+      "nom": "iPhone 13",
+      "valeur": 1000,
+      "rarete": "Commun",
+      "marque": "Apple"
+    }
+  ]
+}
