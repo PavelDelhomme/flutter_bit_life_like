@@ -65,7 +65,7 @@ class Person {
     List<Person>? partners,
     this.educationHistory = const [],
     this.currentEducation,
-    this.academicPerformance = 0,
+    this.academicPerformance = 0, required prisonTerm, required isImprisoned, required intelligence, required happiness, required karma, required appearance, required health, required age,
   })
       : bankAccounts = bankAccounts ?? [],
         partners = partners ?? [],
@@ -210,11 +210,38 @@ class Person {
   factory Person.fromJson(Map<String, dynamic> json) {
     return Person(
       name: json['name'] as String,
-      age: json['age'] as int,
       gender: json['gender'] as String,
-    )
+      country: json['country'] as String,
+      age: json['age'] ?? 0,  // Assume that age might not be provided
+      health: json['health']?.toDouble() ?? 100.0,
+      appearance: json['appearance']?.toDouble() ?? 100.0,
+      karma: json['karma']?.toDouble() ?? 100.0,
+      happiness: json['happiness']?.toDouble() ?? 100.0,
+      intelligence: json['intelligence']?.toDouble() ?? 100.0,
+      isImprisoned: json['isImprisoned'] ?? false,
+      prisonTerm: json['prisonTerm'] ?? 0,
+      bankAccounts: (json['bankAccounts'] as List<dynamic>?)
+          ?.map((e) => BankAccount.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+    );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'gender': gender,
+      'country': country,
+      'age': age,
+      'health': health,
+      'appearance': appearance,
+      'karma': karma,
+      'happiness': happiness,
+      'intelligence': intelligence,
+      'isImprisoned': isImprisoned,
+      'prisonTerm': prisonTerm,
+      'bankAccounts': bankAccounts.map((e) => e.toJson()).toList(),
+    };
+  }
 
   void workJob(Job job, int hoursWorked) {
     int regularHours = min(hoursWorked, job.hoursPerWeek);

@@ -1,10 +1,16 @@
 import 'package:bit_life_like/screens/relationship_screen.dart';
 import 'package:flutter/material.dart';
-import 'market_place/marketplace_menu_screen.dart';
-import 'capital_screen.dart';
+import '../Classes/person.dart';
 import 'activities/activities_screen.dart';
+import 'capital_screen.dart';
+import 'market_place/marketplace_menu_screen.dart';
+import 'open_account_screen.dart';  // Assurez-vous que ce chemin est correct
 
 class HomeScreen extends StatelessWidget {
+  final Person person;  // Supposons que 'person' est passé en paramètre
+
+  HomeScreen({required this.person});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +29,15 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: Text('Go to Marketplace'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OpenAccountScreen()),
+                );
+              },
+              child: Text('Open New Account'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -57,4 +72,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
