@@ -58,6 +58,7 @@ flutter:
     - assets/armes.json
     - assets/arts.json
     - assets/banks.json
+    - assets/electronics.json
     - assets/intruments.json
     - assets/jewelry.json
     - assets/jobs.json

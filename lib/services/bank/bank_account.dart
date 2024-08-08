@@ -11,7 +11,7 @@ class BankAccount {
   double interestRate; // Pour gérer les intérêts sur les comptes
   String accountType; // Checking, Savings, etc.
   double closingFee;
-  List<Loan> loans = [];
+  List<Loan> loans;
   List<String> accountHolders;
 
   BankAccount({
@@ -24,8 +24,10 @@ class BankAccount {
     this.interestRate = 0.0,
     this.accountType = "Checking",
     this.closingFee = 1000,
-    this.accountHolders = const [],
-  });
+    List<Loan>? loans,
+    List<String>? accountHolders,
+  }) : loans = loans ?? [],
+       accountHolders = accountHolders ?? [];
 
   void deposit(double amount) {
     balance += amount;
@@ -89,6 +91,43 @@ class BankAccount {
       print("Insufficient funds to close the account.");
     }
   }
+
+  factory BankAccount.fromJson(Map<String, dynamic> json) {
+    var loanList = json['loans'] as List<dynamic>? ?? [];
+    List<Loan> loans = loanList.map((loanJson) => Loan.fromJson(loanJson as Map<String, dynamic>)).toList();
+    var holdersList = json['accountHolders'] as List<dynamic>? ?? [];
+    List<String> holders = holdersList.map((holder) => holder as String).toList();
+
+    return BankAccount(
+      accountNumber: json['accountNumber'] as String,
+      bankName: json['bankName'] as String,
+      balance: (json['balance'] as num).toDouble(),
+      annualIncome: (json['annualIncome'] as num?)?.toDouble() ?? 0,
+      monthlyExpenses: (json['monthlyExpenses'] as num?)?.toDouble() ?? 0,
+      loanTermYears: json['loanTermYears'] as int? ?? 0,
+      interestRate: (json['interestRate'] as num?)?.toDouble() ?? 0.0,
+      accountType: json['accountType'] as String? ?? "Checking",
+      closingFee: (json['closingFee'] as num?)?.toDouble() ?? 1000,
+      loans: loans,
+      accountHolders: holders,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'accountNumber': accountNumber,
+      'bankName': bankName,
+      'balance': balance,
+      'annualIncome': annualIncome,
+      'monthlyExpenses': monthlyExpenses,
+      'loanTermYears': loanTermYears,
+      'interestRate': interestRate,
+      'accountType': accountType,
+      'closingFee': closingFee,
+      'loans': loans.map((loan) => loan.toJson()).toList(),
+      'accountHolders': accountHolders,
+    };
+  }
 }
 
 class Loan {
@@ -100,6 +139,22 @@ class Loan {
       {required this.amount,
       required this.termYears,
       required this.interestRate});
+
+  factory Loan.fromJson(Map<String, dynamic> json) {
+    return Loan(
+      amount: (json['amount'] as num).toDouble(),
+      termYears: json['termYears'] as int,
+      interestRate: (json['interestRate'] as num).toDouble(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'amount': amount,
+      'termYears': termYears,
+      'interestRate': interestRate,
+    };
+  }
 }
 class Bank {
   String name;

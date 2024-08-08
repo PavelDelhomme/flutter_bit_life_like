@@ -65,7 +65,7 @@ class AirplaineDealershipScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => VehicleDetailsScreen(vehicle: avion)),
+                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: avion)),
                     );
                   },
                 );

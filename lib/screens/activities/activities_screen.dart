@@ -10,7 +10,6 @@ import 'activity/legal/inheritance_screen.dart';
 import 'activity/legal/legal_action_screen.dart';
 import 'activity/love_dating_screen.dart';
 import 'activity/permits_screen.dart';
-import 'activity/shopping/shopping_screen.dart';
 import 'activity/time_machine_screen.dart';
 
 class ActivitiesScreen extends StatelessWidget {
@@ -33,7 +32,6 @@ class ActivitiesScreen extends StatelessWidget {
           _buildMenuItem(context, 'Legal Actions', LegalActionsScreen()),
           _buildMenuItem(context, 'Permits', PermitsScreen()),
           _buildMenuItem(context, 'Love and Dating', LoveDatingScreen()),
-          _buildMenuItem(context, 'Shopping', ShoppingScreen()),
         ],
       ),
     );

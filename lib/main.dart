@@ -17,7 +17,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FinancialService.loadBankData();  // Make sure bank data is loaded before the app starts
   runApp(MyApp());
-  setupDemo(); // Setup the demo after the app is running
 }
 
 class MyApp extends StatelessWidget {
@@ -39,18 +38,26 @@ class MyApp extends StatelessWidget {
 Person setupDemo() {
   // Create a person with bank accounts
   Person person = Person(
-      name: 'John Doe',
-      gender: 'Male',
-      country: 'USA',
-      bankAccounts: [
-        BankAccount(
-            accountNumber: 'ACC1001',
-            bankName: 'Bank of Simulator',
-            balance: 10000,
-            annualIncome: 50000,
-            accountType: 'Checking'
-        )
-      ]
+    name: 'John Doe',
+    gender: 'Male',
+    country: 'USA',
+    bankAccounts: [
+      BankAccount(
+          accountNumber: 'ACC1001',
+          bankName: 'Bank of Simulator',
+          balance: 10000,
+          annualIncome: 50000,
+          accountType: 'Checking'
+      )
+    ],
+    age: 30,
+    health: 100,
+    appearance: 100,
+    happiness: 100,
+    karma: 100,
+    intelligence: 100,
+    isImprisoned: false,
+    prisonTerm: 0
   );
 
   // Create services

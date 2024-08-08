@@ -10,30 +10,30 @@ class RealEstateMarketScreen extends StatelessWidget {
   final TransactionService transactionService;
   final Person person;
 
-  RealEstateMarketScreen({
-    required this.realEstateService,
-    required this.transactionService,
-    required this.person,
-  });
+  RealEstateMarketScreen({required this.realEstateService, required this.transactionService, required this.person});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Immobilier'),
-      ),
+      appBar: AppBar(title: Text("Real Estate Market")),
       body: FutureBuilder<List<RealEstate>>(
-        future: realEstateService.getAvailableRealEstate(),
+        future: realEstateService.getPropertiesByType("All"), // Exemple pour toutes les propriétés
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return Center(child: Text("Error: ${snapshot.error}"));
+            }
+            if (snapshot.data == null || snapshot.data!.isEmpty) {
+              return Center(child: Text("No properties found."));
+            }
             return ListView.builder(
-              itemCount: snapshot.data?.length ?? 0,
+              itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                RealEstate realEstate = snapshot.data![index];
+                RealEstate estate = snapshot.data![index];
                 return ListTile(
-                  title: Text(realEstate.name),
-                  subtitle: Text("\$${realEstate.value.toStringAsFixed(2)}"),
-                  onTap: () => _buyRealEstate(context, realEstate),
+                  title: Text(estate.name),
+                  subtitle: Text('Price: \$${estate.value.toStringAsFixed(2)}'),
+                  onTap: () => _buyRealEstate(context, estate),
                 );
               },
             );
@@ -62,30 +62,10 @@ class RealEstateMarketScreen extends StatelessWidget {
     );
 
     if (account.accountNumber == "00000000") {
-      _showErrorDialog(context);
+      _showErrorDialog(context, "No valid checking account available.");
     } else {
       _showPurchaseDialog(context, realEstate, account);
     }
-  }
-
-  void _showErrorDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Error"),
-          content: Text("No checking account available."),
-          actions: <Widget>[
-            TextButton(
-              child: Text("OK"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 
   void _showPurchaseDialog(BuildContext context, RealEstate realEstate, BankAccount account) {
@@ -100,24 +80,14 @@ class RealEstateMarketScreen extends StatelessWidget {
               child: Text("Pay Cash"),
               onPressed: () {
                 Navigator.of(context).pop();
-                transactionService.purchaseItem(
-                  account,
-                  realEstate.value,
-                      () => print("Purchase successful!"),
-                      () => print("Failed to purchase."),
-                );
+                _attemptPurchase(account, realEstate.value, context);
               },
             ),
             TextButton(
               child: Text("Apply for Loan"),
               onPressed: () {
                 Navigator.of(context).pop();
-                if (account.canApplyForLoan(realEstate.value, realEstate.value / (account.loanTermYears * 12))) {
-                  account.applyForLoan(realEstate.value, account.loanTermYears, account.interestRate);
-                  _showSuccessDialog(context, realEstate);
-                } else {
-                  print("Loan application denied.");
-                }
+                _attemptLoan(account, realEstate, context);
               },
             ),
           ],
@@ -126,19 +96,60 @@ class RealEstateMarketScreen extends StatelessWidget {
     );
   }
 
-  void _showSuccessDialog(BuildContext context, RealEstate realEstate) {
+  void _attemptPurchase(BankAccount account, double price, BuildContext context) {
+    transactionService.purchaseItem(
+        account,
+        price,
+            () {
+          print("Purchase successful!");
+          _showSuccessDialog(context);
+        },
+            () {
+          print("Failed to purchase.");
+          _showErrorDialog(context, "Failed to purchase due to insufficient funds.");
+        }
+    );
+  }
+
+  void _attemptLoan(BankAccount account, RealEstate realEstate, BuildContext context) {
+    if (account.canApplyForLoan(realEstate.value, realEstate.value / (account.loanTermYears * 12))) {
+      account.applyForLoan(realEstate.value, account.loanTermYears, account.interestRate);
+      _showSuccessDialog(context);
+    } else {
+      print("Loan application denied.");
+      _showErrorDialog(context, "Loan application denied due to insufficient income or credit score.");
+    }
+  }
+
+  void _showSuccessDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Purchase Successful"),
-          content: Text("Congratulations! You have successfully purchased ${realEstate.name}."),
+          content: Text("Congratulations! You have successfully purchased the property."),
           actions: <Widget>[
             TextButton(
               child: Text("OK"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () => Navigator.of(context).pop(),
             ),
           ],
         );

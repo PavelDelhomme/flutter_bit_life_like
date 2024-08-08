@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:bit_life_like/screens/activities/activity/shopping/dealers/electronic_dealership_screen.dart';
 import 'package:bit_life_like/screens/activities/activity/shopping/dealers/reale_estate/real_estate_classic_screen.dart';
 import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/airplaine_dealership.dart';
 import 'package:flutter/material.dart';
@@ -109,6 +110,13 @@ class MarketplaceMenuScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => JewelryMarketScreen()))),
+          ListTile(
+              title: Text('Electronics'),
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                      builder: (context) => ElectronicDealershipScreen(person: person))),
+          )
         ],
       ),
     );

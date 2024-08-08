@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:bit_life_like/Classes/objects/arme.dart';
 import 'package:bit_life_like/Classes/objects/collectible_item.dart';
+import 'package:bit_life_like/Classes/objects/electronic.dart';
 import 'package:bit_life_like/Classes/objects/real_estate.dart';
 import 'package:bit_life_like/Classes/objects/jewelry.dart';
 import 'package:bit_life_like/Classes/objects/vehicle.dart';
@@ -19,11 +20,11 @@ class Person {
   String gender;
   String country;
   int age = 0;
-  double health = 100.0;
-  double appearance = 100.0;
-  double karma = 100.0;
-  double happiness = 100.0;
-  double intelligence = 100.0;
+  double health = 100;
+  double appearance = 100;
+  double karma = 100;
+  double happiness = 100;
+  double intelligence = 100;
   bool isImprisoned = false;
   int prisonTerm = 0;
 
@@ -52,6 +53,7 @@ class Person {
   List<Antique> antiques = [];
   List<RealEstate> realEstates = [];
   List<Instrument> instruments = [];
+  List<Electronic> electronics = [];
 
   List<Vehicle> vehicles = [];
   List<VehiculeExotique> vehiculeExotiques = [];
@@ -65,7 +67,22 @@ class Person {
     List<Person>? partners,
     this.educationHistory = const [],
     this.currentEducation,
-    this.academicPerformance = 0, required prisonTerm, required isImprisoned, required intelligence, required happiness, required karma, required appearance, required health, required age,
+    this.academicPerformance = 0,
+    required prisonTerm,
+    required isImprisoned,
+    required intelligence,
+    required happiness,
+    required karma,
+    required appearance,
+    required health,
+    required age,
+    List<Arme>? armes,
+    List<Jewelry>? jewelrys,
+    List<Antique>? antiques,
+    List<RealEstate>? real_estates,
+    List<Electronic>? electronics,
+    List<Vehicle>? vehicles,
+    List<VehiculeExotique>? vehicules_exotique
   })
       : bankAccounts = bankAccounts ?? [],
         partners = partners ?? [],
@@ -253,5 +270,9 @@ class Person {
   }
 
 
+  void addElectronic(Electronic electronic) {
+    electronics.add(electronic);
+    print("Electronic added: ${electronic.model}");
+  }
 
 }

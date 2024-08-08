@@ -16,9 +16,10 @@ class FinancialService {
 
   static List<dynamic> bankData = [];
 
-  static Future<void> loadBankData() async {
+  static Future<List<dynamic>> loadBankData() async {
     final String response = await rootBundle.loadString('assets/banks.json');
     bankData = json.decode(response)['banks'];
+    return bankData;
   }
 
   static double getInterestRate(String bankName, String accountType) {

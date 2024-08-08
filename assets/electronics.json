@@ -1,0 +1,28 @@
+{
+  "electronics": [
+    {
+      "id": "1",
+      "type": "smartphone",
+      "brand": "XBrand",
+      "model": "ModelX1",
+      "price": 999.99,
+      "supportsApplications": true
+    },
+    {
+      "id": "2",
+      "type": "laptop",
+      "brand": "YBrand",
+      "model": "ModelY1",
+      "price": 1599.99,
+      "supportsApplications": true
+    },
+    {
+      "id": "3",
+      "type": "server",
+      "brand": "ZBrand",
+      "model": "ModelZ1",
+      "price": 4999.99,
+      "supportsApplications": false
+    }
+  ]
+}

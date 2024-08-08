@@ -23,7 +23,7 @@ class RealEstateExoticScreen extends StatelessWidget {
         title: Text('Exotic Real Estate Market'),
       ),
       body: FutureBuilder<List<RealEstate>>(
-        future: realEstateService.getAvailableExoticRealEstate(),
+        future: realEstateService.getPropertiesByType("Exotic"),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {

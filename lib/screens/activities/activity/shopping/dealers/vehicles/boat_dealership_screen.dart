@@ -61,7 +61,7 @@ class BoatDealershipScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => VehicleDetailsScreen(vehicle: boat)),
+                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: boat)),
                     );
                   },
                 );

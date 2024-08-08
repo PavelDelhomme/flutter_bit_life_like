@@ -23,7 +23,7 @@ class RealEstateClassicScreen extends StatelessWidget {
         title: Text('Classic Real Estate Market'),
       ),
       body: FutureBuilder<List<RealEstate>>(
-        future: realEstateService.getAvailableRealEstate(),
+        future: realEstateService.getPropertiesByType("Classic"),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {

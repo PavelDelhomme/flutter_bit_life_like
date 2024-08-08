@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../Classes/objects/vehicle.dart';
 
-class VehicleDetailsScreen extends StatelessWidget {
+class VehicleDealerDetailsScreen extends StatelessWidget {
   final Vehicle vehicle;
 
-  VehicleDetailsScreen({required this.vehicle});
+  VehicleDealerDetailsScreen({required this.vehicle});
 
   void _purchaseVehicle(BuildContext context) {
     // Afficher un dialogue de confirmation d'achat

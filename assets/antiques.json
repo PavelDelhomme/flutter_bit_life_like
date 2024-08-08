@@ -3,62 +3,68 @@
     {
       "nom": "Ming Vase",
       "valeur": 150000,
-      "rarete": "Rare",
-      "age": 500
+      "age": 500,
+      "artiste": ""
     },
     {
       "nom": "Buste d'Akhenaton",
       "age": 672,
-      "rarete": "Unique",
-      "valeur": ""
+      "valeur": "",
+      "artiste": ""
     },
     {
       "nom": "Amulette",
       "age": 2356,
-      "rarete": "Unique",
-      "valeur": ""
+      "valeur": "",
+      "artiste": ""
     },
     {
       "nom": "pyramidion",
       "age": 3351,
-      "rarete": "Unique",
-      "valeur": ""
+      "valeur": "",
+      "artiste": ""
     },
     {
       "nom": "Relief mural",
       "age": 2383,
-      "rarete": "Unique",
-      "valeur": ""
+      "valeur": "",
+      "artiste": ""
     },
     {
       "nom": "Babouins de Louxor",
       "age" : 3303,
-      "valeur": ""
+      "valeur": "",
+      "artiste": ""
     },
     {
       "nom": "Colonne papyriforme",
       "age": 2688,
-      "valeur": ""
+      "valeur": "",
+      "artiste": ""
     },
     {
       "nom": "Pilier Osiriaque",
       "age": 3808,
-      "valeur": ""
+      "valeur": "",
+      "artiste": ""
     },
     {
       "nom": "Porte des Grands Souterrains du Sérapéum de Memphis",
       "age": 2204,
-      "valeur": "Inestimable"
+      "valeur": "Inestimable",
+      "artiste": ""
     },
     {
       "nom": "Architrave de Sobekemsaf",
       "age": 3629,
-      "valeur": ""
+      "valeur": "",
+      "artiste": "Inconnu"
     },
     {
       "nom": "Relief mural ; bloc de paroi",
       "age": 4006,
-      "valeur": ""
+      "valeur": "",
+      "artiste": "Inconnu"
     },
 
 
@@ -75,7 +81,8 @@
       "nom": "Code de Hammurabi",
       "age": 3774,
       "dates": "-1792;-1750",
-      "valeur": 9000000000
+      "valeur": 9000000000,
+      "artiste": "Inconnu"
     },
     {
       "nom": "La Joconde",
@@ -1572,482 +1579,481 @@
       "nom": "Le Coeur de Davy Jones",
       "age": 0,
       "dates": "0",
-      "artiste": "Inconnu",
       "valeur": 1800000000
     },
     {
       "nom": "Ancient Greek Amphora",
-      "valeur": 100000,
       "rarete": "Rare",
-      "age": 2500
+      "age": 2500,
+      "valeur": 100000
     },
     {
       "nom": "Roman Bust",
-      "valeur": 120000,
       "rarete": "Uncommon",
-      "age": 2000
+      "age": 2000,
+      "valeur": 120000
     },
     {
       "nom": "Egyptian Sarcophagus",
-      "valeur": 300000,
       "rarete": "Legendary",
-      "age": 3500
+      "age": 3500,
+      "valeur": 300000
     },
     {
       "nom": "Medieval Knight Armor",
-      "valeur": 50000,
       "rarete": "Commun",
-      "age": 600
+      "age": 600,
+      "valeur": 50000
     },
     {
       "nom": "Renaissance Tapestry",
-      "valeur": 200000,
       "rarete": "Rare",
-      "age": 500
+      "age": 500,
+      "valeur": 200000
     },
     {
       "nom": "Chinese Porcelain",
-      "valeur": 90000,
       "rarete": "Uncommon",
-      "age": 400
+      "age": 400,
+      "valeur": 90000
     },
     {
       "nom": "Viking Shield",
-      "valeur": 110000,
       "rarete": "Rare",
-      "age": 1200
+      "age": 1200,
+      "valeur": 110000
     },
     {
       "nom": "Ming Dynasty Plate",
-      "valeur": 150000,
       "rarete": "Rare",
-      "age": 600
+      "age": 600,
+      "valeur": 150000
     },
     {
       "nom": "Aztec Calendar Stone",
-      "valeur": 250000,
       "rarete": "Legendary",
-      "age": 800
+      "age": 800,
+      "valeur": 250000
     },
     {
       "nom": "Etruscan Bronze Mirror",
-      "valeur": 130000,
       "rarete": "Uncommon",
-      "age": 2300
+      "age": 2300,
+      "valeur": 130000
     },
     {
       "nom": "Napoleonic Sword",
-      "valeur": 85000,
       "rarete": "Commun",
-      "age": 200
+      "age": 200,
+      "valeur": 85000
     },
     {
       "nom": "Byzantine Icon",
-      "valeur": 90000,
       "rarete": "Rare",
-      "age": 1500
+      "age": 1500,
+      "valeur": 90000
     },
     {
       "nom": "Persian Rug",
-      "valeur": 100000,
       "rarete": "Uncommon",
-      "age": 400
+      "age": 400,
+      "valeur": 100000
     },
     {
       "nom": "Renaissance Clock",
-      "valeur": 175000,
       "rarete": "Rare",
-      "age": 500
+      "age": 500,
+      "valeur": 175000
     },
     {
       "nom": "Globe Terrestre sur pied",
-      "valeur": 950,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 950
     },
     {
       "nom": "Pendentif Porte Souvenir en Or 750/1000 Eme",
-      "valeur": 750,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 750
     },
     {
       "nom": "Petite Lampe Bouillote à deux feux",
-      "valeur": 320,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 320
     },
     {
       "nom": "Saint Jean Au Calvaire en bois",
-      "valeur": 18000,
       "rarete": "Rare",
-      "epoque": "16eme siecle"
+      "epoque": "16eme siecle",
+      "valeur": 18000
     },
     {
       "nom": "Ancien Pendentif Style Art Deco En Or, Diamants Et Email",
-      "valeur": 1800,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 1800
     },
     {
       "nom": "Commode d'époque Lous XVI",
-      "valeur": 5300,
       "rarete": "Commun",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 5300
     },
     {
       "nom": "Bracelet Napoléon III Perles et Diamant",
-      "valeur": 2650,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 2650
     },
     {
       "nom": "Collier en Cristal Facettes, Fermoir Argent 925/1000 Eme",
-      "valeur": 100,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 100
     },
     {
       "nom": "Table à cartess - HV940",
-      "valeur": 550,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 550
     },
     {
       "nom": "Chist de cricifix en bois de buis sculpté époque XVIIIe",
-      "valeur": 650,
       "rarete": "Commun",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 650
     },
     {
       "nom": "Broche style art deco en or, platine, aigues marine et diamant",
-      "valeur": 1200,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 1200
     },
     {
       "nom": "Petite armoire en chène",
-      "valeur": 750,
       "rarete": "Commun",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 750
     },
     {
       "nom": "Vase \"Hortensia\" - Emile GALLE",
-      "valeur": 4200,
       "rarete": "Unique",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 4200
     },
     {
       "nom": "Grand Lustre Fleurs En Ferronnerie Peinte",
-      "valeur": 450,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 450
     },
     {
       "nom": "Paire de lanternes en cuivre",
-      "valeur": 2200,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 2200
     },
     {
       "nom": "Vase Art Deco Longwy",
-      "valeur": 320,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 320
     },
     {
       "nom": "Tapis style Louis XVI",
-      "valeur": 1200,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 1200
     },
     {
       "nom": "Planche en bois et métal boeuf",
-      "valeur": 90,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 90
     },
     {
       "nom": "Grande assiete en porcelaine",
-      "valeur": 1600,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 1600
     },
     {
       "nom": "Plateau en Noyer avec incrustation",
-      "valeur": 300,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 300
     },
     {
       "nom": "Table Chiffonnière d'époque Louis XV",
-      "valeur": 2650,
       "rarete": "Commun",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 2650
     },
     {
       "nom": "Miniature Voilier Modèle Argent 'revenge 1577'",
-      "valeur": 4500,
       "rarete": "Rare",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 4500
     },
     {
       "nom": "Bibliotheque Edition Rud Rasmusseen Mogens Koch",
-      "valeur": 8550,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 8550
     },
     {
       "nom": "Paravent chinois peint avec des personnage",
-      "valeur": 1950,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 1950
     },
     {
       "nom": "Pair de vases en opaline Charles X",
-      "valeur": 450,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 450
     },
     {
       "nom": "Lustre sac de perles, XIXeme",
-      "valeur": 1480,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 1480
     },
     {
       "nom": "Timbale en argent pied douche XVIIIeme",
-      "valeur": 500,
       "rarete": "Commun",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 500
     },
     {
       "nom": "Plat en argent massif XVIIIeme",
-      "valeur": 1000,
       "rarete": "Commun",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 1000
     },
     {
       "nom": "Petit stylo à plume à plume or 18k",
-      "valeur": 120,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 120
     },
     {
       "nom": "Briquet Dupont Plaqué Argent",
-      "valeur": 120,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 120
     },
     {
       "nom": "Grand oeuf en cistal double de couleur bleu",
-      "valeur": 700,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 700
     },
     {
       "nom": "Canon d'Autel",
-      "valeur": 280,
       "rarete": "Rare",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 280
     },
     {
       "nom": "Coupe-paier Bronze XIX",
-      "valeur": 100,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 100
     },
     {
       "nom": "Bronze de Napoléon du 19eme",
-      "valeur": 990,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 990
     },
     {
       "nom": "Pendule Napoléon III Bronze doré",
-      "valeur": 4900,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 4900
     },
     {
-      "nom": "Table bureau en frêne et acacia epoque Lous XV",
-      "valeur": 3200,
+      "nom": "Table bureau en frêne et acacia epoque Louis XV",
       "rarete": "Commun",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 3200
     },
     {
       "nom": "Bracelet epoque Romaine 100 a.v. J.-C.",
-      "valeur": 190,
       "rarete": "Commun",
-      "epoque": "Antiquite"
+      "epoque": "Antiquite",
+      "valeur": 190
     },
     {
       "nom": "Buste de Galilé",
-      "valeur": 2000,
       "rarete": "Rare",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 2000
     },
     {
       "nom": "Paire de chien chinois en Bronze",
-      "valeur": 2500,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 2500
     },
     {
       "nom": "Chocolatiere en argnet massif",
-      "valeur": 700,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 700
     },
     {
       "nom": "Table d'Appoint style Art Déco Moderniste",
-      "valeur": 1000,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 1000
     },
     {
       "nom": "Plateau de coiffeuse",
-      "valeur": 140,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 140
     },
     {
       "nom": "Lustre de style Louis XVI",
-      "valeur": 3800,
       "rarete": "Rare",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 3800
     },
     {
       "nom": "Pendule début du XIXe Gaston Jolly",
-      "valeur": 580,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 580
     },
     {
       "nom": "Lampadaire vintage anne 70/80",
-      "valeur": 250,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 250
     },
     {
       "nom": "Ornement Bois Doré Agnes",
-      "valeur": 1370,
       "rarete": "Rare",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 1370
     },
     {
       "nom": "Paire de Fauteuils Art Déco",
-      "valeur": 3200,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 3200
     },
     {
       "nom": "Grand coffre en noyer",
-      "valeur": 5200,
       "rarete": "Rare",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "valeur": 5200
     },
     {
       "nom": "Table basse modele unique Roger Capron",
-      "valeur": 1300,
       "rarete": "Unique",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 1300
     },
     {
       "nom": "Tabatière Russe en Argent par Alexander Sergueev",
-      "valeur": 4500,
       "rarete": "Unique",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 4500
     },
     {
       "nom": "Pendule début XIX Gaston Jolly",
-      "valeur": 580,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 580
     },
     {
       "nom": "Pendule Borne, d'époque Empire",
-      "valeur": 800,
       "rarete": "Commun",
-      "epoque": "19emme siecle"
+      "epoque": "19emme siecle",
+      "valeur": 800
     },
     {
       "nom": "Chaises de style Louis XVI",
-      "valuer": 150,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 150
     },
     {
       "nom": "Sculture Lion Assis - Antoine-Louis Barye",
-      "valeur": 1700,
       "rarete": "Rare",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 1700
     },
     {
       "nom": "Buste représentant Socrate",
-      "valeur": 2500,
       "rarete": "Rare",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 2500
     },
     {
       "nom": "Table basse en laiton par Guy Lefèvre",
-      "valeur": 1350,
       "rarete": "Common",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 1350
     },
     {
       "nom": "Okimono en ivoire - Samourai archer époque Meiji",
-      "valeur": 1800,
       "rarete": "Rare",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 1800
     },
     {
       "nom": "Grand vase à fleur en porcelaine",
-      "valeur": 550,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 550
     },
     {
       "nom": "Grande poire à poudre. Empire Ottoman",
-      "valeur": 270,
       "rarete": "Rare",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 270
     },
     {
       "nom": "Sculpture en bronze Gaulois mourrant, Nu à l'Antique",
-      "valeur": 2500,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 2500
     },
     {
       "nom": "Grand Bouddha en bronze, Birmanie",
-      "valeur": 3500,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 3500
     },
     {
       "nom": "Tabouret en polexiglass et métal doré",
-      "valeur": 1250,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 1250
     },
     {
       "nom": "Service en porcelaine",
-      "valeur": 900,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "valeur": 900
     },
     {
       "nom": "Colonne Chêne massif type art déco",
-      "valeur": 650,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 650
     },
     {
       "nom": "Malle Louis Vitton Ancienne",
-      "valeur": 2500,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "valeur": 2500
     }
   ]
 }

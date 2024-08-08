@@ -1043,7 +1043,9 @@
         "date_de_creation": 1883,
         "artiste": "Pierre-Auguste Renoir",
         "type": "tableau"
-      },
+      }
+    ],
+    "graffiti": [
       {
         "nom": "Police",
         "valeur": 10,
