@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../Classes/objects/real_estate.dart';
 import '../../../Classes/person.dart';
+import '../../../services/bank/transaction_service.dart';
 import '../../../services/real_estate/real_estate.dart';
 import '../../../services/bank/bank_account.dart';
 import '../banks/loan_application_screen.dart';
@@ -9,8 +10,9 @@ class SomeRealEstateDetailsScreen extends StatelessWidget {
   final RealEstate estate;
   final RealEstateService realEstateService;
   final Person person;
+  final TransactionService transactionService;
 
-  SomeRealEstateDetailsScreen({required this.estate, required this.realEstateService, required this.person});
+  SomeRealEstateDetailsScreen({required this.estate, required this.realEstateService, required this.person, required this.transactionService});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,47 @@ class SomeRealEstateDetailsScreen extends StatelessWidget {
   }
 
   void _attemptPurchase(BuildContext context, RealEstate estate) {
-    // Implementation needed: select account and then try purchase
+    BankAccount account = person.bankAccounts.first;
+    transactionService.attemptPurchase(
+      account,
+      estate.value,
+      onSuccess: () {
+        Navigator.pop(context);
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Purchase Successful"),
+              content: Text("You have successfully purchased ${estate.name}."),
+              actions: <Widget>[
+                TextButton(
+                  child: Text("Ok"),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            );
+          },
+        );
+      },
+      onFailure: (String message) {
+        Navigator.pop(context);
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Purchase Failed"),
+              content: Text(message),
+              actions: <Widget>[
+                TextButton(
+                  child: Text("OK"),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    );
   }
 
   void _applyForLoan(BuildContext context, RealEstate estate) {

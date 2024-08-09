@@ -18,7 +18,7 @@ class ElectronicsScreen extends StatelessWidget {
           Electronic electronic = electronics[index];
           return ListTile(
             title: Text('${electronic.brand} ${electronic.model}'),
-            subtitle: Text('\$${electronic.price}'),
+            subtitle: Text('\$${electronic.value}'),
             onTap: () {
               Navigator.push(
                 context,

@@ -1,12 +1,16 @@
-abstract class Vehicle {
+import 'package:bit_life_like/services/bank/bank_account.dart';
+
+abstract class Vehicle implements Purchasable {
   String name;
   int age;
-  double value;
   String type;
   String rarity;
   String? brand;
   double fuelConsumption;
   double monthlyFuelCost;
+
+  @override
+  final double value;
 
   Vehicle({
     required this.name,

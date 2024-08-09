@@ -8,11 +8,13 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../../../../../../Classes/objects/vehicle.dart';
+import '../../../../../../services/bank/transaction_service.dart';
 
 class AirplaineDealershipScreen extends StatelessWidget {
   final Person person;
+  final TransactionService transactionService;
 
-  AirplaineDealershipScreen({required this.person});
+  AirplaineDealershipScreen({required this.person, required this.transactionService});
 
   Future<List<Vehicle>> loadAirplanes() async {
     try {
@@ -65,7 +67,7 @@ class AirplaineDealershipScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: avion)),
+                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: avion, person: person, transactionService: transactionService)),
                     );
                   },
                 );

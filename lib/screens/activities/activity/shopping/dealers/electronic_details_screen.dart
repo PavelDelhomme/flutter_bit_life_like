@@ -24,7 +24,7 @@ class ElectronicsDetailsScreen extends StatelessWidget {
             SizedBox(height: 10),
             Text("Model: ${electronic.model}", style: TextStyle(fontSize: 16)),
             SizedBox(height: 10),
-            Text("Price: \$${electronic.price.toStringAsFixed(2)}", style: TextStyle(fontSize: 16, color: Colors.green)),
+            Text("Price: \$${electronic.value.toStringAsFixed(2)}", style: TextStyle(fontSize: 16, color: Colors.green)),
             SizedBox(height: 20),
             if (electronic.supportsApplications)
               Text("Supports Applications: Yes", style: TextStyle(fontSize: 16, color: Colors.green)),

@@ -1,12 +1,19 @@
 import 'dart:convert';
 
+import 'package:bit_life_like/services/bank/transaction_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../../../Classes/objects/vehicle.dart';
+import '../../../../../../Classes/person.dart';
 import 'vehicle_details_screen.dart';
 
 class MotoDealershipScreen extends StatelessWidget {
+  final Person person;
+  final TransactionService transactionService;
+
+  MotoDealershipScreen({required this.person, required this.transactionService});
+
   Future<List<Moto>> loadMotos() async {
     String jsonString = await rootBundle.loadString('lib/files/vehicles.json');
     Map<String, dynamic> jsonResponse = json.decode(jsonString);
@@ -37,7 +44,7 @@ class MotoDealershipScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: moto)),
+                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: moto, person: person, transactionService: transactionService)),
                     );
                   },
                 );

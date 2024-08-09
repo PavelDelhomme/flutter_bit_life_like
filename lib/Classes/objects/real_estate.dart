@@ -1,9 +1,9 @@
 import 'package:bit_life_like/Classes/person.dart';
+import 'package:bit_life_like/services/bank/bank_account.dart';
 
-class RealEstate {
+class RealEstate implements Purchasable {
   String name;
   int age;
-  double value;
   String type;
   String condition; // e.g, 'New', 'Good', 'Needs Renovation' // devrai être iun pourcentage car il y aur un pourcentage de dégradation annuel pour chaque type de bien d'ailleurs
   double monthlyMaintenanceCost;
@@ -11,6 +11,9 @@ class RealEstate {
   String style;
   Person? locataire;
   bool isExotic;
+
+  @override
+  final double value;
 
   RealEstate({
     required this.name,

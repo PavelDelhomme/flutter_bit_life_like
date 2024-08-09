@@ -1,9 +1,11 @@
-class Electronic {
+import '../../services/bank/bank_account.dart';
+
+class Electronic implements Purchasable {
   String id;
   String type; // Par exemple : smartphone, laptop, server,...
   String brand;
   String model;
-  double price;
+  double value;
   bool supportsApplications; // Indique si l'appareil peut exécuter des applications
 
   Electronic({
@@ -11,7 +13,7 @@ class Electronic {
     required this.type,
     required this.brand,
     required this.model,
-    required this.price,
+    required this.value,
     this.supportsApplications = false,
   });
 
@@ -21,7 +23,7 @@ class Electronic {
       type: json['type'],
       brand: json['brand'],
       model: json['model'],
-      price: json['price'],
+      value: json['value'],
       supportsApplications: json['supportsApplications'] ?? false,
     );
   }
@@ -32,7 +34,7 @@ class Electronic {
       'type': type,
       'brand': brand,
       'model': model,
-      'price': price,
+      'value': value,
       'supportsApplications': supportsApplications,
     };
   }

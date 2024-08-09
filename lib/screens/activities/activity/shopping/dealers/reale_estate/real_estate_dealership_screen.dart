@@ -17,7 +17,7 @@ class RealEstateMarketScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Real Estate Market")),
       body: FutureBuilder<List<RealEstate>>(
-        future: realEstateService.getAllPropertiesWithoutTypeAndStyle(), // Exemple pour toutes les propriétés
+        future: realEstateService.getAllPropertiesWithoutTypeAndStyle(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
@@ -57,9 +57,7 @@ class RealEstateMarketScreen extends StatelessWidget {
             interestRate: 0.0,
             accountType: "Default",
             closingFee: 0.0,
-            accountHolders: []
-        )
-    );
+            accountHolders: []));
 
     if (account.accountNumber == "00000000") {
       _showErrorDialog(context, "No valid checking account available.");
@@ -80,7 +78,7 @@ class RealEstateMarketScreen extends StatelessWidget {
               child: Text("Pay Cash"),
               onPressed: () {
                 Navigator.of(context).pop();
-                _attemptPurchase(account, realEstate.value, context);
+                _attemptPurchase(account, realEstate, context);
               },
             ),
             TextButton(
@@ -96,29 +94,37 @@ class RealEstateMarketScreen extends StatelessWidget {
     );
   }
 
-  void _attemptPurchase(BankAccount account, double price, BuildContext context) {
-    transactionService.purchaseItem(
-        account,
-        price,
-            () {
-          print("Purchase successful!");
-          _showSuccessDialog(context);
-        },
-            () {
-          print("Failed to purchase.");
-          _showErrorDialog(context, "Failed to purchase due to insufficient funds.");
-        }
+  void _attemptPurchase(BankAccount account, RealEstate realEstate, BuildContext context) {
+    transactionService.attemptPurchase(
+      account,
+      realEstate,
+      onSuccess: () {
+        print("Purchase successful!");
+        _showSuccessDialog(context);
+      },
+      onFailure: (String message) {
+        print("Failed to purchase.");
+        _showErrorDialog(context, message);
+      },
     );
   }
 
   void _attemptLoan(BankAccount account, RealEstate realEstate, BuildContext context) {
-    if (account.canApplyForLoan(realEstate.value, realEstate.value / (account.loanTermYears * 12))) {
-      account.applyForLoan(realEstate.value, account.loanTermYears, account.interestRate);
-      _showSuccessDialog(context);
-    } else {
-      print("Loan application denied.");
-      _showErrorDialog(context, "Loan application denied due to insufficient income or credit score.");
-    }
+    transactionService.attemptPurchase(
+      account,
+      realEstate,
+      useLoan: true,
+      loanTerm: 30, // Example loan term
+      loanInterestRate: 5.0, // Example interest rate
+      onSuccess: () {
+        print("Loan approved and purchase successful!");
+        _showSuccessDialog(context);
+      },
+      onFailure: (String message) {
+        print("Loan application denied.");
+        _showErrorDialog(context, message);
+      },
+    );
   }
 
   void _showSuccessDialog(BuildContext context) {

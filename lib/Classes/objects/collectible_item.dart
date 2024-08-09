@@ -1,8 +1,12 @@
-abstract class CollectibleItem {
+import 'package:bit_life_like/services/bank/bank_account.dart';
+
+abstract class CollectibleItem implements Purchasable {
   late String name;
-  late double value;
   late String rarity;
   late String epoch;
+
+  @override
+  final double value;
 
   CollectibleItem({
     required this.name,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/vehicle_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -5,11 +7,13 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import '../../../../../../Classes/objects/vehicle.dart';
 import '../../../../../../Classes/person.dart';
+import '../../../../../../services/bank/transaction_service.dart';
 
 class CarDealershipScreen extends StatelessWidget {
   final Person person;
+  final TransactionService transactionService;
 
-  CarDealershipScreen({required this.person});
+  CarDealershipScreen({required this.person, required this.transactionService});
 
   Future<List<Vehicle>> loadCars() async {
     try {
@@ -30,6 +34,7 @@ class CarDealershipScreen extends StatelessWidget {
 
       return vehicles;
     } catch (e) {
+      log("Failed to load vehicle in AirplaineDealerShipScreen: $e");
       throw Exception('Failed to load vehicles: $e');
     }
   }
@@ -60,7 +65,7 @@ class CarDealershipScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: vehicle)),
+                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: vehicle, person: person, transactionService: transactionService)),
                     );
                   },
                 );

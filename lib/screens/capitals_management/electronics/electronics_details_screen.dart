@@ -19,7 +19,7 @@ class ElectronicsDetailsScreen extends StatelessWidget {
             Text("Type: ${electronic.type}", style: TextStyle(fontSize: 18)),
             Text("Brand: ${electronic.brand}", style: TextStyle(fontSize: 16)),
             Text("Model: ${electronic.model}", style: TextStyle(fontSize: 16)),
-            Text("Price: \$${electronic.price.toStringAsFixed(2)}", style: TextStyle(fontSize: 16)),
+            Text("Price: \$${electronic.value.toStringAsFixed(2)}", style: TextStyle(fontSize: 16)),
             if (electronic.supportsApplications) ...[
               Text("Supports Applications", style: TextStyle(fontSize: 16, color: Colors.green)),
             ],

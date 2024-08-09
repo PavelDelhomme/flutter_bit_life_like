@@ -6,20 +6,20 @@ import '../../../Classes/objects/real_estate.dart';
 
 class LoanApplicationScreen extends StatefulWidget {
   final BankAccount account;
-  final RealEstate? realEstate;  // Rendre RealEstate optionnel
-  final String? loanDescription;  // Description du prêt pour d'autres usages
+  final RealEstate? realEstate; // Rendre RealEstate optionnel
+  final String? loanDescription; // Description du prêt pour d'autres usages
 
-  LoanApplicationScreen({required this.account, this.realEstate, this.loanDescription});
+  LoanApplicationScreen(
+      {required this.account, this.realEstate, this.loanDescription});
 
   @override
   _LoanApplicationScreenState createState() => _LoanApplicationScreenState();
 }
 
-
 class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
   final _formKey = GlobalKey<FormState>();
   double _loanAmount = 0.0;
-  int _loanTerm = 1;  // En années
+  int _loanTerm = 1; // En années
 
   @override
   Widget build(BuildContext context) {
@@ -90,17 +90,18 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
       widget.account,
       _loanAmount,
       _loanTerm,
-      FinancialService.getInterestRate(widget.account.bankName, widget.account.accountType),
+      FinancialService.getInterestRate(
+          widget.account.bankName, widget.account.accountType),
     );
 
-    final snackBar = SnackBar(
-      content: Text(approved ? 'Loan approved!' : 'Loan denied due to credit policies.'),
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(
+          approved ? 'Loan approved!' : 'Loan denied due to credit policies.'),
       backgroundColor: approved ? Colors.green : Colors.red,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    ));
 
     if (approved) {
-      Navigator.pop(context); // Retour à l'écran précédent si approuvé.
+      Navigator.pop(context); // Return to the previous screen if approved.
     }
   }
 }

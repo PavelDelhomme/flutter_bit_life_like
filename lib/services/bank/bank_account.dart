@@ -199,3 +199,7 @@ class Bank {
 
 }
 
+abstract class Purchasable {
+  double get value; // Le prix du bien
+}
+

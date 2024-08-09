@@ -5,12 +5,14 @@ import 'package:flutter/services.dart';
 
 import '../../../../../../Classes/objects/vehicle.dart';
 import '../../../../../../Classes/person.dart';
+import '../../../../../../services/bank/transaction_service.dart';
 import 'vehicle_details_screen.dart';
 
 class BoatDealershipScreen extends StatelessWidget {
   final Person person;
+  final TransactionService transactionService;
 
-  BoatDealershipScreen({required this.person});
+  BoatDealershipScreen({required this.person, required this.transactionService});
 
   Future<List<Vehicle>> loadBoats() async {
     try {
@@ -61,7 +63,7 @@ class BoatDealershipScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: boat)),
+                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: boat, person: person, transactionService: transactionService)),
                     );
                   },
                 );

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
@@ -9,10 +8,10 @@ import 'bank_account.dart';
 class FinancialService {
   FinancialService._privateConstructor();
 
-  static final FinancialService _instance = FinancialService._privateConstructor();
+  static final FinancialService _instance =
+      FinancialService._privateConstructor();
 
   static FinancialService get instance => _instance;
-
 
   static List<dynamic> bankData = [];
 
@@ -23,21 +22,26 @@ class FinancialService {
   }
 
   static double getInterestRate(String bankName, String accountType) {
-    var foundBank = bankData.firstWhere((bank) => bank['name' == bankName], orElse: () => null);
+    var foundBank = bankData.firstWhere((bank) => bank['name' == bankName],
+        orElse: () => null);
     if (foundBank != null) {
-      var foundAccount = foundBank['accounts'].firstWhere((account) => account['type'] == accountType, orElse: () => null);
+      var foundAccount = foundBank['accounts'].firstWhere(
+          (account) => account['type'] == accountType,
+          orElse: () => null);
       return foundAccount != null ? foundAccount['interestRate'] : 0.0;
     }
     return 0.0;
   }
 
   void handleDefault(Person person) {
-    double debtAmont = person.bankAccounts.fold(0.0, (sum, account) => sum + account.totalDebt());
+    double debtAmont = person.bankAccounts
+        .fold(0.0, (sum, account) => sum + account.totalDebt());
 
     for (var account in person.bankAccounts) {
       if (account.balance >= debtAmont) {
         account.withdraw(debtAmont);
-        print("Debt of \$${debtAmont} recovered from account ${account.accountNumber}");
+        print(
+            "Debt of \$${debtAmont} recovered from account ${account.accountNumber}");
         return;
       }
     }
@@ -82,30 +86,32 @@ class FinancialService {
       print("Insufficient funds to buy bonds.");
     }
   }
+
   bool applyForLoan(BankAccount account, double amount, int years, double rate) {
-    if (account.canApplyForLoan(amount, amount / (years * 12))) {
+    double monthlyIncome = account.annualIncome / 12;
+    double monthlyRepayment = amount / (years * 12);
+    double newMonthlyExpenses = account.monthlyExpenses + monthlyRepayment;
+
+    if (newMonthlyExpenses < monthlyIncome * 0.5 && monthlyRepayment < monthlyIncome * 0.3) {
       Loan newLoan = Loan(amount: amount, termYears: years, interestRate: rate);
       account.loans.add(newLoan);
-      account.balance += amount;  // Assuming the loan amount is immediately available in the balance
-      print("Loan of \$${amount} approved for $years years at $rate% interest.");
-      return true;  // Indicate success
-    } else {
-      print("Loan application denied due to credit policies.");
-      return false;  // Indicate failure
+      account.deposit(amount);  // Simuler le dépôt du montant du prêt
+      return true;
     }
+    return false;
   }
 
 
-
-
-  static Map<String, dynamic>? getBankAccountDetails(String bankName, String accountType) {
-    var foundBank = bankData.firstWhere((bank) => bank['name'] == bankName, orElse: () => null);
+  static Map<String, dynamic>? getBankAccountDetails(
+      String bankName, String accountType) {
+    var foundBank = bankData.firstWhere((bank) => bank['name'] == bankName,
+        orElse: () => null);
     if (foundBank != null) {
-      var foundAccount = foundBank['accounts'].firstWhere((account) => account['type'] == accountType, orElse: () => null);
+      var foundAccount = foundBank['accounts'].firstWhere(
+          (account) => account['type'] == accountType,
+          orElse: () => null);
       return foundAccount;
     }
     return null;
   }
-
-
 }

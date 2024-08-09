@@ -1,33 +1,113 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../../Classes/objects/vehicle.dart';
+import '../../../../../../Classes/person.dart';
+import '../../../../../../services/bank/bank_account.dart';
+import '../../../../../../services/bank/transaction_service.dart';
 
 class VehicleDealerDetailsScreen extends StatelessWidget {
   final Vehicle vehicle;
+  final Person person;
+  final TransactionService transactionService;
 
-  VehicleDealerDetailsScreen({required this.vehicle});
+  VehicleDealerDetailsScreen({
+    required this.vehicle,
+    required this.person,
+    required this.transactionService,
+  });
 
   void _purchaseVehicle(BuildContext context) {
-    // Afficher un dialogue de confirmation d'achat
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Confirmer l'achat"),
-          content: Text("Êtes-vous sûr d'acheter ${vehicle.name} for \$${vehicle.value.toStringAsFixed(2)}?"),
+          title: Text("Purchase Options"),
+          content: Text("Choose your payment method for ${vehicle.name}."),
           actions: <Widget>[
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text("Annuler"),
+              onPressed: () {
+                Navigator.pop(context);
+                _selectAccountAndPurchase(context, vehicle, false);
+              },
+              child: Text("Pay Cash"),
             ),
             TextButton(
               onPressed: () {
-                // Processus d'achat ici
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                Navigator.pop(context);
+                _selectAccountAndPurchase(context, vehicle, true);
               },
-              child: Text("Purchase"),
-            )
+              child: Text("Apply For Loan"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _selectAccountAndPurchase(BuildContext context, Vehicle vehicle, bool useLoan) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext bc) {
+        return ListView(
+          children: person.bankAccounts.map<Widget>((BankAccount account) {
+            return ListTile(
+              title: Text('${account.bankName} - ${account.accountType}'),
+              subtitle: Text('Balance: \$${account.balance.toStringAsFixed(2)}'),
+              onTap: () => _attemptPurchase(context, vehicle, account, useLoan),
+            );
+          }).toList(),
+        );
+      },
+    );
+  }
+
+  void _attemptPurchase(BuildContext context, Vehicle vehicle, BankAccount account, bool useLoan) {
+    transactionService.attemptPurchase(
+      account,
+      vehicle,
+      useLoan: useLoan,
+      loanTerm: 5, // Example loan term
+      loanInterestRate: 3.5, // Example interest rate
+      onSuccess: () {
+        print("Purchase successful!");
+        _showSuccessDialog(context, "You have successfully purchased the ${vehicle.name}.");
+      },
+      onFailure: (String message) {
+        print("Failed to purchase.");
+        _showErrorDialog(context, message);
+      },
+    );
+  }
+
+  void _showSuccessDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Purchase Successful"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
           ],
         );
       },
@@ -35,17 +115,16 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
   }
 
   void _negotiatePrice(BuildContext context) {
-    // Ouvrir une boîte de dialogue pour la négotiation
     final _controller = TextEditingController();
 
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Négocier le prix"),
+          title: Text("Negotiate Price"),
           content: TextField(
             controller: _controller,
-            decoration: InputDecoration(hintText: "Indiquer votre offre"),
+            decoration: InputDecoration(hintText: "Enter your offer"),
             keyboardType: TextInputType.number,
           ),
           actions: <Widget>[
@@ -55,10 +134,10 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                // Envoyer l'offre ici
+                // Handle the offer submission
                 Navigator.of(context).pop();
               },
-              child: Text("Placer l'offre"),
+              child: Text("Submit Offer"),
             )
           ],
         );

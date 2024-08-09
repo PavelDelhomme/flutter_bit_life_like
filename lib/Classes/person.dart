@@ -224,11 +224,6 @@ class Person {
     }
   }
 
-  void addRealEstate(RealEstate realEstate) {
-    this.realEstates.add(realEstate);
-    print("Added real estate to collection: ${realEstate.name}");
-  }
-
   factory Person.fromJson(Map<String, dynamic> json) {
     return Person(
       name: json['name'] as String,
@@ -274,6 +269,35 @@ class Person {
     print("Total pay for the week: \$${totalPay}");
   }
 
+  void addVehicle(Vehicle vehicle) {
+    this.vehicles.add(vehicle);
+    print("Added vehicle to collection: ${vehicle.name}");
+  }
+
+  void addJewelry(Jewelry jewelry) {
+    this.jewelries.add(jewelry);
+    print("Added jewelry to collection: ${jewelry.name}");
+  }
+
+  void addArme(Arme arme) {
+    this.armes.add(arme);
+    print("Added arme to collection : ${arme.name}");
+  }
+
+  void addAntique(Antique antique) {
+    this.antiques.add(antique);
+    print("Added arme to collection : ${antique.name}");
+  }
+
+  void addIntrument(Instrument intrument) {
+    this.instruments.add(intrument);
+    print("Added intrument to collection : ${intrument.name}");
+  }
+
+  void addRealEstate(RealEstate realEstate) {
+    this.realEstates.add(realEstate);
+    print("Added real estate to collection: ${realEstate.name}");
+  }
 
   void addElectronic(Electronic electronic) {
     electronics.add(electronic);
