@@ -65,14 +65,13 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
       account,
       vehicle,
       useLoan: useLoan,
-      loanTerm: 5, // Example loan term
+      loanTerm: 5, // Example loan term in years
       loanInterestRate: 3.5, // Example interest rate
       onSuccess: () {
-        print("Purchase successful!");
+        person.addVehicle(vehicle); // Add the vehicle to the person's collection
         _showSuccessDialog(context, "You have successfully purchased the ${vehicle.name}.");
       },
       onFailure: (String message) {
-        print("Failed to purchase.");
         _showErrorDialog(context, message);
       },
     );
@@ -88,7 +87,10 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
           actions: <Widget>[
             TextButton(
               child: Text("OK"),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop(); // Close the purchase screen
+              },
             ),
           ],
         );
