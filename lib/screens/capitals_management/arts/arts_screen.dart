@@ -2,10 +2,10 @@ import 'package:bit_life_like/Classes/person.dart';
 import 'package:flutter/material.dart';
 import 'some_art_detail_screen.dart';
 
-class ArtsScreen extends StatelessWidget {
+class MyArtsScreen extends StatelessWidget {
   final Person person;
 
-  ArtsScreen({required this.person});
+  MyArtsScreen({required this.person});
 
   @override
   Widget build(BuildContext context) {

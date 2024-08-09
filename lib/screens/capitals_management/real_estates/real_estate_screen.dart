@@ -3,19 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 
 import '../../../Classes/objects/real_estate.dart';
+import '../../../services/bank/transaction_service.dart';
 import '../../../services/real_estate/real_estate.dart';
 
-class RealEstatesScreen extends StatefulWidget {
+class MyRealEstatesScreen extends StatefulWidget {
   final Person person;
   final RealEstateService realEstateService;
+  final TransactionService transactionService;
 
-  RealEstatesScreen({required this.person, required this.realEstateService});
+  MyRealEstatesScreen({
+    required this.person,
+    required this.realEstateService,
+    required this.transactionService,
+  });
 
   @override
-  _RealEstatesScreenState createState() => _RealEstatesScreenState();
+  _MyRealEstatesScreenState createState() => _MyRealEstatesScreenState();
 }
 
-class _RealEstatesScreenState extends State<RealEstatesScreen> {
+class _MyRealEstatesScreenState extends State<MyRealEstatesScreen> {
   String selectedType = "All";
 
   @override
@@ -58,7 +64,12 @@ class _RealEstatesScreenState extends State<RealEstatesScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SomeRealEstateDetailsScreen(estate: estate, realEstateService: widget.realEstateService, person: widget.person),
+                  builder: (context) => SomeRealEstateDetailsScreen(
+                    estate: estate,
+                    realEstateService: widget.realEstateService,
+                    person: widget.person,
+                    transactionService: widget.transactionService,
+                  ),
                 ),
               );
             },

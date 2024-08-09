@@ -33,7 +33,8 @@
       "valeur": 390000000,
       "type": "Villa",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Four Fairfield Pond",
@@ -41,7 +42,8 @@
       "valeur": 248000000,
       "type": "Manoir",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Ellison Estate",
@@ -49,7 +51,8 @@
       "valeur": 200000000,
       "type": "Estate",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Kensington Palace Gardens",
@@ -57,7 +60,8 @@
       "valeur": 180000000,
       "type": "Maison de ville",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Seven The Pinnacle",
@@ -65,7 +69,8 @@
       "valeur": 1550000000,
       "type": "Ski Lodge",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Palazzo di Amore",
@@ -73,7 +78,8 @@
       "valeur": 129000000,
       "type": "Villa",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "18-19 Kensington Gardens",
@@ -81,7 +87,8 @@
       "valeur": 128000000,
       "type": "Maison de ville",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "The Manor",
@@ -89,7 +96,8 @@
       "valeur": 119000000,
       "type": "Manoir",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Buckingham Palace",
@@ -97,7 +105,8 @@
       "valeur": 5000000000,
       "type": "Palace",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 300000
+      "monthly_maintenance_cost": 300000,
+      "style": "Exotic"
     },
     {
       "nom": "One Hyde Park Penthouse",
@@ -105,7 +114,8 @@
       "valeur": 2200000000,
       "type": "Penthouse",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Hearst Castle",
@@ -113,7 +123,8 @@
       "valeur": 16500000000,
       "type": "Château",
       "condition": "Good",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "Xanadu 2.0",
@@ -121,16 +132,17 @@
       "valeur": 125000000,
       "type": "Manoir",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
-
     {
       "nom": "Grande Muraille de Chine",
       "age": 2300,
       "valeur": 10000000000,
       "type": "Site historique",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Pétra",
@@ -138,7 +150,8 @@
       "valeur": 4500000000,
       "type": "Site archéologique",
       "condition": "Good",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Christ Rédempteur",
@@ -146,7 +159,8 @@
       "valeur": 1000000000,
       "type": "Statue",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Machu Picchu",
@@ -154,7 +168,8 @@
       "valeur": 7000000000,
       "type": "Site archéologique",
       "condition": "Good",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Chichén Itzá",
@@ -162,7 +177,8 @@
       "valeur": 6000000000,
       "type": "Site archéologique",
       "condition": "Good",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Colisée",
@@ -170,7 +186,8 @@
       "valeur": 7000000000,
       "type": "Amphithéâtre",
       "condition": "Good",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Taj Mahal",
@@ -178,7 +195,8 @@
       "valeur": 10000000000,
       "type": "Mausolée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Tour Eiffel",
@@ -186,7 +204,8 @@
       "valeur": 6500000000,
       "type": "Monument",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Empire State Building",
@@ -194,7 +213,8 @@
       "valeur": 2000000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais de Westminster",
@@ -202,7 +222,8 @@
       "valeur": 5000000000,
       "type": "Bâtiment gouvernemental",
       "condition": "Good",
-      "monthly_maintenance_cost": 60000
+      "monthly_maintenance_cost": 60000,
+      "style": "Exotic"
     },
     {
       "nom": "Burj Khalifa",
@@ -210,7 +231,8 @@
       "valeur": 1500000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 100000
+      "monthly_maintenance_cost": 100000,
+      "style": "Exotic"
     },
     {
       "nom": "La Sagrada Familia",
@@ -218,7 +240,8 @@
       "valeur": 3200000000,
       "type": "Église",
       "condition": "Under Construction",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Kremlin",
@@ -226,7 +249,8 @@
       "valeur": 5500000000,
       "type": "Complexe fortifié",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Sydney Opera House",
@@ -234,7 +258,8 @@
       "valeur": 5000000000,
       "type": "Opéra",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Louvre",
@@ -242,7 +267,8 @@
       "valeur": 8000000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais de Buckingham",
@@ -250,7 +276,8 @@
       "valeur": 5000000000,
       "type": "Résidence royale",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 100000
+      "monthly_maintenance_cost": 100000,
+      "style": "Exotic"
     },
     {
       "nom": "Tour de Londres",
@@ -258,7 +285,8 @@
       "valeur": 2500000000,
       "type": "Château historique",
       "condition": "Good",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Château de Neuschwanstein",
@@ -266,7 +294,8 @@
       "valeur": 3000000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Alhambra",
@@ -274,7 +303,8 @@
       "valeur": 3500000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Château de Versailles",
@@ -282,7 +312,8 @@
       "valeur": 8000000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 90000
+      "monthly_maintenance_cost": 90000,
+      "style": "Exotic"
     },
     {
       "nom": "Statue de la Liberté",
@@ -290,7 +321,8 @@
       "valeur": 3000000000,
       "type": "Monument",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Cité Interdite",
@@ -298,7 +330,8 @@
       "valeur": 7000000000,
       "type": "Palais impérial",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "Notre-Dame de Paris",
@@ -306,7 +339,8 @@
       "valeur": 6800000000,
       "type": "Cathédrale",
       "condition": "Under Restoration",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais de Potala",
@@ -314,7 +348,8 @@
       "valeur": 2500000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "St. Peter's Basilica",
@@ -322,7 +357,8 @@
       "valeur": 10000000000,
       "type": "Basilique",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
+      "monthly_maintenance_cost": 60000,
+      "style": "Exotic"
     },
     {
       "nom": "Golden Gate Bridge",
@@ -330,16 +366,17 @@
       "valeur": 3200000000,
       "type": "Pont",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
+      "monthly_maintenance_cost": 35000,
+      "style": "Exotic"
     },
-
     {
       "nom": "Guggenheim Museum Bilbao",
       "age": 26,
       "valeur": 1000000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Fallingwater (Maison sur la cascade)",
@@ -347,7 +384,8 @@
       "valeur": 500000000,
       "type": "Maison",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 5000
+      "monthly_maintenance_cost": 5000,
+      "style": "Exotic"
     },
     {
       "nom": "Marina Bay Sands",
@@ -355,7 +393,8 @@
       "valeur": 5500000000,
       "type": "Complexe hôtelier",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 150000
+      "monthly_maintenance_cost": 150000,
+      "style": "Exotic"
     },
     {
       "nom": "Kremlin de Moscou",
@@ -363,7 +402,8 @@
       "valeur": 5500000000,
       "type": "Complexe historique",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 80000
+      "monthly_maintenance_cost": 80000,
+      "style": "Exotic"
     },
     {
       "nom": "Pantheon",
@@ -371,7 +411,8 @@
       "valeur": 4000000000,
       "type": "Édifice religieux",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Temple du Lotus",
@@ -379,7 +420,8 @@
       "valeur": 800000000,
       "type": "Temple",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Space Needle",
@@ -387,7 +429,8 @@
       "valeur": 300000000,
       "type": "Tour d'observation",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Atomium",
@@ -395,7 +438,8 @@
       "valeur": 250000000,
       "type": "Monument",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 8000
+      "monthly_maintenance_cost": 8000,
+      "style": "Exotic"
     },
     {
       "nom": "Shard London Bridge",
@@ -403,7 +447,8 @@
       "valeur": 1500000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Rijksmuseum",
@@ -411,7 +456,8 @@
       "valeur": 2000000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Mont Saint-Michel",
@@ -419,7 +465,8 @@
       "valeur": 3500000000,
       "type": "Île monastique",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "Opéra de Sydney",
@@ -427,7 +474,8 @@
       "valeur": 5000000000,
       "type": "Opéra",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Willis Tower (Sears Tower)",
@@ -435,7 +483,8 @@
       "valeur": 1700000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "La Basilique Saint-Marc",
@@ -443,7 +492,8 @@
       "valeur": 4300000000,
       "type": "Basilique",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Potala Palace",
@@ -451,7 +501,8 @@
       "valeur": 2500000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Stonehenge",
@@ -459,7 +510,8 @@
       "valeur": 3000000000,
       "type": "Site préhistorique",
       "condition": "Good",
-      "monthly_maintenance_cost": 5000
+      "monthly_maintenance_cost": 5000,
+      "style": "Exotic"
     },
     {
       "nom": "Hagia Sophia",
@@ -467,7 +519,8 @@
       "valeur": 4100000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Angkor War",
@@ -475,7 +528,8 @@
       "valeur": 6000000000,
       "type": "Temple",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais de l'Alhambra",
@@ -483,7 +537,8 @@
       "valeur": 3500000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 45000
+      "monthly_maintenance_cost": 45000,
+      "style": "Exotic"
     },
     {
       "nom": "La Pyramide du Louvre",
@@ -491,7 +546,8 @@
       "valeur": 8000000000,
       "type": "Monument",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Château de Windsor",
@@ -499,7 +555,8 @@
       "valeur": 4000000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Tour CN",
@@ -507,7 +564,8 @@
       "valeur": 1100000000,
       "type": "Tour d'observation",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "El Castillo (Chichen Itza)",
@@ -515,7 +573,8 @@
       "valeur": 4000000000,
       "type": "Pyramide",
       "condition": "Good",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Capitole des États-Unis",
@@ -523,7 +582,8 @@
       "valeur": 3000000000,
       "type": "Bâtiment gouvernemental",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
+      "monthly_maintenance_cost": 60000,
+      "style": "Exotic"
     },
     {
       "nom": "Tour Eiffel",
@@ -531,7 +591,8 @@
       "valeur": 6500000000,
       "type": "Monument",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "La Casa Batlló",
@@ -539,7 +600,8 @@
       "valeur": 1200000000,
       "type": "Bâtiment",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais de Schönbrunn",
@@ -547,7 +609,8 @@
       "valeur": 3000000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
+      "monthly_maintenance_cost": 60000,
+      "style": "Exotic"
     },
     {
       "nom": "Château de Chambord",
@@ -555,7 +618,8 @@
       "valeur": 1800000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
+      "monthly_maintenance_cost": 35000,
+      "style": "Exotic"
     },
     {
       "nom": "Pont de Brooklyn",
@@ -563,7 +627,8 @@
       "valeur": 2500000000,
       "type": "Pont",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Wat Arun",
@@ -571,7 +636,8 @@
       "valeur": 750000000,
       "type": "Temple",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 7000
+      "monthly_maintenance_cost": 7000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais des Beaux-Arts de Lille",
@@ -579,7 +645,8 @@
       "valeur": 850000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 18000
+      "monthly_maintenance_cost": 18000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais Royal de Madrid",
@@ -587,7 +654,8 @@
       "valeur": 5500000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "Dôme du Rocher",
@@ -595,7 +663,8 @@
       "valeur": 3000000000,
       "type": "Sanctuaire",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais de l'Élysée",
@@ -603,7 +672,8 @@
       "valeur": 2100000000,
       "type": "Résidence présidentielle",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "La Basilique du Sacré-Cœur",
@@ -611,7 +681,8 @@
       "valeur": 1700000000,
       "type": "Basilique",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "Gateway Arch",
@@ -619,7 +690,8 @@
       "valeur": 700000000,
       "type": "Monument",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 12000
+      "monthly_maintenance_cost": 12000,
+      "style": "Exotic"
     },
     {
       "nom": "La Grande Bibliothèque d'Alexandrie (Bibliotheca Alexandrina)",
@@ -627,7 +699,8 @@
       "valeur": 800000000,
       "type": "Bibliothèque",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Banque de Chine Tower",
@@ -635,7 +708,8 @@
       "valeur": 2000000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "La Tour de Tokyo",
@@ -643,7 +717,8 @@
       "valeur": 850000000,
       "type": "Tour d'observation",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais de Justice de Bruxelles",
@@ -651,7 +726,8 @@
       "valeur": 1200000000,
       "type": "Palais de justice",
       "condition": "Good",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Centre Pompidou",
@@ -659,7 +735,8 @@
       "valeur": 950000000,
       "type": "Centre culturel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "La Tour Montparnasse",
@@ -667,7 +744,8 @@
       "valeur": 900000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Château Frontenac",
@@ -675,7 +753,8 @@
       "valeur": 700000000,
       "type": "Hôtel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Sagrada Familia",
@@ -683,7 +762,8 @@
       "valeur": 3200000000,
       "type": "Basilique",
       "condition": "Under Construction",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "La Cathédrale de Milan",
@@ -691,7 +771,8 @@
       "valeur": 5000000000,
       "type": "Cathédrale",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Palais de Dolmabahçe",
@@ -699,7 +780,8 @@
       "valeur": 1500000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 55000
+      "monthly_maintenance_cost": 55000,
+      "style": "Exotic"
     },
     {
       "nom": "Edificio Copan",
@@ -707,7 +789,8 @@
       "valeur": 500000000,
       "type": "Bâtiment résidentiel",
       "condition": "Good",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "La Rotonde de La Villette",
@@ -715,7 +798,8 @@
       "valeur": 750000000,
       "type": "Monument historique",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Château de Peleș",
@@ -723,7 +807,8 @@
       "valeur": 1000000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Aon Center (Chicago)",
@@ -731,7 +816,8 @@
       "valeur": 1200000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
+      "monthly_maintenance_cost": 35000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée d'Orsay",
@@ -739,7 +825,8 @@
       "valeur": 1900000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée Solomon R. Guggenheim",
@@ -747,7 +834,8 @@
       "valeur": 830000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Pont Vasco da Gama",
@@ -755,7 +843,8 @@
       "valeur": 1800000000,
       "type": "Pont",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "L'Hôtel de Glace (Québec)",
@@ -763,7 +852,8 @@
       "valeur": 250000000,
       "type": "Hôtel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 5000
+      "monthly_maintenance_cost": 5000,
+      "style": "Exotic"
     },
     {
       "nom": "30 St Mary Axe (The Gherkin)",
@@ -771,7 +861,8 @@
       "valeur": 1100000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée du Prado",
@@ -779,7 +870,8 @@
       "valeur": 2100000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "La Cité Radieuse de Le Corbusier",
@@ -787,7 +879,8 @@
       "valeur": 550000000,
       "type": "Bâtiment résidentiel",
       "condition": "Good",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "The Shard",
@@ -795,7 +888,8 @@
       "valeur": 1500000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée Van Gogh",
@@ -803,7 +897,8 @@
       "valeur": 780000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "La Grande Arche de la Défense",
@@ -811,7 +906,8 @@
       "valeur": 800000000,
       "type": "Monument",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Zaha Hadid's MAXXI",
@@ -819,7 +915,8 @@
       "valeur": 900000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 28000
+      "monthly_maintenance_cost": 28000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Pavillon de Barcelone",
@@ -827,7 +924,8 @@
       "valeur": 450000000,
       "type": "Exposition",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "L'Opéra Garnier",
@@ -835,7 +933,8 @@
       "valeur": 1900000000,
       "type": "Opéra",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "The Flatiron Building",
@@ -843,7 +942,8 @@
       "valeur": 800000000,
       "type": "Bâtiment",
       "condition": "Good",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais de Tokyo",
@@ -851,7 +951,8 @@
       "valeur": 700000000,
       "type": "Centre d'art contemporain",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "The Hoover Dam",
@@ -859,7 +960,8 @@
       "valeur": 3000000000,
       "type": "Barrage",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "The Lloyd’s Building",
@@ -867,7 +969,8 @@
       "valeur": 950000000,
       "type": "Bureau",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "The Walt Disney Concert Hall",
@@ -875,7 +978,8 @@
       "valeur": 1100000000,
       "type": "Salle de concert",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Kingdom Centre Tower",
@@ -883,7 +987,8 @@
       "valeur": 1000000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
+      "monthly_maintenance_cost": 35000,
+      "style": "Exotic"
     },
     {
       "nom": "Belem Tower",
@@ -891,7 +996,8 @@
       "valeur": 650000000,
       "type": "Tour",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 8000
+      "monthly_maintenance_cost": 8000,
+      "style": "Exotic"
     },
     {
       "nom": "Bibliothèque nationale de France (BNF)",
@@ -899,7 +1005,8 @@
       "valeur": 1100000000,
       "type": "Bibliothèque",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Niterói Contemporary Art Museum",
@@ -907,7 +1014,8 @@
       "valeur": 500000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "The High Line",
@@ -915,7 +1023,8 @@
       "valeur": 850000000,
       "type": "Parc public",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Reichstag Building",
@@ -923,7 +1032,8 @@
       "valeur": 1800000000,
       "type": "Bâtiment gouvernemental",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Burj Al Arab",
@@ -931,7 +1041,8 @@
       "valeur": 1500000000,
       "type": "Hôtel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "Taipei 101",
@@ -939,7 +1050,8 @@
       "valeur": 1600000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Oslo Opera House",
@@ -947,7 +1059,8 @@
       "valeur": 850000000,
       "type": "Opéra",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "The Shard",
@@ -955,7 +1068,8 @@
       "valeur": 1500000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Petronas Twin Towers",
@@ -963,7 +1077,8 @@
       "valeur": 1800000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
+      "monthly_maintenance_cost": 60000,
+      "style": "Exotic"
     },
     {
       "nom": "Capitole des États-Unis",
@@ -971,7 +1086,8 @@
       "valeur": 3000000000,
       "type": "Bâtiment gouvernemental",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée du Louvre Abu Dhabi",
@@ -979,7 +1095,8 @@
       "valeur": 1000000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée d'Art Moderne de San Francisco (SFMOMA)",
@@ -987,7 +1104,8 @@
       "valeur": 900000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "One World Trade Center",
@@ -995,7 +1113,8 @@
       "valeur": 4000000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 100000
+      "monthly_maintenance_cost": 100000,
+      "style": "Exotic"
     },
     {
       "nom": "Fondation Louis Vuitton",
@@ -1003,7 +1122,8 @@
       "valeur": 850000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Apple Park",
@@ -1011,7 +1131,8 @@
       "valeur": 5000000000,
       "type": "Siège social",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 200000
+      "monthly_maintenance_cost": 200000,
+      "style": "Exotic"
     },
     {
       "nom": "Palais de Westminster",
@@ -1019,7 +1140,8 @@
       "valeur": 5000000000,
       "type": "Bâtiment gouvernemental",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 100000
+      "monthly_maintenance_cost": 100000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée de l'Ermitage",
@@ -1027,7 +1149,8 @@
       "valeur": 4000000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "Château de Prague",
@@ -1035,7 +1158,8 @@
       "valeur": 3500000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "J. Paul Getty Museum",
@@ -1043,7 +1167,8 @@
       "valeur": 1900000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Museum of Islamic Art, Doha",
@@ -1051,7 +1176,8 @@
       "valeur": 800000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Centre Georges Pompidou",
@@ -1059,7 +1185,8 @@
       "valeur": 2100000000,
       "type": "Centre culturel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
+      "monthly_maintenance_cost": 60000,
+      "style": "Exotic"
     },
     {
       "nom": "Torre Agbar",
@@ -1067,7 +1194,8 @@
       "valeur": 1500000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Millau Viaduct",
@@ -1075,7 +1203,8 @@
       "valeur": 600000000,
       "type": "Pont",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "Sydney Harbour Bridge",
@@ -1083,16 +1212,17 @@
       "valeur": 2500000000,
       "type": "Pont",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
-
     {
       "nom": "Tour Willis (Sears Tower)",
       "age": 49,
       "valeur": 1700000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée d'histoire naturelle de Londres",
@@ -1100,7 +1230,8 @@
       "valeur": 1600000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée Guggenheim New York",
@@ -1108,7 +1239,8 @@
       "valeur": 850000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
+      "monthly_maintenance_cost": 35000,
+      "style": "Exotic"
     },
     {
       "nom": "The Blue House (Cheong Wa Dae)",
@@ -1116,7 +1248,8 @@
       "valeur": 900000000,
       "type": "Résidence présidentielle",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "The Broad",
@@ -1124,7 +1257,8 @@
       "valeur": 1400000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 22000
+      "monthly_maintenance_cost": 22000,
+      "style": "Exotic"
     },
     {
       "nom": "La Scala de Milan",
@@ -1132,7 +1266,8 @@
       "valeur": 2000000000,
       "type": "Opéra",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "Castel Sant'Angelo",
@@ -1140,7 +1275,8 @@
       "valeur": 1500000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Shinjuku Gyoen National Garden",
@@ -1148,7 +1284,8 @@
       "valeur": 500000000,
       "type": "Parc",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "La Grande Mosquée de Cordoue",
@@ -1156,7 +1293,8 @@
       "valeur": 4300000000,
       "type": "Site historique",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
+      "monthly_maintenance_cost": 35000,
+      "style": "Exotic"
     },
     {
       "nom": "Zwinger Palace",
@@ -1164,7 +1302,8 @@
       "valeur": 1100000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Q1 Tower",
@@ -1172,7 +1311,8 @@
       "valeur": 650000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 28000
+      "monthly_maintenance_cost": 28000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Viaduc de Millau",
@@ -1180,16 +1320,17 @@
       "valeur": 600000000,
       "type": "Pont",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
-
     {
       "nom": "Musée Rodin",
       "age": 114,
       "valeur": 780000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Pont Alexandre III",
@@ -1197,7 +1338,8 @@
       "valeur": 550000000,
       "type": "Pont",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée de l'Acropole",
@@ -1205,7 +1347,8 @@
       "valeur": 800000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 22000
+      "monthly_maintenance_cost": 22000,
+      "style": "Exotic"
     },
     {
       "nom": "Castillo de la Real Fuerza",
@@ -1213,7 +1356,8 @@
       "valeur": 470000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 18000
+      "monthly_maintenance_cost": 18000,
+      "style": "Exotic"
     },
     {
       "nom": "Parc Guell",
@@ -1221,7 +1365,8 @@
       "valeur": 650000000,
       "type": "Parc",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Raffles Hotel",
@@ -1229,7 +1374,8 @@
       "valeur": 740000000,
       "type": "Hôtel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Philharmonie de Paris",
@@ -1237,7 +1383,8 @@
       "valeur": 850000000,
       "type": "Salle de concert",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée de Quai Branly",
@@ -1245,7 +1392,8 @@
       "valeur": 700000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "La Tour de Pise",
@@ -1253,7 +1401,8 @@
       "valeur": 500000000,
       "type": "Monument",
       "condition": "Good",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Château de Windsor",
@@ -1261,7 +1410,8 @@
       "valeur": 5000000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée Frida Kahlo",
@@ -1269,7 +1419,8 @@
       "valeur": 590000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 17000
+      "monthly_maintenance_cost": 17000,
+      "style": "Exotic"
     },
     {
       "nom": "Cathédrale Saint-Paul",
@@ -1277,7 +1428,8 @@
       "valeur": 1500000000,
       "type": "Cathédrale",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
+      "monthly_maintenance_cost": 60000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Palais des Congrès de Montréal",
@@ -1285,7 +1437,8 @@
       "valeur": 550000000,
       "type": "Centre de congrès",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "L'Observatoire Griffith",
@@ -1293,7 +1446,8 @@
       "valeur": 420000000,
       "type": "Observatoire",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 12000
+      "monthly_maintenance_cost": 12000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée d'Art Contemporain de Niterói",
@@ -1301,7 +1455,8 @@
       "valeur": 500000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 18000
+      "monthly_maintenance_cost": 18000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée d'Art Moderne de Rio",
@@ -1309,7 +1464,8 @@
       "valeur": 650000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 24000
+      "monthly_maintenance_cost": 24000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Pont de la Confédération",
@@ -1317,7 +1473,8 @@
       "valeur": 900000000,
       "type": "Pont",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "Cité de l'Architecture et du Patrimoine",
@@ -1325,7 +1482,8 @@
       "valeur": 480000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 22000
+      "monthly_maintenance_cost": 22000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Palais de Tokyo",
@@ -1333,7 +1491,8 @@
       "valeur": 700000000,
       "type": "Centre d'art contemporain",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée Picasso Paris",
@@ -1341,7 +1500,8 @@
       "valeur": 690000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 21000
+      "monthly_maintenance_cost": 21000,
+      "style": "Exotic"
     },
     {
       "nom": "Tour de Londres",
@@ -1349,7 +1509,8 @@
       "valeur": 2500000000,
       "type": "Château historique",
       "condition": "Good",
-      "monthly_maintenance_cost": 45000
+      "monthly_maintenance_cost": 45000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Kremlin",
@@ -1357,7 +1518,8 @@
       "valeur": 5500000000,
       "type": "Complexe fortifié",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 100000
+      "monthly_maintenance_cost": 100000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée des Beaux-Arts de Montréal",
@@ -1365,7 +1527,8 @@
       "valeur": 760000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 32000
+      "monthly_maintenance_cost": 32000,
+      "style": "Exotic"
     },
     {
       "nom": "La Cathédrale Notre-Dame d'Amiens",
@@ -1373,16 +1536,17 @@
       "valeur": 1400000000,
       "type": "Cathédrale",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
-
     {
       "nom": "Musée des Sciences de Londres",
       "age": 112,
       "valeur": 700000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "La Maison Blanche",
@@ -1390,7 +1554,8 @@
       "valeur": 4000000000,
       "type": "Résidence gouvernementale",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Château de Chenonceau",
@@ -1398,7 +1563,8 @@
       "valeur": 600000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "La Bibliothèque du Congrès",
@@ -1406,7 +1572,8 @@
       "valeur": 1100000000,
       "type": "Bibliothèque",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée de l'Orangerie",
@@ -1414,7 +1581,8 @@
       "valeur": 580000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 18000
+      "monthly_maintenance_cost": 18000,
+      "style": "Exotic"
     },
     {
       "nom": "La Tour de Belem",
@@ -1422,7 +1590,8 @@
       "valeur": 450000000,
       "type": "Tour",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Château de Versailles",
@@ -1430,7 +1599,8 @@
       "valeur": 8000000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 90000
+      "monthly_maintenance_cost": 90000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée Picasso Antibes",
@@ -1438,7 +1608,8 @@
       "valeur": 520000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 16000
+      "monthly_maintenance_cost": 16000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée d'Art Contemporain de Chicago",
@@ -1446,7 +1617,8 @@
       "valeur": 650000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Palais Royal de Madrid",
@@ -1454,7 +1626,8 @@
       "valeur": 5500000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "La Basilique Saint-Pierre",
@@ -1462,7 +1635,8 @@
       "valeur": 10000000000,
       "type": "Basilique",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 80000
+      "monthly_maintenance_cost": 80000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée de Pergame",
@@ -1470,7 +1644,8 @@
       "valeur": 830000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 29000
+      "monthly_maintenance_cost": 29000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée d'Orsay",
@@ -1478,7 +1653,8 @@
       "valeur": 2100000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 45000
+      "monthly_maintenance_cost": 45000,
+      "style": "Exotic"
     },
     {
       "nom": "La Cathédrale Notre-Dame de Reims",
@@ -1486,7 +1662,8 @@
       "valeur": 1500000000,
       "type": "Cathédrale",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Centre Pompidou-Metz",
@@ -1494,7 +1671,8 @@
       "valeur": 620000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 22000
+      "monthly_maintenance_cost": 22000,
+      "style": "Exotic"
     },
     {
       "nom": "La Tour Montparnasse",
@@ -1502,7 +1680,8 @@
       "valeur": 950000000,
       "type": "Gratte-ciel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
+      "monthly_maintenance_cost": 35000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Château de Fontainebleau",
@@ -1510,7 +1689,8 @@
       "valeur": 2300000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée Solomon R. Guggenheim",
@@ -1518,7 +1698,8 @@
       "valeur": 850000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 28000
+      "monthly_maintenance_cost": 28000,
+      "style": "Exotic"
     },
     {
       "nom": "L'Institut du Monde Arabe",
@@ -1526,7 +1707,8 @@
       "valeur": 450000000,
       "type": "Centre culturel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "L'Opéra National de Paris (Opéra Bastille)",
@@ -1534,7 +1716,8 @@
       "valeur": 1800000000,
       "type": "Opéra",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 60000
+      "monthly_maintenance_cost": 60000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Palais des Festivals et des Congrès (Cannes)",
@@ -1542,7 +1725,8 @@
       "valeur": 500000000,
       "type": "Centre de congrès",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée de l'Air et de l'Espace du Bourget",
@@ -1550,7 +1734,8 @@
       "valeur": 680000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée Marmottan Monet",
@@ -1558,7 +1743,8 @@
       "valeur": 490000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 15000
+      "monthly_maintenance_cost": 15000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée Fabergé à Saint-Pétersbourg",
@@ -1566,7 +1752,8 @@
       "valeur": 510000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 17000
+      "monthly_maintenance_cost": 17000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée de l'Ermitage",
@@ -1574,7 +1761,8 @@
       "valeur": 3500000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 70000
+      "monthly_maintenance_cost": 70000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Palais Royal d'Amsterdam",
@@ -1582,7 +1770,8 @@
       "valeur": 550000000,
       "type": "Palais",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 30000
+      "monthly_maintenance_cost": 30000,
+      "style": "Exotic"
     },
     {
       "nom": "La Tour de Tokyo",
@@ -1590,7 +1779,8 @@
       "valeur": 500000000,
       "type": "Tour",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 20000
+      "monthly_maintenance_cost": 20000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Château de Warwick",
@@ -1598,7 +1788,8 @@
       "valeur": 1200000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 40000
+      "monthly_maintenance_cost": 40000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée de Préhistoire de Thessalonique",
@@ -1606,7 +1797,8 @@
       "valeur": 300000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 10000
+      "monthly_maintenance_cost": 10000,
+      "style": "Exotic"
     },
     {
       "nom": "La Philharmonie de Berlin",
@@ -1614,7 +1806,8 @@
       "valeur": 890000000,
       "type": "Salle de concert",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 35000
+      "monthly_maintenance_cost": 35000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Château de Chantilly",
@@ -1622,7 +1815,8 @@
       "valeur": 950000000,
       "type": "Château",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 25000
+      "monthly_maintenance_cost": 25000,
+      "style": "Exotic"
     },
     {
       "nom": "La Cité de la Musique (Philharmonie 2)",
@@ -1630,7 +1824,8 @@
       "valeur": 700000000,
       "type": "Centre culturel",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 32000
+      "monthly_maintenance_cost": 32000,
+      "style": "Exotic"
     },
     {
       "nom": "La Tour Skytree de Tokyo",
@@ -1638,7 +1833,8 @@
       "valeur": 1800000000,
       "type": "Tour d'observation",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Musée national d'Art de Catalogne",
@@ -1646,7 +1842,8 @@
       "valeur": 650000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 28000
+      "monthly_maintenance_cost": 28000,
+      "style": "Exotic"
     },
     {
       "nom": "Le Château de Bran (Dracula)",
@@ -1654,7 +1851,8 @@
       "valeur": 800000000,
       "type": "Château",
       "condition": "Good",
-      "monthly_maintenance_cost": 22000
+      "monthly_maintenance_cost": 22000,
+      "style": "Exotic"
     },
     {
       "nom": "Musée Juif de Berlin",
@@ -1662,7 +1860,8 @@
       "valeur": 490000000,
       "type": "Musée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 24000
+      "monthly_maintenance_cost": 24000,
+      "style": "Exotic"
     }
   ]
 }

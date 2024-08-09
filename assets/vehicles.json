@@ -39,12 +39,19 @@
   ],
   "cars": [
     {
-      "name": "Lamborgiggi",
+      "name": "Lamborgini",
       "age": 2,
       "value": 2000000,
       "rarity": "Commun",
       "brand": "Lamborgini",
       "fuelConsumption": 20.0
+    },
+    {
+      "name": "Tesla Model S",
+      "age": 4,
+      "value": 200000,
+      "rarity": "Commun",
+      "fuelConsumption": 0
     }
   ]
 }

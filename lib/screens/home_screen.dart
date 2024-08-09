@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
+import '../services/bank/transaction_service.dart';
 import '../services/real_estate/real_estate.dart';
 import 'market_place/marketplace_menu_screen.dart';
 import 'capital_screen.dart';
@@ -10,8 +11,9 @@ import 'person_details_screen.dart';
 class HomeScreen extends StatelessWidget {
   final Person person;
   final RealEstateService realEstateService;  // Ajouter RealEstateService ici
+  final TransactionService transactionService;
 
-  HomeScreen({required this.person, required this.realEstateService});
+  HomeScreen({required this.person, required this.realEstateService, required this.transactionService});
 
   @override
   Widget build(BuildContext context) {
@@ -108,11 +110,11 @@ class HomeScreen extends StatelessWidget {
         onTap: (index) {
           switch (index) {
             case 0:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => MarketplaceMenuScreen(person: person)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => MarketplaceMenuScreen(person: person, transactionService: transactionService)));
               break;
             case 1:
             // Assurez-vous de passer le service RealEstateService requis
-              Navigator.push(context, MaterialPageRoute(builder: (_) => CapitalScreen(person: person, realEstateService: realEstateService)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => CapitalScreen(person: person, realEstateService: realEstateService, transactionService: transactionService)));
               break;
             case 2:
               Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen()));

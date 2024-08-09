@@ -1,15 +1,13 @@
 import 'package:bit_life_like/services/bank/bank_account.dart';
 
 abstract class Vehicle implements Purchasable {
-  String name;
+  final String name;
   int age;
   String type;
   String rarity;
   String? brand;
   double fuelConsumption;
   double monthlyFuelCost;
-
-  @override
   final double value;
 
   Vehicle({
@@ -38,7 +36,6 @@ abstract class Vehicle implements Purchasable {
   }
 }
 
-
 class Moto extends Vehicle {
   Moto({
     required String name,
@@ -57,9 +54,10 @@ class Moto extends Vehicle {
     fuelConsumption: fuelConsumption,
     monthlyFuelCost: 0,
   );
+
   static Moto fromJson(Map<String, dynamic> json) {
     return Moto(
-      name: json['name'] as String ?? 'Unknown',
+      name: json['name'] as String? ?? 'Unknown',
       age: (json['age'] as num?)?.toInt() ?? 0,
       value: (json['value'] as num?)?.toDouble() ?? 0.0,
       rarity: json['rarity'] as String? ?? 'Unknown',
@@ -73,6 +71,7 @@ class Moto extends Vehicle {
     return value * 0.01; // 1% of the value as maintenance cost
   }
 }
+
 class Voiture extends Vehicle {
   Voiture({
     required String name,
@@ -94,7 +93,7 @@ class Voiture extends Vehicle {
 
   static Voiture fromJson(Map<String, dynamic> json) {
     return Voiture(
-      name: json['name'] as String? ?? 'Unknown',  // Assurez-vous que le champ 'name' est bien 'name' et pas 'nom'
+      name: json['name'] as String? ?? 'Unknown', // Assurez-vous que le champ 'name' est bien 'name' et pas 'nom'
       age: (json['age'] as num?)?.toInt() ?? 0,
       value: (json['value'] as num?)?.toDouble() ?? 0.0,
       rarity: json['rarity'] as String? ?? 'Unknown',
@@ -108,8 +107,6 @@ class Voiture extends Vehicle {
     return value * 0.015;
   }
 }
-
-
 
 class Bateau extends Vehicle {
   Bateau({
@@ -146,7 +143,6 @@ class Bateau extends Vehicle {
     return value * 0.02; // 2% of the value as maintenance cost
   }
 }
-
 
 class Avion extends Vehicle {
   Avion({

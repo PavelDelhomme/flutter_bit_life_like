@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import '../../../Classes/person.dart';
 
 
-class VehiclesScreen extends StatefulWidget {
+class MyVehiclesScreen extends StatefulWidget {
   final Person person;
 
-  VehiclesScreen({required this.person});
+  MyVehiclesScreen({required this.person});
 
   @override
-  _VehiclesScreenState createState() => _VehiclesScreenState();
+  _MyVehiclesScreenState createState() => _MyVehiclesScreenState();
 }
 
-class _VehiclesScreenState extends State<VehiclesScreen> {
+class _MyVehiclesScreenState extends State<MyVehiclesScreen> {
   String selectedCategory = "All";
 
   @override

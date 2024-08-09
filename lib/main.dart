@@ -23,6 +23,7 @@ import 'package:bit_life_like/services/real_estate/real_estate.dart';
   class MyApp extends StatelessWidget {
     final Person person = setupDemo(); // Assuming setupDemo now returns Person
     final RealEstateService realEstateService = RealEstateService();
+    final TransactionService transactionService = TransactionService();
 
     @override
     Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ import 'package:bit_life_like/services/real_estate/real_estate.dart';
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomeScreen(person: person, realEstateService: realEstateService),
+        home: HomeScreen(person: person, realEstateService: realEstateService, transactionService: transactionService),
         debugShowCheckedModeBanner: false,
       );
     }
@@ -47,7 +48,7 @@ import 'package:bit_life_like/services/real_estate/real_estate.dart';
         BankAccount(
             accountNumber: 'ACC1001',
             bankName: 'Bank of Simulator',
-            balance: 10000,
+            balance: 9000000000000,
             annualIncome: 50000,
             accountType: 'Checking'
         )

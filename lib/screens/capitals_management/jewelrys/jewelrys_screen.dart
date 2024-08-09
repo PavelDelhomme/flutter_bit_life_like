@@ -4,10 +4,10 @@ import '../../../Classes/person.dart';
 import 'jewelry_details_screen.dart';
 
 
-class JewelrysScreen extends StatelessWidget {
+class MyJewelrysScreen extends StatelessWidget {
   final Person person;
 
-  JewelrysScreen({required this.person});
+  MyJewelrysScreen({required this.person});
 
   @override
   Widget build(BuildContext context) {

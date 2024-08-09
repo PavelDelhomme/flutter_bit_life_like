@@ -1,9 +1,10 @@
 import 'collectible_item.dart';
+import 'package:bit_life_like/services/bank/bank_account.dart';
 
-class Art extends CollectibleItem {
-  String dateOfCreation;
-  String artist;
-  String type;
+class Art extends CollectibleItem implements Purchasable {
+  final String dateOfCreation;
+  final String artist;
+  final String type;
 
   Art({
     required String name,
@@ -14,10 +15,10 @@ class Art extends CollectibleItem {
     required this.artist,
     required this.type,
   }) : super(
-      name: name,
-      value: value,
-      rarity: rarity,
-      epoch: epoch
+    name: name,
+    value: value,
+    rarity: rarity,
+    epoch: epoch,
   );
 
   @override
@@ -28,9 +29,9 @@ class Art extends CollectibleItem {
   factory Art.fromJson(Map<String, dynamic> json) {
     return Art(
       name: json['nom'] as String,
-      value: json['valeur'] as double,
-      rarity: 'Unknown',  // Assuming rarity is not provided
-      epoch: 'Unknown',   // Assuming epoch is not provided
+      value: (json['valeur'] as num).toDouble(), // Ensure correct type
+      rarity: 'Unknown', // Assuming rarity is not provided
+      epoch: 'Unknown', // Assuming epoch is not provided
       dateOfCreation: json['date_de_creation'] as String,
       artist: json['artiste'] as String,
       type: json['type'] as String,

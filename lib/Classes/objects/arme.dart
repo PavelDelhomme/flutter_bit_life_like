@@ -1,19 +1,21 @@
-import 'package:bit_life_like/Classes/objects/collectible_item.dart';
+import 'collectible_item.dart';
+import 'package:bit_life_like/services/bank/bank_account.dart';
 
-class Arme extends CollectibleItem {
-  String type;
+class Arme extends CollectibleItem implements Purchasable {
+  final String type;
+  final double value;
 
   Arme({
     required String name,
-    required double value,
+    required this.value,
     required String rarity,
     required String epoch,
     required this.type,
-}) : super(
+  }) : super(
     name: name,
     value: value,
     rarity: rarity,
-    epoch: epoch
+    epoch: epoch,
   );
 
   @override

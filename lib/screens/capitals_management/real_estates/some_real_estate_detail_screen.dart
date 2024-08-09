@@ -12,7 +12,12 @@ class SomeRealEstateDetailsScreen extends StatelessWidget {
   final Person person;
   final TransactionService transactionService;
 
-  SomeRealEstateDetailsScreen({required this.estate, required this.realEstateService, required this.person, required this.transactionService});
+  SomeRealEstateDetailsScreen({
+    required this.estate,
+    required this.realEstateService,
+    required this.person,
+    required this.transactionService
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +73,7 @@ class SomeRealEstateDetailsScreen extends StatelessWidget {
     BankAccount account = person.bankAccounts.first;
     transactionService.attemptPurchase(
       account,
-      estate.value,
+      estate,
       onSuccess: () {
         Navigator.pop(context);
         showDialog(

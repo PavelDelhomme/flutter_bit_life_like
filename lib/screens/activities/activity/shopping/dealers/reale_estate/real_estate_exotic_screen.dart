@@ -1,8 +1,7 @@
-import 'package:bit_life_like/services/bank/bank_account.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../../Classes/objects/real_estate.dart';
 import '../../../../../../Classes/person.dart';
+import '../../../../../../services/bank/bank_account.dart';
 import '../../../../../../services/bank/transaction_service.dart';
 import '../../../../../../services/real_estate/real_estate.dart';
 
@@ -15,14 +14,11 @@ class RealEstateExoticScreen extends StatefulWidget {
     required this.realEstateService,
     required this.transactionService,
     required this.person,
-
   });
 
   @override
   _RealEstateExoticScreenState createState() => _RealEstateExoticScreenState();
-
 }
-
 
 class _RealEstateExoticScreenState extends State<RealEstateExoticScreen> {
   String selectedType = "All";
@@ -41,25 +37,65 @@ class _RealEstateExoticScreenState extends State<RealEstateExoticScreen> {
                 selectedType = newValue!;
               });
             },
-            items: <String>["All", "Résidence Privée", "Villa", "Manoir", "Estate",
-              "Ski Lodge", "Maison de ville", "Palace", "Penthouse",
-              "Château", "Site historique", "Site archéologique",
-              "Statue", "Amphithéâtre", "Mausolée", "Monument",
-              "Gratte-ciel", "Bâtiment gouvernemental", "Église",
-              "Complexe fortifié", "Opéra", "Musée", "Résidence royale",
-              "Château historique", "Palais impérial", "Cathédrale",
-              "Basilique", "Pont", "Complexe hôtelier", "Complexe historique",
-              "Édifice religieux", "Temple", "Tour d'observation", "Île monastique",
-              "Pyramide", "Sanctuaire", "Résidence présidentielle",
-              "Bibliothèque", "Palais de justice", "Centre culturel",
-              "Hôtel", "Bâtiment résidentiel", "Exposition", "Bâtiment",
-              "Barrage", "Centre d'art contemporain", "Bureau", "Salle de concert",
-              "Parc public", "Siège social", "Centre de congrès", "Observatoire",
-              "Tour"].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
+            items: <String>[
+              "All",
+              "Résidence Privée",
+              "Villa",
+              "Manoir",
+              "Estate",
+              "Ski Lodge",
+              "Maison de ville",
+              "Palace",
+              "Penthouse",
+              "Château",
+              "Site historique",
+              "Site archéologique",
+              "Statue",
+              "Amphithéâtre",
+              "Mausolée",
+              "Monument",
+              "Gratte-ciel",
+              "Bâtiment gouvernemental",
+              "Église",
+              "Complexe fortifié",
+              "Opéra",
+              "Musée",
+              "Résidence royale",
+              "Château historique",
+              "Palais impérial",
+              "Cathédrale",
+              "Basilique",
+              "Pont",
+              "Complexe hôtelier",
+              "Complexe historique",
+              "Édifice religieux",
+              "Temple",
+              "Tour d'observation",
+              "Île monastique",
+              "Pyramide",
+              "Sanctuaire",
+              "Résidence présidentielle",
+              "Bibliothèque",
+              "Palais de justice",
+              "Centre culturel",
+              "Hôtel",
+              "Bâtiment résidentiel",
+              "Exposition",
+              "Bâtiment",
+              "Barrage",
+              "Centre d'art contemporain",
+              "Bureau",
+              "Salle de concert",
+              "Parc public",
+              "Siège social",
+              "Centre de congrès",
+              "Observatoire",
+              "Tour"
+            ].map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
             }).toList(),
           ),
         ],
@@ -122,15 +158,82 @@ class _RealEstateExoticScreenState extends State<RealEstateExoticScreen> {
               child: Text("Pay Cash"),
               onPressed: () {
                 Navigator.pop(context);
-                _attemptPurchase(account, realEstate.value, context, realEstate);
+                _attemptPurchase(account, realEstate, context);
               },
             ),
             TextButton(
               child: Text("Apply For Loan"),
               onPressed: () {
                 Navigator.pop(context);
-                _showLoanApplication(context, account, realEstate);
+                _attemptLoan(account, realEstate, context);
               },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _attemptPurchase(BankAccount account, RealEstate realEstate, BuildContext context) {
+    widget.transactionService.attemptPurchase(
+      account,
+      realEstate,
+      onSuccess: () {
+        widget.person.addRealEstate(realEstate);
+        _showSuccessDialog(context, "You have successfully purchased ${realEstate.name}.");
+      },
+      onFailure: (String message) {
+        _showErrorDialog(context, message);
+      },
+    );
+  }
+
+  void _attemptLoan(BankAccount account, RealEstate realEstate, BuildContext context) {
+    widget.transactionService.attemptPurchase(
+      account,
+      realEstate,
+      useLoan: true,
+      loanTerm: 30, // Example loan term
+      loanInterestRate: 5.0, // Example interest rate
+      onSuccess: () {
+        widget.person.addRealEstate(realEstate);
+        _showSuccessDialog(context, "Loan approved and ${realEstate.name} purchased.");
+      },
+      onFailure: (String message) {
+        _showErrorDialog(context, message);
+      },
+    );
+  }
+
+  void _showSuccessDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Purchase Successful"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () => Navigator.of(context).pop(),
             ),
           ],
         );

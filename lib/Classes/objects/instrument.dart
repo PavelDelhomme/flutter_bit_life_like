@@ -1,7 +1,8 @@
 import 'collectible_item.dart';
+import 'package:bit_life_like/services/bank/bank_account.dart';
 
-class Instrument extends CollectibleItem {
-  String type;  // Par exemple: Cordes, Percussion, Vent, etc.
+class Instrument extends CollectibleItem implements Purchasable {
+  final String type; // Par exemple: Cordes, Percussion, Vent, etc.
 
   Instrument({
     required String name,

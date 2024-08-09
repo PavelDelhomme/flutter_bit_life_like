@@ -1,58 +1,62 @@
 import 'package:flutter/material.dart';
-import '../../../../../Classes/objects/electronic.dart';
-import '../../../../../Classes/person.dart';
+import '../../../../../../Classes/person.dart';
+import '../../../../../../services/bank/transaction_service.dart';
+import '../../../../../../Classes/objects/electronic.dart';
 import '../../../../../services/bank/bank_account.dart';
-import '../../../../../services/bank/transaction_service.dart';
 
-class ElectronicsDetailsScreen extends StatelessWidget {
-  final Electronic electronic;
+class ElectronicMarketScreen extends StatelessWidget {
   final Person person;
   final TransactionService transactionService;
 
-  ElectronicsDetailsScreen({
-    required this.electronic,
-    required this.person,
-    required this.transactionService,
-  });
+  ElectronicMarketScreen({required this.person, required this.transactionService});
 
-  void _purchaseElectronic(BuildContext context) {
+  // Simulated function to load electronics
+  Future<List<Electronic>> loadElectronics() async {
+    // Assume you have a JSON or API to fetch electronics
+    // For demonstration, we'll create a dummy list
+    List<Electronic> electronics = [
+      Electronic(id: '1', type: 'Smartphone', brand: 'Apple', model: 'iPhone 13', value: 999.0, supportsApplications: true),
+      Electronic(id: '2', type: 'Laptop', brand: 'Dell', model: 'XPS 13', value: 1199.0, supportsApplications: true),
+    ];
+    return Future.value(electronics);
+  }
+
+  void _purchaseElectronic(BuildContext context, Electronic electronic) {
+    // Logic to handle electronic purchase
+    // Show purchase dialog or options as per your logic
     showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Purchase Options"),
-          content: Text("Choose your payment method for ${electronic.model}."),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-                _selectAccountAndPurchase(context, electronic, false);
-              },
-              child: Text("Pay Cash"),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-                _selectAccountAndPurchase(context, electronic, true);
-              },
-              child: Text("Apply For Loan"),
-            ),
-          ],
-        );
-      },
+      builder: (context) => AlertDialog(
+        title: Text('Purchase Electronic'),
+        content: Text('Do you want to purchase ${electronic.model} for \$${electronic.value.toStringAsFixed(2)}?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _selectAccountAndPurchase(context, electronic);
+            },
+            child: Text('Purchase'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('Cancel'),
+          ),
+        ],
+      ),
     );
   }
 
-  void _selectAccountAndPurchase(BuildContext context, Electronic electronic, bool useLoan) {
+  void _selectAccountAndPurchase(BuildContext context, Electronic electronic) {
+    // Display the accounts and let the user select one
     showModalBottomSheet(
       context: context,
       builder: (BuildContext bc) {
         return ListView(
-          children: person.bankAccounts.map<Widget>((BankAccount account) {
+          children: person.bankAccounts.map<Widget>((account) {
             return ListTile(
               title: Text('${account.bankName} - ${account.accountType}'),
               subtitle: Text('Balance: \$${account.balance.toStringAsFixed(2)}'),
-              onTap: () => _attemptPurchase(context, electronic, account, useLoan),
+              onTap: () => _attemptPurchase(context, electronic, account),
             );
           }).toList(),
         );
@@ -60,55 +64,44 @@ class ElectronicsDetailsScreen extends StatelessWidget {
     );
   }
 
-  void _attemptPurchase(BuildContext context, Electronic electronic, BankAccount account, bool useLoan) {
+  void _attemptPurchase(BuildContext context, Electronic electronic, BankAccount account) {
     transactionService.attemptPurchase(
       account,
       electronic,
-      useLoan: useLoan,
-      loanTerm: 1, // Example loan term
-      loanInterestRate: 3.0, // Example interest rate
       onSuccess: () {
         print("Purchase successful!");
-        _showSuccessDialog(context, "You have successfully purchased the ${electronic.model}.");
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Purchase Successful"),
+              content: Text("You have successfully purchased the ${electronic.model}."),
+              actions: <Widget>[
+                TextButton(
+                  child: Text("OK"),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            );
+          },
+        );
       },
       onFailure: (String message) {
         print("Failed to purchase.");
-        _showErrorDialog(context, message);
-      },
-    );
-  }
-
-  void _showSuccessDialog(BuildContext context, String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Purchase Successful"),
-          content: Text(message),
-          actions: <Widget>[
-            TextButton(
-              child: Text("OK"),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _showErrorDialog(BuildContext context, String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Error"),
-          content: Text(message),
-          actions: <Widget>[
-            TextButton(
-              child: Text("OK"),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ],
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text(message),
+              actions: <Widget>[
+                TextButton(
+                  child: Text("OK"),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            );
+          },
         );
       },
     );
@@ -118,36 +111,33 @@ class ElectronicsDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${electronic.brand} ${electronic.model}'),
+        title: Text('Electronics Market'),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text("Type: ${electronic.type}", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
-            Text("Brand: ${electronic.brand}", style: TextStyle(fontSize: 16)),
-            SizedBox(height: 10),
-            Text("Model: ${electronic.model}", style: TextStyle(fontSize: 16)),
-            SizedBox(height: 10),
-            Text("Value: \$${electronic.value.toStringAsFixed(2)}", style: TextStyle(fontSize: 16, color: Colors.green)),
-            SizedBox(height: 20),
-            if (electronic.supportsApplications)
-              Text("Supports Applications: Yes", style: TextStyle(fontSize: 16, color: Colors.green)),
-            if (!electronic.supportsApplications)
-              Text("Supports Applications: No", style: TextStyle(fontSize: 16, color: Colors.red)),
-            SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () => _purchaseElectronic(context),
-              child: Text("Purchase"),
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white, backgroundColor: Colors.blue,
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-              ),
-            )
-          ],
-        ),
+      body: FutureBuilder<List<Electronic>>(
+        future: loadElectronics(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return Center(child: Text("Error loading electronics"));
+            }
+            if (snapshot.data == null || snapshot.data!.isEmpty) {
+              return Center(child: Text("No electronics available"));
+            }
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                Electronic electronic = snapshot.data![index];
+                return ListTile(
+                  title: Text(electronic.model),
+                  subtitle: Text('Price: \$${electronic.value.toStringAsFixed(2)}'),
+                  onTap: () => _purchaseElectronic(context, electronic),
+                );
+              },
+            );
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
       ),
     );
   }

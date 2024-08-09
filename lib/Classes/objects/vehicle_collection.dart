@@ -7,7 +7,8 @@ class VehiculeExotique extends Vehicle {
     required double value,
     required String rarity,
     String? brand,
-    required double fuelConsumption, required int monthlyFuelCost,
+    required double fuelConsumption,
+    required int monthlyFuelCost,
   }) : super(
     name: name,
     age: age,
@@ -24,7 +25,6 @@ class VehiculeExotique extends Vehicle {
     return value * 0.03; // 3% of the value as maintenance cost
   }
 }
-
 
 class VoitureDeCollection extends Vehicle {
   VoitureDeCollection({

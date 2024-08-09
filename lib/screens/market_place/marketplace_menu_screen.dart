@@ -1,26 +1,24 @@
 import 'dart:developer';
-
-import 'package:bit_life_like/screens/activities/activity/shopping/dealers/electronic_dealership_screen.dart';
-import 'package:bit_life_like/screens/activities/activity/shopping/dealers/reale_estate/real_estate_classic_screen.dart';
-import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/airplaine_dealership.dart';
 import 'package:flutter/material.dart';
 
 import '../../Classes/person.dart';
 import '../../services/real_estate/real_estate.dart';
 import '../../services/bank/transaction_service.dart';
+import '../activities/activity/shopping/dealers/electronic_dealership_screen.dart';
 import '../activities/activity/shopping/dealers/jewelry_market_screen.dart';
-import '../activities/activity/shopping/dealers/reale_estate/real_estate_dealership_screen.dart';
+import '../activities/activity/shopping/dealers/reale_estate/real_estate_classic_screen.dart';
 import '../activities/activity/shopping/dealers/reale_estate/real_estate_exotic_screen.dart';
 import '../activities/activity/shopping/dealers/seconde_main_market_screen.dart';
+import '../activities/activity/shopping/dealers/vehicles/airplaine_dealership.dart';
 import '../activities/activity/shopping/dealers/vehicles/boat_dealership_screen.dart';
 import '../activities/activity/shopping/dealers/vehicles/car_dealership_screen.dart';
 import '../activities/activity/shopping/real_estate/enchere_house_screen.dart';
 
 class MarketplaceMenuScreen extends StatelessWidget {
-  late final Person person;
+  final Person person;
+  final TransactionService transactionService;
 
-
-  MarketplaceMenuScreen({required this.person}); // Add constructor to take person
+  MarketplaceMenuScreen({required this.person, required this.transactionService});
 
   @override
   Widget build(BuildContext context) {
@@ -33,90 +31,116 @@ class MarketplaceMenuScreen extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
-              title: Text('Vendeur de voiture'),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CarDealershipScreen(person: person)))),
+            title: Text('Vendeur de voiture'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CarDealershipScreen(person: person, transactionService: transactionService),
+              ),
+            ),
+          ),
           ListTile(
-              title: Text('Vendeur de bateaux'),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => BoatDealershipScreen(person: person)))),
+            title: Text('Vendeur de bateaux'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BoatDealershipScreen(person: person, transactionService: transactionService),
+              ),
+            ),
+          ),
           ListTile(
-              title: Text('Vendeur d\'avion'),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => AirplaineDealershipScreen(person: person)))),
+            title: Text('Vendeur d\'avion'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AirplaineDealershipScreen(person: person, transactionService: transactionService),
+              ),
+            ),
+          ),
           ListTile(
-              title: Text('Marché Immobilier'),
-              subtitle: Text('Toucher pour sélectionner la catégorie de biens'),
-              onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return SimpleDialog(
-                        title: Text('Catégorie'),
-                        children: <Widget>[
-                          SimpleDialogOption(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RealEstateClassicScreen(
-                                        realEstateService: RealEstateService(),
-                                        transactionService: TransactionService(),
-                                        person: person)),
-                              );
-                            },
-                            child: const Text('Classique'),
-                          ),
-                          SimpleDialogOption(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RealEstateExoticScreen(
-                                        realEstateService: RealEstateService(),
-                                        transactionService: TransactionService(),
-                                        person: person)),
-                              );
-                            },
-                            child: const Text('Exotique'),
-                          ),
-                        ],
-                      );
-                    });
-              }),
+            title: Text('Marché Immobilier'),
+            subtitle: Text('Toucher pour sélectionner la catégorie de biens'),
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return SimpleDialog(
+                    title: Text('Catégorie'),
+                    children: <Widget>[
+                      SimpleDialogOption(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RealEstateClassicScreen(
+                                realEstateService: RealEstateService(),
+                                transactionService: transactionService,
+                                person: person,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text('Classique'),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RealEstateExoticScreen(
+                                realEstateService: RealEstateService(),
+                                transactionService: transactionService,
+                                person: person,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text('Exotique'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
           ListTile(
-              title: Text('Auction House'),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => EnchereHouseScreen()))),
+            title: Text('Auction House'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EnchereHouseScreen(person: person, transactionService: transactionService),
+              ),
+            ),
+          ),
           ListTile(
-              title: Text('Second Hand Market'),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SecondHandMarketScreen()))),
+            title: Text('Second Hand Market'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SecondHandMarketScreen(person: person, transactionService: transactionService),
+              ),
+            ),
+          ),
           ListTile(
-              title: Text('Jewelry Market'),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => JewelryMarketScreen()))),
+            title: Text('Jewelry Market'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => JewelryMarketScreen(person: person, transactionService: transactionService),
+              ),
+            ),
+          ),
           ListTile(
-              title: Text('Electronics'),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                      builder: (context) => ElectronicDealershipScreen(person: person))),
-          )
+            title: Text('Electronics'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ElectronicMarketScreen(person: person, transactionService: transactionService),
+              ),
+            ),
+          ),
         ],
       ),
     );

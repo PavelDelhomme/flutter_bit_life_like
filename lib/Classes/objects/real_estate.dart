@@ -11,14 +11,12 @@ class RealEstate implements Purchasable {
   String style;
   Person? locataire;
   bool isExotic;
-
-  @override
-  final double value;
+  final double _value;
 
   RealEstate({
     required this.name,
     required this.age,
-    required this.value,
+    required double value,
     required this.type,
     required this.condition,
     required this.monthlyMaintenanceCost,
@@ -26,7 +24,10 @@ class RealEstate implements Purchasable {
     this.style = 'Classic',
     this.locataire,
     this.isExotic = false,
-  });
+  }) : _value = value;
+
+  @override
+  double get value => _value;
 
   factory RealEstate.fromJson(Map<String, dynamic> json) {
     return RealEstate(
