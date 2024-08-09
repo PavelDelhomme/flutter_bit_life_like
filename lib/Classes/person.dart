@@ -224,6 +224,11 @@ class Person {
     }
   }
 
+  void addRealEstate(RealEstate realEstate) {
+    this.realEstates.add(realEstate);
+    print("Added real estate to collection: ${realEstate.name}");
+  }
+
   factory Person.fromJson(Map<String, dynamic> json) {
     return Person(
       name: json['name'] as String,

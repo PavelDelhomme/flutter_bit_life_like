@@ -17,7 +17,7 @@ class RealEstateMarketScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Real Estate Market")),
       body: FutureBuilder<List<RealEstate>>(
-        future: realEstateService.getPropertiesByType("All"), // Exemple pour toutes les propriétés
+        future: realEstateService.getAllPropertiesWithoutTypeAndStyle(), // Exemple pour toutes les propriétés
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {

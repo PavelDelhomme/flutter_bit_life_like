@@ -6,7 +6,8 @@
       "valeur": 2000000,
       "type": "Villa",
       "condition": "New",
-      "monthly_maintenance_cost": 2000
+      "monthly_maintenance_cost": 2000,
+      "style": "Classic"
     },
     {
       "nom": "City Apartment",

@@ -2,10 +2,14 @@ import 'package:bit_life_like/screens/capitals_management/real_estates/some_real
 import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 
+import '../../../Classes/objects/real_estate.dart';
+import '../../../services/real_estate/real_estate.dart';
+
 class RealEstatesScreen extends StatefulWidget {
   final Person person;
+  final RealEstateService realEstateService;
 
-  RealEstatesScreen({required this.person});
+  RealEstatesScreen({required this.person, required this.realEstateService});
 
   @override
   _RealEstatesScreenState createState() => _RealEstatesScreenState();
@@ -16,9 +20,11 @@ class _RealEstatesScreenState extends State<RealEstatesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> filteredRealEstates = (selectedType == "All")
+    List<RealEstate> filteredRealEstates = (selectedType == "All")
         ? widget.person.realEstates
         : widget.person.realEstates.where((estate) => estate.type == selectedType).toList();
+
+    print("Displaying ${filteredRealEstates.length} real estates.");
 
     return Scaffold(
       appBar: AppBar(
@@ -31,30 +37,12 @@ class _RealEstatesScreenState extends State<RealEstatesScreen> {
               });
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              const PopupMenuItem<String>(
-                value: "All",
-                child: Text("All"),
-              ),
-              const PopupMenuItem<String>(
-                value: "Villa",
-                child: Text("Villa"),
-              ),
-              const PopupMenuItem<String>(
-                value: "Appartement",
-                child: Text("Appartement"),
-              ),
-              const PopupMenuItem<String>(
-                value: "Maison",
-                child: Text("Maison"),
-              ),
-              const PopupMenuItem<String>(
-                value: "Studio",
-                child: Text("Studio"),
-              ),
-              const PopupMenuItem<String>(
-                value: "Manoir",
-                child: Text("Manoir"),
-              ),
+              const PopupMenuItem<String>(value: "All", child: Text("All")),
+              const PopupMenuItem<String>(value: "Villa", child: Text("Villa")),
+              const PopupMenuItem<String>(value: "Appartement", child: Text("Appartement")),
+              const PopupMenuItem<String>(value: "Maison", child: Text("Maison")),
+              const PopupMenuItem<String>(value: "Studio", child: Text("Studio")),
+              const PopupMenuItem<String>(value: "Manoir", child: Text("Manoir")),
             ],
           ),
         ],
@@ -64,13 +52,13 @@ class _RealEstatesScreenState extends State<RealEstatesScreen> {
         itemBuilder: (context, index) {
           var estate = filteredRealEstates[index];
           return ListTile(
-            title: Text(estate["nom"]),
-            subtitle: Text("\$${estate['valeur'].toStringAsFixed(2)}"),
+            title: Text(estate.name),
+            subtitle: Text("\$${estate.value.toStringAsFixed(2)}"),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SomeRealEstateDetailsScreen(estate: estate),
+                  builder: (context) => SomeRealEstateDetailsScreen(estate: estate, realEstateService: widget.realEstateService, person: widget.person),
                 ),
               );
             },

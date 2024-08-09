@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
+import '../services/real_estate/real_estate.dart';
 import 'market_place/marketplace_menu_screen.dart';
 import 'capital_screen.dart';
 import 'activities/activities_screen.dart';
@@ -8,8 +9,9 @@ import 'person_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final Person person;
+  final RealEstateService realEstateService;  // Ajouter RealEstateService ici
 
-  HomeScreen({required this.person});
+  HomeScreen({required this.person, required this.realEstateService});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +75,6 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
   Widget buildNavigationBar(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -88,20 +89,20 @@ class HomeScreen extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart, color: Colors.white),
-            label: "Marketplace"
+              icon: Icon(Icons.shopping_cart, color: Colors.white),
+              label: "Marketplace"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet, color: Colors.white),
-            label: "Capital"
+              icon: Icon(Icons.account_balance_wallet, color: Colors.white),
+              label: "Capital"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people, color: Colors.white),
-            label: "Relationships"
+              icon: Icon(Icons.people, color: Colors.white),
+              label: "Relationships"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.directions_run, color: Colors.white),
-            label: "Activities"
+              icon: Icon(Icons.directions_run, color: Colors.white),
+              label: "Activities"
           ),
         ],
         onTap: (index) {
@@ -110,7 +111,8 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (_) => MarketplaceMenuScreen(person: person)));
               break;
             case 1:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => CapitalScreen(person: person)));
+            // Assurez-vous de passer le service RealEstateService requis
+              Navigator.push(context, MaterialPageRoute(builder: (_) => CapitalScreen(person: person, realEstateService: realEstateService)));
               break;
             case 2:
               Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen()));
@@ -123,4 +125,5 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
 }

@@ -51,22 +51,25 @@ class FinancialService {
     print("Seizing assets to recover \$${debtAmont}");
   }
 
-  void investInStock(BankAccount account, double amount) {
+  bool investInStock(BankAccount account, double amount) {
     if (account.balance >= amount) {
-      // Logic to handle stock purchase
-      print('Invested $amount in stocks.');
+      account.withdraw(amount);
+      print('Invested \$$amount in stocks.');
+      return true;
     } else {
       print('Insufficient funds to invest in stocks.');
+      return false;
     }
   }
 
-  void investInCrypto(BankAccount account, double amount) {
+  bool investInCrypto(BankAccount account, double amount) {
     if (account.balance >= amount) {
       account.withdraw(amount);
-      // Logic to handle crypto purchase
       print("Invested $amount in crypto");
+      return true;
     } else {
       print("Insufficient funds to invest in crypto.");
+      return false;
     }
   }
 

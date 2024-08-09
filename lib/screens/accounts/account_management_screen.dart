@@ -64,48 +64,55 @@ class AccountManagementScreen extends StatelessWidget {
       if (index != null) {
         accounts.removeAt(index);
       }
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Account closed successfully."),
       ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Insufficient funds to close the account."),
       ));
     }
   }
-
   void _addNewAccount(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    String accountType;
-    double initialDeposit;
+    String accountType = '';
+    double initialDeposit = 0.0;
 
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Add a New Account'),
+          title: const Text('Add a New Account'),
           content: Form(
             key: _formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Account Type"),
-                  onSaved: (value) => accountType = value!,
+                  decoration: const InputDecoration(hintText: "Account Type"),
+                  onSaved: (value) => accountType = value ?? '',
                   validator: (value) => value!.isEmpty ? 'This field cannot be empty' : null,
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Initial Deposit"),
-                  onSaved: (value) => initialDeposit = double.parse(value!),
+                  decoration: const InputDecoration(hintText: "Initial Deposit"),
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  onSaved: (value) => initialDeposit = double.tryParse(value!) ?? 0.0,
                   validator: (value) => value!.isEmpty ? 'This field cannot be empty' : null,
                 ),
                 ElevatedButton(
-                  child: Text('Submit'),
+                  child: const Text('Submit'),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      // You would typically pass the bank object or similar here
-                      // Example: yourBank.openAccount(accountType, initialDeposit, someInterestRate);
+                      // Assuming you have a method to add a new account
+                      BankAccount newAccount = BankAccount(
+                        accountNumber: 'New123', // Generate or fetch actual account number
+                        bankName: 'Your Bank Name',
+                        accountType: accountType,
+                        balance: initialDeposit,
+                        interestRate: 0.1, // Example interest rate
+                      );
+                      accounts.add(newAccount);
                       Navigator.pop(context);
                     }
                   },
@@ -117,5 +124,6 @@ class AccountManagementScreen extends StatelessWidget {
       },
     );
   }
+
 
 }

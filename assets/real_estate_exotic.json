@@ -6,7 +6,8 @@
       "valeur": 2000000000,
       "type": "Résidence Privée",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 250000
+      "monthly_maintenance_cost": 250000,
+      "style": "Exotic"
     },
     {
       "nom": "Villa Leopolda",
@@ -14,7 +15,8 @@
       "valeur": 750000000,
       "type": "Villa",
       "condition": "Excellent",
-      "monthly_maintenance_cost": 50000
+      "monthly_maintenance_cost": 50000,
+      "style": "Exotic"
     },
     {
       "nom": "The One",
@@ -22,7 +24,8 @@
       "valeur": 500000000,
       "type": "Manoir",
       "condition": "New",
-      "monthly_maintenance_cost": 100000
+      "monthly_maintenance_cost": 100000,
+      "style": "Exotic"
     },
     {
       "nom": "Les Palais Bulles",
