@@ -158,6 +158,7 @@ class _RealEstateClassicScreenState extends State<RealEstateClassicScreen> {
         account,
         realEstate,
         onSuccess: () {
+          widget.person.addRealEstate(realEstate);
           Navigator.pop(context); // Close the dialog
           showDialog(
             context: context,
