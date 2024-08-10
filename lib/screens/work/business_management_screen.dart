@@ -1,4 +1,3 @@
-// business_management_screen.dart
 import 'package:flutter/material.dart';
 import '../../Classes/person.dart';
 import '../../screens/work/classes/business.dart';
@@ -17,7 +16,7 @@ class BusinessManagementScreen extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Text("Start a New Business"),
+            title: Text("Start a new Business"),
             onTap: () {
               _showNewBusinessDialog(context);
             },
@@ -27,9 +26,9 @@ class BusinessManagementScreen extends StatelessWidget {
             children: person.businesses.map((business) {
               return ListTile(
                 title: Text(business.name),
-                subtitle: Text("Balance: \$${business.getBalance().toStringAsFixed(2)}"),
+                subtitle: Text("Balance: \$${business.getBalance()}"),
                 onTap: () {
-                  // Navigate to more details about the business
+                  _manageBusiness(context, business);
                 },
               );
             }).toList(),
@@ -79,15 +78,18 @@ class BusinessManagementScreen extends StatelessWidget {
                 Navigator.of(context).pop();
               },
             ),
-            TextButton(
-              child: Text("Cancel"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
           ],
         );
       },
+    );
+  }
+
+  void _manageBusiness(BuildContext context, Business business) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BusinessDetailScreen(business: business),
+      ),
     );
   }
 }

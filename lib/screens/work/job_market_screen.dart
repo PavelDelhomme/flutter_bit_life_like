@@ -1,12 +1,14 @@
 // job_market_screen.dart
-import 'package:bit_life_like/screens/work/classes/job.dart';
 import 'package:flutter/material.dart';
 import '../../Classes/person.dart';
-import '../../services/work/jobmarket_service.dart';
+import 'package:bit_life_like/screens/work/classes/job.dart' as job_class;
+import 'package:bit_life_like/services/work/jobmarket_service.dart' as job_service;
+
+
 
 class JobMarketScreen extends StatelessWidget {
   final Person person;
-  final JobMarketService jobMarketService = JobMarketService();
+  final job_service.JobMarketService jobMarketService = job_service.JobMarketService();
 
   JobMarketScreen({required this.person});
 
@@ -32,11 +34,11 @@ class JobMarketScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: jobMarketService.availableJobs.length,
               itemBuilder: (context, index) {
-                Job job = jobMarketService.availableJobs[index];
+                job_class.Job job = jobMarketService.availableJobs[index] as job_class.Job;
                 return ListTile(
-                  title: Text(job.jobTitle),
+                  title: Text(job.title),
                   subtitle: Text(
-                      'Company: ${job.employerName}, Salary: \$${job.monthlySalary}/month'),
+                      'Company: ${job.companyName}, Salary: \$${job.salary}/hours'),
                   onTap: () {
                     _showApplyDialog(context, job);
                   },
@@ -49,21 +51,21 @@ class JobMarketScreen extends StatelessWidget {
     );
   }
 
-  void _showApplyDialog(BuildContext context, Job job) {
+  void _showApplyDialog(BuildContext context, job_class.Job job) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Apply for ${job.jobTitle}"),
+          title: Text("Apply for ${job.title}"),
           content: Text(
-              "Do you want to apply for this job at ${job.employerName}?"),
+              "Do you want to apply for this job at ${job.companyName}?"),
           actions: <Widget>[
             TextButton(
               child: Text("Apply"),
               onPressed: () {
                 // Check eligibility and apply
                 if (_canApplyForJob(person, job)) {
-                  person.jobs.add(job as Job);
+                  person.jobs.add(job as job_class.Job);
                   Navigator.of(context).pop();
                   _showSuccessDialog(context, "You have applied successfully!");
                 } else {
@@ -84,7 +86,7 @@ class JobMarketScreen extends StatelessWidget {
     );
   }
 
-  bool _canApplyForJob(Person person, Job job) {
+  bool _canApplyForJob(Person person, job_class.Job job) {
     bool hasRequiredEducation = person.educationHistory.any(
             (education) => education.name == job.educationRequired);
     bool hasRequiredExperience = person.jobs.length >= job.yearsRequired;

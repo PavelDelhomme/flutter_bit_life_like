@@ -2,25 +2,52 @@ class Business {
   String name;
   String type;
   double initialInvestment;
-  double balance;
+  double income = 0;
+  double expenses = 0;
+  List<String> products = [];
+  List<String> employees = [];
+  List<String> departments = [];
+  bool isPublic = false;
 
-  Business({required this.name, required this.type, required this.initialInvestment}) : balance = initialInvestment;
+  Business({
+    required this.name,
+    required this.type,
+    required this.initialInvestment,
+  });
 
-  void invest(double amount) {
-    balance += amount;
-    print("Invested \$${amount} in ${name}");
+  double getBalance() {
+    return income - expenses;
+  }
+
+  void addProduct(String product) {
+    products.add(product);
+  }
+
+  void hireEmployee(String employee) {
+    employees.add(employee);
+  }
+
+  void addDepartment(String department) {
+    departments.add(department);
   }
 
   void payExpenses(double amount) {
-    if (balance >= amount) {
-      balance -= amount;
-      print("Expenses of \$${amount} paid for ${name}");
-    } else {
-      print("Insufficient funds to cover expenses for ${name}");
-    }
+    expenses += amount;
   }
 
-  double getBalance() {
-    return balance;
+  void generateIncome(double amount) {
+    income += amount;
+  }
+
+  void listProducts() {
+    print("Products: ${products.join(', ')}");
+  }
+
+  void listEmployees() {
+    print("Employees: ${employees.join(', ')}");
+  }
+
+  void listDepartments() {
+    print("Departments: ${departments.join(', ')}");
   }
 }

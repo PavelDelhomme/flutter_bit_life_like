@@ -7,6 +7,9 @@ class Job {
   int stressLevel = 0;
   String companyName;
   bool isFullTime;
+  String educationRequired = "Any";
+  int yearsRequired = 0;
+
 
   Job({required this.title, required this.country, required this.salary, required this.hoursPerWeek, required this.companyName, required this.isFullTime});
 
