@@ -1,9 +1,7 @@
-import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/vehicle_details_screen.dart';
-import 'package:bit_life_like/screens/capitals_management/vehicles/vehicule_details_screen_capital.dart';
 import 'package:flutter/material.dart';
-
+import '../../../Classes/objects/vehicle.dart';
 import '../../../Classes/person.dart';
-
+import 'vehicule_details_screen_capital.dart';
 
 class MyVehiclesScreen extends StatefulWidget {
   final Person person;
@@ -19,7 +17,7 @@ class _MyVehiclesScreenState extends State<MyVehiclesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, List<dynamic>> vehiculeCategories = {
+    Map<String, List<Vehicle>> vehiculeCategories = {
       "All": widget.person.vehicles,
       "Airplanes": widget.person.vehicles.where((v) => v.type == 'Airplane').toList(),
       "Motorcycles": widget.person.vehicles.where((v) => v.type == 'Motorcycle').toList(),
@@ -65,10 +63,10 @@ class _MyVehiclesScreenState extends State<MyVehiclesScreen> {
       body: ListView.builder(
         itemCount: vehiculeCategories[selectedCategory]!.length,
         itemBuilder: (context, index) {
-          var vehicle = vehiculeCategories[selectedCategory]![index];
+          Vehicle vehicle = vehiculeCategories[selectedCategory]![index];
           return ListTile(
-            title: Text(vehicle['name']),
-            subtitle: Text("\$${vehicle['value'].toStringAsFixed(2)}"),
+            title: Text(vehicle.name), // Access property directly
+            subtitle: Text("\$${vehicle.value.toStringAsFixed(2)}"),
             onTap: () {
               Navigator.push(
                 context,

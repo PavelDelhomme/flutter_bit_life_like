@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:bit_life_like/Classes/person.dart';
-import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/vehicle_details_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/vehicle_dealership_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 

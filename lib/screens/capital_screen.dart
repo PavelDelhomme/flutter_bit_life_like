@@ -7,7 +7,7 @@ import 'capitals_management/arts/arts_screen.dart';
 import 'capitals_management/banks/bank_account_screen.dart';
 import 'capitals_management/electronics/electronics_screen.dart';
 import 'capitals_management/jewelrys/jewelrys_screen.dart';
-import 'capitals_management/real_estates/real_estate_screen.dart';
+import 'capitals_management/real_estates/my_real_estates_screen.dart';
 import 'capitals_management/vehicles/vehicules_screen.dart';
 
 class CapitalScreen extends StatelessWidget {

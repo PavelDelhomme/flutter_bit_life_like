@@ -1,4 +1,4 @@
-import 'package:bit_life_like/screens/capitals_management/real_estates/some_real_estate_detail_screen.dart';
+import 'package:bit_life_like/screens/capitals_management/real_estates/my_real_estate_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 
@@ -64,7 +64,7 @@ class _MyRealEstatesScreenState extends State<MyRealEstatesScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SomeRealEstateDetailsScreen(
+                  builder: (context) => MyRealEstateDetailsScreen(
                     estate: estate,
                     realEstateService: widget.realEstateService,
                     person: widget.person,

@@ -18,21 +18,21 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
   void _purchaseVehicle(BuildContext context) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext dialogContext) {
         return AlertDialog(
           title: Text("Purchase Options"),
           content: Text("Choose your payment method for ${vehicle.name}."),
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(dialogContext);
                 _selectAccountAndPurchase(context, vehicle, false);
               },
               child: Text("Pay Cash"),
             ),
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(dialogContext);
                 _selectAccountAndPurchase(context, vehicle, true);
               },
               child: Text("Apply For Loan"),
@@ -52,7 +52,10 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
             return ListTile(
               title: Text('${account.bankName} - ${account.accountType}'),
               subtitle: Text('Balance: \$${account.balance.toStringAsFixed(2)}'),
-              onTap: () => _attemptPurchase(context, vehicle, account, useLoan),
+              onTap: () {
+                Navigator.pop(bc); // Close the bottom sheet before continuing
+                _attemptPurchase(context, vehicle, account, useLoan);
+              },
             );
           }).toList(),
         );
@@ -61,6 +64,7 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
   }
 
   void _attemptPurchase(BuildContext context, Vehicle vehicle, BankAccount account, bool useLoan) {
+    final parentContext = context; // Save the context for use in callbacks
     transactionService.attemptPurchase(
       account,
       vehicle,
@@ -69,10 +73,10 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
       loanInterestRate: 3.5, // Example interest rate
       onSuccess: () {
         person.addVehicle(vehicle); // Add the vehicle to the person's collection
-        _showSuccessDialog(context, "You have successfully purchased the ${vehicle.name}.");
+        _showSuccessDialog(parentContext, "You have successfully purchased the ${vehicle.name}.");
       },
       onFailure: (String message) {
-        _showErrorDialog(context, message);
+        _showErrorDialog(parentContext, message);
       },
     );
   }
@@ -80,7 +84,7 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
   void _showSuccessDialog(BuildContext context, String message) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext dialogContext) {
         return AlertDialog(
           title: Text("Purchase Successful"),
           content: Text(message),
@@ -88,7 +92,7 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
             TextButton(
               child: Text("OK"),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(dialogContext).pop();
                 Navigator.of(context).pop(); // Close the purchase screen
               },
             ),
@@ -101,14 +105,14 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
   void _showErrorDialog(BuildContext context, String message) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext dialogContext) {
         return AlertDialog(
           title: Text("Error"),
           content: Text(message),
           actions: <Widget>[
             TextButton(
               child: Text("OK"),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => Navigator.of(dialogContext).pop(),
             ),
           ],
         );
@@ -121,7 +125,7 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
 
     showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext dialogContext) {
         return AlertDialog(
           title: Text("Negotiate Price"),
           content: TextField(
@@ -131,13 +135,13 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
           ),
           actions: <Widget>[
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => Navigator.of(dialogContext).pop(),
               child: Text("Cancel"),
             ),
             TextButton(
               onPressed: () {
                 // Handle the offer submission
-                Navigator.of(context).pop();
+                Navigator.of(dialogContext).pop();
               },
               child: Text("Submit Offer"),
             )

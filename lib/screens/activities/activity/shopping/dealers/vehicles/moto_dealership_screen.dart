@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 
 import '../../../../../../Classes/objects/vehicle.dart';
 import '../../../../../../Classes/person.dart';
-import 'vehicle_details_screen.dart';
+import 'vehicle_dealership_details_screen.dart';
 
 class MotoDealershipScreen extends StatelessWidget {
   final Person person;

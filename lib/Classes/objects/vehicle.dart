@@ -48,7 +48,7 @@ class Moto extends Vehicle {
     name: name,
     age: age,
     value: value,
-    type: 'Moto',
+    type: 'Motorcycle',
     rarity: rarity,
     brand: brand,
     fuelConsumption: fuelConsumption,
