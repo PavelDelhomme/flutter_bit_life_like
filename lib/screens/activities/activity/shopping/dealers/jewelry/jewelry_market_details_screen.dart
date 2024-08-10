@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../../Classes/objects/jewelry.dart';
-import '../../../../../../Classes/person.dart';
-import '../../../../../../services/bank/transaction_service.dart';
-import '../../../../../../services/bank/bank_account.dart';
+import '../../../../../../../Classes/objects/jewelry.dart';
+import '../../../../../../../Classes/person.dart';
+import '../../../../../../../services/bank/transaction_service.dart';
+import '../../../../../../../services/bank/bank_account.dart';
 
 class JewelryDetailsScreen extends StatelessWidget {
   final Jewelry jewelry;

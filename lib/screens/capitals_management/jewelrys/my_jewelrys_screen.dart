@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../Classes/person.dart';
-import 'jewelry_details_screen.dart';
+import 'my_jewelry_details_screen.dart';
 
 
 class MyJewelrysScreen extends StatelessWidget {

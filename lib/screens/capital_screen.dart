@@ -3,10 +3,10 @@ import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/real_estate/real_estate.dart'; // Import RealEstateService
 
 import '../services/bank/transaction_service.dart';
-import 'capitals_management/antiques/antiques_screen.dart';
+import 'capitals_management/antiques/my_antiques_screen.dart';
 import 'capitals_management/banks/bank_account_screen.dart';
 import 'capitals_management/electronics/electronics_screen.dart';
-import 'capitals_management/jewelrys/jewelrys_screen.dart';
+import 'capitals_management/jewelrys/my_jewelrys_screen.dart';
 import 'capitals_management/real_estates/my_real_estates_screen.dart';
 import 'capitals_management/vehicles/vehicules_screen.dart';
 

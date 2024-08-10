@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../../Classes/person.dart';
-import '../../../../../../services/bank/transaction_service.dart';
-import '../../../../../../Classes/objects/electronic.dart';
-import '../../../../../services/bank/bank_account.dart';
+import '../../../../../../../Classes/person.dart';
+import '../../../../../../../services/bank/transaction_service.dart';
+import '../../../../../../../Classes/objects/electronic.dart';
+import '../../../../../../services/bank/bank_account.dart';
 
 class ElectronicMarketScreen extends StatelessWidget {
   final Person person;

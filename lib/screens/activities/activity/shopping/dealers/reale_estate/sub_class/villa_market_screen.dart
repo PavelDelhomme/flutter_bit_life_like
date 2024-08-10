@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../Classes/objects/real_estate.dart';
+import '../../../../../../../Classes/objects/real_estate.dart';
 import '../reale_estate_seller.dart';
 
 class VillaMarketScreen extends StatelessWidget {

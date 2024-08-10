@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../Classes/objects/real_estate.dart';
-import '../../../../../../Classes/person.dart';
-import '../../../../../../services/bank/bank_account.dart';
-import '../../../../../../services/bank/transaction_service.dart';
-import '../../../../../../services/real_estate/real_estate.dart';
+import '../../../../../../../Classes/objects/real_estate.dart';
+import '../../../../../../../Classes/person.dart';
+import '../../../../../../../services/bank/bank_account.dart';
+import '../../../../../../../services/bank/transaction_service.dart';
+import '../../../../../../../services/real_estate/real_estate.dart';
 
 class RealEstateClassicScreen extends StatefulWidget {
   final RealEstateService realEstateService;

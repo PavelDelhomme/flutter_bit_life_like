@@ -1,13 +1,11 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../../../../Classes/person.dart';
-import '../../../../../../services/bank/transaction_service.dart';
-import '../../../../../../Classes/objects/jewelry.dart';
-import '../../../../../../services/jewelry/jewelry.dart';
-import '../../../../../services/bank/bank_account.dart';
+import '../../../../../../../Classes/person.dart';
+import '../../../../../../../services/bank/transaction_service.dart';
+import '../../../../../../../Classes/objects/jewelry.dart';
+import '../../../../../../../services/jewelry/jewelry.dart';
+import '../../../../../../services/bank/bank_account.dart';
 
 class JewelryMarketScreen extends StatelessWidget {
   final Person person;
@@ -21,10 +19,10 @@ class JewelryMarketScreen extends StatelessWidget {
     return jewelryService.getAllJewelries();
   }
 
-  void _purchaseJewelry(BuildContext context, Jewelry jewelry) {
-    // Logic to handle jewelry purchase
+  void _purchaseJewelry(BuildContext buildContext, Jewelry jewelry) {
+    // Use the build context of the parent widget
     showDialog(
-      context: context,
+      context: buildContext,
       builder: (context) => AlertDialog(
         title: Text('Purchase Jewelry'),
         content: Text('Do you want to purchase ${jewelry.name} for \$${jewelry.value.toStringAsFixed(2)}?'),
@@ -32,7 +30,7 @@ class JewelryMarketScreen extends StatelessWidget {
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              _selectAccountAndPurchase(context, jewelry);
+              _selectAccountAndPurchase(buildContext, jewelry); // Pass original context
             },
             child: Text('Purchase'),
           ),
@@ -45,17 +43,20 @@ class JewelryMarketScreen extends StatelessWidget {
     );
   }
 
-  void _selectAccountAndPurchase(BuildContext parentContext, Jewelry jewelry) {
-    // Use the parent context to ensure it's valid when showing dialogs
+  void _selectAccountAndPurchase(BuildContext buildContext, Jewelry jewelry) {
+    // Use the context of the parent to ensure it's valid
     showModalBottomSheet(
-      context: parentContext,
+      context: buildContext,
       builder: (BuildContext bc) {
         return ListView(
           children: person.bankAccounts.map<Widget>((account) {
             return ListTile(
               title: Text('${account.bankName} - ${account.accountType}'),
               subtitle: Text('Balance: \$${account.balance.toStringAsFixed(2)}'),
-              onTap: () => _attemptPurchase(parentContext, jewelry, account),
+              onTap: () {
+                Navigator.pop(bc); // Close the bottom sheet first
+                _attemptPurchase(buildContext, jewelry, account); // Use buildContext from the original widget
+              },
             );
           }).toList(),
         );
@@ -63,15 +64,17 @@ class JewelryMarketScreen extends StatelessWidget {
     );
   }
 
-  void _attemptPurchase(BuildContext parentContext, Jewelry jewelry, BankAccount account) {
+  void _attemptPurchase(BuildContext buildContext, Jewelry jewelry, BankAccount account) {
     transactionService.attemptPurchase(
       account,
       jewelry,
       onSuccess: () {
+        person.addJewelry(jewelry); // Add the jewelry to the person's collection
         print("Purchase successful!");
-        // Use parent context here
+
+        // Use buildContext from the original widget
         showDialog(
-          context: parentContext,
+          context: buildContext,
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text("Purchase Successful"),
@@ -88,9 +91,10 @@ class JewelryMarketScreen extends StatelessWidget {
       },
       onFailure: (String message) {
         print("Failed to purchase.");
-        // Use parent context here
+
+        // Use buildContext from the original widget
         showDialog(
-          context: parentContext,
+          context: buildContext,
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text("Error"),
@@ -131,7 +135,7 @@ class JewelryMarketScreen extends StatelessWidget {
                 return ListTile(
                   title: Text(jewelry.name),
                   subtitle: Text('Price: \$${jewelry.value.toStringAsFixed(2)}'),
-                  onTap: () => _purchaseJewelry(context, jewelry),
+                  onTap: () => _purchaseJewelry(context, jewelry), // Pass the context from build method
                 );
               },
             );
