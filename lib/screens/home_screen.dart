@@ -1,10 +1,9 @@
-import 'package:bit_life_like/screens/work/work_screen.dart';
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
 import '../services/real_estate/real_estate.dart';
-import 'market_place/marketplace_menu_screen.dart';
 import 'capital_screen.dart';
+import 'work/work_screen.dart';
 import 'activities/activities_screen.dart';
 import 'relationship_screen.dart';
 import 'person_details_screen.dart';
@@ -14,7 +13,11 @@ class HomeScreen extends StatelessWidget {
   final RealEstateService realEstateService;
   final TransactionService transactionService;
 
-  HomeScreen({required this.person, required this.realEstateService, required this.transactionService});
+  HomeScreen({
+    required this.person,
+    required this.realEstateService,
+    required this.transactionService,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,8 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => PersonDetailsScreen(person: person)),
+                  builder: (context) => PersonDetailsScreen(person: person),
+                ),
               );
             },
           )
@@ -50,8 +54,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget buildListTile(
-      BuildContext context, IconData icon, String title, double value) {
+  Widget buildListTile(BuildContext context, IconData icon, String title, double value) {
     return ListTile(
       dense: true,
       leading: Icon(icon, color: Colors.black),
@@ -90,20 +93,20 @@ class HomeScreen extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.work, color: Colors.white),
-              label: "Work"
+            icon: Icon(Icons.work, color: Colors.white),
+            label: "Work",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_balance_wallet, color: Colors.white),
-              label: "Capital"
+            icon: Icon(Icons.account_balance_wallet, color: Colors.white),
+            label: "Capital",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.people, color: Colors.white),
-              label: "Relationships"
+            icon: Icon(Icons.people, color: Colors.white),
+            label: "Relationships",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.directions_run, color: Colors.white),
-              label: "Activities"
+            icon: Icon(Icons.directions_run, color: Colors.white),
+            label: "Activities",
           ),
         ],
         onTap: (index) {
@@ -112,7 +115,16 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (_) => WorkScreen(person: person)));
               break;
             case 1:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => CapitalScreen(person: person, realEstateService: realEstateService, transactionService: transactionService)));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => CapitalScreen(
+                    person: person,
+                    realEstateService: realEstateService,
+                    transactionService: transactionService,
+                  ),
+                ),
+              );
               break;
             case 2:
               Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen()));
