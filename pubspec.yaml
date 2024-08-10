@@ -54,7 +54,8 @@ dev_dependencies:
 flutter:
 
   assets:
-    - assets/antiques.json
+    - assets/antiques_2.json
+    - assets/updated_antiques.json
     - assets/armes.json
     - assets/arts.json
     - assets/banks.json

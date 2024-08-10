@@ -1,10 +1,18 @@
+#!/usr/bin/env python3
+
 import json
 
-def process_antiques(input_file, output_file):
+def update_antiques(input_file, output_file):
     with open(input_file, 'r', encoding='utf-8') as file:
         data = json.load(file)
     
     for antique in data['antiques']:
+        # Set default values for 'rarete' and 'epoque'
+        if 'rarete' not in antique:
+            antique['rarete'] = "Common"
+        if 'epoque' not in antique:
+            antique['epoque'] = "Unknown"
+
         # Remove 'age' field if it exists
         antique.pop('age', None)
         
@@ -19,5 +27,5 @@ def process_antiques(input_file, output_file):
         json.dump(data, file, ensure_ascii=False, indent=2)
 
 # Usage
-process_antiques('antiques.json', 'processed_antiques.json')
+update_antiques('antiques.json', 'updated_antiques.json')
 

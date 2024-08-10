@@ -1,18 +1,24 @@
 import 'dart:convert';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import '../../Classes/objects/antique.dart';
 
 class AntiqueService {
+  List<Antique>? allAntiques;
+
   Future<List<Antique>> loadAntiques() async {
+    if (allAntiques != null) return allAntiques!;
     try {
-      String jsonString = await rootBundle.loadString('assets/antiques.json');
-      Map<String, dynamic> jsonResponse = json.decode(jsonString);
-      List<Antique> antiques = (jsonResponse['antiques'] as List<dynamic>)
-          .map((json) => Antique.fromJson(json))
+      // Chargez le fichier JSON depuis les assets
+      String jsonString = await rootBundle.loadString('assets/updated_antiques.json');
+      var decoded = json.decode(jsonString);
+      // Analysez le fichier JSON pour créer une liste d'objets Antique
+      allAntiques = (decoded['antiques'] as List)
+          .map<Antique>((json) => Antique.fromJson(json))
           .toList();
-      return antiques;
     } catch (e) {
-      throw Exception('Failed to load antiques: $e');
+      print("Erreur lors du chargement des antiquités : $e");
+      throw Exception("Échec du chargement des antiquités");
     }
+    return allAntiques!;
   }
 }

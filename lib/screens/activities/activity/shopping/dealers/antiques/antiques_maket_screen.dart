@@ -17,7 +17,7 @@ class AntiqueMarketScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Antique Market')),
       body: FutureBuilder<List<Antique>>(
-        future: antiqueService.loadAntiques(),
+        future: antiqueService.loadAntiques(), // Load antiques from the JSON file
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
@@ -32,7 +32,9 @@ class AntiqueMarketScreen extends StatelessWidget {
                 Antique antique = snapshot.data![index];
                 return ListTile(
                   title: Text(antique.name),
-                  subtitle: Text('Price: \$${antique.value.toStringAsFixed(2)}'),
+                  subtitle: Text(
+                      'Price: \$${antique.value.toStringAsFixed(2)}\nRarity: ${antique.rarity}\nEpoch: ${antique.epoch}'
+                  ),
                   onTap: () => _purchaseAntique(context, antique),
                 );
               },
@@ -74,7 +76,9 @@ class AntiqueMarketScreen extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Buy Antique"),
-          content: Text("Do you want to buy ${antique.name} for \$${antique.value.toStringAsFixed(2)}?"),
+          content: Text(
+              "Do you want to buy ${antique.name} for \$${antique.value.toStringAsFixed(2)}?"
+          ),
           actions: <Widget>[
             TextButton(
               child: Text("Pay Cash"),
@@ -94,7 +98,7 @@ class AntiqueMarketScreen extends StatelessWidget {
       account,
       antique,
       onSuccess: () {
-        person.antiques.add(antique);  // Add the antique to the person's collection
+        person.antiques.add(antique); // Add the antique to the person's collection
         _showSuccessDialog(context);
       },
       onFailure: (String message) {
