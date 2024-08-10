@@ -1,3 +1,4 @@
+import 'package:bit_life_like/screens/work/work_screen.dart';
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
@@ -10,7 +11,7 @@ import 'person_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final Person person;
-  final RealEstateService realEstateService;  // Ajouter RealEstateService ici
+  final RealEstateService realEstateService;
   final TransactionService transactionService;
 
   HomeScreen({required this.person, required this.realEstateService, required this.transactionService});
@@ -40,8 +41,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             buildListTile(context, Icons.favorite, "Health", person.health),
             buildListTile(context, Icons.face, 'Happiness', person.happiness),
-            buildListTile(context, Icons.ac_unit, "Intellifence", person.intelligence),
-            buildListTile(context, Icons.start, "Karma", person.karma),
+            buildListTile(context, Icons.ac_unit, "Intelligence", person.intelligence),
+            buildListTile(context, Icons.star, "Karma", person.karma),
             buildNavigationBar(context),
           ],
         ),
@@ -52,15 +53,12 @@ class HomeScreen extends StatelessWidget {
   Widget buildListTile(
       BuildContext context, IconData icon, String title, double value) {
     return ListTile(
-      dense: true, // Makes the ListTile more compact
+      dense: true,
       leading: Icon(icon, color: Colors.black),
       title: Text("$title: ${value.toStringAsFixed(0)}%",
           style: TextStyle(fontSize: 14)),
       trailing: SizedBox(
-        width: MediaQuery
-            .of(context)
-            .size
-            .width * 0.4,
+        width: MediaQuery.of(context).size.width * 0.4,
         child: Row(
           children: [
             Expanded(
@@ -77,6 +75,7 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget buildNavigationBar(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -91,8 +90,8 @@ class HomeScreen extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart, color: Colors.white),
-              label: "Marketplace"
+              icon: Icon(Icons.work, color: Colors.white),
+              label: "Work"
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_balance_wallet, color: Colors.white),
@@ -110,10 +109,9 @@ class HomeScreen extends StatelessWidget {
         onTap: (index) {
           switch (index) {
             case 0:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => MarketplaceMenuScreen(person: person, transactionService: transactionService)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => WorkScreen(person: person)));
               break;
             case 1:
-            // Assurez-vous de passer le service RealEstateService requis
               Navigator.push(context, MaterialPageRoute(builder: (_) => CapitalScreen(person: person, realEstateService: realEstateService, transactionService: transactionService)));
               break;
             case 2:
@@ -127,5 +125,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
 }

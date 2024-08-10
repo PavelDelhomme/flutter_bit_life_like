@@ -1,6 +1,6 @@
 import 'package:bit_life_like/screens/work/classes/job.dart';
 
-import '../Classes/person.dart';
+import '../../Classes/person.dart';
 
 class JobMarket {
   List<Job> availableJobs;
