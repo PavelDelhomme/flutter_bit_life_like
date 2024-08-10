@@ -23,7 +23,7 @@ class Electronic implements Purchasable {
       type: json['type'],
       brand: json['brand'],
       model: json['model'],
-      value: json['value'],
+      value: json['price'],
       supportsApplications: json['supportsApplications'] ?? false,
     );
   }
@@ -34,7 +34,7 @@ class Electronic implements Purchasable {
       'type': type,
       'brand': brand,
       'model': model,
-      'value': value,
+      'price': value,
       'supportsApplications': supportsApplications,
     };
   }

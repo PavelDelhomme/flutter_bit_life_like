@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../../Classes/objects/electronic.dart';
 
 class ElectronicsDetailsScreen extends StatelessWidget {
