@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
 import '../services/real_estate/real_estate.dart';
-import 'capital_screen.dart';
 import 'work/work_screen.dart';
+import 'capital_screen.dart';
 import 'activities/activities_screen.dart';
 import 'relationship_screen.dart';
 import 'person_details_screen.dart';
+import 'work/job_management_screen.dart'; // Import job management screen
+import 'work/education_screen.dart'; // Import education screen
 
 class HomeScreen extends StatelessWidget {
   final Person person;

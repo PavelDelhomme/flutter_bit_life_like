@@ -17,7 +17,7 @@ class BusinessManagementScreen extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Text("Start a new Business"),
+            title: Text("Start a New Business"),
             onTap: () {
               _showNewBusinessDialog(context);
             },
@@ -27,9 +27,9 @@ class BusinessManagementScreen extends StatelessWidget {
             children: person.businesses.map((business) {
               return ListTile(
                 title: Text(business.name),
-                subtitle: Text("Balance: \$${business.getBalance()}"),
+                subtitle: Text("Balance: \$${business.getBalance().toStringAsFixed(2)}"),
                 onTap: () {
-                  // Show more details about the business
+                  // Navigate to more details about the business
                 },
               );
             }).toList(),
@@ -76,6 +76,12 @@ class BusinessManagementScreen extends StatelessWidget {
                 double investment = double.parse(investmentController.text);
 
                 person.startBusiness(name, type, investment);
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text("Cancel"),
+              onPressed: () {
                 Navigator.of(context).pop();
               },
             ),

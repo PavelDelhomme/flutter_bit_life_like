@@ -41,6 +41,7 @@ class Person {
   // Works
   List<Job> jobs = [];
   List<Business> businesses = [];
+  List<Job> jobHistory = [];
 
   // Education
   List<EducationLevel> educationHistory = [];
@@ -221,6 +222,22 @@ class Person {
       }
     } else {
       print("No account available for loan deposit.");
+    }
+  }
+
+  void applyForJob(Job job) {
+    jobs.add(job);
+    jobHistory.add(job);
+    print("Applied for ${job.title} at ${job.companyName}");
+  }
+
+  void addSalary(Job job) {
+    BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
+    if (primaryAccount != null) {
+      primaryAccount.deposit(job.salary);
+      print("Salary of \$${job.salary} added to ${primaryAccount.accountNumber}");
+    } else {
+      print("No bank account to deposit salary.");
     }
   }
 

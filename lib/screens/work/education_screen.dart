@@ -1,4 +1,3 @@
-// education_screen.dart
 import 'package:flutter/material.dart';
 import '../../Classes/person.dart';
 import '../../screens/work/classes/education.dart';
@@ -7,6 +6,37 @@ class EducationScreen extends StatelessWidget {
   final Person person;
 
   EducationScreen({required this.person});
+
+  final List<EducationLevel> educationLevels = [
+    EducationLevel(
+      name: 'High School Diploma',
+      minAge: 14,
+      maxAge: 18,
+      cost: 1000,
+      specializations: ['General'],
+    ),
+    EducationLevel(
+      name: 'Bachelor\'s Degree',
+      minAge: 18,
+      maxAge: 22,
+      cost: 5000,
+      specializations: ['Science', 'Arts', 'Business'],
+    ),
+    EducationLevel(
+      name: 'Master\'s Degree',
+      minAge: 22,
+      maxAge: 25,
+      cost: 10000,
+      specializations: ['Engineering', 'Management'],
+    ),
+    EducationLevel(
+      name: 'PhD',
+      minAge: 25,
+      maxAge: 30,
+      cost: 15000,
+      specializations: ['Research', 'Development'],
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +52,7 @@ class EducationScreen extends StatelessWidget {
               if (person.currentEducation != null)
                 ListTile(
                   title: Text(person.currentEducation!.name),
-                  subtitle: Text("Progress: ${person.academicPerformance}%"),
+                  subtitle: Text("Progress: ${person.academicPerformance.toStringAsFixed(1)}%"),
                 )
               else
                 ListTile(
@@ -42,7 +72,7 @@ class EducationScreen extends StatelessWidget {
           ListTile(
             title: Text("Enroll in New Education"),
             onTap: () {
-              _showNewEducationDialog(context);
+              _showEducationSelectionDialog(context);
             },
           ),
         ],
@@ -50,51 +80,30 @@ class EducationScreen extends StatelessWidget {
     );
   }
 
-  void _showNewEducationDialog(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-    TextEditingController costController = TextEditingController();
-    TextEditingController minAgeController = TextEditingController();
-    TextEditingController maxAgeController = TextEditingController();
-
+  void _showEducationSelectionDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Enroll in New Education"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              TextField(
-                controller: nameController,
-                decoration: InputDecoration(labelText: "Education Level Name"),
-              ),
-              TextField(
-                controller: costController,
-                decoration: InputDecoration(labelText: "Cost"),
-                keyboardType: TextInputType.number,
-              ),
-              TextField(
-                controller: minAgeController,
-                decoration: InputDecoration(labelText: "Minimum Age"),
-                keyboardType: TextInputType.number,
-              ),
-              TextField(
-                controller: maxAgeController,
-                decoration: InputDecoration(labelText: "Maximum Age"),
-                keyboardType: TextInputType.number,
-              ),
-            ],
+          title: Text("Select Education Level"),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: educationLevels.map((educationLevel) {
+                return ListTile(
+                  title: Text(educationLevel.name),
+                  subtitle: Text("Cost: \$${educationLevel.cost}"),
+                  onTap: () {
+                    person.enroll(educationLevel);
+                    Navigator.of(context).pop();
+                  },
+                );
+              }).toList(),
+            ),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text("Enroll"),
+              child: Text("Cancel"),
               onPressed: () {
-                String name = nameController.text;
-                double cost = double.parse(costController.text);
-                int minAge = int.parse(minAgeController.text);
-                int maxAge = int.parse(maxAgeController.text);
-
-                person.enroll(EducationLevel(name: name, cost: cost, minAge: minAge, maxAge: maxAge));
                 Navigator.of(context).pop();
               },
             ),

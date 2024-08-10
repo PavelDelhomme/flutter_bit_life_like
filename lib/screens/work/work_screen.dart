@@ -18,21 +18,48 @@ class WorkScreen extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
+            title: Text("Manage Current Jobs"),
+            onTap: () {
+              // Navigate to current job management screen
+            },
+          ),
+          ListTile(
             title: Text("Job Market"),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => JobMarketScreen(person: person)));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => JobMarketScreen(
+                    person: person,
+                  ),
+                ),
+              );
             },
           ),
           ListTile(
             title: Text("Business Management"),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessManagementScreen(person: person)));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BusinessManagementScreen(
+                    person: person,
+                  ),
+                ),
+              );
             },
           ),
           ListTile(
             title: Text("Education"),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => EducationScreen(person: person)));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EducationScreen(
+                    person: person,
+                  ),
+                ),
+              );
             },
           ),
         ],
