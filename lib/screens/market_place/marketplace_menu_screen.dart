@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../Classes/person.dart';
 import '../../services/real_estate/real_estate.dart';
 import '../../services/bank/transaction_service.dart';
+import '../activities/activity/shopping/dealers/antiques/antiques_maket_screen.dart';
 import '../activities/activity/shopping/dealers/electronic_dealership_screen.dart';
 import '../activities/activity/shopping/dealers/jewelry_market_screen.dart';
 import '../activities/activity/shopping/dealers/reale_estate/real_estate_classic_screen.dart';
@@ -12,7 +13,6 @@ import '../activities/activity/shopping/dealers/seconde_main_market_screen.dart'
 import '../activities/activity/shopping/dealers/vehicles/airplaine_dealership.dart';
 import '../activities/activity/shopping/dealers/vehicles/boat_dealership_screen.dart';
 import '../activities/activity/shopping/dealers/vehicles/car_dealership_screen.dart';
-import '../activities/activity/shopping/real_estate/enchere_house_screen.dart';
 
 class MarketplaceMenuScreen extends StatelessWidget {
   final Person person;
@@ -106,11 +106,11 @@ class MarketplaceMenuScreen extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('Auction House'),
+            title: Text('Antique Market'),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => EnchereHouseScreen(person: person, transactionService: transactionService),
+                builder: (context) => AntiqueMarketScreen(person: person, transactionService: transactionService),
               ),
             ),
           ),

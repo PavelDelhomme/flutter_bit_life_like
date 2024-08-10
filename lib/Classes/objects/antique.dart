@@ -1,32 +1,31 @@
-import 'package:bit_life_like/services/bank/bank_account.dart';
 
-class Antique extends Purchasable {
+import '../../services/bank/bank_account.dart';
+
+class Antique implements Purchasable {
   final String name;
+  final double value;
   final int age;
-  final String dates;
-  final String artiste;
-  final double value; // Change to double for consistency
+  final String artist;
+  final String rarity;
+  final String epoch;
 
   Antique({
     required this.name,
+    required this.value,
     required this.age,
-    required this.dates,
-    required this.artiste,
-    required this.value, // Use `value` for consistency
+    required this.artist,
+    required this.rarity,
+    required this.epoch,
   });
 
   factory Antique.fromJson(Map<String, dynamic> json) {
     return Antique(
-      name: json['nom'],
-      age: json['age'],
-      dates: json['dates'],
-      artiste: json['artiste'],
-      value: (json['valeur'] as num).toDouble(), // Ensure correct type
+      name: json['nom'] as String,
+      value: (json['valeur'] as num?)?.toDouble() ?? 0.0,
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      artist: json['artiste'] as String? ?? '',
+      rarity: json['rarete'] as String? ?? 'Commun',
+      epoch: json['epoque'] as String? ?? '',
     );
-  }
-
-  @override
-  String display() {
-    return 'Antique: $name, Dates: $dates, Value: \$${value.toString()}, Artist: $artiste';
   }
 }
