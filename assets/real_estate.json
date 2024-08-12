@@ -30,7 +30,7 @@
       "age": 10,
       "valeur": 450000,
       "type": "Maison",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 200
     },
     {
@@ -38,7 +38,7 @@
       "age": 3,
       "valeur": 250000,
       "type": "Studio",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 150
     },
     {
@@ -46,7 +46,7 @@
       "age": 15,
       "valeur": 300000,
       "type": "Cottage",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 400
     },
     {
@@ -54,7 +54,7 @@
       "age": 8,
       "valeur": 500000,
       "type": "Duplex",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 350
     },
     {
@@ -62,7 +62,7 @@
       "age": 12,
       "valeur": 600000,
       "type": "Loft",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 500
     },
     {
@@ -70,7 +70,7 @@
       "age": 20,
       "valeur": 750000,
       "type": "Villa",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 600
     },
     {
@@ -78,7 +78,7 @@
       "age": 22,
       "valeur": 480000,
       "type": "Bungalow",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 250
     },
     {
@@ -86,7 +86,7 @@
       "age": 7,
       "valeur": 1200000,
       "type": "Penthouse",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 700
     },
     {
@@ -94,7 +94,7 @@
       "age": 50,
       "valeur": 550000,
       "type": "Maison de ville",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 450
     },
     {
@@ -102,7 +102,7 @@
       "age": 3,
       "valeur": 400000,
       "type": "Condo",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 200
     },
     {
@@ -110,7 +110,7 @@
       "age": 18,
       "valeur": 650000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 500
     },
     {
@@ -118,7 +118,7 @@
       "age": 6,
       "valeur": 300000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 250
     },
     {
@@ -126,7 +126,7 @@
       "age": 12,
       "valeur": 360000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 300
     },
     {
@@ -134,7 +134,7 @@
       "age": 30,
       "valeur": 700000,
       "type": "Chalet",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 550
     },
     {
@@ -142,7 +142,7 @@
       "age": 25,
       "valeur": 310000,
       "type": "Maison",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 350
     },
     {
@@ -150,7 +150,7 @@
       "age": 5,
       "valeur": 900000,
       "type": "Appartement",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 400
     },
     {
@@ -158,7 +158,7 @@
       "age": 15,
       "valeur": 820000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 650
     },
     {
@@ -166,7 +166,7 @@
       "age": 10,
       "valeur": 1100000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 750
     },
     {
@@ -174,7 +174,7 @@
       "age": 75,
       "valeur": 980000,
       "type": "Manoir",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 800
     },
     {
@@ -182,7 +182,7 @@
       "age": 8,
       "valeur": 470000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 300
     },
     {
@@ -190,7 +190,7 @@
       "age": 35,
       "valeur": 580000,
       "type": "Maison",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 400
     },
     {
@@ -198,7 +198,7 @@
       "age": 80,
       "valeur": 350000,
       "type": "Appartement",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 250
     },
     {
@@ -206,7 +206,7 @@
       "age": 20,
       "valeur": 1500000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 800
     },
     {
@@ -214,7 +214,7 @@
       "age": 12,
       "valeur": 420000,
       "type": "Maison jumelée",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 350
     },
     {
@@ -222,7 +222,7 @@
       "age": 25,
       "valeur": 230000,
       "type": "Maison",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 200
     },
     {
@@ -230,7 +230,7 @@
       "age": 15,
       "valeur": 650000,
       "type": "Loft",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 450
     },
     {
@@ -238,7 +238,7 @@
       "age": 5,
       "valeur": 800000,
       "type": "Condominium",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 500
     },
     {
@@ -246,7 +246,7 @@
       "age": 3,
       "valeur": 2000000,
       "type": "Penthouse",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 1000
     },
     {
@@ -254,7 +254,7 @@
       "age": 10,
       "valeur": 520000,
       "type": "Maison de ville",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 350
     },
     {
@@ -262,7 +262,7 @@
       "age": 5,
       "valeur": 300000,
       "type": "Studio",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 150
     },
     {
@@ -270,7 +270,7 @@
       "age": 20,
       "valeur": 470000,
       "type": "Appartement",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 320
     },
     {
@@ -278,7 +278,7 @@
       "age": 70,
       "valeur": 410000,
       "type": "Cottage",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 350
     },
     {
@@ -286,7 +286,7 @@
       "age": 30,
       "valeur": 360000,
       "type": "Bungalow",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 250
     },
     {
@@ -294,7 +294,7 @@
       "age": 15,
       "valeur": 500000,
       "type": "Duplex",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 400
     },
     {
@@ -302,7 +302,7 @@
       "age": 18,
       "valeur": 850000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 700
     },
     {
@@ -310,7 +310,7 @@
       "age": 12,
       "valeur": 430000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 280
     },
     {
@@ -318,7 +318,7 @@
       "age": 8,
       "valeur": 620000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 300
     },
     {
@@ -326,7 +326,7 @@
       "age": 12,
       "valeur": 1100000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 550
     },
     {
@@ -334,16 +334,15 @@
       "age": 22,
       "valeur": 960000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 450
     },
-
     {
       "nom": "Appartement de Standing en Centre-Ville",
       "age": 2,
       "valeur": 1200000,
       "type": "Appartement",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 650
     },
     {
@@ -351,7 +350,7 @@
       "age": 15,
       "valeur": 1500000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 900
     },
     {
@@ -359,7 +358,7 @@
       "age": 20,
       "valeur": 1800000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 800
     },
     {
@@ -367,7 +366,7 @@
       "age": 10,
       "valeur": 1300000,
       "type": "Loft",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 500
     },
     {
@@ -375,7 +374,7 @@
       "age": 25,
       "valeur": 2200000,
       "type": "Domaine",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1200
     },
     {
@@ -383,7 +382,7 @@
       "age": 5,
       "valeur": 2000000,
       "type": "Duplex",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 750
     },
     {
@@ -391,7 +390,7 @@
       "age": 50,
       "valeur": 4500000,
       "type": "Manoir",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 1500
     },
     {
@@ -399,7 +398,7 @@
       "age": 3,
       "valeur": 1350000,
       "type": "Condominium",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 600
     },
     {
@@ -407,7 +406,7 @@
       "age": 12,
       "valeur": 2500000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1000
     },
     {
@@ -415,7 +414,7 @@
       "age": 8,
       "valeur": 3000000,
       "type": "Penthouse",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 850
     },
     {
@@ -423,7 +422,7 @@
       "age": 120,
       "valeur": 1600000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 700
     },
     {
@@ -431,7 +430,7 @@
       "age": 1,
       "valeur": 1400000,
       "type": "Appartement",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 650
     },
     {
@@ -439,7 +438,7 @@
       "age": 30,
       "valeur": 1750000,
       "type": "Résidence",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 800
     },
     {
@@ -447,7 +446,7 @@
       "age": 5,
       "valeur": 2100000,
       "type": "Maison",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 900
     },
     {
@@ -455,7 +454,7 @@
       "age": 15,
       "valeur": 2500000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 850
     },
     {
@@ -463,7 +462,7 @@
       "age": 18,
       "valeur": 850000,
       "type": "Cottage",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 450
     },
     {
@@ -471,7 +470,7 @@
       "age": 3,
       "valeur": 3200000,
       "type": "Villa",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 1100
     },
     {
@@ -479,7 +478,7 @@
       "age": 20,
       "valeur": 950000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 500
     },
     {
@@ -487,7 +486,7 @@
       "age": 25,
       "valeur": 1900000,
       "type": "Bungalow",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 650
     },
     {
@@ -495,16 +494,15 @@
       "age": 10,
       "valeur": 2800000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 800
     },
-
     {
       "nom": "Maison avec Vignoble",
       "age": 50,
       "valeur": 3000000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1200
     },
     {
@@ -512,7 +510,7 @@
       "age": 8,
       "valeur": 2750000,
       "type": "Villa",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 1100
     },
     {
@@ -520,7 +518,7 @@
       "age": 90,
       "valeur": 2200000,
       "type": "Duplex",
-      "condition": "Restored",
+      "condition": 100,
       "monthly_maintenance_cost": 800
     },
     {
@@ -528,7 +526,7 @@
       "age": 12,
       "valeur": 4000000,
       "type": "Penthouse",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1500
     },
     {
@@ -536,7 +534,7 @@
       "age": 300,
       "valeur": 7500000,
       "type": "Château",
-      "condition": "Restored",
+      "condition": 100,
       "monthly_maintenance_cost": 3000
     },
     {
@@ -544,7 +542,7 @@
       "age": 15,
       "valeur": 3500000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1800
     },
     {
@@ -552,7 +550,7 @@
       "age": 20,
       "valeur": 1500000,
       "type": "Loft",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 900
     },
     {
@@ -560,7 +558,7 @@
       "age": 75,
       "valeur": 6000000,
       "type": "Manoir",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 2500
     },
     {
@@ -568,7 +566,7 @@
       "age": 5,
       "valeur": 2000000,
       "type": "Condominium",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 1000
     },
     {
@@ -576,7 +574,7 @@
       "age": 50,
       "valeur": 5000000,
       "type": "Maison",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 2500
     },
     {
@@ -584,7 +582,7 @@
       "age": 10,
       "valeur": 2800000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 950
     },
     {
@@ -592,7 +590,7 @@
       "age": 35,
       "valeur": 3200000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1000
     },
     {
@@ -600,7 +598,7 @@
       "age": 25,
       "valeur": 3800000,
       "type": "Chalet",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 2200
     },
     {
@@ -608,7 +606,7 @@
       "age": 30,
       "valeur": 4500000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 2000
     },
     {
@@ -616,7 +614,7 @@
       "age": 3,
       "valeur": 3200000,
       "type": "Penthouse",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 1500
     },
     {
@@ -624,7 +622,7 @@
       "age": 18,
       "valeur": 6800000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 2500
     },
     {
@@ -632,7 +630,7 @@
       "age": 120,
       "valeur": 4700000,
       "type": "Maison",
-      "condition": "Restored",
+      "condition": 100,
       "monthly_maintenance_cost": 3000
     },
     {
@@ -640,7 +638,7 @@
       "age": 40,
       "valeur": 5250000,
       "type": "Domaine",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 3500
     },
     {
@@ -648,7 +646,7 @@
       "age": 90,
       "valeur": 2400000,
       "type": "Appartement",
-      "condition": "Restored",
+      "condition": 100,
       "monthly_maintenance_cost": 700
     },
     {
@@ -656,16 +654,15 @@
       "age": 15,
       "valeur": 4900000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 2800
     },
-
     {
       "nom": "Studio Centre-Ville",
       "age": 5,
       "valeur": 200000,
       "type": "Studio",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 150
     },
     {
@@ -673,7 +670,7 @@
       "age": 10,
       "valeur": 25000,
       "type": "Garage",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 30
     },
     {
@@ -681,7 +678,7 @@
       "age": 15,
       "valeur": 300000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 200
     },
     {
@@ -689,7 +686,7 @@
       "age": 20,
       "valeur": 450000,
       "type": "Maison",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 400
     },
     {
@@ -697,7 +694,7 @@
       "age": 25,
       "valeur": 800000,
       "type": "Immeuble",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 1000
     },
     {
@@ -705,7 +702,7 @@
       "age": 30,
       "valeur": 5000000,
       "type": "Gratte-ciel",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 5000
     },
     {
@@ -713,7 +710,7 @@
       "age": 5,
       "valeur": 100000,
       "type": "Garage",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 100
     },
     {
@@ -721,7 +718,7 @@
       "age": 10,
       "valeur": 600000,
       "type": "Maison de ville",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 300
     },
     {
@@ -729,7 +726,7 @@
       "age": 8,
       "valeur": 1500000,
       "type": "Penthouse",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 800
     },
     {
@@ -737,7 +734,7 @@
       "age": 30,
       "valeur": 350000,
       "type": "Cottage",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 450
     },
     {
@@ -745,7 +742,7 @@
       "age": 20,
       "valeur": 2000000,
       "type": "Immeuble commercial",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 2500
     },
     {
@@ -753,7 +750,7 @@
       "age": 15,
       "valeur": 30000,
       "type": "Garage",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 25
     },
     {
@@ -761,7 +758,7 @@
       "age": 12,
       "valeur": 700000,
       "type": "Loft",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 500
     },
     {
@@ -769,7 +766,7 @@
       "age": 5,
       "valeur": 25000000,
       "type": "Gratte-ciel",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 10000
     },
     {
@@ -777,7 +774,7 @@
       "age": 15,
       "valeur": 2000000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1200
     },
     {
@@ -785,7 +782,7 @@
       "age": 10,
       "valeur": 550000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 400
     },
     {
@@ -793,7 +790,7 @@
       "age": 20,
       "valeur": 200000,
       "type": "Garage",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 200
     },
     {
@@ -801,7 +798,7 @@
       "age": 25,
       "valeur": 3000000,
       "type": "Immeuble",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 3500
     },
     {
@@ -809,7 +806,7 @@
       "age": 5,
       "valeur": 750000,
       "type": "Condo",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 600
     },
     {
@@ -817,16 +814,15 @@
       "age": 50,
       "valeur": 2500000,
       "type": "Domaine",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 1800
     },
-
     {
       "nom": "Appartement Loft Converti",
       "age": 10,
       "valeur": 800000,
       "type": "Loft",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 550
     },
     {
@@ -834,7 +830,7 @@
       "age": 5,
       "valeur": 120000,
       "type": "Garage",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 150
     },
     {
@@ -842,7 +838,7 @@
       "age": 15,
       "valeur": 1800000,
       "type": "Immeuble",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 3000
     },
     {
@@ -850,7 +846,7 @@
       "age": 20,
       "valeur": 950000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 700
     },
     {
@@ -858,7 +854,7 @@
       "age": 12,
       "valeur": 3200000,
       "type": "Villa",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 1500
     },
     {
@@ -866,7 +862,7 @@
       "age": 8,
       "valeur": 500000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 450
     },
     {
@@ -874,7 +870,7 @@
       "age": 3,
       "valeur": 25000000,
       "type": "Gratte-ciel",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 12000
     },
     {
@@ -882,7 +878,7 @@
       "age": 40,
       "valeur": 4500000,
       "type": "Domaine",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 4000
     },
     {
@@ -890,7 +886,7 @@
       "age": 7,
       "valeur": 2800000,
       "type": "Penthouse",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 850
     },
     {
@@ -898,7 +894,7 @@
       "age": 25,
       "valeur": 2300000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 950
     },
     {
@@ -906,7 +902,7 @@
       "age": 30,
       "valeur": 3500000,
       "type": "Immeuble",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 5000
     },
     {
@@ -914,7 +910,7 @@
       "age": 15,
       "valeur": 140000,
       "type": "Garage",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 100
     },
     {
@@ -922,7 +918,7 @@
       "age": 10,
       "valeur": 850000,
       "type": "Bungalow",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 500
     },
     {
@@ -930,7 +926,7 @@
       "age": 20,
       "valeur": 1900000,
       "type": "Chalet",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1200
     },
     {
@@ -938,7 +934,7 @@
       "age": 18,
       "valeur": 2750000,
       "type": "Résidence",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 2000
     },
     {
@@ -946,7 +942,7 @@
       "age": 35,
       "valeur": 1500000,
       "type": "Maison",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 800
     },
     {
@@ -954,7 +950,7 @@
       "age": 12,
       "valeur": 980000,
       "type": "Duplex",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 600
     },
     {
@@ -962,7 +958,7 @@
       "age": 5,
       "valeur": 1350000,
       "type": "Condominium",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 700
     },
     {
@@ -970,7 +966,7 @@
       "age": 15,
       "valeur": 3500000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1800
     },
     {
@@ -978,7 +974,7 @@
       "age": 22,
       "valeur": 2400000,
       "type": "Immeuble mixte",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 2500
     },
     {
@@ -986,16 +982,15 @@
       "age": 50,
       "valeur": 1300000000,
       "type": "Résidence",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 3700
     },
-
     {
       "nom": "Condo Urbain avec Toit Terrasse",
       "age": 3,
       "valeur": 750000,
       "type": "Condo",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 450
     },
     {
@@ -1003,7 +998,7 @@
       "age": 40,
       "valeur": 1200000,
       "type": "Maison",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 700
     },
     {
@@ -1011,7 +1006,7 @@
       "age": 25,
       "valeur": 4000000,
       "type": "Gratte-ciel",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 3000
     },
     {
@@ -1019,7 +1014,7 @@
       "age": 15,
       "valeur": 80000,
       "type": "Garage",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 50
     },
     {
@@ -1027,7 +1022,7 @@
       "age": 20,
       "valeur": 850000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 600
     },
     {
@@ -1035,7 +1030,7 @@
       "age": 30,
       "valeur": 2800000,
       "type": "Immeuble",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 3500
     },
     {
@@ -1043,7 +1038,7 @@
       "age": 10,
       "valeur": 3200000,
       "type": "Penthouse",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1200
     },
     {
@@ -1051,7 +1046,7 @@
       "age": 18,
       "valeur": 3000000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1500
     },
     {
@@ -1059,7 +1054,7 @@
       "age": 12,
       "valeur": 980000,
       "type": "Duplex",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 400
     },
     {
@@ -1067,7 +1062,7 @@
       "age": 25,
       "valeur": 750000,
       "type": "Cottage",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 500
     },
     {
@@ -1075,7 +1070,7 @@
       "age": 10,
       "valeur": 120000,
       "type": "Garage",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 100
     },
     {
@@ -1083,7 +1078,7 @@
       "age": 5,
       "valeur": 22000000,
       "type": "Gratte-ciel",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 5000
     },
     {
@@ -1091,7 +1086,7 @@
       "age": 8,
       "valeur": 650000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 300
     },
     {
@@ -1099,7 +1094,7 @@
       "age": 35,
       "valeur": 4500000,
       "type": "Propriété",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 4000
     },
     {
@@ -1107,7 +1102,7 @@
       "age": 20,
       "valeur": 500000,
       "type": "Condominium",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 250
     },
     {
@@ -1115,7 +1110,7 @@
       "age": 12,
       "valeur": 1300000,
       "type": "Loft",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 600
     },
     {
@@ -1123,7 +1118,7 @@
       "age": 30,
       "valeur": 890000,
       "type": "Bungalow",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 450
     },
     {
@@ -1131,7 +1126,7 @@
       "age": 22,
       "valeur": 3100000,
       "type": "Immeuble mixte",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 2200
     },
     {
@@ -1139,7 +1134,7 @@
       "age": 7,
       "valeur": 2700000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1200
     },
     {
@@ -1147,7 +1142,7 @@
       "age": 45,
       "valeur": 6000000,
       "type": "Domaine",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 5000
     },
     {
@@ -1155,7 +1150,7 @@
       "age": 7,
       "valeur": 2100000,
       "type": "Attique",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1100
     },
     {
@@ -1163,7 +1158,7 @@
       "age": 3,
       "valeur": 1800000,
       "type": "Résidence",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 800
     },
     {
@@ -1171,7 +1166,7 @@
       "age": 20,
       "valeur": 2600000,
       "type": "Maison",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 1500
     },
     {
@@ -1179,7 +1174,7 @@
       "age": 15,
       "valeur": 3500000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 2000
     },
     {
@@ -1187,7 +1182,7 @@
       "age": 10,
       "valeur": 150000,
       "type": "Garage",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 75
     },
     {
@@ -1195,7 +1190,7 @@
       "age": 5,
       "valeur": 4200000,
       "type": "Penthouse",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 2000
     },
     {
@@ -1203,7 +1198,7 @@
       "age": 120,
       "valeur": 1350000,
       "type": "Duplex",
-      "condition": "Restored",
+      "condition": 100,
       "monthly_maintenance_cost": 700
     },
     {
@@ -1211,7 +1206,7 @@
       "age": 8,
       "valeur": 1100000,
       "type": "Loft",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 650
     },
     {
@@ -1219,7 +1214,7 @@
       "age": 250,
       "valeur": 7500000,
       "type": "Château",
-      "condition": "Restored",
+      "condition": 100,
       "monthly_maintenance_cost": 3500
     },
     {
@@ -1227,7 +1222,7 @@
       "age": 12,
       "valeur": 950000,
       "type": "Condominium",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 600
     },
     {
@@ -1235,7 +1230,7 @@
       "age": 5,
       "valeur": 1200000,
       "type": "Maison",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 500
     },
     {
@@ -1243,7 +1238,7 @@
       "age": 18,
       "valeur": 4800000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 2200
     },
     {
@@ -1251,7 +1246,7 @@
       "age": 25,
       "valeur": 890000,
       "type": "Bungalow",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 400
     },
     {
@@ -1259,7 +1254,7 @@
       "age": 3,
       "valeur": 1600000,
       "type": "Appartement",
-      "condition": "New",
+      "condition": 100,
       "monthly_maintenance_cost": 900
     },
     {
@@ -1267,7 +1262,7 @@
       "age": 15,
       "valeur": 20000000,
       "type": "Gratte-ciel",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 8000
     },
     {
@@ -1275,7 +1270,7 @@
       "age": 40,
       "valeur": 6200000,
       "type": "Domaine",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 5000
     },
     {
@@ -1283,7 +1278,7 @@
       "age": 30,
       "valeur": 3500000,
       "type": "Immeuble mixte",
-      "condition": "Good",
+      "condition": 100,
       "monthly_maintenance_cost": 4200
     },
     {
@@ -1291,7 +1286,7 @@
       "age": 10,
       "valeur": 2300000,
       "type": "Villa",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1200
     },
     {
@@ -1299,7 +1294,7 @@
       "age": 20,
       "valeur": 1900000,
       "type": "Maison",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 900
     },
     {
@@ -1307,9 +1302,53 @@
       "age": 12,
       "valeur": 2500000,
       "type": "Appartement",
-      "condition": "Excellent",
+      "condition": 100,
       "monthly_maintenance_cost": 1100
+    },
+    {
+      "nom": "Tour de bureaux moderne",
+      "age": 5,
+      "valeur": 8000000,
+      "type": "Immeuble commercial",
+      "condition": 100,
+      "monthly_maintenance_cost": 7000,
+      "capacity": 150
+    },
+    {
+      "nom": "Centre d'affaires multiprise",
+      "age": 8,
+      "valeur": 15000000,
+      "type": "Immeuble",
+      "condition": 100,
+      "monthly_maintenance_cost": 10000,
+      "capacity": 100
+    },
+    {
+      "nom": "Complexe de bureaux de luxe",
+      "age": 12,
+      "valeur": 20000000,
+      "type": "Immeuble mixte",
+      "condition": 100,
+      "monthly_maintenance_cost": 15000,
+      "capacity": 120
+    },
+    {
+      "nom": "Gratte-ciel ultra moderne",
+      "age": 3,
+      "valeur": 50000000,
+      "type": "Gratte-ciel",
+      "condition": 100,
+      "monthly_maintenance_cost": 25000,
+      "capacity": 500
+    },
+    {
+      "nom": "Parc technologique avancé",
+      "age": 15,
+      "valeur": 30000000,
+      "type": "Immeuble commercial",
+      "condition": 100,
+      "monthly_maintenance_cost": 12000,
+      "capacity": 150
     }
-
   ]
 }

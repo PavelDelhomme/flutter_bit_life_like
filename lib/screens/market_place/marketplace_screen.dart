@@ -8,6 +8,7 @@ import '../activities/activity/shopping/dealers/electronic/electronic_dealership
 import '../activities/activity/shopping/dealers/jewelry/jewelry_market_screen.dart';
 import '../activities/activity/shopping/dealers/reale_estate/sub_class/real_estate_classic_screen.dart';
 import '../activities/activity/shopping/dealers/reale_estate/sub_class/real_estate_exotic_screen.dart';
+import '../activities/activity/shopping/dealers/seconde_main_market_screen.dart';
 import '../activities/activity/shopping/dealers/vehicles/vehicle_dealership_screen.dart'; // Import the new screen
 
 class MarketplaceScreen extends StatelessWidget {
@@ -87,6 +88,9 @@ class MarketplaceScreen extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => RealEstateManagementScreen(
                               properties: person.realEstates,
+                              realEstateService: realEstateService,
+                              transactionService: transactionService,
+                              person: person,
                             ),
                           ),
                         );
@@ -129,6 +133,18 @@ class MarketplaceScreen extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => ElectronicMarketScreen(
+                person: person,
+                transactionService: transactionService,
+              ),
+            ),
+          ),
+        ),
+        ListTile(
+          title: Text("Seconde Main Market"),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondHandMarketScreen(
                 person: person,
                 transactionService: transactionService,
               ),

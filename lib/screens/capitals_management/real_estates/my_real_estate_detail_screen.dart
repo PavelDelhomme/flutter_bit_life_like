@@ -35,11 +35,41 @@ class MyRealEstateDetailsScreen extends StatelessWidget {
             Text("Condition: ${estate.condition}", style: TextStyle(fontSize: 16)),
             Text("Monthly Maintenance: \$${estate.monthlyMaintenanceCost.toStringAsFixed(2)}", style: TextStyle(fontSize: 16)),
             SizedBox(height: 20),
-            // Remove the purchase buttons since the real estate is already owned.
             Text("This property is owned by you.", style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic)),
+            SizedBox(height: 20),
+            ElevatedButton(
+              child: Text("Sell Property"),
+              onPressed: () {
+                _showSellPropertyDialog(context);
+              },
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  void _showSellPropertyDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Select Bank Account"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: person.bankAccounts.map((account) {
+              return ListTile(
+                title: Text("Account: ${account.accountNumber}"),
+                subtitle: Text("Balance : \$${account.balance.toStringAsFixed(2)}"),
+                onTap: () {
+                  realEstateService.sellRealEstate(estate, account, person, transactionService);
+                  Navigator.of(context).pop();
+                },
+              );
+            }).toList(),
+          ),
+        );
+      },
     );
   }
 }

@@ -1,4 +1,5 @@
 import '../../../Classes/person.dart';
+import '../../../services/bank/bank_account.dart';
 
 class Business {
   String name;
@@ -13,12 +14,14 @@ class Business {
   List<String> strategies = [];
   bool isPublic = false;
   Map<String, String> swotAnalysis = {};
+  BankAccount? businessAccount;
 
 
   Business({
     required this.name,
     required this.type,
     required this.initialInvestment,
+    this.businessAccount,
   });
 
   double getBalance() {
@@ -35,15 +38,23 @@ class Business {
 
   void hireEmployee(String name, double salary) {
     employees.add(Employee(name: name, salary: salary));
+    expenses += salary;
   }
 
   void fireEmployee(String name) {
+    Employee employeeFired = employees.where((employee) => employee.name == name) as Employee;
+    expenses -= employeeFired.salary;
     employees.removeWhere((employee) => employee.name == name);
   }
 
   void paySalaries() {
     for (var employee in employees) {
       expenses += employee.salary;
+      if (businessAccount != null) {
+        businessAccount!.withdraw(employee.salary);
+        print("Paid salary of ${employee.name} amount : ${employee.salary}");
+        print("New value for businessAccount : ${businessAccount?.balance}");
+      }
     }
   }
 
@@ -53,10 +64,16 @@ class Business {
 
   void payExpenses(double amount) {
     expenses += amount;
+    if (businessAccount != null) {
+      businessAccount!.withdraw(amount);
+    }
   }
 
   void generateIncome(double amount) {
     income += amount;
+    if (businessAccount != null) {
+      businessAccount!.deposit(amount);
+    }
   }
 
   void listProducts() {
@@ -64,7 +81,7 @@ class Business {
   }
 
   void listEmployees() {
-    print("Employees: ${employees.join(', ')}");
+    print("Employees: ${employees.map((e) => e.name).join(', ')}");
   }
 
   void listDepartments() {
@@ -109,6 +126,20 @@ class Business {
 
   void transferOwnershipTo(Person successor) {
     print("Transferring ownership to $successor");
+  }
+
+  void payTaxes() {
+    double taxes = calculateTax();
+    expenses += taxes;
+    if (businessAccount != null) {
+      businessAccount!.withdraw(taxes);
+    }
+    print("Paid taxes: \$${taxes.toStringAsFixed(2)}");
+  }
+
+  void getNetValue() {
+    double netValue = getBalance() + businessAccount!.balance;
+    print("Net Value of Business : \$${netValue.toStringAsFixed(2)}");
   }
 }
 
