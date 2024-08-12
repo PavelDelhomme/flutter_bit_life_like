@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bit_life_like/screens/market_place/marketplace.dart';
 import 'package:flutter/material.dart';
 import 'package:bit_life_like/screens/home_screen.dart';
@@ -13,17 +15,23 @@ import 'package:bit_life_like/services/bank/bank_account.dart';
 import 'package:bit_life_like/Classes/objects/vehicle.dart';
 import 'package:bit_life_like/Classes/objects/real_estate.dart';
 import 'package:bit_life_like/Classes/objects/jewelry.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  String eventData = await rootBundle.loadString('assets/events.json');
+  List<Map<String, dynamic>> events = List<Map<String, dynamic>>.from(jsonDecode(eventData)['events']);
   await FinancialService.loadBankData(); // Make sure bank data is loaded before the app starts
-  runApp(MyApp());
+  runApp(MyApp(events: events));
 }
 
 class MyApp extends StatelessWidget {
+  final List<Map<String, dynamic>> events;
   final Person person = setupDemo(); // Assuming setupDemo now returns Person
   final RealEstateService realEstateService = RealEstateService();
   final TransactionService transactionService = TransactionService();
+
+  MyApp({required this.events});
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +44,7 @@ class MyApp extends StatelessWidget {
         person: person,
         realEstateService: realEstateService,
         transactionService: transactionService,
+        events: events,
       ),
       debugShowCheckedModeBanner: false,
     );

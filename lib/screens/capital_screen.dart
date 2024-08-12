@@ -127,7 +127,6 @@ class _CapitalScreenState extends State<CapitalScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_selectedIndex == 0 ? 'Your Capital and Assets' : ''),
-        automaticallyImplyLeading: false, // Disable back button
       ),
       body: Center(
         child: _widgetOptions().elementAt(_selectedIndex),

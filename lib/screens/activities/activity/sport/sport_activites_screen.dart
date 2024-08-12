@@ -1,6 +1,10 @@
+import 'package:bit_life_like/Classes/person.dart';
 import 'package:flutter/material.dart';
 
 class SportActivitiesScreen extends StatelessWidget {
+  final Person person;
+
+  SportActivitiesScreen({required this.person});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../../Classes/person.dart';
+
 class EmigrationScreen extends StatelessWidget {
+  final Person person;
+
+  EmigrationScreen({required this.person});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../../Classes/person.dart';
+
 class LoveDatingScreen extends StatelessWidget {
+  final Person person;
+
+  LoveDatingScreen({required this.person});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

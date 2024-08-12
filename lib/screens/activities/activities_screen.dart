@@ -1,3 +1,4 @@
+import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/screens/activities/activity/other_activities/adoption_activites_screen.dart';
 import 'package:bit_life_like/screens/activities/activity/blackmarket/blackmarket_activites_screen.dart';
 import 'package:bit_life_like/screens/activities/activity/sport/sport_activites_screen.dart';
@@ -13,6 +14,10 @@ import 'activity/other_activities/permits_screen.dart';
 import 'activity/other_activities/time_machine_screen.dart';
 
 class ActivitiesScreen extends StatelessWidget {
+  final Person person;
+
+  ActivitiesScreen({required this.person});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,17 +26,17 @@ class ActivitiesScreen extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          _buildMenuItem(context, 'Sport Activities', SportActivitiesScreen()),
-          _buildMenuItem(context, 'Criminal Activities', CriminalActivitiesScreen()),
-          _buildMenuItem(context, 'Adoption', AdoptionActivitesScreen()),
-          _buildMenuItem(context, 'Black Market', BlackmarketActivitesScreen()),
-          _buildMenuItem(context, 'Health Check', HealthCheckScreen()),
-          _buildMenuItem(context, 'Time Machine', TimeMachineScreen()),
-          _buildMenuItem(context, 'Inheritance Management', InheritanceScreen()),
-          _buildMenuItem(context, 'Emigration', EmigrationScreen()),
-          _buildMenuItem(context, 'Legal Actions', LegalActionsScreen()),
-          _buildMenuItem(context, 'Permits', PermitsScreen()),
-          _buildMenuItem(context, 'Love and Dating', LoveDatingScreen()),
+          _buildMenuItem(context, 'Sport Activities', SportActivitiesScreen(person: person)),
+          _buildMenuItem(context, 'Criminal Activities', CriminalActivitiesScreen(person: person)),
+          _buildMenuItem(context, 'Adoption', AdoptionActivitesScreen(person: person)),
+          _buildMenuItem(context, 'Black Market', BlackmarketActivitesScreen(person: person)),
+          _buildMenuItem(context, 'Health Check', HealthCheckScreen(person: person)),
+          _buildMenuItem(context, 'Time Machine', TimeMachineScreen(person: person)),
+          _buildMenuItem(context, 'Inheritance Management', InheritanceScreen(person: person)),
+          _buildMenuItem(context, 'Emigration', EmigrationScreen(person: person)),
+          _buildMenuItem(context, 'Legal Actions', LegalActionsScreen(person: person)),
+          _buildMenuItem(context, 'Permits', PermitsScreen(person: person)),
+          _buildMenuItem(context, 'Love and Dating', LoveDatingScreen(person: person)),
         ],
       ),
     );

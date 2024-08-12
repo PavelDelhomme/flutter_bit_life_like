@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
+import '../services/events_decision/event_service.dart';
 import '../services/real_estate/real_estate.dart';
 import 'work/work_screen.dart';
 import 'capital_screen.dart';
@@ -13,11 +14,15 @@ class HomeScreen extends StatelessWidget {
   final RealEstateService realEstateService;
   final TransactionService transactionService;
 
+  final List<Map<String, dynamic>> events;
+  final EventService eventService;
+
   HomeScreen({
     required this.person,
     required this.realEstateService,
     required this.transactionService,
-  });
+    required this.events
+  }) : eventService = EventService(events: events);
 
   void agePerson() {
     person.ageOneYear();
@@ -126,7 +131,7 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: person)));
               break;
             case 3:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => ActivitiesScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => ActivitiesScreen(person: person)));
               break;
           }
         },

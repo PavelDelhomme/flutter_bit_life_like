@@ -29,7 +29,6 @@ class Person {
   bool isImprisoned = false;
   int prisonTerm = 0;
 
-  //Job? currentJob;
   double stressLevel = 0.0;
 
   List<BankAccount> bankAccounts;
@@ -78,6 +77,7 @@ class Person {
   List<RealEstate> realEstates = [];
   List<Instrument> instruments = [];
   List<Electronic> electronics = [];
+  List<Book> books = [];
 
   List<Vehicle> vehicles = [];
   List<VehiculeExotique> vehiculeExotiques = [];
@@ -106,7 +106,8 @@ class Person {
     List<RealEstate>? real_estates,
     List<Electronic>? electronics,
     List<Vehicle>? vehicles,
-    List<VehiculeExotique>? vehicules_exotique
+    List<VehiculeExotique>? vehicules_exotique,
+    List<Book>? book,
   })
       : bankAccounts = bankAccounts ?? [],
         partners = partners ?? [],
