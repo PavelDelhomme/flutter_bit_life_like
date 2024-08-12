@@ -7,7 +7,12 @@
       "educationRequired": "Bachelor's Degree in Computer Science",
       "annualSalary": 120000,
       "monthlySalary": 10000,
-      "jobType": "full-time"
+      "jobType": "full-time",
+      "skillsRequired": {
+        "programming": 0.8,
+        "problemSolving": 0.7,
+        "communication": 0.6
+      }
     },
     {
       "employerName": "Part-time Tutoring",
@@ -16,7 +21,51 @@
       "educationRequired": "High School",
       "annualSalary": 30000,
       "monthlySalary": 2500,
-      "jobType": "part-time"
+      "jobType": "part-time",
+      "skillsRequired": {
+        "math": 0.5,
+        "teaching": 0.4
+      }
+    },
+    {
+      "employerName": "Tesla",
+      "jobTitle": "Mechanical Engineer",
+      "yearsRequired": 2,
+      "educationRequired": "Bachelor's Degree in Mechanical Engineering",
+      "annualSalary": 90000,
+      "monthlySalary": 7500,
+      "jobType": "full-time",
+      "skillsRequired": {
+        "mechanicalDesign": 0.7,
+        "teamwork": 0.6
+      }
+    },
+    {
+      "employerName": "Amazon",
+      "jobTitle": "Data Scientist",
+      "yearsRequired": 2,
+      "educationRequired": "Master's Degree in Data Science",
+      "annualSalary": 115000,
+      "monthlySalary": 9583,
+      "jobType": "full-time",
+      "skillsRequired": {
+        "dataAnalysis": 0.8,
+        "machineLearning": 0.7,
+        "statistics": 0.6
+      }
+    },
+    {
+      "employerName": "Local Cafe",
+      "jobTitle": "Barista",
+      "yearsRequired": 0,
+      "educationRequired": "High School",
+      "annualSalary": 24000,
+      "monthlySalary": 2000,
+      "jobType": "part-time",
+      "skillsRequired": {
+        "customerService": 0.5,
+        "coffeeMaking": 0.4
+      }
     }
   ]
 }

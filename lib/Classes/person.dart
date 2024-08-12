@@ -13,6 +13,7 @@ import '../screens/work/classes/job.dart';
 import '../services/bank/FinancialService.dart';
 import '../services/bank/bank_account.dart';
 import 'objects/antique.dart';
+import 'objects/book.dart';
 import 'objects/instrument.dart';
 
 class Person {
@@ -48,6 +49,28 @@ class Person {
   EducationLevel? currentEducation;
   double academicPerformance = 0;
 
+  Map<String, double> skills = {
+    "Communication": 0.0,
+    "Leadership": 0.0,
+    "Technical": 0.0,
+    "Management": 0.0,
+    "Manipulation": 0.0,
+    "Innovation": 0.0,
+    "Recherche": 0.0,
+    "Gestion": 0.0,
+    "Entrepreneuriat": 0.0,
+    "Analyse": 0.0,
+    "Synthèse": 0.0,
+    "Philosophie": 0.0,
+    "Sciences": 0.0,
+    "Mathématiques": 0.0,
+    "Langues": 0.0,
+    "Histoire": 0.0,
+    "Créativité": 0.0,
+    "Sociaibilité": 0.0,
+  };
+
+  // Items
   List<CollectibleItem> collectibles = [];
   List<Arme> armes = [];
   List<Jewelry> jewelries = [];
@@ -284,6 +307,36 @@ class Person {
     double regularPay = regularHours * job.salary;
     double totalPay = regularPay + overtimePay;
     print("Total pay for the week: \$${totalPay}");
+  }
+
+  void workExtraHours(Job job, int extraHours) {
+    job.hoursPerWeek += extraHours;
+    job.stressLevel += ((extraHours / job.hoursPerWeek) * 100);
+    stressLevel += (extraHours / job.hoursPerWeek) * 5;
+    health -= stressLevel / 100;
+    happiness -= stressLevel / 200;
+  }
+
+  void improveSkill(String skill, double increment) {
+    if (skills.containsKey(skill)) {
+      skills[skill] = (skills[skill] ?? 0.0) + increment;
+    }
+  }
+
+  void useBook(Book book) {
+    book.skills.forEach((skill, improvement) {
+      improveSkill(skill, improvement);
+    });
+    print("Read book ${book.title} and improved skills.");
+  }
+
+  void advanceEducation() {
+    if (currentEducation != null) {
+      currentEducation!.competences.forEach((skill, improvement) {
+        improveSkill(skill, improvement);
+      });
+      print("Advanced in ${currentEducation!.name} and improved skills");
+    }
   }
 
   void addVehicle(Vehicle vehicle) {

@@ -1,0 +1,152 @@
+{
+  "educations": {
+    "maternelle": [
+      {
+        "ecole_name": "École Maternelle Arc-en-Ciel",
+        "competences": {
+          "sociabilité": 0.5,
+          "motricité": 0.3,
+          "créativité": 0.2
+        },
+        "durée": 3,
+        "type": "Public",
+        "fraisAnnuel": 0,
+        "stressLevel": 2.0
+      },
+      {
+        "ecole_name": "École Maternelle Les Petits Artistes",
+        "competences": {
+          "sociabilité": 0.4,
+          "motricité": 0.2,
+          "créativité": 0.4
+        },
+        "durée": 3,
+        "type": "Privée",
+        "fraisAnnuel": 1500,
+        "stressLevel": 2.5
+      }
+    ],
+    "primaire": [
+      {
+        "ecole_name": "École Élémentaire Jean Moulin",
+        "competences": {
+          "lecture": 0.4,
+          "écriture": 0.4,
+          "mathématiques": 0.2
+        },
+        "durée": 5,
+        "type": "Public",
+        "fraisAnnuel": 0,
+        "stressLevel": 3.5
+      },
+      {
+        "ecole_name": "École Élémentaire Sainte-Marie",
+        "competences": {
+          "lecture": 0.5,
+          "écriture": 0.3,
+          "mathématiques": 0.2
+        },
+        "durée": 5,
+        "type": "Privée",
+        "fraisAnnuel": 2500,
+        "stressLevel": 4.0
+      }
+    ],
+    "collège": [
+      {
+        "ecole_name": "Collège Louis Pasteur",
+        "competences": {
+          "sciences": 0.3,
+          "histoire": 0.3,
+          "mathématiques": 0.2,
+          "langues": 0.2
+        },
+        "durée": 4,
+        "type": "Public",
+        "fraisAnnuel": 0,
+        "stressLevel": 4.5
+      },
+      {
+        "ecole_name": "Collège Saint-Joseph",
+        "competences": {
+          "sciences": 0.4,
+          "histoire": 0.2,
+          "mathématiques": 0.2,
+          "langues": 0.2
+        },
+        "durée": 4,
+        "type": "Privée",
+        "fraisAnnuel": 3000,
+        "stressLevel": 5.0
+      }
+    ],
+    "lycée": [
+      {
+        "ecole_name": "Lycée Général et Technologique René Cassin",
+        "competences": {
+          "philosophie": 0.1,
+          "sciences": 0.3,
+          "mathématiques": 0.3,
+          "langues": 0.3
+        },
+        "durée": 3,
+        "type": "Public",
+        "fraisAnnuel": 0,
+        "stressLevel": 6.0
+      },
+      {
+        "ecole_name": "Lycée Privé Sainte-Geneviève",
+        "competences": {
+          "philosophie": 0.2,
+          "sciences": 0.3,
+          "mathématiques": 0.3,
+          "langues": 0.2
+        },
+        "durée": 3,
+        "type": "Privée",
+        "fraisAnnuel": 5000,
+        "stressLevel": 6.5
+      }
+    ],
+    "enseignement_supérieur": [
+      {
+        "ecole_name": "Université de Paris",
+        "niveau": "Licence",
+        "competences": {
+          "recherche": 0.4,
+          "analyse": 0.4,
+          "synthèse": 0.2
+        },
+        "durée": 3,
+        "type": "Public",
+        "fraisAnnuel": 170,
+        "stressLevel": 7.0
+      },
+      {
+        "ecole_name": "HEC Paris",
+        "niveau": "Master",
+        "competences": {
+          "gestion": 0.4,
+          "leadership": 0.3,
+          "entrepreneuriat": 0.3
+        },
+        "durée": 2,
+        "type": "Privée",
+        "fraisAnnuel": 12000,
+        "stressLevel": 8.0
+      },
+      {
+        "ecole_name": "École Polytechnique",
+        "niveau": "Doctorat",
+        "competences": {
+          "innovation": 0.5,
+          "recherche": 0.5
+        },
+        "durée": 3,
+        "type": "Public",
+        "fraisAnnuel": 0,
+        "stressLevel": 9.0
+      }
+    ]
+  }
+}

@@ -10,21 +10,33 @@ class PersonDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details of ${person.name}"),
+        title: Text("${person.name} Details"),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Name: ${person.name}"),
-            Text("Health: ${person.health}"),
-            Text("Happiness: ${person.happiness}"),
-            Text("Intelligence: ${person.intelligence}"),
-            Text("Karma: ${person.karma}"),
-            // Ajoutez plus de détails selon les besoins
-          ],
-        ),
+      body: ListView(
+        children: <Widget>[
+          ListTile(
+            title: Text("Current Jobs"),
+            subtitle: Text(person.jobs.map((job) => job.title).join(', ')),
+          ),
+          ExpansionTile(
+            title: Text("Job History"),
+            children: person.jobHistory.map((job) {
+              return ListTile(
+                title: Text(job.title),
+                  subtitle: Text("Company: ${job.companyName}"),
+              );
+            }).toList(),
+          ),
+          ExpansionTile(
+            title: Text("Skills"),
+            children: person.skills.entries.map((entry) {
+              return ListTile(
+                title: Text(entry.key),
+                subtitle: Text("Level: ${entry.value}"),
+              );
+            }).toList(),
+          ),
+        ],
       ),
     );
   }

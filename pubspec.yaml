@@ -69,6 +69,8 @@ flutter:
     - assets/real_estate_exotic.json
     - assets/vehicles.json
     - assets/vetements.json
+    - assets/educations.json
+    - assets/books.json
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

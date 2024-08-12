@@ -4,7 +4,7 @@ class Job {
   double salary;  // Salary per hour
   int hoursPerWeek;
   int workedSemesters = 0;
-  int stressLevel = 0;
+  double stressLevel = 0;
   String companyName;
   bool isFullTime;
   String educationRequired = "Any";

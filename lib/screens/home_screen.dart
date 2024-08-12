@@ -8,7 +8,7 @@ import 'activities/activities_screen.dart';
 import 'relationship_screen.dart';
 import 'person_details_screen.dart';
 import 'work/jobs_management/job_management_screen.dart'; // Import job management screen
-import 'work/education_screen.dart'; // Import education screen
+import 'work/education_management/education_screen.dart'; // Import education screen
 
 class HomeScreen extends StatelessWidget {
   final Person person;
@@ -49,6 +49,7 @@ class HomeScreen extends StatelessWidget {
             buildListTile(context, Icons.face, 'Happiness', person.happiness),
             buildListTile(context, Icons.ac_unit, "Intelligence", person.intelligence),
             buildListTile(context, Icons.star, "Karma", person.karma),
+            buildListTile(context, Icons.warning, "Stress", person.stressLevel), // Add stress level
             buildNavigationBar(context),
           ],
         ),
