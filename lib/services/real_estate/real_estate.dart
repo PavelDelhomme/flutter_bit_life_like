@@ -89,6 +89,7 @@ class RealEstateService {
       salePrice,
           () {
         print("Sold ${estate.name} for \$${salePrice.toStringAsFixed(2)}");
+        person.realEstates.remove(estate);
       },
           (error) {
         print("Failed to sell ${estate.name}: $error");
