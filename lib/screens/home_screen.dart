@@ -7,8 +7,6 @@ import 'capital_screen.dart';
 import 'activities/activities_screen.dart';
 import 'relationship_screen.dart';
 import 'person_details_screen.dart';
-import 'work/jobs_management/job_management_screen.dart'; // Import job management screen
-import 'work/education_management/education_screen.dart'; // Import education screen
 
 class HomeScreen extends StatelessWidget {
   final Person person;
@@ -20,6 +18,11 @@ class HomeScreen extends StatelessWidget {
     required this.realEstateService,
     required this.transactionService,
   });
+
+  void agePerson() {
+    person.ageOneYear();
+    // Trigger events or update state if needed
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,44 +43,34 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Align(
-        alignment: Alignment.bottomCenter,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            buildListTile(context, Icons.favorite, "Health", person.health),
-            buildListTile(context, Icons.face, 'Happiness', person.happiness),
-            buildListTile(context, Icons.ac_unit, "Intelligence", person.intelligence),
-            buildListTile(context, Icons.star, "Karma", person.karma),
-            buildListTile(context, Icons.warning, "Stress", person.stressLevel), // Add stress level
-            buildNavigationBar(context),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildListTile(BuildContext context, IconData icon, String title, double value) {
-    return ListTile(
-      dense: true,
-      leading: Icon(icon, color: Colors.black),
-      title: Text("$title: ${value.toStringAsFixed(0)}%",
-          style: TextStyle(fontSize: 14)),
-      trailing: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.4,
-        child: Row(
-          children: [
-            Expanded(
-              child: LinearProgressIndicator(
-                value: value / 100,
-                backgroundColor: Colors.grey.shade200,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-              ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Icon(Icons.person, size: 50),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${person.name}",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    Text("Age: ${person.age}"),
+                  ],
+                ),
+              ],
             ),
-            SizedBox(width: 10),
-            Text('${value.toStringAsFixed(0)}%'),
-          ],
-        ),
+          ),
+          ElevatedButton(
+            onPressed: agePerson,
+            child: Text("Age One Year"),
+          ),
+          buildNavigationBar(context),
+        ],
       ),
     );
   }
@@ -130,7 +123,7 @@ class HomeScreen extends StatelessWidget {
               );
               break;
             case 2:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: person)));
               break;
             case 3:
               Navigator.push(context, MaterialPageRoute(builder: (_) => ActivitiesScreen()));
