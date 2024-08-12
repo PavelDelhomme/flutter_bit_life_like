@@ -2,19 +2,19 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 class JobMarketService {
-  List<Job> availableJobs = [];
+  List<MarketJob> availableJobs = [];
 
   Future<void> loadJobs() async {
     String data = await rootBundle.loadString('assets/jobs.json');
     Map<String, dynamic> jsonResult = jsonDecode(data);
 
     availableJobs = (jsonResult['jobs'] as List<dynamic>).map((jobJson) {
-      return Job.fromJson(jobJson);
+      return MarketJob.fromJson(jobJson);
     }).toList();
   }
 }
 
-class Job {
+class MarketJob {
   String employerName;
   String jobTitle;
   int yearsRequired;
@@ -23,7 +23,7 @@ class Job {
   double monthlySalary;
   String jobType;
 
-  Job({
+  MarketJob({
     required this.employerName,
     required this.jobTitle,
     required this.yearsRequired,
@@ -33,8 +33,8 @@ class Job {
     required this.jobType,
   });
 
-  factory Job.fromJson(Map<String, dynamic> json) {
-    return Job(
+  factory MarketJob.fromJson(Map<String, dynamic> json) {
+    return MarketJob(
       employerName: json['employerName'],
       jobTitle: json['jobTitle'],
       yearsRequired: json['yearsRequired'],

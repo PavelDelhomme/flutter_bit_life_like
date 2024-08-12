@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../Classes/person.dart';
+import '../../../services/work/business_management.dart';
 import '../classes/business.dart';
 
 class BusinessCreationScreen extends StatefulWidget {
   final Person person;
+  final BusinessManagementService businessManagementService;
 
-  BusinessCreationScreen({required this.person});
+  BusinessCreationScreen({required this.person, required this.businessManagementService});
 
   @override
   _BusinessCreationScreenState createState() => _BusinessCreationScreenState();
@@ -64,8 +66,9 @@ class _BusinessCreationScreenState extends State<BusinessCreationScreen> {
     String product = _productController.text;
 
     if (investment > 0 && name.isNotEmpty && type.isNotEmpty && product.isNotEmpty) {
-      widget.person.startBusiness(name, type, investment);
-      widget.person.businesses.last.addProduct(product);
+      Business business = Business(name: name, type: type, initialInvestment: investment, businessAccount: );
+      business.addProduct(Product(name: product, price: 100, productionCost: 50));
+      widget.businessManagementService.startBusiness(widget.person, name, type, investment); // ou alors passer directement la classe Business créer avant
       Navigator.of(context).pop(); // Return to previous screen
     } else {
       // Show error message
