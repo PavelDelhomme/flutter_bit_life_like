@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../Classes/person.dart';
-import 'business_management_screen.dart';
+import 'company_management/business_management_screen.dart';
 import 'education_screen.dart';
-import 'job_market_screen.dart';
+import 'jobs_management/job_market_screen.dart';
 
 class WorkScreen extends StatelessWidget {
   final Person person;

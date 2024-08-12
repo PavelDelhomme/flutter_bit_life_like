@@ -1,7 +1,7 @@
 // job_management_screen.dart
 import 'package:flutter/material.dart';
-import '../../Classes/person.dart';
-import '../../screens/work/classes/job.dart';
+import '../../../Classes/person.dart';
+import '../classes/job.dart';
 import 'job_market_screen.dart';
 
 class JobManagementScreen extends StatelessWidget {

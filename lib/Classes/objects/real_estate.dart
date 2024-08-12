@@ -5,13 +5,14 @@ class RealEstate implements Purchasable {
   String name;
   int age;
   String type;
-  String condition; // e.g, 'New', 'Good', 'Needs Renovation' // devrai être iun pourcentage car il y aur un pourcentage de dégradation annuel pour chaque type de bien d'ailleurs
+  double condition;
   double monthlyMaintenanceCost;
   bool estLouee;
   String style;
   Person? locataire;
   bool isExotic;
   final double _value;
+  int? capacity;
 
   RealEstate({
     required this.name,
@@ -24,6 +25,7 @@ class RealEstate implements Purchasable {
     this.style = 'Classic',
     this.locataire,
     this.isExotic = false,
+    required this.capacity,
   }) : _value = value;
 
   @override
@@ -35,13 +37,19 @@ class RealEstate implements Purchasable {
       age: json['age'] ?? 0,
       value: (json['valeur'] as num?)?.toDouble() ?? 0.0,
       type: json['type'] ?? 'Type inconnu',
-      condition: json['condition'] ?? 'Condition inconnue',
+      condition: (json['condition'] as num?)?.toDouble() ?? 100.0,
       monthlyMaintenanceCost: (json['monthly_maintenance_cost'] as num?)?.toDouble() ?? 0.0,
       estLouee: json['estLouee'] as bool? ?? false,
       style: json['style'] ?? 'Classic', // Assurez-vous que 'style' est bien passé
       isExotic: json.containsKey('isExotic') && json['isExotic'],
       locataire: json['locataire'] != null ? Person.fromJson(json['locataire'] as Map<String, dynamic>) : null,
+      capacity: json['capacity'] ?? 10, // Default capacity
     );
+  }
+
+  void degradeCondition(double percentage) {
+    condition -= percentage;
+    if (condition < 0) condition = 0;
   }
 
 

@@ -1,3 +1,4 @@
+import 'package:bit_life_like/screens/work/company_management/real_estate_management_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import '../../services/bank/transaction_service.dart';
@@ -77,6 +78,20 @@ class MarketplaceScreen extends StatelessWidget {
                         );
                       },
                       child: const Text('Exotic'),
+                    ),
+                    SimpleDialogOption(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RealEstateManagementScreen(
+                              properties: person.realEstates,
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Text("Business Real Estate"),
                     ),
                   ],
                 );

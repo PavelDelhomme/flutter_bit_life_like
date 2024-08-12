@@ -7,7 +7,7 @@ import 'capital_screen.dart';
 import 'activities/activities_screen.dart';
 import 'relationship_screen.dart';
 import 'person_details_screen.dart';
-import 'work/job_management_screen.dart'; // Import job management screen
+import 'work/jobs_management/job_management_screen.dart'; // Import job management screen
 import 'work/education_screen.dart'; // Import education screen
 
 class HomeScreen extends StatelessWidget {

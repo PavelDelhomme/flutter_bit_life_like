@@ -1,6 +1,6 @@
 // job_market_screen.dart
 import 'package:flutter/material.dart';
-import '../../Classes/person.dart';
+import '../../../Classes/person.dart';
 import 'package:bit_life_like/screens/work/classes/job.dart' as job_class;
 import 'package:bit_life_like/services/work/jobmarket_service.dart' as job_service;
 

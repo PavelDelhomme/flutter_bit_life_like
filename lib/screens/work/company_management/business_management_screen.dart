@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../Classes/person.dart';
-import '../../screens/work/classes/business.dart';
+import '../../../Classes/person.dart';
+import '../classes/business.dart';
+import 'business_detail_screen.dart';
 
 class BusinessManagementScreen extends StatelessWidget {
   final Person person;
