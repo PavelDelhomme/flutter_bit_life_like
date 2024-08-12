@@ -8,10 +8,10 @@ class Business {
   double income = 0;
   double expenses = 0;
   double taxRate = 0.25;
-  List<String> products = [];
+  List<Product> products = [];
   List<Employee> employees = [];
-  List<String> departments = [];
-  List<String> strategies = [];
+  List<Department> departments = [];
+  List<Strategy> strategies = [];
   bool isPublic = false;
   Map<String, String> swotAnalysis = {};
   BankAccount? businessAccount;
@@ -33,11 +33,13 @@ class Business {
   }
 
   void addProduct(String product) {
-    products.add(product);
+    products.add(Product(name: product, price: 100, productionCost: 50));
   }
 
-  void hireEmployee(String name, double salary) {
-    employees.add(Employee(name: name, salary: salary));
+  void hireEmployee(String name, double salary, Department department) {
+    Employee employee = Employee(name: name, salary: salary);
+    employees.add(employee);
+    department.addEmployee(employee);
     expenses += salary;
   }
 
@@ -59,7 +61,7 @@ class Business {
   }
 
   void addDepartment(String department) {
-    departments.add(department);
+    departments.add(Department(name: department));
   }
 
   void payExpenses(double amount) {
@@ -77,7 +79,7 @@ class Business {
   }
 
   void listProducts() {
-    print("Products: ${products.join(', ')}");
+    print("Products: ${products.map((p) => p.name).join(', ')}");
   }
 
   void listEmployees() {
@@ -85,11 +87,11 @@ class Business {
   }
 
   void listDepartments() {
-    print("Departments: ${departments.join(', ')}");
+    print("Departments: ${departments.map((d) => d.name).join(', ')}");
   }
 
   // Business Management
-  void addStrategy(String strategy) {
+  void addStrategy(Strategy strategy) {
     strategies.add(strategy);
   }
 
@@ -152,4 +154,33 @@ class Employee {
     required this.salary,
   });
 
+}
+
+class Product {
+  String name;
+  double price;
+  double productionCost;
+
+  Product({
+    required this.name,
+    required this.price,
+    required this.productionCost,
+  });
+}
+
+class Department {
+  String name;
+  List<Employee> employees = [];
+
+  Department({required this.name});
+
+  void addEmployee(Employee employee) {
+    employees.add(employee);
+  }
+}
+
+class Strategy {
+  String description;
+
+  Strategy(this.description);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../Classes/person.dart';
+import '../../../services/bank/bank_account.dart';
 import '../../../services/work/business_management.dart';
 import '../classes/business.dart';
 
@@ -7,7 +8,10 @@ class BusinessCreationScreen extends StatefulWidget {
   final Person person;
   final BusinessManagementService businessManagementService;
 
-  BusinessCreationScreen({required this.person, required this.businessManagementService});
+  BusinessCreationScreen({
+    required this.person,
+    required this.businessManagementService,
+  });
 
   @override
   _BusinessCreationScreenState createState() => _BusinessCreationScreenState();
@@ -18,6 +22,7 @@ class _BusinessCreationScreenState extends State<BusinessCreationScreen> {
   final TextEditingController _typeController = TextEditingController();
   final TextEditingController _investmentController = TextEditingController();
   final TextEditingController _productController = TextEditingController();
+  final TextEditingController _departmentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +51,10 @@ class _BusinessCreationScreenState extends State<BusinessCreationScreen> {
               controller: _productController,
               decoration: InputDecoration(labelText: 'Initial Product/Service'),
             ),
+            TextField(
+              controller: _departmentController,
+              decoration: InputDecoration(labelText: 'Initial Department'),
+            ),
             SizedBox(height: 20),
             ElevatedButton(
               child: Text('Create Business'),
@@ -59,19 +68,37 @@ class _BusinessCreationScreenState extends State<BusinessCreationScreen> {
     );
   }
 
+
   void _createBusiness() {
     String name = _nameController.text;
     String type = _typeController.text;
     double investment = double.tryParse(_investmentController.text) ?? 0;
     String product = _productController.text;
+    String department = _departmentController.text;
 
-    if (investment > 0 && name.isNotEmpty && type.isNotEmpty && product.isNotEmpty) {
-      Business business = Business(name: name, type: type, initialInvestment: investment, businessAccount: );
-      business.addProduct(Product(name: product, price: 100, productionCost: 50));
-      widget.businessManagementService.startBusiness(widget.person, name, type, investment); // ou alors passer directement la classe Business créer avant
-      Navigator.of(context).pop(); // Return to previous screen
+    if (investment > 0 && name.isNotEmpty && type.isNotEmpty && product.isNotEmpty && department.isNotEmpty) {
+      if (widget.person.realEstates.isNotEmpty) {
+        try {
+          BankAccount? businessAccount = widget.person.bankAccounts.firstWhere((account) => account.balance >= investment);
+          widget.businessManagementService.startBusiness(widget.person, name, type, investment, businessAccount);
+          Business newBusiness = widget.person.businesses.last;
+          Product newProduct = Product(name: product, price: 100, productionCost: 50);
+          Department newDepartment = Department(name: department);
+
+          newBusiness.addProduct(newProduct.name);
+          newBusiness.addDepartment(newDepartment.name);
+          Navigator.of(context).pop();
+        } catch (e) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Insufficient funds to start the business.")),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('You need to own a real estate to start a business')),
+        );
+      }
     } else {
-      // Show error message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Please fill in all fields with valid values')),
       );

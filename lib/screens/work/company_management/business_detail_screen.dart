@@ -1,111 +1,144 @@
+import 'package:bit_life_like/services/work/hr_service.dart';
+import 'package:bit_life_like/services/work/jobmarket_service.dart';
 import 'package:flutter/material.dart';
-
 import '../classes/business.dart';
+import '../classes/interview_simulation.dart';
 
-class BusinessDetailScreen extends StatelessWidget {
+class BusinessDetailScreen extends StatefulWidget {
   final Business business;
 
   BusinessDetailScreen({required this.business});
 
   @override
+  _BusinessDetailScreenState createState() => _BusinessDetailScreenState();
+}
+
+class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
+  final HrService hrService = HrService();
+  final JobMarketService jobmarketServices = JobMarketService();
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${business.name} Details'),
+        title: Text('${widget.business.name} Details'),
       ),
       body: ListView(
         children: <Widget>[
-          ListTile(
+          ExpansionTile(
             title: Text('Products'),
-            subtitle: Text('${business.products.join(', ')}'),
-            onTap: () {
-              _showAddProductDialog(context);
-            },
+            children: [
+              ...widget.business.products.map((product) => ListTile(
+                title: Text(product.name),
+                subtitle: Text("Price: \$${product.price}, Cost : \$${product.productionCost}"),
+              )),
+              ListTile(
+                title: Text("Add Product"),
+                trailing: Icon(Icons.add),
+                onTap: () {
+                  _showAddProductDialog(context);
+                },
+              ),
+            ],
           ),
-          ListTile(
-            title: Text('Employees'),
-            subtitle: Text('${business.employees.map((e) => e.name).join(', ')}'),
-            onTap: () {
-              _showAddEmployeeDialog(context);
-            },
+          ExpansionTile(
+            title: Text("Employees"),
+            children: [
+              ...widget.business.employees.map((employee) => ListTile(
+                title: Text(employee.name),
+                subtitle: Text("Salary: \$${employee.salary}"),
+              )),
+              ListTile(
+                title: Text("Add Employee"),
+                trailing: Icon(Icons.add),
+                onTap: () {
+                  _showAddEmployeeDialog(context);
+                },
+              ),
+            ],
           ),
-          ListTile(
+          ExpansionTile(
             title: Text('Departments'),
-            subtitle: Text('${business.departments.join(', ')}'),
-            onTap: () {
-              _showAddDepartmentDialog(context);
-            },
+            children: [
+              ...widget.business.departments.map((department) => ListTile(
+                title: Text(department.name),
+                onTap: () => _showDepartmentDetails(context, department),
+              )),
+              ListTile(
+                title: Text("Add Department"),
+                trailing: Icon(Icons.add),
+                onTap: () {
+                  _showAddDepartmentDialog(context);
+                },
+              ),
+            ],
           ),
-          ListTile(
-            title: Text('Balance'),
-            subtitle: Text('\$${business.getBalance()}'),
+          ExpansionTile(
+            title: Text("Financial Management"),
+            children: [
+              ListTile(
+                title: Text("Balance"),
+                subtitle: Text("\$${widget.business.getBalance()}"),
+              ),
+              ListTile(
+                title: Text("Pay Salaries"),
+                onTap: () {
+                  widget.business.paySalaries();
+                  print("Salaries paid for employees in ${widget.business.name}");
+                  setState(() {});
+                },
+              ),
+              ListTile(
+                title: Text("Pay Taxes"),
+                onTap: () {
+                  widget.business.payTaxes();
+                  print("Taxes paid for ${widget.business.name}");
+                  setState(() {});
+                },
+              ),
+            ],
           ),
-          ListTile(
-            title: Text('Real Estate'),
-            onTap: () {
-              // Navigate to real estate management screen
-            },
-          ),
-          ListTile(
-            title: Text('Pay Salaries'),
-            onTap: () {
-              business.paySalaries();
-              print("Salaries paid for employees in ${business.name}");
-            },
-          ),
-          ListTile(
-            title: Text('Pay Taxes'),
-            onTap: () {
-              business.payTaxes();
-              print("Taxes paid for ${business.name}");
-            },
-          ),
-          ListTile(
-            title: Text('Strategies'),
-            subtitle: Text('${business.strategies.join(', ')}'),
-            onTap: () {
-              _showAddStrategyDialog(context);
-            },
-          ),
-          ListTile(
-            title: Text('SWOT Analysis'),
-            subtitle: Text('Strength: ${business.swotAnalysis['Strength']}\n'
-                'Weakness: ${business.swotAnalysis['Weakness']}\n'
-                'Opportunity: ${business.swotAnalysis['Opportunity']}\n'
-                'Threat: ${business.swotAnalysis['Threat']}'),
-            onTap: () {
-              _showSWOTAnalysisDialog(context);
-            },
-          ),
-          ListTile(
-            title: Text('Conduct Marketing Campaign'),
-            onTap: () {
-              _showMarketingCampaignDialog(context);
-            },
-          ),
-          ListTile(
-            title: Text('Expand Internationally'),
-            onTap: () {
-              _showExpansionDialog(context);
-            },
-          ),
-          ListTile(
-            title: Text('Automate Processes'),
-            onTap: () {
-              _showAutomationDialog(context);
-            },
-          ),
-          ListTile(
-            title: Text('Engage in CSR'),
-            onTap: () {
-              _showCSRDialog(context);
-            },
-          ),
-          ListTile(
-            title: Text('Transfer Ownership'),
-            onTap: () {
-              // Implement ownership transfer logic
-            },
+          ExpansionTile(
+            title: Text("Strategic Management"),
+            children: [
+              ListTile(
+                title: Text("Strategies"),
+                subtitle: Text(widget.business.strategies.map((s) => s.description).join(', ')),
+                onTap: () {
+                  _showAddStrategyDialog(context);
+                },
+              ),
+              ListTile(
+                title: Text("Conduc Marketing Campaign"),
+                onTap: () {
+                  _showMarketingCampaignDialog(context);
+                },
+              ),
+              ListTile(
+                title: Text("Expand Internationally"),
+                onTap: () {
+                  _showExpansionDialog(context);
+                },
+              ),
+              ListTile(
+                title: Text("Automate Processes"),
+                onTap: () {
+                  _showAutomationDialog(context);
+                },
+              ),
+              ListTile(
+                title: Text("Engage in CSR"),
+                onTap: () {
+                  _showCSRDialog(context);
+                },
+              ),
+              ListTile(
+                title: Text("Transfer Ownership"),
+                onTap: () {
+                  // Implement Transfer Ownership Logic
+                },
+              ),
+            ],
           ),
         ],
       ),
@@ -128,9 +161,12 @@ class BusinessDetailScreen extends StatelessWidget {
             TextButton(
               child: Text("Add"),
               onPressed: () {
-                String product = productController.text;
-                business.addProduct(product);
-                Navigator.of(context).pop();
+                String productName = productController.text;
+                if (productName.isNotEmpty) {
+                  widget.business.addProduct(Product(name: productName, price: 100, productionCost: 50) as String);
+                  Navigator.of(context).pop();
+                  setState(() {});
+                }
               },
             ),
           ],
@@ -140,42 +176,49 @@ class BusinessDetailScreen extends StatelessWidget {
   }
 
   void _showAddEmployeeDialog(BuildContext context) {
-    TextEditingController employeeController = TextEditingController();
-    TextEditingController salaryController = TextEditingController();
+    jobmarketServices.loadJobs().then((_) {
+      List<Candidate> candidates = Interview.getAvailableCandidates();
 
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Add Employee"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              TextField(
-                controller: employeeController,
-                decoration: InputDecoration(labelText: "Employee Name"),
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Add Employee"),
+            content: Container(
+              width: double.maxFinite,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: candidates.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Candidate candidate = candidates[index];
+                  return ListTile(
+                    title: Text(candidate.name),
+                    subtitle: Text("Expected Salary: \$${candidate.expectedSalary.toStringAsFixed(2)}"),
+                    onTap: () {
+                      if (Interview.simulate(candidate)) {
+                        Department department = widget.business.departments.isNotEmpty
+                            ? widget.business.departments.first
+                            : Department(name: 'General');
+                        widget.business.hireEmployee(candidate.name, candidate.expectedSalary, department);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("${candidate.name} has been hired!")),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("${candidate.name} failed the interview.")),
+                        );
+                      }
+                      Navigator.of(context).pop();
+                      setState(() {});
+                    },
+                  );
+                },
               ),
-              TextField(
-                controller: salaryController,
-                decoration: InputDecoration(labelText: "Salary"),
-                keyboardType: TextInputType.number,
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text("Add"),
-              onPressed: () {
-                String name = employeeController.text;
-                double salary = double.tryParse(salaryController.text) ?? 0;
-                business.hireEmployee(name, salary);
-                Navigator.of(context).pop();
-              },
             ),
-          ],
-        );
-      },
-    );
+          );
+        },
+      );
+    });
   }
 
   void _showAddDepartmentDialog(BuildContext context) {
@@ -194,15 +237,23 @@ class BusinessDetailScreen extends StatelessWidget {
             TextButton(
               child: Text("Add"),
               onPressed: () {
-                String department = departmentController.text;
-                business.addDepartment(department);
-                Navigator.of(context).pop();
+                String departmentName = departmentController.text;
+                if (departmentName.isNotEmpty) {
+                  widget.business.addDepartment(Department(name: departmentName) as String);
+                  Navigator.of(context).pop();
+                  setState(() {});
+                }
               },
             ),
           ],
         );
       },
     );
+  }
+
+  void _showDepartmentDetails(BuildContext context, Department department) {
+    // Implement logic to show details about the department
+    print("Showing details for department: ${department.name}");
   }
 
   void _showAddStrategyDialog(BuildContext context) {
@@ -222,59 +273,9 @@ class BusinessDetailScreen extends StatelessWidget {
               child: Text("Add"),
               onPressed: () {
                 String strategy = strategyController.text;
-                business.addStrategy(strategy);
+                widget.business.addStrategy(Strategy(strategy));
                 Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _showSWOTAnalysisDialog(BuildContext context) {
-    TextEditingController strengthController = TextEditingController();
-    TextEditingController weaknessController = TextEditingController();
-    TextEditingController opportunityController = TextEditingController();
-    TextEditingController threatController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("SWOT Analysis"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              TextField(
-                controller: strengthController,
-                decoration: InputDecoration(labelText: "Strength"),
-              ),
-              TextField(
-                controller: weaknessController,
-                decoration: InputDecoration(labelText: "Weakness"),
-              ),
-              TextField(
-                controller: opportunityController,
-                decoration: InputDecoration(labelText: "Opportunity"),
-              ),
-              TextField(
-                controller: threatController,
-                decoration: InputDecoration(labelText: "Threat"),
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text("Set Analysis"),
-              onPressed: () {
-                business.setSWOTAnalysis(
-                  strengthController.text,
-                  weaknessController.text,
-                  opportunityController.text,
-                  threatController.text,
-                );
-                Navigator.of(context).pop();
+                setState(() {});
               },
             ),
           ],
@@ -300,8 +301,9 @@ class BusinessDetailScreen extends StatelessWidget {
               child: Text("Conduct"),
               onPressed: () {
                 String campaign = campaignController.text;
-                business.conductMarketingCampaign(campaign);
+                widget.business.conductMarketingCampaign(campaign);
                 Navigator.of(context).pop();
+                setState(() {});
               },
             ),
           ],
@@ -327,8 +329,9 @@ class BusinessDetailScreen extends StatelessWidget {
               child: Text("Expand"),
               onPressed: () {
                 String market = marketController.text;
-                business.expandInternationally(market);
+                widget.business.expandInternationally(market);
                 Navigator.of(context).pop();
+                setState(() {});
               },
             ),
           ],
@@ -348,8 +351,9 @@ class BusinessDetailScreen extends StatelessWidget {
             TextButton(
               child: Text("Automate"),
               onPressed: () {
-                business.automateProcesses();
+                widget.business.automateProcesses();
                 Navigator.of(context).pop();
+                setState(() {});
               },
             ),
           ],
@@ -375,8 +379,9 @@ class BusinessDetailScreen extends StatelessWidget {
               child: Text("Engage"),
               onPressed: () {
                 String initiative = initiativeController.text;
-                business.engageInCSR(initiative);
+                widget.business.engageInCSR(initiative);
                 Navigator.of(context).pop();
+                setState(() {});
               },
             ),
           ],

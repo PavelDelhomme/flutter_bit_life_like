@@ -5,17 +5,24 @@
   class HrService {
     final Random _random = Random();
 
-    void conducInterview(String candidateName) {
+    void conductInterview(Employee candidate, Function(bool) onResult) {
       bool interviewPassed = _random.nextDouble() > 0.3; // 70% chance of passing
       if (interviewPassed) {
-        print("Congratulations, $candidateName! You passed the interview.");
+        print("Congratulations, ${candidate.name}! You passed the interview.");
       } else {
-        print("Sorry, $candidateName. You did not pass the interview.");
+        print("Sorry, ${candidate.name}. You did not pass the interview.");
       }
+      onResult(interviewPassed);
     }
 
-    void promoteEmployee(String employeeName) {
-      print("$employeeName has been promoted !");
+    void promoteEmployee(String employeeName, Business business) {
+      try {
+        Employee employee = business.employees.firstWhere((e) => e.name == employeeName);
+        employee.salary *= 1.1;
+        print("$employeeName has been promoted with a new salary of ${employee.salary}!");
+      } catch (e) {
+        print("Employee $employeeName not found.");
+      }
     }
 
     double calculateEmployeeExpenses(List<Employee> employees) {

@@ -1,66 +1,60 @@
 // job_market_screen.dart
 import 'package:flutter/material.dart';
 import '../../../Classes/person.dart';
-import '../classes/job.dart';
+import '../../../services/work/jobmarket_service.dart';
 import '../classes/jobmarket.dart';
 
 class JobMarketScreen extends StatelessWidget {
   final Person person;
-  final JobMarket jobMarket = JobMarket(availableJobs: [
-    // Sample jobs
-    Job(
-      title: 'Software Developer',
-      country: 'USA',
-      salary: 30.0,
-      hoursPerWeek: 40,
-      companyName: 'TechCorp',
-      isFullTime: true,
-    ),
-    Job(
-      title: 'Data Analyst',
-      country: 'USA',
-      salary: 28.0,
-      hoursPerWeek: 35,
-      companyName: 'DataCorp',
-      isFullTime: true,
-    ),
-  ]);
+  final JobMarketService jobMarketService = JobMarketService();
 
   JobMarketScreen({required this.person});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Job Market'),
-      ),
-      body: ListView.builder(
-        itemCount: jobMarket.availableJobs.length,
-        itemBuilder: (context, index) {
-          Job job = jobMarket.availableJobs[index];
-          return ListTile(
-            title: Text(job.title),
-            subtitle: Text('Company: ${job.companyName}, Salary: \$${job.salary}/hour'),
-            onTap: () {
-              _showApplyDialog(context, job);
-            },
+    return FutureBuilder(
+      future: jobMarketService.loadJobs(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text("Error loading jobs"));
+        } else {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text("Job Market"),
+            ),
+            body: ListView.builder(
+              itemCount: jobMarketService.availableJobs.length,
+              itemBuilder: (context, index) {
+                MarketJob job = jobMarketService.availableJobs[index];
+                return ListTile(
+                  title: Text(job.jobTitle),
+                  subtitle: Text("Company: ${job.employerName}, Salary: \$${job.monthlySalary}/month"),
+                  onTap: () {
+                    _showApplyDialog(context, job);
+                  },
+                );
+              },
+            ),
           );
-        },
-      ),
+        }
+      },
     );
   }
 
-  void _showApplyDialog(BuildContext context, Job job) {
+  void _showApplyDialog(BuildContext context, MarketJob job) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Apply for ${job.title}"),
-          content: Text("Do you want to apply for this job at ${job.companyName}?"),
+          title: Text("Apply for ${job.jobTitle}"),
+          content: Text("Do you want to apply for this job at ${job.employerName}?"),
           actions: <Widget>[
             TextButton(
               child: Text("Apply"),
               onPressed: () {
+                JobMarket jobMarket = JobMarket(availableJobs: jobMarketService.availableJobs);
                 jobMarket.applyForJob(person, job);
                 Navigator.of(context).pop();
               },

@@ -13,7 +13,7 @@ class JobMarket {
       print("You have already have this job.");
       return;
     }
-    if (applicant.jobs.length >= 2 && job.jobType == "Full-Time") {
+    if (applicant.jobs.length >= 2 && job.jobType == "full-time") {
       print("Cannot apply for more than on full-time job.");
       return;
     }
@@ -23,7 +23,7 @@ class JobMarket {
       salary: job.monthlySalary,
       hoursPerWeek: 40,
       companyName: job.employerName,
-      isFullTime: job.jobType == "Full-Time",
+      isFullTime: job.jobType == "full-time",
     );
     applicant.jobs.add(newJob);
     print("${applicant.name} has started working as a ${job.jobTitle} at ${job.employerName}.");

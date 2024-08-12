@@ -3,21 +3,32 @@ import 'package:bit_life_like/screens/work/classes/business.dart';
 import '../../services/bank/bank_account.dart';
 
 class BusinessManagementService {
-  void startBusiness(Person person, String name, String type, double investment) {
-    if (person.bankAccounts.isNotEmpty && person.bankAccounts.first.balance >= investment) {
-      person.startBusiness(name, type, investment);
-      person.bankAccounts.first.withdraw(investment);
-      print("${person.name} has started a new business: ${name} with ${investment}\$.");
+  void startBusiness(Person person, String name, String type, double investment, BankAccount businessAccount) {
+    if (person.realEstates.isNotEmpty && person.bankAccounts.isNotEmpty) {
+      if (businessAccount.balance >= investment) {
+        person.startBusiness(name, type, investment); // Adjusted to call the correct method
+        businessAccount.withdraw(investment);
+        print("${person.name} has started a new business: ${name} with ${investment}\$.");
+      } else {
+        print("Insufficient funds to start a new business.");
+      }
     } else {
-      print("Insufficient funds to start a new business.");
+      print("Real estate ownership is required to start a business.");
     }
   }
 
-  void manageBusiness(Person person) {
-    person.businesses.forEach((business) {
-      business.payExpenses(500);
-      print("Business: ${business.name}, Balance: ${business.getBalance()}");
-    });
+  void addProductToBusiness(Business business, Product product) {
+    business.addProduct(product.name);
+    print("Added product ${product.name} to business ${business.name}.");
+  }
+
+  void hireEmployee(Business business, String name, double salary, Department department) {
+    if (business.businessAccount != null && business.businessAccount!.balance >= salary) {
+      business.hireEmployee(name, salary, department);
+      print("Hired ${name} for business ${business.name}.");
+    } else {
+      print("Insufficient funds to hire ${name}.");
+    }
   }
 
   void handleTaxes(Business business) {
