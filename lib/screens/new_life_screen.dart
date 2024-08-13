@@ -1,3 +1,4 @@
+import 'package:bit_life_like/screens/work/classes/job.dart';
 import 'package:bit_life_like/services/person.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -25,7 +26,14 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
   @override
   void initState() {
     super.initState();
-    personService.loadCharacters();
+    _initializePersonService();
+  }
+
+  Future<void> _initializePersonService() async {
+    await personService.loadCharacters();
+    setState(() {
+      // Update state if necessary after loading characters
+    });
   }
 
   @override
@@ -67,36 +75,94 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
   }
 
   void _createLife() {
-    final person = personService.getRandomCharacter();
-    person.name =
-        _nameController.text.isNotEmpty ? _nameController.text : person.name;
-    person.country = _selectedCountry;
+    try {
 
-    // Générer une famille, des amis etc.
-    person.parents = _generateRandomFamily(_selectedCountry);
-    person.friends = _generateRandomFriends(_selectedCountry, person.age, 3);
-    person.neighbors = _generateRandomNeighbors(person.country, 5);
+      if (personService.availableCharacters.isEmpty) {
+        print("No characters available. Please check JSON loading.");
+        return;
+      }
 
-    widget.lives.add(person);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomeScreen(
-          person: person,
-          realEstateService: RealEstateService(),
-          transactionService: TransactionService(),
-          events: [], // Pass events if needed
+      final person = Person(
+        name: _nameController.text.isNotEmpty ? _nameController.text : 'John Doe', // Nom par défaut
+        gender: 'Male', // Exemple par défaut
+        country: _selectedCountry,
+        age: 0,
+        intelligence: 100,
+        happiness: 100,
+        karma: 100,
+        appearance: 100,
+        health: 100,
+        isImprisoned: false,
+        prisonTerm: 0,
+        bankAccounts: [],
+      );
+
+      // Générer une famille, des amis, etc.
+      person.parents = _generateRandomFamily(_selectedCountry);
+
+      for (var parent in person.parents) {
+        parent.manageFinances(); // Simulation d'un mois de gestion financiere
+      }
+
+      person.friends = _generateRandomFriends(_selectedCountry, person.age, 3);
+      person.neighbors = _generateRandomNeighbors(person.country, 5);
+
+      widget.lives.add(person);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(
+            person: person,
+            realEstateService: RealEstateService(),
+            transactionService: TransactionService(),
+            events: [], // Pass events if needed
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      print("Error creating life: $e");
+    }
   }
 
   List<Person> _generateRandomFamily(String country) {
-    return [
-      personService.getRandomCharacter(),
-      personService.getRandomCharacter()
-    ];
+    return List.generate(2, (_) {
+      Person parent = personService.getRandomCharacter();
+      parent.country = country;
+      parent.bankAccounts = _generateRandomBankAccounts();
+      parent.jobs = [_generateRandomJob(country)]; // Assigne un emploi aléatoire
+      return parent;
+    });
   }
+
+
+  List<BankAccount> _generateRandomBankAccounts() {
+    final random = Random();
+    return List.generate(1, (_) {
+      return BankAccount(
+        accountNumber: 'ACC${random.nextInt(1000000)}',
+        bankName: 'Global Bank',
+        balance: random.nextDouble() * 10000 + 1000, // Solde initial aléatoire
+        annualIncome: random.nextDouble() * 50000 + 20000, // Revenu annuel aléatoire
+        accountType: 'Checking',
+      );
+    });
+  }
+
+  Job _generateRandomJob(String country) {
+    final random = Random();
+    List<String> jobTitles = ['Engineer', 'Teacher', 'Doctor', 'Artist', 'Manager'];
+    List<String> companyNames = ['TechCorp', 'EduWorld', 'HealthCare Inc.', 'ArtStudio', 'BusinessSolutions'];
+
+    return Job(
+      title: jobTitles[random.nextInt(jobTitles.length)],
+      country: country,
+      salary: random.nextDouble() * 40 + 20, // Salaire par heure aléatoire
+      hoursPerWeek: random.nextInt(20) + 20,
+      companyName: companyNames[random.nextInt(companyNames.length)],
+      isFullTime: random.nextBool(),
+    );
+  }
+
 
   List<Person> _generateRandomFriends(
       String country, int age, int numberOfFriends) {

@@ -1,11 +1,12 @@
 enum ActivityType {
-  SpendTime,     // Passer du temps ensemble
-  GiftGiving,    // Offrir un cadeau
-  Conflict,      // Avoir un conflit
-  MurderAttempt, // Tentative de meurtre
-  Celebration,   // Fête ou célébration
-  Travel,        // Voyager ensemble
-  SocialMediaInteraction, // Interaction sur les réseaux sociaux
+  SpendTime,
+  GiftGiving,
+  Conflict,
+  MurderAttempt,
+  Celebration,
+  BusinessDeal,
+  Travel,
+  SocialMediaInteraction,
   DrinkAtBar,
   GoToGym,
   WaterSkiing,
@@ -15,7 +16,7 @@ enum ActivityType {
   PlaySports,
   AttendConcert,
   VolunteerWork,
-  ManipulationScheme,
+  ManipulationScheme, // Nouveaux types d'activités
   CreativeProject,
   LanguagePractice,
   PhilosophicalDebate,
@@ -27,8 +28,8 @@ class Activity {
   final double cost;
   final int relationImpact;
   final int selfImpact;
-  final String skillRequired; // Compétences requise pour l'activité
-  final double skillImpact; // Impact sur la compence
+  final String skillRequired; // Compétence requise pour l'activité
+  final double skillImpact; // Impact sur la compétence
 
   Activity({
     required this.name,
@@ -40,3 +41,20 @@ class Activity {
     this.skillImpact = 0.0,
   });
 }
+
+// Définir la liste d'activités globalement ici
+final List<Activity> activities = [
+  Activity(name: 'Drink at Bar', type: ActivityType.DrinkAtBar, cost: 20, selfImpact: 5, relationImpact: 5),
+  Activity(name: 'Go to Gym', type: ActivityType.GoToGym, cost: 10, selfImpact: 10, relationImpact: 5),
+  Activity(name: 'Water Skiing', type: ActivityType.WaterSkiing, cost: 50, selfImpact: 15, relationImpact: 10),
+  Activity(name: 'Drug Deal', type: ActivityType.DrugDeal, cost: 100, selfImpact: -10, relationImpact: -5),
+  Activity(name: 'Take Drugs', type: ActivityType.TakeDrugs, cost: 50, selfImpact: -15, relationImpact: 5),
+  Activity(name: 'Watch Movie', type: ActivityType.WatchMovie, cost: 15, selfImpact: 10, relationImpact: 5),
+  Activity(name: 'Play Sports', type: ActivityType.PlaySports, cost: 0, selfImpact: 10, relationImpact: 10),
+  Activity(name: 'Attend Concert', type: ActivityType.AttendConcert, cost: 50, selfImpact: 20, relationImpact: 10),
+  Activity(name: 'Volunteer Work', type: ActivityType.VolunteerWork, cost: 0, selfImpact: 10, relationImpact: 5),
+  Activity(name: 'Manipulation Scheme', type: ActivityType.ManipulationScheme, skillRequired: 'Manipulation', skillImpact: 0.5, selfImpact: -5),
+  Activity(name: 'Creative Project', type: ActivityType.CreativeProject, skillRequired: 'Créativité', skillImpact: 1.0, selfImpact: 10),
+  Activity(name: 'Language Practice', type: ActivityType.LanguagePractice, skillRequired: 'Langues', skillImpact: 0.5, selfImpact: 5),
+  Activity(name: 'Philosophical Debate', type: ActivityType.PhilosophicalDebate, skillRequired: 'Philosophie', skillImpact: 0.5, relationImpact: 5),
+];

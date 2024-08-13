@@ -18,7 +18,6 @@ class EducationScreen extends StatelessWidget {
 
       List<EducationLevel> educationLevels = [];
 
-      // Iterate through each level and add each education
       jsonResult['educations'].forEach((level, schools) {
         for (var school in schools) {
           educationLevels.add(EducationLevel.fromJson(school));
@@ -28,7 +27,7 @@ class EducationScreen extends StatelessWidget {
       return educationLevels;
     } catch (e) {
       print("Error loading education levels: $e");
-      rethrow; // Re-throw to propagate the error
+      rethrow;
     }
   }
 
@@ -40,7 +39,6 @@ class EducationScreen extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          // Log the error to the console
           print("Error in FutureBuilder: ${snapshot.error}");
           return Center(child: Text('Error loading education levels'));
         } else {
@@ -67,7 +65,7 @@ class EducationScreen extends StatelessWidget {
                 ),
                 ExpansionTile(
                   title: Text("Education History"),
-                  children: person.educationHistory.map((education) {
+                  children: person.educations.map((education) {
                     return ListTile(
                       title: Text(education.name),
                       subtitle: Text("Completed: ${education.duration} years"),
@@ -99,7 +97,6 @@ class EducationScreen extends StatelessWidget {
     );
   }
 
-
   void _showEducationSelectionDialog(BuildContext context, List<EducationLevel> educationLevels) {
     showDialog(
       context: context,
@@ -114,10 +111,8 @@ class EducationScreen extends StatelessWidget {
                   subtitle: Text("Cost: \$${educationLevel.cost}"),
                   onTap: () {
                     person.enroll(educationLevel);
-                    for (var competence in educationLevel.competences.entries) {
-                      person.improveSkill(competence.key, competence.value);
-                    }
                     Navigator.of(context).pop();
+                    person.advanceEducation();
                   },
                 );
               }).toList(),

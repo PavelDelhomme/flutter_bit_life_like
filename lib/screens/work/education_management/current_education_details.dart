@@ -7,10 +7,12 @@ class CurrentEducationDetailsScreen extends StatefulWidget {
   CurrentEducationDetailsScreen({required this.person});
 
   @override
-  _CurrentEducationDetailsScreenState createState() => _CurrentEducationDetailsScreenState();
+  _CurrentEducationDetailsScreenState createState() =>
+      _CurrentEducationDetailsScreenState();
 }
 
-class _CurrentEducationDetailsScreenState extends State<CurrentEducationDetailsScreen> {
+class _CurrentEducationDetailsScreenState
+    extends State<CurrentEducationDetailsScreen> {
   double improvementFactor = 0.02;
 
   void improveSkills() {
@@ -19,7 +21,6 @@ class _CurrentEducationDetailsScreenState extends State<CurrentEducationDetailsS
     });
 
     setState(() {
-      // Reduce the improvement factor each time the button is pressed
       improvementFactor = (improvementFactor / 2).clamp(0.001, improvementFactor);
     });
 
@@ -57,6 +58,10 @@ class _CurrentEducationDetailsScreenState extends State<CurrentEducationDetailsS
             Text("Competences:", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             for (var competence in currentEducation.competences.entries)
               Text("${competence.key}: ${competence.value.toStringAsFixed(2)}", style: TextStyle(fontSize: 14)),
+            SizedBox(height: 16),
+            Text("Classmates:", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            for (var classmate in currentEducation.classmates)
+              Text("${classmate.name}, Age: ${classmate.age}", style: TextStyle(fontSize: 14)),
             Spacer(),
             ElevatedButton(
               onPressed: improveSkills,

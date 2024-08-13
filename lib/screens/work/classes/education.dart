@@ -1,3 +1,5 @@
+import 'package:bit_life_like/Classes/person.dart';
+
 class EducationLevel {
   String name;
   String type;
@@ -5,6 +7,7 @@ class EducationLevel {
   double stressLevel;
   int duration;
   Map<String, double> competences;
+  List<Person> classmates;
 
   EducationLevel({
     required this.name,
@@ -13,6 +16,7 @@ class EducationLevel {
     required this.stressLevel,
     required this.duration,
     required this.competences,
+    this.classmates = const [], // Initialisation par défaut
   });
 
   factory EducationLevel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +27,10 @@ class EducationLevel {
       stressLevel: json['stressLevel']?.toDouble() ?? 0.0,
       duration: json['durée'],
       competences: Map<String, double>.from(json['competences'] ?? {}),
+      classmates: (json['classmates'] as List<dynamic>?)
+          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [], // Conversion des camarades de classe depuis JSON
     );
   }
 
@@ -34,6 +42,7 @@ class EducationLevel {
       'stressLevel': stressLevel,
       'durée': duration,
       'competences': competences,
+      'classmates': classmates.map((e) => e.toJson()).toList(),
     };
   }
 }

@@ -8,7 +8,10 @@
     "happiness": 85,
     "karma": 70,
     "appearance": 75,
-    "health": 95
+    "health": 95,
+    "isImprisoned": false,
+    "prisonTerm": 0,
+    "bankAccounts": []
   },
   {
     "name": "Bob",
@@ -19,6 +22,9 @@
     "happiness": 80,
     "karma": 75,
     "appearance": 80,
-    "health": 90
+    "health": 90,
+    "isImprisoned": false,
+    "prisonTerm": 0,
+    "bankAccounts": []
   }
 ]

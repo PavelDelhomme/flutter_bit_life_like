@@ -13,10 +13,13 @@ import '../screens/work/classes/education.dart';
 import '../screens/work/classes/job.dart';
 import '../services/bank/FinancialService.dart';
 import '../services/bank/bank_account.dart';
+import '../services/person.dart';
 import 'activity.dart';
 import 'objects/antique.dart';
 import 'objects/book.dart';
 import 'objects/instrument.dart';
+
+PersonService personService = PersonService();
 
 class Person {
   String name;
@@ -42,6 +45,7 @@ class Person {
   List<Person> friends = [];
   List<Person> partners = [];
   List<Person> neighbors = [];
+  List<Person> siblings = []; // Ajout des frères et sœurs
 
   // Works
   List<Job> jobs = [];
@@ -49,7 +53,7 @@ class Person {
   List<Job> jobHistory = [];
 
   // Education
-  List<EducationLevel> educationHistory = [];
+  List<EducationLevel> educations = []; // Ajout de la liste d'éducations
   EducationLevel? currentEducation;
   double academicPerformance = 0;
 
@@ -96,7 +100,7 @@ class Person {
     List<BankAccount>? bankAccounts,
     List<Person>? parents,
     List<Person>? partners,
-    this.educationHistory = const [],
+    this.educations = const [], // Initialisation des éducations
     this.currentEducation,
     this.academicPerformance = 0,
     required prisonTerm,
@@ -173,7 +177,7 @@ class Person {
 
   void marry(Person partner) {
     if (!partners.contains(partner)) {
-      parents.add(partner);
+      partners.add(partner);
       partner.partners.add(this); // Ajouter réciproquement
       // IL faut permettre de choisir si oui ou non il faut ouvrir un compte commun du coup
     }
@@ -208,26 +212,52 @@ class Person {
   }
 
   void enroll(EducationLevel education) {
-    // On sélectionne le premier compte ou un compte spécifié comme principal
-    BankAccount? primaryAccount = bankAccounts.isNotEmpty
-        ? bankAccounts.first
-        : null;
-    if (primaryAccount != null && primaryAccount.balance >= education.cost) {
-      primaryAccount.balance -= education.cost;
-      currentEducation = education;
-      academicPerformance = 0;
-      print("Enrolled in ${education
-          .name} with fees paid from account ${primaryAccount.accountNumber}");
+    BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
+
+    if (age <= 16) {
+      if (parents.isNotEmpty && parents.first.bankAccounts.isNotEmpty) {
+        BankAccount parentAccount = parents.first.bankAccounts.first;
+        if (parentAccount.balance >= education.cost) {
+          parentAccount.balance -= education.cost;
+          currentEducation = education;
+          academicPerformance = 0;
+
+          currentEducation?.classmates.add(this);
+          currentEducation?.classmates.addAll(_generateRandomClassmates(5));
+          print("Enrolled in ${education.name} with fees paid by parents");
+        } else {
+          print("Not enough money in parents' account to enroll in ${education.name}");
+        }
+      } else {
+        print("Parents do not have an account to pay for education.");
+      }
     } else {
-      print("Not enough money to enroll in ${education.name}");
+      if (primaryAccount != null && primaryAccount.balance >= education.cost) {
+        primaryAccount.balance -= education.cost;
+        currentEducation = education;
+        academicPerformance = 0;
+
+        currentEducation?.classmates.add(this);
+        currentEducation?.classmates.addAll(_generateRandomClassmates(5));
+        print("Enrolled in ${education.name} with fees paid from own account");
+      } else {
+        print("Not enough money to enroll in ${education.name}");
+      }
     }
+  }
+
+  List<Person> _generateRandomClassmates(int count) {
+    if (personService.availableCharacters.isEmpty) {
+      throw Exception("PersonService is not initialized with characters.");
+    }
+    return List.generate(count, (_) => personService.getRandomCharacter());
   }
 
   void completeYear() {
     if (currentEducation != null) {
       academicPerformance += 10;
       if (academicPerformance >= 100) {
-        educationHistory.add(currentEducation!);
+        educations.add(currentEducation!);
         currentEducation = null;
       }
     }
@@ -444,13 +474,25 @@ class Person {
   }
 
   void performActivity(Person? other, Activity activity) {
+    BankAccount? accountToUse;
+
     if (activity.cost > 0) {
-      BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
-      if (primaryAccount == null || primaryAccount.balance < activity.cost) {
+      // Si l'utilisateur a plusieurs comptes, peremettez de choisir
+      if (bankAccounts.length > 1) {
+        // Logique pour choisir un compte, par exemle le premier pour l'instant
+        accountToUse = bankAccounts.firstWhere(
+                (account) => account.balance >= activity.cost,
+            orElse: () => bankAccounts.first
+        );
+      } else if (bankAccounts.isNotEmpty) {
+        accountToUse = bankAccounts.first;
+      }
+
+      if (accountToUse == null || accountToUse.balance < activity.cost) {
         print("Not enough money to perform ${activity.name}");
         return;
       }
-      primaryAccount.withdraw(activity.cost);
+      accountToUse.withdraw(activity.cost);
     }
 
     if (activity.skillRequired.isNotEmpty) {
@@ -484,6 +526,10 @@ class Person {
           break;
         case ActivityType.Celebration:
           print("${name} is celebrating with ${other.name}");
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.BusinessDeal:
+          print("${name} is negotiating a business deal with ${other.name}.");
           relationship.quality += activity.relationImpact;
           break;
         case ActivityType.Travel:
@@ -542,12 +588,29 @@ class Person {
           karma += activity.selfImpact;
           relationship.quality += activity.relationImpact;
           break;
-        default:
-          print('${name} performed an unknown group activity.');
+        case ActivityType.ManipulationScheme:
+          print('${name} is executing a manipulation scheme with ${other.name}.');
+          karma -= activity.selfImpact;
+          relationship.quality -= activity.relationImpact;
+          break;
+        case ActivityType.CreativeProject:
+          print('${name} is working on a creative project with ${other.name}.');
+          happiness += activity.selfImpact;
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.LanguagePractice:
+          print('${name} is practicing a language with ${other.name}.');
+          break;
+        case ActivityType.PhilosophicalDebate:
+          print('${name} is engaging in a philosophical debate with ${other.name}.');
+          happiness += activity.selfImpact;
+          relationship.quality += activity.relationImpact;
+          break;
       }
 
       relationship.quality = relationship.quality.clamp(0.0, 100.0);
     } else {
+      // Solo activities
       switch (activity.type) {
         case ActivityType.DrinkAtBar:
           print('${name} is drinking at a bar alone.');
@@ -590,10 +653,26 @@ class Person {
           print('${name} is doing volunteer work alone.');
           karma += activity.selfImpact;
           break;
+        case ActivityType.ManipulationScheme:
+          print('${name} is executing a manipulation scheme.');
+          karma -= activity.selfImpact;
+          break;
+        case ActivityType.CreativeProject:
+          print('${name} is working on a creative project.');
+          happiness += activity.selfImpact;
+          break;
+        case ActivityType.LanguagePractice:
+          print('${name} is practicing a language.');
+          break;
+        case ActivityType.PhilosophicalDebate:
+          print('${name} is engaging in a philosophical debate.');
+          happiness += activity.selfImpact;
+          break;
         default:
           print('${name} performed an unknown solo activity.');
       }
     }
+
 
     // S'assurer que l'health et l'happiness sont dans les resonable limite
     health = health.clamp(0.0, 100.0);
@@ -626,6 +705,28 @@ class Person {
       // Entrenera des représaille, une chance quelle appelle la police, et sinon une baisse que la qualité de la relation
       Relationship relationship = relationships[target]!;
       relationship.quality -= 20;
+    }
+  }
+
+  void manageFinances() {
+    // Dépôt de salaire
+    for (var job in jobs) {
+      double salary = job.salary * job.hoursPerWeek * 4; // salaire mensuel
+      if (bankAccounts.isNotEmpty) {
+        bankAccounts.first.deposit(salary);
+        print("${name} received salary of \$${salary.toStringAsFixed(2)}");
+      }
+    }
+
+    // Dépense mensuelles (simplifiées)
+    if (bankAccounts.isNotEmpty) {
+      double monthlyExpenses = bankAccounts.first.monthlyExpenses;
+      if (bankAccounts.first.balance >= monthlyExpenses) {
+        bankAccounts.first.withdraw(monthlyExpenses);
+        print("${name} paid monthly expenses of \$${monthlyExpenses.toStringAsFixed(2)}");
+      } else {
+        print("${name} cannot afford monthly expenses.");
+      }
     }
   }
 }

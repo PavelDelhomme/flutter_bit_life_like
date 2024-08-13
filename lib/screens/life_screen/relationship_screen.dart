@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../Classes/person.dart';
 
 class RelationshipsScreen extends StatefulWidget {
-  final RelationService relationService = RelationService();
   final Person person;
 
   RelationshipsScreen({required this.person});
@@ -12,6 +11,7 @@ class RelationshipsScreen extends StatefulWidget {
   @override
   _RelationshipsScreenState createState() => _RelationshipsScreenState();
 }
+
 class _RelationshipsScreenState extends State<RelationshipsScreen> {
   final RelationService relationService = RelationService();
 
@@ -28,7 +28,7 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
             title: "Family",
             people: widget.person.parents + widget.person.partners,
             onTap: (familyMember) {
-              _showFamilyMemberDetails(context, familyMember);
+              _showPersonDetails(context, familyMember);
             },
           ),
           _buildRelationshipSection(
@@ -36,7 +36,7 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
             title: "Friends",
             people: widget.person.friends,
             onTap: (friend) {
-              _showFriendDetails(context, friend);
+              _showPersonDetails(context, friend);
             },
           ),
           _buildRelationshipSection(
@@ -44,17 +44,13 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
             title: "Colleagues",
             people: widget.person.jobs.expand((job) => job.colleagues).toList(),
             onTap: (colleague) {
-              _showColleagueDetails(context, colleague);
+              _showPersonDetails(context, colleague);
             },
           ),
           ListTile(
-            title: Text("Interact with Friends"),
+            title: Text("Perform Solo Activities"),
             onTap: () {
-              widget.person.improveSkill("Communication", 5);
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("Improved communication skill through interaction."),
-              ));
-              setState(() {});
+              _showSoloActivityOptions(context);
             },
           ),
         ],
@@ -69,120 +65,99 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
       children: people.map((person) {
         return ListTile(
           title: Text(person.name),
-          subtitle: Text("Age: ${person.age}, Country: ${person.country}"),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Age: ${person.age}, Country: ${person.country}"),
+              _buildRelationshipProgress(person),
+            ],
+          ),
           onTap: () => onTap(person),
         );
       }).toList(),
     );
   }
 
-  void _showFamilyMemberDetails(BuildContext context, Person familyMember) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(familyMember.name),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text("Age: ${familyMember.age}"),
-              Text("Gender: ${familyMember.gender}"),
-              Text("Country: ${familyMember.country}"),
-              Text("Bank Accounts:"),
-              ...familyMember.bankAccounts.map((account) => Text(
-                  "${account.bankName} - ${account.accountType}: \$${account.balance.toStringAsFixed(2)}")),
-            ],
+  Widget _buildRelationshipProgress(Person person) {
+    double quality = widget.person.relationships[person]?.quality ?? 0.0;
+    return Column(
+      children: [
+        LinearProgressIndicator(
+          value: quality / 100,
+          backgroundColor: Colors.grey[300],
+          valueColor: AlwaysStoppedAnimation<Color>(
+            quality > 70 ? Colors.green : (quality > 40 ? Colors.orange : Colors.red),
           ),
-          actions: <Widget>[
-            TextButton(
-              child: Text("Close"),
-              onPressed: () => Navigator.of(context).pop(),
+        ),
+        Text(
+          "Relationship Quality: ${quality.toStringAsFixed(1)}%",
+          style: TextStyle(fontSize: 12),
+        ),
+      ],
+    );
+  }
+
+  void _showPersonDetails(BuildContext context, Person person) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  person.name,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8),
+                Text("Age: ${person.age}, Country: ${person.country}"),
+                SizedBox(height: 16),
+                Text(
+                  "Interactions",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Column(
+                  children: activities.where((activity) => activity.relationImpact != 0).map((activity) {
+                    return ElevatedButton(
+                      child: Text(activity.name),
+                      onPressed: () {
+                        widget.person.performActivity(person, activity);
+                        Navigator.of(context).pop();
+                        setState(() {});
+                      },
+                    );
+                  }).toList(),
+                ),
+              ],
             ),
-          ],
+          ),
         );
       },
     );
   }
 
-
-  void _showFriendDetails(BuildContext context, Person friend) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(friend.name),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text("Age: ${friend.age}"),
-              Text("Gender: ${friend.gender}"),
-              Text("Country: ${friend.country}"),
-              // Add more details if necessary
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text("Close"),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _showColleagueDetails(BuildContext context, Person colleague) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(colleague.name),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text("Age : ${colleague.age}"),
-              Text("Gender : ${colleague.gender}"),
-              Text("Country : ${colleague.country}"),
-              SizedBox(height: 10),
-              ElevatedButton(
-                child: Text("Collaborate"),
-                onPressed: () {
-                  widget.person.improveSkill("Collectif", 0.5);
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text("Collaborate with ${colleague.name}, teamwork improved !"),
-                  ));
-                },
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text("Close"),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ],
-        );
-      }
-    );
-  }
-  void _showInteractionOptions(BuildContext context, Person target) {
+  void _showSoloActivityOptions(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Interact with ${target.name}"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: activities.map((activity) {
-              return ElevatedButton(
-                child: Text(activity.name),
-                onPressed: () {
-                  widget.person.performActivity(target, activity);
-                  Navigator.of(context).pop();
-                  setState(() {});
-                },
-              );
-            }).toList(),
+          title: Text("Perform Solo Activities"),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: activities.where((activity) => activity.relationImpact == 0).map((activity) {
+                return ElevatedButton(
+                  child: Text(activity.name),
+                  onPressed: () {
+                    widget.person.performActivity(null, activity);
+                    Navigator.of(context).pop();
+                    setState(() {});
+                  },
+                );
+              }).toList(),
+            ),
           ),
         );
       },

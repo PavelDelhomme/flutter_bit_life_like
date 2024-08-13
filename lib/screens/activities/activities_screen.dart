@@ -1,17 +1,17 @@
 import 'package:bit_life_like/Classes/person.dart';
-import 'package:bit_life_like/screens/activities/activity/other_activities/adoption_activites_screen.dart';
 import 'package:bit_life_like/screens/activities/activity/blackmarket/blackmarket_activites_screen.dart';
-import 'package:bit_life_like/screens/activities/activity/sport/sport_activites_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/legal/emigration_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/legal/inheritance_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/legal/legal_action_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/other_activities/adoption_activites_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/other_activities/health_check_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/other_activities/love_dating_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/other_activities/permits_screen.dart';
+import 'package:bit_life_like/screens/activities/activity/other_activities/time_machine_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'activity/criminal/criminal_activites_screen.dart';
-import 'activity/legal/emigration_screen.dart';
-import 'activity/legal/inheritance_screen.dart';
-import 'activity/legal/legal_action_screen.dart';
-import 'activity/other_activities/health_check_screen.dart';
-import 'activity/other_activities/love_dating_screen.dart';
-import 'activity/other_activities/permits_screen.dart';
-import 'activity/other_activities/time_machine_screen.dart';
+import 'activity/sport/sport_activites_screen.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   final Person person;
