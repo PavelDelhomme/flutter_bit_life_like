@@ -1,7 +1,7 @@
 import 'collectible_item.dart';
 import 'package:bit_life_like/services/bank/bank_account.dart';
 
-class Instrument extends CollectibleItem implements Purchasable {
+class Instrument extends CollectibleItem {
   final String type; // Par exemple: Cordes, Percussion, Vent, etc.
 
   Instrument({
@@ -31,5 +31,15 @@ class Instrument extends CollectibleItem implements Purchasable {
       'epoch': epoch,
       'type': type,
     };
+  }
+
+  static Instrument fromJson(Map<String, dynamic> json) {
+    return Instrument(
+      name: json['name'] as String? ?? 'Unknown',
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] as String? ?? 'Unknown',
+      epoch: json['epoch'] as String? ?? 'Unknown',
+      type: json['type'] as String? ?? 'Unknown',
+    );
   }
 }

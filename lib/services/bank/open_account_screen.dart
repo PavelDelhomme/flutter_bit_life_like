@@ -14,7 +14,7 @@ class OpenAccountScreen extends StatefulWidget {
 }
 
 class _OpenAccountScreenState extends State<OpenAccountScreen> {
-  late List<dynamic> _banks;
+  List<dynamic> _banks = []; // Initialiser à une liste vide
   String? _selectedBankName;
   String? _selectedAccountType;
   double _initialDeposit = 0.0;
@@ -42,72 +42,74 @@ class _OpenAccountScreenState extends State<OpenAccountScreen> {
         title: Text("Open New Account"),
       ),
       body: _banks.isEmpty
-          ? CircularProgressIndicator()
+          ? Center(child: CircularProgressIndicator()) // Affiche un indicateur de chargement pendant le chargement des banques
           : SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    DropdownButton<String>(
-                      value: _selectedBankName,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          _selectedBankName = newValue!;
-                          _selectedAccountType = _banks.firstWhere(
-                                  (bank) => bank['name'] == newValue)['accounts'].first['type'];
-                        });
-                      },
-                      items: _banks.map<DropdownMenuItem<String>>((bank) {
-                        return DropdownMenuItem<String>(
-                          value: bank['name'],
-                          child: Text(bank['name']),
-                        );
-                      }).toList(),
-                    ),
-                    if (_selectedBankName != null) ...[
-                      DropdownButton<String>(
-                        value: _selectedAccountType,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            _selectedAccountType = newValue;
-                          });
-                          },
-                        items: _banks
-                            .firstWhere((bank) => bank['name'] == _selectedBankName)['accounts']
-                            .map<DropdownMenuItem<String>>((account) {
-                          return DropdownMenuItem<String>(
-                            value: account['type'],
-                            child: Text(account['type']),
-                          );
-                        }).toList(),
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: "Initial Deposit",
-                        ),
-                        keyboardType: TextInputType.number,
-                        onChanged: (value) {
-                          _initialDeposit = double.tryParse(value) ?? 0;
-                          },
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          _openAccount();
-                          },
-                        child: Text("Open Account"),
-                      )
-                    ]
-                  ],
-                ),
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              DropdownButton<String>(
+                value: _selectedBankName,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _selectedBankName = newValue!;
+                    _selectedAccountType = _banks
+                        .firstWhere((bank) => bank['name'] == newValue)['accounts']
+                        .first['type'];
+                  });
+                },
+                items: _banks.map<DropdownMenuItem<String>>((bank) {
+                  return DropdownMenuItem<String>(
+                    value: bank['name'],
+                    child: Text(bank['name']),
+                  );
+                }).toList(),
               ),
-            ),
+              if (_selectedBankName != null) ...[
+                DropdownButton<String>(
+                  value: _selectedAccountType,
+                  isExpanded: true,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedAccountType = newValue;
+                    });
+                  },
+                  items: _banks
+                      .firstWhere((bank) => bank['name'] == _selectedBankName)['accounts']
+                      .map<DropdownMenuItem<String>>((account) {
+                    return DropdownMenuItem<String>(
+                      value: account['type'],
+                      child: Text(account['type']),
+                    );
+                  }).toList(),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: "Initial Deposit",
+                  ),
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    _initialDeposit = double.tryParse(value) ?? 0;
+                  },
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    _openAccount();
+                  },
+                  child: Text("Open Account"),
+                )
+              ]
+            ],
+          ),
+        ),
+      ),
     );
   }
-
   void _openAccount() {
     if (_selectedBankName != null && _selectedAccountType != null) {
-      final accountDetails = FinancialService.getBankAccountDetails(_selectedBankName!, _selectedAccountType!);
+      final accountDetails = FinancialService.getBankAccountDetails(
+          _selectedBankName!, _selectedAccountType!);
       if (accountDetails != null) {
         Bank bank = Bank(name: _selectedBankName!);
         BankAccount newAccount = bank.openAccount(
@@ -116,12 +118,12 @@ class _OpenAccountScreenState extends State<OpenAccountScreen> {
           accountDetails['interestRate'],
           isJoint: false,
         );
-        widget.person.bankAccounts.add(newAccount);
-        Navigator.pop(context);
+        Navigator.pop(context, newAccount); // Retourne le compte bancaire créé
       } else {
-        // Handle cas when account details are not found
-        print("Account details not found for $_selectedAccountType at $_selectedBankName.");
+        print(
+            "Account details not found for $_selectedAccountType at $_selectedBankName.");
       }
     }
   }
+
 }

@@ -160,7 +160,7 @@ class Bank {
   String name;
   List<BankAccount> accounts;
 
-  Bank({required this.name, this.accounts = const []});
+  Bank({required this.name, List<BankAccount>? accounts}) : accounts = accounts ?? <BankAccount>[];
 
   BankAccount openAccount(String accountType, double initialDeposit, double interestRate, {bool isJoint = false, List<Person>? partners = const []}) {
     if (isJoint && (partners == null || partners.isEmpty)) {

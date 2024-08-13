@@ -37,4 +37,10 @@ class Art extends CollectibleItem implements Purchasable {
       type: json['type'] as String,
     );
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
 }

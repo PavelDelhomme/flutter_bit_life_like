@@ -1,14 +1,15 @@
+import 'package:bit_life_like/Classes/objects/collectible_item.dart';
 import 'package:bit_life_like/services/bank/bank_account.dart';
 
-abstract class Vehicle implements Purchasable {
+abstract class Vehicle extends CollectibleItem {
   final String name;
-  int age;
-  String type;
-  String rarity;
-  String? brand;
-  double fuelConsumption;
-  double monthlyFuelCost;
+  final int age;
   final double value;
+  final String type;
+  final String rarity;
+  final String? brand;
+  final double fuelConsumption;
+  final double monthlyFuelCost;
 
   Vehicle({
     required this.name,
@@ -18,16 +19,24 @@ abstract class Vehicle implements Purchasable {
     required this.rarity,
     this.brand,
     required this.fuelConsumption,
-    required this.monthlyFuelCost,
-  });
+    required this.monthlyFuelCost
+  }) : super(
+    name: name,
+    value: value,
+    rarity: rarity,
+    epoch: 'N/A'
+  );
 
   double getMonthlyMaintenanceCost();
 
-  double calculateMonthlyFuelCost(double fuelPricePerLiter, double kilometersDrivenPerMonth) {
+  double calculateMonthlyFuelCost(
+      double fuelPricePerLiter, double kilometersDrivenPerMonth) {
     if (fuelConsumption == 0) {
       return 0; // Electric vehicle
     }
-    return (fuelConsumption / 100) * kilometersDrivenPerMonth * fuelPricePerLiter;
+    return (fuelConsumption / 100) *
+        kilometersDrivenPerMonth *
+        fuelPricePerLiter;
   }
 
   @override
@@ -90,13 +99,19 @@ class Moto extends Vehicle {
       value: (json['value'] as num?)?.toDouble() ?? 0.0,
       rarity: json['rarity'] as String? ?? 'Unknown',
       brand: json['brand'] as String?,
-      fuelConsumption: (json['fuel_consumption'] as num?)?.toDouble() ?? 0.0,
+      fuelConsumption: (json['fuelConsumption'] as num?)?.toDouble() ?? 0.0,
     );
   }
 
   @override
   double getMonthlyMaintenanceCost() {
     return value * 0.01; // 1% of the value as maintenance cost
+  }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
   }
 }
 
@@ -121,7 +136,7 @@ class Voiture extends Vehicle {
 
   static Voiture fromJson(Map<String, dynamic> json) {
     return Voiture(
-      name: json['name'] as String? ?? 'Unknown', // Assurez-vous que le champ 'name' est bien 'name' et pas 'nom'
+      name: json['name'] as String? ?? 'Unknown',
       age: (json['age'] as num?)?.toInt() ?? 0,
       value: (json['value'] as num?)?.toDouble() ?? 0.0,
       rarity: json['rarity'] as String? ?? 'Unknown',
@@ -133,6 +148,12 @@ class Voiture extends Vehicle {
   @override
   double getMonthlyMaintenanceCost() {
     return value * 0.015;
+  }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
   }
 }
 
@@ -170,6 +191,12 @@ class Bateau extends Vehicle {
   double getMonthlyMaintenanceCost() {
     return value * 0.02; // 2% of the value as maintenance cost
   }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
+  }
 }
 
 class Avion extends Vehicle {
@@ -205,5 +232,11 @@ class Avion extends Vehicle {
   @override
   double getMonthlyMaintenanceCost() {
     return value * 0.025; // 2.5% of the value as maintenance cost
+  }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
   }
 }

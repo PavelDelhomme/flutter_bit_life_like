@@ -1,0 +1,2074 @@
+{
+  "real_estate_exotique": [
+    {
+      "nom": "Antilia",
+      "age": 10,
+      "valeur": 2000000000.0,
+      "type": "Résidence Privée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 250000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Villa Leopolda",
+      "age": 115,
+      "valeur": 750000000.0,
+      "type": "Villa",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The One",
+      "age": 1,
+      "valeur": 500000000.0,
+      "type": "Manoir",
+      "condition": 100.0,
+      "monthly_maintenance_cost": 100000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Les Palais Bulles",
+      "age": 36,
+      "valeur": 390000000.0,
+      "type": "Villa",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Four Fairfield Pond",
+      "age": 18,
+      "valeur": 248000000.0,
+      "type": "Manoir",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Ellison Estate",
+      "age": 16,
+      "valeur": 200000000.0,
+      "type": "Estate",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Kensington Palace Gardens",
+      "age": 176,
+      "valeur": 180000000.0,
+      "type": "Maison de ville",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Seven The Pinnacle",
+      "age": 9,
+      "valeur": 1550000000.0,
+      "type": "Ski Lodge",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palazzo di Amore",
+      "age": 6,
+      "valeur": 129000000.0,
+      "type": "Villa",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "18-19 Kensington Gardens",
+      "age": 160,
+      "valeur": 128000000.0,
+      "type": "Maison de ville",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The Manor",
+      "age": 31,
+      "valeur": 119000000.0,
+      "type": "Manoir",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Buckingham Palace",
+      "age": 318,
+      "valeur": 5000000000.0,
+      "type": "Palace",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 300000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "One Hyde Park Penthouse",
+      "age": 11,
+      "valeur": 2200000000.0,
+      "type": "Penthouse",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Hearst Castle",
+      "age": 96,
+      "valeur": 16500000000.0,
+      "type": "Château",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Xanadu 2.0",
+      "age": 17,
+      "valeur": 125000000.0,
+      "type": "Manoir",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Grande Muraille de Chine",
+      "age": 2300,
+      "valeur": 10000000000.0,
+      "type": "Site historique",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Pétra",
+      "age": 2300,
+      "valeur": 4500000000.0,
+      "type": "Site archéologique",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Christ Rédempteur",
+      "age": 91,
+      "valeur": 1000000000.0,
+      "type": "Statue",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Machu Picchu",
+      "age": 600,
+      "valeur": 7000000000.0,
+      "type": "Site archéologique",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Chichén Itzá",
+      "age": 1200,
+      "valeur": 6000000000.0,
+      "type": "Site archéologique",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Colisée",
+      "age": 1949,
+      "valeur": 7000000000.0,
+      "type": "Amphithéâtre",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Taj Mahal",
+      "age": 388,
+      "valeur": 10000000000.0,
+      "type": "Mausolée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Tour Eiffel",
+      "age": 135,
+      "valeur": 6500000000.0,
+      "type": "Monument",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Empire State Building",
+      "age": 92,
+      "valeur": 2000000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Palais de Westminster",
+      "age": 187,
+      "valeur": 5000000000.0,
+      "type": "Bâtiment gouvernemental",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 60000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Burj Khalifa",
+      "age": 13,
+      "valeur": 1500000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 100000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "La Sagrada Familia",
+      "age": 140,
+      "valeur": 3200000000.0,
+      "type": "Église",
+      "condition": 50.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Kremlin",
+      "age": 520,
+      "valeur": 5500000000.0,
+      "type": "Complexe fortifié",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Sydney Opera House",
+      "age": 50,
+      "valeur": 5000000000.0,
+      "type": "Opéra",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Louvre",
+      "age": 227,
+      "valeur": 8000000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais de Buckingham",
+      "age": 318,
+      "valeur": 5000000000.0,
+      "type": "Résidence royale",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 100000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Tour de Londres",
+      "age": 950,
+      "valeur": 2500000000.0,
+      "type": "Château historique",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Château de Neuschwanstein",
+      "age": 137,
+      "valeur": 3000000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Alhambra",
+      "age": 1258,
+      "valeur": 3500000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Château de Versailles",
+      "age": 390,
+      "valeur": 8000000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 90000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Statue de la Liberté",
+      "age": 137,
+      "valeur": 3000000000.0,
+      "type": "Monument",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Cité Interdite",
+      "age": 600,
+      "valeur": 7000000000.0,
+      "type": "Palais impérial",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Notre-Dame de Paris",
+      "age": 858,
+      "valeur": 6800000000.0,
+      "type": "Cathédrale",
+      "condition": 50.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais de Potala",
+      "age": 1300,
+      "valeur": 2500000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "St. Peter's Basilica",
+      "age": 532,
+      "valeur": 10000000000.0,
+      "type": "Basilique",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 60000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Golden Gate Bridge",
+      "age": 85,
+      "valeur": 3200000000.0,
+      "type": "Pont",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 35000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Guggenheim Museum Bilbao",
+      "age": 26,
+      "valeur": 1000000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Fallingwater (Maison sur la cascade)",
+      "age": 86,
+      "valeur": 500000000.0,
+      "type": "Maison",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 5000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Marina Bay Sands",
+      "age": 13,
+      "valeur": 5500000000.0,
+      "type": "Complexe hôtelier",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 150000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Kremlin de Moscou",
+      "age": 520,
+      "valeur": 5500000000.0,
+      "type": "Complexe historique",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 80000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Pantheon",
+      "age": 1900,
+      "valeur": 4000000000.0,
+      "type": "Édifice religieux",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Temple du Lotus",
+      "age": 37,
+      "valeur": 800000000.0,
+      "type": "Temple",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Space Needle",
+      "age": 61,
+      "valeur": 300000000.0,
+      "type": "Tour d'observation",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Atomium",
+      "age": 65,
+      "valeur": 250000000.0,
+      "type": "Monument",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 8000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Shard London Bridge",
+      "age": 11,
+      "valeur": 1500000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Rijksmuseum",
+      "age": 138,
+      "valeur": 2000000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Mont Saint-Michel",
+      "age": 1058,
+      "valeur": 3500000000.0,
+      "type": "Île monastique",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Opéra de Sydney",
+      "age": 50,
+      "valeur": 5000000000.0,
+      "type": "Opéra",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Willis Tower (Sears Tower)",
+      "age": 49,
+      "valeur": 1700000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "La Basilique Saint-Marc",
+      "age": 1092,
+      "valeur": 4300000000.0,
+      "type": "Basilique",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Potala Palace",
+      "age": 1300,
+      "valeur": 2500000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Stonehenge",
+      "age": 5000,
+      "valeur": 3000000000.0,
+      "type": "Site préhistorique",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 5000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Hagia Sophia",
+      "age": 1483,
+      "valeur": 4100000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Angkor War",
+      "age": 900,
+      "valeur": 6000000000.0,
+      "type": "Temple",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais de l'Alhambra",
+      "age": 1258,
+      "valeur": 3500000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 45000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Pyramide du Louvre",
+      "age": 34,
+      "valeur": 8000000000.0,
+      "type": "Monument",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Château de Windsor",
+      "age": 951,
+      "valeur": 4000000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Tour CN",
+      "age": 46,
+      "valeur": 1100000000.0,
+      "type": "Tour d'observation",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "El Castillo (Chichen Itza)",
+      "age": 1200,
+      "valeur": 4000000000.0,
+      "type": "Pyramide",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Capitole des États-Unis",
+      "age": 229,
+      "valeur": 3000000000.0,
+      "type": "Bâtiment gouvernemental",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 60000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Tour Eiffel",
+      "age": 134,
+      "valeur": 6500000000.0,
+      "type": "Monument",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Casa Batlló",
+      "age": 116,
+      "valeur": 1200000000.0,
+      "type": "Bâtiment",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais de Schönbrunn",
+      "age": 345,
+      "valeur": 3000000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 60000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Château de Chambord",
+      "age": 484,
+      "valeur": 1800000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 35000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Pont de Brooklyn",
+      "age": 140,
+      "valeur": 2500000000.0,
+      "type": "Pont",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Wat Arun",
+      "age": 270,
+      "valeur": 750000000.0,
+      "type": "Temple",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 7000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais des Beaux-Arts de Lille",
+      "age": 124,
+      "valeur": 850000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 18000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais Royal de Madrid",
+      "age": 281,
+      "valeur": 5500000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Dôme du Rocher",
+      "age": 1322,
+      "valeur": 3000000000.0,
+      "type": "Sanctuaire",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais de l'Élysée",
+      "age": 300,
+      "valeur": 2100000000.0,
+      "type": "Résidence présidentielle",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Basilique du Sacré-Cœur",
+      "age": 108,
+      "valeur": 1700000000.0,
+      "type": "Basilique",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Gateway Arch",
+      "age": 57,
+      "valeur": 700000000.0,
+      "type": "Monument",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 12000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Grande Bibliothèque d'Alexandrie (Bibliotheca Alexandrina)",
+      "age": 20,
+      "valeur": 800000000.0,
+      "type": "Bibliothèque",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Banque de Chine Tower",
+      "age": 33,
+      "valeur": 2000000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "La Tour de Tokyo",
+      "age": 65,
+      "valeur": 850000000.0,
+      "type": "Tour d'observation",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais de Justice de Bruxelles",
+      "age": 138,
+      "valeur": 1200000000.0,
+      "type": "Palais de justice",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Centre Pompidou",
+      "age": 45,
+      "valeur": 950000000.0,
+      "type": "Centre culturel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Tour Montparnasse",
+      "age": 50,
+      "valeur": 900000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Le Château Frontenac",
+      "age": 129,
+      "valeur": 700000000.0,
+      "type": "Hôtel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Sagrada Familia",
+      "age": 140,
+      "valeur": 3200000000.0,
+      "type": "Basilique",
+      "condition": 50.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Cathédrale de Milan",
+      "age": 639,
+      "valeur": 5000000000.0,
+      "type": "Cathédrale",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Palais de Dolmabahçe",
+      "age": 168,
+      "valeur": 1500000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 55000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Edificio Copan",
+      "age": 60,
+      "valeur": 500000000.0,
+      "type": "Bâtiment résidentiel",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Rotonde de La Villette",
+      "age": 238,
+      "valeur": 750000000.0,
+      "type": "Monument historique",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Château de Peleș",
+      "age": 142,
+      "valeur": 1000000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Aon Center (Chicago)",
+      "age": 46,
+      "valeur": 1200000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 35000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Le Musée d'Orsay",
+      "age": 116,
+      "valeur": 1900000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée Solomon R. Guggenheim",
+      "age": 64,
+      "valeur": 830000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Pont Vasco da Gama",
+      "age": 25,
+      "valeur": 1800000000.0,
+      "type": "Pont",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "L'Hôtel de Glace (Québec)",
+      "age": 21,
+      "valeur": 250000000.0,
+      "type": "Hôtel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 5000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "30 St Mary Axe (The Gherkin)",
+      "age": 20,
+      "valeur": 1100000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Le Musée du Prado",
+      "age": 203,
+      "valeur": 2100000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Cité Radieuse de Le Corbusier",
+      "age": 69,
+      "valeur": 550000000.0,
+      "type": "Bâtiment résidentiel",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The Shard",
+      "age": 11,
+      "valeur": 1500000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Le Musée Van Gogh",
+      "age": 47,
+      "valeur": 780000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Grande Arche de la Défense",
+      "age": 35,
+      "valeur": 800000000.0,
+      "type": "Monument",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Zaha Hadid's MAXXI",
+      "age": 13,
+      "valeur": 900000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 28000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Pavillon de Barcelone",
+      "age": 93,
+      "valeur": 450000000.0,
+      "type": "Exposition",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "L'Opéra Garnier",
+      "age": 152,
+      "valeur": 1900000000.0,
+      "type": "Opéra",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The Flatiron Building",
+      "age": 120,
+      "valeur": 800000000.0,
+      "type": "Bâtiment",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais de Tokyo",
+      "age": 85,
+      "valeur": 700000000.0,
+      "type": "Centre d'art contemporain",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The Hoover Dam",
+      "age": 87,
+      "valeur": 3000000000.0,
+      "type": "Barrage",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The Lloyd’s Building",
+      "age": 36,
+      "valeur": 950000000.0,
+      "type": "Bureau",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The Walt Disney Concert Hall",
+      "age": 20,
+      "valeur": 1100000000.0,
+      "type": "Salle de concert",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Kingdom Centre Tower",
+      "age": 20,
+      "valeur": 1000000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 35000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Belem Tower",
+      "age": 504,
+      "valeur": 650000000.0,
+      "type": "Tour",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 8000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Bibliothèque nationale de France (BNF)",
+      "age": 29,
+      "valeur": 1100000000.0,
+      "type": "Bibliothèque",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Niterói Contemporary Art Museum",
+      "age": 26,
+      "valeur": 500000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The High Line",
+      "age": 12,
+      "valeur": 850000000.0,
+      "type": "Parc public",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Reichstag Building",
+      "age": 130,
+      "valeur": 1800000000.0,
+      "type": "Bâtiment gouvernemental",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Burj Al Arab",
+      "age": 24,
+      "valeur": 1500000000.0,
+      "type": "Hôtel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Taipei 101",
+      "age": 19,
+      "valeur": 1600000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Oslo Opera House",
+      "age": 15,
+      "valeur": 850000000.0,
+      "type": "Opéra",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The Shard",
+      "age": 11,
+      "valeur": 1500000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Petronas Twin Towers",
+      "age": 25,
+      "valeur": 1800000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 60000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Capitole des États-Unis",
+      "age": 229,
+      "valeur": 3000000000.0,
+      "type": "Bâtiment gouvernemental",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée du Louvre Abu Dhabi",
+      "age": 6,
+      "valeur": 1000000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée d'Art Moderne de San Francisco (SFMOMA)",
+      "age": 26,
+      "valeur": 900000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "One World Trade Center",
+      "age": 10,
+      "valeur": 4000000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 100000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Fondation Louis Vuitton",
+      "age": 8,
+      "valeur": 850000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Apple Park",
+      "age": 5,
+      "valeur": 5000000000.0,
+      "type": "Siège social",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 200000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Palais de Westminster",
+      "age": 187,
+      "valeur": 5000000000.0,
+      "type": "Bâtiment gouvernemental",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 100000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée de l'Ermitage",
+      "age": 257,
+      "valeur": 4000000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Château de Prague",
+      "age": 1088,
+      "valeur": 3500000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "J. Paul Getty Museum",
+      "age": 25,
+      "valeur": 1900000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Museum of Islamic Art, Doha",
+      "age": 15,
+      "valeur": 800000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Centre Georges Pompidou",
+      "age": 46,
+      "valeur": 2100000000.0,
+      "type": "Centre culturel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 60000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Torre Agbar",
+      "age": 18,
+      "valeur": 1500000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Millau Viaduct",
+      "age": 19,
+      "valeur": 600000000.0,
+      "type": "Pont",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Sydney Harbour Bridge",
+      "age": 91,
+      "valeur": 2500000000.0,
+      "type": "Pont",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Tour Willis (Sears Tower)",
+      "age": 49,
+      "valeur": 1700000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Musée d'histoire naturelle de Londres",
+      "age": 139,
+      "valeur": 1600000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée Guggenheim New York",
+      "age": 64,
+      "valeur": 850000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 35000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The Blue House (Cheong Wa Dae)",
+      "age": 30,
+      "valeur": 900000000.0,
+      "type": "Résidence présidentielle",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "The Broad",
+      "age": 8,
+      "valeur": 1400000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 22000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Scala de Milan",
+      "age": 243,
+      "valeur": 2000000000.0,
+      "type": "Opéra",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Castel Sant'Angelo",
+      "age": 1900,
+      "valeur": 1500000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Shinjuku Gyoen National Garden",
+      "age": 115,
+      "valeur": 500000000.0,
+      "type": "Parc",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Grande Mosquée de Cordoue",
+      "age": 1236,
+      "valeur": 4300000000.0,
+      "type": "Site historique",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 35000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Zwinger Palace",
+      "age": 304,
+      "valeur": 1100000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Q1 Tower",
+      "age": 17,
+      "valeur": 650000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 28000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Le Viaduc de Millau",
+      "age": 19,
+      "valeur": 600000000.0,
+      "type": "Pont",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée Rodin",
+      "age": 114,
+      "valeur": 780000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Pont Alexandre III",
+      "age": 120,
+      "valeur": 550000000.0,
+      "type": "Pont",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée de l'Acropole",
+      "age": 14,
+      "valeur": 800000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 22000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Castillo de la Real Fuerza",
+      "age": 484,
+      "valeur": 470000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 18000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Parc Guell",
+      "age": 118,
+      "valeur": 650000000.0,
+      "type": "Parc",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Raffles Hotel",
+      "age": 135,
+      "valeur": 740000000.0,
+      "type": "Hôtel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Philharmonie de Paris",
+      "age": 7,
+      "valeur": 850000000.0,
+      "type": "Salle de concert",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée de Quai Branly",
+      "age": 16,
+      "valeur": 700000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Tour de Pise",
+      "age": 846,
+      "valeur": 500000000.0,
+      "type": "Monument",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Château de Windsor",
+      "age": 951,
+      "valeur": 5000000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée Frida Kahlo",
+      "age": 67,
+      "valeur": 590000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 17000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Cathédrale Saint-Paul",
+      "age": 344,
+      "valeur": 1500000000.0,
+      "type": "Cathédrale",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 60000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Palais des Congrès de Montréal",
+      "age": 38,
+      "valeur": 550000000.0,
+      "type": "Centre de congrès",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "L'Observatoire Griffith",
+      "age": 86,
+      "valeur": 420000000.0,
+      "type": "Observatoire",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 12000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée d'Art Contemporain de Niterói",
+      "age": 25,
+      "valeur": 500000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 18000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée d'Art Moderne de Rio",
+      "age": 70,
+      "valeur": 650000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 24000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Pont de la Confédération",
+      "age": 24,
+      "valeur": 900000000.0,
+      "type": "Pont",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Cité de l'Architecture et du Patrimoine",
+      "age": 15,
+      "valeur": 480000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 22000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Palais de Tokyo",
+      "age": 86,
+      "valeur": 700000000.0,
+      "type": "Centre d'art contemporain",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée Picasso Paris",
+      "age": 40,
+      "valeur": 690000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 21000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Tour de Londres",
+      "age": 950,
+      "valeur": 2500000000.0,
+      "type": "Château historique",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 45000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Kremlin",
+      "age": 520,
+      "valeur": 5500000000.0,
+      "type": "Complexe fortifié",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 100000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée des Beaux-Arts de Montréal",
+      "age": 161,
+      "valeur": 760000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 32000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Cathédrale Notre-Dame d'Amiens",
+      "age": 763,
+      "valeur": 1400000000.0,
+      "type": "Cathédrale",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée des Sciences de Londres",
+      "age": 112,
+      "valeur": 700000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Maison Blanche",
+      "age": 222,
+      "valeur": 4000000000.0,
+      "type": "Résidence gouvernementale",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Château de Chenonceau",
+      "age": 503,
+      "valeur": 600000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Bibliothèque du Congrès",
+      "age": 221,
+      "valeur": 1100000000.0,
+      "type": "Bibliothèque",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée de l'Orangerie",
+      "age": 101,
+      "valeur": 580000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 18000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Tour de Belem",
+      "age": 505,
+      "valeur": 450000000.0,
+      "type": "Tour",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Château de Versailles",
+      "age": 340,
+      "valeur": 8000000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 90000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée Picasso Antibes",
+      "age": 57,
+      "valeur": 520000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 16000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée d'Art Contemporain de Chicago",
+      "age": 53,
+      "valeur": 650000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Palais Royal de Madrid",
+      "age": 281,
+      "valeur": 5500000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Basilique Saint-Pierre",
+      "age": 532,
+      "valeur": 10000000000.0,
+      "type": "Basilique",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 80000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée de Pergame",
+      "age": 85,
+      "valeur": 830000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 29000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée d'Orsay",
+      "age": 117,
+      "valeur": 2100000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 45000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Cathédrale Notre-Dame de Reims",
+      "age": 816,
+      "valeur": 1500000000.0,
+      "type": "Cathédrale",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Centre Pompidou-Metz",
+      "age": 12,
+      "valeur": 620000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 22000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Tour Montparnasse",
+      "age": 49,
+      "valeur": 950000000.0,
+      "type": "Gratte-ciel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 35000.0,
+      "style": "Exotic",
+      "capacity": 500
+    },
+    {
+      "nom": "Le Château de Fontainebleau",
+      "age": 861,
+      "valeur": 2300000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée Solomon R. Guggenheim",
+      "age": 64,
+      "valeur": 850000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 28000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "L'Institut du Monde Arabe",
+      "age": 34,
+      "valeur": 450000000.0,
+      "type": "Centre culturel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "L'Opéra National de Paris (Opéra Bastille)",
+      "age": 32,
+      "valeur": 1800000000.0,
+      "type": "Opéra",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 60000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Palais des Festivals et des Congrès (Cannes)",
+      "age": 40,
+      "valeur": 500000000.0,
+      "type": "Centre de congrès",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée de l'Air et de l'Espace du Bourget",
+      "age": 105,
+      "valeur": 680000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée Marmottan Monet",
+      "age": 85,
+      "valeur": 490000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 15000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée Fabergé à Saint-Pétersbourg",
+      "age": 12,
+      "valeur": 510000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 17000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée de l'Ermitage",
+      "age": 258,
+      "valeur": 3500000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 70000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Palais Royal d'Amsterdam",
+      "age": 366,
+      "valeur": 550000000.0,
+      "type": "Palais",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 30000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Tour de Tokyo",
+      "age": 63,
+      "valeur": 500000000.0,
+      "type": "Tour",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 20000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Château de Warwick",
+      "age": 950,
+      "valeur": 1200000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 40000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée de Préhistoire de Thessalonique",
+      "age": 60,
+      "valeur": 300000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 10000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Philharmonie de Berlin",
+      "age": 57,
+      "valeur": 890000000.0,
+      "type": "Salle de concert",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 35000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Château de Chantilly",
+      "age": 487,
+      "valeur": 950000000.0,
+      "type": "Château",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 25000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Cité de la Musique (Philharmonie 2)",
+      "age": 27,
+      "valeur": 700000000.0,
+      "type": "Centre culturel",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 32000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "La Tour Skytree de Tokyo",
+      "age": 11,
+      "valeur": 1800000000.0,
+      "type": "Tour d'observation",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 50000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Musée national d'Art de Catalogne",
+      "age": 86,
+      "valeur": 650000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 28000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Le Château de Bran (Dracula)",
+      "age": 638,
+      "valeur": 800000000.0,
+      "type": "Château",
+      "condition": 75.0,
+      "monthly_maintenance_cost": 22000.0,
+      "style": "Exotic",
+      "capacity": 0
+    },
+    {
+      "nom": "Musée Juif de Berlin",
+      "age": 21,
+      "valeur": 490000000.0,
+      "type": "Musée",
+      "condition": 90.0,
+      "monthly_maintenance_cost": 24000.0,
+      "style": "Exotic",
+      "capacity": 0
+    }
+  ]
+}

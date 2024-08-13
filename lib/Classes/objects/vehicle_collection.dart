@@ -8,7 +8,7 @@ class VehiculeExotique extends Vehicle {
     required String rarity,
     String? brand,
     required double fuelConsumption,
-    required int monthlyFuelCost,
+    required double monthlyFuelCost,
   }) : super(
     name: name,
     age: age,
@@ -17,16 +17,34 @@ class VehiculeExotique extends Vehicle {
     rarity: rarity,
     brand: brand,
     fuelConsumption: fuelConsumption,
-    monthlyFuelCost: 0,
+    monthlyFuelCost: monthlyFuelCost,
   );
 
   @override
   double getMonthlyMaintenanceCost() {
     return value * 0.03; // 3% of the value as maintenance cost
   }
+
+  static VehiculeExotique fromJson(Map<String, dynamic> json) {
+    return VehiculeExotique(
+      name: json['name'] as String? ?? 'Unknown',
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] as String? ?? 'Unknown',
+      brand: json['brand'] as String?,
+      fuelConsumption: (json['fuelConsumption'] as num?)?.toDouble() ?? 0.0,
+      monthlyFuelCost: (json['monthlyFuelCost'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
+  }
 }
 
-class VoitureDeCollection extends Vehicle {
+class VoitureDeCollection extends VehiculeExotique {
   VoitureDeCollection({
     required String name,
     required int age,
@@ -34,24 +52,42 @@ class VoitureDeCollection extends Vehicle {
     required String rarity,
     String? brand,
     required double fuelConsumption,
+    required double monthlyFuelCost,
   }) : super(
     name: name,
     age: age,
     value: value,
-    type: 'Collection Voiture',
     rarity: rarity,
     brand: brand,
     fuelConsumption: fuelConsumption,
-    monthlyFuelCost: 0,
+    monthlyFuelCost: monthlyFuelCost,
   );
 
   @override
   double getMonthlyMaintenanceCost() {
     return value * 0.01; // 1% of the value as maintenance cost
   }
+
+  static VoitureDeCollection fromJson(Map<String, dynamic> json) {
+    return VoitureDeCollection(
+      name: json['name'] as String? ?? 'Unknown',
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] as String? ?? 'Unknown',
+      brand: json['brand'] as String?,
+      fuelConsumption: (json['fuelConsumption'] as num?)?.toDouble() ?? 0.0,
+      monthlyFuelCost: (json['monthlyFuelCost'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
+  }
 }
 
-class MotoDeCollection extends Vehicle {
+class MotoDeCollection extends VehiculeExotique {
   MotoDeCollection({
     required String name,
     required int age,
@@ -59,24 +95,42 @@ class MotoDeCollection extends Vehicle {
     required String rarity,
     String? brand,
     required double fuelConsumption,
+    required double monthlyFuelCost,
   }) : super(
     name: name,
     age: age,
     value: value,
-    type: 'Collection Moto',
     rarity: rarity,
     brand: brand,
     fuelConsumption: fuelConsumption,
-    monthlyFuelCost: 0,
+    monthlyFuelCost: monthlyFuelCost,
   );
 
   @override
   double getMonthlyMaintenanceCost() {
     return value * 0.01; // 1% of the value as maintenance cost
   }
+
+  static MotoDeCollection fromJson(Map<String, dynamic> json) {
+    return MotoDeCollection(
+      name: json['name'] as String? ?? 'Unknown',
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] as String? ?? 'Unknown',
+      brand: json['brand'] as String?,
+      fuelConsumption: (json['fuelConsumption'] as num?)?.toDouble() ?? 0.0,
+      monthlyFuelCost: (json['monthlyFuelCost'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
+  }
 }
 
-class BateauDeCollection extends Vehicle {
+class BateauDeCollection extends VehiculeExotique {
   BateauDeCollection({
     required String name,
     required int age,
@@ -84,24 +138,42 @@ class BateauDeCollection extends Vehicle {
     required String rarity,
     String? brand,
     required double fuelConsumption,
+    required double monthlyFuelCost,
   }) : super(
     name: name,
     age: age,
     value: value,
-    type: 'Collection Bateau',
     rarity: rarity,
     brand: brand,
     fuelConsumption: fuelConsumption,
-    monthlyFuelCost: 0,
+    monthlyFuelCost: monthlyFuelCost,
   );
 
   @override
   double getMonthlyMaintenanceCost() {
     return value * 0.02; // 2% of the value as maintenance cost
   }
+
+  static BateauDeCollection fromJson(Map<String, dynamic> json) {
+    return BateauDeCollection(
+      name: json['name'] as String? ?? 'Unknown',
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] as String? ?? 'Unknown',
+      brand: json['brand'] as String?,
+      fuelConsumption: (json['fuelConsumption'] as num?)?.toDouble() ?? 0.0,
+      monthlyFuelCost: (json['monthlyFuelCost'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
+  }
 }
 
-class AvionDeCollection extends Vehicle {
+class AvionDeCollection extends VehiculeExotique {
   AvionDeCollection({
     required String name,
     required int age,
@@ -109,19 +181,37 @@ class AvionDeCollection extends Vehicle {
     required String rarity,
     String? brand,
     required double fuelConsumption,
+    required double monthlyFuelCost,
   }) : super(
     name: name,
     age: age,
     value: value,
-    type: 'Collection Avion',
     rarity: rarity,
     brand: brand,
     fuelConsumption: fuelConsumption,
-    monthlyFuelCost: 0,
+    monthlyFuelCost: monthlyFuelCost,
   );
 
   @override
   double getMonthlyMaintenanceCost() {
     return value * 0.025; // 2.5% of the value as maintenance cost
+  }
+
+  static AvionDeCollection fromJson(Map<String, dynamic> json) {
+    return AvionDeCollection(
+      name: json['name'] as String? ?? 'Unknown',
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      rarity: json['rarity'] as String? ?? 'Unknown',
+      brand: json['brand'] as String?,
+      fuelConsumption: (json['fuelConsumption'] as num?)?.toDouble() ?? 0.0,
+      monthlyFuelCost: (json['monthlyFuelCost'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
   }
 }

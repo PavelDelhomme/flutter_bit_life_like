@@ -63,11 +63,12 @@ class AntiqueMarketScreen extends StatelessWidget {
       ),
     );
 
-    if (account.accountNumber == "00000000") {
+    /*if (account.accountNumber == "00000000") {
       _showErrorDialog(context, "No valid checking account available.");
     } else {
       _showPurchaseDialog(context, antique, account);
-    }
+    }*/
+    _showPurchaseDialog(context, antique, account);
   }
 
   void _showPurchaseDialog(BuildContext context, Antique antique, BankAccount account) {

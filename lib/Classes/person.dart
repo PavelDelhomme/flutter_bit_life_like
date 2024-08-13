@@ -80,17 +80,15 @@ class Person {
 
   // Items
   List<CollectibleItem> collectibles = [];
-  List<Arme> armes = [];
-  List<Jewelry> jewelries = [];
-  List<Antique> antiques = [];
-  List<RealEstate> realEstates = [];
-  List<Instrument> instruments = [];
-  List<Electronic> electronics = [];
-  List<Book> books = [];
-
   List<String> permits = [];
   List<Vehicle> vehicles = [];
   List<VehiculeExotique> vehiculeExotiques = [];
+  List<Jewelry> jewelries = [];
+  List<Electronic> electronics = [];
+  List<Antique> antiques = [];
+  List<Instrument> instruments = [];
+  List<Arme> armes = [];
+  List<RealEstate> realEstates = [];
 
   Person({
     required this.name,
@@ -99,6 +97,12 @@ class Person {
     List<BankAccount>? bankAccounts,
     List<Person>? parents,
     List<Person>? partners,
+    Map<String, double>? skills,
+    List<CollectibleItem>? collectibles,
+    List<String>? permits,
+    List<Vehicle>? vehicles,
+    List<VehiculeExotique>? vehiculeExotiques,
+    List<RealEstate>? realEstates,
     this.educations = const [], // Initialisation des éducations
     this.currentEducation,
     this.academicPerformance = 0,
@@ -110,19 +114,76 @@ class Person {
     required this.appearance,
     required this.health,
     required this.age,
-    List<Arme>? armes,
-    List<Jewelry>? jewelrys,
-    List<Antique>? antiques,
-    List<RealEstate>? real_estates,
-    List<Electronic>? electronics,
-    List<Vehicle>? vehicles,
-    List<VehiculeExotique>? vehicules_exotique,
-    List<Book>? book,
-  })  : bankAccounts = bankAccounts ?? [],
+  })  : bankAccounts = bankAccounts ?? [BankAccount(accountNumber: 'ACC0000', bankName: 'Default Bank', balance: 0.0)],
         partners = partners ?? [],
-        parents = parents ?? [];
+        parents = parents ?? [],
+        skills = skills ?? {},
+        collectibles = collectibles ?? [],
+        permits = permits ?? [],
+        vehicles = vehicles ?? [],
+        vehiculeExotiques = vehiculeExotiques ?? [],
+        realEstates = realEstates ?? [];
 
   factory Person.fromJson(Map<String, dynamic> json) {
+    List<CollectibleItem> parseCollectibles(List<dynamic>? jsonList) {
+      if (jsonList == null) return [];
+      return jsonList.map<CollectibleItem>((itemJson) {
+        switch (itemJson['type']) {
+          case 'Arme':
+            return Arme.fromJson(itemJson);
+          case 'Instrument':
+            return Instrument.fromJson(itemJson);
+          case 'RealEstate':
+            return RealEstate.fromJson(itemJson);
+          case 'Jewelry':
+            return Jewelry.fromJson(itemJson);
+          case 'Antique':
+            return Antique.fromJson(itemJson);
+          case 'Electronic':
+            return Electronic.fromJson(itemJson);
+          default:
+            throw Exception('Unknown collectible type');
+        }
+      }).toList();
+    }
+
+    List<Vehicle> parseVehicles(List<dynamic>? jsonList) {
+      if (jsonList == null) return [];
+      return jsonList.map((vehicleJson) {
+        switch (vehicleJson['type']) {
+          case 'Motorcycle':
+            return Moto.fromJson(vehicleJson);
+          case 'Car':
+            return Voiture.fromJson(vehicleJson);
+          case 'Boat':
+            return Bateau.fromJson(vehicleJson);
+          case 'Airplane':
+            return Avion.fromJson(vehicleJson);
+          default:
+            throw Exception('Unknown vehicle type');
+        }
+      }).toList();
+    }
+    List<VehiculeExotique> parseVehiculeExotiques(List<dynamic>? jsonList) {
+      if (jsonList == null) return [];
+      return jsonList.map<VehiculeExotique>((e) {
+        switch (e['type']) {
+          case 'Exotic':
+            return VehiculeExotique.fromJson(e as Map<String, dynamic>);
+          case 'Collection Voiture':
+            return VoitureDeCollection.fromJson(e as Map<String, dynamic>);
+          case 'Collection Moto':
+            return MotoDeCollection.fromJson(e as Map<String, dynamic>);
+          case 'Collection Bateau':
+            return BateauDeCollection.fromJson(e as Map<String, dynamic>);
+          case 'Collection Avion':
+            return AvionDeCollection.fromJson(e as Map<String, dynamic>);
+          default:
+            throw Exception('Unknown exotic vehicle type');
+        }
+      }).toList();
+    }
+
     return Person(
       name: json['name'] as String,
       gender: json['gender'] as String,
@@ -140,47 +201,12 @@ class Person {
           .toList() ??
           [],
       skills: Map<String, double>.from(json['skills'] ?? {}),
-      collectibles: (json['collectibles'] as List<dynamic>?)
-          ?.map((e) => CollectibleItem.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
-      armes: (json['armes'] as List<dynamic>?)
-          ?.map((e) => Arme.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
-      jewelries: (json['jewelries'] as List<dynamic>?)
-          ?.map((e) => Jewelry.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
-      antiques: (json['antiques'] as List<dynamic>?)
-          ?.map((e) => Antique.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
-      realEstates: (json['realEstates'] as List<dynamic>?)
-          ?.map((e) => RealEstate.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
-      instruments: (json['instruments'] as List<dynamic>?)
-          ?.map((e) => Instrument.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
-      electronics: (json['electronics'] as List<dynamic>?)
-          ?.map((e) => Electronic.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
-      books: (json['books'] as List<dynamic>?)
-          ?.map((e) => Book.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
+      collectibles: parseCollectibles(json['collectibles'] as List<dynamic>?),
       permits: List<String>.from(json['permits'] ?? []),
-      vehicles: (json['vehicles'] as List<dynamic>?)
-          ?.map((e) => Vehicle.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
-      vehiculeExotiques: (json['vehiculeExotiques'] as List<dynamic>?)
-          ?.map((e) => VehiculeExotique.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
+      vehicles: parseVehicles(json['vehicles'] as List<dynamic>?),
+      vehiculeExotiques: json['vehiculeExotiques'] is List
+        ? parseVehiculeExotiques(json['vehiculeExotiques'] as List<dynamic>)
+        : [], // Si ce n'est pas une liste retournez une liste vide.
       educations: (json['educations'] as List<dynamic>?)
           ?.map((e) => EducationLevel.fromJson(e as Map<String, dynamic>))
           .toList() ??
@@ -208,13 +234,6 @@ class Person {
       'bankAccounts': bankAccounts.map((e) => e.toJson()).toList(),
       'skills': skills,
       'collectibles': collectibles.map((e) => e.toJson()).toList(),
-      'armes': armes.map((e) => e.toJson()).toList(),
-      'jewelries': jewelries.map((e) => e.toJson()).toList(),
-      'antiques': antiques.map((e) => e.toJson()).toList(),
-      'realEstates': realEstates.map((e) => e.toJson()).toList(),
-      'instruments': instruments.map((e) => e.toJson()).toList(),
-      'electronics': electronics.map((e) => e.toJson()).toList(),
-      'books': books.map((e) => e.toJson()).toList(),
       'permits': permits,
       'vehicles': vehicles.map((e) => e.toJson()).toList(),
       'vehiculeExotiques': vehiculeExotiques.map((e) => e.toJson()).toList(),
@@ -452,6 +471,7 @@ class Person {
     double overtimePay = job.calculateOvertimePay(overtimeHours);
     double regularPay = regularHours * job.salary;
     double totalPay = regularPay + overtimePay;
+    job.salary += overtimePay; // Temporarily increase the salary with overtime pay
     print("Total pay for the week: \$${totalPay}");
   }
 
@@ -490,34 +510,24 @@ class Person {
     print("Added vehicle to collection: ${vehicle.name}");
   }
 
+  void addElectronic(Electronic electronic) {
+    electronics.add(electronic);
+    print("${name} acquired ${electronic.display()}");
+  }
+
   void addJewelry(Jewelry jewelry) {
-    this.jewelries.add(jewelry);
-    print("Added jewelry to collection: ${jewelry.name}");
-  }
-
-  void addArme(Arme arme) {
-    this.armes.add(arme);
-    print("Added arme to collection : ${arme.name}");
-  }
-
-  void addAntique(Antique antique) {
-    this.antiques.add(antique);
-    print("Added arme to collection : ${antique.name}");
-  }
-
-  void addIntrument(Instrument intrument) {
-    this.instruments.add(intrument);
-    print("Added intrument to collection : ${intrument.name}");
+    jewelries.add(jewelry);
+    print("${name} acquired ${jewelry.display()}");
   }
 
   void addRealEstate(RealEstate realEstate) {
-    this.realEstates.add(realEstate);
-    print("Added real estate to collection: ${realEstate.name}");
+    realEstates.add(realEstate);
+    print("${name} acquired ${realEstate.name}");
   }
 
-  void addElectronic(Electronic electronic) {
-    electronics.add(electronic);
-    print("Electronic added: ${electronic.model}");
+  void addAntique(Antique antique) {
+    antiques.add(antique);
+    print("$name acquired ${antique.name}");
   }
 
   void addPermit(String permit) {
@@ -753,7 +763,8 @@ class Person {
 
     Arme weapon = armes[Random().nextInt(armes.length)];
 
-    print("${name} is attempting to murder ${target.name} with a ${weapon.name}.");
+    print(
+        "${name} is attempting to murder ${target.name} with a ${weapon.name}.");
 
     // Calculer si le meurtre réussit
     double successChance = weapon.lethality;

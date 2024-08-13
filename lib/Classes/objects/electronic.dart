@@ -1,5 +1,7 @@
+import 'package:bit_life_like/Classes/objects/collectible_item.dart';
+
 import '../../services/bank/bank_account.dart';
-class Electronic implements Purchasable {
+class Electronic implements CollectibleItem {
   String id;
   String type; // Par exemple : smartphone, laptop, server,...
   String brand;
@@ -37,4 +39,22 @@ class Electronic implements Purchasable {
       'supportsApplications': supportsApplications,
     };
   }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
+  }
+
+  @override
+  // TODO: implement epoch
+  String get epoch => throw UnimplementedError();
+
+  @override
+  // TODO: implement name
+  String get name => throw UnimplementedError();
+
+  @override
+  // TODO: implement rarity
+  String get rarity => throw UnimplementedError();
 }

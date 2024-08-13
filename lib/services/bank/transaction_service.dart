@@ -22,7 +22,7 @@ class TransactionService {
     }
   }
 
-  Future<void> attemptPurchase(BankAccount account, Purchasable item, {bool useLoan = false, int loanTerm = 0, double loanInterestRate = 0.0, required Function onSuccess, required Function onFailure}) async {
+  Future<void> attemptPurchase(BankAccount account, CollectibleItem item, {bool useLoan = false, int loanTerm = 0, double loanInterestRate = 0.0, required Function onSuccess, required Function onFailure}) async {
     double price = item.value;
     if (useLoan) {
       bool loanApproved = await FinancialService.instance.applyForLoan(account, price, loanTerm, loanInterestRate);
@@ -42,17 +42,44 @@ class TransactionService {
     }
   }
 
-  Future<void> sellItem(Person person, Purchasable item, BankAccount account, double salePrice, Function onSuccess, Function onFailure) async {
+  Future<void> sellItem(Person person, CollectibleItem item, BankAccount account, double salePrice, Function onSuccess, Function onFailure) async {
     try {
       account.deposit(salePrice);
-      _removeItemFromPerson(person, item);
+      person.collectibles.remove(item);
+      //_removeItemFromPerson(person, item);
       onSuccess();
     } catch (e) {
       onFailure("Failed to sell item: ${e.toString()}");
     }
   }
 
-  void _removeItemFromPerson(Person person, Purchasable item) {
+  void _addItemToPerson(Person person, CollectibleItem item) {
+    if (item is RealEstate) {
+      person.realEstates.add(item);
+    } else if (item is Vehicle) {
+      person.vehicles.add(item);
+    } else if (item is VehiculeExotique) {
+      person.vehiculeExotiques.add(item);
+    } else if (item is Jewelry) {
+      person.jewelries.add(item);
+    }
+    else if (item is Electronic) {
+      person.electronics.add(item);
+    }
+    else if (item is Antique) {
+      person.antiques.add(item);
+    }
+    else if (item is Instrument) {
+      person.instruments.add(item);
+    }
+    else if (item is Arme) {
+      person.armes.add(item);
+    } else {
+      person.collectibles.add(item);
+    }
+  }
+
+  void _removeItemFromPerson(Person person, CollectibleItem item) {
     if (item is RealEstate) {
       person.realEstates.remove(item);
     } else if (item is Vehicle) {

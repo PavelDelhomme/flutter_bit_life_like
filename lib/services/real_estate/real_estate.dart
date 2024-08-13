@@ -49,24 +49,26 @@ class RealEstateService {
 
   Future<bool> purchaseRealEstate(
       RealEstate realEstate, BankAccount account) async {
-    // Check if the estate is exotic and already sold
+    // Vérifiez si le bien est exotique et déjà vendu
     if (realEstate.isExotic && realEstate.estLouee) {
       print("This exotic real estate is not available for purchase.");
       return false;
     }
 
-    // Check if the account has enough funds
+    // Vérifiez si le compte a suffisamment de fonds
     if (account.balance < realEstate.value) {
       print("Insufficient funds to purchase this property.");
       return false;
     }
 
-    // Deduct the cost from the account
+    // Déduisez le coût du compte
     account.withdraw(realEstate.value);
+    realEstate.estLouee = true;  // Marquez le bien comme loué ou acheté
     print("Purchased ${realEstate.name} for \$${realEstate.value}");
 
     return true;
   }
+
 
   double calculateSalePrice(RealEstate estate) {
     double depreciationFactor =

@@ -1,6 +1,8 @@
+import 'package:bit_life_like/Classes/objects/collectible_item.dart';
+
 import '../../services/bank/bank_account.dart';
 
-class Antique implements Purchasable {
+class Antique implements CollectibleItem {
   final String name;
   final double value;
   final int age;
@@ -47,5 +49,11 @@ class Antique implements Purchasable {
       'rarete': rarity,
       'epoque': epoch,
     };
+  }
+
+  @override
+  String display() {
+    // TODO: implement display
+    throw UnimplementedError();
   }
 }

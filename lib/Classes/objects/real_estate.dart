@@ -1,22 +1,21 @@
+import 'package:bit_life_like/Classes/objects/collectible_item.dart';
 import 'package:bit_life_like/Classes/person.dart';
-import 'package:bit_life_like/services/bank/bank_account.dart';
-class RealEstate implements Purchasable {
-  String name;
-  int age;
-  String type;
+
+class RealEstate extends CollectibleItem {
+  final int age;
+  final String type;
   double condition;
-  double monthlyMaintenanceCost;
-  bool estLouee;
-  String style;
-  Person? locataire;
-  bool isExotic;
-  final double _value;
-  int? capacity;
+  final double monthlyMaintenanceCost;
+  late final bool estLouee;
+  final String style;
+  final Person? locataire;
+  final bool isExotic;
+  final int? capacity;
 
   RealEstate({
-    required this.name,
-    required this.age,
+    required String name,
     required double value,
+    required this.age,
     required this.type,
     required this.condition,
     required this.monthlyMaintenanceCost,
@@ -24,27 +23,37 @@ class RealEstate implements Purchasable {
     this.style = 'Classic',
     this.locataire,
     this.isExotic = false,
-    required this.capacity,
-  }) : _value = value;
+    this.capacity = 10,
+  }) : super(
+          name: name,
+          value: value,
+          rarity: null, // Rarity not applicable
+          epoch: null, // Epoch not applicable
+        );
 
   @override
-  double get value => _value;
+  String display() {
+    return '$name ($type, $style) - Age: $age, Value: \$${value.toStringAsFixed(2)}, Condition: $condition, Monthly Maintenance Cost: \$${monthlyMaintenanceCost.toStringAsFixed(2)}';
+  }
 
   factory RealEstate.fromJson(Map<String, dynamic> json) {
     return RealEstate(
-      name: json['nom'] ?? 'Nom inconnu',
-      age: json['age'] ?? 0,
+      name: json['nom'] as String? ?? 'Unknown',  // Gérer null pour name
       value: (json['valeur'] as num?)?.toDouble() ?? 0.0,
-      type: json['type'] ?? 'Type inconnu',
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      type: json['type'] as String? ?? 'Unknown',  // Gérer null pour type
       condition: (json['condition'] as num?)?.toDouble() ?? 100.0,
-      monthlyMaintenanceCost: (json['monthly_maintenance_cost'] as num?)?.toDouble() ?? 0.0,
+      monthlyMaintenanceCost:
+      (json['monthlyMaintenanceCost'] as num?)?.toDouble() ?? 0.0,
       estLouee: json['estLouee'] as bool? ?? false,
-      style: json['style'] ?? 'Classic', // Assurez-vous que 'style' est bien passé
-      isExotic: json.containsKey('isExotic') && json['isExotic'],
-      locataire: json['locataire'] != null ? Person.fromJson(json['locataire'] as Map<String, dynamic>) : null,
-      capacity: json['capacity'] ?? 10, // Default capacity
+      style: json['style'] as String? ?? 'Classic',  // Gérer null pour style
+      locataire: json['locataire'] != null
+          ? Person.fromJson(json['locataire'] as Map<String, dynamic>)
+          : null,
+      capacity: json['capacity'] as int? ?? 10,
     );
   }
+
 
   void degradeCondition(double percentage) {
     condition -= percentage;
@@ -52,13 +61,10 @@ class RealEstate implements Purchasable {
   }
 
   @override
-  String toString() {
-    return '$name ($type, $style) - Age: $age, Value: \$${value.toStringAsFixed(2)}, Condition: $condition, Monthly Maintenance Cost: \$${monthlyMaintenanceCost.toStringAsFixed(2)}';
-  }
-
   Map<String, dynamic> toJson() {
     return {
       'name': name,
+      'value': value,
       'age': age,
       'type': type,
       'condition': condition,
@@ -67,7 +73,6 @@ class RealEstate implements Purchasable {
       'style': style,
       'locataire': locataire?.toJson(),
       'isExotic': isExotic,
-      'value': _value,
       'capacity': capacity,
     };
   }

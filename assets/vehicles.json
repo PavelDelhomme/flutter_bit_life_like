@@ -3,18 +3,20 @@
     {
       "name": "Wright Flyer",
       "age": 117,
-      "value": 20000000,
+      "value": 20000000.0,
       "rarity": "Legendary",
       "brand": "Wright Brothers",
-      "fuelConsumption": 30
+      "fuelConsumption": 30.0,
+      "monthlyFuelCost": 350.0
     },
     {
       "name": "Boeing 747",
       "age": 50,
-      "value": 150000000,
+      "value": 150000000.0,
       "rarity": "Commun",
       "brand": "Boeing",
-      "fuel_consumption": 10
+      "fuel_consumption": 10.0,
+      "monthlyFuelCost": 350.0
     }
   ],
   "motorcycles": [
@@ -24,7 +26,8 @@
       "value": 10000.0,
       "rarity": "Commun",
       "brand": "Yamaha",
-      "fuelConsumption": 5.5
+      "fuelConsumption": 5.5,
+      "monthlyFuelCost": 350.0
     }
   ],
   "boats": [
@@ -34,24 +37,27 @@
       "value": 5000000.0,
       "rarity": "Legendary",
       "brand": null,
-      "fuelConsumption": 20
+      "fuelConsumption": 20.0,
+      "monthlyFuelCost": 350.0
     }
   ],
   "cars": [
     {
       "name": "Lamborgini",
       "age": 2,
-      "value": 2000000,
+      "value": 2000000.0,
       "rarity": "Commun",
       "brand": "Lamborgini",
-      "fuelConsumption": 20.0
+      "fuelConsumption": 20.0,
+      "monthlyFuelCost": 350.0
     },
     {
       "name": "Tesla Model S",
       "age": 4,
-      "value": 200000,
+      "value": 200000.0,
       "rarity": "Commun",
-      "fuelConsumption": 0
+      "fuelConsumption": 0.0,
+      "monthlyFuelCost": 0.0
     }
   ]
 }

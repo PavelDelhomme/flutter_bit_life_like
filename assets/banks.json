@@ -1,13 +1,25 @@
 {
   "banks": [
     {
+      "name": "Default Bank",
+      "accounts": [
+        {
+          "type": "Compte Courant",
+          "openingFee": 0,
+          "monthlyFee": 0,
+          "interestRate": 0.0,
+          "cardAnnualFee": 0
+        }
+      ]
+    },
+    {
       "name": "Banque Nationale de Paris (BNP)",
       "accounts": [
         {
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -15,7 +27,7 @@
           "openingFee": 0,
           "monthlyFee": 0,
           "interestRate": 0.75,
-          "cardAnnualFee": 0,
+          "cardAnnualFee": 0.0,
           "depositLimit": 22950
         },
         {
@@ -23,14 +35,14 @@
           "openingFee": 0,
           "monthlyFee": 0,
           "interestRate": 0.75,
-          "cardAnnualFee": 0,
+          "cardAnnualFee": 0.0,
           "depositLimit": 12000
         },
         {
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -58,7 +70,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -81,7 +93,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -109,7 +121,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -132,7 +144,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -160,7 +172,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -183,7 +195,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -211,7 +223,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -234,7 +246,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -262,7 +274,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -285,7 +297,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -313,7 +325,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -336,7 +348,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -364,7 +376,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -387,7 +399,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -415,7 +427,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -438,7 +450,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -466,7 +478,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -489,7 +501,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -517,7 +529,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -540,7 +552,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -568,7 +580,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -591,7 +603,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -619,7 +631,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -642,7 +654,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -670,7 +682,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -693,7 +705,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -721,7 +733,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -744,7 +756,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -772,7 +784,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -795,7 +807,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -823,7 +835,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -846,7 +858,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -874,7 +886,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -897,7 +909,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -925,7 +937,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -948,7 +960,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -976,7 +988,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -999,7 +1011,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -1027,7 +1039,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -1050,7 +1062,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -1078,7 +1090,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -1101,7 +1113,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -1129,7 +1141,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -1152,7 +1164,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
@@ -1180,7 +1192,7 @@
           "type": "Compte Courant",
           "openingFee": 0,
           "monthlyFee": 1,
-          "interestRate": 0,
+          "interestRate": 0.0,
           "cardAnnualFee": 45
         },
         {
@@ -1203,7 +1215,7 @@
           "type": "Plan d'Épargne Logement",
           "openingFee": 0,
           "monthlyFee": 0,
-          "interestRate": 1,
+          "interestRate": 1.0,
           "cardAnnualFee": 0,
           "depositLimit": 61200
         },
