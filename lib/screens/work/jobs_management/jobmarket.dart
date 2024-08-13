@@ -1,4 +1,6 @@
 // job_market_screen.dart
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import '../../../Classes/person.dart';
 import '../../../services/work/jobmarket_service.dart';
@@ -54,6 +56,11 @@ class JobMarketScreen extends StatelessWidget {
             TextButton(
               child: Text("Apply"),
               onPressed: () {
+                // Generate a random number of colleagues between 3 and 30
+                int numberOfColleagues = Random().nextInt(50) + 3;
+
+                // Create a new Job instance for the person
+
                 JobMarket jobMarket = JobMarket(availableJobs: jobMarketService.availableJobs);
                 jobMarket.applyForJob(person, job);
                 Navigator.of(context).pop();

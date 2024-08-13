@@ -143,6 +143,14 @@ class Business {
     double netValue = getBalance() + businessAccount!.balance;
     print("Net Value of Business : \$${netValue.toStringAsFixed(2)}");
   }
+
+  void interactWithEmployee(String name) {
+    Employee? employee = employees.firstWhere((e) => e.name == name);
+    if (employee != null) {
+      print("Interacting with ${employee.name}");
+      // Ajouter les logique d'interaction
+    }
+  }
 }
 
 class Employee {

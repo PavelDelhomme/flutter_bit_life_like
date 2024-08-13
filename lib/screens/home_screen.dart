@@ -3,13 +3,12 @@ import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
 import '../services/events_decision/event_service.dart';
 import '../services/real_estate/real_estate.dart';
+import 'life_screen/capital_screen.dart';
+import 'life_screen/person_details_screen.dart';
+import 'life_screen/relationship_screen.dart';
 import 'work/work_screen.dart';
-import 'capital_screen.dart';
 import 'activities/activities_screen.dart';
-import 'relationship_screen.dart';
-import 'person_details_screen.dart';
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   final Person person;
   final RealEstateService realEstateService;
   final TransactionService transactionService;
@@ -21,11 +20,18 @@ class HomeScreen extends StatelessWidget {
     required this.person,
     required this.realEstateService,
     required this.transactionService,
-    required this.events
+    required this.events,
   }) : eventService = EventService(events: events);
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   void agePerson() {
-    person.ageOneYear();
+    setState(() {
+      widget.person.ageOneYear();
+    });
     // Trigger events or update state if needed
   }
 
@@ -33,7 +39,22 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Main Menu'),
+        title: Row(
+          children: [
+            Icon(Icons.person, size: 50),
+            SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${widget.person.name}",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Text("Age: ${widget.person.age}"),
+              ],
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.account_circle),
@@ -41,40 +62,32 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PersonDetailsScreen(person: person),
+                  builder: (context) => PersonDetailsScreen(person: widget.person),
                 ),
               );
             },
-          )
+          ),
         ],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Icon(Icons.person, size: 50),
-                SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${person.name}",
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    Text("Age: ${person.age}"),
-                  ],
-                ),
-              ],
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Event and action log here',
+                style: TextStyle(fontSize: 16),
+              ),
             ),
           ),
-          ElevatedButton(
-            onPressed: agePerson,
-            child: Text("Age One Year"),
-          ),
           buildNavigationBar(context),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: agePerson,
+              child: Text("Age One Year"),
+            ),
+          ),
         ],
       ),
     );
@@ -113,25 +126,25 @@ class HomeScreen extends StatelessWidget {
         onTap: (index) {
           switch (index) {
             case 0:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => WorkScreen(person: person)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => WorkScreen(person: widget.person)));
               break;
             case 1:
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (_) => CapitalScreen(
-                    person: person,
-                    realEstateService: realEstateService,
-                    transactionService: transactionService,
+                    person: widget.person,
+                    realEstateService: widget.realEstateService,
+                    transactionService: widget.transactionService,
                   ),
                 ),
               );
               break;
             case 2:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: person)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: widget.person)));
               break;
             case 3:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => ActivitiesScreen(person: person)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => ActivitiesScreen(person: widget.person)));
               break;
           }
         },

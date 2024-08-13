@@ -7,11 +7,13 @@ import 'package:bit_life_like/Classes/objects/real_estate.dart';
 import 'package:bit_life_like/Classes/objects/jewelry.dart';
 import 'package:bit_life_like/Classes/objects/vehicle.dart';
 import 'package:bit_life_like/Classes/objects/vehicle_collection.dart';
+import 'package:bit_life_like/Classes/relationship.dart';
 import '../screens/work/classes/business.dart';
 import '../screens/work/classes/education.dart';
 import '../screens/work/classes/job.dart';
 import '../services/bank/FinancialService.dart';
 import '../services/bank/bank_account.dart';
+import 'activity.dart';
 import 'objects/antique.dart';
 import 'objects/book.dart';
 import 'objects/instrument.dart';
@@ -33,10 +35,13 @@ class Person {
 
   List<BankAccount> bankAccounts;
 
+  // Relation avec d'autres personnages
+  Map<Person, Relationship> relationships = {};
   // People
   List<Person> parents = [];
   List<Person> friends = [];
   List<Person> partners = [];
+  List<Person> neighbors = [];
 
   // Works
   List<Job> jobs = [];
@@ -66,7 +71,8 @@ class Person {
     "Langues": 0.0,
     "Histoire": 0.0,
     "Créativité": 0.0,
-    "Sociaibilité": 0.0,
+    "Sociabilité": 0.0,
+    "Collectif": 0.0
   };
 
   // Items
@@ -117,6 +123,30 @@ class Person {
   void ageOneYear() {
     age += 1;
     updateHealthAndHappiness();
+    for (var parent in parents) {
+      parent.age += 1;
+    }
+    for (var sibling in siblings) {
+      sibling.age += 1;
+    }
+    for (var friend in friends) {
+      friend.age += 1;
+    }
+    for (var neighbor in neighbors) {
+      neighbor.age += 1;
+    }
+
+    for (var job in jobs) {
+      for (var colleague in job.colleagues) {
+        colleague.age += 1;
+      }
+    }
+    for (var education in educations) {
+      for (var classmate in education.classmates) {
+        classmate.age += 1;
+      }
+    }
+
     if (isImprisoned) {
       prisonTerm--;
       if (prisonTerm <= 0) {
@@ -125,13 +155,17 @@ class Person {
     }
   }
 
-  void openAccount(Bank bank, String accountType, double initialDeposit, {bool isJoint = false}) {
+  void openAccount(Bank bank, String accountType, double initialDeposit,
+      {bool isJoint = false}) {
     double interestRate = bank.getInterestRate(accountType);
 
     try {
-      BankAccount newAccount = bank.openAccount(accountType, initialDeposit, interestRate, isJoint: isJoint, partners: this.partners);
+      BankAccount newAccount = bank.openAccount(
+          accountType, initialDeposit, interestRate, isJoint: isJoint,
+          partners: this.partners);
       bankAccounts.add(newAccount);
-      print("Account opened at ${bank.name} with type $accountType, initial deposit \$${initialDeposit}");
+      print("Account opened at ${bank
+          .name} with type $accountType, initial deposit \$${initialDeposit}");
     } catch (e) {
       print(e.toString());
     }
@@ -175,12 +209,15 @@ class Person {
 
   void enroll(EducationLevel education) {
     // On sélectionne le premier compte ou un compte spécifié comme principal
-    BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
+    BankAccount? primaryAccount = bankAccounts.isNotEmpty
+        ? bankAccounts.first
+        : null;
     if (primaryAccount != null && primaryAccount.balance >= education.cost) {
       primaryAccount.balance -= education.cost;
       currentEducation = education;
       academicPerformance = 0;
-      print("Enrolled in ${education.name} with fees paid from account ${primaryAccount.accountNumber}");
+      print("Enrolled in ${education
+          .name} with fees paid from account ${primaryAccount.accountNumber}");
     } else {
       print("Not enough money to enroll in ${education.name}");
     }
@@ -201,13 +238,18 @@ class Person {
     vehicles.addAll(deceased.vehicles);
     realEstates.addAll(deceased.realEstates);
 
-    BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
+    BankAccount? primaryAccount = bankAccounts.isNotEmpty
+        ? bankAccounts.first
+        : null;
     if (primaryAccount != null) {
-      double inheritanceAmount = deceased.bankAccounts.fold(0.0, (sum, acc) => sum + (acc.balance * 0.6)); // Assuming 40% tax
+      double inheritanceAmount = deceased.bankAccounts.fold(
+          0.0, (sum, acc) => sum + (acc.balance * 0.6)); // Assuming 40% tax
       primaryAccount.deposit(inheritanceAmount);
-      print("${name} inherited \$${inheritanceAmount} and assets from ${deceased.name} into account ${primaryAccount.accountNumber}");
+      print("${name} inherited \$${inheritanceAmount} and assets from ${deceased
+          .name} into account ${primaryAccount.accountNumber}");
     } else {
-      print("${name} inherited assets but has no bank account to receive funds.");
+      print(
+          "${name} inherited assets but has no bank account to receive funds.");
     }
   }
 
@@ -233,17 +275,25 @@ class Person {
     total += businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance());
     return total;
   }
+
   void applyForBusinessLoan(Bank bank, double amount, int termYears) {
-    double projectedRevenue = businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance());
-    BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
+    double projectedRevenue = businesses.fold(
+        0.0, (sum, bsn) => sum + bsn.getBalance());
+    BankAccount? primaryAccount = bankAccounts.isNotEmpty
+        ? bankAccounts.first
+        : null;
 
     if (primaryAccount != null) {
       FinancialService financialService = FinancialService.instance;
-      if (financialService.applyForLoan(primaryAccount, amount, termYears, projectedRevenue)) {
+      if (financialService.applyForLoan(
+          primaryAccount, amount, termYears, projectedRevenue)) {
         primaryAccount.deposit(amount);
-        print("Business loan of \$${amount} approved and deposited into account ${primaryAccount.accountNumber}");
+        print(
+            "Business loan of \$${amount} approved and deposited into account ${primaryAccount
+                .accountNumber}");
       } else {
-        print("Business loan application denied due to insufficient projected revenue or credit policies.");
+        print(
+            "Business loan application denied due to insufficient projected revenue or credit policies.");
       }
     } else {
       print("No account available for loan deposit.");
@@ -257,10 +307,13 @@ class Person {
   }
 
   void addSalary(Job job) {
-    BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
+    BankAccount? primaryAccount = bankAccounts.isNotEmpty
+        ? bankAccounts.first
+        : null;
     if (primaryAccount != null) {
       primaryAccount.deposit(job.salary);
-      print("Salary of \$${job.salary} added to ${primaryAccount.accountNumber}");
+      print(
+          "Salary of \$${job.salary} added to ${primaryAccount.accountNumber}");
     } else {
       print("No bank account to deposit salary.");
     }
@@ -271,7 +324,8 @@ class Person {
       name: json['name'] as String,
       gender: json['gender'] as String,
       country: json['country'] as String,
-      age: json['age'] ?? 0,  // Assume that age might not be provided
+      age: json['age'] ?? 0,
+      // Assume that age might not be provided
       health: json['health']?.toDouble() ?? 100.0,
       appearance: json['appearance']?.toDouble() ?? 100.0,
       karma: json['karma']?.toDouble() ?? 100.0,
@@ -383,4 +437,195 @@ class Person {
     }
   }
 
+  void interactWith(Person other, InteractionType type) {
+    relationships.putIfAbsent(other, () => Relationship(other));
+    Relationship relationship = relationships[other]!;
+    relationship.updateRelationship(type, this, other);
+  }
+
+  void performActivity(Person? other, Activity activity) {
+    if (activity.cost > 0) {
+      BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
+      if (primaryAccount == null || primaryAccount.balance < activity.cost) {
+        print("Not enough money to perform ${activity.name}");
+        return;
+      }
+      primaryAccount.withdraw(activity.cost);
+    }
+
+    if (activity.skillRequired.isNotEmpty) {
+      if (!skills.containsKey(activity.skillRequired) || skills[activity.skillRequired]! < activity.skillImpact) {
+        print("${name} does not have enough skill in ${activity.skillRequired} to perform ${activity.name}");
+        return;
+      }
+      skills[activity.skillRequired] = (skills[activity.skillRequired]! + activity.skillImpact).clamp(0.0, 100.0);
+      print("${name} improved ${activity.skillRequired} skill by ${activity.skillImpact}");
+    }
+
+    if (other != null) {
+      relationships.putIfAbsent(other, () => Relationship(other));
+      Relationship relationship = relationships[other]!;
+
+      switch (activity.type) {
+        case ActivityType.SpendTime:
+          print("${name} is spending time with ${other.name}");
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.GiftGiving:
+          print("${name} gave a gift to ${other.name}");
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.Conflict:
+          print("${name} had conflict with ${other.name}");
+          relationship.quality -= activity.relationImpact;
+          break;
+        case ActivityType.MurderAttempt:
+          attemptMurder(other);
+          break;
+        case ActivityType.Celebration:
+          print("${name} is celebrating with ${other.name}");
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.Travel:
+          print('${name} is traveling with ${other.name}.');
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.SocialMediaInteraction:
+          print('${name} interacted with ${other.name} on social media.');
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.DrinkAtBar:
+          print('${name} is drinking at a bar with ${other.name}.');
+          relationship.quality += activity.relationImpact;
+          happiness += activity.selfImpact;
+          break;
+        case ActivityType.GoToGym:
+          print('${name} is going to the gym with ${other.name}.');
+          health += activity.selfImpact;
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.WaterSkiing:
+          if (!vehicles.any((vehicle) => vehicle.type == "boat")) {
+            print('${name} does not own a boat for water skiing.');
+            return;
+          }
+          print('${name} is water skiing with ${other.name}.');
+          happiness += activity.selfImpact;
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.DrugDeal:
+          print('${name} is dealing drugs with ${other.name}.');
+          karma -= activity.selfImpact;
+          break;
+        case ActivityType.TakeDrugs:
+          print('${name} is taking drugs.');
+          health -= activity.selfImpact;
+          happiness += activity.relationImpact;
+          break;
+        case ActivityType.WatchMovie:
+          print('${name} is watching a movie with ${other.name}.');
+          happiness += activity.selfImpact;
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.PlaySports:
+          print('${name} is playing sports with ${other.name}.');
+          health += activity.selfImpact;
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.AttendConcert:
+          print('${name} is attending a concert with ${other.name}.');
+          happiness += activity.selfImpact;
+          relationship.quality += activity.relationImpact;
+          break;
+        case ActivityType.VolunteerWork:
+          print('${name} is doing volunteer work with ${other.name}.');
+          karma += activity.selfImpact;
+          relationship.quality += activity.relationImpact;
+          break;
+        default:
+          print('${name} performed an unknown group activity.');
+      }
+
+      relationship.quality = relationship.quality.clamp(0.0, 100.0);
+    } else {
+      switch (activity.type) {
+        case ActivityType.DrinkAtBar:
+          print('${name} is drinking at a bar alone.');
+          happiness += activity.selfImpact;
+          break;
+        case ActivityType.GoToGym:
+          print('${name} is going to the gym alone.');
+          health += activity.selfImpact;
+          break;
+        case ActivityType.WaterSkiing:
+          if (!vehicles.any((vehicle) => vehicle.type == "boat")) {
+            print('${name} does not own a boat for water skiing.');
+            return;
+          }
+          print('${name} is water skiing alone.');
+          happiness += activity.selfImpact;
+          break;
+        case ActivityType.DrugDeal:
+          print('${name} is dealing drugs alone.');
+          karma -= activity.selfImpact;
+          break;
+        case ActivityType.TakeDrugs:
+          print('${name} is taking drugs alone.');
+          health -= activity.selfImpact;
+          happiness += activity.relationImpact;
+          break;
+        case ActivityType.WatchMovie:
+          print('${name} is watching a movie alone.');
+          happiness += activity.selfImpact;
+          break;
+        case ActivityType.PlaySports:
+          print('${name} is playing sports alone.');
+          health += activity.selfImpact;
+          break;
+        case ActivityType.AttendConcert:
+          print('${name} is attending a concert alone.');
+          happiness += activity.selfImpact;
+          break;
+        case ActivityType.VolunteerWork:
+          print('${name} is doing volunteer work alone.');
+          karma += activity.selfImpact;
+          break;
+        default:
+          print('${name} performed an unknown solo activity.');
+      }
+    }
+
+    // S'assurer que l'health et l'happiness sont dans les resonable limite
+    health = health.clamp(0.0, 100.0);
+    happiness = happiness.clamp(0.0, 100.0);
+    karma = karma.clamp(0.0, 100.0);
+  }
+
+  void attemptMurder(Person target) {
+    if (armes.isEmpty) {
+      print("No weapons available for ${name} to use.");
+      return;
+    }
+
+    Arme weapon = armes[Random().nextInt(armes.length)];
+
+    print("${name} is attempting to murder ${target.name} with a ${weapon.name}.");
+
+    // Calculer si le meurtre réussit
+    double successChance = weapon.lethality;
+    bool success = Random().nextDouble() < successChance;
+
+    if (success) {
+      print("${name} has successfully murdered ${target.name}!");
+      // Supprimer la person cible de toutes les relations
+      // Personnage devient mot
+      // Autre conséquances légales (baisser le karma, avoir une chance de se faire attraper par la police du coup)
+      relationships.remove(target);
+    } else {
+      print("${name} failed to murder ${target.name}.");
+      // Entrenera des représaille, une chance quelle appelle la police, et sinon une baisse que la qualité de la relation
+      Relationship relationship = relationships[target]!;
+      relationship.quality -= 20;
+    }
+  }
 }

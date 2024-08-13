@@ -1,3 +1,8 @@
+import 'dart:math';
+
+import '../../../Classes/person.dart';
+import '../../../services/bank/bank_account.dart';
+
 class Job {
   String title;
   String country;
@@ -9,6 +14,7 @@ class Job {
   bool isFullTime;
   String educationRequired = "Any";
   int yearsRequired = 0;
+  List<Person> colleagues = [];
 
 
   Job({required this.title, required this.country, required this.salary, required this.hoursPerWeek, required this.companyName, required this.isFullTime});
@@ -28,4 +34,39 @@ class Job {
     }
     return 0.0;
   }
+
+  void addColleague(Person colleague) {
+    colleagues.add(colleague);
+  }
+
+  void generateColleagues(String country, int numberOfColleagues) {
+    final random = Random();
+
+    colleagues = List.generate(numberOfColleagues, (index) {
+      return Person(
+        name: 'Colleague ${index + 1}',
+        gender: random.nextBool() ? 'Male' : 'Female',
+        country: country,
+        age: random.nextInt(30) + 20,
+        prisonTerm: 0,
+        isImprisoned: false,
+        intelligence: random.nextDouble() * 50 + 50,
+        happiness: random.nextDouble() * 50 + 50,
+        karma: random.nextDouble() * 50 + 50,
+        appearance: random.nextDouble() * 50 + 50,
+        health: random.nextDouble() * 50 + 50,
+        bankAccounts: [
+          BankAccount(
+            accountNumber: 'C${index + 1}ACC',
+            bankName: 'Bank of Work',
+            balance: random.nextDouble() * 5000 + 500,
+            annualIncome: random.nextDouble() * 20000 + 10000,
+            accountType: 'Checking',
+          )
+        ],
+      );
+    });
+  }
+
+
 }

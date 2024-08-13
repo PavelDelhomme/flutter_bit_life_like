@@ -1,6 +1,10 @@
+import 'dart:math';
+
+import 'package:bit_life_like/services/person.dart';
 import 'package:bit_life_like/services/work/hr_service.dart';
 import 'package:bit_life_like/services/work/jobmarket_service.dart';
 import 'package:flutter/material.dart';
+import '../../../Classes/person.dart';
 import '../classes/business.dart';
 import '../classes/interview_simulation.dart';
 
@@ -16,6 +20,13 @@ class BusinessDetailScreen extends StatefulWidget {
 class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
   final HrService hrService = HrService();
   final JobMarketService jobmarketServices = JobMarketService();
+  final PersonService personService = PersonService();
+
+  @override
+  void initState() {
+    super.initState();
+    personService.loadCharacters();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +69,24 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
             ],
           ),
           ExpansionTile(
-            title: Text('Departments'),
+            title: Text("Departments"),
             children: [
-              ...widget.business.departments.map((department) => ListTile(
-                title: Text(department.name),
-                onTap: () => _showDepartmentDetails(context, department),
-              )),
+              ...widget.business.departments.map((department) {
+                return ExpansionTile(
+                  title: Text(department.name),
+                  children: department.employees.map((employee) => ListTile(
+                    title: Text(employee.name),
+                    subtitle: Text("Salary: \$${employee.salary}"),
+                    onTap: () {
+                      // Interact with employee
+                      widget.business.interactWithEmployee(employee.name);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Interacted with ${employee.name}")),
+                      );
+                    },
+                  )).toList(),
+                );
+              }),
               ListTile(
                 title: Text("Add Department"),
                 trailing: Icon(Icons.add),
@@ -176,47 +199,55 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
   }
 
   void _showAddEmployeeDialog(BuildContext context) {
-    jobmarketServices.loadJobs().then((_) {
-      List<Candidate> candidates = Interview.getAvailableCandidates();
+    List<Candidate> candidates = _generateRandomCandidates(10);
 
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Add Employee"),
-            content: Container(
-              width: double.maxFinite,
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: candidates.length,
-                itemBuilder: (BuildContext context, int index) {
-                  Candidate candidate = candidates[index];
-                  return ListTile(
-                    title: Text(candidate.name),
-                    subtitle: Text("Expected Salary: \$${candidate.expectedSalary.toStringAsFixed(2)}"),
-                    onTap: () {
-                      if (Interview.simulate(candidate)) {
-                        Department department = widget.business.departments.isNotEmpty
-                            ? widget.business.departments.first
-                            : Department(name: 'General');
-                        widget.business.hireEmployee(candidate.name, candidate.expectedSalary, department);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("${candidate.name} has been hired!")),
-                        );
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("${candidate.name} failed the interview.")),
-                        );
-                      }
-                      Navigator.of(context).pop();
-                      setState(() {});
-                    },
-                  );
-                },
-              ),
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Add Employee"),
+          content: Container(
+            width: double.maxFinite,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: candidates.length,
+              itemBuilder: (BuildContext context, int index) {
+                Candidate candidate = candidates[index];
+                return ListTile(
+                  title: Text(candidate.name),
+                  subtitle: Text("Expected Salary: \$${candidate.expectedSalary.toStringAsFixed(2)}"),
+                  onTap: () {
+                    if (Interview.simulate(candidate)) {
+                      Department department = widget.business.departments.isNotEmpty
+                          ? widget.business.departments.first
+                          : Department(name: 'General');
+                      widget.business.hireEmployee(candidate.name, candidate.expectedSalary, department);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("${candidate.name} has been hired!")),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("${candidate.name} failed the interview.")),
+                      );
+                    }
+                    Navigator.of(context).pop();
+                    setState(() {});
+                  },
+                );
+              },
             ),
-          );
-        },
+          ),
+        );
+      },
+    );
+  }
+
+  List<Candidate> _generateRandomCandidates(int numberOfCandidates) {
+    return List.generate(numberOfCandidates, (index) {
+      Person person = personService.getRandomCharacter();
+      return Candidate(
+        name: person.name,
+        expectedSalary: Random().nextDouble() * 20000 + 30000,
       );
     });
   }

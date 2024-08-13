@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/bank/transaction_service.dart';
-import 'airplaine_dealership.dart';
+import 'airplaine_dealership_screen.dart';
 import 'boat_dealership_screen.dart';
 import 'car_dealership_screen.dart';
 import 'moto_dealership_screen.dart';

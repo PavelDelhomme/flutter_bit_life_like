@@ -10,7 +10,7 @@ import '../activities/activity/shopping/dealers/jewelry/jewelry_market_screen.da
 import '../activities/activity/shopping/dealers/reale_estate/sub_class/real_estate_classic_screen.dart';
 import '../activities/activity/shopping/dealers/reale_estate/sub_class/real_estate_exotic_screen.dart';
 import '../activities/activity/shopping/dealers/seconde_main_market_screen.dart';
-import '../activities/activity/shopping/dealers/vehicles/airplaine_dealership.dart';
+import '../activities/activity/shopping/dealers/vehicles/airplaine_dealership_screen.dart';
 import '../activities/activity/shopping/dealers/vehicles/boat_dealership_screen.dart';
 import '../activities/activity/shopping/dealers/vehicles/car_dealership_screen.dart';
 

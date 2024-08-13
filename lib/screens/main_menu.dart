@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/bank/transaction_service.dart';
 import 'package:bit_life_like/services/real_estate/real_estate.dart';
+import 'life_screen/person_details_screen.dart';
+import 'life_screen/relationship_screen.dart';
 import 'work/work_screen.dart';
-import 'capital_screen.dart';
+import 'life_screen/capital_screen.dart';
 import 'activities/activities_screen.dart';
-import 'relationship_screen.dart';
-import 'person_details_screen.dart';
 import 'work/jobs_management/job_management_screen.dart'; // Import job management screen
 import 'work/education_management/education_screen.dart'; // Import education screen
 
@@ -25,7 +25,7 @@ class MainMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Main Menus'),
+        title: const Text('Main Menus'),
         actions: [
           IconButton(
             icon: Icon(Icons.account_circle),
@@ -62,7 +62,7 @@ class MainMenu extends StatelessWidget {
       dense: true,
       leading: Icon(icon, color: Colors.black),
       title: Text("$title: ${value.toStringAsFixed(0)}%",
-          style: TextStyle(fontSize: 14)),
+          style: const TextStyle(fontSize: 14)),
       trailing: SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
         child: Row(
@@ -71,10 +71,10 @@ class MainMenu extends StatelessWidget {
               child: LinearProgressIndicator(
                 value: value / 100,
                 backgroundColor: Colors.grey.shade200,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Text('${value.toStringAsFixed(0)}%'),
           ],
         ),
@@ -84,7 +84,7 @@ class MainMenu extends StatelessWidget {
 
   Widget buildNavigationBar(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Colors.black87, Colors.black54],
           begin: Alignment.topCenter,

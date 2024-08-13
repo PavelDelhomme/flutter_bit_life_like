@@ -4,67 +4,100 @@
       "nom": "Dague de Projection de la police de l'eau par Wkc",
       "valeur": 3350,
       "rarete": "Rare",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "type": "Dague",
+      "damage": 24,
+      "lethality": 0.5
     },
     {
       "nom": "Dague Italienne du Mvsn Modele 1932",
       "valeur": 850,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "type": "Dague",
+      "damage": 15,
+      "lethality": 0.3
     },
     {
       "nom": "Pistolet à Silec Decoré de l'empire ottoman",
       "valeur": 3600,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "type": "Pistolet",
+      "damage": 40,
+      "lethality": 15
     },
     {
       "nom": "Pistolet de Voyage à Silex",
       "valeur": 580,
       "rarete": "Commun",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "type": "Pistolet",
+      "damage": 39,
+      "lethality": 14.8
     },
     {
       "nom": "Ancien couteau lié au sacrifice du Zébu durant les cérémonise",
       "valeur": 730,
       "rarete": "Rare",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "type": "Couteau",
+      "damage": 15,
+      "lethality": 4.6
     },
     {
       "nom": "Pistolet de carrosse à percussion XVIIIeme",
       "valeur": 270,
       "rarete": "Commun",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "type": "Pistolet",
+      "damage": 37,
+      "lethality": 13.9
     },
     {
       "nom": "Couteau Dague de l'arme finlandaise des année 30",
       "valeur": 1150,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "type": "Couteau",
+      "damage": 17,
+      "lethality": 18.5
     },
     {
       "nom": "Couteau Bowie de Toledo",
       "valeur": 750,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "type": "Couteau",
+      "damage": 21,
+      "lethality": 19.3
     },
     {
       "nom": "Dague Maconnique de Grand ELU",
       "valeur": 1200,
       "rarete": "Commun",
-      "epoque": "19eme siecle"
+      "epoque": "19eme siecle",
+      "type": "Dague",
+      "damage": 19,
+      "lethality": 17.5
     },
     {
       "nom": "Epée de cour en argent décorée de profile de César",
       "valeur": 1480,
       "rarete": "Rare",
-      "epoque": "18eme siecle"
+      "epoque": "18eme siecle",
+      "type": "Epée",
+      "damage": 35,
+      "lethality": 25.2
     },
     {
       "nom": "Dague de chasse Bavaroise",
       "valeur": 1500,
       "rarete": "Commun",
-      "epoque": "20eme siecle"
+      "epoque": "20eme siecle",
+      "type": "Dague",
+      "damage": 18,
+      "lethality": 16.4
     }
   ]
 }

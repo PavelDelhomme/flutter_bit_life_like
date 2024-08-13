@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../services/bank/bank_account.dart';
+import '../../services/bank/bank_account.dart';
 
 class OpenAccountScreen extends StatefulWidget {
   @override

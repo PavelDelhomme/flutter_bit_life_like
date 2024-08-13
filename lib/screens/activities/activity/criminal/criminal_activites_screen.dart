@@ -9,10 +9,10 @@ class CriminalActivitiesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sport Activities'),
+        title: Text('Criminal Activities'),
       ),
       body: Center(
-        child: Text('List of sport activities here'),
+        child: Text('List of criminal activities here'),
       ),
     );
   }

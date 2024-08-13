@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Classes/person.dart';
+import '../../Classes/person.dart';
 
 class PersonDetailsScreen extends StatelessWidget {
   final Person person;

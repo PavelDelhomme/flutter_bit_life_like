@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Alice",
+    "gender": "Female",
+    "country": "USA",
+    "age": 0,
+    "intelligence": 90,
+    "happiness": 85,
+    "karma": 70,
+    "appearance": 75,
+    "health": 95
+  },
+  {
+    "name": "Bob",
+    "gender": "Male",
+    "country": "France",
+    "age": 0,
+    "intelligence": 85,
+    "happiness": 80,
+    "karma": 75,
+    "appearance": 80,
+    "health": 90
+  }
+]
