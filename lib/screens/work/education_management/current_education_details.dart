@@ -13,18 +13,21 @@ class CurrentEducationDetailsScreen extends StatefulWidget {
 
 class _CurrentEducationDetailsScreenState
     extends State<CurrentEducationDetailsScreen> {
-  double improvementFactor = 0.02;
+  double improvementFactor = 0.01; // Start with 1%
 
   void improveSkills() {
-    widget.person.currentEducation?.competences.forEach((skill, value) {
-      widget.person.improveSkill(skill, value * improvementFactor);
-    });
+    if (widget.person.currentEducation != null) {
+      widget.person.currentEducation!.competences.forEach((skill, value) {
+        widget.person.improveSkill(skill, value * improvementFactor);
+      });
 
-    setState(() {
-      improvementFactor = (improvementFactor / 2).clamp(0.001, improvementFactor);
-    });
+      setState(() {
+        // Rapidly reduce the improvement factor until it reaches a plateau
+        improvementFactor = (improvementFactor * 0.5).clamp(0.0001, improvementFactor);
+      });
 
-    print("Skills improved by ${improvementFactor * 100}%");
+      print("Skills improved by ${(improvementFactor * 100).toStringAsFixed(2)}%");
+    }
   }
 
   @override

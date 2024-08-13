@@ -3,13 +3,31 @@ import 'package:bit_life_like/screens/work/education_management/books_screen.dar
 import 'package:flutter/material.dart';
 import '../../../Classes/person.dart';
 import 'package:flutter/services.dart';
+import 'current_education_details.dart'; // Import the details screen
 
 import '../classes/education.dart';
 
-class EducationScreen extends StatelessWidget {
+class EducationScreen extends StatefulWidget {
   final Person person;
 
   EducationScreen({required this.person});
+
+  @override
+  _EducationScreenState createState() => _EducationScreenState();
+}
+
+class _EducationScreenState extends State<EducationScreen> {
+  late Future<void> _initialization;
+
+  @override
+  void initState() {
+    super.initState();
+    _initialization = _initializePersonService();
+  }
+
+  Future<void> _initializePersonService() async {
+    await personService.loadCharacters();
+  }
 
   Future<List<EducationLevel>> _loadEducationLevels() async {
     try {
@@ -33,67 +51,107 @@ class EducationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<EducationLevel>>(
-      future: _loadEducationLevels(),
+    return FutureBuilder<void>(
+      future: _initialization, // Initialisation du service
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           print("Error in FutureBuilder: ${snapshot.error}");
-          return Center(child: Text('Error loading education levels'));
+          return Center(child: Text('Error initializing service'));
         } else {
-          final educationLevels = snapshot.data ?? [];
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Education'),
-            ),
-            body: ListView(
-              children: <Widget>[
-                ExpansionTile(
-                  title: Text("Current Education"),
-                  children: <Widget>[
-                    if (person.currentEducation != null)
+          return FutureBuilder<List<EducationLevel>>(
+            future: _loadEducationLevels(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                print("Error in FutureBuilder: ${snapshot.error}");
+                return Center(child: Text('Error loading education levels'));
+              } else {
+                final educationLevels = snapshot.data ?? [];
+                return Scaffold(
+                  appBar: AppBar(
+                    title: Text('Education'),
+                  ),
+                  body: ListView(
+                    children: <Widget>[
+                      _buildCurrentEducationSection(),
+                      _buildEducationHistorySection(),
                       ListTile(
-                        title: Text(person.currentEducation!.name),
-                        subtitle: Text("Progress: ${person.academicPerformance.toStringAsFixed(1)}%"),
-                      )
-                    else
+                        title: Text("Enroll in New Education"),
+                        onTap: () {
+                          _showEducationSelectionDialog(context, educationLevels);
+                        },
+                      ),
                       ListTile(
-                        title: Text("Not enrolled in any education program."),
+                        title: Text("Read Books"),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BooksScreen(person: widget.person),
+                            ),
+                          );
+                        },
                       ),
-                  ],
-                ),
-                ExpansionTile(
-                  title: Text("Education History"),
-                  children: person.educations.map((education) {
-                    return ListTile(
-                      title: Text(education.name),
-                      subtitle: Text("Completed: ${education.duration} years"),
-                    );
-                  }).toList(),
-                ),
-                ListTile(
-                  title: Text("Enroll in New Education"),
-                  onTap: () {
-                    _showEducationSelectionDialog(context, educationLevels);
-                  },
-                ),
-                ListTile(
-                  title: Text("Read Books"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BooksScreen(person: person),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
+                    ],
+                  ),
+                );
+              }
+            },
           );
         }
       },
+    );
+  }
+
+  Widget _buildCurrentEducationSection() {
+    return ExpansionTile(
+      title: Text("Current Education"),
+      children: <Widget>[
+        if (widget.person.currentEducation != null)
+          Column(
+            children: [
+              ListTile(
+                title: Text(widget.person.currentEducation!.name),
+                subtitle: Text("Progress: ${widget.person.academicPerformance.toStringAsFixed(1)}%"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CurrentEducationDetailsScreen(person: widget.person),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text("Classmates"),
+                subtitle: Column(
+                  children: widget.person.currentEducation!.classmates.map((classmate) {
+                    return Text(classmate.name);
+                  }).toList(),
+                ),
+              ),
+            ],
+          )
+        else
+          ListTile(
+            title: Text("Not enrolled in any education program."),
+          ),
+      ],
+    );
+  }
+
+  Widget _buildEducationHistorySection() {
+    return ExpansionTile(
+      title: Text("Education History"),
+      children: widget.person.educations.map((education) {
+        return ListTile(
+          title: Text(education.name),
+          subtitle: Text("Completed: ${education.duration} years"),
+        );
+      }).toList(),
     );
   }
 
@@ -110,9 +168,11 @@ class EducationScreen extends StatelessWidget {
                   title: Text(educationLevel.name),
                   subtitle: Text("Cost: \$${educationLevel.cost}"),
                   onTap: () {
-                    person.enroll(educationLevel);
+                    widget.person.enroll(educationLevel);
                     Navigator.of(context).pop();
-                    person.advanceEducation();
+                    setState(() {
+                      widget.person.advanceEducation();
+                    });
                   },
                 );
               }).toList(),
