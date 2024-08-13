@@ -16,6 +16,11 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
   });
 
   void _purchaseVehicle(BuildContext context) {
+    String? requiredPermit = vehicle.getRequiredPermit();
+    if (requiredPermit != null && !person.permits.contains(requiredPermit)) {
+      _showErrorDialog(context, "You need a $requiredPermit permit to purchase this vehicle.");
+      return;
+    }
     showDialog(
       context: context,
       builder: (BuildContext dialogContext) {

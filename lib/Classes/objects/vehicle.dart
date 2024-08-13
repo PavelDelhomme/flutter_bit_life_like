@@ -34,6 +34,21 @@ abstract class Vehicle implements Purchasable {
   String toString() {
     return '$name ($type) - Age: $age, Value: \$${value.toStringAsFixed(2)}, Rarity: $rarity, Brand: $brand';
   }
+
+  String? getRequiredPermit() {
+    switch (type.toLowerCase()) {
+      case 'car':
+        return 'car';
+      case 'motorcycle':
+        return 'motorcycle';
+      case 'boat':
+        return 'boat';
+      case 'airplane':
+        return 'airplane';
+      default:
+        return null;
+    }
+  }
 }
 
 class Moto extends Vehicle {
