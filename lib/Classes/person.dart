@@ -40,7 +40,6 @@ class Person {
 
   // Relation avec d'autres personnages
   Map<Person, Relationship> relationships = {};
-  // People
   List<Person> parents = [];
   List<Person> friends = [];
   List<Person> partners = [];
@@ -103,14 +102,14 @@ class Person {
     this.educations = const [], // Initialisation des éducations
     this.currentEducation,
     this.academicPerformance = 0,
-    required prisonTerm,
-    required isImprisoned,
-    required intelligence,
-    required happiness,
-    required karma,
-    required appearance,
-    required health,
-    required age,
+    required this.prisonTerm,
+    required this.isImprisoned,
+    required this.intelligence,
+    required this.happiness,
+    required this.karma,
+    required this.appearance,
+    required this.health,
+    required this.age,
     List<Arme>? armes,
     List<Jewelry>? jewelrys,
     List<Antique>? antiques,
@@ -119,10 +118,111 @@ class Person {
     List<Vehicle>? vehicles,
     List<VehiculeExotique>? vehicules_exotique,
     List<Book>? book,
-  })
-      : bankAccounts = bankAccounts ?? [],
+  })  : bankAccounts = bankAccounts ?? [],
         partners = partners ?? [],
         parents = parents ?? [];
+
+  factory Person.fromJson(Map<String, dynamic> json) {
+    return Person(
+      name: json['name'] as String,
+      gender: json['gender'] as String,
+      country: json['country'] as String,
+      age: json['age'] ?? 0,
+      health: json['health']?.toDouble() ?? 100.0,
+      appearance: json['appearance']?.toDouble() ?? 100.0,
+      karma: json['karma']?.toDouble() ?? 100.0,
+      happiness: json['happiness']?.toDouble() ?? 100.0,
+      intelligence: json['intelligence']?.toDouble() ?? 100.0,
+      isImprisoned: json['isImprisoned'] ?? false,
+      prisonTerm: json['prisonTerm'] ?? 0,
+      bankAccounts: (json['bankAccounts'] as List<dynamic>?)
+          ?.map((e) => BankAccount.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      skills: Map<String, double>.from(json['skills'] ?? {}),
+      collectibles: (json['collectibles'] as List<dynamic>?)
+          ?.map((e) => CollectibleItem.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      armes: (json['armes'] as List<dynamic>?)
+          ?.map((e) => Arme.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      jewelries: (json['jewelries'] as List<dynamic>?)
+          ?.map((e) => Jewelry.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      antiques: (json['antiques'] as List<dynamic>?)
+          ?.map((e) => Antique.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      realEstates: (json['realEstates'] as List<dynamic>?)
+          ?.map((e) => RealEstate.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      instruments: (json['instruments'] as List<dynamic>?)
+          ?.map((e) => Instrument.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      electronics: (json['electronics'] as List<dynamic>?)
+          ?.map((e) => Electronic.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      books: (json['books'] as List<dynamic>?)
+          ?.map((e) => Book.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      permits: List<String>.from(json['permits'] ?? []),
+      vehicles: (json['vehicles'] as List<dynamic>?)
+          ?.map((e) => Vehicle.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      vehiculeExotiques: (json['vehiculeExotiques'] as List<dynamic>?)
+          ?.map((e) => VehiculeExotique.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      educations: (json['educations'] as List<dynamic>?)
+          ?.map((e) => EducationLevel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+          [],
+      currentEducation: json['currentEducation'] != null
+          ? EducationLevel.fromJson(json['currentEducation'])
+          : null,
+      academicPerformance: json['academicPerformance']?.toDouble() ?? 0.0,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'gender': gender,
+      'country': country,
+      'age': age,
+      'health': health,
+      'appearance': appearance,
+      'karma': karma,
+      'happiness': happiness,
+      'intelligence': intelligence,
+      'isImprisoned': isImprisoned,
+      'prisonTerm': prisonTerm,
+      'bankAccounts': bankAccounts.map((e) => e.toJson()).toList(),
+      'skills': skills,
+      'collectibles': collectibles.map((e) => e.toJson()).toList(),
+      'armes': armes.map((e) => e.toJson()).toList(),
+      'jewelries': jewelries.map((e) => e.toJson()).toList(),
+      'antiques': antiques.map((e) => e.toJson()).toList(),
+      'realEstates': realEstates.map((e) => e.toJson()).toList(),
+      'instruments': instruments.map((e) => e.toJson()).toList(),
+      'electronics': electronics.map((e) => e.toJson()).toList(),
+      'books': books.map((e) => e.toJson()).toList(),
+      'permits': permits,
+      'vehicles': vehicles.map((e) => e.toJson()).toList(),
+      'vehiculeExotiques': vehiculeExotiques.map((e) => e.toJson()).toList(),
+      'educations': educations.map((e) => e.toJson()).toList(),
+      'currentEducation': currentEducation?.toJson(),
+      'academicPerformance': academicPerformance,
+    };
+  }
 
   void ageOneYear() {
     age += 1;
@@ -165,11 +265,11 @@ class Person {
 
     try {
       BankAccount newAccount = bank.openAccount(
-          accountType, initialDeposit, interestRate, isJoint: isJoint,
-          partners: this.partners);
+          accountType, initialDeposit, interestRate,
+          isJoint: isJoint, partners: this.partners);
       bankAccounts.add(newAccount);
-      print("Account opened at ${bank
-          .name} with type $accountType, initial deposit \$${initialDeposit}");
+      print(
+          "Account opened at ${bank.name} with type $accountType, initial deposit \$${initialDeposit}");
     } catch (e) {
       print(e.toString());
     }
@@ -212,7 +312,8 @@ class Person {
   }
 
   void enroll(EducationLevel education) {
-    BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
+    BankAccount? primaryAccount =
+    bankAccounts.isNotEmpty ? bankAccounts.first : null;
 
     if (age <= 16) {
       if (parents.isNotEmpty && parents.first.bankAccounts.isNotEmpty) {
@@ -226,7 +327,8 @@ class Person {
           currentEducation?.classmates.addAll(_generateRandomClassmates(5));
           print("Enrolled in ${education.name} with fees paid by parents");
         } else {
-          print("Not enough money in parents' account to enroll in ${education.name}");
+          print(
+              "Not enough money in parents' account to enroll in ${education.name}");
         }
       } else {
         print("Parents do not have an account to pay for education.");
@@ -268,15 +370,14 @@ class Person {
     vehicles.addAll(deceased.vehicles);
     realEstates.addAll(deceased.realEstates);
 
-    BankAccount? primaryAccount = bankAccounts.isNotEmpty
-        ? bankAccounts.first
-        : null;
+    BankAccount? primaryAccount =
+    bankAccounts.isNotEmpty ? bankAccounts.first : null;
     if (primaryAccount != null) {
-      double inheritanceAmount = deceased.bankAccounts.fold(
-          0.0, (sum, acc) => sum + (acc.balance * 0.6)); // Assuming 40% tax
+      double inheritanceAmount = deceased.bankAccounts
+          .fold(0.0, (sum, acc) => sum + (acc.balance * 0.6)); // Assuming 40% tax
       primaryAccount.deposit(inheritanceAmount);
-      print("${name} inherited \$${inheritanceAmount} and assets from ${deceased
-          .name} into account ${primaryAccount.accountNumber}");
+      print(
+          "${name} inherited \$${inheritanceAmount} and assets from ${deceased.name} into account ${primaryAccount.accountNumber}");
     } else {
       print(
           "${name} inherited assets but has no bank account to receive funds.");
@@ -294,8 +395,8 @@ class Person {
   }
 
   void startBusiness(String name, String type, double investment) {
-    Business newBusiness = Business(
-        name: name, type: type, initialInvestment: investment);
+    Business newBusiness =
+    Business(name: name, type: type, initialInvestment: investment);
     businesses.add(newBusiness);
     print("Started a new business : ${name}");
   }
@@ -307,11 +408,10 @@ class Person {
   }
 
   void applyForBusinessLoan(Bank bank, double amount, int termYears) {
-    double projectedRevenue = businesses.fold(
-        0.0, (sum, bsn) => sum + bsn.getBalance());
-    BankAccount? primaryAccount = bankAccounts.isNotEmpty
-        ? bankAccounts.first
-        : null;
+    double projectedRevenue =
+    businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance());
+    BankAccount? primaryAccount =
+    bankAccounts.isNotEmpty ? bankAccounts.first : null;
 
     if (primaryAccount != null) {
       FinancialService financialService = FinancialService.instance;
@@ -319,8 +419,7 @@ class Person {
           primaryAccount, amount, termYears, projectedRevenue)) {
         primaryAccount.deposit(amount);
         print(
-            "Business loan of \$${amount} approved and deposited into account ${primaryAccount
-                .accountNumber}");
+            "Business loan of \$${amount} approved and deposited into account ${primaryAccount.accountNumber}");
       } else {
         print(
             "Business loan application denied due to insufficient projected revenue or credit policies.");
@@ -337,53 +436,14 @@ class Person {
   }
 
   void addSalary(Job job) {
-    BankAccount? primaryAccount = bankAccounts.isNotEmpty
-        ? bankAccounts.first
-        : null;
+    BankAccount? primaryAccount =
+    bankAccounts.isNotEmpty ? bankAccounts.first : null;
     if (primaryAccount != null) {
       primaryAccount.deposit(job.salary);
-      print(
-          "Salary of \$${job.salary} added to ${primaryAccount.accountNumber}");
+      print("Salary of \$${job.salary} added to ${primaryAccount.accountNumber}");
     } else {
       print("No bank account to deposit salary.");
     }
-  }
-
-  factory Person.fromJson(Map<String, dynamic> json) {
-    return Person(
-      name: json['name'] as String,
-      gender: json['gender'] as String,
-      country: json['country'] as String,
-      age: json['age'] ?? 0,
-      // Assume that age might not be provided
-      health: json['health']?.toDouble() ?? 100.0,
-      appearance: json['appearance']?.toDouble() ?? 100.0,
-      karma: json['karma']?.toDouble() ?? 100.0,
-      happiness: json['happiness']?.toDouble() ?? 100.0,
-      intelligence: json['intelligence']?.toDouble() ?? 100.0,
-      isImprisoned: json['isImprisoned'] ?? false,
-      prisonTerm: json['prisonTerm'] ?? 0,
-      bankAccounts: (json['bankAccounts'] as List<dynamic>?)
-          ?.map((e) => BankAccount.fromJson(e as Map<String, dynamic>))
-          .toList() ?? [],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'gender': gender,
-      'country': country,
-      'age': age,
-      'health': health,
-      'appearance': appearance,
-      'karma': karma,
-      'happiness': happiness,
-      'intelligence': intelligence,
-      'isImprisoned': isImprisoned,
-      'prisonTerm': prisonTerm,
-      'bankAccounts': bankAccounts.map((e) => e.toJson()).toList(),
-    };
   }
 
   void workJob(Job job, int hoursWorked) {
@@ -482,8 +542,7 @@ class Person {
         // Logique pour choisir un compte, par exemle le premier pour l'instant
         accountToUse = bankAccounts.firstWhere(
                 (account) => account.balance >= activity.cost,
-            orElse: () => bankAccounts.first
-        );
+            orElse: () => bankAccounts.first);
       } else if (bankAccounts.isNotEmpty) {
         accountToUse = bankAccounts.first;
       }
@@ -496,12 +555,17 @@ class Person {
     }
 
     if (activity.skillRequired.isNotEmpty) {
-      if (!skills.containsKey(activity.skillRequired) || skills[activity.skillRequired]! < activity.skillImpact) {
-        print("${name} does not have enough skill in ${activity.skillRequired} to perform ${activity.name}");
+      if (!skills.containsKey(activity.skillRequired) ||
+          skills[activity.skillRequired]! < activity.skillImpact) {
+        print(
+            "${name} does not have enough skill in ${activity.skillRequired} to perform ${activity.name}");
         return;
       }
-      skills[activity.skillRequired] = (skills[activity.skillRequired]! + activity.skillImpact).clamp(0.0, 100.0);
-      print("${name} improved ${activity.skillRequired} skill by ${activity.skillImpact}");
+      skills[activity.skillRequired] =
+          (skills[activity.skillRequired]! + activity.skillImpact)
+              .clamp(0.0, 100.0);
+      print(
+          "${name} improved ${activity.skillRequired} skill by ${activity.skillImpact}");
     }
 
     if (other != null) {
@@ -589,7 +653,8 @@ class Person {
           relationship.quality += activity.relationImpact;
           break;
         case ActivityType.ManipulationScheme:
-          print('${name} is executing a manipulation scheme with ${other.name}.');
+          print(
+              '${name} is executing a manipulation scheme with ${other.name}.');
           karma -= activity.selfImpact;
           relationship.quality -= activity.relationImpact;
           break;
@@ -602,7 +667,8 @@ class Person {
           print('${name} is practicing a language with ${other.name}.');
           break;
         case ActivityType.PhilosophicalDebate:
-          print('${name} is engaging in a philosophical debate with ${other.name}.');
+          print(
+              '${name} is engaging in a philosophical debate with ${other.name}.');
           happiness += activity.selfImpact;
           relationship.quality += activity.relationImpact;
           break;
@@ -673,7 +739,6 @@ class Person {
       }
     }
 
-
     // S'assurer que l'health et l'happiness sont dans les resonable limite
     health = health.clamp(0.0, 100.0);
     happiness = happiness.clamp(0.0, 100.0);
@@ -723,7 +788,8 @@ class Person {
       double monthlyExpenses = bankAccounts.first.monthlyExpenses;
       if (bankAccounts.first.balance >= monthlyExpenses) {
         bankAccounts.first.withdraw(monthlyExpenses);
-        print("${name} paid monthly expenses of \$${monthlyExpenses.toStringAsFixed(2)}");
+        print(
+            "${name} paid monthly expenses of \$${monthlyExpenses.toStringAsFixed(2)}");
       } else {
         print("${name} cannot afford monthly expenses.");
       }

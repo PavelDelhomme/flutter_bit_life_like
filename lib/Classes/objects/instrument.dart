@@ -21,4 +21,15 @@ class Instrument extends CollectibleItem implements Purchasable {
   String display() {
     return "$name ($type) - Epoch: $epoch, Value: \$$value, Rarity: $rarity";
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'value': value,
+      'rarity': rarity,
+      'epoch': epoch,
+      'type': type,
+    };
+  }
 }

@@ -49,6 +49,19 @@ abstract class Vehicle implements Purchasable {
         return null;
     }
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'age': age,
+      'type': type,
+      'rarity': rarity,
+      'brand': brand,
+      'fuelConsumption': fuelConsumption,
+      'monthlyFuelCost': monthlyFuelCost,
+      'value': value,
+    };
+  }
 }
 
 class Moto extends Vehicle {

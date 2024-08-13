@@ -1,5 +1,4 @@
 import '../../services/bank/bank_account.dart';
-
 class Electronic implements Purchasable {
   String id;
   String type; // Par exemple : smartphone, laptop, server,...

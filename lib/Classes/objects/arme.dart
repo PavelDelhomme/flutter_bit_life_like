@@ -1,6 +1,5 @@
 import 'collectible_item.dart';
 import 'package:bit_life_like/services/bank/bank_account.dart';
-
 class Arme extends CollectibleItem implements Purchasable {
   final String type;
   final double value;
@@ -25,5 +24,18 @@ class Arme extends CollectibleItem implements Purchasable {
   @override
   String display() {
     return "$name ($type) - Epoch: $epoch, Value: \$$value, Rarity: $rarity, Damage: $damage, Lethality: ${lethality * 100}%";
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'value': value,
+      'rarity': rarity,
+      'epoch': epoch,
+      'type': type,
+      'damage': damage,
+      'lethality': lethality,
+    };
   }
 }

@@ -1,6 +1,5 @@
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/bank/bank_account.dart';
-
 class RealEstate implements Purchasable {
   String name;
   int age;
@@ -52,9 +51,24 @@ class RealEstate implements Purchasable {
     if (condition < 0) condition = 0;
   }
 
-
   @override
   String toString() {
     return '$name ($type, $style) - Age: $age, Value: \$${value.toStringAsFixed(2)}, Condition: $condition, Monthly Maintenance Cost: \$${monthlyMaintenanceCost.toStringAsFixed(2)}';
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'age': age,
+      'type': type,
+      'condition': condition,
+      'monthlyMaintenanceCost': monthlyMaintenanceCost,
+      'estLouee': estLouee,
+      'style': style,
+      'locataire': locataire?.toJson(),
+      'isExotic': isExotic,
+      'value': _value,
+      'capacity': capacity,
+    };
   }
 }

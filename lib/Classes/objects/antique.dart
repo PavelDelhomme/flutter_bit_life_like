@@ -37,4 +37,15 @@ class Antique implements Purchasable {
       epoch: json['epoque'] as String? ?? '',
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'nom': name,
+      'valeur': value,
+      'age': age,
+      'artiste': artist,
+      'rarete': rarity,
+      'epoque': epoch,
+    };
+  }
 }
