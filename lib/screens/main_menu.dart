@@ -1,20 +1,19 @@
-import 'package:bit_life_like/screens/person_details_screen.dart';
-import 'package:bit_life_like/screens/relationship_screen.dart';
-import 'package:bit_life_like/screens/work/work_screen.dart';
-import 'package:bit_life_like/services/events_decision/event_service.dart';
 import 'package:flutter/material.dart';
-import 'activities/activities_screen.dart';
+import 'package:bit_life_like/Classes/person.dart';
+import 'package:bit_life_like/services/bank/transaction_service.dart';
+import 'package:bit_life_like/services/real_estate/real_estate.dart';
+import 'work/work_screen.dart';
 import 'capital_screen.dart';
-import 'home_screen.dart';
-import '../services/real_estate/real_estate.dart';
-import '../services/bank/transaction_service.dart';
-import '../Classes/person.dart';
+import 'activities/activities_screen.dart';
+import 'relationship_screen.dart';
+import 'person_details_screen.dart';
+import 'work/jobs_management/job_management_screen.dart'; // Import job management screen
+import 'work/education_management/education_screen.dart'; // Import education screen
 
 class MainMenu extends StatelessWidget {
   final Person person;
   final RealEstateService realEstateService;
   final TransactionService transactionService;
-  final EventService eventService = EventService(events: []);
 
   MainMenu({
     required this.person,
@@ -38,7 +37,7 @@ class MainMenu extends StatelessWidget {
                 ),
               );
             },
-          )
+          ),
         ],
       ),
       body: Align(
@@ -50,7 +49,7 @@ class MainMenu extends StatelessWidget {
             buildListTile(context, Icons.face, 'Happiness', person.happiness),
             buildListTile(context, Icons.ac_unit, "Intelligence", person.intelligence),
             buildListTile(context, Icons.star, "Karma", person.karma),
-            buildListTile(context, Icons.warning, "Stress", person.stressLevel), // Stress level
+            buildListTile(context, Icons.warning, "Stress", person.stressLevel), // Add stress level
             buildNavigationBar(context),
           ],
         ),
@@ -112,6 +111,10 @@ class MainMenu extends StatelessWidget {
             icon: Icon(Icons.directions_run, color: Colors.white),
             label: "Activities",
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book, color: Colors.white),
+            label: "Education",
+          ),
         ],
         onTap: (index) {
           switch (index) {
@@ -131,10 +134,13 @@ class MainMenu extends StatelessWidget {
               );
               break;
             case 2:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: person)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: person,)));
               break;
             case 3:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => ActivitiesScreen(person: person)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => ActivitiesScreen(person: person,)));
+              break;
+            case 4:
+              Navigator.push(context, MaterialPageRoute(builder: (_) => EducationScreen(person: person)));
               break;
           }
         },

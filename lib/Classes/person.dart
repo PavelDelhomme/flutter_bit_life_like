@@ -79,6 +79,7 @@ class Person {
   List<Electronic> electronics = [];
   List<Book> books = [];
 
+  List<String> permits = [];
   List<Vehicle> vehicles = [];
   List<VehiculeExotique> vehiculeExotiques = [];
 
@@ -373,6 +374,13 @@ class Person {
   void addElectronic(Electronic electronic) {
     electronics.add(electronic);
     print("Electronic added: ${electronic.model}");
+  }
+
+  void addPermit(String permit) {
+    if (!permits.contains(permit)) {
+      permits.add(permit);
+      print("Permit $permit added to ${name}' collection.");
+    }
   }
 
 }

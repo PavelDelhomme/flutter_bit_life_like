@@ -73,6 +73,10 @@ class PersonDetailsScreen extends StatelessWidget {
             }).toList(),
           ),
           ListTile(
+            title: Text("Permits"),
+            subtitle: Text(person.permits.join(" | ")),
+          ),
+          ListTile(
             title: Text("View Inheritance"),
             onTap: () => _showInheritance(context),
           ),
