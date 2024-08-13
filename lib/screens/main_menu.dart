@@ -25,7 +25,7 @@ class MainMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Main Menu'),
+        title: Text('Main Menus'),
         actions: [
           IconButton(
             icon: Icon(Icons.account_circle),
