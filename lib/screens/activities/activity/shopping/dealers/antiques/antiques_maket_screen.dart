@@ -47,28 +47,24 @@ class AntiqueMarketScreen extends StatelessWidget {
   }
 
   void _purchaseAntique(BuildContext context, Antique antique) {
-    BankAccount account = person.bankAccounts.firstWhere(
-          (acc) => acc.accountType == "Checking",
-      orElse: () => BankAccount(
-        accountNumber: "00000000",
-        bankName: "Default Bank",
-        balance: 0.0,
-        annualIncome: 0.0,
-        monthlyExpenses: 0.0,
-        loanTermYears: 0,
-        interestRate: 0.0,
-        accountType: "Default",
-        closingFee: 0.0,
-        accountHolders: [],
-      ),
-    );
+    _selectAccountAndPurchase(context, antique);
+  }
 
-    /*if (account.accountNumber == "00000000") {
-      _showErrorDialog(context, "No valid checking account available.");
-    } else {
-      _showPurchaseDialog(context, antique, account);
-    }*/
-    _showPurchaseDialog(context, antique, account);
+  void _selectAccountAndPurchase(BuildContext context, Antique antique) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext bc) {
+        return ListView(
+          children: person.bankAccounts.map<Widget>((account) {
+            return ListTile(
+              title: Text('${account.bankName} - ${account.accountType}'),
+              subtitle: Text('Balance: \$${account.balance.toStringAsFixed(2)}'),
+              onTap: () => _showPurchaseDialog(context, antique, account),
+            );
+          }).toList(),
+        );
+      },
+    );
   }
 
   void _showPurchaseDialog(BuildContext context, Antique antique, BankAccount account) {

@@ -1,49 +1,60 @@
 import 'collectible_item.dart';
 import 'package:bit_life_like/services/bank/bank_account.dart';
 
-class Jewelry extends CollectibleItem implements Purchasable {
+class Jewelry extends CollectibleItem {
   final String brand;
+  final String material;
   final double carat;
-  final double value;
+  double condition;
+  final bool isRare;
 
   Jewelry({
     required String name,
-    required this.value,
-    required String rarity,
-    required String epoch,
+    required double value,
     required this.brand,
+    required this.material,
     required this.carat,
+    required this.condition,
+    required this.isRare
   }) : super(
     name: name,
     value: value,
-    rarity: rarity,
-    epoch: epoch,
+    rarity: null,
+    epoch: null,
   );
-
-  factory Jewelry.fromJson(Map<String, dynamic> json) {
-    return Jewelry(
-      name: json['nom'].toString() ?? "Unknown",
-      value: (json['valeur'] as num).toDouble() ?? 0.0,
-      rarity: json['rarete'] ?? "Unknown",
-      epoch: json['epoch'] ?? "Unknown",
-      brand: json['marque'] ?? "Unknown",
-      carat: (json['carat'] as num?)?.toDouble() ?? 0.0,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "nom": name,
-      "valeur": value,
-      "rarete": rarity,
-      "epoch": epoch,
-      "marque": brand,
-      "carat": carat,
-    };
-  }
 
   @override
   String display() {
-    return 'Jewelry: $name, Brand: $brand, Value: \$${value.toString()}, Rarity: $rarity, Carat: $carat';
+    return '$name ($brand, $material, $carat carat) - Value: \$${value.toStringAsFixed(2)}, Condition: $condition, Rare: $isRare';
+  }
+
+  factory Jewelry.fromJson(Map<String, dynamic> json) {
+    return Jewelry(
+      name: json['name'] as String? ?? 'Unknown',
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
+      brand: json['brand'] as String? ?? 'Unknown',
+      material: json['material'] as String? ?? 'Unknown',
+      carat: (json['carat'] as num?)?.toDouble() ?? 0.0,
+      condition: (json['condition'] as num?)?.toDouble() ?? 100.0,
+      isRare: json['isRare'] as bool? ?? false,
+    );
+  }
+
+  void degradeCondition(double percentage) {
+    condition -= percentage;
+    if (condition < 0) condition = 0;
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'value': value,
+      'brand': brand,
+      'material': material,
+      'carat': carat,
+      'condition': condition,
+      'isRare': isRare,
+    };
   }
 }

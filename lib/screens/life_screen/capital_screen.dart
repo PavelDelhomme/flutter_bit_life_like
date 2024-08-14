@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/real_estate/real_estate.dart';
 import '../../services/bank/transaction_service.dart';
+import '../../services/jewelry/jewelry.dart';
 import '../capitals_management/antiques/my_antiques_screen.dart';
 import '../capitals_management/banks/bank_account_screen.dart';
 import '../capitals_management/electronics/electronics_screen.dart';
-import '../capitals_management/jewelrys/my_jewelrys_screen.dart';
+import '../capitals_management/jewelrys/my_jewelries_screen.dart';
 import '../capitals_management/real_estates/my_real_estates_screen.dart';
 import '../capitals_management/vehicles/vehicules_screen.dart';
 import '../market_place/marketplace_screen.dart';
@@ -101,7 +102,16 @@ class _CapitalScreenState extends State<CapitalScreen> {
             ListTile(
               title: Text("Jewelry"),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyJewelrysScreen(person: widget.person)));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyJewelriesScreen(
+                      person: widget.person,
+                      jewelryService: JewelryService(),  // Ajoutez cette ligne
+                      transactionService: TransactionService(),  // Assurez-vous que le service est aussi fourni
+                    ),
+                  ),
+                );
               },
             ),
             ListTile(

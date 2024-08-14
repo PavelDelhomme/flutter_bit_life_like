@@ -511,22 +511,22 @@ class Person {
   }
 
   void addElectronic(Electronic electronic) {
-    electronics.add(electronic);
+    this.electronics.add(electronic);
     print("${name} acquired ${electronic.display()}");
   }
 
   void addJewelry(Jewelry jewelry) {
-    jewelries.add(jewelry);
+    this.jewelries.add(jewelry);
     print("${name} acquired ${jewelry.display()}");
   }
 
   void addRealEstate(RealEstate realEstate) {
-    realEstates.add(realEstate);
+    this.realEstates.add(realEstate);
     print("${name} acquired ${realEstate.name}");
   }
 
   void addAntique(Antique antique) {
-    antiques.add(antique);
+    this.antiques.add(antique);
     print("$name acquired ${antique.name}");
   }
 

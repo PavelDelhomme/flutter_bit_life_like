@@ -2,14 +2,15 @@ import 'package:bit_life_like/screens/work/company_management/real_estate_manage
 import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import '../../services/bank/transaction_service.dart';
+import '../../services/jewelry/jewelry.dart';
 import '../../services/real_estate/real_estate.dart';
 import '../activities/activity/shopping/dealers/antiques/antiques_maket_screen.dart';
-import '../activities/activity/shopping/dealers/electronic/electronic_dealership_screen.dart'; // Ensure the import is correct
+import '../activities/activity/shopping/dealers/electronic/electronic_dealership_screen.dart';
 import '../activities/activity/shopping/dealers/jewelry/jewelry_market_screen.dart';
 import '../activities/activity/shopping/dealers/reale_estate/sub_class/real_estate_classic_screen.dart';
 import '../activities/activity/shopping/dealers/reale_estate/sub_class/real_estate_exotic_screen.dart';
 import '../activities/activity/shopping/dealers/seconde_main_market_screen.dart';
-import '../activities/activity/shopping/dealers/vehicles/vehicle_dealership_screen.dart'; // Import the new screen
+import '../activities/activity/shopping/dealers/vehicles/vehicle_dealership_screen.dart';
 
 class MarketplaceScreen extends StatelessWidget {
   final Person person;
@@ -123,6 +124,7 @@ class MarketplaceScreen extends StatelessWidget {
               builder: (context) => JewelryMarketScreen(
                 person: person,
                 transactionService: transactionService,
+                jewelryService: JewelryService(),
               ),
             ),
           ),

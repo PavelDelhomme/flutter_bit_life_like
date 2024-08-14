@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import '../../Classes/person.dart';
+import '../../services/jewelry/jewelry.dart';
 import '../../services/real_estate/real_estate.dart';
 import '../../services/bank/transaction_service.dart';
 import '../activities/activity/shopping/dealers/antiques/antiques_maket_screen.dart';
@@ -128,7 +129,11 @@ class MarketplaceMenuScreen extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => JewelryMarketScreen(person: person, transactionService: transactionService),
+                builder: (context) => JewelryMarketScreen(
+                  person: person,
+                  transactionService: transactionService,
+                  jewelryService: JewelryService(),  // Ajoutez cette ligne
+                ),
               ),
             ),
           ),

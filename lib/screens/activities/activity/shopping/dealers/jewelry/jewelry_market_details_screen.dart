@@ -16,7 +16,6 @@ class JewelryDetailsScreen extends StatelessWidget {
   });
 
   void _purchaseJewelry(BuildContext context) {
-    // Logic to handle jewelry purchase
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -40,7 +39,6 @@ class JewelryDetailsScreen extends StatelessWidget {
   }
 
   void _selectAccountAndPurchase(BuildContext context) {
-    // Display the accounts and let the user select one
     showModalBottomSheet(
       context: context,
       builder: (BuildContext bc) {
@@ -62,27 +60,14 @@ class JewelryDetailsScreen extends StatelessWidget {
       account,
       jewelry,
       onSuccess: () {
+        person.addJewelry(jewelry); // Ajout du bijou à la collection
         print("Purchase successful!");
-        Navigator.pop(context); // Close the modal
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Purchase Successful"),
-              content: Text("You have successfully purchased the ${jewelry.name}."),
-              actions: <Widget>[
-                TextButton(
-                  child: Text("OK"),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-              ],
-            );
-          },
-        );
+        Navigator.pop(context); // Ferme le modal
+        Navigator.pop(context, true); // Retourne true pour signaler la réussite
       },
       onFailure: (String message) {
         print("Failed to purchase.");
-        Navigator.pop(context); // Close the modal
+        Navigator.pop(context); // Ferme le modal
         showDialog(
           context: context,
           builder: (BuildContext context) {

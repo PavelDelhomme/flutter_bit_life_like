@@ -1,13 +1,12 @@
 import 'package:bit_life_like/Classes/objects/collectible_item.dart';
 
-import '../../services/bank/bank_account.dart';
-class Electronic implements CollectibleItem {
-  String id;
-  String type; // Par exemple : smartphone, laptop, server,...
-  String brand;
-  String model;
-  double value;
-  bool supportsApplications; // Indique si l'appareil peut exécuter des applications
+class Electronic extends CollectibleItem {
+  final String id;
+  final String type; // Par exemple : smartphone, laptop, server,...
+  final String brand;
+  final String model;
+  final double value;
+  final bool supportsApplications;
 
   Electronic({
     required this.id,
@@ -16,7 +15,12 @@ class Electronic implements CollectibleItem {
     required this.model,
     required this.value,
     this.supportsApplications = false,
-  });
+  }) : super(
+    name: '$brand $model',
+    value: value,
+    rarity: null,  // Si la rareté n'est pas applicable, mettez-le à null
+    epoch: null,   // Si l'époque n'est pas applicable, mettez-le à null
+  );
 
   factory Electronic.fromJson(Map<String, dynamic> json) {
     return Electronic(
@@ -24,7 +28,7 @@ class Electronic implements CollectibleItem {
       type: json['type'],
       brand: json['brand'],
       model: json['model'],
-      value: json['price'],
+      value: (json['price'] as num?)?.toDouble() ?? 0.0,
       supportsApplications: json['supportsApplications'] ?? false,
     );
   }
@@ -42,19 +46,15 @@ class Electronic implements CollectibleItem {
 
   @override
   String display() {
-    // TODO: implement display
-    throw UnimplementedError();
+    return '$brand $model ($type) - Value: \$${value.toStringAsFixed(2)}';
   }
 
   @override
-  // TODO: implement epoch
-  String get epoch => throw UnimplementedError();
+  String get epoch => 'Modern'; // Vous pouvez définir une valeur par défaut ou une logique spécifique
 
   @override
-  // TODO: implement name
-  String get name => throw UnimplementedError();
+  String get name => '$brand $model';
 
   @override
-  // TODO: implement rarity
-  String get rarity => throw UnimplementedError();
+  String get rarity => 'Common'; // Vous pouvez également définir une logique pour cela
 }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '../../../../../../../Classes/objects/antique.dart';  // Remplacez `jewelry` par `antique`
+import '../../../../../../../Classes/objects/antique.dart';
 import '../../../../../../../Classes/person.dart';
 import '../../../../../../../services/bank/transaction_service.dart';
 import '../../../../../../../services/bank/bank_account.dart';
 
-class AntiqueDetailsScreen extends StatelessWidget {
+class AntiqueMarketDetailsScreen extends StatelessWidget {
   final Antique antique;
   final Person person;
   final TransactionService transactionService;
 
-  AntiqueDetailsScreen({
+  AntiqueMarketDetailsScreen({
     required this.antique,
     required this.person,
     required this.transactionService,
