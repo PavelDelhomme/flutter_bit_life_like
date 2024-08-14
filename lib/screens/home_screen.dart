@@ -1,8 +1,10 @@
+import 'package:bit_life_like/Classes/event.dart';
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
 import '../services/events_decision/event_service.dart';
 import '../services/real_estate/real_estate.dart';
+import 'events/event_screen.dart';
 import 'life_screen/capital_screen.dart';
 import 'life_screen/person_details_screen.dart';
 import 'life_screen/relationship_screen.dart';
@@ -28,11 +30,59 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<String> eventLog = [];
+
   void agePerson() {
     setState(() {
       widget.person.ageOneYear();
+      eventLog.add("You are now ${widget.person.age} years old.");
+
+      Event? randomEvent = widget.eventService.generateRandomEvent(widget.person);
+      if (randomEvent != null) {
+        _triggerEvent(randomEvent);
+      }
     });
-    // Trigger events or update state if needed
+  }
+
+  void _triggerEvent(Event event) {
+    if (event.choices != null && event.choices!.isNotEmpty) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => EventScreen(
+            event: event,
+            person: widget.person,
+            onCHoiceMade: (Event event, String choice) {
+              setState(() {
+                eventLog.add('${event.name}: $choice');
+                _applyEventEffects(event, choice);
+              });
+            },
+          ),
+        ),
+      );
+    } else {
+      setState(() {
+        eventLog.add("${event.name}: ${event.description}");
+        _applyEventEffects(event, '');
+      });
+    }
+  }
+
+  void _applyEventEffects(Event event, String choice) {
+    if (choice.isNotEmpty) {
+      Map<String, dynamic> chosenEffect = event.choices![choice] ?? {};
+      // appliquer les effet sur la personn a faire
+      if (chosenEffect.containsKey('happiness')) {
+        widget.person.happiness += chosenEffect['happiness'];
+      }
+    } else {
+      // Appliquer les effets directs s'il n'y a pas de choix
+      // Exemple :
+      if (event.effects.containsKey('happiness')) {
+        widget.person.happiness += event.effects['happiness'];
+      }
+    }
   }
 
   @override
