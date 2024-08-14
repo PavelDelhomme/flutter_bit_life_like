@@ -10,8 +10,9 @@ import '../services/real_estate/real_estate.dart';
 
 class NewLifeScreen extends StatefulWidget {
   final List<Person> lives;
+  final List<Map<String, dynamic>> events;
 
-  NewLifeScreen({required this.lives});
+  NewLifeScreen({required this.lives, required this.events});
 
   @override
   _NewLifeScreenState createState() => _NewLifeScreenState();
@@ -76,15 +77,14 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
 
   void _createLife() {
     try {
-
       if (personService.availableCharacters.isEmpty) {
         print("No characters available. Please check JSON loading.");
         return;
       }
 
       final person = Person(
-        name: _nameController.text.isNotEmpty ? _nameController.text : 'John Doe', // Nom par défaut
-        gender: 'Male', // Exemple par défaut
+        name: _nameController.text.isNotEmpty ? _nameController.text : 'John Doe',
+        gender: 'Male',
         country: _selectedCountry,
         age: 0,
         intelligence: 100,
@@ -97,11 +97,10 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
         bankAccounts: [],
       );
 
-      // Générer une famille, des amis, etc.
       person.parents = _generateRandomFamily(_selectedCountry);
 
       for (var parent in person.parents) {
-        parent.manageFinances(); // Simulation d'un mois de gestion financiere
+        parent.manageFinances();
       }
 
       person.friends = _generateRandomFriends(_selectedCountry, person.age, 3);
@@ -115,7 +114,7 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
             person: person,
             realEstateService: RealEstateService(),
             transactionService: TransactionService(),
-            events: [], // Pass events if needed
+            eventMaps: widget.events,
           ),
         ),
       );
@@ -123,6 +122,7 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
       print("Error creating life: $e");
     }
   }
+
 
   List<Person> _generateRandomFamily(String country) {
     return List.generate(2, (_) {

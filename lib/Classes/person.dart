@@ -806,4 +806,41 @@ class Person {
       }
     }
   }
+
+  double calculateMonthlyIncome() {
+    return jobs.fold(0.0, (sum, job) => sum + FinancialService.adjustCost(job.salary * job.hoursPerWeek * 4));
+  }
+
+  double calculateNetWorth() {
+    double totalAssets = bankAccounts.fold(0.0, (sum, acc) => sum + acc.balance);
+    totalAssets += realEstates.fold(0.0, (sum, estate) => sum + estate.value);
+    totalAssets += vehicles.fold(0.0, (sum, vehicle) => sum + vehicle.value);
+    totalAssets += vehiculeExotiques.fold(0.0, (sum, vehicleExotique) => sum + vehicleExotique.value);
+    totalAssets += jewelries.fold(0.0, (sum, jewelry) => sum + jewelry.value);
+    totalAssets += antiques.fold(0.0, (sum, antique) => sum + antique.value);
+
+    double totalDebt = bankAccounts.fold(0.0, (sum, acc) => sum + acc.totalDebt());
+
+    return totalAssets - totalDebt;
+  }
+
+  double estimateEducationCost(EducationLevel education) {
+    return FinancialService.adjustCost(education.cost);
+  }
+
+  double calculateMonthlyExpenses() {
+    double totalExpenses = 0.0;
+
+    // Coût des biens immobiliers
+    totalExpenses += realEstates.fold(0.0, (sum, estate) => sum + estate.monthlyMaintenanceCost);
+
+    // Coût des véhicules
+    totalExpenses += vehicles.fold(0.0, (sum, vehicle) => sum + vehicle.monthlyFuelCost);
+    totalExpenses += vehiculeExotiques.fold(0.0, (sum, vehicle) => sum + vehicle.monthlyFuelCost);
+
+    // Coût des autres dépenses mensuelles (nourritures, éducation, etc.)
+    totalExpenses += bankAccounts.fold(0.0, (sum, account) => sum + account.monthlyExpenses);
+
+    return totalExpenses;
+  }
 }

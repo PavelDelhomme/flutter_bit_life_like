@@ -67,10 +67,10 @@ class _StartScreenState extends State<StartScreen> {
                           person: person,
                           realEstateService: RealEstateService(),
                           transactionService: TransactionService(),
-                          events: widget.events,
+                          eventMaps: widget.events,
                         ),
                       ),
-                    ).then((_) => _loadLives()); // Recharger la liste après le retour
+                    ).then((_) => _loadLives());
                   },
                 );
               },
@@ -80,8 +80,13 @@ class _StartScreenState extends State<StartScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NewLifeScreen(lives: lives)),
-              ).then((_) => _loadLives()); // Recharger la liste après la création d'une nouvelle vie
+                MaterialPageRoute(
+                  builder: (context) => NewLifeScreen(
+                    lives: lives,
+                    events: widget.events,
+                  ),
+                ),
+              ).then((_) => _loadLives());
             },
             child: Text('Start New Life'),
           ),

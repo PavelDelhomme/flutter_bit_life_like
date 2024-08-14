@@ -10,8 +10,28 @@ class FinancialService {
 
   static final FinancialService _instance =
       FinancialService._privateConstructor();
-
   static FinancialService get instance => _instance;
+
+  
+  static double _inflationRate = 0.02; // Par défaut 2% d'inflation annuelle
+  
+  static double get inflationRate => _inflationRate;
+
+  static void updateInflationRate(double newRate) {
+    _inflationRate = newRate;
+  }
+
+  static double applyInflation(double amount) {
+    return amount * (1 + _inflationRate);
+  }
+
+  static double adjustCost(double baseCost) {
+    return baseCost * (1 + _inflationRate);
+  }
+
+  static double adjustSalary(double baseSalary) {
+    return baseSalary * (1 + _inflationRate);
+  }
 
   static List<dynamic> bankData = [];
 

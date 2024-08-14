@@ -2,23 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/bank/transaction_service.dart';
 import 'package:bit_life_like/services/real_estate/real_estate.dart';
+import '../Classes/event.dart';
+import '../services/events_decision/event_service.dart';
 import 'life_screen/person_details_screen.dart';
 import 'life_screen/relationship_screen.dart';
 import 'work/work_screen.dart';
 import 'life_screen/capital_screen.dart';
 import 'activities/activities_screen.dart';
-import 'work/jobs_management/job_management_screen.dart'; // Import job management screen
-import 'work/education_management/education_screen.dart'; // Import education screen
+import 'work/jobs_management/job_management_screen.dart';
+import 'work/education_management/education_screen.dart';
 
 class MainMenu extends StatelessWidget {
   final Person person;
   final RealEstateService realEstateService;
   final TransactionService transactionService;
+  final EventService eventService;
 
   MainMenu({
     required this.person,
     required this.realEstateService,
     required this.transactionService,
+    required this.eventService,
   });
 
   @override
@@ -49,7 +53,7 @@ class MainMenu extends StatelessWidget {
             buildListTile(context, Icons.face, 'Happiness', person.happiness),
             buildListTile(context, Icons.ac_unit, "Intelligence", person.intelligence),
             buildListTile(context, Icons.star, "Karma", person.karma),
-            buildListTile(context, Icons.warning, "Stress", person.stressLevel), // Add stress level
+            buildListTile(context, Icons.warning, "Stress", person.stressLevel),
             buildNavigationBar(context),
           ],
         ),
@@ -134,10 +138,21 @@ class MainMenu extends StatelessWidget {
               );
               break;
             case 2:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: person,)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: person)));
               break;
             case 3:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => ActivitiesScreen(person: person,)));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ActivitiesScreen(
+                    person: person,
+                    eventService: eventService,
+                    onEventTriggered: (Event event) {
+                      // Gérez l'événement déclenché ici ou passez-le à un autre widget
+                    },
+                  ),
+                ),
+              );
               break;
             case 4:
               Navigator.push(context, MaterialPageRoute(builder: (_) => EducationScreen(person: person)));

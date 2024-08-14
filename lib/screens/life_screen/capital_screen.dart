@@ -36,6 +36,7 @@ class _CapitalScreenState extends State<CapitalScreen> {
       transactionService: widget.transactionService,
       realEstateService: widget.realEstateService,
     ),
+    buildFinancialSummary(),
   ];
 
   void _onItemTapped(int index) {
@@ -107,8 +108,8 @@ class _CapitalScreenState extends State<CapitalScreen> {
                   MaterialPageRoute(
                     builder: (context) => MyJewelriesScreen(
                       person: widget.person,
-                      jewelryService: JewelryService(),  // Ajoutez cette ligne
-                      transactionService: TransactionService(),  // Assurez-vous que le service est aussi fourni
+                      jewelryService: JewelryService(),
+                      transactionService: TransactionService(),
                     ),
                   ),
                 );
@@ -132,11 +133,43 @@ class _CapitalScreenState extends State<CapitalScreen> {
     );
   }
 
+  Widget buildFinancialSummary() {
+    double monthlyIncome = widget.person.calculateMonthlyIncome();
+    double monthlyExpenses = widget.person.calculateMonthlyExpenses();
+    double netWorth = widget.person.calculateNetWorth();
+    double totalDebt = widget.person.bankAccounts.fold(0.0, (sum, acc) => sum + acc.totalDebt());
+
+    return ListView(
+      children: [
+        ListTile(
+          title: Text("Total Monthly Income"),
+          subtitle: Text("\$${monthlyIncome.toStringAsFixed(2)}"),
+        ),
+        ListTile(
+          title: Text("Total Monthly Expenses"),
+          subtitle: Text("\$${monthlyExpenses.toStringAsFixed(2)}"),
+        ),
+        ListTile(
+          title: Text("Total Debt"),
+          subtitle: Text("\$${totalDebt.toStringAsFixed(2)}"),
+        ),
+        ListTile(
+          title: Text("Net Worth"),
+          subtitle: Text("\$${netWorth.toStringAsFixed(2)}"),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_selectedIndex == 0 ? 'Your Capital and Assets' : ''),
+        title: Text(_selectedIndex == 0
+            ? 'Your Capital and Assets'
+            : _selectedIndex == 1
+            ? 'Marketplace'
+            : 'Financial Summary'),
       ),
       body: Center(
         child: _widgetOptions().elementAt(_selectedIndex),
@@ -150,6 +183,10 @@ class _CapitalScreenState extends State<CapitalScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Marketplace',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.attach_money),
+            label: 'Summary',
           ),
         ],
         currentIndex: _selectedIndex,

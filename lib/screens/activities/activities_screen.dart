@@ -10,13 +10,21 @@ import 'package:bit_life_like/screens/activities/activity/other_activities/permi
 import 'package:bit_life_like/screens/activities/activity/other_activities/time_machine_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../Classes/event.dart';
+import '../../services/events_decision/event_service.dart';
 import 'activity/criminal/criminal_activites_screen.dart';
 import 'activity/sport/sport_activites_screen.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   final Person person;
+  final EventService eventService;
+  final Function(Event) onEventTriggered;
 
-  ActivitiesScreen({required this.person});
+  ActivitiesScreen({
+    required this.person,
+    required this.eventService,
+    required this.onEventTriggered,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +50,20 @@ class ActivitiesScreen extends StatelessWidget {
     );
   }
 
+
   Widget _buildMenuItem(BuildContext context, String title, Widget destinationScreen) {
     return ListTile(
       title: Text(title),
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => destinationScreen));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => destinationScreen),
+        ).then((_) {
+          Event? randomEvent = eventService.generateRandomEvent(person);
+          if (randomEvent != null) {
+            onEventTriggered(randomEvent);
+          }
+        });
       },
     );
   }
