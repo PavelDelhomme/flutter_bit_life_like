@@ -114,7 +114,11 @@ class MarketplaceScreen extends StatelessWidget {
                 transactionService: transactionService,
               ),
             ),
-          ),
+          ).then((result) {
+            if (result != null && result is String) {
+              Navigator.pop(context, result); // Retourner le résultat à Capital Screen
+            }
+          }),
         ),
         ListTile(
           title: Text('Jewelry Market'),

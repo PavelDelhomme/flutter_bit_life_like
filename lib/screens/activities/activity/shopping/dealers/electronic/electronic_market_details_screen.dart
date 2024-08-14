@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../../../../Classes/objects/electronic.dart';
 
-class ElectronicsDetailsScreen extends StatelessWidget {
+class ElectronicMarketDetailsScreen extends StatelessWidget {
   final Electronic electronic;
 
-  ElectronicsDetailsScreen({required this.electronic});
+  ElectronicMarketDetailsScreen({required this.electronic});
 
   @override
   Widget build(BuildContext context) {

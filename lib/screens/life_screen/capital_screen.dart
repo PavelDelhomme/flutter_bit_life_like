@@ -91,13 +91,22 @@ class _CapitalScreenState extends State<CapitalScreen> {
                       transactionService: widget.transactionService,
                     ),
                   ),
-                );
+                ).then((result) {
+                  if (result != null && result is String) {
+                    Navigator.pop(context, result); // Propager le résultat vers l'appelant
+                  }
+                });
               },
             ),
             ListTile(
               title: Text("Vehicles"),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyVehiclesScreen(person: widget.person)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyVehiclesScreen(person: widget.person)))
+                    .then((result) {
+                  if (result != null && result is String) {
+                    Navigator.pop(context, result); // Propager le résultat vers l'appelant
+                  }
+                });
               },
             ),
             ListTile(
@@ -112,19 +121,33 @@ class _CapitalScreenState extends State<CapitalScreen> {
                       transactionService: TransactionService(),
                     ),
                   ),
-                );
+                ).then((result) {
+                  if (result != null && result is String) {
+                    Navigator.pop(context, result); // Propager le résultat vers l'appelant
+                  }
+                });
               },
             ),
             ListTile(
               title: Text("Electronics"),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyElectronicsScreen(electronics: widget.person.electronics)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyElectronicsScreen(electronics: widget.person.electronics)))
+                    .then((result) {
+                  if (result != null && result is String) {
+                    Navigator.pop(context, result); // Propager le résultat vers l'appelant
+                  }
+                });
               },
             ),
             ListTile(
               title: Text("Antiques"),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyAntiquesScreen(person: widget.person)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyAntiquesScreen(person: widget.person)))
+                    .then((result) {
+                  if (result != null && result is String) {
+                    Navigator.pop(context, result); // Propager le résultat vers l'appelant
+                  }
+                });
               },
             ),
           ],

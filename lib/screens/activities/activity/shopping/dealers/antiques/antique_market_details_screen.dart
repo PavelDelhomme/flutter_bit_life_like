@@ -1,18 +1,22 @@
+import 'package:bit_life_like/Classes/event.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../../Classes/objects/antique.dart';
 import '../../../../../../../Classes/person.dart';
 import '../../../../../../../services/bank/transaction_service.dart';
 import '../../../../../../../services/bank/bank_account.dart';
+import '../../../../../../services/events_decision/event_service.dart';
 
 class AntiqueMarketDetailsScreen extends StatelessWidget {
   final Antique antique;
   final Person person;
   final TransactionService transactionService;
+  final Event eventService;
 
   AntiqueMarketDetailsScreen({
     required this.antique,
     required this.person,
     required this.transactionService,
+    required this.eventService
   });
 
   void _purchaseAntique(BuildContext context) {
@@ -62,7 +66,7 @@ class AntiqueMarketDetailsScreen extends StatelessWidget {
       onSuccess: () {
         person.addAntique(antique);  // Ajoutez l'antiquité à la collection de la personne
         print("Purchase successful!");
-        Navigator.pop(context); // Close the modal
+        Navigator.pop(context, 'Purchased ${antique.name} for \$${antique.value.toStringAsFixed(2)}');
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -72,7 +76,7 @@ class AntiqueMarketDetailsScreen extends StatelessWidget {
               actions: <Widget>[
                 TextButton(
                   child: Text("OK"),
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () => Navigator.pop(context, 'Purchased ${antique.name} for \$${antique.value.toStringAsFixed(2)}'),
                 ),
               ],
             );
@@ -82,24 +86,28 @@ class AntiqueMarketDetailsScreen extends StatelessWidget {
       onFailure: (String message) {
         print("Failed to purchase.");
         Navigator.pop(context); // Close the modal
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Error"),
-              content: Text(message),
-              actions: <Widget>[
-                TextButton(
-                  child: Text("OK"),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-              ],
-            );
-          },
+        _showErrorDialog(context, message);
+      },
+    );
+  }
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
         );
       },
     );
   }
+
 
   @override
   Widget build(BuildContext context) {

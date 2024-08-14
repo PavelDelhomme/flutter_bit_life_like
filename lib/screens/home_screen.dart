@@ -45,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
   }
-
   void _triggerEvent(Event event) {
     showDialog(
       context: context,
@@ -56,11 +55,32 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             eventLog.add('${event.name}: $choice');
             _applyEventEffects(event, choice);
+            // Ajout d'une entrée dans le log après l'application des effets
+            eventLog.add('Result: ${_generateEventLogMessage(event, choice)}');
           });
         },
       ),
     );
   }
+
+  String _generateEventLogMessage(Event event, String choice) {
+    final effect = event.choices![choice] ?? event.effects;
+    List<String> logEntries = [];
+
+    if (effect.containsKey('happiness')) {
+      logEntries.add("Happiness changed by ${effect['happiness']}");
+    }
+    if (effect.containsKey('wealth')) {
+      logEntries.add("Wealth changed by ${effect['wealth']}");
+    }
+    if (effect.containsKey('karma')) {
+      logEntries.add("Karma changed by ${effect['karma']}");
+    }
+    // Ajoutez d'autres effets que vous voulez consigner
+
+    return logEntries.join(', ');
+  }
+
 
 
   void _applyEventEffects(Event event, String choice) {
@@ -182,7 +202,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     transactionService: widget.transactionService,
                   ),
                 ),
-              );
+              ).then((result) {
+                if (result != null && result is String) {
+                  setState(() {
+                    eventLog.add(result);
+                  });
+                }
+              });
               break;
             case 2:
               Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: widget.person)));
