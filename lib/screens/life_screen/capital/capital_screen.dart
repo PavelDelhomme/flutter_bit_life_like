@@ -1,17 +1,18 @@
 import 'dart:developer';
 
+import 'package:bit_life_like/screens/life_screen/capital/personal_tax_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/real_estate/real_estate.dart';
-import '../../services/bank/transaction_service.dart';
-import '../../services/jewelry/jewelry.dart';
-import '../capitals_management/antiques/my_antiques_screen.dart';
-import '../capitals_management/banks/bank_account_screen.dart';
-import '../capitals_management/electronics/electronics_screen.dart';
-import '../capitals_management/jewelrys/my_jewelries_screen.dart';
-import '../capitals_management/real_estates/my_real_estates_screen.dart';
-import '../capitals_management/vehicles/vehicules_screen.dart';
-import '../market_place/marketplace_screen.dart';
+import '../../../services/bank/transaction_service.dart';
+import '../../../services/jewelry/jewelry.dart';
+import '../../capitals_management/antiques/my_antiques_screen.dart';
+import '../../capitals_management/banks/bank_account_screen.dart';
+import '../../capitals_management/electronics/electronics_screen.dart';
+import '../../capitals_management/jewelrys/my_jewelries_screen.dart';
+import '../../capitals_management/real_estates/my_real_estates_screen.dart';
+import '../../capitals_management/vehicles/vehicules_screen.dart';
+import '../../market_place/marketplace_screen.dart';
 
 class CapitalScreen extends StatefulWidget {
   final Person person;
@@ -169,6 +170,17 @@ class _CapitalScreenState extends State<CapitalScreen> {
                     Navigator.pop(context, result); // Propager le résultat vers l'appelant
                   }
                 });
+              },
+            ),
+            ListTile(
+              title: Text("Manage Taxes"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PersonalTaxScreen(person: widget.person),
+                  ),
+                );
               },
             ),
           ],

@@ -1,5 +1,7 @@
+import 'dart:developer' as dev;
 import 'dart:math';
 
+import 'package:bit_life_like/Classes/ficalite/tax_system.dart';
 import 'package:bit_life_like/Classes/objects/arme.dart';
 import 'package:bit_life_like/Classes/objects/collectible_item.dart';
 import 'package:bit_life_like/Classes/objects/electronic.dart';
@@ -8,6 +10,8 @@ import 'package:bit_life_like/Classes/objects/jewelry.dart';
 import 'package:bit_life_like/Classes/objects/vehicle.dart';
 import 'package:bit_life_like/Classes/objects/vehicle_collection.dart';
 import 'package:bit_life_like/Classes/relationship.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import '../screens/work/classes/business.dart';
 import '../screens/work/classes/education.dart';
@@ -247,13 +251,22 @@ class Person {
       'academicPerformance': academicPerformance,
     };
   }
-
-  void ageOneYear() {
+  void ageParentYear() {
     age += 1;
+    dev.log("Person has aged. New age: $age");
     updateHealthAndHappiness();
     for (var parent in parents) {
       parent.age += 1;
     }
+    dev.log("Parents have aged. Parent ages: ${parents.map((p) => p.age).toList()}");
+    // Continuez à ajouter des logs pour d'autres éléments si nécessaire
+  }
+
+
+  void ageOneYear() {
+    age += 1;
+    updateHealthAndHappiness();
+    ageParentYear();
     for (var sibling in siblings) {
       sibling.age += 1;
     }
@@ -548,216 +561,155 @@ class Person {
     relationship.updateRelationship(type, this, other);
   }
 
-  void performActivity(Person? other, Activity activity) {
+  void performActivity(BuildContext context, Person? other, Activity activity) {
     BankAccount? accountToUse;
 
+    // Gérer le coût de l'activité
     if (activity.cost > 0) {
-      // Si l'utilisateur a plusieurs comptes, peremettez de choisir
       if (bankAccounts.length > 1) {
-        // Logique pour choisir un compte, par exemle le premier pour l'instant
         accountToUse = bankAccounts.firstWhere(
-                (account) => account.balance >= activity.cost,
-            orElse: () => bankAccounts.first);
+              (account) => account.balance >= activity.cost,
+          orElse: () => bankAccounts.first,
+        );
       } else if (bankAccounts.isNotEmpty) {
         accountToUse = bankAccounts.first;
       }
 
       if (accountToUse == null || accountToUse.balance < activity.cost) {
         print("Not enough money to perform ${activity.name}");
+        _showSnackBar(context, "Not enough money to perform ${activity.name}");
         return;
       }
+
       accountToUse.withdraw(activity.cost);
     }
 
+    // Gérer les compétences requises
     if (activity.skillRequired.isNotEmpty) {
       if (!skills.containsKey(activity.skillRequired) ||
           skills[activity.skillRequired]! < activity.skillImpact) {
-        print(
-            "${name} does not have enough skill in ${activity.skillRequired} to perform ${activity.name}");
+        print("${name} does not have enough skill in ${activity.skillRequired} to perform ${activity.name}");
+        _showSnackBar(context, "${name} does not have enough skill in ${activity.skillRequired} to perform ${activity.name}");
         return;
       }
+
+      // Amélioration de la compétence
       skills[activity.skillRequired] =
-          (skills[activity.skillRequired]! + activity.skillImpact)
-              .clamp(0.0, 100.0);
-      print(
-          "${name} improved ${activity.skillRequired} skill by ${activity.skillImpact}");
+          (skills[activity.skillRequired]! + activity.skillImpact).clamp(0.0, 100.0);
+      print("${name} improved ${activity.skillRequired} skill by ${activity.skillImpact}");
     }
 
+    // Gérer les interactions avec d'autres personnages
     if (other != null) {
       relationships.putIfAbsent(other.id, () => Relationship(other));
       Relationship relationship = relationships[other.id]!;
 
+      // Appliquer les effets de l'activité sur la relation et l'état personnel
       switch (activity.type) {
         case ActivityType.SpendTime:
-          print("${name} is spending time with ${other.name}");
-          relationship.quality += activity.relationImpact;
-          break;
         case ActivityType.GiftGiving:
-          print("${name} gave a gift to ${other.name}");
+        case ActivityType.Celebration:
+        case ActivityType.Travel:
+        case ActivityType.PlaySports:
+        case ActivityType.WatchMovie:
+        case ActivityType.AttendConcert:
+        case ActivityType.DrinkAtBar:
+        case ActivityType.GoToGym:
+        case ActivityType.CreativeProject:
           relationship.quality += activity.relationImpact;
+          happiness += activity.selfImpact;
           break;
+
         case ActivityType.Conflict:
-          print("${name} had conflict with ${other.name}");
           relationship.quality -= activity.relationImpact;
           break;
-        case ActivityType.MurderAttempt:
-          attemptMurder(other);
-          break;
-        case ActivityType.Celebration:
-          print("${name} is celebrating with ${other.name}");
-          relationship.quality += activity.relationImpact;
-          break;
+
         case ActivityType.BusinessDeal:
-          print("${name} is negotiating a business deal with ${other.name}.");
-          relationship.quality += activity.relationImpact;
-          break;
-        case ActivityType.Travel:
-          print('${name} is traveling with ${other.name}.');
-          relationship.quality += activity.relationImpact;
-          break;
-        case ActivityType.SocialMediaInteraction:
-          print('${name} interacted with ${other.name} on social media.');
-          relationship.quality += activity.relationImpact;
-          break;
-        case ActivityType.DrinkAtBar:
-          print('${name} is drinking at a bar with ${other.name}.');
-          relationship.quality += activity.relationImpact;
-          happiness += activity.selfImpact;
-          break;
-        case ActivityType.GoToGym:
-          print('${name} is going to the gym with ${other.name}.');
-          health += activity.selfImpact;
-          relationship.quality += activity.relationImpact;
-          break;
-        case ActivityType.WaterSkiing:
-          if (!vehicles.any((vehicle) => vehicle.type == "boat")) {
-            print('${name} does not own a boat for water skiing.');
-            return;
-          }
-          print('${name} is water skiing with ${other.name}.');
-          happiness += activity.selfImpact;
-          relationship.quality += activity.relationImpact;
-          break;
-        case ActivityType.DrugDeal:
-          print('${name} is dealing drugs with ${other.name}.');
+        case ActivityType.ManipulationScheme:
+          relationship.quality -= activity.relationImpact;
           karma -= activity.selfImpact;
           break;
+
+        case ActivityType.VolunteerWork:
+          relationship.quality += activity.relationImpact;
+          karma += activity.selfImpact;
+          break;
+
+        case ActivityType.DrugDeal:
         case ActivityType.TakeDrugs:
-          print('${name} is taking drugs.');
+          karma -= activity.selfImpact;
           health -= activity.selfImpact;
           happiness += activity.relationImpact;
           break;
-        case ActivityType.WatchMovie:
-          print('${name} is watching a movie with ${other.name}.');
-          happiness += activity.selfImpact;
-          relationship.quality += activity.relationImpact;
-          break;
-        case ActivityType.PlaySports:
-          print('${name} is playing sports with ${other.name}.');
-          health += activity.selfImpact;
-          relationship.quality += activity.relationImpact;
-          break;
-        case ActivityType.AttendConcert:
-          print('${name} is attending a concert with ${other.name}.');
-          happiness += activity.selfImpact;
-          relationship.quality += activity.relationImpact;
-          break;
-        case ActivityType.VolunteerWork:
-          print('${name} is doing volunteer work with ${other.name}.');
-          karma += activity.selfImpact;
-          relationship.quality += activity.relationImpact;
-          break;
-        case ActivityType.ManipulationScheme:
-          print(
-              '${name} is executing a manipulation scheme with ${other.name}.');
-          karma -= activity.selfImpact;
-          relationship.quality -= activity.relationImpact;
-          break;
-        case ActivityType.CreativeProject:
-          print('${name} is working on a creative project with ${other.name}.');
-          happiness += activity.selfImpact;
-          relationship.quality += activity.relationImpact;
-          break;
+
+        case ActivityType.MurderAttempt:
+          attemptMurder(other);
+          return;
+
         case ActivityType.LanguagePractice:
-          print('${name} is practicing a language with ${other.name}.');
-          break;
         case ActivityType.PhilosophicalDebate:
-          print(
-              '${name} is engaging in a philosophical debate with ${other.name}.');
-          happiness += activity.selfImpact;
           relationship.quality += activity.relationImpact;
+          happiness += activity.selfImpact;
+          break;
+
+        default:
           break;
       }
 
       relationship.quality = relationship.quality.clamp(0.0, 100.0);
+      print("Updated relationship quality with ${other.name}: ${relationship.quality}");
+
+      // Afficher un message indiquant l'activité et la personne
+      _showSnackBar(context, "You performed ${activity.name} with ${other.name}");
     } else {
-      // Solo activities
+      // Gérer les activités en solo
       switch (activity.type) {
         case ActivityType.DrinkAtBar:
-          print('${name} is drinking at a bar alone.');
-          happiness += activity.selfImpact;
-          break;
         case ActivityType.GoToGym:
-          print('${name} is going to the gym alone.');
-          health += activity.selfImpact;
-          break;
-        case ActivityType.WaterSkiing:
-          if (!vehicles.any((vehicle) => vehicle.type == "boat")) {
-            print('${name} does not own a boat for water skiing.');
-            return;
-          }
-          print('${name} is water skiing alone.');
+        case ActivityType.WatchMovie:
+        case ActivityType.PlaySports:
+        case ActivityType.AttendConcert:
+        case ActivityType.VolunteerWork:
+        case ActivityType.CreativeProject:
+        case ActivityType.PhilosophicalDebate:
           happiness += activity.selfImpact;
           break;
+
         case ActivityType.DrugDeal:
-          print('${name} is dealing drugs alone.');
-          karma -= activity.selfImpact;
-          break;
         case ActivityType.TakeDrugs:
-          print('${name} is taking drugs alone.');
+          karma -= activity.selfImpact;
           health -= activity.selfImpact;
           happiness += activity.relationImpact;
           break;
-        case ActivityType.WatchMovie:
-          print('${name} is watching a movie alone.');
-          happiness += activity.selfImpact;
-          break;
-        case ActivityType.PlaySports:
-          print('${name} is playing sports alone.');
-          health += activity.selfImpact;
-          break;
-        case ActivityType.AttendConcert:
-          print('${name} is attending a concert alone.');
-          happiness += activity.selfImpact;
-          break;
-        case ActivityType.VolunteerWork:
-          print('${name} is doing volunteer work alone.');
-          karma += activity.selfImpact;
-          break;
+
         case ActivityType.ManipulationScheme:
-          print('${name} is executing a manipulation scheme.');
           karma -= activity.selfImpact;
           break;
-        case ActivityType.CreativeProject:
-          print('${name} is working on a creative project.');
-          happiness += activity.selfImpact;
-          break;
-        case ActivityType.LanguagePractice:
-          print('${name} is practicing a language.');
-          break;
-        case ActivityType.PhilosophicalDebate:
-          print('${name} is engaging in a philosophical debate.');
-          happiness += activity.selfImpact;
-          break;
+
         default:
-          print('${name} performed an unknown solo activity.');
+          print("${name} performed an unknown solo activity.");
       }
+
+      // Afficher un message pour les activités solo
+      _showSnackBar(context, "You performed ${activity.name}");
     }
 
-    // S'assurer que l'health et l'happiness sont dans les resonable limite
+    // S'assurer que l'état est maintenu dans des limites raisonnables
     health = health.clamp(0.0, 100.0);
     happiness = happiness.clamp(0.0, 100.0);
     karma = karma.clamp(0.0, 100.0);
+
+    print("Activity ${activity.name} performed. Health: ${health}, Happiness: ${happiness}, Karma: ${karma}");
+  }
+
+// Fonction pour afficher le Snackbar
+  void _showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: 2),
+      ),
+    );
   }
 
   void attemptMurder(Person target) {
@@ -810,8 +762,27 @@ class Person {
     }
   }
 
+  double calculateAnnualIncome() {
+    double annualIncome = jobs.fold(0.0, (sum, job) => sum + job.salary * 12);
+
+    // Ajouter d'autres sources de revenu, comme les bénéfice des entreprises
+    annualIncome += businesses.fold(0.0, (sum, business) => sum + business.income * 12);
+
+    return annualIncome;
+  }
+
   double calculateMonthlyIncome() {
     return jobs.fold(0.0, (sum, job) => sum + FinancialService.adjustCost(job.salary * job.hoursPerWeek * 4));
+  }
+
+  double calculateTaxes() {
+    // Récupéer le revenu annual
+    double annualIncome = calculateAnnualIncome();
+
+    // Appliquer les tranches d'impositions définies dans le système fiscal
+    TaxSystem taxSystem = TaxSystem();
+    double taxes = taxSystem.calculatePersonalTax(annualIncome);
+    return taxes;
   }
 
   double calculateNetWorth() {

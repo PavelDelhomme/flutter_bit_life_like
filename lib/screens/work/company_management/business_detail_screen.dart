@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../../Classes/person.dart';
 import '../classes/business.dart';
 import '../classes/interview_simulation.dart';
+import 'business_tax_screen.dart';
 
 class BusinessDetailScreen extends StatefulWidget {
   final Business business;
@@ -112,11 +113,14 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                 },
               ),
               ListTile(
-                title: Text("Pay Taxes"),
+                title: Text("Manage Taxes"),
                 onTap: () {
-                  widget.business.payTaxes();
-                  print("Taxes paid for ${widget.business.name}");
-                  setState(() {});
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CorporateTaxScreen(business: widget.business),
+                    ),
+                  );
                 },
               ),
             ],

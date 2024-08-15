@@ -79,7 +79,7 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
   }
 
   Widget _buildRelationshipProgress(Person person) {
-    double quality = widget.person.relationships[person]?.quality ?? 0.0;
+    double quality = widget.person.relationships[person.id]?.quality ?? 0.0;
     return Column(
       children: [
         LinearProgressIndicator(
@@ -96,7 +96,6 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
       ],
     );
   }
-
   void _showPersonDetails(BuildContext context, Person person) {
     showModalBottomSheet(
       context: context,
@@ -123,9 +122,9 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
                     return ElevatedButton(
                       child: Text(activity.name),
                       onPressed: () {
-                        widget.person.performActivity(person, activity);
-                        Navigator.of(context).pop();
-                        setState(() {});
+                        widget.person.performActivity(context, person, activity);
+                        Navigator.of(context).pop();  // Fermer le modal
+                        setState(() {});  // Rafraîchir l'UI
                       },
                     );
                   }).toList(),
@@ -151,9 +150,9 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
                 return ElevatedButton(
                   child: Text(activity.name),
                   onPressed: () {
-                    widget.person.performActivity(null, activity);
-                    Navigator.of(context).pop();
-                    setState(() {});
+                    widget.person.performActivity(context, null, activity);
+                    Navigator.of(context).pop();  // Fermer la boîte de dialogue
+                    setState(() {});  // Rafraîchir l'UI
                   },
                 );
               }).toList(),

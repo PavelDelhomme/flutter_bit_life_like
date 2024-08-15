@@ -9,7 +9,7 @@ import '../services/bank/transaction_service.dart';
 import '../services/events_decision/event_service.dart';
 import '../services/life_state.dart';
 import '../services/real_estate/real_estate.dart';
-import 'life_screen/capital_screen.dart';
+import 'life_screen/capital/capital_screen.dart';
 import 'life_screen/person_details_screen.dart';
 import 'life_screen/relationship_screen.dart';
 import 'work/work_screen.dart';
@@ -113,7 +113,12 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
-              onPressed: () => { log("Aged event apply") },
+              onPressed: () {
+                setState(() {
+                  widget.person.ageOneYear();
+                });
+                log("Aged event applied");
+              },
               child: Text("Age One Year"),
             ),
           ),

@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import 'package:bit_life_like/Classes/ficalite/tax_system.dart';
+
 import '../../../Classes/person.dart';
 import '../../../services/bank/bank_account.dart';
 
@@ -8,6 +12,7 @@ class Business {
   double income = 0;
   double expenses = 0;
   double taxRate = 0.25;
+  double amortizationRate = 0.05; // 5% par année
   List<Product> products = [];
   List<Employee> employees = [];
   List<Department> departments = [];
@@ -15,7 +20,6 @@ class Business {
   bool isPublic = false;
   Map<String, String> swotAnalysis = {};
   BankAccount? businessAccount;
-
 
   Business({
     required this.name,
@@ -32,6 +36,48 @@ class Business {
     return income * taxRate;
   }
 
+  double calculateAmortization() {
+    double amortization = initialInvestment * amortizationRate;
+    return amortization;
+  }
+
+  void applyAmortization() {
+    double amortization = calculateAmortization();
+    income -= amortization; // Réduire le revenu imposable avec l'amortissement
+    print(
+        "Applied amortization of \$${amortization.toStringAsFixed(2)} for ${name}");
+  }
+
+  double calculateAnnualProfit() {
+    return (income - expenses) * 12;
+  }
+
+  double calculateBusinessTaxes() {
+    double annualProfit = calculateAnnualProfit();
+    TaxSystem taxSystem = TaxSystem();
+    return taxSystem.calculateCorporateTax(annualProfit);
+  }
+
+  void payTaxes() {
+    double taxes = calculateTax();
+    expenses += taxes;
+    if (businessAccount != null) {
+      businessAccount!.withdraw(taxes);
+    }
+    print("Paid taxes: \$${taxes.toStringAsFixed(2)}");
+  }
+
+  void paySalaries() {
+    for (var employee in employees) {
+      expenses += employee.salary;
+      if (businessAccount != null) {
+        businessAccount!.withdraw(employee.salary);
+        print(
+            "Paid salary of ${employee.name}: \$${employee.salary.toStringAsFixed(2)}");
+      }
+    }
+  }
+
   void addProduct(String product) {
     products.add(Product(name: product, price: 100, productionCost: 50));
   }
@@ -44,21 +90,12 @@ class Business {
   }
 
   void fireEmployee(String name) {
-    Employee employeeFired = employees.where((employee) => employee.name == name) as Employee;
+    Employee employeeFired =
+        employees.where((employee) => employee.name == name) as Employee;
     expenses -= employeeFired.salary;
     employees.removeWhere((employee) => employee.name == name);
   }
 
-  void paySalaries() {
-    for (var employee in employees) {
-      expenses += employee.salary;
-      if (businessAccount != null) {
-        businessAccount!.withdraw(employee.salary);
-        print("Paid salary of ${employee.name} amount : ${employee.salary}");
-        print("New value for businessAccount : ${businessAccount?.balance}");
-      }
-    }
-  }
 
   void addDepartment(String department) {
     departments.add(Department(name: department));
@@ -95,7 +132,8 @@ class Business {
     strategies.add(strategy);
   }
 
-  void setSWOTAnalysis(String strength, String weakness, String opportunity, String threat) {
+  void setSWOTAnalysis(
+      String strength, String weakness, String opportunity, String threat) {
     swotAnalysis['Strength'] = strength;
     swotAnalysis['Weakness'] = weakness;
     swotAnalysis['Opportunity'] = opportunity;
@@ -130,15 +168,6 @@ class Business {
     print("Transferring ownership to $successor");
   }
 
-  void payTaxes() {
-    double taxes = calculateTax();
-    expenses += taxes;
-    if (businessAccount != null) {
-      businessAccount!.withdraw(taxes);
-    }
-    print("Paid taxes: \$${taxes.toStringAsFixed(2)}");
-  }
-
   void getNetValue() {
     double netValue = getBalance() + businessAccount!.balance;
     print("Net Value of Business : \$${netValue.toStringAsFixed(2)}");
@@ -161,7 +190,6 @@ class Employee {
     required this.name,
     required this.salary,
   });
-
 }
 
 class Product {

@@ -6,7 +6,7 @@ import '../services/events_decision/event_service.dart';
 import 'life_screen/person_details_screen.dart';
 import 'life_screen/relationship_screen.dart';
 import 'work/work_screen.dart';
-import 'life_screen/capital_screen.dart';
+import 'life_screen/capital/capital_screen.dart';
 import 'activities/activities_screen.dart';
 import 'work/jobs_management/job_management_screen.dart';
 import 'work/education_management/education_screen.dart';
