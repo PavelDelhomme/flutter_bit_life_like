@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:bit_life_like/Classes/event.dart';
+import 'package:bit_life_like/Classes/life_history_event.dart';
+import 'package:bit_life_like/services/life_history.dart';
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
 import '../services/events_decision/event_service.dart';
+import '../services/life_state.dart';
 import '../services/real_estate/real_estate.dart';
-import 'events/event_screen.dart';
 import 'life_screen/capital_screen.dart';
 import 'life_screen/person_details_screen.dart';
 import 'life_screen/relationship_screen.dart';
@@ -12,7 +16,7 @@ import 'work/work_screen.dart';
 import 'activities/activities_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final Person person;
+  late final Person person;
   final RealEstateService realEstateService;
   final TransactionService transactionService;
   final List<Event> events;
@@ -30,78 +34,39 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> eventLog = [];
+  List<LifeHistoryEvent> eventLog = [];
 
-  void agePerson() {
+  @override
+  void initState() {
+    super.initState();
+    //_loadEvents();
+    _loadLifeState();
+  }
+
+  Future<void> _loadEvents() async {
+    List<LifeHistoryEvent> events = await LifeHistoryService().getEvents();
     setState(() {
-      widget.person.ageOneYear();
-      eventLog.add("You are now ${widget.person.age} years old.");
-
-      Event? randomEvent = widget.eventService.generateRandomEvent(widget.person);
-      if (randomEvent != null) {
-        _triggerEvent(randomEvent);
-      }
+      eventLog = events;
     });
   }
-  void _triggerEvent(Event event) {
-    showDialog(
-      context: context,
-      builder: (context) => EventScreen(
-        event: event,
-        person: widget.person,
-        onChoiceMade: (Event event, String choice) {
-          setState(() {
-            eventLog.add('${event.name}: $choice');
-            _applyEventEffects(event, choice);
-            // Ajout d'une entrée dans le log après l'application des effets
-            eventLog.add('Result: ${_generateEventLogMessage(event, choice)}');
-          });
-        },
-      ),
-    );
-  }
 
-  String _generateEventLogMessage(Event event, String choice) {
-    final effect = event.choices![choice] ?? event.effects;
-    List<String> logEntries = [];
-
-    if (effect.containsKey('happiness')) {
-      logEntries.add("Happiness changed by ${effect['happiness']}");
-    }
-    if (effect.containsKey('wealth')) {
-      logEntries.add("Wealth changed by ${effect['wealth']}");
-    }
-    if (effect.containsKey('karma')) {
-      logEntries.add("Karma changed by ${effect['karma']}");
-    }
-    // Ajoutez d'autres effets que vous voulez consigner
-
-    return logEntries.join(', ');
-  }
-
-
-
-  void _applyEventEffects(Event event, String choice) {
-    if (choice.isNotEmpty) {
-      Map<String, dynamic> chosenEffect = event.choices![choice] ?? {};
-      // Appliquer les effets sur la personne
-      if (chosenEffect.containsKey('happiness')) {
-        widget.person.happiness += chosenEffect['happiness'];
-      }
-      // Ajoutez d'autres effets ici si nécessaire
+  Future<void> _loadLifeState() async {
+    final lifeState = await LifeStateService().loadLifeState(widget.person);
+    if (lifeState != null) {
+      setState(() {
+        widget.person = Person.fromJson(lifeState['person']);
+        eventLog = (lifeState['events'] as List).map((e) => LifeHistoryEvent.fromJson(e)).toList();
+      });
     } else {
-      // Appliquer les effets directs s'il n'y a pas de choix
-      if (event.effects.containsKey('happiness')) {
-        widget.person.happiness += event.effects['happiness'];
-      }
-      // Ajoutez d'autres effets ici si nécessaire
+      // Si aucune sauvegarde trouvée, charger les évènement normaux
+      _loadEvents();
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    log("Current eventLog: $eventLog"); // Ajoutez cette ligne pour vérifier l'état du log
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -140,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               padding: EdgeInsets.all(16.0),
               child: ListView(
-                children: eventLog.map((e) => Text(e)).toList(),
+                children: eventLog.map((e) => Text(e.description)).toList(),
               ),
             ),
           ),
@@ -148,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
-              onPressed: agePerson,
+              onPressed: () => { log("Aged event apply") },
               child: Text("Age One Year"),
             ),
           ),
@@ -159,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget buildNavigationBar(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Colors.black87, Colors.black54],
           begin: Alignment.topCenter,
@@ -204,9 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ).then((result) {
                 if (result != null && result is String) {
-                  setState(() {
-                    eventLog.add(result);
-                  });
+                  _loadEvents(); // Recharger les événements après un retour
                 }
               });
               break;
@@ -220,9 +183,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (_) => ActivitiesScreen(
                     person: widget.person,
                     eventService: widget.eventService,
-                    onEventTriggered: (Event event) {
-                      _triggerEvent(event);
-                    },
                   ),
                 ),
               );

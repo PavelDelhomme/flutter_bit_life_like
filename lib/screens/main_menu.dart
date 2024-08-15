@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/bank/transaction_service.dart';
 import 'package:bit_life_like/services/real_estate/real_estate.dart';
-import '../Classes/event.dart';
 import '../services/events_decision/event_service.dart';
 import 'life_screen/person_details_screen.dart';
 import 'life_screen/relationship_screen.dart';
@@ -29,7 +28,7 @@ class MainMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main Menus'),
+        title: const Text('Main Menu'),
         actions: [
           IconButton(
             icon: Icon(Icons.account_circle),
@@ -147,9 +146,6 @@ class MainMenu extends StatelessWidget {
                   builder: (_) => ActivitiesScreen(
                     person: person,
                     eventService: eventService,
-                    onEventTriggered: (Event event) {
-                      // Gérez l'événement déclenché ici ou passez-le à un autre widget
-                    },
                   ),
                 ),
               );

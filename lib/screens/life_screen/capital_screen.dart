@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/real_estate/real_estate.dart';
@@ -40,10 +42,29 @@ class _CapitalScreenState extends State<CapitalScreen> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MarketplaceScreen(
+            person: widget.person,
+            transactionService: widget.transactionService,
+            realEstateService: widget.realEstateService,
+          ),
+        ),
+      ).then((result) {
+        if (result != null && result is String) {
+          Navigator.pop(context, result); // Propager le résultat à HomeScreen
+        }
+      });
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
+
+
 
   Widget buildAssetsView() {
     return ListView(
@@ -191,8 +212,8 @@ class _CapitalScreenState extends State<CapitalScreen> {
         title: Text(_selectedIndex == 0
             ? 'Your Capital and Assets'
             : _selectedIndex == 1
-            ? 'Marketplace'
-            : 'Financial Summary'),
+              ? 'Marketplace'
+              : 'Financial Summary'),
       ),
       body: Center(
         child: _widgetOptions().elementAt(_selectedIndex),

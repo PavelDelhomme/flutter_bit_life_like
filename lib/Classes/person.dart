@@ -8,6 +8,7 @@ import 'package:bit_life_like/Classes/objects/jewelry.dart';
 import 'package:bit_life_like/Classes/objects/vehicle.dart';
 import 'package:bit_life_like/Classes/objects/vehicle_collection.dart';
 import 'package:bit_life_like/Classes/relationship.dart';
+import 'package:uuid/uuid.dart';
 import '../screens/work/classes/business.dart';
 import '../screens/work/classes/education.dart';
 import '../screens/work/classes/job.dart';
@@ -23,6 +24,7 @@ PersonService personService = PersonService();
 
 class Person {
   String name;
+  String id;
   String gender;
   String country;
   int age = 0;
@@ -33,13 +35,12 @@ class Person {
   double intelligence = 100;
   bool isImprisoned = false;
   int prisonTerm = 0;
-
   double stressLevel = 0.0;
 
   List<BankAccount> bankAccounts;
 
   // Relation avec d'autres personnages
-  Map<Person, Relationship> relationships = {};
+  Map<String, Relationship> relationships = {};
   List<Person> parents = [];
   List<Person> friends = [];
   List<Person> partners = [];
@@ -92,6 +93,7 @@ class Person {
 
   Person({
     required this.name,
+    String? id,
     required this.gender,
     required this.country,
     List<BankAccount>? bankAccounts,
@@ -114,7 +116,8 @@ class Person {
     required this.appearance,
     required this.health,
     required this.age,
-  })  : bankAccounts = bankAccounts ?? [BankAccount(accountNumber: 'ACC0000', bankName: 'Default Bank', balance: 0.0)],
+  })  : id = id ?? const Uuid().v4(),
+        bankAccounts = bankAccounts ?? [BankAccount(accountNumber: 'ACC0000', bankName: 'Default Bank', balance: 0.0)],
         partners = partners ?? [],
         parents = parents ?? [],
         skills = skills ?? {},
@@ -185,6 +188,7 @@ class Person {
     }
 
     return Person(
+      id: json['id'] as String,
       name: json['name'] as String,
       gender: json['gender'] as String,
       country: json['country'] as String,
@@ -220,6 +224,7 @@ class Person {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'name': name,
       'gender': gender,
       'country': country,
@@ -538,8 +543,8 @@ class Person {
   }
 
   void interactWith(Person other, InteractionType type) {
-    relationships.putIfAbsent(other, () => Relationship(other));
-    Relationship relationship = relationships[other]!;
+    relationships.putIfAbsent(other.id, () => Relationship(other));
+    Relationship relationship = relationships[other.id]!;
     relationship.updateRelationship(type, this, other);
   }
 
@@ -579,8 +584,8 @@ class Person {
     }
 
     if (other != null) {
-      relationships.putIfAbsent(other, () => Relationship(other));
-      Relationship relationship = relationships[other]!;
+      relationships.putIfAbsent(other.id, () => Relationship(other));
+      Relationship relationship = relationships[other.id]!;
 
       switch (activity.type) {
         case ActivityType.SpendTime:
@@ -763,8 +768,7 @@ class Person {
 
     Arme weapon = armes[Random().nextInt(armes.length)];
 
-    print(
-        "${name} is attempting to murder ${target.name} with a ${weapon.name}.");
+    print("${name} is attempting to murder ${target.name} with a ${weapon.name}.");
 
     // Calculer si le meurtre réussit
     double successChance = weapon.lethality;
@@ -772,17 +776,16 @@ class Person {
 
     if (success) {
       print("${name} has successfully murdered ${target.name}!");
-      // Supprimer la person cible de toutes les relations
-      // Personnage devient mot
-      // Autre conséquances légales (baisser le karma, avoir une chance de se faire attraper par la police du coup)
-      relationships.remove(target);
+      // Supprimer la person cible de toutes les relations par ID
+      relationships.remove(target.id);
     } else {
       print("${name} failed to murder ${target.name}.");
-      // Entrenera des représaille, une chance quelle appelle la police, et sinon une baisse que la qualité de la relation
-      Relationship relationship = relationships[target]!;
+      // Entrenera des représailles, potentiellement une baisse de la qualité de la relation
+      Relationship relationship = relationships[target.id]!;
       relationship.quality -= 20;
     }
   }
+
 
   void manageFinances() {
     // Dépôt de salaire

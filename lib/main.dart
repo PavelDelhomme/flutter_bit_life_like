@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bit_life_like/screens/start_screen.dart';
 import 'package:bit_life_like/services/bank/FinancialService.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await _requestPermissions();
 
   // Charger les données des événements depuis un fichier JSON
   String eventData = await rootBundle.loadString('assets/events.json');
@@ -16,6 +19,16 @@ void main() async {
 
   // Exécuter l'application avec les événements chargés
   runApp(MyApp(events: events));
+}
+
+Future<void> _requestPermissions() async {
+  // Demande des permission de stockage pour Android/iOS
+  PermissionStatus status = await Permission.storage.request();
+
+  if (!status.isGranted) {
+    // Si la permission est refusée, vous pouvez afficher un message ou alors il faut fermer l'application
+    print("Permission de stockage refusée");
+  }
 }
 
 class MyApp extends StatelessWidget {

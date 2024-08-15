@@ -1,3 +1,5 @@
+import 'package:bit_life_like/Classes/life_history_event.dart';
+import 'package:bit_life_like/services/life_history.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../Classes/objects/real_estate.dart';
@@ -157,9 +159,14 @@ class _RealEstateClassicScreenState extends State<RealEstateClassicScreen> {
     widget.transactionService.attemptPurchase(
         account,
         realEstate,
-        onSuccess: () {
+        onSuccess: () async {
           widget.person.addRealEstate(realEstate);
-          Navigator.pop(context); // Close the dialog
+          final event = LifeHistoryEvent(
+            description: "You bought ${realEstate.name} fpr \$${realEstate.value.toStringAsFixed(2)}",
+            timestamp: DateTime.now(),
+          );
+          await LifeHistoryService().saveEvent(event); // Enregistrer l'event
+          Navigator.pop(context, "You bought ${realEstate.name}"); // Close the dialog
           showDialog(
             context: context,
             builder: (BuildContext context) {

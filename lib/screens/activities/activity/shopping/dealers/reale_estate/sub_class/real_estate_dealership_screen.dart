@@ -96,54 +96,59 @@ class RealEstateMarketScreen extends StatelessWidget {
 
   void _attemptPurchase(BankAccount account, RealEstate realEstate, BuildContext context) {
     transactionService.attemptPurchase(
-      account,
-      realEstate,
-      onSuccess: () {
-        print("Purchase successful!");
-        _showSuccessDialog(context);
-      },
-      onFailure: (String message) {
-        print("Failed to purchase.");
-        _showErrorDialog(context, message);
-      },
-    );
+        account,
+        realEstate,
+        onSuccess: () {
+          person.addRealEstate(realEstate);
+          String eventMessage = "You bought ${realEstate.name} for \$${realEstate.value.toStringAsFixed(2)}";
+          Navigator.pop(context, eventMessage);
+          _showSuccessDialog(context, eventMessage);
+        },
+        onFailure: (String message) {
+          _showErrorDialog(context, message);
+        });
   }
+
 
   void _attemptLoan(BankAccount account, RealEstate realEstate, BuildContext context) {
     transactionService.attemptPurchase(
       account,
       realEstate,
       useLoan: true,
-      loanTerm: 30, // Example loan term
-      loanInterestRate: 5.0, // Example interest rate
+      loanTerm: 30, // Exemple de durée de prêt
+      loanInterestRate: 5.0, // Exemple de taux d'intérêt
       onSuccess: () {
-        print("Loan approved and purchase successful!");
-        _showSuccessDialog(context);
+        person.addRealEstate(realEstate);
+        Navigator.pop(context); // Ferme la boîte de dialogue d'achat
+        _showSuccessDialog(context, 'Purchased ${realEstate.name} for \$${realEstate.value.toStringAsFixed(2)} with a loan');
       },
       onFailure: (String message) {
-        print("Loan application denied.");
         _showErrorDialog(context, message);
       },
     );
   }
 
-  void _showSuccessDialog(BuildContext context) {
+  void _showSuccessDialog(BuildContext context, String resultMessage) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Purchase Successful"),
-          content: Text("Congratulations! You have successfully purchased the property."),
+          content: Text(resultMessage),
           actions: <Widget>[
             TextButton(
               child: Text("OK"),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Navigator.of(context).pop(resultMessage); // Transmet le message de réussite
+              },
             ),
           ],
         );
       },
     );
   }
+
+
 
   void _showErrorDialog(BuildContext context, String message) {
     showDialog(

@@ -1,4 +1,7 @@
 import 'package:bit_life_like/Classes/person.dart';
+import 'package:bit_life_like/Classes/life_history_event.dart';
+import 'package:bit_life_like/services/life_history.dart';
+import 'package:bit_life_like/services/life_state.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../Classes/permit_question.dart';
@@ -45,20 +48,28 @@ class _PermitExamScreenState extends State<PermitExamScreen> {
     }
   }
 
-  void _showResult() {
+  void _showResult() async {
     bool passed = score >= questions.length * 0.8;
+    String resultMessage = passed
+        ? "Congratulation! You passed the ${widget.permitType} permit exam."
+        : "Unfortunately, you did not pass the exam. Try again!";
+
     if (passed) {
       widget.person.addPermit(widget.permitType);
+      await _saveHistoryEvent("Passed the ${widget.permitType} permit exam.");
+    } else {
+      await _saveHistoryEvent("Failed the ${widget.permitType} permit exam.");
     }
+
+    final events = await LifeHistoryService().getEvents();
+    await LifeStateService().saveLifeState(widget.person, events);
 
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
           title: Text(passed ? "Passed!" : "Failed"),
-          content: Text(passed
-              ? "Congratulation! You passed the ${widget.permitType} permit exam."
-              : "Unfortunately, you did not pass the exam. Try again!"),
+          content: Text(resultMessage),
           actions: [
             TextButton(
               child: Text("Close"),
@@ -71,6 +82,14 @@ class _PermitExamScreenState extends State<PermitExamScreen> {
         );
       },
     );
+  }
+
+  Future<void> _saveHistoryEvent(String description) async {
+    final event = LifeHistoryEvent(
+      description: description,
+      timestamp: DateTime.now(),
+    );
+    await LifeHistoryService().saveEvent(event);
   }
 
   @override

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import '../../../../../../Classes/person.dart';
 import '../../../../../../services/antique/antique.dart';
@@ -95,7 +97,9 @@ class AntiqueMarketScreen extends StatelessWidget {
       account,
       antique,
       onSuccess: () {
-        person.antiques.add(antique); // Add the antique to the person's collection
+        person.antiques.add(antique); // Ajouter l'antiquité à la collection de la personne
+        Navigator.pop(context, 'You bought ${antique.name} for \$${antique.value.toStringAsFixed(2)}');
+        log("You bought ${antique.name} for \$${antique.value.toStringAsFixed(2)}");
         _showSuccessDialog(context);
       },
       onFailure: (String message) {
@@ -103,6 +107,7 @@ class AntiqueMarketScreen extends StatelessWidget {
       },
     );
   }
+
 
   void _showSuccessDialog(BuildContext context) {
     showDialog(
