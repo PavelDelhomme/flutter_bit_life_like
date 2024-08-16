@@ -1,4 +1,3 @@
-// job_market_screen.dart
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -56,14 +55,32 @@ class JobMarketScreen extends StatelessWidget {
             TextButton(
               child: Text("Apply"),
               onPressed: () {
-                // Generate a random number of colleagues between 3 and 30
+                // Generate a random number of colleagues between 3 and 50
                 int numberOfColleagues = Random().nextInt(50) + 3;
 
-                // Create a new Job instance for the person
-
+                // Simulate job application
                 JobMarket jobMarket = JobMarket(availableJobs: jobMarketService.availableJobs);
-                jobMarket.applyForJob(person, job);
+                bool applicationSuccess = jobMarket.applyForJob(person, job);
+
+                // Close the dialog
                 Navigator.of(context).pop();
+
+                // Provide feedback to the user
+                if (applicationSuccess) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("You successfully applied for ${job.jobTitle} at ${job.employerName}!"),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Application for ${job.jobTitle} at ${job.employerName} failed."),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
               },
             ),
             TextButton(

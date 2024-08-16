@@ -1,6 +1,8 @@
 import 'dart:developer' as dev;
+import 'dart:ffi';
 import 'dart:math';
 
+import 'package:bit_life_like/Classes/ficalite/evasion_fiscale.dart';
 import 'package:bit_life_like/Classes/ficalite/tax_system.dart';
 import 'package:bit_life_like/Classes/objects/arme.dart';
 import 'package:bit_life_like/Classes/objects/collectible_item.dart';
@@ -42,6 +44,7 @@ class Person {
   double stressLevel = 0.0;
 
   List<BankAccount> bankAccounts;
+  List<OffshoreAccount> offshoreAccounts;
 
   // Relation avec d'autres personnages
   Map<String, Relationship> relationships = {};
@@ -101,6 +104,7 @@ class Person {
     required this.gender,
     required this.country,
     List<BankAccount>? bankAccounts,
+    List<OffshoreAccount>? offshoreAccounts,
     List<Person>? parents,
     List<Person>? partners,
     Map<String, double>? skills,
@@ -121,6 +125,7 @@ class Person {
     required this.health,
     required this.age,
   })  : id = id ?? const Uuid().v4(),
+        offshoreAccounts = offshoreAccounts ?? [],
         bankAccounts = bankAccounts ?? [BankAccount(accountNumber: 'ACC0000', bankName: 'Default Bank', balance: 0.0)],
         partners = partners ?? [],
         parents = parents ?? [],
@@ -311,6 +316,34 @@ class Person {
       print(e.toString());
     }
   }
+
+  void openOffshoreAccount(Bank offshoreBank, double initialDeposit, String taxHavenCountry) {
+    // Vérifiez si le revenu annuel ou le patrimoine net dépasse un certain seuil
+    double annualIncome = calculateAnnualIncome();
+    double netWorth = calculateNetWorth(excludeOffshore: false);
+
+    const double minimumIncomeRequired = 100000; // Par exemple, 100 000$ de revenu annuel minimum
+    const double minimumNetWorthRequired = 500000; // Par exemple, 500 000$ de patrimoine total minimum
+
+    if (annualIncome >= minimumIncomeRequired || netWorth >= minimumNetWorthRequired) {
+      try {
+        OffshoreAccount newOffshoreAccount = OffshoreAccount(
+          accountNumber: 'OFF${DateTime.now().millisecondsSinceEpoch}',
+          bankName: offshoreBank.name,
+          balance: initialDeposit,
+          taxHavenCountry: taxHavenCountry,
+        );
+        offshoreAccounts.add(newOffshoreAccount);
+        print("Offshore account opened at ${offshoreBank.name} with initial deposit of \$${initialDeposit}");
+      } catch (e) {
+        print("Failed to open offshore account: $e");
+      }
+    } else {
+      print("Cannot open offshore account: Minimum income or net worth requirements not met.");
+    }
+  }
+
+
 
   void marry(Person partner) {
     if (!partners.contains(partner)) {
@@ -785,8 +818,13 @@ class Person {
     return taxes;
   }
 
-  double calculateNetWorth() {
+  double calculateNetWorth({required bool excludeOffshore}) {
     double totalAssets = bankAccounts.fold(0.0, (sum, acc) => sum + acc.balance);
+
+    if (!excludeOffshore) {
+      totalAssets += offshoreAccounts.fold(0.0, (sum, acc) => sum + acc.balance);
+    }
+
     totalAssets += realEstates.fold(0.0, (sum, estate) => sum + estate.value);
     totalAssets += vehicles.fold(0.0, (sum, vehicle) => sum + vehicle.value);
     totalAssets += vehiculeExotiques.fold(0.0, (sum, vehicleExotique) => sum + vehicleExotique.value);

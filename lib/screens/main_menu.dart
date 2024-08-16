@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/bank/transaction_service.dart';
 import 'package:bit_life_like/services/real_estate/real_estate.dart';
-import '../services/events_decision/event_service.dart';
+import '../services/events/events_decision/event_service.dart';
 import 'life_screen/person_details_screen.dart';
 import 'life_screen/relationship_screen.dart';
 import 'work/work_screen.dart';

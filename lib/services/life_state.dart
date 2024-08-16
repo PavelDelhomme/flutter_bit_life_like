@@ -7,8 +7,7 @@ import '../Classes/life_history_event.dart';
 
 class LifeStateService {
   // Sauvegarde de l'état complet d'une vie
-  Future<void> saveLifeState(
-      Person person, List<LifeHistoryEvent> events) async {
+  Future<void> saveLifeState(Person person, List<LifeHistoryEvent> events) async {
     final file = await _getLifeStateFile(person);
     final lifeData = {
       'person': person.toJson(),
@@ -23,14 +22,14 @@ class LifeStateService {
       final file = await _getLifeStateFile(person);
       if (await file.exists()) {
         String content = await file.readAsString();
-        log("Etat sauvegarder trouve");
+        log("Etat sauvegardé trouvé");
         return jsonDecode(content);
       } else {
         log("Aucun état sauvegardé trouvé");
-        return null; // Aucun état sauvegardé trouvé
+        return null;
       }
     } catch (e) {
-      print("Error loading life state: $e");
+      print("Erreur lors du chargement de l'état de vie: $e");
       return null;
     }
   }
@@ -40,6 +39,7 @@ class LifeStateService {
     final file = await _getLifeStateFile(person);
     if (await file.exists()) {
       await file.delete();
+      log("État de vie supprimé pour ${person.name}");
     }
   }
 

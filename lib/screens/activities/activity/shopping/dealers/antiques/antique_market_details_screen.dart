@@ -4,7 +4,6 @@ import '../../../../../../../Classes/objects/antique.dart';
 import '../../../../../../../Classes/person.dart';
 import '../../../../../../../services/bank/transaction_service.dart';
 import '../../../../../../../services/bank/bank_account.dart';
-import '../../../../../../services/events_decision/event_service.dart';
 
 class AntiqueMarketDetailsScreen extends StatelessWidget {
   final Antique antique;

@@ -1,7 +1,9 @@
 import 'package:bit_life_like/services/bank/bank_account.dart';
 import 'package:flutter/material.dart';
 
+import '../../../Classes/ficalite/evasion_fiscale.dart';
 import 'loan_application_screen.dart';
+
 class AccountDetailsScreen extends StatelessWidget {
   final BankAccount account;
 
@@ -25,6 +27,10 @@ class AccountDetailsScreen extends StatelessWidget {
             Text("Account Type: ${account.accountType}", style: TextStyle(fontSize: 16)),
             SizedBox(height: 8),
             Text("Balance: \$${account.balance.toStringAsFixed(2)}", style: TextStyle(fontSize: 16)),
+            if (account is OffshoreAccount) ...[
+              SizedBox(height: 8),
+              Text("Tax Haven Country: ${(account as OffshoreAccount).taxHavenCountry}", style: TextStyle(fontSize: 16)),
+            ],
             SizedBox(height: 20),
             Text("Loans:", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ...account.loans.map((loan) => Text("Loan Amount: \$${loan.amount}, Term: ${loan.termYears} years, Rate: ${loan.interestRate}%")),

@@ -6,7 +6,7 @@ import 'package:bit_life_like/services/life_history.dart';
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
-import '../services/events_decision/event_service.dart';
+import '../services/events/events_decision/event_service.dart';
 import '../services/life_state.dart';
 import '../services/real_estate/real_estate.dart';
 import 'life_screen/capital/capital_screen.dart';

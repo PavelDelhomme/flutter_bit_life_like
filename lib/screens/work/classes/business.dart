@@ -20,6 +20,7 @@ class Business {
   bool isPublic = false;
   Map<String, String> swotAnalysis = {};
   BankAccount? businessAccount;
+  bool isEngagedInFraud = false;
 
   Business({
     required this.name,
@@ -178,6 +179,26 @@ class Business {
     if (employee != null) {
       print("Interacting with ${employee.name}");
       // Ajouter les logique d'interaction
+    }
+  }
+
+  void engageInTaxFraud() {
+    // Simule la fraude fiscale
+    isEngagedInFraud = true;
+    double hiddenRevenue = income * 0.2; // Cache 20% du revenu
+    expenses -= hiddenRevenue;
+    print("${name} is engaging in tax fraud and hiding \$${hiddenRevenue.toStringAsFixed(2)} from taxes.");
+  }
+
+  void handleAudit() {
+    // Simule un audit fiscal
+    if (isEngagedInFraud && Random().nextDouble() < 0.3) {
+      double fine = income * 0.5; // Amende de 50% des revenus cachés
+      expenses += fine;
+      isEngagedInFraud = false; // L'entreprise arrête la fraude après s'être fait prendre
+      print("${name} has been caught in tax fraud and fined \$${fine.toStringAsFixed(2)}.");
+    } else {
+      print("${name} passed the audit without issues.");
     }
   }
 }

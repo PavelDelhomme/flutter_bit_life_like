@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Classes/person.dart';
 import '../../Classes/event.dart';
-import '../../services/events_decision/event_service.dart';
 
 class EventScreen extends StatelessWidget {
   final Event event;

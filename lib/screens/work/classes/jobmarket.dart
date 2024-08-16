@@ -8,14 +8,14 @@ class JobMarket {
 
   JobMarket({required this.availableJobs});
 
-  void applyForJob(Person applicant, MarketJob job) {
+  bool applyForJob(Person applicant, MarketJob job) {
     if (applicant.jobs.any((j) => j.title == job.jobTitle && j.companyName == job.employerName)) {
       print("You have already have this job.");
-      return;
+      return false;
     }
     if (applicant.jobs.length >= 2 && job.jobType == "full-time") {
       print("Cannot apply for more than on full-time job.");
-      return;
+      return false;
     }
     Job newJob = Job(
       title: job.jobTitle,
@@ -27,6 +27,7 @@ class JobMarket {
     );
     applicant.jobs.add(newJob);
     print("${applicant.name} has started working as a ${job.jobTitle} at ${job.employerName}.");
+    return true;
   }
 
   void displayJobs() {

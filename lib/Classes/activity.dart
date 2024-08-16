@@ -57,4 +57,5 @@ final List<Activity> activities = [
   Activity(name: 'Creative Project', type: ActivityType.CreativeProject, skillRequired: 'Créativité', skillImpact: 1.0, selfImpact: 10),
   Activity(name: 'Language Practice', type: ActivityType.LanguagePractice, skillRequired: 'Langues', skillImpact: 0.5, selfImpact: 5),
   Activity(name: 'Philosophical Debate', type: ActivityType.PhilosophicalDebate, skillRequired: 'Philosophie', skillImpact: 0.5, relationImpact: 5),
+  Activity(name: 'Investment Fraud', type: ActivityType.Criminal, cost: 0, selfImpact: -50, relationImpact: 20),
 ];

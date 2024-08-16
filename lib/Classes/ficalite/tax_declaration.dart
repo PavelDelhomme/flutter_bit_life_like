@@ -20,18 +20,19 @@ class TaxDeclaration {
   });
 
   void calculateTaxes() {
+    // Calcul des revenus taxables à partir des comptes bancaires ordinaires uniquement
     double taxableIncome = reportedIncome -
         reportedDeductions -
         reportedCharityDonations -
         reportedEucationExpenses;
-    totalTaxesOwed = taxSystem
-        .calculatePersonalTax(taxableIncome); // Utiliser calculatePersonalTax
 
-    // Calculer la taxe sur la fortune si applicable
-    double wealthTax = taxSystem.calculateWealthTax(person.calculateNetWorth());
+    totalTaxesOwed = taxSystem.calculatePersonalTax(taxableIncome);
+
+    // Calculer la taxe sur la fortune
+    double wealthTax = taxSystem.calculateWealthTax(person.calculateNetWorth(excludeOffshore: true));
     totalTaxesOwed += wealthTax;
 
-    // Calculer la taxe sur les biens de luxe si applicable
+    // Calculer la taxe sur les biens de luxe
     double luxuryTax = taxSystem.calculateLuxuryTax(person.collectibles);
     totalTaxesOwed += luxuryTax;
 

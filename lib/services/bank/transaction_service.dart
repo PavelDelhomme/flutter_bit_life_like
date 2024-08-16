@@ -1,5 +1,6 @@
 import 'package:bit_life_like/Classes/objects/collectible_item.dart';
 
+import '../../Classes/ficalite/evasion_fiscale.dart';
 import '../../Classes/person.dart';
 import 'FinancialService.dart';
 import 'bank_account.dart';
@@ -7,12 +8,17 @@ import 'bank_account.dart';
 class TransactionService {
   Future<void> purchaseItem(BankAccount account, double price, Function onSuccess, Function onFailure) async {
     if (account.balance >= price) {
+      // Appliquez des conditions spécifiques pour les comptes offshore si nécessaire
+      if (account is OffshoreAccount) {
+        print("Processing transaction from offshore account in ${account.taxHavenCountry}");
+      }
       account.withdraw(price);
       onSuccess();
     } else {
       onFailure("Insufficient funds.");
     }
   }
+
 
   Future<void> attemptPurchase(BankAccount account, CollectibleItem item, {bool useLoan = false, int loanTerm = 0, double loanInterestRate = 0.0, required Function onSuccess, required Function onFailure}) async {
     double price = item.value;

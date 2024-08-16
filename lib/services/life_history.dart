@@ -9,9 +9,8 @@ class LifeHistoryService {
   // Enregistrer un nouvel événement
   Future<void> saveEvent(LifeHistoryEvent event) async {
     final file = await _getLocalFile();
-
     if (file == null) {
-      print("Error: File could not be created.");
+      print("Erreur: Le fichier n'a pas pu être créé.");
       return;
     }
 
@@ -25,9 +24,8 @@ class LifeHistoryService {
   Future<List<LifeHistoryEvent>> getEvents() async {
     try {
       final file = await _getLocalFile();
-
       if (file == null) {
-        print("Error: File could not be created.");
+        print("Erreur: Le fichier n'a pas pu être créé.");
         return [];
       }
 
@@ -39,7 +37,7 @@ class LifeHistoryService {
         return [];
       }
     } catch (e) {
-      print("Error reading events: $e");
+      print("Erreur lors de la lecture des événements: $e");
       return [];
     }
   }
@@ -51,7 +49,7 @@ class LifeHistoryService {
       final path = '${directory.path}/$_fileName';
       return File(path);
     } catch (e) {
-      print("Error getting application documents directory: $e");
+      print("Erreur lors de l'obtention du répertoire des documents: $e");
       return null;
     }
   }

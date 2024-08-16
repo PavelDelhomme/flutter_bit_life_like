@@ -10,7 +10,7 @@ import 'package:bit_life_like/screens/activities/activity/other_activities/permi
 import 'package:bit_life_like/screens/activities/activity/other_activities/time_machine_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../services/events_decision/event_service.dart';
+import '../../services/events/events_decision/event_service.dart';
 import 'activity/criminal/criminal_activites_screen.dart';
 import 'activity/sport/sport_activites_screen.dart';
 

@@ -4,6 +4,7 @@ import 'package:bit_life_like/screens/life_screen/capital/personal_tax_screen.da
 import 'package:flutter/material.dart';
 import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/real_estate/real_estate.dart';
+import '../../../Classes/ficalite/evasion_fiscale.dart';
 import '../../../services/bank/transaction_service.dart';
 import '../../../services/jewelry/jewelry.dart';
 import '../../capitals_management/antiques/my_antiques_screen.dart';
@@ -192,7 +193,7 @@ class _CapitalScreenState extends State<CapitalScreen> {
   Widget buildFinancialSummary() {
     double monthlyIncome = widget.person.calculateMonthlyIncome();
     double monthlyExpenses = widget.person.calculateMonthlyExpenses();
-    double netWorth = widget.person.calculateNetWorth();
+    double netWorth = widget.person.calculateNetWorth(excludeOffshore: false);
     double totalDebt = widget.person.bankAccounts.fold(0.0, (sum, acc) => sum + acc.totalDebt());
 
     return ListView(
@@ -213,9 +214,62 @@ class _CapitalScreenState extends State<CapitalScreen> {
           title: Text("Net Worth"),
           subtitle: Text("\$${netWorth.toStringAsFixed(2)}"),
         ),
+        Divider(),
+        ListTile(
+          title: Text("Annual Taxes Overview"),
+          subtitle: Text("Click below to manage your taxes"),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PersonalTaxScreen(person: widget.person),
+              ),
+            );
+          },
+          child: Text("Manage Personal Taxes"),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            _showTaxHavenOptions(context);
+          },
+          child: Text("Manage Offshore Accounts"),
+        ),
       ],
     );
   }
+
+  void _showTaxHavenOptions(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Manage Offshore Accounts"),
+          content: Text("Would you like to create a new offshore account?"),
+          actions: <Widget>[
+            TextButton(
+              child: Text("Create Account"),
+              onPressed: () {
+                OffshoreAccount account = TaxHavenService.createOffshoreAccount(widget.person, 10000.0); // Montant initial
+                Navigator.of(context).pop();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Offshore account created in ${account.taxHavenCountry}.")),
+                );
+              },
+            ),
+            TextButton(
+              child: Text("Cancel"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {

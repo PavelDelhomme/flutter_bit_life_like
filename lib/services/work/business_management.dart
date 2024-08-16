@@ -1,45 +1,42 @@
-import 'package:bit_life_like/Classes/person.dart';
-import 'package:bit_life_like/screens/work/classes/business.dart';
-import '../../services/bank/bank_account.dart';
+import '../../Classes/person.dart';
+import '../../screens/work/classes/business.dart';
+import '../bank/bank_account.dart';
 
 class BusinessManagementService {
   void startBusiness(Person person, String name, String type, double investment, BankAccount businessAccount) {
-    if (person.realEstates.isNotEmpty && person.bankAccounts.isNotEmpty) {
-      if (businessAccount.balance >= investment) {
-        person.startBusiness(name, type, investment); // Adjusted to call the correct method
-        businessAccount.withdraw(investment);
-        print("${person.name} has started a new business: ${name} with ${investment}\$.");
-      } else {
-        print("Insufficient funds to start a new business.");
-      }
+    if (person.realEstates.isNotEmpty && businessAccount.balance >= investment) {
+      var business = Business(name: name, type: type, initialInvestment: investment, businessAccount: businessAccount);
+      person.businesses.add(business);  // Person peut avoir une liste de businesses
+      businessAccount.withdraw(investment);
+      print("${person.name} a créé un nouveau business: ${name} avec un investissement de \$${investment}.");
     } else {
-      print("Real estate ownership is required to start a business.");
+      print("Fonds ou propriété immobilière insuffisants pour démarrer une entreprise.");
     }
   }
 
   void addProductToBusiness(Business business, Product product) {
     business.addProduct(product.name);
-    print("Added product ${product.name} to business ${business.name}.");
+    print("Ajouté le produit ${product.name} au business ${business.name}.");
   }
 
   void hireEmployee(Business business, String name, double salary, Department department) {
     if (business.businessAccount != null && business.businessAccount!.balance >= salary) {
       business.hireEmployee(name, salary, department);
-      print("Hired ${name} for business ${business.name}.");
+      print("${name} embauché dans le business ${business.name}.");
     } else {
-      print("Insufficient funds to hire ${name}.");
+      print("Fonds insuffisants pour embaucher ${name}.");
     }
   }
 
   void handleTaxes(Business business) {
     double taxes = business.calculateTax();
-    business.payExpenses(taxes);
-    print("Paid taxes: \$${taxes} for ${business.name}");
+    business.payTaxes();
+    print("Taxes payées pour ${business.name}: \$${taxes}");
   }
 
   void calculateExpenses(Business business) {
     double employeeExpenses = business.employees.fold(0, (sum, e) => sum + e.salary);
     business.payExpenses(employeeExpenses);
-    print("Paid employee expenses for ${business.name}");
+    print("Frais de personnel payés pour ${business.name}");
   }
 }

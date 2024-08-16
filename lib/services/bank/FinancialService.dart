@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/services.dart';
 
+import '../../Classes/life_history_event.dart';
 import '../../Classes/person.dart';
 import 'bank_account.dart';
 
@@ -23,6 +25,12 @@ class FinancialService {
 
   static double applyInflation(double amount) {
     return amount * (1 + _inflationRate);
+  }
+
+  static void applyAnnualInflation() {
+    _inflationRate += Random().nextDouble() * 0.03 - 0.015; // Inflation entre -1,5% et 1.5%
+    _inflationRate = _inflationRate.clamp(0.0, 0.1);
+    print("New Inflation Rate : ${(inflationRate * 100).toStringAsFixed(2)}%");
   }
 
   static double adjustCost(double baseCost) {
@@ -133,5 +141,30 @@ class FinancialService {
       return foundAccount;
     }
     return null;
+  }
+
+
+  void performFiscalControl(Person person) {
+    bool foundFraud = _checkForFraud(person);
+
+    if (foundFraud) {
+      double fine = person.calculateAnnualIncome() * 0.3; // Amende de 30% des revenus annuels
+      person.bankAccounts.first.withdraw(fine);
+      person.addLifeHistoryEvent(LifeHistoryEvent(
+        description: "Fiscal control detected fraud. Fine applied: \$${fine.toStringAsFixed(2)}",
+        timestamp: DateTime.now(),
+      ));
+    } else {
+      person.addLifeHistoryEvent(LifeHistoryEvent(
+        description: "Fiscal control completed. No fraud detected.",
+        timestamp: DateTime.now(),
+      ));
+    }
+  }
+
+  bool _checkForFraud(Person person) {
+    bool hasOffshoreAccounts = person.offshoreAccounts.isNotEmpty;
+    bool undeclaredIncome = person.calculateAnnualIncome() > 100000 && Random().nextBool();
+    return hasOffshoreAccounts || undeclaredIncome;
   }
 }
