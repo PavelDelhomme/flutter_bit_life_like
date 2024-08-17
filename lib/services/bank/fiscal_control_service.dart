@@ -1,9 +1,12 @@
 
+import 'dart:math';
+
 import 'package:bit_life_like/Classes/person.dart';
 
 import '../../Classes/life_history_event.dart';
+
 class FiscalControlService {
-  void performFiscalControl(Person person) {
+  bool performFiscalControl(Person person) {
     bool foundFraud = _checkForFraud(person);
 
     if (foundFraud) {
@@ -14,12 +17,17 @@ class FiscalControlService {
         timestamp: DateTime.now(),
       ));
     } else {
-      print("Fiscal control completed. No fraud detected.");
+      person.addLifeHistoryEvent(LifeHistoryEvent(
+        description: "Fiscal control completed. No fraud detected.",
+        timestamp: DateTime.now(),
+      ));
     }
+
+    return foundFraud; // Retournez le résultat de la vérification
   }
 
   bool _checkForFraud(Person person) {
-    // Vérification des comptes offshore non déclarés ou d'autres fraudes
+    // Simulez la logique de détection de fraude
     bool hasOffshoreAccounts = person.offshoreAccounts.isNotEmpty;
     bool undeclaredIncome = person.calculateAnnualIncome() > 100000 && Random().nextBool(); // Probabilité aléatoire
     return hasOffshoreAccounts && undeclaredIncome;

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bit_life_like/Classes/event.dart';
 import 'package:bit_life_like/Classes/life_history_event.dart';
+import 'package:bit_life_like/Classes/relationship.dart';
 import 'package:bit_life_like/services/life_history.dart';
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
@@ -19,6 +20,7 @@ class HomeScreen extends StatefulWidget {
   late final Person person;
   final RealEstateService realEstateService;
   final TransactionService transactionService;
+  final List<Map<String, dynamic>> eventMaps;
   final List<Event> events;
   final EventService eventService;
 
@@ -26,7 +28,7 @@ class HomeScreen extends StatefulWidget {
     required this.person,
     required this.realEstateService,
     required this.transactionService,
-    required List<Map<String, dynamic>> eventMaps,
+    required this.eventMaps,
   })  : events = eventMaps.map((eventMap) => Event.fromJson(eventMap)).toList(),
         eventService = EventService(events: eventMaps.map((eventMap) => Event.fromJson(eventMap)).toList());
 
@@ -35,12 +37,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Person person;
   List<LifeHistoryEvent> eventLog = [];
 
   @override
   void initState() {
     super.initState();
-    //_loadEvents();
+    person = widget.person;
     _loadLifeState();
   }
 
@@ -52,21 +55,39 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadLifeState() async {
-    final lifeState = await LifeStateService().loadLifeState(widget.person);
+    final lifeState = await LifeStateService().loadLifeState(person);
     if (lifeState != null) {
       setState(() {
-        widget.person = Person.fromJson(lifeState['person']);
+        person = Person.fromJson(lifeState['person']);
         eventLog = (lifeState['events'] as List).map((e) => LifeHistoryEvent.fromJson(e)).toList();
       });
     } else {
-      // Si aucune sauvegarde trouvée, charger les évènement normaux
       _loadEvents();
     }
   }
 
+  void switchToPerson(Person newPerson) {
+    setState(() {
+      person = newPerson;  // Remplace la personne active
+    });
+
+    // Navigue vers la nouvelle vie
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomeScreen(
+          person: person,
+          realEstateService: widget.realEstateService,
+          transactionService: widget.transactionService,
+          eventMaps: widget.eventMaps,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    log("Current eventLog: $eventLog"); // Ajoutez cette ligne pour vérifier l'état du log
+    log("Current eventLog: $eventLog");
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -77,10 +98,10 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${widget.person.name}",
+                  "${person.name}",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                Text("Age: ${widget.person.age}"),
+                Text("Age: ${person.age}"),
               ],
             ),
           ],
@@ -92,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PersonDetailsScreen(person: widget.person),
+                  builder: (context) => PersonDetailsScreen(person: person),
                 ),
               );
             },
@@ -115,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ElevatedButton(
               onPressed: () {
                 setState(() {
-                  widget.person.ageOneYear();
+                  person.ageOneYear();
                 });
                 log("Aged event applied");
               },
@@ -160,33 +181,34 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: (index) {
           switch (index) {
             case 0:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => WorkScreen(person: widget.person)));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => WorkScreen(person: person)));
               break;
             case 1:
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (_) => CapitalScreen(
-                    person: widget.person,
+                    person: person,
                     realEstateService: widget.realEstateService,
                     transactionService: widget.transactionService,
                   ),
                 ),
-              ).then((result) {
-                if (result != null && result is String) {
-                  _loadEvents(); // Recharger les événements après un retour
-                }
-              });
+              );
               break;
             case 2:
-              Navigator.push(context, MaterialPageRoute(builder: (_) => RelationshipsScreen(person: widget.person)));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => RelationshipsScreen(person: person),
+                ),
+              );
               break;
             case 3:
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (_) => ActivitiesScreen(
-                    person: widget.person,
+                    person: person,
                     eventService: widget.eventService,
                   ),
                 ),

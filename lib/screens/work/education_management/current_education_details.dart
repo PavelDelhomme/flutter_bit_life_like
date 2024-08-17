@@ -18,7 +18,7 @@ class _CurrentEducationDetailsScreenState
   void improveSkills() {
     if (widget.person.currentEducation != null) {
       widget.person.currentEducation!.competences.forEach((skill, value) {
-        widget.person.improveSkill(skill, value * improvementFactor);
+        widget.person.updateSkill(skill, value * improvementFactor);
       });
 
       setState(() {

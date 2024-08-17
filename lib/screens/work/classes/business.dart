@@ -201,6 +201,32 @@ class Business {
       print("${name} passed the audit without issues.");
     }
   }
+
+  void processAnnualUpdate() {
+    // Générer les revenus pour l'année
+    double annualIncome = generateIncomeForYear();
+    generateIncome(annualIncome);
+
+    // Appliquer l'ammortissement
+    applyAmortization();
+
+    // Payer les salaire
+    paySalaries();
+
+    // Calculer et payer les taxes
+    double taxes = calculateBusinessTaxes();
+    payTaxes();
+
+    // Effectuer un audit pour détecter une éventuelle fraude
+    handleAudit();
+
+    print("${name}'s annual update completed");
+  }
+
+  double generateIncomeForYear() {
+    // Exemple de revenu aléatoire pour l'année
+    return Random().nextDouble() * 100000;
+  }
 }
 
 class Employee {

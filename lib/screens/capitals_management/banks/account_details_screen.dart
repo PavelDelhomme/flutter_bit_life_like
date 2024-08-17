@@ -2,12 +2,14 @@ import 'package:bit_life_like/services/bank/bank_account.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Classes/ficalite/evasion_fiscale.dart';
+import '../../../Classes/person.dart';
 import 'loan_application_screen.dart';
 
 class AccountDetailsScreen extends StatelessWidget {
   final BankAccount account;
+  final Person person;
 
-  AccountDetailsScreen({required this.account});
+  AccountDetailsScreen({required this.account, required this.person});
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +57,11 @@ class AccountDetailsScreen extends StatelessWidget {
   }
 
   void navigateToLoanApplication(BuildContext context, BankAccount account) {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => LoanApplicationScreen(account: account)));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => LoanApplicationScreen(account: account, person: person), // Passez la personne ici
+      ),
+    );
   }
 }

@@ -44,14 +44,8 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
       appBar: AppBar(title: Text('Manage Your Accounts')),
       body: ListView(
         children: [
-          ExpansionTile(
-            title: Text('Bank Accounts'),
-            children: _buildAccountList(context, widget.accounts),
-          ),
-          ExpansionTile(
-            title: Text('Offshore Accounts'),
-            children: _buildAccountList(context, widget.offshoreAccounts),
-          ),
+          _buildAccountSection('Bank Accounts', widget.accounts),
+          _buildAccountSection('Offshore Accounts', widget.offshoreAccounts),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -62,22 +56,30 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
     );
   }
 
-  List<Widget> _buildAccountList(BuildContext context, List<dynamic> accounts) {
+  Widget _buildAccountSection(String title, List<dynamic> accounts) {
+    return ExpansionTile(
+      title: Text(title),
+      children: _buildAccountList(accounts),
+    );
+  }
+
+
+  List<Widget> _buildAccountList(List<dynamic> accounts) {
     return accounts.map((account) {
       return ListTile(
         title: Text('${account.bankName} - ${account.accountType}'),
         subtitle: Text('Balance: \$${account.balance.toStringAsFixed(2)}'),
-        onTap: () => _showAccountDialog(context, account),
+        onTap: () => _showAccountDialog(account),
         trailing: IconButton(
           icon: Icon(Icons.close),
-          onPressed: () => _closeAccount(context, account),
+          onPressed: () => _closeAccount(account),
         ),
       );
     }).toList();
   }
 
 
-  void _showAccountDialog(BuildContext context, BankAccount account) {
+  void _showAccountDialog(BankAccount account) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -91,7 +93,7 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
               ElevatedButton(
                 child: Text('Close Account'),
                 onPressed: () {
-                  _closeAccount(context, account);
+                  _closeAccount(account);
                   Navigator.pop(context);
                 },
               ),
@@ -102,7 +104,7 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
     );
   }
 
-  void _closeAccount(BuildContext context, BankAccount account, [int? index]) {
+  void _closeAccount(BankAccount account, [int? index]) {
     if (account.balance >= account.closingFee) {
       account.closeAccount();
       if (index != null) {
@@ -235,5 +237,65 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
         ),
       );
     }
+  }
+
+  void _showTranferDialog(BankAccount sourceAccount) {
+    double transferAmount = 0.0;
+    BankAccount? targetAccount;
+
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextField(
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(labelText: "Transfet Amount"),
+                    onChanged: (value) {
+                      transferAmount = double.tryParse(value) ?? 0.0;
+                    },
+                  ),
+                  DropdownButton<BankAccount>(
+                    hint: Text("Select target account"),
+                    value: targetAccount,
+                    items: widget.accounts
+                        .where((account) => account != sourceAccount)
+                        .map<DropdownMenuItem<BankAccount>>((BankAccount account) {
+                      return DropdownMenuItem<BankAccount>(
+                        value: account,
+                        child: Text('${account.accountNumber} - ${account.bankName}'),
+                      );
+                    }).toList(),
+                    onChanged: (BankAccount? value) {
+                      setState(() {
+                        targetAccount = value;
+                      });
+                    },
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (targetAccount != null && transferAmount > 0) {
+                        sourceAccount.transferTo(targetAccount!, transferAmount);
+                        Navigator.pop(context);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Please select an account and enter a valid amount."),
+                        ));
+                      }
+                    },
+                    child: Text('Transfer'),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      }
+    );
   }
 }

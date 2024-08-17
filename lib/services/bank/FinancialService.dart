@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:bit_life_like/services/bank/fiscal_control_service.dart';
 import 'package:flutter/services.dart';
 
 import '../../Classes/life_history_event.dart';
@@ -18,6 +19,15 @@ class FinancialService {
   static double _inflationRate = 0.02; // Par défaut 2% d'inflation annuelle
   
   static double get inflationRate => _inflationRate;
+
+  static void deposit(BankAccount account, double amount) {
+    account.deposit(amount);
+    print("Deposited \$${amount.toStringAsFixed(2)} to ${account.accountType} account.");
+  }
+
+  static void withdraw(BankAccount account, double amount) {
+    account.withdraw(amount);
+  }
 
   static void updateInflationRate(double newRate) {
     _inflationRate = newRate;
@@ -116,6 +126,8 @@ class FinancialService {
   }
 
   bool applyForLoan(BankAccount account, double amount, int years, double rate) {
+    return account.canApplyForLoan(amount, amount / (years * 12));
+    /*
     double monthlyIncome = account.annualIncome / 12;
     double monthlyRepayment = amount / (years * 12);
     double newMonthlyExpenses = account.monthlyExpenses + monthlyRepayment;
@@ -126,7 +138,7 @@ class FinancialService {
       account.deposit(amount);  // Simuler le dépôt du montant du prêt
       return true;
     }
-    return false;
+    return false;*/
   }
 
 
@@ -143,9 +155,8 @@ class FinancialService {
     return null;
   }
 
-
   void performFiscalControl(Person person) {
-    bool foundFraud = _checkForFraud(person);
+    bool foundFraud = FiscalControlService().performFiscalControl(person);
 
     if (foundFraud) {
       double fine = person.calculateAnnualIncome() * 0.3; // Amende de 30% des revenus annuels
@@ -162,9 +173,5 @@ class FinancialService {
     }
   }
 
-  bool _checkForFraud(Person person) {
-    bool hasOffshoreAccounts = person.offshoreAccounts.isNotEmpty;
-    bool undeclaredIncome = person.calculateAnnualIncome() > 100000 && Random().nextBool();
-    return hasOffshoreAccounts || undeclaredIncome;
-  }
+
 }

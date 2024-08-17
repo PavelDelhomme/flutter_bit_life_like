@@ -74,7 +74,6 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
       ),
     );
   }
-
   void _createLife() {
     try {
       if (personService.availableCharacters.isEmpty) {
@@ -94,19 +93,33 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
         health: 100,
         isImprisoned: false,
         prisonTerm: 0,
-        bankAccounts: [],
+        bankAccounts: [_createInitialBankAccount()],
       );
 
       person.parents = _generateRandomFamily(_selectedCountry);
 
+      // Sauvegarde des parents et gestion des finances
       for (var parent in person.parents) {
         parent.manageFinances();
+        widget.lives.add(parent); // Ajout des parents à la liste des vies
       }
 
+      /*
+      // Générer et sauvegarder les amis et voisins
       person.friends = _generateRandomFriends(_selectedCountry, person.age, 3);
-      person.neighbors = _generateRandomNeighbors(person.country, 5);
+      for (var friend in person.friends) {
+        widget.lives.add(friend); // Sauvegarde des amis
+      }
 
-      widget.lives.add(person);
+      person.neighbors = _generateRandomNeighbors(person.country, 5);
+      for (var neighbor in person.neighbors) {
+        widget.lives.add(neighbor); // Sauvegarde des voisins
+      }
+      */
+
+      widget.lives.add(person); // Sauvegarde de la vie principale
+
+      // Passage à l'écran principal
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -123,15 +136,31 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
     }
   }
 
+  BankAccount _createInitialBankAccount() {
+    return BankAccount(
+      accountNumber: 'ACC${DateTime.now().millisecondsSinceEpoch}',
+      bankName: 'Default Bank',
+      balance: 0.0,
+      accountType: 'Checkins',
+    );
+  }
 
   List<Person> _generateRandomFamily(String country) {
-    return List.generate(2, (_) {
-      Person parent = personService.getRandomCharacter();
-      parent.country = country;
-      parent.bankAccounts = _generateRandomBankAccounts();
-      parent.jobs = [_generateRandomJob(country)]; // Assigne un emploi aléatoire
-      return parent;
-    });
+    final random = Random();
+
+    Person father = personService.getRandomCharacter();
+    father.country = country;
+    father.age = random.nextInt(20) + 35; // Age réaliste entre 35-55 ans
+    father.bankAccounts = _generateRandomBankAccounts();
+    father.jobs = [_generateRandomJob(country)];
+
+    Person mother = personService.getRandomCharacter();
+    mother.country = country;
+    mother.age = random.nextInt(10) + father.age - 5;
+    mother.bankAccounts = _generateRandomBankAccounts();
+    mother.jobs = [_generateRandomJob(country)];
+
+   return [father, mother];
   }
 
 
@@ -161,25 +190,5 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
       companyName: companyNames[random.nextInt(companyNames.length)],
       isFullTime: random.nextBool(),
     );
-  }
-
-
-  List<Person> _generateRandomFriends(
-      String country, int age, int numberOfFriends) {
-    return List.generate(numberOfFriends, (index) {
-      Person friend = personService.getRandomCharacter();
-      friend.country = country;
-      friend.age = age;
-      return friend;
-    });
-  }
-
-  List<Person> _generateRandomNeighbors(String country, int numberOfNeighbors) {
-    return List.generate(numberOfNeighbors, (index) {
-      Person neighbor = personService.getRandomCharacter();
-      neighbor.country = country;
-      neighbor.age = Random().nextInt(75) + 5;
-      return neighbor;
-    });
   }
 }

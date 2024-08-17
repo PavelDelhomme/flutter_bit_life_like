@@ -22,6 +22,7 @@ import '../services/bank/FinancialService.dart';
 import '../services/bank/bank_account.dart';
 import '../services/person.dart';
 import 'activity.dart';
+import 'life_history_event.dart';
 import 'objects/antique.dart';
 import 'objects/book.dart';
 import 'objects/instrument.dart';
@@ -45,6 +46,7 @@ class Person {
 
   List<BankAccount> bankAccounts;
   List<OffshoreAccount> offshoreAccounts;
+  List<LifeHistoryEvent> lifeHistory = [];
 
   // Relation avec d'autres personnages
   Map<String, Relationship> relationships = {};
@@ -53,6 +55,7 @@ class Person {
   List<Person> partners = [];
   List<Person> neighbors = [];
   List<Person> siblings = []; // Ajout des frères et sœurs
+  List<Person> children = [];
 
   // Works
   List<Job> jobs = [];
@@ -107,6 +110,7 @@ class Person {
     List<OffshoreAccount>? offshoreAccounts,
     List<Person>? parents,
     List<Person>? partners,
+    List<Person>? children,
     Map<String, double>? skills,
     List<CollectibleItem>? collectibles,
     List<String>? permits,
@@ -129,6 +133,7 @@ class Person {
         bankAccounts = bankAccounts ?? [BankAccount(accountNumber: 'ACC0000', bankName: 'Default Bank', balance: 0.0)],
         partners = partners ?? [],
         parents = parents ?? [],
+        children = children ?? [],
         skills = skills ?? {},
         collectibles = collectibles ?? [],
         permits = permits ?? [],
@@ -299,6 +304,8 @@ class Person {
         releaseFromPrison();
       }
     }
+
+    checkForDeath();
   }
 
   void openAccount(Bank bank, String accountType, double initialDeposit,
@@ -382,8 +389,7 @@ class Person {
   }
 
   void enroll(EducationLevel education) {
-    BankAccount? primaryAccount =
-    bankAccounts.isNotEmpty ? bankAccounts.first : null;
+    BankAccount? primaryAccount = bankAccounts.isNotEmpty ? bankAccounts.first : null;
 
     if (age <= 16) {
       if (parents.isNotEmpty && parents.first.bankAccounts.isNotEmpty) {
@@ -395,10 +401,15 @@ class Person {
 
           currentEducation?.classmates.add(this);
           currentEducation?.classmates.addAll(_generateRandomClassmates(5));
+
+          addLifeHistoryEvent(LifeHistoryEvent(
+            description: "Enrolled in ${education.name} with fees paid by parents.",
+            timestamp: DateTime.now(),
+          ));
+
           print("Enrolled in ${education.name} with fees paid by parents");
         } else {
-          print(
-              "Not enough money in parents' account to enroll in ${education.name}");
+          print("Not enough money in parents' account to enroll in ${education.name}");
         }
       } else {
         print("Parents do not have an account to pay for education.");
@@ -411,6 +422,12 @@ class Person {
 
         currentEducation?.classmates.add(this);
         currentEducation?.classmates.addAll(_generateRandomClassmates(5));
+
+        addLifeHistoryEvent(LifeHistoryEvent(
+          description: "Enrolled in ${education.name} with fees paid from own account.",
+          timestamp: DateTime.now(),
+        ));
+
         print("Enrolled in ${education.name} with fees paid from own account");
       } else {
         print("Not enough money to enroll in ${education.name}");
@@ -418,40 +435,65 @@ class Person {
     }
   }
 
+
   List<Person> _generateRandomClassmates(int count) {
     if (personService.availableCharacters.isEmpty) {
       throw Exception("PersonService is not initialized with characters.");
     }
     return List.generate(count, (_) => personService.getRandomCharacter());
   }
-
   void completeYear() {
     if (currentEducation != null) {
-      academicPerformance += 10;
+      academicPerformance += 10; // Par exemple, on ajoute 10% par année
       if (academicPerformance >= 100) {
-        educations.add(currentEducation!);
-        currentEducation = null;
+        educations.add(currentEducation!); // Transfère l'éducation dans l'historique
+        addLifeHistoryEvent(LifeHistoryEvent(
+          description: "Completed ${currentEducation!.name}.",
+          timestamp: DateTime.now(),
+        ));
+        currentEducation = null; // Réinitialise l'éducation actuelle
       }
     }
   }
+
 
   void inheritFrom(Person deceased) {
     inheritItems(deceased.collectibles);
     vehicles.addAll(deceased.vehicles);
     realEstates.addAll(deceased.realEstates);
 
-    BankAccount? primaryAccount =
-    bankAccounts.isNotEmpty ? bankAccounts.first : null;
-    if (primaryAccount != null) {
-      double inheritanceAmount = deceased.bankAccounts
-          .fold(0.0, (sum, acc) => sum + (acc.balance * 0.6)); // Assuming 40% tax
-      primaryAccount.deposit(inheritanceAmount);
-      print(
-          "${name} inherited \$${inheritanceAmount} and assets from ${deceased.name} into account ${primaryAccount.accountNumber}");
-    } else {
-      print(
-          "${name} inherited assets but has no bank account to receive funds.");
+    for (var account in deceased.bankAccounts) {
+      this.bankAccounts.add(account);
     }
+
+    for (var realEstate in deceased.realEstates) {
+      this.realEstates.add(realEstate);
+    }
+
+    for (var vehicle in deceased.vehicles) {
+      this.vehicles.add(vehicle);
+    }
+
+    for (var exoticVehicle in deceased.vehiculeExotiques) {
+      this.vehiculeExotiques.add(exoticVehicle);
+    }
+
+    for (var collectible in deceased.collectibles) {
+      this.collectibles.add(collectible);
+    }
+
+    for (var business in deceased.businesses) {
+      this.businesses.add(business);
+    }
+
+    for (var antique in deceased.antiques) {
+      this.antiques.add(antique);
+    }
+
+    for (var jewelry in deceased.jewelries) {
+      this.jewelries.add(jewelry);
+    }
+
   }
 
   void acquireItem(CollectibleItem item) {
@@ -534,15 +576,17 @@ class Person {
     happiness -= stressLevel / 200;
   }
 
-  void improveSkill(String skill, double increment) {
+  void updateSkill(String skill, double increment) {
     if (skills.containsKey(skill)) {
       skills[skill] = (skills[skill] ?? 0.0) + increment;
+    } else {
+      skills[skill] = increment;
     }
   }
-
+  
   void useBook(Book book) {
     book.skills.forEach((skill, improvement) {
-      improveSkill(skill, improvement);
+      updateSkill(skill, improvement);
     });
     print("Read book ${book.title} and improved skills.");
   }
@@ -550,7 +594,7 @@ class Person {
   void advanceEducation() {
     if (currentEducation != null) {
       currentEducation!.competences.forEach((skill, improvement) {
-        improveSkill(skill, improvement);
+        updateSkill(skill, improvement);
       });
       print("Advanced in ${currentEducation!.name} and improved skills");
     }
@@ -589,7 +633,7 @@ class Person {
   }
 
   void interactWith(Person other, InteractionType type) {
-    relationships.putIfAbsent(other.id, () => Relationship(other));
+    relationships.putIfAbsent(other.id, () => Relationship(other, quality: 50.0));
     Relationship relationship = relationships[other.id]!;
     relationship.updateRelationship(type, this, other);
   }
@@ -634,7 +678,7 @@ class Person {
 
     // Gérer les interactions avec d'autres personnages
     if (other != null) {
-      relationships.putIfAbsent(other.id, () => Relationship(other));
+      relationships.putIfAbsent(other.id, () => Relationship(other, quality: 50.0));
       Relationship relationship = relationships[other.id]!;
 
       // Appliquer les effets de l'activité sur la relation et l'état personnel
@@ -854,5 +898,104 @@ class Person {
     totalExpenses += bankAccounts.fold(0.0, (sum, account) => sum + account.monthlyExpenses);
 
     return totalExpenses;
+  }
+
+  void addLifeHistoryEvent(LifeHistoryEvent event) {
+    lifeHistory.add(event);
+    print("Life event added: ${event.description}");
+  }
+
+  void updateFinancialStatus(double amount) {
+    if (bankAccounts.isNotEmpty) {
+      bankAccounts.first.deposit(amount);
+      print("${name}'s financial status updated by \$${amount.toStringAsFixed(2)}");
+    } else {
+      print("${name} has no bank accounts to update financial status.");
+    }
+  }
+
+  void updateRelationship(String targetParsonId, int impact) {
+    if (relationships.containsKey(targetParsonId)) {
+      relationships[targetParsonId]!.quality += impact;
+      relationships[targetParsonId]!.quality = relationships[targetParsonId]!.quality.clamp(0.0, 100.0);
+      print("Relationship with $targetParsonId updated. New quality: ${relationships[targetParsonId]!.quality}");
+    } else {
+      print("No relationship found with person $targetParsonId.");
+    }
+  }
+  double calculateMortalityRisk() {
+    // Exemple d'une espérance de vie moyenne de 80 ans
+    double lifeExpectancy = 80.0;
+
+    // La probabilité de mort augmente exponentiellement après un certain âge
+    if (age < lifeExpectancy) {
+      return 0.01 * (age / lifeExpectancy); // Par exemple, 1% de risque par année avant l'espérance de vie
+    } else {
+      return 0.05 * ((age - lifeExpectancy) / 10); // Augmente significativement après l'espérance de vie
+    }
+  }
+
+  void checkForDeath() {
+    double mortalityRisk = calculateMortalityRisk();
+    if (Random().nextDouble() < mortalityRisk) {
+      die();
+    }
+  }
+
+  void die() {
+    print("$name has died at the age of $age");
+
+    // Gérer l'héritage
+    if (children.isNotEmpty) {
+      Person heir = children.first;
+      heir.inheritFrom(this);
+
+      switchToPerson(heir);
+      print("Assets have been distributed among the children");
+    } else if (partners.isNotEmpty){
+      partners.first.inheritFrom(this);
+      print("Assets have been inherited by the partner.");
+    } else {
+      print("No direct heirs, assets are unclaimed.");
+    }
+  }
+
+  Person createChild(Person partner) {
+    // Générez des caractéristiques pour l'enfant (nom, genre, apparence, etc)
+    String childName = "Child of ${name} and ${partner.name}";
+    String gender = Random().nextBool() ? 'Male': 'Female';
+    double appearance = (this.appearance + partner.appearance) / 2;
+    double health = (this.health + partner.health) / 2;
+    double karma = 100.0;
+    double happiness = 100.0;
+
+    Person child = Person(
+      name: childName,
+      gender: gender,
+      country: this.country,
+      appearance: appearance,
+      intelligence: intelligence,
+      health: health,
+      happiness: happiness,
+      karma: karma,
+      age: 0,
+      isImprisoned: false,
+      prisonTerm: 0,
+      bankAccounts: [],
+      offshoreAccounts: [],
+      parents: [this, partner],
+      partners: [],
+      skills: {},
+    );
+
+    // Ajouter l'enfant aux listes des parents
+    this.children.add(child);
+    partner.children.add(child);
+
+    return child;
+  }
+
+  void switchToPerson(Person newPerson) {
+    print("Switching to ${newPerson.name}' life.");
   }
 }

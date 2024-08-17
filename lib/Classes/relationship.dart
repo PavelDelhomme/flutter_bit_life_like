@@ -12,7 +12,24 @@ class Relationship {
   Person other;
   double quality = 50.0; // Début de relation moyenne à 50%
 
-  Relationship(this.other);
+  Relationship(this.other, {required quality});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'quality': quality,
+      'other': other.id,
+    };
+  }
+
+
+  // Création d'une relation à partir du JSON
+  factory Relationship.fromJson(Map<String, dynamic> json, Person relatedPerson) {
+    return Relationship(
+      relatedPerson,
+      quality: json['quality'],
+    );
+  }
+
 
   void updateRelationship(InteractionType type, Person self, Person other) {
     double change = 0.0;

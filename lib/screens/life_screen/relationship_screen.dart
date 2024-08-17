@@ -2,6 +2,9 @@ import 'package:bit_life_like/Classes/activity.dart';
 import 'package:bit_life_like/services/relation.dart';
 import 'package:flutter/material.dart';
 import '../../Classes/person.dart';
+import '../../services/bank/transaction_service.dart';
+import '../../services/real_estate/real_estate.dart';
+import '../home_screen.dart';
 
 class RelationshipsScreen extends StatefulWidget {
   final Person person;
@@ -29,6 +32,14 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
             people: widget.person.parents + widget.person.partners,
             onTap: (familyMember) {
               _showPersonDetails(context, familyMember);
+            },
+          ),
+          _buildRelationshipSection(
+            context,
+            title: "Children",  // Nouvelle section pour les enfants
+            people: widget.person.children,  // Afficher les enfants ici
+            onTap: (child) {
+              _switchToChildLife(context, child);  // Passer à la vie de l'enfant sélectionné
             },
           ),
           _buildRelationshipSection(
@@ -96,6 +107,7 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
       ],
     );
   }
+
   void _showPersonDetails(BuildContext context, Person person) {
     showModalBottomSheet(
       context: context,
@@ -132,6 +144,42 @@ class _RelationshipsScreenState extends State<RelationshipsScreen> {
               ],
             ),
           ),
+        );
+      },
+    );
+  }
+
+  void _switchToChildLife(BuildContext context, Person child) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Switch to ${child.name}'s life?"),
+          actions: [
+            TextButton(
+              child: Text("Yes"),
+              onPressed: () {
+                Navigator.pop(context);  // Fermer la boîte de dialogue
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(
+                      person: child,  // Passer à la nouvelle personne (enfant)
+                      realEstateService: RealEstateService(),
+                      transactionService: TransactionService(),
+                      eventMaps: [],  // Vous pouvez ajuster cela selon votre logique
+                    ),
+                  ),
+                );
+              },
+            ),
+            TextButton(
+              child: Text("No"),
+              onPressed: () {
+                Navigator.pop(context);  // Fermer la boîte de dialogue sans changement
+              },
+            ),
+          ],
         );
       },
     );

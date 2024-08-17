@@ -1,3 +1,4 @@
+import 'package:bit_life_like/Classes/person.dart';
 import 'package:bit_life_like/services/bank/FinancialService.dart';
 import 'package:bit_life_like/services/bank/bank_account.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +9,14 @@ class LoanApplicationScreen extends StatefulWidget {
   final BankAccount account;
   final RealEstate? realEstate; // Rendre RealEstate optionnel
   final String? loanDescription; // Description du prêt pour d'autres usages
+  final Person person;
 
-  LoanApplicationScreen(
-      {required this.account, this.realEstate, this.loanDescription});
+  LoanApplicationScreen({
+    required this.account,
+    this.realEstate,
+    this.loanDescription,
+    required this.person,
+  });
 
   @override
   _LoanApplicationScreenState createState() => _LoanApplicationScreenState();
@@ -19,7 +25,7 @@ class LoanApplicationScreen extends StatefulWidget {
 class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
   final _formKey = GlobalKey<FormState>();
   double _loanAmount = 0.0;
-  int _loanTerm = 1; // En années
+  int _loanTerm = 10; // En années
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +92,14 @@ class _LoanApplicationScreenState extends State<LoanApplicationScreen> {
   }
 
   void applyForLoan() {
+    if (widget.person.age < 16) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("You must be at least 16 years old to apply for a loan"),
+        backgroundColor: Colors.red,
+      ));
+      return;
+    }
+
     bool approved = FinancialService.instance.applyForLoan(
       widget.account,
       _loanAmount,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/services.dart';
+import 'package:collection/collection.dart';
 
 import '../Classes/person.dart';
 
@@ -67,4 +68,9 @@ class PersonService {
     final random = Random();
     return availableCharacters[random.nextInt(availableCharacters.length)];
   }
+
+  Person? getPersonById(String id) {
+    return availableCharacters.firstWhereOrNull((person) => person.id == id);
+  }
+
 }

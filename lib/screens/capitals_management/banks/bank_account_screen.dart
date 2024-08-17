@@ -50,7 +50,7 @@ class _BankAccountScreenState extends State<BankAccountScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AccountDetailsScreen(account: account),
+                        builder: (context) => AccountDetailsScreen(account: account, person: widget.person),
                       ),
                     );
                   },
@@ -73,7 +73,7 @@ class _BankAccountScreenState extends State<BankAccountScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AccountDetailsScreen(account: offshoreAccount),
+                        builder: (context) => AccountDetailsScreen(account: offshoreAccount, person: widget.person),
                       ),
                     );
                   },

@@ -107,6 +107,13 @@ class _OpenAccountScreenState extends State<OpenAccountScreen> {
     );
   }
   void _openAccount() {
+    if (widget.person.age < 16) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("You must be at least 16 years old to open a new bank account."),
+      ));
+      return;
+    }
+
     if (_selectedBankName != null && _selectedAccountType != null) {
       final accountDetails = FinancialService.getBankAccountDetails(
           _selectedBankName!, _selectedAccountType!);

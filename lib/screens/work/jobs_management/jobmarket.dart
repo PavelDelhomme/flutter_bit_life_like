@@ -13,6 +13,16 @@ class JobMarketScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (person.age < 16) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("Job Market"),
+        ),
+        body: Center(
+          child: Text("You must be at least 116 years old to access the job market."),
+        ),
+      );
+    }
     return FutureBuilder(
       future: jobMarketService.loadJobs(),
       builder: (context, snapshot) {

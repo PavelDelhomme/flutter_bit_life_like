@@ -29,6 +29,17 @@ class BankAccount {
   }) : loans = loans ?? [],
        accountHolders = accountHolders ?? [];
 
+  void transferTo(BankAccount targetAccount, double amount) {
+    if (amount <= balance) {
+      withdraw(amount);
+      targetAccount.deposit(amount);
+      print("Transferred \$${amount.toStringAsFixed(2)} to ${targetAccount.accountNumber}.");
+    } else {
+      print("Insufficient funds for transfer");
+    }
+  }
+
+
   void deposit(double amount) {
     balance += amount;
     print('Deposited \$${amount.toStringAsFixed(2)} to $accountType account.');

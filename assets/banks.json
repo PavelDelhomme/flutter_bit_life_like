@@ -1,39 +1,37 @@
 {
   "banks": [
-    [
-      {
-        "name": "Allianz Banque",
-        "accounts": [
-          {
-            "type": "Compte Courant",
-            "openingFee": 0,
-            "monthlyFee": 1,
-            "interestRate": 0.0,
-            "cardAnnualFee": 45
-          },
-          {
-            "type": "Livret A",
-            "openingFee": 0,
-            "monthlyFee": 0,
-            "interestRate": 0.75,
-            "cardAnnualFee": 0,
-            "depositLimit": 22950
-          }
-        ]
-      },
-      {
-        "name": "Cayman National Bank",
-        "accounts": [
-          {
-            "type": "Offshore",
-            "openingFee": 500,
-            "monthlyFee": 50,
-            "interestRate": 1.5,
-            "closingFee": 1000,
-            "taxHavenCountry": "Cayman Islands"
-          }
-        ]
-      }
-    ]
+    {
+      "name": "Allianz Banque",
+      "accounts": [
+        {
+          "type": "Compte Courant",
+          "openingFee": 0,
+          "monthlyFee": 1,
+          "interestRate": 0.0,
+          "cardAnnualFee": 45
+        },
+        {
+          "type": "Livret A",
+          "openingFee": 0,
+          "monthlyFee": 0,
+          "interestRate": 0.75,
+          "cardAnnualFee": 0,
+          "depositLimit": 22950
+        }
+      ]
+    },
+    {
+      "name": "Cayman National Bank",
+      "accounts": [
+        {
+          "type": "Offshore",
+          "openingFee": 500,
+          "monthlyFee": 50,
+          "interestRate": 1.5,
+          "closingFee": 1000,
+          "taxHavenCountry": "Cayman Islands"
+        }
+      ]
+    }
   ]
 }

@@ -20,6 +20,7 @@ enum ActivityType {
   CreativeProject,
   LanguagePractice,
   PhilosophicalDebate,
+  Criminal,
 }
 
 class Activity {

@@ -37,8 +37,10 @@ class _EducationScreenState extends State<EducationScreen> {
       List<EducationLevel> educationLevels = [];
 
       jsonResult['educations'].forEach((level, schools) {
-        for (var school in schools) {
-          educationLevels.add(EducationLevel.fromJson(school));
+        if (_isEligibleForEducationLevel(level)) {
+          for (var school in schools) {
+            educationLevels.add(EducationLevel.fromJson(school));
+          }
         }
       });
 
@@ -46,6 +48,23 @@ class _EducationScreenState extends State<EducationScreen> {
     } catch (e) {
       print("Error loading education levels: $e");
       rethrow;
+    }
+  }
+
+  bool _isEligibleForEducationLevel(String level) {
+    switch (level) {
+      case "maternelle":
+        return widget.person.age < 6;
+      case "primaire":
+        return widget.person.age >= 6 && widget.person.age < 11;
+      case "collège":
+        return widget.person.age >= 11 && widget.person.age < 15;
+      case "lycée":
+        return widget.person.age >= 15 && widget.person.age < 18;
+      case "enseignement_supérieur":
+        return widget.person.age >= 18;
+      default:
+        return false;
     }
   }
 
