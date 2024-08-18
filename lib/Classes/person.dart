@@ -43,6 +43,7 @@ class Person {
   bool isImprisoned = false;
   int prisonTerm = 0;
   double stressLevel = 0.0;
+  bool isPNJ = false;
 
   List<BankAccount> bankAccounts;
   List<OffshoreAccount> offshoreAccounts;
@@ -605,7 +606,7 @@ class Person {
     book.skills.forEach((skill, improvement) {
       updateSkill(skill, improvement);
     });
-    print("Read book ${book.title} and improved skills.");
+    print("Read book ${book.title} and improved skills : ${skills}.");
   }
 
   void advanceEducation() {

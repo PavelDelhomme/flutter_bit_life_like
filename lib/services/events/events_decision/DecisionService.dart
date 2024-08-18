@@ -21,7 +21,7 @@ class DecisionService {
         timestamp: DateTime.now(),
       ));
 
-      LifeStateService().saveLifeState(person, person.lifeHistory);
+      LifeStateService(personService: personService).saveLifeState(person, person.lifeHistory);
     }
   }
 }

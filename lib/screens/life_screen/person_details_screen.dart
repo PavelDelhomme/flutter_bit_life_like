@@ -9,7 +9,7 @@ import '../../services/life_state.dart';
 
 class PersonDetailsScreen extends StatelessWidget {
   final Person person;
-  final LifeStateService lifeStateService = LifeStateService();
+  final LifeStateService lifeStateService = LifeStateService(personService: personService);
 
   PersonDetailsScreen({required this.person});
 

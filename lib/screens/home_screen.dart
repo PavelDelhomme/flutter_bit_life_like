@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bit_life_like/Classes/event.dart';
 import 'package:bit_life_like/Classes/life_history_event.dart';
 import 'package:bit_life_like/services/life_history.dart';
+import 'package:bit_life_like/services/person.dart';
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadLifeState() async {
-    final lifeState = await LifeStateService().loadLifeState(person);
+    final lifeState = await LifeStateService(personService: personService).loadLifeState(person);
     if (lifeState != null) {
       setState(() {
         person = Person.fromJson(lifeState['person']);
@@ -65,12 +66,20 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void switchToPerson(Person newPerson) {
-    await LifeStateService()._loadLifeDetails(newPerson);
-    print("Switching to ${newPerson.name}'s life");
+  void switchToPerson(Person newPerson) async {
+    // Marquer l'ancienne personne comme PNJ
+    person.isPNJ = true;
+
+    final parent = person;
+    final child = newPerson;
+    final updatedChild = PersonService().transfertAssetsToChild(parent, child);
+
+    await LifeStateService(personService: PersonService()).loadLifeDetails(updatedChild);
+
+    print("switching to ${updatedChild.name}'s life.");
 
     setState(() {
-      person = newPerson;  // Remplace la personne active
+      person = updatedChild;
     });
 
     // Navigue vers la nouvelle vie

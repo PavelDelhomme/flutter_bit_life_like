@@ -46,7 +46,7 @@ class _StartScreenState extends State<StartScreen> {
   }
 
   Future<void> _loadLifeDetailsFromFile(Person person) async {
-    final LifeStateService lifeStateService = LifeStateService();
+    final LifeStateService lifeStateService = LifeStateService(personService: personService);
     final data = await lifeStateService.loadLifeState(person);
 
     if (data != null) {
@@ -112,7 +112,10 @@ class _StartScreenState extends State<StartScreen> {
                     events: widget.events,
                   ),
                 ),
-              ).then((_) => _loadLives()); // Recharger la liste après avoir créé une nouvelle vie
+              ).then((_) {
+                _loadLives(); // Recharger la liste après avoir créé une nouvelle vie
+                _saveLives(); // Sauvegarder les vies après leur chargement
+              });
             },
             child: Text('Start New Life'),
           ),

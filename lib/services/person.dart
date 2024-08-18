@@ -70,10 +70,21 @@ class PersonService {
     print("Generated ${availableCharacters.length} random characters.");
   }
 
-  Person transertAssetsToChild(Person parent, Person child) {
+  Person transfertAssetsToChild(Person parent, Person child) {
     child.bankAccounts.addAll(parent.bankAccounts);
+    child.offshoreAccounts.addAll(parent.offshoreAccounts);
+    child.businesses.addAll(parent.businesses);
+    child.collectibles.addAll(parent.collectibles);
+    child.vehicles.addAll(parent.vehicles);
     child.vehiculeExotiques.addAll(parent.vehiculeExotiques);
+    child.jewelries.addAll(parent.jewelries);
+    child.electronics.addAll(parent.electronics);
+    child.antiques.addAll(parent.antiques);
+    child.instruments.addAll(parent.instruments);
+    child.armes.addAll(parent.armes);
+    child.realEstates.addAll(parent.realEstates);
 
+    return child;
   }
 
   String getRandomName(String gender) {

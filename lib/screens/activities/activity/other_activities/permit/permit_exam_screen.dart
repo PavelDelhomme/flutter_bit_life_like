@@ -62,7 +62,7 @@ class _PermitExamScreenState extends State<PermitExamScreen> {
     }
 
     final events = await LifeHistoryService().getEvents();
-    await LifeStateService().saveLifeState(widget.person, events);
+    await LifeStateService(personService: personService).saveLifeState(widget.person, events);
 
     showDialog(
       context: context,

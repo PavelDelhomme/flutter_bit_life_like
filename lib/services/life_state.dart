@@ -85,7 +85,7 @@ class LifeStateService {
     return File('${directory.path}/$fileName');
   }
 
-  Future<void> _loadLifeDetails(Person person) async {
+  Future<void> loadLifeDetails(Person person) async {
     try {
       final data = await loadLifeState(person);
       if (data != null) {
