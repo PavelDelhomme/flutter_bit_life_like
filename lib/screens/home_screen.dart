@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:bit_life_like/Classes/event.dart';
 import 'package:bit_life_like/Classes/life_history_event.dart';
-import 'package:bit_life_like/Classes/relationship.dart';
 import 'package:bit_life_like/services/life_history.dart';
 import 'package:flutter/material.dart';
 import '../Classes/person.dart';
@@ -47,13 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadLifeState();
   }
 
-  Future<void> _loadEvents() async {
-    List<LifeHistoryEvent> events = await LifeHistoryService().getEvents();
-    setState(() {
-      eventLog = events;
-    });
-  }
-
   Future<void> _loadLifeState() async {
     final lifeState = await LifeStateService().loadLifeState(person);
     if (lifeState != null) {
@@ -66,7 +58,15 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Future<void> _loadEvents() async {
+    List<LifeHistoryEvent> events = await LifeHistoryService().getEvents();
+    setState(() {
+      eventLog = events;
+    });
+  }
+
   void switchToPerson(Person newPerson) {
+    await LifeStateService()._loadLifeDetails(newPerson);
     print("Switching to ${newPerson.name}'s life");
 
     setState(() {

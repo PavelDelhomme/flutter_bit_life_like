@@ -63,11 +63,17 @@ class PersonService {
         health: random.nextDouble() * 100,
         isImprisoned: false,
         prisonTerm: 0,
-        bankAccounts: [],
+        bankAccounts: [createInitialBankAccount()],
       );
     });
 
     print("Generated ${availableCharacters.length} random characters.");
+  }
+
+  Person transertAssetsToChild(Person parent, Person child) {
+    child.bankAccounts.addAll(parent.bankAccounts);
+    child.vehiculeExotiques.addAll(parent.vehiculeExotiques);
+
   }
 
   String getRandomName(String gender) {
@@ -87,8 +93,6 @@ class PersonService {
       balance: random.nextDouble() * 10000 + 500,
     );
   }
-
-
 
   Person getRandomCharacter() {
     if (availableCharacters.isEmpty) {

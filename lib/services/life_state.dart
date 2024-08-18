@@ -2,11 +2,17 @@ import 'dart:developer';
 import 'dart:io';
 import 'dart:convert';
 import 'package:bit_life_like/Classes/relationship.dart';
+import 'package:bit_life_like/services/bank/bank_account.dart';
+import 'package:bit_life_like/services/person.dart';
 import 'package:path_provider/path_provider.dart';
 import '../Classes/person.dart';
 import '../Classes/life_history_event.dart';
 
 class LifeStateService {
+  final PersonService personService;
+
+  LifeStateService({required this.personService});
+
   // Sauvegarde de l'état complet d'une vie
   Future<void> saveLifeState(Person person, List<LifeHistoryEvent> events) async {
     final file = await _getLifeStateFile(person);
@@ -19,6 +25,20 @@ class LifeStateService {
       'person': person.toJson(),
       'events': events.map((e) => e.toJson()).toList(),
       'relationships': relationshipsData,
+      'assets': {
+        'bankAccounts': person.bankAccounts.map((b) => b.toJson()).toList(),
+        'collectibles': person.collectibles.map((c) => c.toJson()).toList(),
+        'vehicles': person.vehicles.map((v) => v.toJson()).toList(),
+        'vehiculesExotiques': person.vehiculeExotiques.map((ve) => ve.toJson()).toList(),
+        'educations': person.educations.map((ed) => ed.toJson()).toList(),
+        'academicPerformance': person.academicPerformance,
+        'parents': person.parents.map((parent) => parent.toJson()).toList(),
+        'children': person.children.map((children) => children.toJson()).toList(),
+        'friends': person.friends.map((friend) => friend.toJson()).toList(),
+        'partners': person.partners.map((partner) => partner.toJson()).toList(),
+        'sibling': person.siblings.map((sibling) => sibling.toJson()).toList(),
+        'neighbors': person.neighbors.map((neighbor) => neighbor.toJson()).toList()
+      }
     };
     await file.writeAsString(jsonEncode(lifeData));
   }
@@ -33,10 +53,8 @@ class LifeStateService {
         // Restauration des relations
         final relationshipsData = data['relationships'] as Map<String, dynamic>;
         relationshipsData.forEach((key, relData) {
-          final relatedPerson = personService.getPersonById(key);
-          if (relatedPerson != null) {
-            person.relationships[key] = Relationship.fromJson(relData, relatedPerson);
-          }
+          final relatedPerson = getPersonById(key);
+          person.relationships[key] = Relationship.fromJson(relData, relatedPerson);
         });
 
         log("Etat sauvegardé trouvé");
@@ -69,18 +87,27 @@ class LifeStateService {
 
   Future<void> _loadLifeDetails(Person person) async {
     try {
-      final lifeStateService = LifeStateService(); // Créez une instance de LifeStateService ici
-      final data = await lifeStateService.loadLifeState(person);
+      final data = await loadLifeState(person);
       if (data != null) {
-        // Recharger les détails complexes comme les évènements de vie et les relations
         final events = (data['events'] as List<dynamic>)
             .map((eventJson) => LifeHistoryEvent.fromJson(eventJson))
             .toList();
         person.lifeHistory = events;
+
+        // Récupération d'actifs
+        person.bankAccounts = (data['assets']['bankAccounts'] as List<dynamic>)
+            .map((json) => BankAccount.fromJson(json))
+            .toList();
       }
     } catch (e) {
       log("Failed to load life details for ${person.name}: $e");
     }
+  }
+
+
+  Person getPersonById(String id) {
+    // Méthode fictive pour récupérer une personne par son ID
+    return personService.getPersonById(id); // Cette méthode doit être complétée en fonction de votre implémentation
   }
 
 }
