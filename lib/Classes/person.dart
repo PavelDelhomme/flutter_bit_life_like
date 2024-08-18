@@ -53,9 +53,9 @@ class Person {
   List<Person> parents = [];
   List<Person> friends = [];
   List<Person> partners = [];
-  List<Person> neighbors = [];
-  List<Person> siblings = []; // Ajout des frères et sœurs
   List<Person> children = [];
+  List<Person> siblings = [];
+  List<Person> neighbors = [];
 
   // Works
   List<Job> jobs = [];
@@ -111,6 +111,10 @@ class Person {
     List<Person>? parents,
     List<Person>? partners,
     List<Person>? children,
+    List<Person>? friends,
+    List<Person>? siblings,
+    List<Person>? neighbors,
+    Map<String, Relationship>? relationships, // Ajout des relations
     Map<String, double>? skills,
     List<CollectibleItem>? collectibles,
     List<String>? permits,
@@ -134,6 +138,10 @@ class Person {
         partners = partners ?? [],
         parents = parents ?? [],
         children = children ?? [],
+        friends = friends ?? [], // Initialisation des amis
+        siblings = siblings ?? [], // Initialisation des frères et soeurs
+        neighbors = neighbors ?? [], // Initialisation des voisins
+        relationships = relationships ?? {}, // Initialisation des relations
         skills = skills ?? {},
         collectibles = collectibles ?? [],
         permits = permits ?? [],
@@ -218,6 +226,31 @@ class Person {
           ?.map((e) => BankAccount.fromJson(e as Map<String, dynamic>))
           .toList() ??
           [],
+      parents: (json['parents'] as List<dynamic>?)
+          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      friends: (json['friends'] as List<dynamic>?)
+          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      partners: (json['partners'] as List<dynamic>?)
+          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      siblings: (json['siblings'] as List<dynamic>?)
+          ?.map((siblingJson) => Person.fromJson(siblingJson))
+          .toList() ?? [],
+      neighbors: (json['neighbors'] as List<dynamic>?)
+          ?.map((neighborJson) => Person.fromJson(neighborJson))
+          .toList() ?? [],
+      relationships: (json['relationships'] as Map<String, dynamic>?)
+          ?.map((key, value) {
+        // Récupération de la personne à partir de l'ID dans les relations
+        Person? relatedPerson = personService.getPersonById(key); // Vous devez avoir une méthode pour obtenir une personne par ID
+        return MapEntry(key, Relationship.fromJson(value, relatedPerson));
+      }) ?? {},
+
       skills: Map<String, double>.from(json['skills'] ?? {}),
       collectibles: parseCollectibles(json['collectibles'] as List<dynamic>?),
       permits: List<String>.from(json['permits'] ?? []),
@@ -259,18 +292,25 @@ class Person {
       'educations': educations.map((e) => e.toJson()).toList(),
       'currentEducation': currentEducation?.toJson(),
       'academicPerformance': academicPerformance,
+      'parents': parents.map((p) => p.toJson()).toList(),
+      'children': children.map((c) => c.toJson()).toList(),
+      'friends': friends.map((f) => f.toJson()).toList(),
+      'partners': partners.map((p) => p.toJson()).toList(),
+      'siblings': siblings.map((sibling) => sibling.toJson()).toList(),
+      'neighbors': neighbors.map((neighbor) => neighbor.toJson()).toList(),
+      'relationships': relationships.map((key, value) => MapEntry(key, value.toJson())),
     };
   }
+
+
+
   void ageParentYear() {
-    age += 1;
-    dev.log("Person has aged. New age: $age");
-    updateHealthAndHappiness();
     for (var parent in parents) {
       parent.age += 1;
     }
     dev.log("Parents have aged. Parent ages: ${parents.map((p) => p.age).toList()}");
-    // Continuez à ajouter des logs pour d'autres éléments si nécessaire
   }
+
 
 
   void ageOneYear() {
@@ -455,46 +495,23 @@ class Person {
       }
     }
   }
-
-
   void inheritFrom(Person deceased) {
-    inheritItems(deceased.collectibles);
-    vehicles.addAll(deceased.vehicles);
-    realEstates.addAll(deceased.realEstates);
+    // Hériter des objets et des comptes bancaires
+    this.bankAccounts.addAll(deceased.bankAccounts); // Hériter des comptes bancaires
+    this.offshoreAccounts.addAll(deceased.offshoreAccounts); // Hériter des comptes offshore
 
-    for (var account in deceased.bankAccounts) {
-      this.bankAccounts.add(account);
-    }
+    // Hériter des objets
+    this.collectibles.addAll(deceased.collectibles); // Hériter des objets
+    this.vehicles.addAll(deceased.vehicles); // Hériter des véhicules
+    this.realEstates.addAll(deceased.realEstates); // Hériter des biens immobiliers
+    this.vehiculeExotiques.addAll(deceased.vehiculeExotiques); // Hériter des véhicules exotiques
+    this.jewelries.addAll(deceased.jewelries); // Hériter des bijoux
+    this.electronics.addAll(deceased.electronics); // Hériter des électroniques
+    this.antiques.addAll(deceased.antiques); // Hériter des antiquités
 
-    for (var realEstate in deceased.realEstates) {
-      this.realEstates.add(realEstate);
-    }
-
-    for (var vehicle in deceased.vehicles) {
-      this.vehicles.add(vehicle);
-    }
-
-    for (var exoticVehicle in deceased.vehiculeExotiques) {
-      this.vehiculeExotiques.add(exoticVehicle);
-    }
-
-    for (var collectible in deceased.collectibles) {
-      this.collectibles.add(collectible);
-    }
-
-    for (var business in deceased.businesses) {
-      this.businesses.add(business);
-    }
-
-    for (var antique in deceased.antiques) {
-      this.antiques.add(antique);
-    }
-
-    for (var jewelry in deceased.jewelries) {
-      this.jewelries.add(jewelry);
-    }
-
+    print("${this.name} hérite de ${deceased.name} avec ${deceased.bankAccounts.length} comptes bancaires.");
   }
+
 
   void acquireItem(CollectibleItem item) {
     collectibles.add(item);
@@ -945,19 +962,33 @@ class Person {
   void die() {
     print("$name has died at the age of $age");
 
-    // Gérer l'héritage
     if (children.isNotEmpty) {
       Person heir = children.first;
       heir.inheritFrom(this);
 
-      switchToPerson(heir);
+      // Convertir le parent décédé en PNJ
+      this.becomeNPC();
+
+      // Gérer les relations avec les grands-parents
+      heir.parents.addAll(this.parents);
+
+      // Assurer que l'ancien parent reste dans la relation de l'enfant
+      heir.parents.add(this);
+
       print("Assets have been distributed among the children");
-    } else if (partners.isNotEmpty){
+    } else if (partners.isNotEmpty) {
       partners.first.inheritFrom(this);
       print("Assets have been inherited by the partner.");
     } else {
       print("No direct heirs, assets are unclaimed.");
     }
+  }
+
+
+  void becomeNPC() {
+    // Changer l'état du personnage pour ne plus être controlé directement
+    print("$name devient un PNJ après sa mort.");
+    // Arreter certain action etc etc
   }
 
   Person createChild(Person partner) {
@@ -993,9 +1024,5 @@ class Person {
     partner.children.add(child);
 
     return child;
-  }
-
-  void switchToPerson(Person newPerson) {
-    print("Switching to ${newPerson.name}' life.");
   }
 }

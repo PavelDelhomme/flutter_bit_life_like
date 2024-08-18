@@ -67,6 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void switchToPerson(Person newPerson) {
+    print("Switching to ${newPerson.name}'s life");
+
     setState(() {
       person = newPerson;  // Remplace la personne active
     });
@@ -76,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context,
       MaterialPageRoute(
         builder: (context) => HomeScreen(
-          person: person,
+          person: person,  // Assurez-vous de passer la bonne personne ici
           realEstateService: widget.realEstateService,
           transactionService: widget.transactionService,
           eventMaps: widget.eventMaps,
@@ -84,6 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+
 
   @override
   Widget build(BuildContext context) {

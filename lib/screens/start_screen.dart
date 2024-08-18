@@ -1,6 +1,10 @@
 import 'dart:convert';
+import 'package:bit_life_like/Classes/relationship.dart';
+import 'package:bit_life_like/screens/life_screen/person_details_screen.dart';
+import 'package:bit_life_like/services/life_state.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../Classes/life_history_event.dart';
 import '../Classes/person.dart';
 import '../services/bank/transaction_service.dart';
 import '../services/real_estate/real_estate.dart';
@@ -34,6 +38,33 @@ class _StartScreenState extends State<StartScreen> {
       setState(() {
         lives = decoded.map((data) => Person.fromJson(data)).toList();
       });
+
+      for (var person in lives) {
+        await _loadLifeDetailsFromFile(person);
+      }
+    }
+  }
+
+  Future<void> _loadLifeDetailsFromFile(Person person) async {
+    final LifeStateService lifeStateService = LifeStateService();
+    final data = await lifeStateService.loadLifeState(person);
+
+    if (data != null) {
+      setState(() {
+        person.lifeHistory = (data['events'] as List<dynamic>)
+            .map((eventJson) => LifeHistoryEvent.fromJson(eventJson))
+            .toList();
+
+        // Restaurer d'autres données complexe comme les relations
+        final relationshipsData = data['relationships'] as Map<String, dynamic>;
+        relationshipsData.forEach((key, relData) {
+          final relatedPerson = personService.getPersonById(key);
+          if (relatedPerson != null) {
+            person.relationships[key] =
+                Relationship.fromJson(relData, relatedPerson);
+          }
+        });
+      });
     }
   }
 
@@ -63,14 +94,9 @@ class _StartScreenState extends State<StartScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomeScreen(
-                          person: person,
-                          realEstateService: RealEstateService(),
-                          transactionService: TransactionService(),
-                          eventMaps: widget.events,
-                        ),
+                        builder: (context) => PersonDetailsScreen(person: person),
                       ),
-                    ).then((_) => _loadLives());
+                    );
                   },
                 );
               },
@@ -86,7 +112,7 @@ class _StartScreenState extends State<StartScreen> {
                     events: widget.events,
                   ),
                 ),
-              ).then((_) => _loadLives());
+              ).then((_) => _loadLives()); // Recharger la liste après avoir créé une nouvelle vie
             },
             child: Text('Start New Life'),
           ),

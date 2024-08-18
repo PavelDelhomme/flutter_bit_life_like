@@ -66,4 +66,21 @@ class LifeStateService {
     final fileName = 'life_state_${person.id}.json';
     return File('${directory.path}/$fileName');
   }
+
+  Future<void> _loadLifeDetails(Person person) async {
+    try {
+      final lifeStateService = LifeStateService(); // Créez une instance de LifeStateService ici
+      final data = await lifeStateService.loadLifeState(person);
+      if (data != null) {
+        // Recharger les détails complexes comme les évènements de vie et les relations
+        final events = (data['events'] as List<dynamic>)
+            .map((eventJson) => LifeHistoryEvent.fromJson(eventJson))
+            .toList();
+        person.lifeHistory = events;
+      }
+    } catch (e) {
+      log("Failed to load life details for ${person.name}: $e");
+    }
+  }
+
 }

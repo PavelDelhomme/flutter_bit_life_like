@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:bit_life_like/Classes/life_history_event.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -9,6 +12,33 @@ class PersonDetailsScreen extends StatelessWidget {
   final LifeStateService lifeStateService = LifeStateService();
 
   PersonDetailsScreen({required this.person});
+
+  Future<void> _loadLifeDetails(BuildContext context) async {
+    try {
+      final data = await lifeStateService.loadLifeState(person);
+      if (data != null) {
+        final events = (data['events'] as List<dynamic>)
+            .map((eventJson) => LifeHistoryEvent.fromJson(eventJson))
+            .toList();
+        person.lifeHistory = events;
+
+        // IL faut restaurer les relations objets, immobilier bref tout ce qui relieais la person
+
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Life details loaded successfully !"),
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("No saved life details found."),
+        ));
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Failed to load life details!"),
+      ));
+      log("Failed to load life details: $e");
+    }
+  }
 
   Future<void> _saveLife(BuildContext context) async {
     try {
@@ -41,6 +71,7 @@ class PersonDetailsScreen extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Failed to save life!"),
       ));
+      log("Failed to save life! : $e");
     }
   }
 
@@ -74,6 +105,10 @@ class PersonDetailsScreen extends StatelessWidget {
             icon: Icon(Icons.save),
             onPressed: () => _saveLife(context), // Sauvegarde de la vie
           ),
+          IconButton(
+            icon: Icon(Icons.download),
+            onPressed: () => _loadLifeDetails(context),
+          )
         ],
       ),
       body: ListView(
