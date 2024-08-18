@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:bit_life_like/Classes/relationship.dart';
 import 'package:bit_life_like/screens/life_screen/person_details_screen.dart';
 import 'package:bit_life_like/services/life_state.dart';
@@ -34,13 +35,20 @@ class _StartScreenState extends State<StartScreen> {
     final String? savedLives = prefs.getString('lives');
 
     if (savedLives != null) {
-      List<dynamic> decoded = jsonDecode(savedLives);
-      setState(() {
-        lives = decoded.map((data) => Person.fromJson(data)).toList();
-      });
-
-      for (var person in lives) {
-        await _loadLifeDetailsFromFile(person);
+      try {
+        List<dynamic> decoded = jsonDecode(savedLives);
+        for (var data in decoded) {
+          if (data is Map<String, dynamic>) {
+            Person person = Person.fromJson(data);
+            lives.add(person);
+            await _loadLifeDetailsFromFile(person);
+          } else {
+            log("Data is not in the expected format: $data");
+          }
+        }
+        setState(() {});
+      } catch (e) {
+        log("Error during deserialization: $e");
       }
     }
   }
@@ -78,7 +86,7 @@ class _StartScreenState extends State<StartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Start a New Life'),
+        title: Text('All Lives Screen'),
       ),
       body: Column(
         children: [

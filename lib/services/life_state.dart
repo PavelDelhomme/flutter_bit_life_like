@@ -53,18 +53,25 @@ class LifeStateService {
         // Restauration des relations
         final relationshipsData = data['relationships'] as Map<String, dynamic>;
         relationshipsData.forEach((key, relData) {
-          final relatedPerson = getPersonById(key);
+          final relatedPerson = personService.getPersonById(key);
+
+          if (relatedPerson != null) {
+            person.relationships[key] = Relationship.fromJson(relData, relatedPerson);
+          } else {
+            log("Person with ID key not found when restoring relationships for ${person.name}");
+          }
+
           person.relationships[key] = Relationship.fromJson(relData, relatedPerson);
         });
 
-        log("Etat sauvegardé trouvé");
+        log("Etat sauvegardé trouvé pour ${person.name}");
         return data;
       } else {
-        log("Aucun état sauvegardé trouvé");
+        log("Aucun état sauvegardé trouvé pour ${person.name}");
         return null;
       }
     } catch (e) {
-      print("Erreur lors du chargement de l'état de vie: $e");
+      print("Erreur lors du chargement de l'état de vie pour ${person.name}: $e");
       return null;
     }
   }
@@ -105,7 +112,17 @@ class LifeStateService {
   }
 
 
-  Person getPersonById(String id) {
+  Person? getPersonByI(String id) {
+    try {
+      Person? person = personService.getPersonById(id);
+      if (person == null) {
+        log("Aucune personne trouvée avec l'ID $id");
+      }
+      return person;
+    } catch (e) {
+      log("Erreur lors de la récupération de la personne avec l'ID $id : $e");
+      return null;
+    }
     // Méthode fictive pour récupérer une personne par son ID
     return personService.getPersonById(id); // Cette méthode doit être complétée en fonction de votre implémentation
   }

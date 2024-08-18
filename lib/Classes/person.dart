@@ -228,22 +228,35 @@ class Person {
           .toList() ??
           [],
       parents: (json['parents'] as List<dynamic>?)
-          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
-          .toList() ?? [],
+          ?.map((e) {
+        if (e is Map<String, dynamic>) {
+          return Person.fromJson(e);
+        } else if (e is String) {
+          return personService.getPersonById(e); // ou une autre gestion
+        } else {
+          dev.log("Unexpected parent data format: $e");
+          return null; // Si non valide, retourne null
+        }
+      }).whereType<Person>().toList() ?? [],
       children: (json['children'] as List<dynamic>?)
           ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .whereType<Person>()
           .toList() ?? [],
       friends: (json['friends'] as List<dynamic>?)
           ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .whereType<Person>()
           .toList() ?? [],
       partners: (json['partners'] as List<dynamic>?)
           ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .whereType<Person>()
           .toList() ?? [],
       siblings: (json['siblings'] as List<dynamic>?)
           ?.map((siblingJson) => Person.fromJson(siblingJson))
+          .whereType<Person>()
           .toList() ?? [],
       neighbors: (json['neighbors'] as List<dynamic>?)
           ?.map((neighborJson) => Person.fromJson(neighborJson))
+          .whereType<Person>()
           .toList() ?? [],
       relationships: (json['relationships'] as Map<String, dynamic>?)
           ?.map((key, value) {
@@ -269,8 +282,8 @@ class Person {
       academicPerformance: json['academicPerformance']?.toDouble() ?? 0.0,
     );
   }
-
   Map<String, dynamic> toJson() {
+    dev.log("Serializing Person: $name");
     return {
       'id': id,
       'name': name,
@@ -291,14 +304,15 @@ class Person {
       'vehicles': vehicles.map((e) => e.toJson()).toList(),
       'vehiculeExotiques': vehiculeExotiques.map((e) => e.toJson()).toList(),
       'educations': educations.map((e) => e.toJson()).toList(),
-      'currentEducation': currentEducation?.toJson(),
       'academicPerformance': academicPerformance,
-      'parents': parents.map((p) => p.toJson()).toList(),
-      'children': children.map((c) => c.toJson()).toList(),
-      'friends': friends.map((f) => f.toJson()).toList(),
-      'partners': partners.map((p) => p.toJson()).toList(),
-      'siblings': siblings.map((sibling) => sibling.toJson()).toList(),
-      'neighbors': neighbors.map((neighbor) => neighbor.toJson()).toList(),
+      // Remplacer les références aux parents, enfants, etc., par leurs identifiants ou en ignorant les cycles
+      'parents': parents.map((p) => p.id).toList(),  // Utiliser les ID au lieu de sérialiser l'objet complet
+      'children': children.map((c) => c.id).toList(),
+      'friends': friends.map((f) => f.id).toList(),
+      'partners': partners.map((p) => p.id).toList(),
+      'sibling': siblings.map((s) => s.id).toList(),
+      'neighbors': neighbors.map((n) => n.id).toList(),
+      // Vous pouvez ignorer les relations récursives lors de la sérialisation
       'relationships': relationships.map((key, value) => MapEntry(key, value.toJson())),
     };
   }
