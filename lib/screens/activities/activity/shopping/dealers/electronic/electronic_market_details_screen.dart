@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../../Classes/objects/electronic.dart';
+import '../../../../../../Classes/life_history_event.dart';
+import '../../../../../../services/life_history.dart';
 
 class ElectronicMarketDetailsScreen extends StatelessWidget {
   final Electronic electronic;
@@ -56,7 +58,8 @@ class ElectronicMarketDetailsScreen extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                // Additional actions on confirmation
+                // Ajouter l'événement d'achat à l'historique
+                _addPurchaseToHistory();
               },
               child: const Text("Confirm"),
             ),
@@ -70,5 +73,16 @@ class ElectronicMarketDetailsScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _addPurchaseToHistory() async {
+    // Ajout à l'historique de la vie
+    final event = LifeHistoryEvent(
+      description: "Purchased the electronic ${electronic.model} for \$${electronic.value.toStringAsFixed(2)}.",
+      timestamp: DateTime.now(),
+      ageAtEvent: 0,  // Remplacer par l'âge réel de la personne
+      personId: '',    // Remplacer par l'ID de la personne
+    );
+    await LifeHistoryService().saveEvent(event);
   }
 }

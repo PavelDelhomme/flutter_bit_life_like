@@ -48,16 +48,26 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadLifeState() async {
+    setState(() {
+      eventLog.clear();
+      person = widget.person;
+    });
+
     final lifeState = await LifeStateService(personService: personService).loadLifeState(person);
+
     if (lifeState != null) {
       setState(() {
         person = Person.fromJson(lifeState['person']);
-        eventLog = (lifeState['events'] as List).map((e) => LifeHistoryEvent.fromJson(e)).toList();
+        eventLog = (lifeState['events'] as List)
+            .map((e) => LifeHistoryEvent.fromJson(e))
+            .where((event) => event.personId == person.id) // Filtrer par personne
+            .toList();
       });
     } else {
       _loadEvents();
     }
   }
+
 
   Future<void> _loadEvents() async {
     List<LifeHistoryEvent> events = await LifeHistoryService().getEvents();
@@ -80,6 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     setState(() {
       person = updatedChild;
+      eventLog.clear();
     });
 
     // Navigue vers la nouvelle vie
@@ -138,15 +149,21 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: Container(
               padding: EdgeInsets.all(16.0),
-              child: ListView.builder(
-                itemCount: eventLog.length,
-                itemBuilder: (context, index) {
-                  final event = eventLog[index];
-                  return ListTile(
-                    title: Text(event.description),
-                    subtitle: Text(event.timestamp.toString()),
-                  );
-                },
+              child: ListView(
+                children: eventLog.map((e) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Age : ${e.ageAtEvent}", // Affiche l'âge enregistré lors de l'événement
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      e.description,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(height: 10),
+                  ],
+                )).toList(),
               ),
             ),
           ),
@@ -160,6 +177,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   eventLog.add(LifeHistoryEvent(
                     description: "Aged one year to ${person.age}",
                     timestamp: DateTime.now(),
+                    ageAtEvent: person.age,
+                    personId: person.id
                   ));
                 });
                 log("Aged event applied");

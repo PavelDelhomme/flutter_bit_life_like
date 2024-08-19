@@ -154,7 +154,6 @@ class _RealEstateClassicScreenState extends State<RealEstateClassicScreen> {
       },
     );
   }
-
   void _attemptPurchase(BankAccount account, RealEstate realEstate, BuildContext context) {
     widget.transactionService.attemptPurchase(
         account,
@@ -162,10 +161,12 @@ class _RealEstateClassicScreenState extends State<RealEstateClassicScreen> {
         onSuccess: () async {
           widget.person.addRealEstate(realEstate);
           final event = LifeHistoryEvent(
-            description: "You bought ${realEstate.name} fpr \$${realEstate.value.toStringAsFixed(2)}",
+            description: "${widget.person.name} bought ${realEstate.name} for \$${realEstate.value.toStringAsFixed(2)}.",
             timestamp: DateTime.now(),
+            ageAtEvent: widget.person.age,
+            personId: widget.person.id,
           );
-          await LifeHistoryService().saveEvent(event); // Enregistrer l'event
+          await LifeHistoryService().saveEvent(event); // Enregistrer l'événement
           Navigator.pop(context, "You bought ${realEstate.name}"); // Close the dialog
           showDialog(
             context: context,

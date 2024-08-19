@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../Classes/life_history_event.dart';
 import '../../../../../../../Classes/objects/real_estate.dart';
 import '../../../../../../../Classes/person.dart';
 import '../../../../../../../services/bank/bank_account.dart';
 import '../../../../../../../services/bank/transaction_service.dart';
+import '../../../../../../../services/life_history.dart';
 import '../../../../../../../services/real_estate/real_estate.dart';
 
 class RealEstateMarketScreen extends StatelessWidget {
@@ -93,21 +95,32 @@ class RealEstateMarketScreen extends StatelessWidget {
       },
     );
   }
-
   void _attemptPurchase(BankAccount account, RealEstate realEstate, BuildContext context) {
     transactionService.attemptPurchase(
         account,
         realEstate,
-        onSuccess: () {
+        onSuccess: () async {
           person.addRealEstate(realEstate);
           String eventMessage = "You bought ${realEstate.name} for \$${realEstate.value.toStringAsFixed(2)}";
+
+          // Ajout à l'historique
+          final event = LifeHistoryEvent(
+            description: "${person.name} purchased the real estate ${realEstate.name} for \$${realEstate.value.toStringAsFixed(2)}.",
+            timestamp: DateTime.now(),
+            ageAtEvent: person.age,
+            personId: person.id,
+          );
+          await LifeHistoryService().saveEvent(event);
+
           Navigator.pop(context, eventMessage);
           _showSuccessDialog(context, eventMessage);
         },
         onFailure: (String message) {
           _showErrorDialog(context, message);
-        });
+        }
+    );
   }
+
 
 
   void _attemptLoan(BankAccount account, RealEstate realEstate, BuildContext context) {
@@ -117,8 +130,16 @@ class RealEstateMarketScreen extends StatelessWidget {
       useLoan: true,
       loanTerm: 30, // Exemple de durée de prêt
       loanInterestRate: 5.0, // Exemple de taux d'intérêt
-      onSuccess: () {
+      onSuccess: () async {
         person.addRealEstate(realEstate);
+        // Ajout à l'historique
+        final event = LifeHistoryEvent(
+          description: "${person.name} purchased the real estate ${realEstate.name} for \$${realEstate.value.toStringAsFixed(2)}.",
+          timestamp: DateTime.now(),
+          ageAtEvent: person.age,
+          personId: person.id,
+        );
+        await LifeHistoryService().saveEvent(event);
         Navigator.pop(context); // Ferme la boîte de dialogue d'achat
         _showSuccessDialog(context, 'Purchased ${realEstate.name} for \$${realEstate.value.toStringAsFixed(2)} with a loan');
       },

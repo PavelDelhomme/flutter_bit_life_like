@@ -1,3 +1,4 @@
+import 'package:bit_life_like/Classes/life_history_event.dart';
 import 'package:flutter/material.dart';
 
 import '../../Classes/person.dart';
@@ -125,10 +126,29 @@ class _OpenAccountScreenState extends State<OpenAccountScreen> {
           accountDetails['interestRate'],
           isJoint: false,
         );
+
+        widget.person.addLifeHistoryEvent(
+          LifeHistoryEvent(
+            description: "${widget.person.name} a ouvert un compte bancaire ${newAccount.accountType} chez ${bank.name} avec une balance de \$${_initialDeposit.toStringAsFixed(2)}.",
+            timestamp: DateTime.now(),
+            ageAtEvent: widget.person.age,
+            personId: widget.person.id
+          )
+        );
+
         Navigator.pop(context, newAccount); // Retourne le compte bancaire créé
       } else {
         print(
             "Account details not found for $_selectedAccountType at $_selectedBankName.");
+
+        widget.person.addLifeHistoryEvent(
+            LifeHistoryEvent(
+              description: "${widget.person.name} a essayer d'ouvrir un compte bancaire compte bancaire qui a échoué.",
+              timestamp: DateTime.now(),
+              ageAtEvent: widget.person.age,
+              personId: widget.person.id
+            )
+        );
       }
     }
   }

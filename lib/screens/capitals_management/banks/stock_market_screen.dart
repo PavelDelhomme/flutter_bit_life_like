@@ -1,11 +1,13 @@
+import 'package:bit_life_like/Classes/person.dart';
 import 'package:flutter/material.dart';
 import '../../../services/bank/FinancialService.dart';
 import '../../../services/bank/bank_account.dart';
 
 class StockMarketScreen extends StatefulWidget {
+  final Person person;
   final BankAccount account;
 
-  StockMarketScreen({required this.account});
+  StockMarketScreen({required this.account, required this.person});
 
   @override
   _StockMarketScreenState createState() => _StockMarketScreenState();
@@ -47,7 +49,7 @@ class _StockMarketScreenState extends State<StockMarketScreen> {
   }
 
   void investInStocks() {
-    if (FinancialService.instance.investInStock(widget.account, amountToInvest)) {
+    if (FinancialService.instance.investInStock(widget.account, amountToInvest, widget.person)) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(

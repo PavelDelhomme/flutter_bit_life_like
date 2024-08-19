@@ -1,3 +1,5 @@
+import 'package:bit_life_like/Classes/life_history_event.dart';
+import 'package:bit_life_like/services/life_history.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../../Classes/objects/real_estate.dart';
 import '../../../../../../../Classes/person.dart';
@@ -101,7 +103,7 @@ class _RealEstateExoticScreenState extends State<RealEstateExoticScreen> {
         ],
       ),
       body: FutureBuilder<List<RealEstate>>(
-        future: widget.realEstateService.getPropertiesByTypeAndStyle("All", "Exotic"),
+        future: widget.realEstateService.getPropertiesByTypeAndStyle(selectedType, "Exotic"),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
@@ -146,6 +148,7 @@ class _RealEstateExoticScreenState extends State<RealEstateExoticScreen> {
     );
   }
 
+
   void _showPurchaseOptions(BuildContext context, RealEstate realEstate, BankAccount account) {
     showDialog(
       context: context,
@@ -178,8 +181,17 @@ class _RealEstateExoticScreenState extends State<RealEstateExoticScreen> {
     widget.transactionService.attemptPurchase(
       account,
       realEstate,
-      onSuccess: () {
+      onSuccess: () async {
         widget.person.addRealEstate(realEstate);
+
+        final event = LifeHistoryEvent(
+          description: "${widget.person.name} purchased the exotic real estate ${realEstate.name} for \$${realEstate.value.toStringAsFixed(2)}.",
+          timestamp: DateTime.now(),
+          ageAtEvent: widget.person.age,
+          personId: widget.person.id,
+        );
+        await LifeHistoryService().saveEvent(event);
+
         _showSuccessDialog(context, "You have successfully purchased ${realEstate.name}.");
       },
       onFailure: (String message) {
@@ -195,8 +207,17 @@ class _RealEstateExoticScreenState extends State<RealEstateExoticScreen> {
       useLoan: true,
       loanTerm: 30, // Example loan term
       loanInterestRate: 5.0, // Example interest rate
-      onSuccess: () {
+      onSuccess: () async {
         widget.person.addRealEstate(realEstate);
+
+        final event = LifeHistoryEvent(
+          description: "${widget.person.name} purchased the exotic real estate ${realEstate.name} with a loan for \$${realEstate.value.toStringAsFixed(2)}.",
+          timestamp: DateTime.now(),
+          ageAtEvent: widget.person.age,
+          personId: widget.person.id,
+        );
+        await LifeHistoryService().saveEvent(event);
+
         _showSuccessDialog(context, "Loan approved and ${realEstate.name} purchased.");
       },
       onFailure: (String message) {

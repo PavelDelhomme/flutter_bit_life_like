@@ -5,6 +5,9 @@ import 'package:bit_life_like/services/bank/transaction_service.dart';
 import 'package:bit_life_like/services/jewelry/jewelry.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../../Classes/life_history_event.dart';
+import '../../../../../../services/life_history.dart';
+
 class JewelryMarketScreen extends StatelessWidget {
   final JewelryService jewelryService;
   final TransactionService transactionService;
@@ -89,14 +92,23 @@ class JewelryMarketScreen extends StatelessWidget {
       },
     );
   }
-
   void _attemptPurchase(BankAccount account, Jewelry jewelry, BuildContext context) {
     transactionService.attemptPurchase(
       account,
       jewelry,
-      onSuccess: () {
+      onSuccess: () async {
         print("Purchase successful!");
         person.addJewelry(jewelry);
+
+        // Ajout à l'historique
+        final event = LifeHistoryEvent(
+          description: "${person.name} purchased the jewelry ${jewelry.name} for \$${jewelry.value.toStringAsFixed(2)}.",
+          timestamp: DateTime.now(),
+          ageAtEvent: person.age,
+          personId: person.id,
+        );
+        await LifeHistoryService().saveEvent(event);
+
         _showSuccessDialog(context);
       },
       onFailure: (String message) {
@@ -105,6 +117,7 @@ class JewelryMarketScreen extends StatelessWidget {
       },
     );
   }
+
 
   void _showSuccessDialog(BuildContext context) {
     showDialog(

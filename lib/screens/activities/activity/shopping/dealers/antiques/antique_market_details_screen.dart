@@ -4,18 +4,18 @@ import '../../../../../../../Classes/objects/antique.dart';
 import '../../../../../../../Classes/person.dart';
 import '../../../../../../../services/bank/transaction_service.dart';
 import '../../../../../../../services/bank/bank_account.dart';
+import '../../../../../../../Classes/life_history_event.dart';
+import '../../../../../../../services/life_history.dart';
 
 class AntiqueMarketDetailsScreen extends StatelessWidget {
   final Antique antique;
   final Person person;
   final TransactionService transactionService;
-  final Event eventService;
 
   AntiqueMarketDetailsScreen({
     required this.antique,
     required this.person,
     required this.transactionService,
-    required this.eventService
   });
 
   void _purchaseAntique(BuildContext context) {
@@ -62,9 +62,8 @@ class AntiqueMarketDetailsScreen extends StatelessWidget {
     transactionService.attemptPurchase(
       account,
       antique,
-      onSuccess: () {
-        person.addAntique(antique);  // Ajoutez l'antiquité à la collection de la personne
-        print("Purchase successful!");
+      onSuccess: () async {
+        person.addAntique(antique);
         Navigator.pop(context, 'Purchased ${antique.name} for \$${antique.value.toStringAsFixed(2)}');
         showDialog(
           context: context,
@@ -81,14 +80,23 @@ class AntiqueMarketDetailsScreen extends StatelessWidget {
             );
           },
         );
+
+        // Ajout à l'historique de la vie
+        final event = LifeHistoryEvent(
+          description: "${person.name} purchased the antique ${antique.name} for \$${antique.value.toStringAsFixed(2)}.",
+          timestamp: DateTime.now(),
+          ageAtEvent: person.age,
+          personId: person.id,  // Ajout de l'identifiant de la personne
+        );
+        await LifeHistoryService().saveEvent(event);
       },
       onFailure: (String message) {
-        print("Failed to purchase.");
-        Navigator.pop(context); // Close the modal
+        Navigator.pop(context);
         _showErrorDialog(context, message);
       },
     );
   }
+
   void _showErrorDialog(BuildContext context, String message) {
     showDialog(
       context: context,
@@ -106,7 +114,6 @@ class AntiqueMarketDetailsScreen extends StatelessWidget {
       },
     );
   }
-
 
   @override
   Widget build(BuildContext context) {

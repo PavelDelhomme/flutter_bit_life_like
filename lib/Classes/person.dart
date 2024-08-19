@@ -351,11 +351,15 @@ class Person {
       }
     }
 
+    applyInterestRates();
+
     checkForDeath();
     addLifeHistoryEvent(
       LifeHistoryEvent(
           description: "You're now ${age.toString()}",
           timestamp: DateTime.now(),
+          ageAtEvent: age,
+          personId: id
       )
     );
   }
@@ -401,6 +405,22 @@ class Person {
       print("Cannot open offshore account: Minimum income or net worth requirements not met.");
     }
   }
+  void applyInterestRates() {
+    for (var account in bankAccounts) {
+      dev.log("Ancien solde : ${account.balance}");
+      double balanceOfAccount = account.balance;
+      dev.log("balanceOfAccount : $balanceOfAccount");
+      double interestRate = account.interestRate;
+      dev.log("interestRate : $interestRate");
+      double interestRateByCent = interestRate / 100;
+      dev.log("interestRateByCent : $interestRateByCent");
+      double interest = balanceOfAccount * interestRateByCent;
+      double newBalance = balanceOfAccount + interest;
+      dev.log("Interest: $interest");
+      dev.log("Nouveau solde avec intérêt : $newBalance");
+      account.balance = newBalance;
+    }
+  }
 
   void inheritFrom(Person deceased) {
     // Hériter des objets et des comptes bancaires
@@ -421,7 +441,24 @@ class Person {
     this.bateaux.addAll(deceased.bateaux);
     this.avions.addAll(deceased.avions);
 
+    // Supprimer les objets de la personnne décèder
+    deceased.bankAccounts.remove(deceased.bankAccounts);
+    deceased.armes.remove(deceased.armes);
+    deceased.antiques.remove(deceased.antiques);
+    deceased.arts.remove(deceased.arts);
+    deceased.books.remove(deceased.books);
+    deceased.electronics.remove(deceased.electronics);
+    deceased.instruments.remove(deceased.instruments);
+    deceased.jewelries.remove(deceased.jewelries);
+    deceased.realEstates.remove(deceased.realEstates);
+    deceased.motos.remove(deceased.motos);
+    deceased.voitures.remove(deceased.voitures);
+    deceased.bateaux.remove(deceased.bateaux);
+    deceased.avions.remove(deceased.avions);
+    deceased.bankAccounts.add(BankAccount(accountNumber: "C${Random().nextInt(50000)}", bankName:"Default Bank", balance:Random().nextDouble() * bankAccounts.first.balance.toDouble(), annualIncome: 20000.0, monthlyExpenses: 9000.0, interestRate: 0.05, accountType: "Checking", closingFee: 10000, loanTermYears: 0, loans: [], accountHolders: [this.name]));
     print("${this.name} hérite de ${deceased.name} avec ${deceased.bankAccounts.length} comptes bancaires.");
+
+    // Supprimer la personne ?? Je ne sais pas enocre si je le fait a sa mort
   }
 
   void acquireAntique(Antique antique) {
@@ -518,6 +555,8 @@ class Person {
           addLifeHistoryEvent(LifeHistoryEvent(
             description: "Enrolled in ${education.name} with fees paid by parents.",
             timestamp: DateTime.now(),
+            ageAtEvent: age,
+            personId: this.id
           ));
 
           print("Enrolled in ${education.name} with fees paid by parents");
@@ -539,6 +578,8 @@ class Person {
         addLifeHistoryEvent(LifeHistoryEvent(
           description: "Enrolled in ${education.name} with fees paid from own account.",
           timestamp: DateTime.now(),
+          ageAtEvent: age,
+          personId: id
         ));
 
         print("Enrolled in ${education.name} with fees paid from own account");
@@ -562,6 +603,8 @@ class Person {
         addLifeHistoryEvent(LifeHistoryEvent(
           description: "Completed ${currentEducation!.name}.",
           timestamp: DateTime.now(),
+          ageAtEvent: age,
+          personId: id,
         ));
         currentEducation = null; // Réinitialise l'éducation actuelle
       }
@@ -716,6 +759,8 @@ class Person {
           LifeHistoryEvent(
             description: "${name} performed ${activity.name}.",
             timestamp: DateTime.now(),
+            ageAtEvent: this.age,
+            personId: id
           )
       );
     }

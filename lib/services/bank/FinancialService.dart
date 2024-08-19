@@ -20,13 +20,26 @@ class FinancialService {
   
   static double get inflationRate => _inflationRate;
 
-  static void deposit(BankAccount account, double amount) {
+  static void deposit(BankAccount account, double amount, Person person) {
     account.deposit(amount);
+    person.addLifeHistoryEvent(LifeHistoryEvent(
+      description: "${person.name} deposited \$${amount.toStringAsFixed(2)} into ${account.accountType} account.",
+      timestamp: DateTime.now(),
+      ageAtEvent: person.age,
+      personId: person.id,  // Ajout de l'identifiant de la personne
+    ));
     print("Deposited \$${amount.toStringAsFixed(2)} to ${account.accountType} account.");
   }
 
-  static void withdraw(BankAccount account, double amount) {
+  static void withdraw(BankAccount account, double amount, Person person) {
     account.withdraw(amount);
+    person.addLifeHistoryEvent(LifeHistoryEvent(
+      description: "${person.name} withdrew \$${amount.toStringAsFixed(2)} from ${account.accountType} account.",
+      timestamp: DateTime.now(),
+      ageAtEvent: person.age,
+      personId: person.id,  // Ajout de l'identifiant de la personne
+    ));
+    print("Withdrew \$${amount.toStringAsFixed(2)} from ${account.accountType} account.");
   }
 
   static void updateInflationRate(double newRate) {
@@ -93,9 +106,15 @@ class FinancialService {
     print("Seizing assets to recover \$${debtAmont}");
   }
 
-  bool investInStock(BankAccount account, double amount) {
+  bool investInStock(BankAccount account, double amount, Person person) {
     if (account.balance >= amount) {
       account.withdraw(amount);
+      person.addLifeHistoryEvent(LifeHistoryEvent(
+        description: "${person.name} invested \$${amount.toStringAsFixed(2)} in stocks.",
+        timestamp: DateTime.now(),
+        ageAtEvent: person.age,
+        personId: person.id,  // Ajout de l'identifiant de la personne
+      ));
       print('Invested \$$amount in stocks.');
       return true;
     } else {
@@ -104,10 +123,16 @@ class FinancialService {
     }
   }
 
-  bool investInCrypto(BankAccount account, double amount) {
+  bool investInCrypto(BankAccount account, double amount, Person person) {
     if (account.balance >= amount) {
       account.withdraw(amount);
-      print("Invested $amount in crypto");
+      person.addLifeHistoryEvent(LifeHistoryEvent(
+        description: "${person.name} invested \$${amount.toStringAsFixed(2)} in crypto.",
+        timestamp: DateTime.now(),
+        ageAtEvent: person.age,
+        personId: person.id,  // Ajout de l'identifiant de la personne
+      ));
+      print("Invested $amount in crypto.");
       return true;
     } else {
       print("Insufficient funds to invest in crypto.");
@@ -115,10 +140,15 @@ class FinancialService {
     }
   }
 
-  void buyBonds(BankAccount account, double amount) {
+  void buyBonds(BankAccount account, double amount, Person person) {
     if (account.balance >= amount) {
       account.withdraw(amount);
-      // Logicto handle bond purchase
+      person.addLifeHistoryEvent(LifeHistoryEvent(
+        description: "${person.name} invested \$${amount.toStringAsFixed(2)} in crypto.",
+        timestamp: DateTime.now(),
+        ageAtEvent: person.age,
+        personId: person.id,  // Ajout de l'identifiant de la personne
+      ));
       print("Bought bonds for $amount.");
     } else {
       print("Insufficient funds to buy bonds.");
@@ -164,11 +194,15 @@ class FinancialService {
       person.addLifeHistoryEvent(LifeHistoryEvent(
         description: "Fiscal control detected fraud. Fine applied: \$${fine.toStringAsFixed(2)}",
         timestamp: DateTime.now(),
+        ageAtEvent: person.age,
+        personId: person.id
       ));
     } else {
       person.addLifeHistoryEvent(LifeHistoryEvent(
         description: "Fiscal control completed. No fraud detected.",
         timestamp: DateTime.now(),
+        ageAtEvent: person.age,
+        personId: person.id
       ));
     }
   }

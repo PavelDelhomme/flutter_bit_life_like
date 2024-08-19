@@ -3,6 +3,8 @@ import '../../../../../../../Classes/objects/jewelry.dart';
 import '../../../../../../../Classes/person.dart';
 import '../../../../../../../services/bank/transaction_service.dart';
 import '../../../../../../../services/bank/bank_account.dart';
+import '../../../../../../../Classes/life_history_event.dart';
+import '../../../../../../../services/life_history.dart';
 
 class JewelryDetailsScreen extends StatelessWidget {
   final Jewelry jewelry;
@@ -59,11 +61,20 @@ class JewelryDetailsScreen extends StatelessWidget {
     transactionService.attemptPurchase(
       account,
       jewelry,
-      onSuccess: () {
+      onSuccess: () async {
         person.addJewelry(jewelry); // Ajout du bijou à la collection
         print("Purchase successful!");
         Navigator.pop(context); // Ferme le modal
         Navigator.pop(context, true); // Retourne true pour signaler la réussite
+
+        // Ajouter l'événement d'achat à l'historique
+        final event = LifeHistoryEvent(
+          description: "${person.name} purchased the jewelry ${jewelry.name} for \$${jewelry.value.toStringAsFixed(2)}.",
+          timestamp: DateTime.now(),
+          ageAtEvent: person.age,
+          personId: person.id,
+        );
+        await LifeHistoryService().saveEvent(event);
       },
       onFailure: (String message) {
         print("Failed to purchase.");
@@ -102,11 +113,9 @@ class JewelryDetailsScreen extends StatelessWidget {
             SizedBox(height: 10),
             Text("Carat: ${jewelry.carat}", style: TextStyle(fontSize: 16)),
             SizedBox(height: 10),
-            Text("Rarity: ${jewelry.material}", style: TextStyle(fontSize: 16)),
+            Text("Material: ${jewelry.material}", style: TextStyle(fontSize: 16)),
             SizedBox(height: 10),
-            Text("Rarity: ${jewelry.condition}", style: TextStyle(fontSize: 16)),
-            SizedBox(height: 10),
-            Text("Rarity: ${jewelry.isRare}", style: TextStyle(fontSize: 16)),
+            Text("Condition: ${jewelry.condition}", style: TextStyle(fontSize: 16)),
             SizedBox(height: 10),
             Text("Value: \$${jewelry.value.toStringAsFixed(2)}", style: TextStyle(fontSize: 16, color: Colors.green)),
             SizedBox(height: 30),

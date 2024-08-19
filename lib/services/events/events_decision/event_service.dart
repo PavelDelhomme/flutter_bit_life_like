@@ -52,6 +52,8 @@ class EventService {
     person.addLifeHistoryEvent(LifeHistoryEvent(
       description: "Event: ${event.name} - ${event.description}",
       timestamp: DateTime.now(),
+      ageAtEvent: person.age,
+      personId: person.id
     ));
   }
 }

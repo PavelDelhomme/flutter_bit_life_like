@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
+import '../../../../../../Classes/life_history_event.dart';
 import '../../../../../../Classes/objects/vehicles/bateau.dart';
 import '../../../../../../Classes/person.dart';
+import '../../../../../../services/bank/bank_account.dart';
 import '../../../../../../services/bank/transaction_service.dart';
+import '../../../../../../services/life_history.dart';
 
 class BoatDealershipScreen extends StatelessWidget {
   final Person person;
@@ -53,16 +56,7 @@ class BoatDealershipScreen extends StatelessWidget {
                   title: Text(boat.name),
                   subtitle: Text('Price: \$${boat.value.toStringAsFixed(2)}'),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => VehicleDealerDetailsScreen(
-                              vehicle: boat,
-                              person: person,
-                              transactionService: transactionService
-                          )
-                      ),
-                    );
+                    _selectAccountAndPurchase(context, boat);
                   },
                 );
               },
@@ -73,6 +67,91 @@ class BoatDealershipScreen extends StatelessWidget {
           }
         },
       ),
+    );
+  }
+
+  void _selectAccountAndPurchase(BuildContext context, Bateau boat) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext bc) {
+        return ListView(
+          children: person.bankAccounts.map<Widget>((BankAccount account) {
+            return ListTile(
+              title: Text('${account.bankName} - ${account.accountType}'),
+              subtitle: Text('Balance: \$${account.balance.toStringAsFixed(2)}'),
+              onTap: () {
+                Navigator.pop(bc); // Fermer le bottom sheet avant de continuer
+                _attemptPurchase(context, account, boat);
+              },
+            );
+          }).toList(),
+        );
+      },
+    );
+  }
+
+  void _attemptPurchase(BuildContext context, BankAccount account, Bateau boat) {
+    transactionService.attemptPurchase(
+        account,
+        boat,
+        onSuccess: () async {
+          person.addVehicle(boat);
+
+          final event = LifeHistoryEvent(
+            description: "${person.name} purchased the boat ${boat.name} for \$${boat.value.toStringAsFixed(2)}.",
+            timestamp: DateTime.now(),
+            ageAtEvent: person.age,
+            personId: person.id,
+          );
+          await LifeHistoryService().saveEvent(event);
+
+          Navigator.pop(context);
+          _showSuccessDialog(context, "You have successfully purchased the boat ${boat.name}.");
+        },
+        onFailure: (String message) {
+          _showErrorDialog(context, message);
+        }
+    );
+  }
+
+  void _showSuccessDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text("Purchase Successful"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(dialogContext).pop(); // Fermer le dialogue
+                Navigator.of(context).pop(); // Fermer l'écran d'achat
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(dialogContext).pop(); // Fermer le dialogue
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

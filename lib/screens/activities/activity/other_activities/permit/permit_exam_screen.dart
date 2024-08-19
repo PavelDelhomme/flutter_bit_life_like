@@ -87,6 +87,8 @@ class _PermitExamScreenState extends State<PermitExamScreen> {
     final event = LifeHistoryEvent(
       description: description,
       timestamp: DateTime.now(),
+      ageAtEvent: widget.person.age, // Capturer l'âge de la personne
+      personId: widget.person.id,    // Capturer l'identifiant de la personne
     );
     await LifeHistoryService().saveEvent(event);
   }

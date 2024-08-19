@@ -3,6 +3,8 @@ import '../../../../../../../Classes/person.dart';
 import '../../../../../../../services/bank/transaction_service.dart';
 import '../../../../../../../Classes/objects/electronic.dart';
 import '../../../../../../../services/electronic/electronic.dart';
+import '../../../../../../../services/life_history.dart';
+import '../../../../../../../Classes/life_history_event.dart';
 import '../../../../../../services/bank/bank_account.dart';
 
 class ElectronicMarketScreen extends StatelessWidget {
@@ -18,7 +20,6 @@ class ElectronicMarketScreen extends StatelessWidget {
   }
 
   void _purchaseElectronic(BuildContext buildContext, Electronic electronic) {
-    // Show a dialog to confirm purchase
     showDialog(
       context: buildContext,
       builder: (context) => AlertDialog(
@@ -27,13 +28,13 @@ class ElectronicMarketScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.pop(context); // Close the dialog
-              _selectAccountAndPurchase(buildContext, electronic); // Proceed to account selection
+              Navigator.pop(context);
+              _selectAccountAndPurchase(buildContext, electronic);
             },
             child: Text('Purchase'),
           ),
           TextButton(
-            onPressed: () => Navigator.pop(context), // Cancel the purchase
+            onPressed: () => Navigator.pop(context),
             child: Text('Cancel'),
           ),
         ],
@@ -42,7 +43,6 @@ class ElectronicMarketScreen extends StatelessWidget {
   }
 
   void _selectAccountAndPurchase(BuildContext buildContext, Electronic electronic) {
-    // Show a bottom sheet for account selection
     showModalBottomSheet(
       context: buildContext,
       builder: (BuildContext bc) {
@@ -53,7 +53,7 @@ class ElectronicMarketScreen extends StatelessWidget {
               subtitle: Text('Balance: \$${account.balance.toStringAsFixed(2)}'),
               onTap: () {
                 Navigator.pop(bc); // Close the bottom sheet
-                _attemptPurchase(buildContext, electronic, account); // Attempt to purchase
+                _attemptPurchase(buildContext, electronic, account);
               },
             );
           }).toList(),
@@ -66,9 +66,18 @@ class ElectronicMarketScreen extends StatelessWidget {
     transactionService.attemptPurchase(
       account,
       electronic,
-      onSuccess: () {
+      onSuccess: () async {
         person.addElectronic(electronic); // Add the electronic to the person's collection
         print("Purchase successful!");
+
+        // Ajout à l'historique de la vie
+        final event = LifeHistoryEvent(
+          description: "${person.name} purchased the electronic ${electronic.model} for \$${electronic.value.toStringAsFixed(2)}.",
+          timestamp: DateTime.now(),
+          ageAtEvent: person.age,
+          personId: person.id,
+        );
+        await LifeHistoryService().saveEvent(event);
 
         // Use buildContext to show a success dialog
         showDialog(
@@ -133,7 +142,7 @@ class ElectronicMarketScreen extends StatelessWidget {
                 return ListTile(
                   title: Text(electronic.model),
                   subtitle: Text('Price: \$${electronic.value.toStringAsFixed(2)}'),
-                  onTap: () => _purchaseElectronic(context, electronic), // Pass the context from build method
+                  onTap: () => _purchaseElectronic(context, electronic),
                 );
               },
             );

@@ -74,6 +74,8 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
       ),
     );
   }
+
+
   void _createLife() {
     try {
       if (personService.availableCharacters.isEmpty) {

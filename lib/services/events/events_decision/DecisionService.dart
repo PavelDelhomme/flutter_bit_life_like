@@ -19,6 +19,8 @@ class DecisionService {
       person.addLifeHistoryEvent(LifeHistoryEvent(
         description: "Event: ${event.name} - Choice: $choice",
         timestamp: DateTime.now(),
+        ageAtEvent: person.age,
+        personId: person.id
       ));
     }
   }

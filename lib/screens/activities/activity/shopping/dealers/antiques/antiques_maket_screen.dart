@@ -1,11 +1,12 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import '../../../../../../Classes/person.dart';
 import '../../../../../../services/antique/antique.dart';
 import '../../../../../../services/bank/bank_account.dart';
 import '../../../../../../services/bank/transaction_service.dart';
 import '../../../../../../Classes/objects/antique.dart';
+import '../../../../../../Classes/life_history_event.dart';
+import '../../../../../../services/life_history.dart';
 
 class AntiqueMarketScreen extends StatelessWidget {
   final Person person;
@@ -96,18 +97,26 @@ class AntiqueMarketScreen extends StatelessWidget {
     transactionService.attemptPurchase(
       account,
       antique,
-      onSuccess: () {
+      onSuccess: () async {
         person.antiques.add(antique); // Ajouter l'antiquité à la collection de la personne
         Navigator.pop(context, 'You bought ${antique.name} for \$${antique.value.toStringAsFixed(2)}');
         log("You bought ${antique.name} for \$${antique.value.toStringAsFixed(2)}");
         _showSuccessDialog(context);
+
+        // Ajout à l'historique de la vie
+        final event = LifeHistoryEvent(
+          description: "${person.name} purchased the antique ${antique.name} for \$${antique.value.toStringAsFixed(2)}.",
+          timestamp: DateTime.now(),
+          ageAtEvent: person.age,
+          personId: person.id,
+        );
+        await LifeHistoryService().saveEvent(event);
       },
       onFailure: (String message) {
         _showErrorDialog(context, message);
       },
     );
   }
-
 
   void _showSuccessDialog(BuildContext context) {
     showDialog(

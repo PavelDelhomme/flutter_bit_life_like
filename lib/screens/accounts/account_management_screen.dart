@@ -3,19 +3,24 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../Classes/ficalite/evasion_fiscale.dart';
+import '../../Classes/life_history_event.dart';
+import '../../Classes/person.dart';
 import '../../services/bank/bank_account.dart';
+import '../../services/life_history.dart';
 
 class AccountManagementScreen extends StatefulWidget {
   final List<BankAccount> accounts;
   final List<OffshoreAccount> offshoreAccounts;
   final double annualIncome;
   final double netWorth;
+  final Person person;  // Ajoutez ceci pour avoir accès à la personne
 
   AccountManagementScreen({
     required this.accounts,
     required this.offshoreAccounts,
     required this.annualIncome,
     required this.netWorth,
+    required this.person,  // Assurez-vous de passer la personne dans l'appel
   });
 
   @override
@@ -63,7 +68,6 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
     );
   }
 
-
   List<Widget> _buildAccountList(List<dynamic> accounts) {
     return accounts.map((account) {
       return ListTile(
@@ -77,7 +81,6 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
       );
     }).toList();
   }
-
 
   void _showAccountDialog(BankAccount account) {
     showModalBottomSheet(
@@ -104,12 +107,22 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
     );
   }
 
-  void _closeAccount(BankAccount account, [int? index]) {
+  void _closeAccount(BankAccount account, [int? index]) async {
     if (account.balance >= account.closingFee) {
       account.closeAccount();
       if (index != null) {
         widget.accounts.removeAt(index);
       }
+
+      // Ajout à l'historique de la vie
+      final event = LifeHistoryEvent(
+        description: "${widget.person.name} closed their ${account.accountType} account at ${account.bankName}.",
+        timestamp: DateTime.now(),
+        ageAtEvent: widget.person.age,
+        personId: widget.person.id,  // Ajout de l'identifiant de la personne
+      );
+      await LifeHistoryService().saveEvent(event);
+
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Account closed successfully."),
       ));
@@ -149,15 +162,12 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
                       selectedBank = value;
                     });
                   },
-                  validator: (value) => value == null ? 'Please select a bank': null,
+                  validator: (value) => value == null ? 'Please select a bank' : null,
                 ),
-                if (selectedBank != null) // Load account types when bank is selected
+                if (selectedBank != null)
                   DropdownButtonFormField<String>(
-                    decoration:
-                    const InputDecoration(hintText: "Select Account Type"),
-                    items: bankData
-                        .firstWhere((bank) => bank['name'] == selectedBank)[
-                    'accounts']
+                    decoration: const InputDecoration(hintText: "Select Account Type"),
+                    items: bankData.firstWhere((bank) => bank['name'] == selectedBank)['accounts']
                         .map<DropdownMenuItem<String>>((account) {
                       return DropdownMenuItem<String>(
                         value: account['type'],
@@ -169,21 +179,17 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
                         selectedAccountType = value;
                       });
                     },
-                    validator: (value) =>
-                    value == null ? 'Please select an account type' : null,
+                    validator: (value) => value == null ? 'Please select an account type' : null,
                   ),
                 TextFormField(
-                  decoration:
-                  const InputDecoration(hintText: "Initial Deposit"),
+                  decoration: const InputDecoration(hintText: "Initial Deposit"),
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
-                  onSaved: (value) =>
-                  initialDeposit = double.tryParse(value!) ?? 0.0,
-                  validator: (value) =>
-                  value!.isEmpty ? 'This field cannot be empty' : null,
+                  onSaved: (value) => initialDeposit = double.tryParse(value!) ?? 0.0,
+                  validator: (value) => value!.isEmpty ? 'This field cannot be empty' : null,
                 ),
                 ElevatedButton(
                   child: const Text('Submit'),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
 
@@ -199,6 +205,15 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
                           interestRate: 0.1,
                         );
                         widget.accounts.add(newAccount);
+
+                        // Ajout à l'historique de la vie
+                        final event = LifeHistoryEvent(
+                          description: "${widget.person.name} opened a new ${newAccount.accountType} account at ${newAccount.bankName}.",
+                          timestamp: DateTime.now(),
+                          ageAtEvent: widget.person.age,
+                          personId: widget.person.id,  // Ajout de l'identifiant de la personne
+                        );
+                        await LifeHistoryService().saveEvent(event);
                       }
                       Navigator.pop(context);
                     }
@@ -212,90 +227,31 @@ class _AccountManagementScreenState extends State<AccountManagementScreen> {
     );
   }
 
-  void _handleOffshoreAccount(String? bankName, double initialDeposit) {
+  void _handleOffshoreAccount(String? bankName, double initialDeposit) async {
     const double minimumIncomeRequired = 100000; // Revenu annuel minimum requis
     const double minimumNetWorthRequired = 500000; // Capital minimum requis
 
-    // Vérifiez si l'utilisateur répond aux exigences pour ouvrir un compte offshore
-    if (widget.annualIncome >= minimumIncomeRequired ||
-        widget.netWorth >= minimumNetWorthRequired) {
+    if (widget.annualIncome >= minimumIncomeRequired || widget.netWorth >= minimumNetWorthRequired) {
       OffshoreAccount newOffshoreAccount = OffshoreAccount(
         accountNumber: 'OFF${DateTime.now().millisecondsSinceEpoch}',
         bankName: bankName ?? 'Unknown Offshore Bank',
         balance: initialDeposit,
-        taxHavenCountry: "Cayman Islands", // Exemples, cela pourrait être plus dynamique
+        taxHavenCountry: "Cayman Islands", // Exemples
       );
       widget.offshoreAccounts.add(newOffshoreAccount);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Offshore account opened successfully.")),
+
+      // Ajout à l'historique de la vie
+      final event = LifeHistoryEvent(
+        description: "${widget.person.name} opened an offshore account in ${newOffshoreAccount.taxHavenCountry}.",
+        timestamp: DateTime.now(),
+        ageAtEvent: widget.person.age,
+        personId: widget.person.id,  // Ajout de l'identifiant de la personne
       );
+      await LifeHistoryService().saveEvent(event);
+
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Offshore account opened successfully.")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-              "Cannot open offshore account: Minimum income or net worth requirements not met."),
-        ),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cannot open offshore account: Minimum income or net worth requirements not met.")));
     }
-  }
-
-  void _showTranferDialog(BankAccount sourceAccount) {
-    double transferAmount = 0.0;
-    BankAccount? targetAccount;
-
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(labelText: "Transfet Amount"),
-                    onChanged: (value) {
-                      transferAmount = double.tryParse(value) ?? 0.0;
-                    },
-                  ),
-                  DropdownButton<BankAccount>(
-                    hint: Text("Select target account"),
-                    value: targetAccount,
-                    items: widget.accounts
-                        .where((account) => account != sourceAccount)
-                        .map<DropdownMenuItem<BankAccount>>((BankAccount account) {
-                      return DropdownMenuItem<BankAccount>(
-                        value: account,
-                        child: Text('${account.accountNumber} - ${account.bankName}'),
-                      );
-                    }).toList(),
-                    onChanged: (BankAccount? value) {
-                      setState(() {
-                        targetAccount = value;
-                      });
-                    },
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (targetAccount != null && transferAmount > 0) {
-                        sourceAccount.transferTo(targetAccount!, transferAmount);
-                        Navigator.pop(context);
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("Please select an account and enter a valid amount."),
-                        ));
-                      }
-                    },
-                    child: Text('Transfer'),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
-      }
-    );
   }
 }

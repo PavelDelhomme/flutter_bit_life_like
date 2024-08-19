@@ -1,11 +1,13 @@
+import 'package:bit_life_like/Classes/person.dart';
 import 'package:flutter/material.dart';
 import '../../../services/bank/FinancialService.dart';
 import '../../../services/bank/bank_account.dart';
 
 class CryptocurrencyInvestmentScreen extends StatefulWidget {
   final BankAccount account;
+  final Person person;
 
-  CryptocurrencyInvestmentScreen({required this.account});
+  CryptocurrencyInvestmentScreen({required this.account, required this.person});
 
   @override
   _CryptocurrencyInvestmentScreenState createState() => _CryptocurrencyInvestmentScreenState();
@@ -47,7 +49,7 @@ class _CryptocurrencyInvestmentScreenState extends State<CryptocurrencyInvestmen
   }
 
   void investInCrypto() {
-    if (FinancialService.instance.investInCrypto(widget.account, amountToInvest)) {
+    if (FinancialService.instance.investInCrypto(widget.account, amountToInvest, widget.person)) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(

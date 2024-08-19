@@ -150,6 +150,7 @@ class _StartScreenState extends State<StartScreen> {
                         setState(() {
                           lives.removeAt(index);
                         });
+                        await LifeStateService(personService: personService).deleteLifeState(person);
                         await _saveLives();
                       }
                     },

@@ -17,6 +17,8 @@ class ActivityService {
     person.addLifeHistoryEvent(LifeHistoryEvent(
       description: "${person.name} performed ${activity.name}",
       timestamp: DateTime.now(),
+      ageAtEvent: person.age,
+      personId: person.id
     ));
   }
 }

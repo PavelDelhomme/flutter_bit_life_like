@@ -15,11 +15,15 @@ class FiscalControlService {
       person.addLifeHistoryEvent(LifeHistoryEvent(
         description: "Fiscal control detected fraud. Fine applied: \$${fine.toStringAsFixed(2)}",
         timestamp: DateTime.now(),
+        ageAtEvent: person.age,
+        personId: person.id
       ));
     } else {
       person.addLifeHistoryEvent(LifeHistoryEvent(
         description: "Fiscal control completed. No fraud detected.",
         timestamp: DateTime.now(),
+        ageAtEvent: person.age,
+        personId: person.id
       ));
     }
 

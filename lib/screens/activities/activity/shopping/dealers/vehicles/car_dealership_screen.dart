@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
+import '../../../../../../Classes/life_history_event.dart';
 import '../../../../../../Classes/objects/vehicles/moto.dart';
 import '../../../../../../Classes/objects/vehicles/voiture.dart';
 import '../../../../../../Classes/person.dart';
+import '../../../../../../services/bank/bank_account.dart';
 import '../../../../../../services/bank/transaction_service.dart';
+import '../../../../../../services/life_history.dart';
 
 class CarDealershipScreen extends StatelessWidget {
   final Person person;
@@ -73,6 +76,65 @@ class CarDealershipScreen extends StatelessWidget {
           }
         },
       ),
+    );
+  }
+  void _attemptPurchase(BuildContext context, BankAccount account, dynamic vehicle) {
+    transactionService.attemptPurchase(
+        account,
+        vehicle,
+        onSuccess: () async {
+          person.addVehicle(vehicle);
+
+          final event = LifeHistoryEvent(
+            description: "${person.name} purchased the ${vehicle.runtimeType} ${vehicle.name} for \$${vehicle.value.toStringAsFixed(2)}.",
+            timestamp: DateTime.now(),
+            ageAtEvent: person.age,
+            personId: person.id,
+          );
+          await LifeHistoryService().saveEvent(event);
+
+          Navigator.pop(context);
+          _showSuccessDialog(context, "You have successfully purchased the ${vehicle.runtimeType} ${vehicle.name}.");
+        },
+        onFailure: (String message) {
+          _showErrorDialog(context, message);
+        }
+    );
+  }
+
+  void _showSuccessDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Purchase Successful"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        );
+      },
     );
   }
 }
