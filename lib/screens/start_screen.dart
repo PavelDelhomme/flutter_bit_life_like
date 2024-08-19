@@ -41,6 +41,7 @@ class _StartScreenState extends State<StartScreen> {
         for (var data in decoded) {
           if (data is Map<String, dynamic>) {
             Person person = Person.fromJson(data);
+            // Ajouter seulement les vies qui ne sont pas PNJ
             if (!person.isPNJ) {
               loadedLives.add(person);
               await _loadLifeDetailsFromFile(person);
@@ -51,15 +52,15 @@ class _StartScreenState extends State<StartScreen> {
         }
 
         setState(() {
-          lives = loadedLives; // Assurez-vous que lives est bien mis à jour dans le setState
+          lives = loadedLives;
           log("Lives loaded: ${lives.map((e) => e.name).toList()}");
-
         });
       } catch (e) {
         log("Error during deserialization: $e");
       }
     }
   }
+
 
   Future<void> _loadLifeDetailsFromFile(Person person) async {
     final LifeStateService lifeStateService =

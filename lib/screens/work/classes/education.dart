@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bit_life_like/Classes/person.dart';
 
 class EducationLevel {
@@ -16,7 +18,7 @@ class EducationLevel {
     required this.stressLevel,
     required this.duration,
     required this.competences,
-    this.classmates = const [], // Initialisation par défaut
+    this.classmates = const [],
   });
 
   factory EducationLevel.fromJson(Map<String, dynamic> json) {
@@ -28,9 +30,9 @@ class EducationLevel {
       duration: json['durée'],
       competences: Map<String, double>.from(json['competences'] ?? {}),
       classmates: (json['classmates'] as List<dynamic>?)
-          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [], // Conversion des camarades de classe depuis JSON
+              ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
   }
 
@@ -45,4 +47,11 @@ class EducationLevel {
       'classmates': classmates.map((e) => e.toJson()).toList(),
     };
   }
+  bool checkIfGraduated(double academicPerformance, Person person) {
+    // Ajout d'une composante probabiliste basée sur la performance
+    double successChance = academicPerformance / 100.0 * (0.8 + Random().nextDouble() * 0.4); // Chance entre 80% et 120% de la performance
+    return successChance >= 0.9 && academicPerformance >= 100;
+  }
+
+
 }

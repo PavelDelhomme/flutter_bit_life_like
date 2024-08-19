@@ -44,7 +44,7 @@ class _BooksScreenState extends State<BooksScreen> {
             title: Text(book.title),
             subtitle: Text("Author: ${book.author}\nImproves: ${book.skills.keys.join(', ')}"),
             onTap: () {
-              widget.person.useBook(book);
+              widget.person.readBook(book);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text("Read ${book.title} and improved skills!")),
               );

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:bit_life_like/Classes/event.dart';
 import 'package:bit_life_like/Classes/life_history_event.dart';
 import 'package:bit_life_like/services/life_history.dart';
@@ -17,7 +16,7 @@ import 'work/work_screen.dart';
 import 'activities/activities_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  late final Person person;
+  final Person person;
   final RealEstateService realEstateService;
   final TransactionService transactionService;
   final List<Map<String, dynamic>> eventMaps;
@@ -48,57 +47,70 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadLifeState() async {
+    // Réinitialiser la liste des événements pour éviter d'afficher des événements d'une autre personne
     setState(() {
       eventLog.clear();
       person = widget.person;
     });
 
+    // Charger l'état de la vie à partir de la sauvegarde
     final lifeState = await LifeStateService(personService: personService).loadLifeState(person);
 
     if (lifeState != null) {
       setState(() {
         person = Person.fromJson(lifeState['person']);
+        // Ne charger que les événements associés à la personne actuelle
         eventLog = (lifeState['events'] as List)
             .map((e) => LifeHistoryEvent.fromJson(e))
             .where((event) => event.personId == person.id) // Filtrer par personne
             .toList();
       });
     } else {
+      // Si aucun état sauvegardé n'est trouvé, initialiser une nouvelle liste d'événements vide
+      setState(() {
+        eventLog = [];
+      });
+      // Charger les événements globaux seulement si aucun état spécifique n'est trouvé
       _loadEvents();
     }
   }
-
-
   Future<void> _loadEvents() async {
-    List<LifeHistoryEvent> events = await LifeHistoryService().getEvents();
+    List<LifeHistoryEvent> allEvents = await LifeHistoryService().getEvents();
+
     setState(() {
-      eventLog = events;
+      // Filtrer les événements globaux pour n'inclure que ceux qui sont liés à la personne active
+      eventLog = allEvents.where((event) => event.personId == person.id).toList();
     });
   }
 
-  void switchToPerson(Person newPerson) async {
-    // Marquer l'ancienne personne comme PNJ
+  void switchToPerson(Person child) async {
+    // Marquer le parent actuel comme PNJ
     person.isPNJ = true;
 
-    final parent = person;
-    final child = newPerson;
-    final updatedChild = PersonService().transfertAssetsToChild(parent, child);
+    // Sauvegarder l'état du parent comme PNJ
+    await LifeStateService(personService: PersonService()).saveLifeState(person);
 
+    // Transférer les assets du parent à l'enfant
+    final updatedChild = PersonService().transfertAssetsToChild(person, child);
+
+    // Charger les détails de la nouvelle vie de l'enfant
     await LifeStateService(personService: PersonService()).loadLifeDetails(updatedChild);
 
-    print("switching to ${updatedChild.name}'s life.");
+    // Sauvegarder l'état de la nouvelle vie
+    await LifeStateService(personService: PersonService()).saveLifeState(updatedChild);
 
+    // Passer à la vie de l'enfant
     setState(() {
       person = updatedChild;
       eventLog.clear();
     });
 
-    // Navigue vers la nouvelle vie
+    // Naviguer vers la nouvelle vie de l'enfant
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (context) => HomeScreen(
-          person: person,  // Assurez-vous de passer la bonne personne ici
+          person: person,
           realEstateService: widget.realEstateService,
           transactionService: widget.transactionService,
           eventMaps: widget.eventMaps,
@@ -106,8 +118,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -175,10 +185,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {
                   person.ageOneYear();
                   eventLog.add(LifeHistoryEvent(
-                    description: "Aged one year to ${person.age}",
-                    timestamp: DateTime.now(),
-                    ageAtEvent: person.age,
-                    personId: person.id
+                      description: "Aged one year to ${person.age}",
+                      timestamp: DateTime.now(),
+                      ageAtEvent: person.age,
+                      personId: person.id
                   ));
                 });
                 log("Aged event applied");

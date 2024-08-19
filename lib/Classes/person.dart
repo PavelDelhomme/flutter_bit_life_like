@@ -42,7 +42,9 @@ class Person {
   double appearance = 100;
   double karma = 100;
   double happiness = 100;
-  double intelligence = 100;
+  double intelligence;
+  double academicPerformance = 0;
+
   bool isImprisoned = false;
   int prisonTerm = 0;
   double stressLevel = 0.0;
@@ -69,7 +71,6 @@ class Person {
   // Education
   List<EducationLevel> educations = []; // Ajout de la liste d'éducations
   EducationLevel? currentEducation;
-  double academicPerformance = 0;
 
   Map<String, double> skills = {
     "Communication": 0.0,
@@ -139,6 +140,7 @@ class Person {
     List<Voiture>? voitures,
     List<Bateau>? bateaux,
     List<Avion>? avions,
+    List<LifeHistoryEvent>? lifeHistory,
 
     this.educations = const [], // Initialisation des éducations
     this.currentEducation,
@@ -307,8 +309,6 @@ class Person {
       'relationships': relationships.map((key, value) => MapEntry(key, value.toJson())),
     };
   }
-
-
 
   void ageParentYear() {
     for (var parent in parents) {
@@ -595,6 +595,7 @@ class Person {
     }
     return List.generate(count, (_) => personService.getRandomCharacter());
   }
+
   void completeYear() {
     if (currentEducation != null) {
       academicPerformance += 10; // Par exemple, on ajoute 10% par année
@@ -692,25 +693,93 @@ class Person {
 
   void updateSkill(String skill, double increment) {
     if (skills.containsKey(skill)) {
-      skills[skill] = (skills[skill] ?? 0.0) + increment;
+      skills[skill] = logarithmicSkillProgression(skills[skill] ?? 0.0, increment, skills[skill]!);
     } else {
       skills[skill] = increment;
     }
   }
-  void useBook(Book book) {
-    book.skills.forEach((skill, improvement) {
-      updateSkill(skill, improvement);
-    });
-    print("Read book ${book.title} and improved skills : ${skills}.");
-  }
+
+
   void advanceEducation() {
     if (currentEducation != null) {
+      // Calcul du stress total généré par l'éducation
+      double stressFactor = currentEducation!.stressLevel;
+      stressLevel = (stressLevel + stressFactor).clamp(0.0, 100.0);
+
+      // Progression académique influencée par l'intelligence, le stress, et un facteur aléatoire
+      double randomFactor = (0.8 + Random().nextDouble() * 0.4); // Valeur aléatoire entre 0.8 et 1.2
+      double healthFactor = (health / 100.0);
+      double intelligenceFactor = log(1 + intelligence) / log(101); // Logarithmique pour rendre la progression plus difficile avec l'intelligence croissante
+
+      academicPerformance += (intelligenceFactor * randomFactor * healthFactor * ( 1 - stressLevel / 100)) * 10; // Influence globale
+
+      // Très légère augmentation de l'intelligence lors de la progression éducative
+      incrementIntelligence(0.01 + Random().nextDouble() * 0.03);
+
+      // Amélioration des compétences
       currentEducation!.competences.forEach((skill, improvement) {
-        updateSkill(skill, improvement);
+        double adjustementImprovement = improvement * intelligenceFactor * randomFactor * healthFactor;
+        updateSkill(skill, adjustementImprovement);
       });
-      print("Advanced in ${currentEducation!.name} and improved skills");
+
+      // Vérification de la complétion de l'éducation
+      if (academicPerformance >= 100) {
+        bool graduated = currentEducation!.checkIfGraduated(academicPerformance, this);
+        if (graduated) {
+          educations.add(currentEducation!);
+          addLifeHistoryEvent(LifeHistoryEvent(
+            description: "Graduated from ${currentEducation!.name}.",
+            timestamp: DateTime.now(),
+            ageAtEvent: age,
+            personId: id,
+          ));
+        } else {
+          addLifeHistoryEvent(LifeHistoryEvent(
+            description: "Failed to graduate from ${currentEducation!.name}.",
+            timestamp: DateTime.now(),
+            ageAtEvent: age,
+            personId: id,
+          ));
+        }
+        currentEducation = null; // Fin de l'éducation actuelle
+      }
     }
   }
+
+  void readBook(Book book) {
+    if (!books.contains(book)) {
+      book.skills.forEach((skill, improvement) {
+        double adjustedImprovement = improvement * (intelligence / 100);
+        updateSkill(skill, adjustedImprovement);
+        incrementIntelligence(0.003); // Amélioration encore plus lente qu'avec l'éducation
+      });
+      books.add(book); // Ajout à la liste des livres lus
+    } else {
+      print("Book already read.");
+    }
+  }
+
+  void incrementIntelligence(double amount) {
+    // L'intelligence augmente très lentement
+    intelligence = (intelligence + amount).clamp(0.0, 100.0);
+  }
+
+  double logarithmicSkillProgression(double baseValue, double increment, double currentSkillLevel) {
+    // Progression logarithmique pour des gains de plus en plus faibles à mesure que la compétence augmente
+    return baseValue + increment * (1 - log(currentSkillLevel + 1) / log(100));
+  }
+
+  double calculateEducationStress(EducationLevel education) {
+    // Calcul de base du stress par année
+    double baseStress = education.stressLevel;
+    // Facteur aléatoire ajouté au stress
+    double randomStress = Random().nextDouble() * 2.0; // Entre 0 et 2 de stress supplémentaire
+    // Facteur de santé qui modifie le stress
+    double healthFactor = (100 - health) / 100.0;
+
+    return baseStress + randomStress + healthFactor;
+  }
+
 
   void addPermit(String permit) {
     if (!permits.contains(permit)) {

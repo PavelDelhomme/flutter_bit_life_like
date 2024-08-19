@@ -2,6 +2,7 @@ import 'package:bit_life_like/screens/work/classes/job.dart';
 import 'package:bit_life_like/services/person.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'dart:developer' as dev;
 import '../Classes/person.dart';
 import '../services/bank/bank_account.dart';
 import 'home_screen.dart';
@@ -66,7 +67,7 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
               },
             ),
             ElevatedButton(
-              onPressed: _createLife,
+              onPressed: () => _createLife(),
               child: Text('Start Life'),
             ),
           ],
@@ -74,54 +75,35 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
       ),
     );
   }
-
-
   void _createLife() {
     try {
       if (personService.availableCharacters.isEmpty) {
-        print("No characters available. Please check JSON loading.");
+        dev.log("No characters available. Please check JSON loading.");
         return;
       }
 
       final person = Person(
-        name: _nameController.text.isNotEmpty ? _nameController.text : 'John Doe',
-        gender: 'Male',
-        country: _selectedCountry,
-        age: 0,
-        intelligence: 100,
-        happiness: 100,
-        karma: 100,
-        appearance: 100,
-        health: 100,
-        isImprisoned: false,
-        prisonTerm: 0,
-        bankAccounts: [_createInitialBankAccount()],
+          name: _nameController.text.isNotEmpty ? _nameController.text : 'John Doe',
+          gender: 'Male',
+          country: _selectedCountry,
+          age: 0,
+          intelligence: 100,
+          happiness: 100,
+          karma: 100,
+          appearance: 100,
+          health: 100,
+          isImprisoned: false,
+          prisonTerm: 0,
+          bankAccounts: [_createInitialBankAccount()],
+          lifeHistory: [] // Initialisation avec un historique vide
       );
 
       person.parents = _generateRandomFamily(_selectedCountry);
 
-      // Sauvegarde des parents et gestion des finances
-      for (var parent in person.parents) {
-        parent.manageFinances();
-        widget.lives.add(parent); // Ajout des parents à la liste des vies
-      }
+      // Ajouter la nouvelle vie principale
+      widget.lives.add(person);
 
-      /*
-      // Générer et sauvegarder les amis et voisins
-      person.friends = _generateRandomFriends(_selectedCountry, person.age, 3);
-      for (var friend in person.friends) {
-        widget.lives.add(friend); // Sauvegarde des amis
-      }
-
-      person.neighbors = _generateRandomNeighbors(person.country, 5);
-      for (var neighbor in person.neighbors) {
-        widget.lives.add(neighbor); // Sauvegarde des voisins
-      }
-      */
-
-      widget.lives.add(person); // Sauvegarde de la vie principale
-
-      // Passage à l'écran principal
+      // Naviguer vers la nouvelle vie (écran principal)
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -134,16 +116,17 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
         ),
       );
     } catch (e) {
-      print("Error creating life: $e");
+      dev.log("Error creating life: $e");
     }
   }
+
 
   BankAccount _createInitialBankAccount() {
     return BankAccount(
       accountNumber: 'ACC${DateTime.now().millisecondsSinceEpoch}',
       bankName: 'Default Bank',
       balance: 0.0,
-      accountType: 'Checkins',
+      accountType: 'Checking',
     );
   }
 
@@ -162,9 +145,8 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
     mother.bankAccounts = _generateRandomBankAccounts();
     mother.jobs = [_generateRandomJob(country)];
 
-   return [father, mother];
+    return [father, mother];
   }
-
 
   List<BankAccount> _generateRandomBankAccounts() {
     final random = Random();
@@ -172,8 +154,10 @@ class _NewLifeScreenState extends State<NewLifeScreen> {
       return BankAccount(
         accountNumber: 'ACC${random.nextInt(1000000)}',
         bankName: 'Global Bank',
-        balance: random.nextDouble() * 10000 + 1000, // Solde initial aléatoire
-        annualIncome: random.nextDouble() * 50000 + 20000, // Revenu annuel aléatoire
+        balance: random.nextDouble() * 10000 + 1000,
+        // Solde initial aléatoire
+        annualIncome: random.nextDouble() * 50000 + 20000,
+        // Revenu annuel aléatoire
         accountType: 'Checking',
       );
     });
