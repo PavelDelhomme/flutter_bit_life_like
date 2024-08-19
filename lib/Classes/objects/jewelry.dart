@@ -1,7 +1,9 @@
 import 'collectible_item.dart';
 import 'package:bit_life_like/services/bank/bank_account.dart';
 
-class Jewelry extends CollectibleItem {
+class Jewelry {
+  final String name;
+  final double value;
   final String brand;
   final String material;
   final double carat;
@@ -9,21 +11,15 @@ class Jewelry extends CollectibleItem {
   final bool isRare;
 
   Jewelry({
-    required String name,
-    required double value,
+    required this.name,
+    required this.value,
     required this.brand,
     required this.material,
     required this.carat,
     required this.condition,
     required this.isRare
-  }) : super(
-    name: name,
-    value: value,
-    rarity: null,
-    epoch: null,
-  );
+  });
 
-  @override
   String display() {
     return '$name ($brand, $material, $carat carat) - Value: \$${value.toStringAsFixed(2)}, Condition: $condition, Rare: $isRare';
   }
@@ -45,7 +41,6 @@ class Jewelry extends CollectibleItem {
     if (condition < 0) condition = 0;
   }
 
-  @override
   Map<String, dynamic> toJson() {
     return {
       'name': name,

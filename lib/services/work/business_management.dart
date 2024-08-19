@@ -1,3 +1,5 @@
+import 'package:bit_life_like/Classes/life_history_event.dart';
+
 import '../../Classes/person.dart';
 import '../../screens/work/classes/business.dart';
 import '../bank/bank_account.dart';
@@ -7,6 +9,10 @@ class BusinessManagementService {
     if (person.realEstates.isNotEmpty && businessAccount.balance >= investment) {
       var business = Business(name: name, type: type, initialInvestment: investment, businessAccount: businessAccount);
       person.businesses.add(business);  // Person peut avoir une liste de businesses
+      person.addLifeHistoryEvent(LifeHistoryEvent(
+        description: "${person.name} started a new business: $name.",
+        timestamp: DateTime.now(),
+      ));
       businessAccount.withdraw(investment);
       print("${person.name} a créé un nouveau business: ${name} avec un investissement de \$${investment}.");
     } else {

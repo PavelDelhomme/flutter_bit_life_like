@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../../../../Classes/objects/vehicle.dart';
 import '../../../../../../Classes/person.dart';
 import '../../../../../../services/bank/bank_account.dart';
 import '../../../../../../services/bank/transaction_service.dart';
 
 class VehicleDealerDetailsScreen extends StatelessWidget {
-  final Vehicle vehicle;
+  final dynamic vehicle; // Can be any type of vehicle (Moto, Voiture, Bateau, Avion)
   final Person person;
   final TransactionService transactionService;
 
@@ -16,11 +15,12 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
   });
 
   void _purchaseVehicle(BuildContext context) {
-    String? requiredPermit = vehicle.getRequiredPermit();
+    String? requiredPermit = vehicle.getRequiredPermit(); // Assuming each vehicle type has `getRequiredPermit`
     if (requiredPermit != null && !person.permits.contains(requiredPermit)) {
       _showErrorDialog(context, "You need a $requiredPermit permit to purchase this vehicle.");
       return;
     }
+
     showDialog(
       context: context,
       builder: (BuildContext dialogContext) {
@@ -48,7 +48,7 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
     );
   }
 
-  void _selectAccountAndPurchase(BuildContext context, Vehicle vehicle, bool useLoan) {
+  void _selectAccountAndPurchase(BuildContext context, dynamic vehicle, bool useLoan) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext bc) {
@@ -68,7 +68,7 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
     );
   }
 
-  void _attemptPurchase(BuildContext context, Vehicle vehicle, BankAccount account, bool useLoan) {
+  void _attemptPurchase(BuildContext context, dynamic vehicle, BankAccount account, bool useLoan) {
     final parentContext = context; // Save the context for use in callbacks
     transactionService.attemptPurchase(
       account,
@@ -168,7 +168,7 @@ class VehicleDealerDetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text("Name: ${vehicle.name}", style: TextStyle(fontSize: 18)),
-            Text("Type: ${vehicle.type}", style: TextStyle(fontSize: 18)),
+            Text("Type: ${vehicle.runtimeType}", style: TextStyle(fontSize: 18)),
             Text("Age: ${vehicle.age} years", style: TextStyle(fontSize: 18)),
             Text("Value: \$${vehicle.value.toStringAsFixed(2)}", style: TextStyle(fontSize: 18)),
             Text("Rarity: ${vehicle.rarity}", style: TextStyle(fontSize: 18)),

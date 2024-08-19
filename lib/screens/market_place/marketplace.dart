@@ -1,6 +1,9 @@
 import '../../Classes/objects/real_estate.dart';
 import '../../Classes/objects/jewelry.dart';
-import '../../Classes/objects/vehicle.dart';
+import '../../Classes/objects/vehicles/avion.dart';
+import '../../Classes/objects/vehicles/bateau.dart';
+import '../../Classes/objects/vehicles/moto.dart';
+import '../../Classes/objects/vehicles/voiture.dart';
 
 class Marketplace<T> {
   List<T> availableItems = [];
@@ -11,7 +14,16 @@ class Marketplace<T> {
 
   T? buyItem(String itemName) {
     for (var item in availableItems) {
-      if (item is Vehicle && item.name == itemName) {
+      if (item is Moto && item.name == itemName) {
+        availableItems.remove(item);
+        return item;
+      } else if (item is Voiture && item.name == itemName) {
+        availableItems.remove(item);
+        return item;
+      } else if (item is Bateau && item.name == itemName) {
+        availableItems.remove(item);
+        return item;
+      } else if (item is Avion && item.name == itemName) {
         availableItems.remove(item);
         return item;
       } else if (item is RealEstate && item.name == itemName) {
@@ -25,8 +37,8 @@ class Marketplace<T> {
     return null;
   }
 
-  void addVehicleToMarket(Vehicle vehicle) {
-    addItemToMarket(vehicle as T);
+  void addVehicleToMarket(T vehicle) {
+    addItemToMarket(vehicle);
   }
 
   @override

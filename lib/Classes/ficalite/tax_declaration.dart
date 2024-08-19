@@ -33,8 +33,18 @@ class TaxDeclaration {
     totalTaxesOwed += wealthTax;
 
     // Calculer la taxe sur les biens de luxe
-    double luxuryTax = taxSystem.calculateLuxuryTax(person.collectibles);
+    double luxuryTax = taxSystem.calculateLuxuryTax(
+      vehicles: person.getAllVehicles(),
+      realEstates: person.realEstates,
+      jewelries: person.jewelries,
+      arts: person.arts,
+      antiques: person.antiques,
+    );
     totalTaxesOwed += luxuryTax;
+
+    // Ajout de l'impôt sur les comptes offshore si applicable
+    double offshoreWealthTax = taxSystem.calculateOffshoreWealthTax(person.offshoreAccounts);
+    totalTaxesOwed += offshoreWealthTax;
 
     print("Total Taxes Owed: \$${totalTaxesOwed.toStringAsFixed(2)}");
   }

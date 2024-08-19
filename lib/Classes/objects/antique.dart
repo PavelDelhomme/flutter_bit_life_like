@@ -2,7 +2,7 @@ import 'package:bit_life_like/Classes/objects/collectible_item.dart';
 
 import '../../services/bank/bank_account.dart';
 
-class Antique implements CollectibleItem {
+class Antique {
   final String name;
   final double value;
   final int age;
@@ -20,19 +20,9 @@ class Antique implements CollectibleItem {
   });
 
   factory Antique.fromJson(Map<String, dynamic> json) {
-    double parseValue(dynamic valeur) {
-      if (valeur is num) {
-        return valeur.toDouble();
-      } else if (valeur is String) {
-        // Try to parse the string as a double
-        return double.tryParse(valeur) ?? 0.0; // Default to 0.0 if parsing fails
-      }
-      return 0.0; // Default value if it's not a number or parseable string
-    }
-
     return Antique(
       name: json['nom'] as String,
-      value: parseValue(json['valeur']),
+      value: (json['valeur'] as num).toDouble(),
       age: (json['age'] as num?)?.toInt() ?? 0,
       artist: json['artiste'] as String? ?? '',
       rarity: json['rarete'] as String? ?? 'Commun',
@@ -51,7 +41,6 @@ class Antique implements CollectibleItem {
     };
   }
 
-  @override
   String display() {
     // TODO: implement display
     throw UnimplementedError();

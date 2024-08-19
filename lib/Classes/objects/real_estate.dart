@@ -1,7 +1,9 @@
 import 'package:bit_life_like/Classes/objects/collectible_item.dart';
 import 'package:bit_life_like/Classes/person.dart';
 
-class RealEstate extends CollectibleItem {
+class RealEstate {
+  final String name;
+  final double value;
   final int age;
   final String type;
   double condition;
@@ -13,8 +15,8 @@ class RealEstate extends CollectibleItem {
   final int? capacity;
 
   RealEstate({
-    required String name,
-    required double value,
+    required this.name,
+    required this.value,
     required this.age,
     required this.type,
     required this.condition,
@@ -24,16 +26,10 @@ class RealEstate extends CollectibleItem {
     this.locataire,
     this.isExotic = false,
     this.capacity = 10,
-  }) : super(
-          name: name,
-          value: value,
-          rarity: null, // Rarity not applicable
-          epoch: null, // Epoch not applicable
-        );
+  });
 
-  @override
   String display() {
-    return '$name ($type, $style) - Age: $age, Value: \$${value.toStringAsFixed(2)}, Condition: $condition, Monthly Maintenance Cost: \$${monthlyMaintenanceCost.toStringAsFixed(2)}';
+    return '${this.name} ($type, $style) - Age: $age, Value: \$${value.toStringAsFixed(2)}, Condition: $condition, Monthly Maintenance Cost: \$${monthlyMaintenanceCost.toStringAsFixed(2)}';
   }
 
   factory RealEstate.fromJson(Map<String, dynamic> json) {
@@ -60,7 +56,6 @@ class RealEstate extends CollectibleItem {
     if (condition < 0) condition = 0;
   }
 
-  @override
   Map<String, dynamic> toJson() {
     return {
       'name': name,

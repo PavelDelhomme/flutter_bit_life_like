@@ -37,16 +37,24 @@ class _StartScreenState extends State<StartScreen> {
     if (savedLives != null) {
       try {
         List<dynamic> decoded = jsonDecode(savedLives);
+        List<Person> loadedLives = [];
         for (var data in decoded) {
           if (data is Map<String, dynamic>) {
             Person person = Person.fromJson(data);
-            lives.add(person);
-            await _loadLifeDetailsFromFile(person);
+            if (!person.isPNJ) {
+              loadedLives.add(person);
+              await _loadLifeDetailsFromFile(person);
+            }
           } else {
             log("Data is not in the expected format: $data");
           }
         }
-        setState(() {});
+
+        setState(() {
+          lives = loadedLives; // Assurez-vous que lives est bien mis à jour dans le setState
+          log("Lives loaded: ${lives.map((e) => e.name).toList()}");
+
+        });
       } catch (e) {
         log("Error during deserialization: $e");
       }
@@ -54,7 +62,8 @@ class _StartScreenState extends State<StartScreen> {
   }
 
   Future<void> _loadLifeDetailsFromFile(Person person) async {
-    final LifeStateService lifeStateService = LifeStateService(personService: personService);
+    final LifeStateService lifeStateService =
+        LifeStateService(personService: personService);
     final data = await lifeStateService.loadLifeState(person);
 
     if (data != null) {
@@ -63,7 +72,7 @@ class _StartScreenState extends State<StartScreen> {
             .map((eventJson) => LifeHistoryEvent.fromJson(eventJson))
             .toList();
 
-        // Restaurer d'autres données complexe comme les relations
+        // Restaurer d'autres données complexes comme les relations
         final relationshipsData = data['relationships'] as Map<String, dynamic>;
         relationshipsData.forEach((key, relData) {
           final relatedPerson = personService.getPersonById(key);
@@ -78,7 +87,8 @@ class _StartScreenState extends State<StartScreen> {
 
   Future<void> _saveLives() async {
     final prefs = await SharedPreferences.getInstance();
-    List<Map<String, dynamic>> jsonLives = lives.map((life) => life.toJson()).toList();
+    List<Map<String, dynamic>> jsonLives =
+        lives.map((life) => life.toJson()).toList();
     await prefs.setString('lives', jsonEncode(jsonLives));
   }
 
@@ -97,22 +107,61 @@ class _StartScreenState extends State<StartScreen> {
                 final person = lives[index];
                 return ListTile(
                   title: Text(person.name),
-                  subtitle: Text('Age: ${person.age}, Country: ${person.country}'),
+                  subtitle:
+                      Text('Age: ${person.age}, Country: ${person.country}'),
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PersonDetailsScreen(person: person),
+                        builder: (context) =>
+                            HomeScreen(
+                                person: person,
+                                realEstateService: RealEstateService(),
+                                transactionService: TransactionService(),
+                                eventMaps: widget.events,
+                            ),
                       ),
                     );
                   },
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () async {
+                      bool? confirmed = await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Confirm Deletion"),
+                            content: Text("Are you sure you want to delete this life?"),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.of(context).pop(false),
+                                child: Text("Cancel"),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.of(context).pop(true),
+                                child: Text("Delete"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+
+                      if (confirmed == true) {
+                        setState(() {
+                          lives.removeAt(index);
+                        });
+                        await _saveLives();
+                      }
+                    },
+                  ),
                 );
               },
             ),
           ),
           ElevatedButton(
-            onPressed: () {
-              Navigator.push(
+            onPressed: () async {
+              // Utiliser await pour s'assurer que tout est bien sauvegardé avant de retourner à l'écran des vies
+              final newLife = await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => NewLifeScreen(
@@ -120,10 +169,16 @@ class _StartScreenState extends State<StartScreen> {
                     events: widget.events,
                   ),
                 ),
-              ).then((_) {
-                _loadLives(); // Recharger la liste après avoir créé une nouvelle vie
-                _saveLives(); // Sauvegarder les vies après leur chargement
-              });
+              );
+
+              if (newLife != null) {
+                // Ajouter la nouvelle vie à la liste et sauvegarder
+                setState(() {
+                  lives.add(newLife); // Ajouter la nouvelle vie
+                });
+
+                await _saveLives(); // Sauvegarder la nouvelle liste de vies
+              }
             },
             child: Text('Start New Life'),
           ),

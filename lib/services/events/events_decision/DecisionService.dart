@@ -20,8 +20,6 @@ class DecisionService {
         description: "Event: ${event.name} - Choice: $choice",
         timestamp: DateTime.now(),
       ));
-
-      LifeStateService(personService: personService).saveLifeState(person, person.lifeHistory);
     }
   }
 }

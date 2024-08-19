@@ -74,9 +74,10 @@ class PersonService {
     child.bankAccounts.addAll(parent.bankAccounts);
     child.offshoreAccounts.addAll(parent.offshoreAccounts);
     child.businesses.addAll(parent.businesses);
-    child.collectibles.addAll(parent.collectibles);
-    child.vehicles.addAll(parent.vehicles);
-    child.vehiculeExotiques.addAll(parent.vehiculeExotiques);
+    child.voitures.addAll(parent.voitures);
+    child.motos.addAll(parent.motos);
+    child.bateaux.addAll(parent.bateaux);
+    child.avions.addAll(parent.avions);
     child.jewelries.addAll(parent.jewelries);
     child.electronics.addAll(parent.electronics);
     child.antiques.addAll(parent.antiques);

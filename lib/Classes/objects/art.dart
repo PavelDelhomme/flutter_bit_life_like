@@ -2,15 +2,19 @@ import 'collectible_item.dart';
 import 'package:bit_life_like/services/bank/bank_account.dart';
 
 class Art extends CollectibleItem implements Purchasable {
+  final String name;
+  final double value;
+  final String rarity;
+  final String epoch;
   final String dateOfCreation;
   final String artist;
   final String type;
 
   Art({
-    required String name,
-    required double value,
-    required String rarity,
-    required String epoch,
+    required this.name,
+    required this.value,
+    required this.rarity,
+    required this.epoch,
     required this.dateOfCreation,
     required this.artist,
     required this.type,

@@ -138,8 +138,15 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: Container(
               padding: EdgeInsets.all(16.0),
-              child: ListView(
-                children: eventLog.map((e) => Text(e.description)).toList(),
+              child: ListView.builder(
+                itemCount: eventLog.length,
+                itemBuilder: (context, index) {
+                  final event = eventLog[index];
+                  return ListTile(
+                    title: Text(event.description),
+                    subtitle: Text(event.timestamp.toString()),
+                  );
+                },
               ),
             ),
           ),
@@ -150,6 +157,10 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 setState(() {
                   person.ageOneYear();
+                  eventLog.add(LifeHistoryEvent(
+                    description: "Aged one year to ${person.age}",
+                    timestamp: DateTime.now(),
+                  ));
                 });
                 log("Aged event applied");
               },

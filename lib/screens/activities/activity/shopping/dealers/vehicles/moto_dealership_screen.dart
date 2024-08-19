@@ -1,12 +1,12 @@
-import 'dart:convert';
-
-import 'package:bit_life_like/services/bank/transaction_service.dart';
+import 'dart:developer';
+import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/vehicle_dealership_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import 'package:flutter/services.dart';
 
-import '../../../../../../Classes/objects/vehicle.dart';
+import '../../../../../../Classes/objects/vehicles/moto.dart';
 import '../../../../../../Classes/person.dart';
-import 'vehicle_dealership_details_screen.dart';
+import '../../../../../../services/bank/transaction_service.dart';
 
 class MotoDealershipScreen extends StatelessWidget {
   final Person person;
@@ -15,10 +15,17 @@ class MotoDealershipScreen extends StatelessWidget {
   MotoDealershipScreen({required this.person, required this.transactionService});
 
   Future<List<Moto>> loadMotos() async {
-    String jsonString = await rootBundle.loadString('lib/files/vehicles.json');
-    Map<String, dynamic> jsonResponse = json.decode(jsonString);
-    List<dynamic> motosJson = jsonResponse['motorcycles'];
-    return motosJson.map((v) => Moto.fromJson(v)).toList();
+    try {
+      String jsonString = await rootBundle.loadString('assets/vehicles.json');
+      List<dynamic> jsonResponse = json.decode(jsonString)['motorcycles'];
+
+      List<Moto> motos = jsonResponse.map((m) => Moto.fromJson(m)).toList();
+      log("Motorcycles loaded successfully");
+      return motos;
+    } catch (e) {
+      log("Failed to load motorcycles: $e");
+      throw Exception("Failed to load motorcycles: $e");
+    }
   }
 
   @override
@@ -32,7 +39,11 @@ class MotoDealershipScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
+              log("Error loading motorcycles: ${snapshot.error}");
               return Center(child: Text("Error loading motorcycles"));
+            }
+            if (snapshot.data == null || snapshot.data!.isEmpty) {
+              return Center(child: Text("No motorcycles available"));
             }
             return ListView.builder(
               itemCount: snapshot.data!.length,
@@ -44,7 +55,13 @@ class MotoDealershipScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: moto, person: person, transactionService: transactionService)),
+                      MaterialPageRoute(
+                          builder: (context) => VehicleDealerDetailsScreen(
+                              vehicle: moto,
+                              person: person,
+                              transactionService: transactionService
+                          )
+                      ),
                     );
                   },
                 );

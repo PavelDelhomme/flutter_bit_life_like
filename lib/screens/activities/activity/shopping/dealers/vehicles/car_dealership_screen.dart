@@ -1,11 +1,11 @@
 import 'dart:developer';
-
 import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/vehicle_dealership_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
 
-import '../../../../../../Classes/objects/vehicle.dart';
+import '../../../../../../Classes/objects/vehicles/moto.dart';
+import '../../../../../../Classes/objects/vehicles/voiture.dart';
 import '../../../../../../Classes/person.dart';
 import '../../../../../../services/bank/transaction_service.dart';
 
@@ -15,26 +15,17 @@ class CarDealershipScreen extends StatelessWidget {
 
   CarDealershipScreen({required this.person, required this.transactionService});
 
-  Future<List<Vehicle>> loadCars() async {
+  Future<List<dynamic>> loadVehicles() async {
     try {
       String jsonString = await rootBundle.loadString('assets/vehicles.json');
       Map<String, dynamic> jsonResponse = json.decode(jsonString);
 
-      List<Vehicle> vehicles = [];
-      if (jsonResponse['cars'] != null) {
-        vehicles.addAll(
-            jsonResponse['cars'].map<Vehicle>((v) => Voiture.fromJson(v)).toList()
-        );
-      }
-      if (jsonResponse['motorcycles'] != null) {
-        vehicles.addAll(
-            jsonResponse['motorcycles'].map<Vehicle>((m) => Moto.fromJson(m)).toList()
-        );
-      }
+      List<dynamic> cars = jsonResponse['cars'].map((v) => Voiture.fromJson(v)).toList();
+      List<dynamic> motorcycles = jsonResponse['motorcycles'].map((m) => Moto.fromJson(m)).toList();
 
-      return vehicles;
+      return [...cars, ...motorcycles];
     } catch (e) {
-      log("Failed to load vehicle in AirplaineDealerShipScreen: $e");
+      log("Failed to load vehicles: $e");
       throw Exception('Failed to load vehicles: $e');
     }
   }
@@ -45,8 +36,8 @@ class CarDealershipScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Car and Motorcycle Dealerships'),
       ),
-      body: FutureBuilder<List<Vehicle>>(
-        future: loadCars(),
+      body: FutureBuilder<List<dynamic>>(
+        future: loadVehicles(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
@@ -58,14 +49,20 @@ class CarDealershipScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                Vehicle vehicle = snapshot.data![index];
+                dynamic vehicle = snapshot.data![index];
                 return ListTile(
                   title: Text(vehicle.name),
-                  subtitle: Text('Price: \$${vehicle.value.toStringAsFixed(2)} | Type: ${vehicle.type}'),
+                  subtitle: Text('Price: \$${vehicle.value.toStringAsFixed(2)} | Type: ${vehicle.runtimeType}'),
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => VehicleDealerDetailsScreen(vehicle: vehicle, person: person, transactionService: transactionService)),
+                      MaterialPageRoute(
+                          builder: (context) => VehicleDealerDetailsScreen(
+                              vehicle: vehicle,
+                              person: person,
+                              transactionService: transactionService
+                          )
+                      ),
                     );
                   },
                 );

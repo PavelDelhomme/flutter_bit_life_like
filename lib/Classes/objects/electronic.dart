@@ -1,6 +1,4 @@
-import 'package:bit_life_like/Classes/objects/collectible_item.dart';
-
-class Electronic extends CollectibleItem {
+class Electronic {
   final String id;
   final String type; // Par exemple : smartphone, laptop, server,...
   final String brand;
@@ -15,12 +13,7 @@ class Electronic extends CollectibleItem {
     required this.model,
     required this.value,
     this.supportsApplications = false,
-  }) : super(
-    name: '$brand $model',
-    value: value,
-    rarity: null,  // Si la rareté n'est pas applicable, mettez-le à null
-    epoch: null,   // Si l'époque n'est pas applicable, mettez-le à null
-  );
+  });
 
   factory Electronic.fromJson(Map<String, dynamic> json) {
     return Electronic(
@@ -28,7 +21,7 @@ class Electronic extends CollectibleItem {
       type: json['type'],
       brand: json['brand'],
       model: json['model'],
-      value: (json['price'] as num?)?.toDouble() ?? 0.0,
+      value: (json['value'] as num?)?.toDouble() ?? 0.0,
       supportsApplications: json['supportsApplications'] ?? false,
     );
   }
@@ -44,17 +37,7 @@ class Electronic extends CollectibleItem {
     };
   }
 
-  @override
   String display() {
     return '$brand $model ($type) - Value: \$${value.toStringAsFixed(2)}';
   }
-
-  @override
-  String get epoch => 'Modern'; // Vous pouvez définir une valeur par défaut ou une logique spécifique
-
-  @override
-  String get name => '$brand $model';
-
-  @override
-  String get rarity => 'Common'; // Vous pouvez également définir une logique pour cela
 }

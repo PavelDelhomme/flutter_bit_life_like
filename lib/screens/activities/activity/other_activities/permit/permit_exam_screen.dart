@@ -61,8 +61,7 @@ class _PermitExamScreenState extends State<PermitExamScreen> {
       await _saveHistoryEvent("Failed the ${widget.permitType} permit exam.");
     }
 
-    final events = await LifeHistoryService().getEvents();
-    await LifeStateService(personService: personService).saveLifeState(widget.person, events);
+    await LifeStateService(personService: personService).saveLifeState(widget.person);
 
     showDialog(
       context: context,

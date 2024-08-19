@@ -1,12 +1,19 @@
 import 'dart:math';
 
+import 'package:bit_life_like/Classes/objects/antique.dart';
+import 'package:bit_life_like/Classes/objects/art.dart';
+import 'package:bit_life_like/Classes/objects/jewelry.dart';
+import 'package:bit_life_like/Classes/objects/real_estate.dart';
+
 import '../objects/collectible_item.dart';
+import 'evasion_fiscale.dart';
 
 class TaxSystem {
   final double personalIncomeTaxBaseRate = 0.1;
   final double corporateTaxRate = 0.25;
   final double wealthTaxRate = 0.1;
   final double luxuryTaxRate = 0.15;
+  final double offshoreTaxRate = 0.05; // Taux sur les comptes offshore
 
   final List<Map<String, dynamic>> _incomeTaxBrackets = [
     {'limit': 20000, 'rate': 0.1},      // 10% jusqu'à 20 000
@@ -39,10 +46,27 @@ class TaxSystem {
     return (netWorth > 500000) ? (netWorth - 500000) * wealthTaxRate : 0.0;
   }
 
-  double calculateLuxuryTax(List<CollectibleItem> luxuryItems) {
-    return luxuryItems.fold(0.0, (sum, item) => sum + (item.value * luxuryTaxRate));
+  double calculateLuxuryTax({
+    required List<dynamic> vehicles,
+    required List<RealEstate> realEstates,
+    required List<Jewelry> jewelries,
+    required List<Art> arts,
+    required List<Antique> antiques,
+  }) {
+    double totalLuxuryTax = 0.0;
+
+    totalLuxuryTax += vehicles.fold(0.0, (sum, vehicle) => sum + (vehicle.value * luxuryTaxRate));
+    totalLuxuryTax += realEstates.fold(0.0, (sum, realEstate) => sum + (realEstate.value * luxuryTaxRate));
+    totalLuxuryTax += jewelries.fold(0.0, (sum, jewelry) => sum + (jewelry.value * luxuryTaxRate));
+    totalLuxuryTax += arts.fold(0.0, (sum, art) => sum + (art.value * luxuryTaxRate));
+    totalLuxuryTax += antiques.fold(0.0, (sum, antique) => sum + (antique.value * luxuryTaxRate));
+
+    return totalLuxuryTax;
   }
 
+  double calculateOffshoreWealthTax(List<OffshoreAccount> offshoreAccounts) {
+    return offshoreAccounts.fold(0.0, (sum, account) => sum + (account.balance * offshoreTaxRate));
+  }
 
   double _applyTaxBrackets(double income, List<Map<String, dynamic>> brackets) {
     double totalTaxes = 0.0;
@@ -56,9 +80,4 @@ class TaxSystem {
     }
     return totalTaxes;
   }
-
-
-
-
-
 }

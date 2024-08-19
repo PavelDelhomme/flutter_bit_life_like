@@ -1,17 +1,16 @@
 import 'dart:developer' as dev;
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:bit_life_like/Classes/ficalite/evasion_fiscale.dart';
 import 'package:bit_life_like/Classes/ficalite/tax_system.dart';
 import 'package:bit_life_like/Classes/objects/arme.dart';
+import 'package:bit_life_like/Classes/objects/art.dart';
 import 'package:bit_life_like/Classes/objects/collectible_item.dart';
 import 'package:bit_life_like/Classes/objects/electronic.dart';
 import 'package:bit_life_like/Classes/objects/real_estate.dart';
 import 'package:bit_life_like/Classes/objects/jewelry.dart';
-import 'package:bit_life_like/Classes/objects/vehicle.dart';
-import 'package:bit_life_like/Classes/objects/vehicle_collection.dart';
 import 'package:bit_life_like/Classes/relationship.dart';
+import 'package:bit_life_like/services/life_history.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -26,6 +25,10 @@ import 'life_history_event.dart';
 import 'objects/antique.dart';
 import 'objects/book.dart';
 import 'objects/instrument.dart';
+import 'objects/vehicles/avion.dart';
+import 'objects/vehicles/bateau.dart';
+import 'objects/vehicles/moto.dart';
+import 'objects/vehicles/voiture.dart';
 
 PersonService personService = PersonService();
 
@@ -91,16 +94,20 @@ class Person {
   };
 
   // Items
-  List<CollectibleItem> collectibles = [];
   List<String> permits = [];
-  List<Vehicle> vehicles = [];
-  List<VehiculeExotique> vehiculeExotiques = [];
-  List<Jewelry> jewelries = [];
-  List<Electronic> electronics = [];
+
   List<Antique> antiques = [];
-  List<Instrument> instruments = [];
   List<Arme> armes = [];
+  List<Art> arts = [];
+  List<Book> books = [];
+  List<Electronic> electronics = [];
+  List<Instrument> instruments = [];
+  List<Jewelry> jewelries = [];
   List<RealEstate> realEstates = [];
+  List<Moto> motos = [];
+  List<Voiture> voitures = [];
+  List<Bateau> bateaux = [];
+  List<Avion> avions = [];
 
   Person({
     required this.name,
@@ -119,9 +126,20 @@ class Person {
     Map<String, double>? skills,
     List<CollectibleItem>? collectibles,
     List<String>? permits,
-    List<Vehicle>? vehicles,
-    List<VehiculeExotique>? vehiculeExotiques,
+    // Items collectibles et achetables, vendables
+    List<Antique>? antiques,
+    List<Arme>? armes,
+    List<Art>? arts,
+    List<Book>? books,
+    List<Electronic>? electronics,
+    List<Instrument>? instruments,
+    List<Jewelry>? jewelries,
     List<RealEstate>? realEstates,
+    List<Moto>? motos,
+    List<Voiture>? voitures,
+    List<Bateau>? bateaux,
+    List<Avion>? avions,
+
     this.educations = const [], // Initialisation des éducations
     this.currentEducation,
     this.academicPerformance = 0,
@@ -144,72 +162,21 @@ class Person {
         neighbors = neighbors ?? [], // Initialisation des voisins
         relationships = relationships ?? {}, // Initialisation des relations
         skills = skills ?? {},
-        collectibles = collectibles ?? [],
         permits = permits ?? [],
-        vehicles = vehicles ?? [],
-        vehiculeExotiques = vehiculeExotiques ?? [],
-        realEstates = realEstates ?? [];
+        antiques = antiques ?? [],
+        armes = armes ?? [],
+        arts = arts ?? [],
+        books = books ?? [],
+        electronics = electronics ?? [],
+        instruments = instruments ?? [],
+        jewelries = jewelries ?? [],
+        realEstates = realEstates ?? [],
+        motos = motos ?? [],
+        voitures = voitures ?? [],
+        bateaux = bateaux ?? [],
+        avions = avions ?? [];
 
   factory Person.fromJson(Map<String, dynamic> json) {
-    List<CollectibleItem> parseCollectibles(List<dynamic>? jsonList) {
-      if (jsonList == null) return [];
-      return jsonList.map<CollectibleItem>((itemJson) {
-        switch (itemJson['type']) {
-          case 'Arme':
-            return Arme.fromJson(itemJson);
-          case 'Instrument':
-            return Instrument.fromJson(itemJson);
-          case 'RealEstate':
-            return RealEstate.fromJson(itemJson);
-          case 'Jewelry':
-            return Jewelry.fromJson(itemJson);
-          case 'Antique':
-            return Antique.fromJson(itemJson);
-          case 'Electronic':
-            return Electronic.fromJson(itemJson);
-          default:
-            throw Exception('Unknown collectible type');
-        }
-      }).toList();
-    }
-
-    List<Vehicle> parseVehicles(List<dynamic>? jsonList) {
-      if (jsonList == null) return [];
-      return jsonList.map((vehicleJson) {
-        switch (vehicleJson['type']) {
-          case 'Motorcycle':
-            return Moto.fromJson(vehicleJson);
-          case 'Car':
-            return Voiture.fromJson(vehicleJson);
-          case 'Boat':
-            return Bateau.fromJson(vehicleJson);
-          case 'Airplane':
-            return Avion.fromJson(vehicleJson);
-          default:
-            throw Exception('Unknown vehicle type');
-        }
-      }).toList();
-    }
-    List<VehiculeExotique> parseVehiculeExotiques(List<dynamic>? jsonList) {
-      if (jsonList == null) return [];
-      return jsonList.map<VehiculeExotique>((e) {
-        switch (e['type']) {
-          case 'Exotic':
-            return VehiculeExotique.fromJson(e as Map<String, dynamic>);
-          case 'Collection Voiture':
-            return VoitureDeCollection.fromJson(e as Map<String, dynamic>);
-          case 'Collection Moto':
-            return MotoDeCollection.fromJson(e as Map<String, dynamic>);
-          case 'Collection Bateau':
-            return BateauDeCollection.fromJson(e as Map<String, dynamic>);
-          case 'Collection Avion':
-            return AvionDeCollection.fromJson(e as Map<String, dynamic>);
-          default:
-            throw Exception('Unknown exotic vehicle type');
-        }
-      }).toList();
-    }
-
     return Person(
       id: json['id'] as String,
       name: json['name'] as String,
@@ -228,58 +195,70 @@ class Person {
           .toList() ??
           [],
       parents: (json['parents'] as List<dynamic>?)
-          ?.map((e) {
-        if (e is Map<String, dynamic>) {
-          return Person.fromJson(e);
-        } else if (e is String) {
-          return personService.getPersonById(e); // ou une autre gestion
-        } else {
-          dev.log("Unexpected parent data format: $e");
-          return null; // Si non valide, retourne null
-        }
-      }).whereType<Person>().toList() ?? [],
+          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
       children: (json['children'] as List<dynamic>?)
           ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
-          .whereType<Person>()
           .toList() ?? [],
       friends: (json['friends'] as List<dynamic>?)
           ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
-          .whereType<Person>()
           .toList() ?? [],
       partners: (json['partners'] as List<dynamic>?)
           ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
-          .whereType<Person>()
           .toList() ?? [],
       siblings: (json['siblings'] as List<dynamic>?)
-          ?.map((siblingJson) => Person.fromJson(siblingJson))
-          .whereType<Person>()
+          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
           .toList() ?? [],
       neighbors: (json['neighbors'] as List<dynamic>?)
-          ?.map((neighborJson) => Person.fromJson(neighborJson))
-          .whereType<Person>()
+          ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
           .toList() ?? [],
       relationships: (json['relationships'] as Map<String, dynamic>?)
           ?.map((key, value) {
-        // Récupération de la personne à partir de l'ID dans les relations
-        Person? relatedPerson = personService.getPersonById(key); // Vous devez avoir une méthode pour obtenir une personne par ID
-        return MapEntry(key, Relationship.fromJson(value, relatedPerson));
-      }) ?? {},
-
+            // Trouver la personne associé à cette relation
+            Person? relatedPerson = personService.getPersonById(key);
+            if (relatedPerson != null) {
+              return MapEntry(key, Relationship.fromJson(value as Map<String, dynamic>, relatedPerson));
+            } else {
+              return MapEntry(key, Relationship(Person(name: 'Unknown', gender: 'Unknown', country: 'Unknown', prisonTerm: 0, isImprisoned: false, intelligence: 0, happiness: 0, karma: 0, appearance: 0, health: 0, age: 0), quality: 0.0));
+            }
+          }),
       skills: Map<String, double>.from(json['skills'] ?? {}),
-      collectibles: parseCollectibles(json['collectibles'] as List<dynamic>?),
-      permits: List<String>.from(json['permits'] ?? []),
-      vehicles: parseVehicles(json['vehicles'] as List<dynamic>?),
-      vehiculeExotiques: json['vehiculeExotiques'] is List
-        ? parseVehiculeExotiques(json['vehiculeExotiques'] as List<dynamic>)
-        : [], // Si ce n'est pas une liste retournez une liste vide.
-      educations: (json['educations'] as List<dynamic>?)
-          ?.map((e) => EducationLevel.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-          [],
-      currentEducation: json['currentEducation'] != null
-          ? EducationLevel.fromJson(json['currentEducation'])
-          : null,
-      academicPerformance: json['academicPerformance']?.toDouble() ?? 0.0,
+      antiques: (json['antiques'] as List<dynamic>?)
+          ?.map((e) => Antique.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      armes: (json['armes'] as List<dynamic>?)
+          ?.map((e) => Arme.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      arts: (json['arts'] as List<dynamic>?)
+          ?.map((e) => Art.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      books: (json['books'] as List<dynamic>?)
+          ?.map((e) => Book.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      electronics: (json['electronics'] as List<dynamic>?)
+          ?.map((e) => Electronic.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      instruments: (json['instruments'] as List<dynamic>?)
+          ?.map((e) => Instrument.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      jewelries: (json['jewelries'] as List<dynamic>?)
+          ?.map((e) => Jewelry.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      realEstates: (json['realEstates'] as List<dynamic>?)
+          ?.map((e) => RealEstate.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      motos: (json['motos'] as List<dynamic>?)
+          ?.map((e) => Moto.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      voitures: (json['voitures'] as List<dynamic>?)
+          ?.map((e) => Voiture.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      bateaux: (json['bateaux'] as List<dynamic>?)
+          ?.map((e) => Bateau.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
+      avions: (json['avions'] as List<dynamic>?)
+          ?.map((e) => Avion.fromJson(e as Map<String, dynamic>))
+          .toList() ?? [],
     );
   }
   Map<String, dynamic> toJson() {
@@ -299,10 +278,22 @@ class Person {
       'prisonTerm': prisonTerm,
       'bankAccounts': bankAccounts.map((e) => e.toJson()).toList(),
       'skills': skills,
-      'collectibles': collectibles.map((e) => e.toJson()).toList(),
       'permits': permits,
-      'vehicles': vehicles.map((e) => e.toJson()).toList(),
-      'vehiculeExotiques': vehiculeExotiques.map((e) => e.toJson()).toList(),
+
+      'antiques': antiques.map((a) => a.toJson()).toList(),
+      'armes': armes.map((a) => a.toJson()).toList(),
+      'arts': arts.map((a) => a.toJson()).toList(),
+      'books': books.map((b) => b.toJson()).toList(),
+      'electronics': electronics.map((e) => e.toJson()).toList(),
+      'instruments': instruments.map((i) => i.toJson()).toList(),
+      'jewelries': jewelries.map((j) => j.toJson()).toList(),
+      'realEstates': realEstates.map((r) => r.toJson()).toList(),
+
+      'motos': motos.map((m) => m.toJson()).toList(),
+      'voitures': voitures.map((v) => v.toJson()).toList(),
+      'bateaux': bateaux.map((b) => b.toJson()).toList(),
+      'avions': avions.map((a) => a.toJson()).toList(),
+
       'educations': educations.map((e) => e.toJson()).toList(),
       'academicPerformance': academicPerformance,
       // Remplacer les références aux parents, enfants, etc., par leurs identifiants ou en ignorant les cycles
@@ -361,6 +352,12 @@ class Person {
     }
 
     checkForDeath();
+    addLifeHistoryEvent(
+      LifeHistoryEvent(
+          description: "You're now ${age.toString()}",
+          timestamp: DateTime.now(),
+      )
+    );
   }
 
   void openAccount(Bank bank, String accountType, double initialDeposit,
@@ -405,6 +402,80 @@ class Person {
     }
   }
 
+  void inheritFrom(Person deceased) {
+    // Hériter des objets et des comptes bancaires
+    this.bankAccounts.addAll(deceased.bankAccounts); // Hériter des comptes bancaires
+    this.offshoreAccounts.addAll(deceased.offshoreAccounts); // Hériter des comptes offshore
+
+    // Hériter des objets
+    this.antiques.addAll(deceased.antiques);
+    this.armes.addAll(deceased.armes);
+    this.arts.addAll(deceased.arts);
+    this.books.addAll(deceased.books);
+    this.electronics.addAll(deceased.electronics);
+    this.instruments.addAll(deceased.instruments);
+    this.jewelries.addAll(deceased.jewelries);
+    this.realEstates.addAll(deceased.realEstates);
+    this.motos.addAll(deceased.motos);
+    this.voitures.addAll(deceased.voitures);
+    this.bateaux.addAll(deceased.bateaux);
+    this.avions.addAll(deceased.avions);
+
+    print("${this.name} hérite de ${deceased.name} avec ${deceased.bankAccounts.length} comptes bancaires.");
+  }
+
+  void acquireAntique(Antique antique) {
+    this.antiques.add(antique);
+    print("${name} acquired an antique: ${antique.name}");
+  }
+
+  void acquireArme(Arme arme) {
+    this.armes.add(arme);
+    print("${name} acquired a weapon: ${arme.name}");
+  }
+
+  void acquireArt(Art art) {
+    this.arts.add(art);
+    print("${name} acquired a weapon: ${art.name}");
+  }
+
+  void addVehicle(dynamic vehicle) {
+    if (vehicle is Voiture) {
+      this.voitures.add(vehicle);
+    }
+    else if (vehicle is Moto) {
+      this.motos.add(vehicle);
+    }
+    else if (vehicle is Bateau) {
+      this.bateaux.add(vehicle);
+    }
+    else if (vehicle is Avion) {
+      this.avions.add(vehicle);
+    }
+    print("Added vehicle to collection: ${vehicle.name}");
+  }
+
+  List<dynamic> getAllVehicles() {
+    return [...voitures, ...motos, ...bateaux, ...avions];
+  }
+
+  void addElectronic(Electronic electronic) {
+    this.electronics.add(electronic);
+    print("${name} acquired ${electronic.display()}");
+  }
+  void addJewelry(Jewelry jewelry) {
+    this.jewelries.add(jewelry);
+    print("${name} acquired ${jewelry.display()}");
+  }
+  void addRealEstate(RealEstate realEstate) {
+    this.realEstates.add(realEstate);
+    print("${name} acquired ${realEstate.name}");
+  }
+  void addAntique(Antique antique) {
+    this.antiques.add(antique);
+    print("$name acquired ${antique.name}");
+  }
+
 
 
   void marry(Person partner) {
@@ -414,7 +485,6 @@ class Person {
       // IL faut permettre de choisir si oui ou non il faut ouvrir un compte commun du coup
     }
   }
-
   void updateHealthAndHappiness() {
     double totalStress = 0;
     jobs.forEach((job) {
@@ -425,22 +495,10 @@ class Person {
     health -= stressLevel / 100; // Hypothetical reduction in health
     happiness -= stressLevel / 200; // Hypothetical reduction in happiness
   }
-
-  double calculateStress(Job job) {
-    double baseStress = job.hoursPerWeek > 40
-        ? (job.hoursPerWeek - 40) * 0.5
-        : 0;
-    return baseStress + (100 - health) * 0.1;
-  }
-
   void releaseFromPrison() {
     isImprisoned = false;
     prisonTerm = 0;
     print("${name} has been released from prison.");
-  }
-
-  void retire(Job job) {
-    jobs.remove(job);
   }
 
   void enroll(EducationLevel education) {
@@ -490,7 +548,6 @@ class Person {
     }
   }
 
-
   List<Person> _generateRandomClassmates(int count) {
     if (personService.availableCharacters.isEmpty) {
       throw Exception("PersonService is not initialized with characters.");
@@ -510,69 +567,16 @@ class Person {
       }
     }
   }
-  void inheritFrom(Person deceased) {
-    // Hériter des objets et des comptes bancaires
-    this.bankAccounts.addAll(deceased.bankAccounts); // Hériter des comptes bancaires
-    this.offshoreAccounts.addAll(deceased.offshoreAccounts); // Hériter des comptes offshore
 
-    // Hériter des objets
-    this.collectibles.addAll(deceased.collectibles); // Hériter des objets
-    this.vehicles.addAll(deceased.vehicles); // Hériter des véhicules
-    this.realEstates.addAll(deceased.realEstates); // Hériter des biens immobiliers
-    this.vehiculeExotiques.addAll(deceased.vehiculeExotiques); // Hériter des véhicules exotiques
-    this.jewelries.addAll(deceased.jewelries); // Hériter des bijoux
-    this.electronics.addAll(deceased.electronics); // Hériter des électroniques
-    this.antiques.addAll(deceased.antiques); // Hériter des antiquités
-
-    print("${this.name} hérite de ${deceased.name} avec ${deceased.bankAccounts.length} comptes bancaires.");
+  double calculateStress(Job job) {
+    double baseStress = job.hoursPerWeek > 40
+        ? (job.hoursPerWeek - 40) * 0.5
+        : 0;
+    return baseStress + (100 - health) * 0.1;
   }
-
-
-  void acquireItem(CollectibleItem item) {
-    collectibles.add(item);
-    print("${name} acquired ${item.display()}");
+  void retire(Job job) {
+    jobs.remove(job);
   }
-
-  void inheritItems(List<CollectibleItem> inheritedItems) {
-    collectibles.addAll(inheritedItems);
-    print("${name} inherited ${inheritedItems.length} items");
-  }
-
-  void startBusiness(String name, String type, double investment) {
-    Business newBusiness =
-    Business(name: name, type: type, initialInvestment: investment);
-    businesses.add(newBusiness);
-    print("Started a new business : ${name}");
-  }
-
-  double getTotalAssets() {
-    double total = bankAccounts.fold(0.0, (sum, acc) => sum + acc.balance);
-    total += businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance());
-    return total;
-  }
-
-  void applyForBusinessLoan(Bank bank, double amount, int termYears) {
-    double projectedRevenue =
-    businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance());
-    BankAccount? primaryAccount =
-    bankAccounts.isNotEmpty ? bankAccounts.first : null;
-
-    if (primaryAccount != null) {
-      FinancialService financialService = FinancialService.instance;
-      if (financialService.applyForLoan(
-          primaryAccount, amount, termYears, projectedRevenue)) {
-        primaryAccount.deposit(amount);
-        print(
-            "Business loan of \$${amount} approved and deposited into account ${primaryAccount.accountNumber}");
-      } else {
-        print(
-            "Business loan application denied due to insufficient projected revenue or credit policies.");
-      }
-    } else {
-      print("No account available for loan deposit.");
-    }
-  }
-
   void applyForJob(Job job) {
     jobs.add(job);
     jobHistory.add(job);
@@ -607,6 +611,41 @@ class Person {
     health -= stressLevel / 100;
     happiness -= stressLevel / 200;
   }
+  void startBusiness(String name, String type, double investment) {
+    Business newBusiness =
+    Business(name: name, type: type, initialInvestment: investment);
+    businesses.add(newBusiness);
+    print("Started a new business : ${name}");
+  }
+
+  void applyForBusinessLoan(Bank bank, double amount, int termYears) {
+    double projectedRevenue =
+    businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance());
+    BankAccount? primaryAccount =
+    bankAccounts.isNotEmpty ? bankAccounts.first : null;
+
+    if (primaryAccount != null) {
+      FinancialService financialService = FinancialService.instance;
+      if (financialService.applyForLoan(
+          primaryAccount, amount, termYears, projectedRevenue)) {
+        primaryAccount.deposit(amount);
+        print(
+            "Business loan of \$${amount} approved and deposited into account ${primaryAccount.accountNumber}");
+      } else {
+        print(
+            "Business loan application denied due to insufficient projected revenue or credit policies.");
+      }
+    } else {
+      print("No account available for loan deposit.");
+    }
+  }
+
+
+  double getTotalAssets() {
+    double total = bankAccounts.fold(0.0, (sum, acc) => sum + acc.balance);
+    total += businesses.fold(0.0, (sum, bsn) => sum + bsn.getBalance());
+    return total;
+  }
 
   void updateSkill(String skill, double increment) {
     if (skills.containsKey(skill)) {
@@ -615,14 +654,12 @@ class Person {
       skills[skill] = increment;
     }
   }
-  
   void useBook(Book book) {
     book.skills.forEach((skill, improvement) {
       updateSkill(skill, improvement);
     });
     print("Read book ${book.title} and improved skills : ${skills}.");
   }
-
   void advanceEducation() {
     if (currentEducation != null) {
       currentEducation!.competences.forEach((skill, improvement) {
@@ -630,31 +667,6 @@ class Person {
       });
       print("Advanced in ${currentEducation!.name} and improved skills");
     }
-  }
-
-  void addVehicle(Vehicle vehicle) {
-    this.vehicles.add(vehicle);
-    print("Added vehicle to collection: ${vehicle.name}");
-  }
-
-  void addElectronic(Electronic electronic) {
-    this.electronics.add(electronic);
-    print("${name} acquired ${electronic.display()}");
-  }
-
-  void addJewelry(Jewelry jewelry) {
-    this.jewelries.add(jewelry);
-    print("${name} acquired ${jewelry.display()}");
-  }
-
-  void addRealEstate(RealEstate realEstate) {
-    this.realEstates.add(realEstate);
-    print("${name} acquired ${realEstate.name}");
-  }
-
-  void addAntique(Antique antique) {
-    this.antiques.add(antique);
-    print("$name acquired ${antique.name}");
   }
 
   void addPermit(String permit) {
@@ -670,6 +682,15 @@ class Person {
     relationship.updateRelationship(type, this, other);
   }
 
+  void updateRelationship(String targetParsonId, int impact) {
+    if (relationships.containsKey(targetParsonId)) {
+      relationships[targetParsonId]!.quality += impact;
+      relationships[targetParsonId]!.quality = relationships[targetParsonId]!.quality.clamp(0.0, 100.0);
+      print("Relationship with $targetParsonId updated. New quality: ${relationships[targetParsonId]!.quality}");
+    } else {
+      print("No relationship found with person $targetParsonId.");
+    }
+  }
   void performActivity(BuildContext context, Person? other, Activity activity) {
     BankAccount? accountToUse;
 
@@ -691,6 +712,12 @@ class Person {
       }
 
       accountToUse.withdraw(activity.cost);
+      addLifeHistoryEvent(
+          LifeHistoryEvent(
+            description: "${name} performed ${activity.name}.",
+            timestamp: DateTime.now(),
+          )
+      );
     }
 
     // Gérer les compétences requises
@@ -811,7 +838,6 @@ class Person {
     print("Activity ${activity.name} performed. Health: ${health}, Happiness: ${happiness}, Karma: ${karma}");
   }
 
-// Fonction pour afficher le Snackbar
   void _showSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -870,7 +896,6 @@ class Person {
       }
     }
   }
-
   double calculateAnnualIncome() {
     double annualIncome = jobs.fold(0.0, (sum, job) => sum + job.salary * 12);
 
@@ -879,11 +904,9 @@ class Person {
 
     return annualIncome;
   }
-
   double calculateMonthlyIncome() {
     return jobs.fold(0.0, (sum, job) => sum + FinancialService.adjustCost(job.salary * job.hoursPerWeek * 4));
   }
-
   double calculateTaxes() {
     // Récupéer le revenu annual
     double annualIncome = calculateAnnualIncome();
@@ -893,7 +916,6 @@ class Person {
     double taxes = taxSystem.calculatePersonalTax(annualIncome);
     return taxes;
   }
-
   double calculateNetWorth({required bool excludeOffshore}) {
     double totalAssets = bankAccounts.fold(0.0, (sum, acc) => sum + acc.balance);
 
@@ -902,8 +924,10 @@ class Person {
     }
 
     totalAssets += realEstates.fold(0.0, (sum, estate) => sum + estate.value);
-    totalAssets += vehicles.fold(0.0, (sum, vehicle) => sum + vehicle.value);
-    totalAssets += vehiculeExotiques.fold(0.0, (sum, vehicleExotique) => sum + vehicleExotique.value);
+    totalAssets += voitures.fold(0.0, (sum, vehicle) => sum + vehicle.value);
+    totalAssets += motos.fold(0.0, (sum, vehicle) => sum + vehicle.value);
+    totalAssets += bateaux.fold(0.0, (sum, vehicle) => sum + vehicle.value);
+    totalAssets += avions.fold(0.0, (sum, vehicle) => sum + vehicle.value);
     totalAssets += jewelries.fold(0.0, (sum, jewelry) => sum + jewelry.value);
     totalAssets += antiques.fold(0.0, (sum, antique) => sum + antique.value);
 
@@ -911,11 +935,9 @@ class Person {
 
     return totalAssets - totalDebt;
   }
-
   double estimateEducationCost(EducationLevel education) {
     return FinancialService.adjustCost(education.cost);
   }
-
   double calculateMonthlyExpenses() {
     double totalExpenses = 0.0;
 
@@ -923,20 +945,16 @@ class Person {
     totalExpenses += realEstates.fold(0.0, (sum, estate) => sum + estate.monthlyMaintenanceCost);
 
     // Coût des véhicules
-    totalExpenses += vehicles.fold(0.0, (sum, vehicle) => sum + vehicle.monthlyFuelCost);
-    totalExpenses += vehiculeExotiques.fold(0.0, (sum, vehicle) => sum + vehicle.monthlyFuelCost);
+    totalExpenses += motos.fold(0.0, (sum, vehicle) => sum + vehicle.monthlyFuelCost);
+    totalExpenses += voitures.fold(0.0, (sum, vehicle) => sum + vehicle.monthlyFuelCost);
+    totalExpenses += bateaux.fold(0.0, (sum, vehicle) => sum + vehicle.monthlyFuelCost);
+    totalExpenses += avions.fold(0.0, (sum, vehicle) => sum + vehicle.monthlyFuelCost);
 
     // Coût des autres dépenses mensuelles (nourritures, éducation, etc.)
     totalExpenses += bankAccounts.fold(0.0, (sum, account) => sum + account.monthlyExpenses);
 
     return totalExpenses;
   }
-
-  void addLifeHistoryEvent(LifeHistoryEvent event) {
-    lifeHistory.add(event);
-    print("Life event added: ${event.description}");
-  }
-
   void updateFinancialStatus(double amount) {
     if (bankAccounts.isNotEmpty) {
       bankAccounts.first.deposit(amount);
@@ -946,15 +964,12 @@ class Person {
     }
   }
 
-  void updateRelationship(String targetParsonId, int impact) {
-    if (relationships.containsKey(targetParsonId)) {
-      relationships[targetParsonId]!.quality += impact;
-      relationships[targetParsonId]!.quality = relationships[targetParsonId]!.quality.clamp(0.0, 100.0);
-      print("Relationship with $targetParsonId updated. New quality: ${relationships[targetParsonId]!.quality}");
-    } else {
-      print("No relationship found with person $targetParsonId.");
-    }
+  void addLifeHistoryEvent(LifeHistoryEvent event) {
+    lifeHistory.add(event);
+    LifeHistoryService().saveEvent(event); // Sauvegarde de l'événement
+    print("Life event added: ${event.description}");
   }
+
   double calculateMortalityRisk() {
     // Exemple d'une espérance de vie moyenne de 80 ans
     double lifeExpectancy = 80.0;
@@ -966,14 +981,12 @@ class Person {
       return 0.05 * ((age - lifeExpectancy) / 10); // Augmente significativement après l'espérance de vie
     }
   }
-
   void checkForDeath() {
     double mortalityRisk = calculateMortalityRisk();
     if (Random().nextDouble() < mortalityRisk) {
       die();
     }
   }
-
   void die() {
     print("$name has died at the age of $age");
 
@@ -1005,7 +1018,6 @@ class Person {
     print("$name devient un PNJ après sa mort.");
     // Arreter certain action etc etc
   }
-
   Person createChild(Person partner) {
     // Générez des caractéristiques pour l'enfant (nom, genre, apparence, etc)
     String childName = "Child of ${name} and ${partner.name}";

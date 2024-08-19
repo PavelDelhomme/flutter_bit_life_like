@@ -22,6 +22,30 @@ class OffshoreAccount extends BankAccount {
     accountType: accountType,
     closingFee: closingFee,
   );
+
+  factory OffshoreAccount.fromJson(Map<String, dynamic> json) {
+    BankAccount baseAccount = BankAccount.fromJson(json);
+
+    return OffshoreAccount(
+      accountNumber: baseAccount.accountNumber,
+      bankName: baseAccount.bankName,
+      balance: baseAccount.balance,
+      interestRate: baseAccount.interestRate,
+      accountType: baseAccount.accountType,
+      closingFee: baseAccount.closingFee,
+      taxHavenCountry: json['taxHavenCountry'] as String,
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> data = super.toJson();
+
+    data['taxHavenCountry'] = taxHavenCountry;
+
+    return data;
+  }
+
 }
 
 class TaxHavenService {

@@ -5,7 +5,7 @@
       "type": "smartphone",
       "brand": "XBrand",
       "model": "ModelX1",
-      "price": 999.99,
+      "value": 999.99,
       "supportsApplications": true
     },
     {
@@ -13,7 +13,7 @@
       "type": "laptop",
       "brand": "YBrand",
       "model": "ModelY1",
-      "price": 1599.99,
+      "value": 1599.99,
       "supportsApplications": true
     },
     {
@@ -21,7 +21,7 @@
       "type": "server",
       "brand": "ZBrand",
       "model": "ModelZ1",
-      "price": 4999.99,
+      "value": 4999.99,
       "supportsApplications": false
     }
   ]

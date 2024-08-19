@@ -14,6 +14,7 @@ import '../activities/activity/shopping/dealers/seconde_main_market_screen.dart'
 import '../activities/activity/shopping/dealers/vehicles/airplaine_dealership_screen.dart';
 import '../activities/activity/shopping/dealers/vehicles/boat_dealership_screen.dart';
 import '../activities/activity/shopping/dealers/vehicles/car_dealership_screen.dart';
+import '../activities/activity/shopping/dealers/vehicles/moto_dealership_screen.dart';
 
 class MarketplaceMenuScreen extends StatelessWidget {
   final Person person;
@@ -23,8 +24,6 @@ class MarketplaceMenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("marketplace_menu_screen.dart : person : ${person}");
-    log("marketplace_menu_screen.dart : person name : ${person.name}");
     return Scaffold(
       appBar: AppBar(
         title: Text('Marketplace Menu'),
@@ -37,6 +36,15 @@ class MarketplaceMenuScreen extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => CarDealershipScreen(person: person, transactionService: transactionService),
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text('Vendeur de motos'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MotoDealershipScreen(person: person, transactionService: transactionService),
               ),
             ),
           ),
@@ -54,9 +62,87 @@ class MarketplaceMenuScreen extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => AirplaineDealershipScreen(person: person, transactionService: transactionService),
+                builder: (context) => AirplaneDealershipScreen(person: person, transactionService: transactionService),
               ),
             ),
+          ),
+
+          ListTile(
+            title: Text('Marché Véhicules'),
+            subtitle: Text('Toucher pour sélectionner la catégorie de véhicules'),
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return SimpleDialog(
+                    title: Text('Type'),
+                    children: <Widget>[
+                      SimpleDialogOption(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CarDealershipScreen(
+                                transactionService: transactionService,
+                                person: person,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text('Car'),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MotoDealershipScreen(
+                                transactionService: transactionService,
+                                person: person,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text('Moto'),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BoatDealershipScreen(
+                                transactionService: transactionService,
+                                person: person,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text('Bateau'),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AirplaneDealershipScreen(
+                                transactionService: transactionService,
+                                person: person,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text('Avion'),
+                      ),
+
+                    ],
+                  );
+                },
+              );
+            },
           ),
           ListTile(
             title: Text('Marché Immobilier'),
@@ -132,7 +218,7 @@ class MarketplaceMenuScreen extends StatelessWidget {
                 builder: (context) => JewelryMarketScreen(
                   person: person,
                   transactionService: transactionService,
-                  jewelryService: JewelryService(),  // Ajoutez cette ligne
+                  jewelryService: JewelryService(),
                 ),
               ),
             ),

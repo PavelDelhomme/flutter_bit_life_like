@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../Classes/objects/vehicle.dart';
 import '../../../Classes/person.dart';
 import 'vehicule_details_screen_capital.dart';
 
@@ -17,17 +16,24 @@ class _MyVehiclesScreenState extends State<MyVehiclesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, List<Vehicle>> vehiculeCategories = {
-      "All": widget.person.vehicles,
-      "Airplanes": widget.person.vehicles.where((v) => v.type == 'Airplane').toList(),
-      "Motorcycles": widget.person.vehicles.where((v) => v.type == 'Motorcycle').toList(),
-      "Boats": widget.person.vehicles.where((v) => v.type == 'Boat').toList(),
-      "Cars": widget.person.vehicles.where((v) => v.type == 'Car').toList(),
+    List<dynamic> allVehicles = [
+      ...widget.person.voitures,
+      ...widget.person.motos,
+      ...widget.person.bateaux,
+      ...widget.person.avions
+    ];
+
+    Map<String, List<dynamic>> vehicleCategories = {
+      "All": allVehicles,
+      "Airplaines": widget.person.avions,
+      "Motos": widget.person.motos,
+      "Bateaux": widget.person.bateaux,
+      "Voitures": widget.person.voitures,
     };
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Vehicles"),
+        title: Text("My Vehicles"),
         actions: <Widget>[
           PopupMenuButton<String>(
             onSelected: (String value) {
@@ -61,11 +67,11 @@ class _MyVehiclesScreenState extends State<MyVehiclesScreen> {
         ],
       ),
       body: ListView.builder(
-        itemCount: vehiculeCategories[selectedCategory]!.length,
+        itemCount: vehicleCategories[selectedCategory]!.length,
         itemBuilder: (context, index) {
-          Vehicle vehicle = vehiculeCategories[selectedCategory]![index];
+          dynamic vehicle = vehicleCategories[selectedCategory]![index];
           return ListTile(
-            title: Text(vehicle.name), // Access property directly
+            title: Text(vehicle.name),
             subtitle: Text("\$${vehicle.value.toStringAsFixed(2)}"),
             onTap: () {
               Navigator.push(

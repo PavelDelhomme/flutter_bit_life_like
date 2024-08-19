@@ -4,13 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:bit_life_like/screens/start_screen.dart';
 import 'package:bit_life_like/services/bank/FinancialService.dart';
 import 'package:permission_handler/permission_handler.dart';
-
-final GlobalKey<NavigatorState> navigatorState = GlobalKey<NavigatorState>();
+import 'package:device_info_plus/device_info_plus.dart'; // Ajout du package device_info_plus
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await _requestPermissions();
 
   // Charger les données des événements depuis un fichier JSON
   String eventData = await rootBundle.loadString('assets/events.json');
@@ -21,48 +18,6 @@ void main() async {
 
   // Exécuter l'application avec les événements chargés
   runApp(MyApp(events: events));
-}
-
-
-Future<void> _requestPermissions() async {
-  PermissionStatus status = await Permission.storage.status;
-
-  if (!status.isGranted) {
-    // Redemande la permission jusqu'à ce qu'elle soit accordée
-    while (!status.isGranted) {
-      // Demande la permission
-      status = await Permission.storage.request();
-
-      if (status.isDenied || status.isPermanentlyDenied) {
-        // Si l'utilisateur refuse ou bloque définitivement la permission, on affiche un message
-        await showDialog(
-          context: navigatorState.currentState!.context, // Nécessite un GlobalKey pour accéder au contexte
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text('Permission nécessaire'),
-            content: const Text(
-                'L\'application a besoin de la permission de stockage pour fonctionner correctement.'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () async {
-                  // Redirige l'utilisateur vers les paramètres si la permission est définitivement refusée
-                  if (status.isPermanentlyDenied) {
-                    await openAppSettings();
-                  } else {
-                    Navigator.of(context).pop();
-                  }
-                },
-                child: const Text('Paramètres'),
-              ),
-              TextButton(
-                onPressed: () => SystemNavigator.pop(), // Ferme l'application
-                child: const Text('Quitter'),
-              ),
-            ],
-          ),
-        );
-      }
-    }
-  }
 }
 
 class MyApp extends StatelessWidget {
@@ -77,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: PermissionScreen(events: events), // Utiliser StartScreen comme écran principal
+      home: PermissionScreen(events: events), // Nouvel écran pour gérer les permissions
       debugShowCheckedModeBanner: false,
     );
   }
@@ -93,6 +48,8 @@ class PermissionScreen extends StatefulWidget {
 }
 
 class _PermissionScreenState extends State<PermissionScreen> {
+  bool _isRequestingPermission = false; // Booléen pour vérifier si une requête est en cours
+
   @override
   void initState() {
     super.initState();
@@ -100,51 +57,80 @@ class _PermissionScreenState extends State<PermissionScreen> {
   }
 
   Future<void> _checkPermissions() async {
-    PermissionStatus status = await Permission.storage.status;
+    if (_isRequestingPermission) return; // Si une demande est déjà en cours, ne rien faire
 
-    if (!status.isGranted) {
-      // Redemande la permission jusqu'à ce qu'elle soit accordée
-      while (!status.isGranted) {
-        // Demande la permission
-        status = await Permission.storage.request();
+    _isRequestingPermission = true; // Marquer qu'une requête est en cours
 
-        if (status.isDenied || status.isPermanentlyDenied) {
-          // Si la permission est refusée ou définitivement bloquée, affiche une boîte de dialogue
-          await showDialog(
-            context: context,
-            builder: (BuildContext context) => AlertDialog(
-              title: Text('Permission nécessaire'),
-              content: Text(
-                  'L\'application a besoin de la permission de stockage pour fonctionner correctement.'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () async {
-                    if (status.isPermanentlyDenied) {
-                      await openAppSettings(); // Ouvre les paramètres de l'application
-                    } else {
-                      Navigator.of(context).pop();
-                    }
-                  },
-                  child: Text('Paramètres'),
+    try {
+      // Si Android est de niveau 33 (Android 13) ou supérieur, ne pas demander la permission de stockage
+      if (await _isAndroid13OrAbove()) {
+        // Permissions spécifiques aux médias pour Android 13+
+        PermissionStatus imagePermission = await Permission.photos.status;
+        PermissionStatus videoPermission = await Permission.videos.status;
+
+        if (!imagePermission.isGranted || !videoPermission.isGranted) {
+          // Demander les permissions spécifiques aux médias
+          await Permission.photos.request();
+          await Permission.videos.request();
+        }
+      } else {
+        // Pour les versions antérieures à Android 13, demander la permission de stockage
+        PermissionStatus status = await Permission.storage.status;
+
+        if (!status.isGranted) {
+          // Redemande la permission jusqu'à ce qu'elle soit accordée
+          while (!status.isGranted) {
+            // Demande la permission
+            status = await Permission.storage.request();
+
+            if (status.isDenied || status.isPermanentlyDenied) {
+              // Si la permission est refusée ou définitivement bloquée, affiche une boîte de dialogue
+              await showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  title: Text('Permission nécessaire'),
+                  content: Text(
+                      'L\'application a besoin de la permission de stockage pour fonctionner correctement.'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () async {
+                        if (status.isPermanentlyDenied) {
+                          await openAppSettings(); // Ouvre les paramètres de l'application
+                        } else {
+                          Navigator.of(context).pop();
+                        }
+                      },
+                      child: Text('Paramètres'),
+                    ),
+                    TextButton(
+                      onPressed: () => SystemNavigator.pop(), // Ferme l'application
+                      child: Text('Quitter'),
+                    ),
+                  ],
                 ),
-                TextButton(
-                  onPressed: () => SystemNavigator.pop(), // Ferme l'application
-                  child: Text('Quitter'),
-                ),
-              ],
-            ),
-          );
+              );
+            }
+          }
         }
       }
-    }
 
-    // Si la permission est accordée, naviguer vers l'écran principal
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => StartScreen(events: widget.events),
-      ),
-    );
+      // Si les permissions sont accordées, naviguer vers l'écran principal
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => StartScreen(events: widget.events),
+        ),
+      );
+    } finally {
+      _isRequestingPermission = false; // Réinitialiser après la fin de la requête
+    }
+  }
+
+  // Fonction pour vérifier si Android est de version 13 ou supérieure
+  Future<bool> _isAndroid13OrAbove() async {
+    final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    return androidInfo.version.sdkInt >= 33;
   }
 
   @override

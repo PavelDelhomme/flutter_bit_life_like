@@ -22,13 +22,12 @@ class SecondHandMarketScreen extends StatelessWidget {
       body: ListView(
         children: [
           _buildCategoryTile(context, "Real Estate", person.realEstates),
-          _buildCategoryTile(context, "Vehicles", person.vehicles),
+          _buildCategoryTile(context, "Vehicles", person.getAllVehicles()),
           _buildCategoryTile(context, "Jewelry", person.jewelries),
           _buildCategoryTile(context, "Electronics", person.electronics),
           _buildCategoryTile(context, "Antiques", person.antiques),
           _buildCategoryTile(context, "Instruments", person.instruments),
           _buildCategoryTile(context, "Weapons", person.armes),
-          _buildCategoryTile(context, "Collectibles", person.collectibles),
         ],
       ),
     );
@@ -57,7 +56,7 @@ class SecondHandMarketScreen extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 var item = items[index];
                 return ListTile(
-                  title: Text(item.toString()), // Customize as needed
+                  title: Text(item.name), // Customize as needed
                   trailing: Icon(Icons.sell),
                   onTap: () {
                     _showSellDialog(context, item);

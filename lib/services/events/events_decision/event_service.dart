@@ -25,7 +25,7 @@ class EventService {
   }
 
   bool _isEventApplicable(Event event, Person person) {
-    if (event.name == "Vehicle Accident" && person.vehicles.isEmpty) {
+    if (event.name == "Vehicle Accident" && person.getAllVehicles().isEmpty) {
       return false;
     }
     if (event.name == "Business Inspection" && person.businesses.isEmpty) {
