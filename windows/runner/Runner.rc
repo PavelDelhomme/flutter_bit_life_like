@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "bit_life_like" "\0"
+            VALUE "FileDescription", "bitlife_like" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "bit_life_like" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "bit_life_like.exe" "\0"
-            VALUE "ProductName", "bit_life_like" "\0"
+            VALUE "InternalName", "bitlife_like" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
+            VALUE "OriginalFilename", "bitlife_like.exe" "\0"
+            VALUE "ProductName", "bitlife_like" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

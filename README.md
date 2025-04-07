@@ -1,4 +1,4 @@
-# bit_life_like
+# bitlife_like
 
 A new Flutter project.
 

@@ -1,6 +1,6 @@
 {
-    "name": "bit_life_like",
-    "short_name": "bit_life_like",
+    "name": "bitlife_like",
+    "short_name": "bitlife_like",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

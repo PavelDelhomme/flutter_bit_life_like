@@ -1,145 +1,122 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:bit_life_like/screens/start_screen.dart';
-import 'package:bit_life_like/services/bank/FinancialService.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:device_info_plus/device_info_plus.dart'; // Ajout du package device_info_plus
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // Charger les données des événements depuis un fichier JSON
-  String eventData = await rootBundle.loadString('assets/events.json');
-  List<Map<String, dynamic>> events = List<Map<String, dynamic>>.from(jsonDecode(eventData)['events']);
-
-  // Charger les données bancaires avant de démarrer l'application
-  await FinancialService.loadBankData();
-
-  // Exécuter l'application avec les événements chargés
-  runApp(MyApp(events: events));
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final List<Map<String, dynamic>> events;
+  const MyApp({super.key});
 
-  MyApp({required this.events});
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Life Simulation',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a purple toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: PermissionScreen(events: events), // Nouvel écran pour gérer les permissions
-      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class PermissionScreen extends StatefulWidget {
-  final List<Map<String, dynamic>> events;
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
 
-  PermissionScreen({required this.events});
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
+  final String title;
 
   @override
-  _PermissionScreenState createState() => _PermissionScreenState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _PermissionScreenState extends State<PermissionScreen> {
-  bool _isRequestingPermission = false; // Booléen pour vérifier si une requête est en cours
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    _checkPermissions();
-  }
-
-  Future<void> _checkPermissions() async {
-    if (_isRequestingPermission) return; // Si une demande est déjà en cours, ne rien faire
-
-    _isRequestingPermission = true; // Marquer qu'une requête est en cours
-
-    try {
-      // Si Android est de niveau 33 (Android 13) ou supérieur, ne pas demander la permission de stockage
-      if (await _isAndroid13OrAbove()) {
-        // Permissions spécifiques aux médias pour Android 13+
-        PermissionStatus imagePermission = await Permission.photos.status;
-        PermissionStatus videoPermission = await Permission.videos.status;
-
-        if (!imagePermission.isGranted || !videoPermission.isGranted) {
-          // Demander les permissions spécifiques aux médias
-          await Permission.photos.request();
-          await Permission.videos.request();
-        }
-      } else {
-        // Pour les versions antérieures à Android 13, demander la permission de stockage
-        PermissionStatus status = await Permission.storage.status;
-
-        if (!status.isGranted) {
-          // Redemande la permission jusqu'à ce qu'elle soit accordée
-          while (!status.isGranted) {
-            // Demande la permission
-            status = await Permission.storage.request();
-
-            if (status.isDenied || status.isPermanentlyDenied) {
-              // Si la permission est refusée ou définitivement bloquée, affiche une boîte de dialogue
-              await showDialog(
-                context: context,
-                builder: (BuildContext context) => AlertDialog(
-                  title: Text('Permission nécessaire'),
-                  content: Text(
-                      'L\'application a besoin de la permission de stockage pour fonctionner correctement.'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () async {
-                        if (status.isPermanentlyDenied) {
-                          await openAppSettings(); // Ouvre les paramètres de l'application
-                        } else {
-                          Navigator.of(context).pop();
-                        }
-                      },
-                      child: Text('Paramètres'),
-                    ),
-                    TextButton(
-                      onPressed: () => SystemNavigator.pop(), // Ferme l'application
-                      child: Text('Quitter'),
-                    ),
-                  ],
-                ),
-              );
-            }
-          }
-        }
-      }
-
-      // Si les permissions sont accordées, naviguer vers l'écran principal
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => StartScreen(events: widget.events),
-        ),
-      );
-    } finally {
-      _isRequestingPermission = false; // Réinitialiser après la fin de la requête
-    }
-  }
-
-  // Fonction pour vérifier si Android est de version 13 ou supérieure
-  Future<bool> _isAndroid13OrAbove() async {
-    final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    final AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    return androidInfo.version.sdkInt >= 33;
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    // Affiche un écran de chargement pendant la vérification des permissions
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
     return Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
+      appBar: AppBar(
+        // TRY THIS: Try changing the color here to a specific color (to
+        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+        // change color while the other colors stay the same.
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
       ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          // Column is also a layout widget. It takes a list of children and
+          // arranges them vertically. By default, it sizes itself to fit its
+          // children horizontally, and tries to be as tall as its parent.
+          //
+          // Column has various properties to control how it sizes itself and
+          // how it positions its children. Here we use mainAxisAlignment to
+          // center the children vertically; the main axis here is the vertical
+          // axis because Columns are vertical (the cross axis would be
+          // horizontal).
+          //
+          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+          // action in the IDE, or press "p" in the console), to see the
+          // wireframe for each widget.
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text('You have pushed the button this many times:'),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
