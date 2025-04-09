@@ -1,5 +1,5 @@
 import 'dart:math';
-import '../models/loan.dart' as loann;
+import 'loan.dart' as loann;
 
 enum AccountType {
   checking,

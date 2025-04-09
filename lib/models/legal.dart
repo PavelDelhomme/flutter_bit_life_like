@@ -1,8 +1,8 @@
 
 import 'dart:math';
 
-import './career.dart';
-import './character.dart';
+import 'work/career.dart';
+import 'person/character.dart';
 
 enum CrimeType {
   taxEvasion,
@@ -27,7 +27,7 @@ class Crime {
   final DateTime date;
   final String description;
   final PunishmentType? punishment;
-  final int? sentenceYears;
+  int? sentenceYears;
   final double? fine;
   final bool isSolved;
   
@@ -85,6 +85,18 @@ class LegalSystem {
   final Map<CrimeType, double> sentenceMultipliers;
   final Map<CrimeType, List<PunishmentType>> possiblePunishments;
   final Map<CrimeType, double> crimeSolvingRates;
+  final double auditProbability;
+  final double inheritanceTaxRate;
+
+  static const Map<CrimeType, int> _baseSentences = {
+    CrimeType.taxEvasion: 2,
+    CrimeType.theft: 1,
+    CrimeType.fraud: 3,
+    CrimeType.assault: 2,
+    CrimeType.drugDealing: 5,
+    CrimeType.robbery: 7,
+    CrimeType.murder: 15,
+  };
 
   LegalSystem({
     required this.countryCode,
@@ -93,6 +105,8 @@ class LegalSystem {
     required this.sentenceMultipliers,
     required this.possiblePunishments,
     required this.crimeSolvingRates,
+    this.auditProbability = 0.05,
+    this.inheritanceTaxRate = 0.3,
   });
 
   Map<String, dynamic> toJson() {
@@ -127,6 +141,114 @@ class LegalSystem {
             (k, v) => MapEntry(CrimeType.values.firstWhere((e) => e.toString() == k), v),
       ),
     );
+  }
+
+
+  static Future<List<LegalSystem>> loadDefaultSystems() async {
+    return [
+      LegalSystem(
+        countryCode: 'FR',
+        prisonStrictness: 0.7,
+        corruptionLevel: 0.2,
+        auditProbability: 0.07,
+        inheritanceTaxRate: 0.35,
+        sentenceMultipliers: {
+          CrimeType.taxEvasion: 1.5,
+          CrimeType.murder: 2.0,
+        },
+        possiblePunishments: {
+          CrimeType.theft: [PunishmentType.fine, PunishmentType.communityService],
+        },
+        crimeSolvingRates: {
+          CrimeType.robbery: 0.6,
+        },
+      ),
+      LegalSystem(
+        countryCode: 'US',
+        prisonStrictness: 0.7,
+        corruptionLevel: 0.2,
+        auditProbability: 0.07,
+        inheritanceTaxRate: 0.35,
+        sentenceMultipliers: {
+          CrimeType.taxEvasion: 1.5,
+          CrimeType.murder: 2.0,
+        },
+        possiblePunishments: {
+          CrimeType.theft: [PunishmentType.fine, PunishmentType.communityService],
+        },
+        crimeSolvingRates: {
+          CrimeType.robbery: 0.6,
+        },
+      ),
+      LegalSystem(
+        countryCode: 'EN',
+        prisonStrictness: 0.7,
+        corruptionLevel: 0.2,
+        auditProbability: 0.07,
+        inheritanceTaxRate: 0.35,
+        sentenceMultipliers: {
+          CrimeType.taxEvasion: 1.5,
+          CrimeType.murder: 2.0,
+        },
+        possiblePunishments: {
+          CrimeType.theft: [PunishmentType.fine, PunishmentType.communityService],
+        },
+        crimeSolvingRates: {
+          CrimeType.robbery: 0.6,
+        },
+      ),
+      LegalSystem(
+        countryCode: 'AR',
+        prisonStrictness: 0.7,
+        corruptionLevel: 0.2,
+        auditProbability: 0.07,
+        inheritanceTaxRate: 0.35,
+        sentenceMultipliers: {
+          CrimeType.taxEvasion: 1.5,
+          CrimeType.murder: 2.0,
+        },
+        possiblePunishments: {
+          CrimeType.theft: [PunishmentType.fine, PunishmentType.communityService],
+        },
+        crimeSolvingRates: {
+          CrimeType.robbery: 0.6,
+        },
+      ),
+      LegalSystem(
+        countryCode: 'GR',
+        prisonStrictness: 0.7,
+        corruptionLevel: 0.2,
+        auditProbability: 0.07,
+        inheritanceTaxRate: 0.35,
+        sentenceMultipliers: {
+          CrimeType.taxEvasion: 1.5,
+          CrimeType.murder: 2.0,
+        },
+        possiblePunishments: {
+          CrimeType.theft: [PunishmentType.fine, PunishmentType.communityService],
+        },
+        crimeSolvingRates: {
+          CrimeType.robbery: 0.6,
+        },
+      ),
+      LegalSystem(
+        countryCode: 'RU',
+        prisonStrictness: 0.7,
+        corruptionLevel: 0.2,
+        auditProbability: 0.07,
+        inheritanceTaxRate: 0.35,
+        sentenceMultipliers: {
+          CrimeType.taxEvasion: 1.5,
+          CrimeType.murder: 2.0,
+        },
+        possiblePunishments: {
+          CrimeType.theft: [PunishmentType.fine, PunishmentType.communityService],
+        },
+        crimeSolvingRates: {
+          CrimeType.robbery: 0.6,
+        },
+      ),
+    ];
   }
 
   double calculateSentence(CrimeType crime) {
@@ -225,4 +347,28 @@ class LegalSystem {
       return false;
     }
   }
+
+  void performAnnualAudit(Character character) {
+    if (character.declaredIncome >= character.actualIncome) return;
+
+    final discrepancy = (character.actualIncome - character.declaredIncome) / character.actualIncome;
+
+    final auditChance = auditProbability + discrepancy * discrepancy; // Plus l'écart est grand, plus le risque augmente
+
+    if (Random().nextDouble() < auditChance) {
+      final fineAmount = (character.actualIncome - character.declaredIncome) * inheritanceTaxRate; // Amende basée sur le taux d'héritage
+      character.money -= fineAmount;
+
+      character.addLifeEvent(
+          "Audit fiscal : Une fraude a été détectée. Amende de \$${fineAmount.toStringAsFixed(2)}."
+      );
+
+      if (discrepancy > inheritanceTaxRate * Random().nextDouble()) {
+        processCrimeAndPunishment(character, CrimeType.taxEvasion);
+      }
+    }
+  }
+
 }
+
+

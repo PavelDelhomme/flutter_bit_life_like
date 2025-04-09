@@ -1,10 +1,10 @@
 import 'dart:math';
-import '../../models/antique.dart';
-import '../../models/real_estate.dart';
+import '../../models/asset/antique.dart';
+import '../../models/asset/real_estate.dart';
 import '../../models/legal.dart';
 
-import '../../models/bank_account.dart' as models;
-import '../../models/character.dart';
+import '../../models/economy/bank_account.dart' as models;
+import '../../models/person/character.dart';
 import '../../models/event.dart';
 import '../data_service.dart';
 

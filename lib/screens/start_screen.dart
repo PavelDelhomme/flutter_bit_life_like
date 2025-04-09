@@ -1,6 +1,6 @@
 import '../screens/character_creation_screen.dart';
 import 'package:flutter/material.dart';
-import '../models/character.dart';
+import '../models/person/character.dart';
 import 'main_game_screen.dart';
 
 class StartScreen extends StatelessWidget {
@@ -13,7 +13,20 @@ class StartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFE53935),
       appBar: AppBar(
-        title: Image.asset("assets/bitlife_logo.png", height: 40),
+        title: Image.network(
+          'https://www.touchtapplay.com/wp-content/uploads/2022/09/How-to-Start-a-Successful-Business-in-Bitlife-768x403.png',
+          loadingBuilder: (context, child, loadingProgress) {
+            if (loadingProgress == null) return child;
+            return CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null
+                  ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                  : null,
+            );
+          },
+          errorBuilder: (context, error, stackTrace) {
+            return Image.asset('assets/bitlife_logo.png');
+          },
+        ),
         backgroundColor: const Color(0xFFE53935),
         centerTitle: true,
       ),

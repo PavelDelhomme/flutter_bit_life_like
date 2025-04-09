@@ -11,8 +11,8 @@ import 'package:bitlife_like/services/age_service.dart';
 import 'package:bitlife_like/services/bank/financial_service.dart';
 import 'package:bitlife_like/services/events/events_decision/event_service.dart';
 
-import 'package:bitlife_like/models/stat_data.dart';
-import 'package:bitlife_like/models/character.dart';
+import 'package:bitlife_like/models/person/stat_data.dart';
+import 'package:bitlife_like/models/person/character.dart';
 
 class MainGameScreen extends StatefulWidget {
   final Character character;

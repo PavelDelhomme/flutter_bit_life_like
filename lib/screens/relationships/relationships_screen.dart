@@ -1,7 +1,7 @@
-import '../../models/character.dart';
+import '../../models/person/character.dart';
 import '../../models/pet.dart';
-import '../../models/relationship.dart';
-import '../../models/assets.dart';
+import '../../models/person/relationship.dart';
+import '../../models/asset/assets.dart';
 import '../../screens/main_game_screen.dart';
 import 'package:flutter/material.dart';
 

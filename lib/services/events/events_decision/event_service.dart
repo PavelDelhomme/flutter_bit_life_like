@@ -1,5 +1,5 @@
 import 'dart:math';
-import '../../../models/character.dart';
+import '../../../models/person/character.dart';
 import '../../../models/event.dart';
 
 class EventService {

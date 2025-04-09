@@ -1,10 +1,10 @@
 // services/age_service.dart
 import 'dart:ffi';
 import 'dart:math';
-import '../../models/career.dart';
+import '../models/work/career.dart';
 import '../../services/events/events_decision/event_service.dart';
 
-import '../models/character.dart';
+import '../models/person/character.dart';
 import '../models/event.dart';
 import '../../services/bank/financial_service.dart';
 
@@ -282,4 +282,50 @@ class AgeService {
       character.lifeEvents.addAll(randomEvents);
     }
   }
+
+  void processYearlyUpdate(Character character) async {
+    // Veuillissement
+    character.age++;
+
+    // Eveeneùent financier
+    _financialService.processYearlyFinances(character);
+
+    // Vérificationlégale
+    if (Random().nextDouble() < 0.2) {
+      character.legalSystem?.performAnnualAudit(character);
+    }
+
+    // Sauvegarde automatique
+    await character.save();
+  }
+
+  void ageUpAll(List<Character> characters) {
+    for (final character in characters) {
+      if (character.isAlive) {
+        character.age++;
+        _updateStats(character);
+        _updateRelationships(character);
+
+        if (_checkDeathEvents(character)) {
+          character.isAlive = false;
+          character.deathDate = DateTime.now();
+          character.deathCause = "Mort naturelle";
+          continue; // Ne pas continuer à traiter un personnage décédé
+        }
+
+        // Vieillissement des possessions
+        _ageAssets(character);
+
+        // Vérification légale annuelle
+        if (character.legalSystem != null) {
+          character.legalSystem!.performAnnualAudit(character);
+        }
+
+        // Sauvegarde automatique après mise à jour annuelle
+        character.save();
+      }
+    }
+  }
+
+
 }

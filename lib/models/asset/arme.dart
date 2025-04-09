@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import '../models/assets.dart';
+import 'assets.dart';
 
 class Arme extends Asset {
   String weaponType;

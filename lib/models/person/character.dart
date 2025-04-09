@@ -1,21 +1,23 @@
 import 'dart:math';
+import 'package:hive/hive.dart';
 
-import '../services/data_service.dart';
-import 'antique.dart';
-import 'arme.dart';
-import 'bank_account.dart';
-import 'jewelry.dart';
-import 'legal.dart';
-import 'pet.dart';
-import 'vehicle.dart';
+import '../../services/data_service.dart';
+import '../asset/antique.dart';
+import '../asset/arme.dart';
+import '../economy/bank_account.dart';
+import '../asset/jewelry.dart';
+import '../legal.dart';
+import '../pet.dart';
+import '../asset/vehicle.dart';
 
 import 'relationship.dart';
-import 'career.dart';
-import 'assets.dart';
-import 'event.dart';
-import 'real_estate.dart';
+import '../work/career.dart';
+import '../asset/assets.dart';
+import '../event.dart';
+import '../asset/real_estate.dart';
 
-class Character {
+@HiveType(typeId: 0)
+class Character extends HiveObject {
   String id;
   String fullName;
   String gender;
@@ -71,6 +73,7 @@ class Character {
 
   bool isPNJ;
 
+  LegalSystem? legalSystem;
 
   Character({
     String? id,
@@ -114,7 +117,7 @@ class Character {
     List<OffshoreAccount>? offshoreAccounts,
     List<Event>? lifeEvents,
     this.isPNJ = false,
-    LegalSystem? legalSystem,
+    this.legalSystem,
   }) :
   id = id ?? 'char_${DateTime.now().millisecondsSinceEpoch}_${Random().nextInt(10000)}',
   bankAccounts = bankAccounts ?? [],
@@ -197,11 +200,11 @@ class Character {
     // Déclenchement des évènement basé sur lage
   }
 
-  factory Character.fromJson(Map<String, dynamic> json) {
+  factory Character.fromJson(Map<dynamic, dynamic> json) {
     // Vérification de la cohérence pays/ville
     final country = json['country'];
     final city = json['city'];
-    final validCities = DataService.getCitiesForCountry(country).getOrElse(() => []);
+    final validCities = DataService.getCitiesForCountrySync(country);
 
     return Character(
       id: json['id'],
@@ -209,7 +212,7 @@ class Character {
       taxRate: json['taxRate'] ?? DataService.getTaxRateForCountry(json['country']),
       gender: json['gender'],
       country: json['country'],
-      city: validCities.contains(city) ? city : validCities.firstOrElse(() => 'Inconnu'),
+      city: validCities.contains(city) ? city : validCities.isNotEmpty ? validCities.first: 'Inconnu',
       age: json['age'],
       birthdate: json['birthdate'],
       zodiacSign: json['zodiacSign'],
@@ -294,5 +297,21 @@ class Character {
       'isPNJ': isPNJ,
       'legalSystem': legalSystem?.toJson(),
     };
+  }
+
+  Future<void> save() async {
+    if (isPNJ) {
+      await Hive.box<Character>('pnjs').put(id, this);
+    } else {
+      await Hive.box<Character>('main_characters').put('current', this);
+    }
+  }
+
+  Future<void> delete() async {
+    if (isPNJ) {
+      await Hive.box<Character>('pnjs').delete(id);
+    } else {
+      await Hive.box<Character>('main_characters').delete('current');
+    }
   }
 }

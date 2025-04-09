@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import './assets.dart';
+import 'assets.dart';
 
 class Antique extends Asset {
   int yearOfOrigin;

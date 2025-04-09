@@ -1,6 +1,26 @@
+import 'dart:ffi';
 import 'dart:math';
 
+import 'package:bitlife_like/models/person/character.dart';
+import 'package:bitlife_like/services/pnj_manager.dart';
+
+import '../models/person/relationship.dart';
+
 class DataService {
+  static final Map<String, List<String>> _cachedCities = {};
+
+  static Future<void> preloadCities() async {
+    final countries = await getCountries();
+    for (final country in countries) {
+      _cachedCities[country] = await getCitiesForCountry(country);
+    }
+  }
+
+
+  static List<String> getCitiesForCountrySync(String country) {
+    return _cachedCities[country] ?? [];
+  }
+
   static Future<List<String>> getCountries() async {
     // Données temporaires
     return Future.value(['France', 'États-Unis', 'Japon', 'Viêt Nam']);
@@ -79,4 +99,50 @@ class DataService {
     if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return 'Verseau';
     return 'Poissons';
   }
+
+
+  static Character generateFamilyMember(Character mainCharacter, RelationshipType type) {
+    final random = Random();
+    final ageDifference = switch(type) {
+      RelationshipType.parent => 20 + random.nextInt(10),
+      RelationshipType.child => -(18 + random.nextInt(10)),
+      _ => 0
+    };
+    final birthdate = mainCharacter.birthdate.add(Duration(days: ageDifference * 365));
+
+    final familyMember = Character(
+      fullName: '${mainCharacter.fullName} ${_getFamilySuffix(type)}',
+      gender: random.nextBool() ? 'Homme' : 'Femme',
+      country: mainCharacter.country,
+      city: mainCharacter.city,
+      birthdate: birthdate,
+      zodiacSign: DataService.calculateZodiacSign(birthdate), // Ajouté ici
+      stats: PnjManager.generateInitialStats(), // Référence corrigée
+      isPNJ: true,
+    );
+
+    final relId = 'rel_${mainCharacter.id}_${familyMember.id}';
+
+    mainCharacter.relationships.add(Relationship(
+      id: relId,
+      characterId: mainCharacter.id,
+      targetId: familyMember.id,
+      type: type,
+      strength: 0.8,
+      status: RelationshipStatus.excellent,
+    ));
+
+    return familyMember;
+  }
+
+  static String _getFamilySuffix(RelationshipType type) {
+    return const {
+      RelationshipType.parent: 'Parent',
+      RelationshipType.sibling: 'Frère/Soeur',
+      RelationshipType.child: 'Enfant',
+    }[type] ?? '';
+  }
+
 }
+
+

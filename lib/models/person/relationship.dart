@@ -3,6 +3,12 @@ enum RelationshipType {
   child,
   sibling,
   spouse,
+  grandparent,
+  grandchild,
+  aunt,
+  uncle,
+  cousin,
+  guardian,
   friend,
   colleague,
   boss,
@@ -26,6 +32,7 @@ class Relationship {
   final String targetId;
   RelationshipType type;
   RelationshipStatus status;
+  double strength;
   double compatibilityScore; // 0.0 à 1.0
   double respectLevel; // 0.0 à 1.0
   double trustLevel; // 0.0 à 1.0
@@ -41,6 +48,7 @@ class Relationship {
     required this.targetId,
     required this.type,
     this.status = RelationshipStatus.neutral,
+    this.strength = 0.5,
     this.compatibilityScore = 0.5,
     this.respectLevel = 0.5,
     this.trustLevel = 0.5,
@@ -95,6 +103,7 @@ class Relationship {
       'id': id,
       'characterId': characterId,
       'targetId': targetId,
+      'strength': strength,
       'type': type.toString(),
       'status': status.toString(),
       'compatibilityScore': compatibilityScore,
@@ -113,6 +122,7 @@ class Relationship {
       id: json['id'],
       characterId: json['characterId'],
       targetId: json['targetId'],
+      strength: json['strength'],
       type: RelationshipType.values.firstWhere(
         (e) => e.toString() == json['type'],
         orElse: () => RelationshipType.friend,

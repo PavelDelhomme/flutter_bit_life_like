@@ -1,5 +1,5 @@
-import '../../models/assets.dart';
-import '../../models/character.dart';
+import '../../models/asset/assets.dart';
+import '../../models/person/character.dart';
 
 class TransactionService {
   static void transferAsset(Asset asset, Character from, Character to) {
