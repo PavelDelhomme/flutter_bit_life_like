@@ -1,10 +1,18 @@
-import 'package:bit_life_like/screens/character_creation_screen.dart';
-import 'package:bit_life_like/screens/start_screen.dart';
 import 'package:flutter/material.dart';
-import '../models/character.dart';
-import '../widgets/stat_bar.dart';
-import '../widgets/event_history.dart';
-import '../widgets/bottom_navigation.dart';
+
+import 'package:bitlife_like/screens/character_creation_screen.dart';
+import 'package:bitlife_like/screens/start_screen.dart';
+
+import 'package:bitlife_like/widgets/stat_bar.dart';
+import 'package:bitlife_like/widgets/event_history.dart';
+import 'package:bitlife_like/widgets/bottom_navigation.dart';
+
+import 'package:bitlife_like/services/age_service.dart';
+import 'package:bitlife_like/services/bank/financial_service.dart';
+import 'package:bitlife_like/services/events/events_decision/event_service.dart';
+
+import 'package:bitlife_like/models/stat_data.dart';
+import 'package:bitlife_like/models/character.dart';
 
 class MainGameScreen extends StatefulWidget {
   final Character character;
@@ -17,11 +25,36 @@ class MainGameScreen extends StatefulWidget {
 
 class _MainGameScreenState extends State<MainGameScreen> {
   late Character _character;
+  late AgeService _ageService;
 
   @override
   void initState() {
     super.initState();
     _character = widget.character;
+    _ageService = AgeService(EventService(), FinancialService());
+  }
+
+  void _handleAgeUp() {
+    setState(() {
+      _ageService.ageUp(_character);
+      _showAgeUpDialog();
+    });
+  }
+
+  void _showAgeUpDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Nouvel Age"),
+        content: Text('Vous avez maintenant ${_character.age} ans'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -31,12 +64,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
         backgroundColor: const Color(0xFFE53935),
         title: const Text('BitLife'),
         leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          ),
+          builder: (context) =>
+              IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
         ),
         actions: [
           Container(
@@ -95,7 +129,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const StartScreen(savedCharacters: []),
+                    builder: (context) =>
+                    const StartScreen(savedCharacters: []),
                   ),
                 );
               },
@@ -158,52 +193,77 @@ class _MainGameScreenState extends State<MainGameScreen> {
               ],
             ),
           ),
-          
+
           // Historique de vie
           Expanded(
             child: EventHistory(lifeEvents: _character.lifeEvents),
           ),
-          
+
           // Statistiques
           Container(
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
-                StatBar(
-                  label: 'Bonheur',
-                  value: _character.stats['happiness'] ?? 0,
-                  icon: Icons.emoji_emotions,
-                  color: Colors.green,
-                ),
-                const SizedBox(height: 5),
-                StatBar(
-                  label: 'Santé',
-                  value: _character.stats['health'] ?? 0,
-                  icon: Icons.favorite,
-                  color: Colors.red,
-                ),
-                const SizedBox(height: 5),
-                StatBar(
-                  label: 'Intelligence',
-                  value: _character.stats['intelligence'] ?? 0,
-                  icon: Icons.psychology,
-                  color: Colors.orange,
-                ),
-                const SizedBox(height: 5),
-                StatBar(
-                  label: 'Apparence',
-                  value: _character.stats['appearance'] ?? 0,
-                  icon: Icons.face,
-                  color: Colors.amber,
-                ),
+                _buildStatSection('VIE', [
+                  StatData(
+                      label: 'Santé',
+                      icon: Icons.favorite,
+                      value: _character.stats['health'] ?? 0,
+                      color: Colors.red
+                  ),
+                  StatData(
+                      label: 'Bonheur',
+                      icon: Icons.emoji_emotions,
+                      value: _character.stats['happiness'] ?? 0,
+                      color: Colors.amber
+                  ),
+                ]),
+                _buildStatSection('CAPACITÉS', [
+                  StatData(
+                      label: 'Intelligence',
+                      icon: Icons.psychology,
+                      value: _character.stats['intelligence'] ?? 0,
+                      color: Colors.blue
+                  ),
+                  StatData(
+                      label: 'Apparence',
+                      icon: Icons.face,
+                      value: _character.stats['appearance'] ?? 0,
+                      color: Colors.pink
+                  )
+                ]),
               ],
             ),
           ),
-          
-          // Barre de navigation du bas
-          const BottomNavigation(),
+          BottomNavigation(onAgePressed: _handleAgeUp),
         ],
       ),
+    );
+  }
+
+  Widget _buildStatSection(String title, List<StatData> stats) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Text(
+            title,
+            style: TextStyle(
+              color: Colors.grey[600],
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ),
+        ...stats.map((stat) => StatBar(
+          label: stat.label,
+          value: stat.value,
+          icon: stat.icon,
+          color: stat.color,
+        )),
+        const SizedBox(height: 16),
+      ],
     );
   }
 }
