@@ -48,20 +48,21 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     }
   }
 
-  void _generateRandomCharacter() {
+  void _generateRandomCharacter() async {
     final Random random = Random();
-    
-    // Génération aléatoire (à compléter avec DataService)
-    final randomName = DataService.getRandomName(_selectedGender);
-    final randomCountry = DataService.getRandomCountry();
-    final randomCity = DataService.getRandomCityForCountry(randomCountry);
-    
+
     setState(() {
-      _nameController.text = randomName;
-      _selectedCountry = randomCountry;
-      _selectedCity = randomCity;
+      _nameController.text = DataService.getRandomName(_selectedGender);
+      _selectedCountry = DataService.getRandomCountry();
       _selectedGender = random.nextBool() ? 'Homme' : 'Femme';
       _randomCharacter = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        setState(() {
+          _selectedCity = _cities.isNotEmpty
+              ? _cities[random.nextInt(_cities.length)]
+              : 'Inconnu';
+        });
+      });
     });
   }
 
@@ -199,7 +200,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             
             // Sélection de la ville
             DropdownButtonFormField<String>(
-              value: _selectedCity,
+              value: _cities.contains(_selectedCity) ? _selectedCity : null,
               decoration: const InputDecoration(
                 labelText: 'Ville',
                 labelStyle: TextStyle(color: Colors.white),

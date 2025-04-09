@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import '../services/data_service.dart';
 import 'antique.dart';
 import 'arme.dart';
 import 'bank_account.dart';
@@ -32,6 +33,7 @@ class Character {
   double money;
   List<BankAccount> bankAccounts;
   double creditScore;
+  double taxRate;
 
   List<Relationship> relationships;
   List<Character> parents;
@@ -67,12 +69,15 @@ class Character {
   // Historique
   List<Event> lifeEvents;
 
+  bool isPNJ;
+
 
   Character({
     String? id,
     required this.fullName,
     required this.gender,
     required this.country,
+    this.taxRate = 0.30,
     required this.city,
     this.age = 0,
     required this.birthdate,
@@ -108,6 +113,8 @@ class Character {
     this.yearsInPrison = 0,
     List<OffshoreAccount>? offshoreAccounts,
     List<Event>? lifeEvents,
+    this.isPNJ = false,
+    LegalSystem? legalSystem,
   }) :
   id = id ?? 'char_${DateTime.now().millisecondsSinceEpoch}_${Random().nextInt(10000)}',
   bankAccounts = bankAccounts ?? [],
@@ -181,12 +188,111 @@ class Character {
       properti.transfertOwnership(this, heir);
       heir.properties.add(properti);
     }
-
+    this.isPNJ = true;
     return heir;
   }
 
   void ageUp() {
     age++;
     // Déclenchement des évènement basé sur lage
+  }
+
+  factory Character.fromJson(Map<String, dynamic> json) {
+    // Vérification de la cohérence pays/ville
+    final country = json['country'];
+    final city = json['city'];
+    final validCities = DataService.getCitiesForCountry(country).getOrElse(() => []);
+
+    return Character(
+      id: json['id'],
+      fullName: json['fullName'],
+      taxRate: json['taxRate'] ?? DataService.getTaxRateForCountry(json['country']),
+      gender: json['gender'],
+      country: json['country'],
+      city: validCities.contains(city) ? city : validCities.firstOrElse(() => 'Inconnu'),
+      age: json['age'],
+      birthdate: json['birthdate'],
+      zodiacSign: json['zodiacSign'],
+      isAlive: json['isAlive'],
+      deathDate: json['deathDate'],
+      deathCause: json['deathCause'],
+      stats: json['stats'],
+      money: json['money'],
+      bankAccounts: json['bankAccounts'],
+      creditScore: json['creditScore'],
+      relationships: json['relationships'],
+      parents: json['parents'],
+      siblings: json['siblings'],
+      children: json['children'],
+      partners: json['partners'],
+      pets: json['pets'],
+      currentTitle: json['currentTitle'],
+      career: json['career'],
+      educationLevel: json['educationLevel'],
+      skills: json['skills'],
+      diplomas: json['diplomas'],
+      assets: json['assets'],
+      vehicles: json['vehicles'],
+      properties: json['properties'],
+      jewelries: json['jewelries'],
+      antiques: json['antiques'],
+      armes: json['armes'],
+      declaredIncome: json['declaredIncome'],
+      actualIncome: json['actuelIncome'],
+      hasCriminalRecord: json['hasCriminalRecord'],
+      criminalHistory: json['criminalHistory'],
+      yearsInPrison: json['yearsInPrison'],
+      offshoreAccounts: json['offshoreAccounts'],
+      lifeEvents: json['lifeEvents'],
+      isPNJ: json['isPNJ'],
+      legalSystem: json['legalSystem'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'fullName': fullName,
+      'gender': gender,
+      'country': country,
+      'city': city,
+      'age': age,
+      'birthdate': birthdate.toIso8601String(),
+      'zodiacSign': zodiacSign,
+      'isAlive': isAlive,
+      'deathDate': deathDate?.toIso8601String(),
+      'deathCause': deathCause,
+      'stats': stats,
+      'money': money,
+      'bankAccounts': bankAccounts.map((a) => a.toJson()).toList(),
+      'creditScore': creditScore,
+      'taxRate': taxRate,
+      'relationships': relationships.map((r) => r.toJson()).toList(),
+      'parents': parents.map((p) => p.toJson()).toList(),
+      'siblings': siblings.map((s) => s.toJson()).toList(),
+      'children': children.map((c) => c.toJson()).toList(),
+      'partners': partners.map((p) => p.toJson()).toList(),
+      'pets': pets.map((p) => p.toJson()).toList(),
+      'currentTitle': currentTitle,
+      'career': career?.toJson(),
+      'educationLevel': educationLevel.toString(),
+      'skills': skills.map((s) => s.toJson()).toList(),
+      'diplomas': diplomas,
+      'assets': assets.map((a) => a.toJson()).toList(),
+      'vehicles': vehicles.map((v) => v.toJson()).toList(),
+      'properties': properties.map((p) => p.toJson()).toList(),
+      'jewelries': jewelries.map((j) => j.toJson()).toList(),
+      'antiques': antiques.map((a) => a.toJson()).toList(),
+      'armes': armes.map((a) => a.toJson()).toList(),
+      'declaredIncome': declaredIncome,
+      'actualIncome': actualIncome,
+      'hasCriminalRecord': hasCriminalRecord,
+      'criminalHistory': criminalHistory.map((c) => c.toJson()).toList(),
+      'yearsInPrison': yearsInPrison,
+      'offshoreAccounts': offshoreAccounts.map((o) => o.toJson()).toList(),
+      'lifeEvents': lifeEvents.map((e) => e.toJson()).toList(),
+      'isPNJ': isPNJ,
+      'legalSystem': legalSystem?.toJson(),
+    };
   }
 }

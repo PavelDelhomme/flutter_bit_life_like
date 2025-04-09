@@ -77,50 +77,96 @@ class Crime {
   }
 }
 
+
 class LegalSystem {
-  final String country;
-  final Map<CrimeType, double> crimeSolvingRates;
+  final String countryCode;
+  final double prisonStrictness; // 0.0 (laxiste) à 1.0 (strict)
+  final double corruptionLevel; // 0.0 (propre) à 1.0 (corrompu)
+  final Map<CrimeType, double> sentenceMultipliers;
   final Map<CrimeType, List<PunishmentType>> possiblePunishments;
-  
+  final Map<CrimeType, double> crimeSolvingRates;
+
   LegalSystem({
-    required this.country,
-    required this.crimeSolvingRates,
+    required this.countryCode,
+    required this.prisonStrictness,
+    required this.corruptionLevel,
+    required this.sentenceMultipliers,
     required this.possiblePunishments,
+    required this.crimeSolvingRates,
   });
-  
+
+  Map<String, dynamic> toJson() {
+    return {
+      'countryCode': countryCode,
+      'prisonStrictness': prisonStrictness,
+      'corruptionLevel': corruptionLevel,
+      'sentenceMultipliers': sentenceMultipliers.map((k, v) => MapEntry(k.toString(), v)),
+      'possiblePunishments': possiblePunishments.map((k, v) => MapEntry(
+          k.toString(),
+          v.map((p) => p.toString()).toList()
+      )),
+      'crimeSolvingRates': crimeSolvingRates.map((k, v) => MapEntry(k.toString(), v)),
+    };
+  }
+
+  factory LegalSystem.fromJson(Map<String, dynamic> json) {
+    return LegalSystem(
+      countryCode: json['countryCode'],
+      prisonStrictness: json['prisonStrictness'],
+      corruptionLevel: json['corruptionLevel'],
+      sentenceMultipliers: json['sentenceMultipliers'].map<String, double>(
+            (k, v) => MapEntry(CrimeType.values.firstWhere((e) => e.toString() == k), v),
+      ),
+      possiblePunishments: json['possiblePunishments'].map<CrimeType, List<PunishmentType>>(
+            (k, v) => MapEntry(
+            CrimeType.values.firstWhere((e) => e.toString() == k),
+            (v as List).map((p) => PunishmentType.values.firstWhere((e) => e.toString() == p)).toList()
+        ),
+      ),
+      crimeSolvingRates: json['crimeSolvingRates'].map<String, double>(
+            (k, v) => MapEntry(CrimeType.values.firstWhere((e) => e.toString() == k), v),
+      ),
+    );
+  }
+
+  double calculateSentence(CrimeType crime) {
+    final baseYears = _baseSentences[crime] ?? 1;
+    return baseYears * sentenceMultipliers[crime]! * prisonStrictness;
+  }
+
   bool attemptCrime(Character character, CrimeType crimeType) {
     // Chance de réussite basée sur compétences et caractère aléatoire
     double baseSuccessRate = 0.7;
     double successRate = baseSuccessRate - (character.hasCriminalRecord ? 0.2 : 0);
-    
+
     bool success = Random().nextDouble() < successRate;
     if (!success) {
       // Crime échoué - arrestation immédiate
       processCrimeAndPunishment(character, crimeType);
       return false;
     }
-    
+
     // Crime réussi mais possibilité d'être attrapé plus tard
     double solvingRate = crimeSolvingRates[crimeType] ?? 0.5;
     bool caughtLater = Random().nextDouble() < solvingRate;
-    
+
     if (caughtLater) {
       // Délai avant arrestation
       Future.delayed(Duration(seconds: 30), () {
         processCrimeAndPunishment(character, crimeType);
       });
     }
-    
+
     return true;
   }
-  
+
   void processCrimeAndPunishment(Character character, CrimeType crimeType) {
     character.hasCriminalRecord = true;
-    
+
     // Sélection aléatoire de la punition parmi les possibles
     List<PunishmentType> punishments = possiblePunishments[crimeType] ?? [PunishmentType.fine];
     PunishmentType punishment = punishments[Random().nextInt(punishments.length)];
-    
+
     // Application de la punition
     switch (punishment) {
       case PunishmentType.fine:
@@ -143,7 +189,7 @@ class LegalSystem {
         }
         break;
     }
-    
+
     Crime crime = Crime(
       id: 'crime_${DateTime.now().millisecondsSinceEpoch}',
       type: crimeType,
@@ -154,17 +200,17 @@ class LegalSystem {
       fine: punishment == PunishmentType.fine ? character.calculateTotalIncome() * 0.3 : null,
       isSolved: true,
     );
-    
+
     character.criminalHistory.add(crime);
   }
-  
+
   bool attemptBribe(Character character, double amount) {
     // Chance de réussite du pot-de-vin
-    double successRate = 0.3 + (amount / 10000) * 0.5; // Max 80% de chance
+    double successRate = 0.3 + (amount / 10000) * (1 - corruptionLevel);
     successRate = min(successRate, 0.8);
-    
+
     bool success = Random().nextDouble() < successRate;
-    
+
     if (success) {
       character.money -= amount;
       character.addLifeEvent("A soudoyé un officiel avec \$${amount.toStringAsFixed(2)} et a évité des poursuites");
@@ -173,7 +219,7 @@ class LegalSystem {
       // Le pot-de-vin a échoué et aggrave la situation
       character.money -= amount;
       character.addLifeEvent("A tenté de soudoyer un officiel avec \$${amount.toStringAsFixed(2)} et a été pris sur le fait");
-      
+
       // Ajouter un nouveau crime pour tentative de corruption
       processCrimeAndPunishment(character, CrimeType.fraud);
       return false;

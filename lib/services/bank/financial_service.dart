@@ -6,6 +6,7 @@ import '../../models/legal.dart';
 import '../../models/bank_account.dart' as models;
 import '../../models/character.dart';
 import '../../models/event.dart';
+import '../data_service.dart';
 
 
 class FinancialService {
@@ -277,5 +278,18 @@ class FinancialService {
     }
     
     return false;
+  }
+
+  void applyTaxes(Character character) {
+    final income = character.calculateTotalIncome();
+    final taxRate = DataService.getTaxRateForCountry(character.country);
+    final taxAmount = income * taxRate;
+
+    character.money -= taxAmount;
+    character.declaredIncome += income;
+
+    character.addLifeEvent(
+        'Paiement des impôts : \$${taxAmount.toStringAsFixed(2)} (${(taxRate * 100).toInt()}%)'
+    );
   }
 }

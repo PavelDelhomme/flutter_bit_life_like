@@ -33,4 +33,30 @@ class Arme extends Asset {
     }
     value *= 0.9;
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      ...super.toJson(),
+      'weaponType': weaponType,
+      'damage': damage,
+    };
+  }
+
+  factory Arme.fromJson(Map<String, dynamic> json) {
+    return Arme(
+      id: json['id'],
+      ownerId: json['ownerId'],
+      weaponType: json['weaponType'],
+      damage: json['damage'],
+      name: json['name'],
+      value: json['value'],
+      age: json['age'],
+      condition: AssetCondition.values.firstWhere(
+            (e) => e.toString() == json['condition'],
+        orElse: () => AssetCondition.good,
+      ),
+      maintenanceCost: json['maintenanceCost'],
+    );
+  }
 }

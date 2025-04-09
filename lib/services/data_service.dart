@@ -7,17 +7,18 @@ class DataService {
   }
   
   static Future<List<String>> getCitiesForCountry(String country) async {
+    await Future.delayed(Duration(milliseconds: 100)); // Simulation de latence
     switch (country) {
       case 'France':
-        return Future.value(['Paris', 'Lyon', 'Marseille', 'Bordeaux', 'Rennes']);
+        return ['Paris', 'Lyon', 'Marseille', 'Bordeaux', 'Rennes'];
       case 'États-Unis':
-        return Future.value(['New York', 'Los Angeles', 'Chicago', 'Miami']);
+        return ['New York', 'Los Angeles', 'Chicago', 'Miami'];
       case 'Japon':
-        return Future.value(['Tokyo', 'Osaka', 'Kyoto', 'Sapporo']);
+        return ['Tokyo', 'Osaka', 'Kyoto', 'Sapporo'];
       case 'Viêt Nam':
-        return Future.value(['Hanoï', 'Hô Chi Minh-Ville', 'Da Nang', 'Can Tho']);
+        return ['Hanoï', 'Hô Chi Minh-Ville', 'Da Nang', 'Can Tho'];
       default:
-        return Future.value(['Ville inconnue']);
+        return ['Ville inconnue'];
     }
   }
   
@@ -35,22 +36,30 @@ class DataService {
     final countries = ['France', 'États-Unis', 'Japon', 'Viêt Nam'];
     return countries[Random().nextInt(countries.length)];
   }
-  
-  static String getRandomCityForCountry(String country) {
-    final Random random = Random();
-    
-    switch (country) {
-      case 'France':
-        return ['Paris', 'Lyon', 'Marseille', 'Bordeaux'][random.nextInt(4)];
-      case 'Viêt Nam':
-        return ['Hanoï', 'Hô Chi Minh-Ville', 'Da Nang', 'Can Tho'][random.nextInt(4)];
-      case 'États-Unis':
-        return ['New York', 'Los Angeles', 'Chicago', 'Miami'][random.nextInt(4)];
-      case 'Japon':
-        return ['Tokyo', 'Osaka', 'Kyoto', 'Sapporo'][random.nextInt(4)];
-      default:
-        return 'Ville inconnue';
-    }
+
+  static Future<String> getRandomCityForCountry(String country) async {
+    final cities = await getCitiesForCountry(country);
+    return cities.isNotEmpty
+        ? cities[Random().nextInt(cities.length)]
+        : 'Inconnu';
+  }
+
+
+  static final Map<String, double> _countryTaxRates = {
+    'France': 0.30,
+    'États-Unis': 0.28,
+    'Japon': 0.35,
+    'Viêt Nam': 0.25,
+  };
+
+  static double getTaxRateForCountry(String country) {
+    return _countryTaxRates[country] ?? 0.30; // valeur par défaut
+  }
+
+  static Future<String> getRandomCityForCountryAsync(String country) async {
+    final cities = await getCitiesForCountry(country);
+    if (cities.isEmpty) return 'Inconnu';
+    return cities[Random().nextInt(cities.length)];
   }
   
   static String calculateZodiacSign(DateTime birthdate) {
