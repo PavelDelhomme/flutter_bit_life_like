@@ -1,4 +1,4 @@
-import 'package:bit_life_like/screens/character_creation_screen.dart';
+import '../screens/character_creation_screen.dart';
 import 'package:flutter/material.dart';
 import '../models/character.dart';
 import 'main_game_screen.dart';

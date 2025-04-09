@@ -1,8 +1,8 @@
 
 import 'dart:math';
 
-import 'package:bit_life_like/models/career.dart';
-import 'package:bit_life_like/models/character.dart';
+import './career.dart';
+import './character.dart';
 
 enum CrimeType {
   taxEvasion,

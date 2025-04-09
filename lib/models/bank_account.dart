@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:bit_life_like/models/loan.dart' as loann;
+import '../models/loan.dart' as loann;
 
 enum AccountType {
   checking,

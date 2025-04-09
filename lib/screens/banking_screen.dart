@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:bit_life_like/models/character.dart';
+import '../models/character.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

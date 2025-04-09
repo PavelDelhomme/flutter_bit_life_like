@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:bit_life_like/models/event.dart';
+import '../models/event.dart';
 import 'package:flutter/material.dart';
 import '../models/character.dart';
 import '../services/data_service.dart';

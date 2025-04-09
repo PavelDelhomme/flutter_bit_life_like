@@ -1,4 +1,4 @@
-import 'package:bit_life_like/models/assets.dart';
+import './assets.dart';
 
 class Jewelry extends Asset {
   String material;

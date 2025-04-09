@@ -1,12 +1,12 @@
 // services/age_service.dart
 import 'dart:ffi';
 import 'dart:math';
-import 'package:bit_life_like/models/career.dart';
-import 'package:bit_life_like/services/events/events_decision/event_service.dart';
+import '../../models/career.dart';
+import '../../services/events/events_decision/event_service.dart';
 
 import '../models/character.dart';
 import '../models/event.dart';
-import 'package:bit_life_like/services/bank/financial_service.dart';
+import '../../services/bank/financial_service.dart';
 
 class AgeService {
   final EventService _eventService;

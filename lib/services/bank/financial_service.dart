@@ -1,13 +1,11 @@
 import 'dart:math';
-import 'package:bit_life_like/models/antique.dart';
-import 'package:bit_life_like/models/real_estate.dart';
-import 'package:bit_life_like/models/legal.dart';
+import '../../models/antique.dart';
+import '../../models/real_estate.dart';
+import '../../models/legal.dart';
 
-import 'package:bit_life_like/models/bank_account.dart' as models;
+import '../../models/bank_account.dart' as models;
 import '../../models/character.dart';
 import '../../models/event.dart';
-import 'package:bit_life_like/services/bank/bank_account.dart' as services;
-
 
 
 class FinancialService {

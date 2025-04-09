@@ -1,4 +1,4 @@
-import 'package:bit_life_like/models/assets.dart';
+import '../models/assets.dart';
 
 class Vehicle extends Asset {
   String brand;
@@ -7,23 +7,19 @@ class Vehicle extends Asset {
   double mileage;
 
   Vehicle({
-    required String id,
-    required String ownerId,
+    required super.id,
+    required super.ownerId,
     required this.brand,
     required this.model,
     required this.productionYear,
     this.mileage = 0.0,
-    required String name,
-    required double value,
+    required super.name,
+    required super.value,
     int age = 0,
     AssetCondition condition = AssetCondition.good,
     double maintenanceCost = 0.0,
   }) : super(
-    id: id,
-    ownerId: ownerId,
     type: AssetType.vehicle,
-    name: name,
-    value: value,
     age: age,
     condition: condition,
     maintenanceCost: maintenanceCost,

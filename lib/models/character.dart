@@ -7,7 +7,6 @@ import 'jewelry.dart';
 import 'legal.dart';
 import 'pet.dart';
 import 'vehicle.dart';
-import 'package:bit_life_like/screens/activities/activity/shopping/dealers/vehicles/vehicle_dealership_details_screen.dart';
 
 import 'relationship.dart';
 import 'career.dart';

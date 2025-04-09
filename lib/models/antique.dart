@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:bit_life_like/models/assets.dart';
+import './assets.dart';
 
 class Antique extends Asset {
   int yearOfOrigin;
@@ -10,24 +10,20 @@ class Antique extends Asset {
   double rarity;
 
   Antique({
-    required String id,
-    required String ownerId,
+    required super.id,
+    required super.ownerId,
     required this.yearOfOrigin,
     required this.era,
     this.artist,
     this.isAuthenticated = false,
     this.rarity = 0.5,
-    required String name,
-    required double value,
+    required super.name,
+    required super.value,
     int age = 0,
     AssetCondition condition = AssetCondition.good,
     double maintenanceCost = 0.0,
   }) : super(
-    id: id,
-    ownerId: ownerId,
     type: AssetType.antique,
-    name: name,
-    value: value,
     age: age,
     condition: condition,
     maintenanceCost: maintenanceCost,

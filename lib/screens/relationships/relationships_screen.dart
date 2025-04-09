@@ -1,8 +1,8 @@
-import 'package:bit_life_like/models/character.dart';
-import 'package:bit_life_like/models/pet.dart';
-import 'package:bit_life_like/models/relationship.dart';
-import 'package:bit_life_like/models/assets.dart';
-import 'package:bit_life_like/screens/main_game_screen.dart';
+import '../../models/character.dart';
+import '../../models/pet.dart';
+import '../../models/relationship.dart';
+import '../../models/assets.dart';
+import '../../screens/main_game_screen.dart';
 import 'package:flutter/material.dart';
 
 
