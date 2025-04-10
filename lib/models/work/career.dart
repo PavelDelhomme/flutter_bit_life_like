@@ -1,6 +1,8 @@
 // models/career.dart
 import 'dart:math';
 
+import 'package:bitlife_like/models/person/skill.dart';
+
 enum EducationLevel {
   none,
   primarySchool,
@@ -22,30 +24,6 @@ enum EmploymentStatus {
   entrepreneur
 }
 
-class Skill {
-  final String name;
-  double level; // 0.0 à 1.0
-  
-  Skill({required this.name, this.level = 0.0});
-  
-  void improve(double amount) {
-    level = (level + amount).clamp(0.0, 1.0);
-  }
-  
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'level': level,
-    };
-  }
-  
-  factory Skill.fromJson(Map<String, dynamic> json) {
-    return Skill(
-      name: json['name'],
-      level: json['level'],
-    );
-  }
-}
 
 class Career {
   final String id;

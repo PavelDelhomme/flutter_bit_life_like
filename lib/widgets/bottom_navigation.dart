@@ -2,10 +2,18 @@ import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatefulWidget {
   final VoidCallback onAgePressed;
+  final VoidCallback onWorkPressed;
+  final VoidCallback onAssetsPressed;
+  final VoidCallback onRelationsPressed;
+  final VoidCallback onActivitiesPressed;
 
   const BottomNavigation({
     super.key,
     required this.onAgePressed,
+    required this.onWorkPressed,
+    required this.onAssetsPressed,
+    required this.onRelationsPressed,
+    required this.onActivitiesPressed,
   });
 
   @override
@@ -24,11 +32,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildNavItem('Nourrisson', Icons.child_care, () {}),
-          _buildNavItem('Capital', Icons.account_balance, () {}),
+          _buildNavItem('Travail', Icons.work, widget.onWorkPressed),
+          _buildNavItem('Capital', Icons.account_balance, widget.onAssetsPressed),
           _buildAgeButton(),
-          _buildNavItem('Relations', Icons.people, () {}),
-          _buildNavItem('Activités', Icons.sports_esports, () {}),
+          _buildNavItem('Relations', Icons.people, widget.onRelationsPressed),
+          _buildNavItem('Activités', Icons.sports_esports, widget.onActivitiesPressed),
         ],
       ),
     );

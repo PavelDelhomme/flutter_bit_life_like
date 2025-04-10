@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+
+
+
 class StatBar extends StatelessWidget {
   final String label;
   final double value;
@@ -16,72 +19,119 @@ class StatBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-      margin: const EdgeInsets.symmetric(vertical: 4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: Colors.grey[100],
-      ),
-      padding: const EdgeInsets.all(8),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          Container(
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.2),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(icon, color: color),
-          ),
-          const SizedBox(width: 12),
+          Icon(icon, color: color, size: 24),
+          const SizedBox(width: 8),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  label,
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                LayoutBuilder(
-                  builder: (context, constraints) {
-                    return AnimatedContainer(
-                      duration: const Duration(milliseconds: 800),
-                      curve: Curves.easeOutQuad,
-                      width: constraints.maxWidth * (value / 100),
-                      height: 12,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: color,
-                      ),
-                    );
-                  },
+                Text(label, style: const TextStyle(fontSize: 14)),
+                LinearProgressIndicator(
+                  value: value / 100,
+                  backgroundColor: Colors.grey[200],
+                  valueColor: AlwaysStoppedAnimation<Color>(color),
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: Text(
-              '${value.toInt()}%',
-              style: TextStyle(
-                color: Colors.grey[700],
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
-            ),
+            child: Text('${value.toStringAsFixed(0)}%'),
           ),
         ],
       ),
     );
   }
 }
+
+
+// class StatBar extends StatelessWidget {
+//   final String label;
+//   final double value;
+//   final IconData icon;
+//   final Color color;
+
+//   const StatBar({
+//     super.key,
+//     required this.label,
+//     required this.value,
+//     required this.icon,
+//     required this.color,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return AnimatedContainer(
+//       duration: const Duration(milliseconds: 500),
+//       curve: Curves.easeInOut,
+//       margin: const EdgeInsets.symmetric(vertical: 4),
+//       decoration: BoxDecoration(
+//         borderRadius: BorderRadius.circular(8),
+//         color: Colors.grey[100],
+//       ),
+//       padding: const EdgeInsets.all(8),
+//       child: Row(
+//         children: [
+//           Container(
+//             padding: const EdgeInsets.all(6),
+//             decoration: BoxDecoration(
+//               color: color.withOpacity(0.2),
+//               shape: BoxShape.circle,
+//             ),
+//             child: Icon(icon, color: color),
+//           ),
+//           const SizedBox(width: 12),
+//           Expanded(
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Text(
+//                   label,
+//                   style: TextStyle(
+//                     color: Colors.grey[700],
+//                     fontWeight: FontWeight.bold,
+//                     fontSize: 14,
+//                   ),
+//                 ),
+//                 const SizedBox(height: 4),
+//                 LayoutBuilder(
+//                   builder: (context, constraints) {
+//                     return AnimatedContainer(
+//                       duration: const Duration(milliseconds: 800),
+//                       curve: Curves.easeOutQuad,
+//                       width: constraints.maxWidth * (value / 100),
+//                       height: 12,
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(4),
+//                         color: color,
+//                       ),
+//                     );
+//                   },
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.only(left: 8),
+//             child: Text(
+//               '${value.toInt()}%',
+//               style: TextStyle(
+//                 color: Colors.grey[700],
+//                 fontWeight: FontWeight.bold,
+//                 fontSize: 14,
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 /*
 import 'package:flutter/material.dart';

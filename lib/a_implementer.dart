@@ -91,3 +91,11 @@
 // TODO : braquage de banque
 
 // TODO : commetre des meutre pour les commandité
+
+// TODO : manipulation mentale - hyptoniser ou manipuler psychologiquement des individus pour qu'ils commemnt des crimes à leur place
+
+// TODO : pirater des système de villes (dfeux de circulation, réseaux electrique) pour provoquer une panne massive ou un chaos urbain
+
+// TODO : Manipuler une intelligence artificielle pour qu'elle prenne des décisions illégales (comme détourner des fonds ou falsifier des données).
+
+// TODO :

@@ -14,6 +14,11 @@ import 'package:bitlife_like/services/events/events_decision/event_service.dart'
 import 'package:bitlife_like/models/person/stat_data.dart';
 import 'package:bitlife_like/models/person/character.dart';
 
+import 'submenus/relationships_menus/menus/relationships_screen.dart';
+import 'submenus/activities_menus/menus/activities_screen.dart';
+import 'submenus/career_menus/menus/work_screen.dart';
+import 'submenus/assets_menus/menus/assets_menu_screen.dart';
+
 class MainGameScreen extends StatefulWidget {
   final Character character;
 
@@ -200,46 +205,216 @@ class _MainGameScreenState extends State<MainGameScreen> {
           ),
 
           // Statistiques
-          Container(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                _buildStatSection('VIE', [
-                  StatData(
-                      label: 'Santé',
-                      icon: Icons.favorite,
-                      value: _character.stats['health'] ?? 0,
-                      color: Colors.red
-                  ),
-                  StatData(
-                      label: 'Bonheur',
-                      icon: Icons.emoji_emotions,
-                      value: _character.stats['happiness'] ?? 0,
-                      color: Colors.amber
-                  ),
-                ]),
-                _buildStatSection('CAPACITÉS', [
-                  StatData(
-                      label: 'Intelligence',
-                      icon: Icons.psychology,
-                      value: _character.stats['intelligence'] ?? 0,
-                      color: Colors.blue
-                  ),
-                  StatData(
-                      label: 'Apparence',
-                      icon: Icons.face,
-                      value: _character.stats['appearance'] ?? 0,
-                      color: Colors.pink
-                  )
-                ]),
-              ],
+          // Container(
+          //   padding: const EdgeInsets.all(15),
+          //   child: Column(
+          //     children: [
+          //       _buildStatSection('VIE', [
+          //         StatData(
+          //             label: 'Santé',
+          //             icon: Icons.favorite,
+          //             value: _character.stats['health'] ?? 0,
+          //             color: Colors.red
+          //         ),
+          //         StatData(
+          //             label: 'Bonheur',
+          //             icon: Icons.emoji_emotions,
+          //             value: _character.stats['happiness'] ?? 0,
+          //             color: Colors.amber
+          //         ),
+          //       ]),
+          //       _buildStatSection('CAPACITÉS', [
+          //         StatData(
+          //             label: 'Intelligence',
+          //             icon: Icons.psychology,
+          //             value: _character.stats['intelligence'] ?? 0,
+          //             color: Colors.blue
+          //         ),
+          //         StatData(
+          //             label: 'Apparence',
+          //             icon: Icons.face,
+          //             value: _character.stats['appearance'] ?? 0,
+          //             color: Colors.pink
+          //         )
+          //       ]),
+          //     ],
+          //   ),
+          // ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  children: [
+                    _buildExpandableStatSection('VIE', [
+                      StatData(
+                        label: 'Santé',
+                        icon: Icons.favorite,
+                        value: _character.stats['health'] ?? 0,
+                        color: Colors.red
+                      ),
+                      StatData(
+                        label: 'Bonheur',
+                        icon: Icons.emoji_emotions,
+                        value: _character.stats['happiness'] ?? 0,
+                        color: Colors.amber
+                      ),
+                    ]),
+                    _buildClickableStatSection(),
+                  ],
+                ),
+              ),
             ),
           ),
-          BottomNavigation(onAgePressed: _handleAgeUp),
+
+          BottomNavigation(
+            onAgePressed: () => _handleAgeUp(),
+            onWorkPressed: () => _navigateToWorkScreen(),
+            onAssetsPressed: () => _navigateToAssetsScreen(),
+            onRelationsPressed: () => _navigateToRelationsScreen(),
+            onActivitiesPressed: () => _navigateToActivitiesScreen(),
+          ),
         ],
       ),
     );
   }
+
+  Widget _buildExpandableStatSection(String title, List<StatData> stats) {
+    return ExpansionTile(
+      title: Text(
+        title,
+        style: TextStyle(
+          color: Colors.grey[600],
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+      ),
+      children: [
+        ...stats.map((stat) => StatBar(
+          label: stat.label,
+          value: stat.value,
+          icon: stat.icon,
+          color: stat.color,
+        )),
+      ],
+    );
+  }
+  
+  Widget _buildClickableStatSection() {
+    return InkWell(
+      onTap: _showDetailedStatsDialog,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            const Icon(Icons.more_horiz, color: Colors.grey),
+            const SizedBox(width: 8),
+            Text(
+              'CAPACITÉS ET COMPÉTENCES',
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  
+  void _showDetailedStatsDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: Colors.white.withOpacity(0.9),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        title: const Text('Statistiques détaillées'),
+        content: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildStatItem('Intelligence', _character.stats['intelligence'] ?? 0, Colors.blue),
+              _buildStatItem('Apparence', _character.stats['appearance'] ?? 0, Colors.pink),
+              _buildStatItem('Force', _character.stats['strength'] ?? 0, Colors.orange),
+              _buildStatItem('Charisme', _character.stats['charisma'] ?? 0, Colors.purple),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Fermer'),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+  Widget _buildStatItem(String label, double value, Color color) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Text(label, style: const TextStyle(fontSize: 16)),
+          ),
+          Expanded(
+            flex: 3,
+            child: LinearProgressIndicator(
+              value: value / 100,
+              backgroundColor: Colors.grey[200],
+              valueColor: AlwaysStoppedAnimation<Color>(color),
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Text('${value.toStringAsFixed(0)}%'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _navigateToWorkScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const WorkScreen(jobs: [],)),
+    );
+  }
+  
+  void _navigateToAssetsScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AssetsMenuScreen(
+        assets: _character.assets,
+      )),
+    );
+  }
+
+
+  void _navigateToRelationsScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const RelationshipsScreen()),
+    );
+  }
+
+  void _navigateToActivitiesScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ActivitiesScreen()),
+    );
+  }
+
 
   Widget _buildStatSection(String title, List<StatData> stats) {
     return Column(

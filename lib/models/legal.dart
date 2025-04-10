@@ -11,7 +11,8 @@ enum CrimeType {
   assault,
   drugDealing,
   robbery,
-  murder
+  murder,
+  illegalActivity,
 }
 
 enum PunishmentType {
@@ -367,6 +368,10 @@ class LegalSystem {
         processCrimeAndPunishment(character, CrimeType.taxEvasion);
       }
     }
+  }
+
+  void processCrime(CrimeType crimeType) {
+
   }
 
 }

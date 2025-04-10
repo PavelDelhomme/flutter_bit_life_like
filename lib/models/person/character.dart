@@ -1,17 +1,24 @@
 import 'dart:math';
+import 'package:bitlife_like/models/marketplace.dart';
+import 'package:bitlife_like/models/person/skill.dart';
 import 'package:hive/hive.dart';
 
 import '../../services/data_service.dart';
+import '../activity.dart';
 import '../asset/antique.dart';
 import '../asset/arme.dart';
+import '../asset/book.dart';
 import '../economy/bank_account.dart';
 import '../asset/jewelry.dart';
+import '../education/education.dart';
 import '../legal.dart';
 import '../pet.dart';
 import '../asset/vehicle.dart';
 
 import 'relationship.dart';
 import '../work/career.dart';
+import '../work/company.dart';
+import '../work/job.dart';
 import '../asset/assets.dart';
 import '../event.dart';
 import '../asset/real_estate.dart';
@@ -44,11 +51,19 @@ class Character extends HiveObject {
   List<Character> partners;
   List<Pet> pets;
 
+  Map<String, SkillMastery> skills = {};
+
+  List<MarketplaceItem> inventory = [];
+  SkillTree? unlockedSkillTree;
+  List<Activity> scheduledActivities = [];
+  Map<String, double> skillLevels = {}; // Niveaux de compétences rapide accès
+
   String currentTitle;
   Career? career;
   EducationLevel educationLevel;
-  List<Skill> skills;
   List<String> diplomas;
+  List<Course> enrolledCourses = [];
+  List<String> completedCourses = [];
 
   // Possessions
   List<Asset> assets;
@@ -315,5 +330,59 @@ class Character extends HiveObject {
     } else {
       await Hive.box<Character>('main_characters').delete('current');
     }
+  }
+
+  void learnFromBook(Book book) {
+    book.skills.forEach((skillId, exp) {
+      final skill = skills.firstWhere((s) => s.id == skillId);
+      skill.addExperience(exp);
+      _updateSkillLevel(skill.id);
+    });
+  }
+
+  void practiceSkill(String skillId, double hours, SkillCategory category) {
+    skills.update(skillId, (skillMastery) {
+      final expGain = hours * 10 * skillMastery.getCategoryMultiplier(category);
+      skillMastery.addExperience(expGain, category);
+      return skillMastery;
+    }, ifAbsent: () => SkillMastery(skillId, hours * 10, DateTime.now()));
+  }
+
+
+  void _updateSkillLevel(String skillId) {
+    final skill = skills[skillId];
+    if (skill != null) {
+      skillLevels[skillId] = skill.currentLevel;
+    }
+  }
+
+  void improveSkill(String skillId, double experience) {
+    skills.update(skillId, (mastery) {
+      return SkillMastery(
+          skillId,
+          mastery.experience + experience,
+          DateTime.now()
+      );
+    }, ifAbsent: () => SkillMastery(skillId, experience, DateTime.now()));
+  }
+
+  void purchaseItem(MarketplaceItem item) {
+    if (canPurchase(item)) {
+      money -= item.price;
+      inventory.add(item);
+      item.skillEffects.forEach((skillId, exp) {
+        practiceSkill(skillId, exp);
+      });
+    }
+  }
+
+  void _applyItemEffects(MarketplaceItem item) {
+    item.skillEffects.forEach((skillId, exp) {
+      improveSkill(skillId, exp);
+    });
+  }
+
+  bool canPurchase(MarketplaceItem item) {
+    return item.canPurchase(this);
   }
 }

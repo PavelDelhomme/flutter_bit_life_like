@@ -39,7 +39,18 @@ class AgeService {
     
     // Vieillir les possessions
     _ageAssets(character);
-   
+
+    // Génération des nouveau item de marketplace
+    character.marketplaceItems.addAll(
+        Marketplace().getDailyItems('vehicles') +
+            Marketplace().getDailyItems('books')
+    );
+
+    // Vérification des permis expirés
+    _checkLicenses(character);
+
+    _unlockNewSkills(character);
+
     // Gérer les événements aléatoires potentiellement mortels
     if (_checkDeathEvents(character)) {
       return; // Personnage décédé
@@ -48,7 +59,12 @@ class AgeService {
     // Evenements aléatoires
     _handleRandomEvents(character);
   }
-  
+
+  void _unlockNewSkills(Character character) {
+    if (character.age % 5 == 0) {
+      character.unlockedSkillTree = _getSkillTreeForAge(character.age);
+    }
+  }
 
   void _updateAssets(Character character) {
     // Vieillissement et évolution des possession
