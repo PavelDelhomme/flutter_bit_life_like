@@ -9,7 +9,10 @@ class BusinessService {
       industry: industry,
       capital: capital,
       properties: [],
-      employees: [], country: owner.country,
+      employees: [],
+      country: owner.country,
+      loans: [],
+      skillRequirements: {},
     );
 
     owner.businesses.add(company);
@@ -22,7 +25,7 @@ class BusinessService {
       initialDeposit: capital,
     );
 
-    owner.bankAccounts.add(businessAccount);
+    owner.bankAccounts[businessAccount.accountNumber] = businessAccount;
   }
 
   static void hireEmployee(Business company, Character employee, double salary) {

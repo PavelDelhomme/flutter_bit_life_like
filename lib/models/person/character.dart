@@ -19,8 +19,6 @@ import '../asset/vehicle.dart';
 
 import 'relationship.dart';
 import '../work/career.dart';
-import '../work/company.dart';
-import '../work/job.dart';
 import '../asset/assets.dart';
 import '../event.dart';
 import '../asset/real_estate.dart';
@@ -46,6 +44,7 @@ class Character extends HiveObject {
   Map<String, BankAccount> bankAccounts = {};
   double creditScore;
   double taxRate;
+  List<Business> businesses = []; // Ajouter cette ligne
 
   List<Relationship> relationships;
   List<Character> parents;
@@ -156,6 +155,7 @@ class Character extends HiveObject {
   armes = armes ?? [],
   criminalHistory = criminalHistory ?? [],
   offshoreAccounts = offshoreAccounts ?? [],
+  businesses = businesses ?? [],
   lifeEvents = lifeEvents ?? [];
 
   double calculateTotalIncome() {
@@ -172,10 +172,9 @@ class Character extends HiveObject {
     }
 
     // intérpets des comptes bancaires
-    for (var account in bankAccounts) {
+    for (var account in bankAccounts.values) { // Utiliser .values
       total += account.balance * (account.interestRate / 100);
     }
-
     return total;
   }
 
@@ -240,7 +239,7 @@ class Character extends HiveObject {
       deathCause: json['deathCause'],
       stats: json['stats'],
       money: json['money'],
-      bankAccounts: json['bankAccounts'],
+      bankAccounts: (json['bankAccounts'] as Map<String, dynamic>).map((key, value) => MapEntry(key, BankAccount.fromJson(value))),
       creditScore: json['creditScore'],
       relationships: json['relationships'],
       parents: json['parents'],

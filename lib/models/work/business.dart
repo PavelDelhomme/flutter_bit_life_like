@@ -50,13 +50,15 @@ class Business {
     required this.industry,
     required this.capital,
     required this.country,
-    required this.loans,
-    required this.skillRequirements,
+    List<BusinessLoan>? loans,
+    Map<String, double>? skillRequirements,
     this.valuation = 0,
     List<Employee>? employees,
     List<RealEstate>? properties,
 }) :
   id = 'biz_${DateTime.now().millisecondsSinceEpoch}',
+  loans = loans ?? [],
+  skillRequirements = skillRequirements ?? {},
   employees = employees ?? [],
   properties = properties ?? [];
 
@@ -85,9 +87,12 @@ class Business {
 
   bool canHire(Character owner) {
     return requiredSkills.entries.every((entry) {
-      final skillLevel = owner.skillLevels[entry.key]?. ?? 0;
-    })
+      final skillId = entry.key;
+      final requiredLevel = entry.value;
+      return (owner.skills[skillId]?.currentLevel ?? 0) >= requiredLevel;
+    });
   }
+
 
   Map<String, dynamic> toJson() {
     return {
@@ -99,8 +104,9 @@ class Business {
       "valuation": valuation,
       "employees": employees,
       "skillRequirements": skillRequirements,
-      "loans": loans,
-      "properties": properties,
+      'loans': loans.map((l) => l.toJson()).toList(),
+      'properties': properties.map((p) => p.toJson()).toList(),
+
     };
   }
 
@@ -152,7 +158,7 @@ class Employee {
       "name": json["name"],
       "position": json["position"],
       "salary": json["salary"],
-      "signingBonus": json["signingBonus"],
+      "signingBonus": json["signingBonus"] ?? 0,
     };
   }
 

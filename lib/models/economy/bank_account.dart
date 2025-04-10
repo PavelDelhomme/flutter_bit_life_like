@@ -79,6 +79,7 @@ class BankAccount {
       accountType: type,
       balance: initialDeposit,
       interestRate: bankData['interestRates'][type.name],
+      initialDeposit: initialDeposit,
     );
   }
 
