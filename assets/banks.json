@@ -1,0 +1,16 @@
+{
+  "FR": {
+    "bankingRegulations": {
+      "checking": {"minAge":  18, "openingFee":  50},
+      "business": {"minAge":  21, "openingFee":  200},
+    },
+    "banks": [
+      {
+        "name": "BNP Paribas",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {"checking":  0.1, "savings":  1.5, "business": 0.5},
+        "loanConditions": {"personal":  5.0, "business":  3.5}
+      }
+    ]
+  }
+}

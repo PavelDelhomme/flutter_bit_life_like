@@ -3,15 +3,9 @@ import '../models/asset/book.dart';
 
 class BookManager {
   static void readBook(Character character, Book book) {
-    if ((character.skillLevels['literacy'] ?? 0) >= book.comprehensionRequired) {
-      book.skillEffects.forEach((skillId, exp) {
-        final skill = character.skills[skillId];
-        if (skill != null) {
-          final multiplier = _getComprehensionMultiplier(character, skillId);
-          skill.addExperience(exp * multiplier);
-        }
-      });
-    }
+    book.skillEffects.forEach((skillId, exp) {
+      character.practiceSkill(skillId, exp);
+    });
   }
 
   static double _getComprehensionMultiplier(Character character, String skillId) {

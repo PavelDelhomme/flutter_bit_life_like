@@ -8,10 +8,12 @@ class EducationService {
 
   void enrollCourse(Character character, String courseId) {
     final course = availableCourses.firstWhere((c) => c.id == courseId);
-    if (course.requiredSkills.every((skillId, level) =>
-    character.skills[skillId]?.currentLevel ?? 0 >= level)) {
+    if (course.requiredSkills.entries.every((entry) { // Utiliser entries.every
+      final skillId = entry.key;
+      final requiredLevel = entry.value;
+      return (character.skills[skillId]?.currentLevel ?? 0) >= requiredLevel;
+    })) {
       character.enrolledCourses.add(course);
-      character.addLifeEvent("Inscription au cours: ${course.name}");
     }
   }
 

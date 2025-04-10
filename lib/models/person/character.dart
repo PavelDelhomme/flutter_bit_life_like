@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:bitlife_like/models/marketplace.dart';
 import 'package:bitlife_like/models/person/skill.dart';
+import 'package:bitlife_like/models/work/business.dart';
 import 'package:hive/hive.dart';
 
 import '../../services/data_service.dart';
@@ -9,6 +10,7 @@ import '../asset/antique.dart';
 import '../asset/arme.dart';
 import '../asset/book.dart';
 import '../economy/bank_account.dart';
+import '../economy/fiscality.dart';
 import '../asset/jewelry.dart';
 import '../education/education.dart';
 import '../legal.dart';
@@ -36,11 +38,12 @@ class Character extends HiveObject {
   bool isAlive;
   DateTime? deathDate;
   String? deathCause;
+  double auditProbability;
 
   Map<String, double> stats;
 
   double money;
-  List<BankAccount> bankAccounts;
+  Map<String, BankAccount> bankAccounts = {};
   double creditScore;
   double taxRate;
 
@@ -105,7 +108,8 @@ class Character extends HiveObject {
     this.deathCause,
     required this.stats,
     this.money = 0,
-    List<BankAccount>? bankAccounts,
+    Map<String, List<BankAccount>>? bankAccounts,
+    List<Business>? businesses,
     this.creditScore = 700,
     List<Relationship>? relationships,
     List<Character>? parents,
@@ -116,7 +120,7 @@ class Character extends HiveObject {
     this.currentTitle = "Nourrisson",
     this.career,
     this.educationLevel = EducationLevel.none,
-    List<Skill>? skills,
+    Map<String, SkillMastery>? skills,
     List<String>? diplomas,
     List<Asset>? assets,
     List<Vehicle>? vehicles,
@@ -133,16 +137,16 @@ class Character extends HiveObject {
     List<Event>? lifeEvents,
     this.isPNJ = false,
     this.legalSystem,
+    this.auditProbability = 0.0,
   }) :
   id = id ?? 'char_${DateTime.now().millisecondsSinceEpoch}_${Random().nextInt(10000)}',
-  bankAccounts = bankAccounts ?? [],
   relationships = relationships ?? [],
   parents = parents ?? [],
   siblings = siblings ?? [],
   children = children ?? [],
   partners = partners ?? [],
   pets = pets ?? [],
-  skills = skills ?? [],
+  skills = skills ?? {},
   diplomas = diplomas ?? [],
   assets = assets ?? [],
   vehicles = vehicles ?? [],
@@ -294,7 +298,7 @@ class Character extends HiveObject {
       'currentTitle': currentTitle,
       'career': career?.toJson(),
       'educationLevel': educationLevel.toString(),
-      'skills': skills.map((s) => s.toJson()).toList(),
+      'skills': skills.map((key, value) => MapEntry(key, value.toJson())),
       'diplomas': diplomas,
       'assets': assets.map((a) => a.toJson()).toList(),
       'vehicles': vehicles.map((v) => v.toJson()).toList(),
@@ -332,41 +336,55 @@ class Character extends HiveObject {
     }
   }
 
+  double _getLearningRate() {
+    return 1.0 + (stats['intelligence'] ?? 0.5) * 0.01; // Exemple basé sur la statistique d'intelligence
+  }
+
   void learnFromBook(Book book) {
-    book.skillEffects.forEach((skillId, exp) { // Remplacer skills par skillEffects
-      final skillMastery = skills[skillId];
-      if (skillMastery != null) {
-        skillMastery.addExperience(exp * _getLearningRate());
-        _updateSkillLevel(skillId);
-      }
+    book.skillEffects.forEach((skillId, exp) {
+      practiceSkill(skillId, exp);
     });
   }
 
 
-  void practiceSkill(String skillId, double hours, SkillCategory category) {
-    skills.update(skillId, (skillMastery) {
-      final expGain = hours * 10 * skillMastery.getCategoryMultiplier(category);
-      skillMastery.addExperience(expGain, category);
-      return skillMastery;
-    }, ifAbsent: () => SkillMastery(skillId, hours * 10, DateTime.now()));
+  SkillCategory _getSkillCategory(String skillId) {
+    // Logique de mapping entre skillId et category
+    return SkillCategory.technical;
   }
 
 
-  void _updateSkillLevel(String skillId) {
-    final skill = skills[skillId];
-    if (skill != null) {
-      skillLevels[skillId] = skill.currentLevel;
-    }
+  void practiceSkill(String skillId, double hours) {
+    final category = Skill.getCategoryFromId(skillId);
+    skills.update(skillId, (skillMastery) {
+      final expGain = hours * 10 * skillMastery.getCategoryMultiplier();
+      skillMastery.addExperience(expGain);
+      return skillMastery;
+    }, ifAbsent: () => SkillMastery(
+      skillId: skillId,
+      category: category,
+      experience: hours * 10,
+      lastUsed: DateTime.now(),
+    )
+    );
+    //)..addExperience(hours * 10));
   }
 
   void improveSkill(String skillId, double experience) {
+    final category = Skill.getCategoryFromId(skillId);
+
     skills.update(skillId, (mastery) {
       return SkillMastery(
-          skillId,
-          mastery.experience + experience,
-          DateTime.now()
+          skillId: skillId,
+          category: category,
+          experience: mastery.experience + experience,
+          lastUsed: DateTime.now(),
       );
-    }, ifAbsent: () => SkillMastery(skillId, experience, DateTime.now()));
+    }, ifAbsent: () => SkillMastery(
+        skillId: skillId,
+        experience: experience,
+        category: category,
+        lastUsed: DateTime.now()
+    ));
   }
 
   void purchaseItem(MarketplaceItem item) {
@@ -374,10 +392,11 @@ class Character extends HiveObject {
       money -= item.price;
       inventory.add(item);
       item.skillEffects.forEach((skillId, exp) {
-        practiceSkill(skillId, exp);
+        improveSkill(skillId, exp);
       });
     }
   }
+
 
   void _applyItemEffects(MarketplaceItem item) {
     item.skillEffects.forEach((skillId, exp) {
@@ -387,5 +406,44 @@ class Character extends HiveObject {
 
   bool canPurchase(MarketplaceItem item) {
     return item.canPurchase(this);
+  }
+
+
+  void openBankAccount(String bankName, AccountType type, TaxSystem tax) {
+    final accountNumber = _generateAccountNumber();
+
+    bankAccounts[accountNumber] = BankAccount(
+      id: 'acc_${DateTime
+          .now()
+          .millisecondsSinceEpoch}',
+      accountNumber: accountNumber,
+      bankName: bankName,
+      accountType: type,
+      minimumAge: tax.bankingRegulations[type]!.minimumAge,
+    );
+  }
+
+  String _generateAccountNumber() {
+    final rand = Random();
+    return '${rand.nextInt(9999).toString().padLeft(4, '0')} '
+        '${rand.nextInt(9999).toString().padLeft(4, '0')} '
+        '${rand.nextInt(9999).toString().padLeft(4, '0')}';
+  }
+
+
+  void inheritAssets(Character deceased) {
+    TaxSystem tax = TaxSystem(country: country);
+
+    deceased.bankAccounts.forEach((type, accounts) {
+      accounts.forEach((account) {
+        double inheritanceTax = tax.calculateInheritanceTax(account.balance);
+        double netAmount = account.balance - inheritanceTax;
+
+        this.money += netAmount;
+        deceased.money -= account.balance;
+
+        addLifeEvent("Héritage de ${account.balance.toStringAsFixed(2)} (taxe: ${inheritanceTax.toStringAsFixed(2)})");
+      });
+    });
   }
 }

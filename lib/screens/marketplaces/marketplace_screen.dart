@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../models/economy/bank_account.dart';
+import '../../models/marketplace.dart';
 import '../../models/person/character.dart';
+import '../bankings/account_selection_dialog.dart';
+import 'package:provider/provider.dart';
+
 
 class MarketplaceScreen extends StatelessWidget {
   final String title;
-  final List<MarketItem> items;
-  final Function(MarketItem) onPurchase;
+  final List<MarketplaceItem> items;
+  final Function(MarketplaceItem) onPurchase;
 
   const MarketplaceScreen({
     super.key,
@@ -36,15 +40,12 @@ class MarketplaceScreen extends StatelessWidget {
     );
   }
 
-  void _handlePurchase(BuildContext context, MarketItem item) async {
-    final character = context.read<Character>();
+
+  void _handlePurchase(BuildContext context, MarketplaceItem item) async {
+    final character = Provider.of<Character>(context, listen: false); // Utiliser Provider
     final account = await showDialog<BankAccount>(
       context: context,
-      builder: (context) => AccountSelectionDialog(character.bankAccounts),
+      builder: (context) => AccountSelectionDialog(accounts: character.bankAccounts), // Passer la liste
     );
-
-    if (account != null && character.purchaseItem(item, account)) {
-      onPurchase(item);
-    }
   }
 }

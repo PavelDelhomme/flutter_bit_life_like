@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'dart:math';
+import 'package:flutter/services.dart';
+
 import 'loan.dart' as loann;
 
 enum AccountType {
@@ -23,6 +26,9 @@ class BankAccount {
   DateTime openedDate;
   double monthlyFee;
   bool isActive;
+  final String countryCode;
+  final String bankId;
+  double initialDeposit;
 
   // Calcul des intérêts mensuels
   double get monthlyInterest => balance * (interestRate / 100 / 12);
@@ -31,6 +37,8 @@ class BankAccount {
   double get totalDebt => loans.fold(0.0, (sum, loan) => sum + loan.remainingAmount);
 
   BankAccount({
+    required this.countryCode,
+    required this.bankId,
     required this.id,
     required this.accountNumber,
     required this.bankName,
@@ -43,16 +51,47 @@ class BankAccount {
     DateTime? openedDate,
     this.monthlyFee = 0.0,
     this.isActive = true,
+    required double initialDeposit,
   }) : 
     accountHolders = accountHolders ?? [],
     transactions = transactions ?? [],
     loans = loans ?? [],
-    openedDate = openedDate ?? DateTime.now();
+    openedDate = openedDate ?? DateTime.now(),
+    initialDeposit = 0.0;
+
+
+  static BankAccount createAccount({
+    required String country,
+    required String bankName,
+    required AccountType type,
+    required double initialDeposit,
+  }) {
+    final bankData = BankingSystem(country: country)
+        .banks
+        .firstWhere((b) => b['name'] == bankName);
+
+    return BankAccount(
+      id: 'acc_${DateTime.now().millisecondsSinceEpoch}',
+      countryCode: country,
+      bankId: bankData['id'],
+      accountNumber: _generateAccountNumber(bankData['prefix']),
+      bankName: bankName,
+      accountType: type,
+      balance: initialDeposit,
+      interestRate: bankData['interestRates'][type.name],
+    );
+  }
+
+  static String _generateAccountNumber(String prefix) {
+    final rand = Random();
+    return '$prefix${rand.nextInt(9999).toString().padLeft(4, '0')}';
+  }
 
   void deposit(double amount, description) {
     if (amount <= 0) throw Exception("Le montant doit être positif");
     balance += amount;
     transactions.add(Transaction(
+      accountNumber: accountNumber,
       amount: amount,
       date: DateTime.now(),
       type: TransactionType.deposit,
@@ -67,6 +106,7 @@ class BankAccount {
     
     balance -= amount;
     transactions.add(Transaction(
+      accountNumber: accountNumber,
       amount: -amount,
       description: description,
       date: DateTime.now(),
@@ -103,6 +143,7 @@ class BankAccount {
       balance += amount;
 
       transactions.add(Transaction(
+        accountNumber: accountNumber,
         amount: amount,
         date: DateTime.now(),
         type: TransactionType.loan,
@@ -129,6 +170,7 @@ class BankAccount {
     if (interest > 0) {
       balance += interest;
       transactions.add(Transaction(
+        accountNumber: accountNumber,
         amount: interest,
         date: DateTime.now(),
         type: TransactionType.interest,
@@ -145,6 +187,7 @@ class BankAccount {
         balance -= payment;
         loan.makePayment(payment);
         transactions.add(Transaction(
+          accountNumber: accountNumber,
           amount: -payment,
           date: DateTime.now(),
           type: TransactionType.loanPayment,
@@ -154,6 +197,7 @@ class BankAccount {
         // Défaut de paiement
         loan.missed++;
         transactions.add(Transaction(
+          accountNumber: accountNumber,
           amount: 0,
           date: DateTime.now(),
           type: TransactionType.missed,
@@ -166,6 +210,8 @@ class BankAccount {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'countryCode': countryCode,
+      'bankId': bankId,
       'accountNumber': accountNumber,
       'bankName': bankName,
       'accountType': accountType.toString(),
@@ -183,6 +229,8 @@ class BankAccount {
   
   factory BankAccount.fromJson(Map<String, dynamic> json) {
     return BankAccount(
+      countryCode: json['countryCode'],
+      bankId: json['bankId'],
       id: json['id'],
       accountNumber: json['accountNumber'],
       bankName: json['bankName'],
@@ -202,6 +250,7 @@ class BankAccount {
       openedDate: DateTime.parse(json['openedDate']),
       monthlyFee: json['monthlyFee'],
       isActive: json['isActive'],
+      initialDeposit: json['initialDeposit'],
     );
   }
 }
@@ -214,6 +263,7 @@ class BankAccount {
 class OffshoreAccount extends BankAccount {
   String taxHavenCountry;
   double taxEvasionRisk;
+  double initialDeposit = 0.0;
   
   OffshoreAccount({
     required super.id,
@@ -223,6 +273,9 @@ class OffshoreAccount extends BankAccount {
     this.taxEvasionRisk = 0.2,
     super.balance = 0.0,
     super.interestRate = 2.5, // Taux élevés dans les paradis fiscaux
+    required super.countryCode,
+    required super.bankId,
+    super.initialDeposit = 0.0,
   }) : super(accountType: AccountType.checking);
   
   // Transfert avec anonymisation
@@ -259,12 +312,14 @@ class Transaction {
   final String description;
   final DateTime date;
   final TransactionType type;
+  final String accountNumber;
   
   Transaction({
     required this.amount,
     required this.date,
     required this.description,
     required this.type,
+    required this.accountNumber,
   });
   
   Map<String, dynamic> toJson() {
@@ -273,6 +328,7 @@ class Transaction {
       'date': date.toIso8601String(),
       'description': description.toString(),
       'type': type.toString(),
+      'accountNumber': accountNumber.toString(),
     };
   }
   
@@ -285,6 +341,46 @@ class Transaction {
         (e) => e.toString() == json['type'],
         orElse: () => TransactionType.transfer
       ),
+      accountNumber: json['accountNumber'],
     );
+  }
+}
+
+class BankRegistry {
+  static final Map<String, List<String>> _banksByCountry = {
+    'FR': ['BNP Paribas', 'Crédit Agricole', 'Société Générale'],
+    'US': ['Bank of America', 'Chase', 'Wells Fargo'],
+  };
+
+  static String getRandomBank(String country) {
+    final banks = _banksByCountry[country] ?? ['International Bank'];
+    return banks[Random().nextInt(banks.length)];
+  }
+}
+
+class BankingSystem {
+  final String country;
+  late Map<String, dynamic> regulations;
+  late List<dynamic> banks;
+
+  BankingSystem({required this.country}) {
+    _loadBankData();
+  }
+
+  Future<void> _loadBankData() async {
+    final data = await rootBundle.loadString("assets/banks.json");
+    final bankData = json.decode(data)[country];
+
+    regulations = bankData['bankingRegulations'];
+    banks = bankData['banks'];
+  }
+
+  List<String> getAvailableBanks() {
+    return banks.map((b) => b['name'] as String).toList();
+  }
+
+  List<AccountType> getAccountTypesForBank(String bankName) {
+    final bank = banks.firstWhere((b) => b['name'] == bankName);
+    return (bank['types'] as List).map((t) => AccountType.values.firstWhere((e) => e.name == t)).toList();
   }
 }

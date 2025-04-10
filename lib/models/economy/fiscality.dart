@@ -1,32 +1,55 @@
 import 'dart:math';
+import 'dart:convert';
 import '../asset/real_estate.dart';
 import '../person/character.dart';
+import 'package:flutter/services.dart';
 
 class TaxSystem {
   final String country;
-  final double incomeTaxRate;
-  final double capitalGainsTaxRate;
-  final double propertyTaxRate;
-  final double inheritanceTaxRate;
-  final double auditProbability;
-  
-  TaxSystem({
-    required this.country,
-    this.incomeTaxRate = 0.25,
-    this.capitalGainsTaxRate = 0.20,
-    this.propertyTaxRate = 0.01,
-    this.inheritanceTaxRate = 0.30,
-    this.auditProbability = 0.05,
-  });
-  
+  late List<IncomeTaxBracket> incomeTaxBrackets;
+  late double vatRate;
+  late double capitalGainsTaxRate;
+  late double coporateTaxRate;
+  late double propertyTaxRate;
+  late double inheritanceTaxRate;
+  late double transferTaxRate;
+  late double primaryResidenceTaxRate;
+  late double secondariesResidenceTaxRate;
+
+  TaxSystem({required this.country}) {
+    _loadTaxData();
+  }
+
+  Future<void> _loadTaxData() async {
+    final data = await rootBundle.loadString('assets/tax_data.json');
+    final taxData = json.decode(data)[country];
+
+    incomeTaxBrackets = (taxData['incomeTax'] as List)
+      .map((b) => IncomeTaxBracket(
+        min: b['min'], max: b['max'] ?? double.infinity, rate: b['rate']))
+      .toList();
+
+    vatRate = taxData['vat'];
+    capitalGainsTaxRate = taxData['capitalGains'];
+    coporateTaxRate = taxData['corporateTax'];
+    propertyTaxRate = taxData['propertyTax'];
+    inheritanceTaxRate = taxData['inheritanceTax'];
+    transferTaxRate = taxData['transferTax'];
+    primaryResidenceTaxRate = taxData['primaryResidenceTaxRate'];
+    secondariesResidenceTaxRate = taxData['secondariesResidenceTaxRate'];
+  }
+
   double calculateIncomeTax(double income) {
-    // Simulation de tranches d'imposition
-    if (income < 10000) {
-      return 0;
-    } else if (income < 25000) return income * 0.15;
-    else if (income < 50000) return income * 0.25;
-    else if (income < 100000) return income * 0.35;
-    else return income * 0.45;
+    double tax = 0;
+    for (var bracket in incomeTaxBrackets) {
+      if (income > bracket.min) {
+        double taxableInBracket = (income < bracket.max)
+            ? income - bracket.min
+            : bracket.max - bracket.min;
+        tax += taxableInBracket * bracket.rate;
+      }
+    }
+    return tax;
   }
   
   double calculatePropertyTax(List<RealEstate> properties) {
@@ -36,7 +59,7 @@ class TaxSystem {
   bool performAudit(Character character) {
     // Probabilité d'audit basée sur l'écart entre revenu déclaré et réel
     double discrepancy = (character.actualIncome - character.declaredIncome) / character.actualIncome;
-    double auditChance = auditProbability + (discrepancy * 0.5);
+    double auditChance = character.auditProbability + (discrepancy * 0.5);
     
     bool isAudited = Random().nextDouble() < auditChance;
     if (isAudited && discrepancy > 0.1) {
@@ -48,4 +71,20 @@ class TaxSystem {
     }
     return false;
   }
+
+
+  double calculateVAT(double amount) => amount * vatRate;
+
+  double calculateTransferTax(double assetValue) => assetValue * transferTaxRate;
+
+  double calculateCapitalGains(double profit) => profit * capitalGainsTaxRate;
+}
+
+
+class IncomeTaxBracket {
+  final double min;
+  final double max;
+  final double rate;
+
+  IncomeTaxBracket({required this.min, required this.max, required this.rate});
 }

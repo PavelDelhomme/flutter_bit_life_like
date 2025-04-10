@@ -82,10 +82,13 @@ class Activity {
   });
 
   bool canPerform(Map<String, double> characterSkills) {
-    return skillRequirements.every((skill, level) {
-      return (characterSkills[skill] ?? 0) >= level;
+    return skillRequirements.entries.every((entry) {
+      final skillId = entry.key;
+      final requiredLevel = entry.value;
+      return (characterSkills[skillId] ?? 0) >= requiredLevel;
     });
   }
+
 
   Map<String, double> performActivity(Map<String, double> characterSkills) {
     final random = Random();

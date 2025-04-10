@@ -31,6 +31,16 @@ class ActivityManager {
     return outcome;
   }
 
+  static bool _meetsRequirements(Character, Activity activity) {
+    UnimplementedError("Méthode non implementer pour le moment ");
+    return false;
+  }
+
+  static double _calculateSuccessRate(Character character, Activity activity) {
+    UnimplementedError("Méthode non implementer pour le moment ");
+    return 0.0;
+  }
+
   static double _getSkillMultiplier(Character character, String skillId) {
     return 1.0 + (character.skills[skillId]?.currentLevel ?? 0) * 0.1;
   }

@@ -18,6 +18,7 @@ dependencies:
   device_info_plus: ^11.3.3
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  provider: ^6.1.4
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +31,5 @@ flutter:
 assets:
   - assets/
   - assets/bitlife_logo.png
+  - assets/tax_data.json
+  - assets/banks.json

@@ -1,3 +1,4 @@
+import 'package:bitlife_like/models/marketplace.dart';
 import 'package:flutter/material.dart';
 import '../../marketplace_screen.dart';
 
@@ -13,14 +14,15 @@ class WeaponsMarketScreen extends StatelessWidget {
     );
   }
 
-  List<MarketItem> _generateWeapons() {
+
+  List<MarketplaceItem> _generateWeapons() {
     return [
-      MarketItem(
+      MarketplaceItem(
         name: 'Pistolet de base',
         price: 500,
         requiredSkills: {'firearms': 2},
       ),
-      MarketItem(
+      MarketplaceItem(
         name: 'Fusil d\'assaut',
         price: 2500,
         requiredSkills: {'firearms': 5},
