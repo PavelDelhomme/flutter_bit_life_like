@@ -19,14 +19,11 @@ class Antique extends Asset {
     this.rarity = 0.5,
     required super.name,
     required super.value,
-    int age = 0,
-    AssetCondition condition = AssetCondition.good,
-    double maintenanceCost = 0.0,
+    super.age,
+    super.condition,
+    super.maintenanceCost,
   }) : super(
     type: AssetType.antique,
-    age: age,
-    condition: condition,
-    maintenanceCost: maintenanceCost,
     depreciationRate: 0.01,
     appreciationRate: 0.05,
   );

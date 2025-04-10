@@ -13,14 +13,11 @@ class Arme extends Asset {
     required this.damage,
     required super.name,
     required super.value,
-    int age = 0,
-    AssetCondition condition = AssetCondition.good,
-    double maintenanceCost = 0.0,
+    super.age,
+    super.condition,
+    super.maintenanceCost,
   }) : super(
     type: AssetType.weapon,
-    age: age,
-    condition: condition,
-    maintenanceCost: maintenanceCost,
     depreciationRate: 0.1,
   );
 

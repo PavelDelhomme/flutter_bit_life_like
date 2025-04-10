@@ -4,9 +4,9 @@ class BottomNavigation extends StatefulWidget {
   final VoidCallback onAgePressed;
 
   const BottomNavigation({
-    Key? key,
+    super.key,
     required this.onAgePressed,
-  }) : super(key: key);
+  });
 
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();

@@ -78,7 +78,7 @@ class BankAccount {
   
   bool transfer(BankAccount target, double amount, String description) {
     if (withdraw(amount, "Transfert vers ${target.accountNumber}")) {
-      target.deposit(amount, "Transfert depuis ${this.accountNumber}");
+      target.deposit(amount, "Transfert depuis ${accountNumber}");
       return true;
     }
     return false;

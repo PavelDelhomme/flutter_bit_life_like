@@ -21,8 +21,9 @@ class TaxSystem {
   
   double calculateIncomeTax(double income) {
     // Simulation de tranches d'imposition
-    if (income < 10000) return 0;
-    else if (income < 25000) return income * 0.15;
+    if (income < 10000) {
+      return 0;
+    } else if (income < 25000) return income * 0.15;
     else if (income < 50000) return income * 0.25;
     else if (income < 100000) return income * 0.35;
     else return income * 0.45;

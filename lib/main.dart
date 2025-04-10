@@ -40,7 +40,7 @@ void main() async {
 }
 
 class BitLifeApp extends StatelessWidget {
-  const BitLifeApp({Key? key}) : super(key: key);
+  const BitLifeApp({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ import 'main_game_screen.dart';
 class StartScreen extends StatelessWidget {
   final List<Character> savedCharacters;
 
-  const StartScreen({Key? key, required this.savedCharacters}) : super(key: key);
+  const StartScreen({super.key, required this.savedCharacters});
 
   @override
   Widget build(BuildContext context) {

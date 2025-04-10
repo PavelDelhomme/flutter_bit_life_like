@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class RelationshipsScreen extends StatefulWidget {
   final Character character;
   
-  const RelationshipsScreen({Key? key, required this.character}) : super(key: key);
+  const RelationshipsScreen({super.key, required this.character});
   
   @override
   _RelationshipsScreenState createState() => _RelationshipsScreenState();

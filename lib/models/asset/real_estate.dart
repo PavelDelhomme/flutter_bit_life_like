@@ -11,8 +11,8 @@ class RealEstate extends Asset {
   double propertyTaxRate;
   
   RealEstate({
-    required String id,
-    required String ownerId,
+    required super.id,
+    required super.ownerId,
     required this.location,
     required this.squareMeters,
     required this.rooms,
@@ -20,24 +20,15 @@ class RealEstate extends Asset {
     this.monthlyRent = 0.0,
     this.tenantId,
     this.propertyTaxRate = 0.01,
-    required String name,
-    required double value,
-    int age = 0,
-    AssetCondition condition = AssetCondition.good,
-    double maintenanceCost = 0.0,
-    bool isInsured = false,
-    double insuranceCost = 0.0,
+    required super.name,
+    required super.value,
+    super.age,
+    super.condition,
+    super.maintenanceCost,
+    super.isInsured,
+    super.insuranceCost,
   }) : super(
-    id: id,
-    ownerId: ownerId,
     type: AssetType.realEstate,
-    name: name,
-    value: value,
-    age: age,
-    condition: condition,
-    maintenanceCost: maintenanceCost,
-    isInsured: isInsured,
-    insuranceCost: insuranceCost,
     monthlyIncome: isRented ? monthlyRent : 0.0,
     depreciationRate: 0.02, // Les propriétés immobilières se déprécient moins
     appreciationRate: 0.03, // Les propriétés immobilières peuvent prendre de la valeur

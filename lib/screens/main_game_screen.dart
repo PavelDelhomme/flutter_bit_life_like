@@ -17,7 +17,7 @@ import 'package:bitlife_like/models/person/character.dart';
 class MainGameScreen extends StatefulWidget {
   final Character character;
 
-  const MainGameScreen({Key? key, required this.character}) : super(key: key);
+  const MainGameScreen({super.key, required this.character});
 
   @override
   _MainGameScreenState createState() => _MainGameScreenState();

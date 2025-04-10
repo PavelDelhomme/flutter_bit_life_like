@@ -261,7 +261,7 @@ class PnjManager {
       guardians.addAll(generateComplexFamily(child));
     }
 
-    guardians.forEach((guardian) {
+    for (var guardian in guardians) {
       final guardianRelId = 'guard_${guardian.id}_${child.id}';
       final childRelId = 'child_${child.id}_${guardian.id}';
 
@@ -282,7 +282,7 @@ class PnjManager {
         strength: 0.85,
         status: RelationshipStatus.good,
       ));
-    });
+    }
   }
 
   static Character _generateAuntUncle(Character child) {

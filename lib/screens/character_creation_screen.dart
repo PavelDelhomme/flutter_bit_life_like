@@ -6,7 +6,7 @@ import '../services/data_service.dart';
 import 'main_game_screen.dart';
 
 class CharacterCreationScreen extends StatefulWidget {
-  const CharacterCreationScreen({Key? key}) : super(key: key);
+  const CharacterCreationScreen({super.key});
 
   @override
   _CharacterCreationScreenState createState() => _CharacterCreationScreenState();

@@ -22,9 +22,9 @@ class LegalService {
 
       // Appliquer les lois rétroactivement
       if (character.criminalHistory.isNotEmpty) {
-        character.criminalHistory.forEach((crime) {
+        for (var crime in character.criminalHistory) {
           crime.sentenceYears = system.calculateSentence(crime.type).toInt();
-        });
+        }
       }
     }
   }

@@ -4,7 +4,7 @@ import '../models/event.dart';
 class EventHistory extends StatelessWidget {
   final List<Event> lifeEvents;
 
-  const EventHistory({Key? key, required this.lifeEvents}) : super(key: key);
+  const EventHistory({super.key, required this.lifeEvents});
 
   @override
   Widget build(BuildContext context) {

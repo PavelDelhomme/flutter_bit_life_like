@@ -184,14 +184,14 @@ class Character extends HiveObject {
     heir.money = inheritedAmount;
 
     addLifeEvent("Je suis décédé(e) et mon héritage est passé à ${heir.fullName}");
-    heir.addLifeEvent("J'ai hérité de \$${inheritedAmount.toStringAsFixed(2)} de ${fullName}");
+    heir.addLifeEvent("J'ai hérité de \$${inheritedAmount.toStringAsFixed(2)} de $fullName");
 
     // Transfert des propriétés
     for (var properti in properties) {
       properti.transfertOwnership(this, heir);
       heir.properties.add(properti);
     }
-    this.isPNJ = true;
+    isPNJ = true;
     return heir;
   }
 
@@ -299,6 +299,7 @@ class Character extends HiveObject {
     };
   }
 
+  @override
   Future<void> save() async {
     if (isPNJ) {
       await Hive.box<Character>('pnjs').put(id, this);
@@ -307,6 +308,7 @@ class Character extends HiveObject {
     }
   }
 
+  @override
   Future<void> delete() async {
     if (isPNJ) {
       await Hive.box<Character>('pnjs').delete(id);

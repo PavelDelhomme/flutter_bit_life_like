@@ -10,7 +10,7 @@ import '../models/economy/loan.dart';
 class BankingScreen extends StatefulWidget {
   final Character character;
   
-  const BankingScreen({Key? key, required this.character}) : super(key: key);
+  const BankingScreen({super.key, required this.character});
   
   @override
   _BankingScreenState createState() => _BankingScreenState();
@@ -56,8 +56,8 @@ class _BankingScreenState extends State<BankingScreen> with SingleTickerProvider
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
         onPressed: _showAccountOptions,
+        child: const Icon(Icons.add),
       ),
     );
   }
