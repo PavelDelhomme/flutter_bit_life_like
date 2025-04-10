@@ -333,12 +333,15 @@ class Character extends HiveObject {
   }
 
   void learnFromBook(Book book) {
-    book.skills.forEach((skillId, exp) {
-      final skill = skills.firstWhere((s) => s.id == skillId);
-      skill.addExperience(exp);
-      _updateSkillLevel(skill.id);
+    book.skillEffects.forEach((skillId, exp) { // Remplacer skills par skillEffects
+      final skillMastery = skills[skillId];
+      if (skillMastery != null) {
+        skillMastery.addExperience(exp * _getLearningRate());
+        _updateSkillLevel(skillId);
+      }
     });
   }
+
 
   void practiceSkill(String skillId, double hours, SkillCategory category) {
     skills.update(skillId, (skillMastery) {

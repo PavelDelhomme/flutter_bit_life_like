@@ -21,7 +21,7 @@ class SkillTree {
       return node.prerequisites.entries.every((entry) { // Utiliser entries
         final skillId = entry.key;
         final requiredLevel = entry.value;
-        return character.skills[skillId]?.currentLevel ?? 0 >= requiredLevel;
+        return (character.skills[skillId]?.currentLevel ?? 0) >= requiredLevel;
       });
     }).map((node) => node.skill)).toList();
   }

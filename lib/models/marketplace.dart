@@ -35,11 +35,13 @@ class MarketplaceItem {
   });
 
   bool canPurchase(Character character) {
-    return character.skills.every((skill) {
-      final requiredLevel = requiredSkills[skill.id] ?? 0;
-      return skill.currentLevel >= requiredLevel;
+    return requiredSkills.entries.every((entry) { // Utiliser entries sur requiredSkills
+      final skillId = entry.key;
+      final requiredLevel = entry.value;
+      return (character.skills[skillId]?.currentLevel ?? 0) >= requiredLevel;
     }) && character.money >= price;
   }
+
 
   Map<String, dynamic> toJson() {
     return {
@@ -87,6 +89,47 @@ class Marketplace {
     this.priceMultiplier = 1.0,
   });
 
+  static List<MarketplaceItem> _generateVehicles() {
+    return [
+      MarketplaceItem(
+        id: 'veh_1',
+        name: 'Voiture',
+        category: MarketplaceCategory.vehicles,
+        price: 1000.0,
+        requiredSkills: {'driving': 2.0},
+        skillEffects: {'driving': 5.0},
+        expirationDate: DateTime.now().add(Duration(days: 30)),
+      ),
+    ];
+  }
+
+  static List<MarketplaceItem> _generateBooks() {
+    return [
+      MarketplaceItem(
+        id: 'bok_1',
+        name: 'Book',
+        category: MarketplaceCategory.books,
+        price: 1000.0,
+        requiredSkills: {'driving': 2.0},
+        skillEffects: {'driving': 5.0},
+        expirationDate: DateTime.now().add(Duration(days: 30)),
+      ),
+    ];
+  }
+
+  static List<MarketplaceItem> _generateWeapons() {
+    return [
+      MarketplaceItem(
+        id: 'wea_1',
+        name: 'Weapon',
+        category: MarketplaceCategory.weapons,
+        price: 1000.0,
+        requiredSkills: {'driving': 2.0},
+        skillEffects: {'driving': 5.0},
+        expirationDate: DateTime.now().add(Duration(days: 30)),
+      ),
+    ];
+  }
 
   List<MarketplaceItem> generateDailyItems(Character character) {
     return availableCategories.expand((category) {
