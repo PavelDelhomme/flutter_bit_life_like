@@ -1,3 +1,4 @@
+// TODO: Créer la possiblité de pouvoir avoir une gestio de temps relle pour la vie courante et les evenement aléatoires tel que les marché etc et passage d'année manuelement
 // TODO: Permettre aux joueurs  de cambrioler des maisons, magasins, ou des banques, ajouter des choix comme la selectionner des deguisement, armes, plan d'évations,
 // TODO: Intégration mécanique de risques
 

@@ -239,7 +239,9 @@ class Character extends HiveObject {
       deathCause: json['deathCause'],
       stats: json['stats'],
       money: json['money'],
-      bankAccounts: (json['bankAccounts'] as Map<String, dynamic>).map((key, value) => MapEntry(key, BankAccount.fromJson(value))),
+      bankAccounts: (json['bankAccounts'] as Map<String, dynamic>).map(
+              (key, value) => MapEntry(key, BankAccount.fromJson(value as Map<String, dynamic>))
+      ),
       creditScore: json['creditScore'],
       relationships: json['relationships'],
       parents: json['parents'],
@@ -285,7 +287,7 @@ class Character extends HiveObject {
       'deathCause': deathCause,
       'stats': stats,
       'money': money,
-      'bankAccounts': bankAccounts.map((a) => a.toJson()).toList(),
+      'bankAccounts': bankAccounts.map((k, v) => MapEntry(k, v.toJson())),
       'creditScore': creditScore,
       'taxRate': taxRate,
       'relationships': relationships.map((r) => r.toJson()).toList(),
@@ -408,7 +410,12 @@ class Character extends HiveObject {
   }
 
 
-  void openBankAccount(String bankName, AccountType type, TaxSystem tax) {
+  void openBankAccount(String bankName, AccountType type, BankingSystem bankingSystem) {
+    final bankData = bankingSystem.banks.firstWhere(
+      (b) => b['name'] == bankName,
+      orElse: () => throw Exception("Banque non trouvée."),
+    );
+
     final accountNumber = _generateAccountNumber();
 
     bankAccounts[accountNumber] = BankAccount(
