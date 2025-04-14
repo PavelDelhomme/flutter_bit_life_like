@@ -25,6 +25,22 @@ class BusinessLoan {
     business.capital -= payment;
     remainingBalance -= payment;
   }
+
+  Map<String, dynamic> toJson() => {
+    'businessId': businessId,
+    'amount': amount,
+    'interestRate': interestRate,
+    'startDate': startDate.toIso8601String(),
+    'termMonths': termMonths,
+    'remainingBalance': remainingBalance,
+  };
+  
+  factory BusinessLoan.fromJson(Map<String, dynamic> json) => BusinessLoan(
+    businessId: json['businessId'],
+    amount: json['amount'],
+    interestRate: json['interestRate'],
+    termMonths: json['termMonths'],
+  )..remainingBalance = json['remainingBalance'] ?? json['amount'] * (1 + json['interestRate']);
 }
 
 class Business {
@@ -110,20 +126,18 @@ class Business {
     };
   }
 
-  Map<String, dynamic> fromJson(Map<String, dynamic> json) {
-    return {
-      "id": json["id"],
-      "name": json["name"],
-      "country": json["country"],
-      "industry": json["industry"],
-      "capital": json["capital"],
-      "valuation": json["valuation"],
-      "employees": json["employees"],
-      "skillRequirements": json["skillRequirements"],
-      "loans": json["loans"],
-      "properties": json["properties"],
-    };
-  }
+  factory Business.fromJson(Map<String, dynamic> json) => Business(
+    name: json['name'],
+    industry: json['industry'],
+    country: json['country'],
+    capital: json['capital'],
+    valuation: json['valuation'],
+    loans: (json['loans'] as List).map((l) => BusinessLoan.fromJson(l)).toList(),
+    skillRequirements: Map<String, double>.from(json['skillRequirements']),
+    properties: (json['properties'] as List).map((p) => RealEstate.fromJson(p)).toList(),
+    employees: (json['employees'] as List).map((e) => Employee.fromJson(e)).toList(),
+    );
+
 }
 
 
@@ -152,14 +166,12 @@ class Employee {
     };
   }
 
-  Map<String, dynamic> fromJson(Map<String, dynamic> json) {
-    return {
-      "id": json["id"],
-      "name": json["name"],
-      "position": json["position"],
-      "salary": json["salary"],
-      "signingBonus": json["signingBonus"] ?? 0,
-    };
-  }
+  factory Employee.fromJson(Map<String, dynamic> json) => Employee(
+    name: json['name'],
+    position: json['position'],
+    salary: json['salary'],
+    signingBonus: json['signingBonus'] ?? 0,
+  );
+
 
 }

@@ -26,9 +26,10 @@ class BankAccount {
   DateTime openedDate;
   double monthlyFee;
   bool isActive;
-  final String countryCode;
-  final String bankId;
-  double initialDeposit;
+  final String? countryCode;
+  final String? bankId;
+  double? initialDeposit;
+  int? minimumAge;
 
   // Calcul des intérêts mensuels
   double get monthlyInterest => balance * (interestRate / 100 / 12);
@@ -37,8 +38,8 @@ class BankAccount {
   double get totalDebt => loans.fold(0.0, (sum, loan) => sum + loan.remainingAmount);
 
   BankAccount({
-    required this.countryCode,
-    required this.bankId,
+    this.countryCode,
+    this.bankId,
     required this.id,
     required this.accountNumber,
     required this.bankName,
@@ -51,13 +52,13 @@ class BankAccount {
     DateTime? openedDate,
     this.monthlyFee = 0.0,
     this.isActive = true,
-    required double initialDeposit,
+    this.initialDeposit = 0.0,
+    this.minimumAge,
   }) : 
     accountHolders = accountHolders ?? [],
     transactions = transactions ?? [],
     loans = loans ?? [],
-    openedDate = openedDate ?? DateTime.now(),
-    initialDeposit = 0.0;
+    openedDate = openedDate ?? DateTime.now();
 
 
   static BankAccount createAccount({
@@ -264,7 +265,6 @@ class BankAccount {
 class OffshoreAccount extends BankAccount {
   String taxHavenCountry;
   double taxEvasionRisk;
-  double initialDeposit = 0.0;
   
   OffshoreAccount({
     required super.id,

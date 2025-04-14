@@ -78,6 +78,11 @@ class TaxSystem {
   double calculateTransferTax(double assetValue) => assetValue * transferTaxRate;
 
   double calculateCapitalGains(double profit) => profit * capitalGainsTaxRate;
+
+  double calculateInheritanceTax(double amount) {
+    return amount * inheritanceTaxRate;
+  }
+
 }
 
 

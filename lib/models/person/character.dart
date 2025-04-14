@@ -41,7 +41,8 @@ class Character extends HiveObject {
   Map<String, double> stats;
 
   double money;
-  Map<String, BankAccount> bankAccounts = {};
+  // Map<String, BankAccount> bankAccounts = {};
+  List<BankAccount> bankAccounts = [];
   double creditScore;
   double taxRate;
   List<Business> businesses = []; // Ajouter cette ligne
@@ -107,7 +108,8 @@ class Character extends HiveObject {
     this.deathCause,
     required this.stats,
     this.money = 0,
-    Map<String, List<BankAccount>>? bankAccounts,
+    //Map<String, List<BankAccount>>? bankAccounts,
+    List<BankAccount>? bankAccounts,
     List<Business>? businesses,
     this.creditScore = 700,
     List<Relationship>? relationships,
@@ -172,7 +174,7 @@ class Character extends HiveObject {
     }
 
     // intérpets des comptes bancaires
-    for (var account in bankAccounts.values) { // Utiliser .values
+    for (var account in bankAccounts) {
       total += account.balance * (account.interestRate / 100);
     }
     return total;
@@ -232,16 +234,19 @@ class Character extends HiveObject {
       country: json['country'],
       city: validCities.contains(city) ? city : validCities.isNotEmpty ? validCities.first: 'Inconnu',
       age: json['age'],
-      birthdate: json['birthdate'],
+      birthdate: DateTime.parse(json['birthdate']),
       zodiacSign: json['zodiacSign'],
       isAlive: json['isAlive'],
-      deathDate: json['deathDate'],
+      deathDate: json['deathDate'] != null ? DateTime.parse(json['deathDate']) : null,
       deathCause: json['deathCause'],
       stats: json['stats'],
       money: json['money'],
-      bankAccounts: (json['bankAccounts'] as Map<String, dynamic>).map(
-              (key, value) => MapEntry(key, BankAccount.fromJson(value as Map<String, dynamic>))
-      ),
+      // bankAccounts: (json['bankAccounts'] as Map<String, dynamic>).map(
+      //         (key, value) => MapEntry(key, BankAccount.fromJson(value as Map<String, dynamic>))
+      // ),
+      bankAccounts: (json['bankAccounts'] as List<dynamic>)
+        .map((e) => BankAccount.fromJson(e as Map<String, dynamic>))
+        .toList(),
       creditScore: json['creditScore'],
       relationships: json['relationships'],
       parents: json['parents'],
@@ -287,7 +292,8 @@ class Character extends HiveObject {
       'deathCause': deathCause,
       'stats': stats,
       'money': money,
-      'bankAccounts': bankAccounts.map((k, v) => MapEntry(k, v.toJson())),
+      // 'bankAccounts': bankAccounts.map((k, v) => MapEntry(k, v.toJson())),
+      'bankAccounts': bankAccounts.map((e) => e.toJson()).toList(),
       'creditScore': creditScore,
       'taxRate': taxRate,
       'relationships': relationships.map((r) => r.toJson()).toList(),
@@ -416,17 +422,21 @@ class Character extends HiveObject {
       orElse: () => throw Exception("Banque non trouvée."),
     );
 
-    final accountNumber = _generateAccountNumber();
+    final regulations = bankData['types'].contains(type.name)
+        ? bankingSystem.regulations[type.name]
+        : null;
+  
+    final minimumAge = regulations != null ? regulations['minAge'] ?? 18 : 18;
 
-    bankAccounts[accountNumber] = BankAccount(
-      id: 'acc_${DateTime
-          .now()
-          .millisecondsSinceEpoch}',
+    final accountNumber = _generateAccountNumber();
+  
+    bankAccounts.add(BankAccount(
+      id: 'acc_${DateTime.now().millisecondsSinceEpoch}',
       accountNumber: accountNumber,
       bankName: bankName,
       accountType: type,
-      minimumAge: tax.bankingRegulations[type]!.minimumAge,
-    );
+      minimumAge: minimumAge,
+    ));
   }
 
   String _generateAccountNumber() {
@@ -440,16 +450,14 @@ class Character extends HiveObject {
   void inheritAssets(Character deceased) {
     TaxSystem tax = TaxSystem(country: country);
 
-    deceased.bankAccounts.forEach((type, accounts) {
-      accounts.forEach((account) {
-        double inheritanceTax = tax.calculateInheritanceTax(account.balance);
-        double netAmount = account.balance - inheritanceTax;
+    for (var account in deceased.bankAccounts) {
+      double inheritanceTax = tax.calculateInheritanceTax(account.balance);
+      double netAmount = account.balance - inheritanceTax;
 
-        this.money += netAmount;
-        deceased.money -= account.balance;
+      this.money += netAmount;
+      deceased.money -= account.balance;
 
-        addLifeEvent("Héritage de ${account.balance.toStringAsFixed(2)} (taxe: ${inheritanceTax.toStringAsFixed(2)})");
-      });
-    });
+      addLifeEvent("Héritage de ${account.balance.toStringAsFixed(2)} (taxe: ${inheritanceTax.toStringAsFixed(2)})");
+    }
   }
 }

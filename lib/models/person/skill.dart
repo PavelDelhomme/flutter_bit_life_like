@@ -110,7 +110,7 @@ class Skill {
     'accounting': SkillCategory.intellectual,
     'marketing': SkillCategory.creative,
     'logistics': SkillCategory.technical,
-    'negociation': SkillCategory.social;
+    'negociation': SkillCategory.social,
   };
 
   static SkillCategory getCategoryFromId(String skillId) {
