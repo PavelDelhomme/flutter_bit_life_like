@@ -135,3 +135,13 @@ class Activity {
     );
   }
 }
+
+class ActivityOutcome {
+  bool success;
+  Map<String, double> effects;
+
+  ActivityOutcome({
+    this.success = false,
+    Map<String, double>? effects,
+  }) : effects = effects ?? {};
+}

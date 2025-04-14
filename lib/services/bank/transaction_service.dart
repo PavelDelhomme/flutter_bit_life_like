@@ -1,3 +1,5 @@
+import 'package:bitlife_like/models/inventory_item.dart';
+
 import '../../models/asset/assets.dart';
 import '../../models/economy/bank_account.dart';
 import '../../models/economy/fiscality.dart';
@@ -38,7 +40,8 @@ class TransactionService {
 
   static void _processCashPurchase(MarketplaceItem item, Character buyer, BankAccount account, double totalCost) {
     account.withdraw(totalCost, "Achat de ${item.name}");
-    buyer.inventory.add(item);
+    final inventoryItem = item.toInventoryItem();
+    buyer.addToInventory(inventoryItem);
     buyer.addLifeEvent("Achat de ${item.name} pour \$${totalCost.toStringAsFixed(2)}");
   }
 
@@ -53,7 +56,8 @@ class TransactionService {
   static void _processLoanPurchase(MarketplaceItem item, Character buyer, BankAccount account, Loan loan, double totalCost) {
     account.deposit(loan.amount, "Prêt pour achat");
     account.withdraw(totalCost, "Achat à crédit de ${item.name}");
-    buyer.inventory.add(item);
+    final InventoryItem ownedItem = item.toInventoryItem(); // conversion propre
+    buyer.addToInventory(ownedItem);
     buyer.addLifeEvent("Achat à crédit de ${item.name} (Prêt: \$${loan.amount.toStringAsFixed(2)})");
   }
 

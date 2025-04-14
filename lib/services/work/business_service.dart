@@ -25,7 +25,7 @@ class BusinessService {
       initialDeposit: capital,
     );
 
-    owner.bankAccounts[businessAccount.accountNumber] = businessAccount;
+    owner.bankAccounts.add(businessAccount);
   }
 
   static void hireEmployee(Business company, Character employee, double salary) {

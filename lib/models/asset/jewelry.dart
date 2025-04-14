@@ -1,6 +1,8 @@
+import 'package:bitlife_like/models/inventory_item.dart';
+
 import 'assets.dart';
 
-class Jewelry extends Asset {
+class Jewelry extends Asset implements InventoryItem {
   String material;
   double carat;
 

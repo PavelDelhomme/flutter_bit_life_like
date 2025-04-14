@@ -16,9 +16,7 @@ class TaxSystem {
   late double primaryResidenceTaxRate;
   late double secondariesResidenceTaxRate;
 
-  TaxSystem({required this.country}) {
-    _loadTaxData();
-  }
+  TaxSystem({required this.country});
 
   Future<void> _loadTaxData() async {
     final data = await rootBundle.loadString('assets/tax_data.json');
@@ -83,6 +81,44 @@ class TaxSystem {
     return amount * inheritanceTaxRate;
   }
 
+  factory TaxSystem.fromJson(Map<String, dynamic> json, String country) {
+    final taxSystem = TaxSystem(country: country);
+    
+    taxSystem.incomeTaxBrackets = (json['incomeTax'] as List)
+        .map((b) => IncomeTaxBracket(
+            min: b['min'],
+            max: b['max'] ?? double.infinity,
+            rate: b['rate']))
+        .toList();
+
+    taxSystem.vatRate = json['vat'];
+    taxSystem.capitalGainsTaxRate = json['capitalGains'];
+    taxSystem.coporateTaxRate = json['corporateTax'];
+    taxSystem.propertyTaxRate = json['propertyTax'];
+    taxSystem.inheritanceTaxRate = json['inheritanceTax'];
+    taxSystem.transferTaxRate = json['transferTax'];
+    taxSystem.primaryResidenceTaxRate = json['primaryResidenceTaxRate'];
+    taxSystem.secondariesResidenceTaxRate = json['secondariesResidenceTaxRate'];
+
+    return taxSystem;
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'country': country,
+      'incomeTax': incomeTaxBrackets.map((b) => b.toJson()).toList(),
+      'vat': vatRate,
+      'capitalGains': capitalGainsTaxRate,
+      'corporateTax': coporateTaxRate,
+      'propertyTax': propertyTaxRate,
+      'inheritanceTax': inheritanceTaxRate,
+      'transferTax': transferTaxRate,
+      'primaryResidenceTaxRate': primaryResidenceTaxRate,
+      'secondariesResidenceTaxRate': secondariesResidenceTaxRate,
+    };
+  }
+
+
 }
 
 
@@ -92,4 +128,12 @@ class IncomeTaxBracket {
   final double rate;
 
   IncomeTaxBracket({required this.min, required this.max, required this.rate});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'min': min,
+      'max': max.isInfinite ? null : max,
+      'rate': rate,
+    };
+  }
 }

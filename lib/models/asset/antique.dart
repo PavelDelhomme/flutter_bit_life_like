@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:bitlife_like/models/inventory_item.dart';
+
 import 'assets.dart';
 
-class Antique extends Asset {
+class Antique extends Asset implements InventoryItem {
   int yearOfOrigin;
   String era;
   String? artist;

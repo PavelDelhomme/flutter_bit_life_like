@@ -1,6 +1,8 @@
+import 'package:bitlife_like/models/inventory_item.dart';
+
 import 'assets.dart';
 
-class Vehicle extends Asset {
+class Vehicle extends Asset implements InventoryItem {
   String brand;
   String model;
   int productionYear;

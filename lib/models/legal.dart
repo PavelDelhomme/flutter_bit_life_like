@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'work/career.dart';
 import 'person/character.dart';
+import '../models/economy/fiscality.dart';
 
 enum CrimeType {
   taxEvasion,
@@ -80,7 +81,7 @@ class Crime {
 
 
 class LegalSystem {
-  final String countryCode;
+  final String country;
   final double prisonStrictness; // 0.0 (laxiste) à 1.0 (strict)
   final double corruptionLevel; // 0.0 (propre) à 1.0 (corrompu)
   final Map<CrimeType, double> sentenceMultipliers;
@@ -88,6 +89,9 @@ class LegalSystem {
   final Map<CrimeType, double> crimeSolvingRates;
   final double auditProbability;
   final double inheritanceTaxRate;
+  final List<String> laws;
+  final TaxSystem taxSystem;
+
 
   static const Map<CrimeType, int> _baseSentences = {
     CrimeType.taxEvasion: 2,
@@ -100,19 +104,21 @@ class LegalSystem {
   };
 
   LegalSystem({
-    required this.countryCode,
+    required this.country,
     required this.prisonStrictness,
     required this.corruptionLevel,
     required this.sentenceMultipliers,
     required this.possiblePunishments,
     required this.crimeSolvingRates,
+    required this.laws,
+    required this.taxSystem,
     this.auditProbability = 0.05,
     this.inheritanceTaxRate = 0.3,
   });
 
   Map<String, dynamic> toJson() {
     return {
-      'countryCode': countryCode,
+      'country': country,
       'prisonStrictness': prisonStrictness,
       'corruptionLevel': corruptionLevel,
       'sentenceMultipliers': sentenceMultipliers.map((k, v) => MapEntry(k.toString(), v)),
@@ -121,12 +127,14 @@ class LegalSystem {
           v.map((p) => p.toString()).toList()
       )),
       'crimeSolvingRates': crimeSolvingRates.map((k, v) => MapEntry(k.toString(), v)),
+      'laws': laws,
+      'taxSystem': taxSystem.toJson(),
     };
   }
 
   factory LegalSystem.fromJson(Map<String, dynamic> json) {
     return LegalSystem(
-      countryCode: json['countryCode'],
+      country: json['country'],
       prisonStrictness: json['prisonStrictness'],
       corruptionLevel: json['corruptionLevel'],
       sentenceMultipliers: json['sentenceMultipliers'].map<String, double>(
@@ -141,6 +149,8 @@ class LegalSystem {
       crimeSolvingRates: json['crimeSolvingRates'].map<String, double>(
             (k, v) => MapEntry(CrimeType.values.firstWhere((e) => e.toString() == k), v),
       ),
+      taxSystem: TaxSystem.fromJson(json['taxSystem'], json['country']),
+      laws: List<String>.from(json['laws'])
     );
   }
 
@@ -148,7 +158,7 @@ class LegalSystem {
   static Future<List<LegalSystem>> loadDefaultSystems() async {
     return [
       LegalSystem(
-        countryCode: 'FR',
+        country: 'FR',
         prisonStrictness: 0.7,
         corruptionLevel: 0.2,
         auditProbability: 0.07,
@@ -163,9 +173,11 @@ class LegalSystem {
         crimeSolvingRates: {
           CrimeType.robbery: 0.6,
         },
+        laws: ['laws 1', 'laws 2'],
+        taxSystem: TaxSystem(country: 'FR')
       ),
       LegalSystem(
-        countryCode: 'US',
+        country: 'US',
         prisonStrictness: 0.7,
         corruptionLevel: 0.2,
         auditProbability: 0.07,
@@ -180,9 +192,11 @@ class LegalSystem {
         crimeSolvingRates: {
           CrimeType.robbery: 0.6,
         },
+        laws: ['laws 1', 'laws 2'],
+        taxSystem: TaxSystem(country: 'FR')
       ),
       LegalSystem(
-        countryCode: 'EN',
+        country: 'EN',
         prisonStrictness: 0.7,
         corruptionLevel: 0.2,
         auditProbability: 0.07,
@@ -197,9 +211,11 @@ class LegalSystem {
         crimeSolvingRates: {
           CrimeType.robbery: 0.6,
         },
+        laws: ['laws 1', 'laws 2'],
+        taxSystem: TaxSystem(country: 'FR')
       ),
       LegalSystem(
-        countryCode: 'AR',
+        country: 'AR',
         prisonStrictness: 0.7,
         corruptionLevel: 0.2,
         auditProbability: 0.07,
@@ -214,9 +230,11 @@ class LegalSystem {
         crimeSolvingRates: {
           CrimeType.robbery: 0.6,
         },
+        laws: ['laws 1', 'laws 2'],
+        taxSystem: TaxSystem(country: 'FR')
       ),
       LegalSystem(
-        countryCode: 'GR',
+        country: 'GR',
         prisonStrictness: 0.7,
         corruptionLevel: 0.2,
         auditProbability: 0.07,
@@ -231,9 +249,11 @@ class LegalSystem {
         crimeSolvingRates: {
           CrimeType.robbery: 0.6,
         },
+        laws: ['laws 1', 'laws 2'],
+        taxSystem: TaxSystem(country: 'FR')
       ),
       LegalSystem(
-        countryCode: 'RU',
+        country: 'RU',
         prisonStrictness: 0.7,
         corruptionLevel: 0.2,
         auditProbability: 0.07,
@@ -248,6 +268,8 @@ class LegalSystem {
         crimeSolvingRates: {
           CrimeType.robbery: 0.6,
         },
+        laws: ['laws 1', 'laws 2'],
+        taxSystem: TaxSystem(country: 'FR')
       ),
     ];
   }

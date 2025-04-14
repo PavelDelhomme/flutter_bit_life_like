@@ -26,7 +26,7 @@ class BankAccount {
   DateTime openedDate;
   double monthlyFee;
   bool isActive;
-  final String? countryCode;
+  final String? country;
   final String? bankId;
   double? initialDeposit;
   int? minimumAge;
@@ -38,7 +38,7 @@ class BankAccount {
   double get totalDebt => loans.fold(0.0, (sum, loan) => sum + loan.remainingAmount);
 
   BankAccount({
-    this.countryCode,
+    this.country,
     this.bankId,
     required this.id,
     required this.accountNumber,
@@ -73,7 +73,7 @@ class BankAccount {
 
     return BankAccount(
       id: 'acc_${DateTime.now().millisecondsSinceEpoch}',
-      countryCode: country,
+      country: country,
       bankId: bankData['id'],
       accountNumber: _generateAccountNumber(bankData['prefix']),
       bankName: bankName,
@@ -212,7 +212,7 @@ class BankAccount {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'countryCode': countryCode,
+      'country': country,
       'bankId': bankId,
       'accountNumber': accountNumber,
       'bankName': bankName,
@@ -231,7 +231,7 @@ class BankAccount {
   
   factory BankAccount.fromJson(Map<String, dynamic> json) {
     return BankAccount(
-      countryCode: json['countryCode'],
+      country: json['country'],
       bankId: json['bankId'],
       id: json['id'],
       accountNumber: json['accountNumber'],
@@ -274,7 +274,7 @@ class OffshoreAccount extends BankAccount {
     this.taxEvasionRisk = 0.2,
     super.balance = 0.0,
     super.interestRate = 2.5, // Taux élevés dans les paradis fiscaux
-    required super.countryCode,
+    required super.country,
     required super.bankId,
     super.initialDeposit = 0.0,
   }) : super(accountType: AccountType.checking);
@@ -323,6 +323,23 @@ class Transaction {
     required this.accountNumber,
   });
   
+
+  factory Transaction.create({
+    required BankAccount account,
+    required DateTime date,
+    required double amount,
+    required TransactionType type,
+    required String description,
+  }) {
+    return Transaction(
+      amount: amount,
+      date: date,
+      type: type,
+      description: description,
+      accountNumber: account.accountNumber,
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'amount': amount,

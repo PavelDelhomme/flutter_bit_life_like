@@ -1,6 +1,8 @@
+import 'package:bitlife_like/models/inventory_item.dart';
+
 import 'assets.dart';
 
-class Electronic extends Asset {
+class Electronic extends Asset implements InventoryItem {
   final String id;
   final String ownerId;
   final String name;

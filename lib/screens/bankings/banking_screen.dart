@@ -491,9 +491,10 @@ class _BankingScreenState extends State<BankingScreen> with SingleTickerProvider
                     // Ajouter une transaction initiale
                     newAccount.transactions.add(Transaction(
                       amount: initialDeposit,
-                      description: 'Dépôt initial',
                       date: DateTime.now(),
                       type: TransactionType.deposit,
+                      description: 'Dépôt initial',
+                      accountNumber: newAccount.accountNumber,
                     ));
                     
                     // Ajouter le compte à la liste des comptes

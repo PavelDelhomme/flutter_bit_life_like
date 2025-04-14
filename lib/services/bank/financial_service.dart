@@ -50,7 +50,8 @@ class FinancialService {
         amount: netAmount,
         date: DateTime.now(),
         type: models.TransactionType.deposit,
-        description: "Revenu de $netAmount"
+        description: "Revenu de $netAmount",
+        accountNumber: mainAccount.accountNumber,
       ));
     } else {
       character.money += netAmount;
@@ -142,7 +143,8 @@ class FinancialService {
           amount: interestAmount,
           description: "Intérêts annuels",
           date: DateTime.now(),
-          type: models.TransactionType.interest
+          type: models.TransactionType.interest,
+          accountNumber: account.accountNumber,
         ));
       }
       
@@ -155,7 +157,8 @@ class FinancialService {
           amount: -annualFees,
           description: "Frais annuels",
           date: DateTime.now(),
-          type: models.TransactionType.fee
+          type: models.TransactionType.fee,
+          accountNumber: account.accountNumber,
         ));
       }
     }
@@ -178,7 +181,8 @@ class FinancialService {
             amount: -annualPayment,
             date: DateTime.now(),
             type: models.TransactionType.loanPayment,
-            description: ''
+            description: '',
+            accountNumber: account.accountNumber,
           ));
           
           if (loan.remainingAmount <= 0) {
@@ -197,7 +201,8 @@ class FinancialService {
               amount: -partialPayment,
               date: DateTime.now(),
               type: models.TransactionType.loanPayment,
-              description: "Description"
+              description: "Description",
+              accountNumber: account.accountNumber,
             ));
           }
           

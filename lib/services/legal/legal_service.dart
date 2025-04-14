@@ -7,11 +7,11 @@ class LegalService {
   static final Map<String, LegalSystem> _systems = {};
 
   static void initialize(List<LegalSystem> systems) {
-    _systems.addEntries(systems.map((s) => MapEntry(s.countryCode, s)));
+    _systems.addEntries(systems.map((s) => MapEntry(s.country, s)));
   }
 
-  static LegalSystem? getSystem(String countryCode) {
-    return _systems[countryCode];
+  static LegalSystem? getSystem(String country) {
+    return _systems[country];
   }
 
   static void applyCountryLaw(Character character) {
@@ -32,7 +32,7 @@ class LegalService {
   static Future<List<LegalSystem>> loadDefaultSystems() async {
     return [
       LegalSystem(
-        countryCode: 'US',
+        country: 'US',
         prisonStrictness: 0.85,
         corruptionLevel: 0.4,
         sentenceMultipliers: {
@@ -64,7 +64,7 @@ class LegalService {
         }
       ),
       LegalSystem(
-          countryCode: 'FR',
+          country: 'FR',
           prisonStrictness: 0.85,
           corruptionLevel: 0.4,
           sentenceMultipliers: {
@@ -96,7 +96,7 @@ class LegalService {
           }
       ),
       LegalSystem(
-          countryCode: 'EN',
+          country: 'EN',
           prisonStrictness: 0.85,
           corruptionLevel: 0.4,
           sentenceMultipliers: {
@@ -128,7 +128,7 @@ class LegalService {
           }
       ),
       LegalSystem(
-          countryCode: 'AR',
+          country: 'AR',
           prisonStrictness: 0.85,
           corruptionLevel: 0.4,
           sentenceMultipliers: {
@@ -160,7 +160,7 @@ class LegalService {
           }
       ),
       LegalSystem(
-          countryCode: 'GR',
+          country: 'GR',
           prisonStrictness: 0.85,
           corruptionLevel: 0.4,
           sentenceMultipliers: {
@@ -192,7 +192,7 @@ class LegalService {
           }
       ),
       LegalSystem(
-          countryCode: 'RU',
+          country: 'RU',
           prisonStrictness: 0.85,
           corruptionLevel: 0.4,
           sentenceMultipliers: {

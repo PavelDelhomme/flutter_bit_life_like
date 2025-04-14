@@ -1,0 +1,52 @@
+[
+    {
+      "id": "rec_weapon_1",
+      "resultItemType": "weapon",
+      "requiredComponentIds": ["metal", "grip"],
+      "quantities": {
+        "metal": 2,
+        "grip": 1
+      }
+    },
+    {
+      "id": "rec_vehicle_1",
+      "resultItemType": "vehicle",
+      "requiredComponentIds": ["metal", "engine", "wheel"],
+      "quantities": {
+        "metal": 4,
+        "engine": 1,
+        "wheel": 4
+      }
+    },
+    {
+      "id": "rec_electronic_1",
+      "resultItemType": "electronic",
+      "requiredComponentIds": ["metal", "engine", "wheel"],
+      "quantities": {
+        "metal": 4,
+        "engine": 1,
+        "wheel": 4
+      }
+    },
+    {
+      "id": "rec_jewelry_1",
+      "resultItemType": "jewelry",
+      "requiredComponentIds": ["metal", "engine", "wheel"],
+      "quantities": {
+        "metal": 4,
+        "engine": 1,
+        "wheel": 4
+      }
+    },
+    {
+      "id": "rec_real_estate_1",
+      "resultItemType": "real_estate",
+      "requiredComponentIds": ["metal", "engine", "wheel"],
+      "quantities": {
+        "metal": 4,
+        "engine": 1,
+        "wheel": 4
+      }
+    }
+  ]
+  

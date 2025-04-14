@@ -1,4 +1,8 @@
 import 'dart:math';
+import 'package:bitlife_like/models/crafting/craftable.dart';
+import 'package:bitlife_like/models/crafting/recipe.dart';
+import 'package:bitlife_like/models/inventory_item.dart';
+import 'package:bitlife_like/models/item_factory.dart';
 import 'package:bitlife_like/models/marketplace.dart';
 import 'package:bitlife_like/models/person/skill.dart';
 import 'package:bitlife_like/models/work/business.dart';
@@ -56,7 +60,10 @@ class Character extends HiveObject {
 
   Map<String, SkillMastery> skills = {};
 
-  List<MarketplaceItem> inventory = [];
+  List<MarketplaceItem> marketplaceItems = [];
+
+  List<InventoryItem> inventory = [];
+
   SkillTree? unlockedSkillTree;
   List<Activity> scheduledActivities = [];
   Map<String, double> skillLevels = {}; // Niveaux de compétences rapide accès
@@ -397,12 +404,11 @@ class Character extends HiveObject {
   void purchaseItem(MarketplaceItem item) {
     if (canPurchase(item)) {
       money -= item.price;
-      inventory.add(item);
-      item.skillEffects.forEach((skillId, exp) {
-        improveSkill(skillId, exp);
-      });
+      final converted = item.convertToInventoryItem();
+      addToInventory(converted);
     }
   }
+
 
 
   void _applyItemEffects(MarketplaceItem item) {
@@ -460,4 +466,52 @@ class Character extends HiveObject {
       addLifeEvent("Héritage de ${account.balance.toStringAsFixed(2)} (taxe: ${inheritanceTax.toStringAsFixed(2)})");
     }
   }
+
+  void addToInventory(InventoryItem item) {
+    inventory.add(item);
+    // éventuellement effet
+    item.skillEffects.forEach((skillId, exp) {
+      improveSkill(skillId, exp);
+    });
+  }
+
+  void removeFromInventory(String itemId) {
+    inventory.removeWhere((item) => item.id == itemId);
+  }
+
+  InventoryItem? craftItem(List<InventoryItem> providedItems, CraftingRecipe recipe) {
+    final providedIds = providedItems.map((e) => e.id).toList();
+
+    // Vérifie que tous les composants requis sont présents en quantité suffisante
+    for (final componentId in recipe.requiredComponentIds) {
+      if (!providedIds.contains(componentId)) return null;
+      if (providedIds.where((id) => id == componentId).length < (recipe.quantities[componentId] ?? 1)) {
+        return null;
+      }
+    }
+
+    // Retirer les composants utilisés
+    for (final componentId in recipe.requiredComponentIds) {
+      int qty = recipe.quantities[componentId] ?? 1;
+      for (int i = 0; i < qty; i++) {
+        final index = inventory.indexWhere((item) => item.id == componentId);
+        if (index != -1) inventory.removeAt(index);
+      }
+    }
+
+    // Créer un nouvel item basé sur resultItemType
+    final crafted = ItemFactory.createItemFromType(recipe.resultItemType);
+
+    if (crafted != null) {
+      addToInventory(crafted);
+      addLifeEvent("Tu as crafté ${crafted.name} !");
+      return crafted;
+    }
+
+    return null;
+  }
+
+
+
+
 }

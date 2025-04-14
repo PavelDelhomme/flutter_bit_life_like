@@ -1,8 +1,9 @@
 import 'dart:math';
 
 import 'assets.dart';
+import '../inventory_item.dart';
 
-class Arme extends Asset {
+class Arme extends Asset implements InventoryItem {
   String weaponType;
   int damage;
 
@@ -16,10 +17,11 @@ class Arme extends Asset {
     super.age,
     super.condition,
     super.maintenanceCost,
-  }) : super(
-    type: AssetType.weapon,
-    depreciationRate: 0.1,
-  );
+  }) : super(type: AssetType.weapon, depreciationRate: 0.1);
+
+
+  @override
+  Map<String, double> get skillEffects => {'firearms': damage * 0.1};
 
   @override
   void deteriorate() {
