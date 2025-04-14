@@ -6,6 +6,7 @@ class Book {
   final double readingTime; // todo trouver autre chose que ca
   final double comprehensionRequired; // 0.0-1.0
 
+
   Book({
     required this.id,
     required this.title,

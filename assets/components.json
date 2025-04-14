@@ -1,0 +1,19 @@
+[
+  { "id": "metal", "name": "Plaque de métal", "value": 100 },
+  { "id": "copper_wire", "name": "Fil de cuivre", "value": 40 },
+  { "id": "sensor", "name": "Capteur", "value": 150 },
+  { "id": "battery", "name": "Batterie lithium", "value": 200 },
+  { "id": "engine", "name": "Moteur", "value": 300 },
+  { "id": "wheel", "name": "Roue", "value": 80 },
+  { "id": "plastic", "name": "Plastique moulé", "value": 60 },
+  { "id": "grip", "name": "Poignée ergonomique", "value": 45 },
+  { "id": "wood_plank", "name": "Planche de bois", "value": 30 },
+  { "id": "chemical_substance", "name": "Substance chimique", "value": 90 },
+  { "id": "gold_nugget", "name": "Pépite d'or", "value": 500 },
+  { "id": "microchip", "name": "Microprocesseur", "value": 250 },
+  { "id": "glass", "name": "Verre trempé", "value": 70 },
+  { "id": "gemstone", "name": "Pierre précieuse", "value": 400 },
+  { "id": "string", "name": "Corde musicale", "value": 20 },
+  { "id": "circuit_board", "name": "Carte électronique", "value": 180 },
+  { "id": "paint", "name": "Peinture", "value": 30 }
+]

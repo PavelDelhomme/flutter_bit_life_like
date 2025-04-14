@@ -40,7 +40,7 @@ class TransactionService {
 
   static void _processCashPurchase(MarketplaceItem item, Character buyer, BankAccount account, double totalCost) {
     account.withdraw(totalCost, "Achat de ${item.name}");
-    final inventoryItem = item.toInventoryItem();
+    final inventoryItem = item.convertToInventoryItem();
     buyer.addToInventory(inventoryItem);
     buyer.addLifeEvent("Achat de ${item.name} pour \$${totalCost.toStringAsFixed(2)}");
   }
@@ -56,7 +56,7 @@ class TransactionService {
   static void _processLoanPurchase(MarketplaceItem item, Character buyer, BankAccount account, Loan loan, double totalCost) {
     account.deposit(loan.amount, "Prêt pour achat");
     account.withdraw(totalCost, "Achat à crédit de ${item.name}");
-    final InventoryItem ownedItem = item.toInventoryItem(); // conversion propre
+    final InventoryItem ownedItem = item.convertToInventoryItem(); // conversion propre
     buyer.addToInventory(ownedItem);
     buyer.addLifeEvent("Achat à crédit de ${item.name} (Prêt: \$${loan.amount.toStringAsFixed(2)})");
   }

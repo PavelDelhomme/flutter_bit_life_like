@@ -43,6 +43,13 @@ class CraftingService {
     return true;
   }
 
+  bool _hasRequiredSkills(Character c, CraftingRecipe r) {
+    return r.requiredSkills.entries.every((entry) {
+      final level = c.skills[entry.key]?.currentLevel ?? 0;
+      return level >= entry.value;
+    });
+  }
+
   InventoryItem? craft(Character character, CraftingRecipe recipe) {
     if (!canCraft(character, recipe)) return null;
 
@@ -77,18 +84,13 @@ class CraftingService {
 
   MarketplaceCategory _mapTypeToCategory(String type) {
     switch (type) {
-      case 'weapon':
-        return MarketplaceCategory.weapons;
-      case 'vehicle':
-        return MarketplaceCategory.vehicles;
-      case 'electronic':
-        return MarketplaceCategory.electronics;
-      case 'instrument':
-        return MarketplaceCategory.instruments;
-      case 'realEstate':
-        return MarketplaceCategory.realEstates;
-      case 'jewelry':
-        return MarketplaceCategory.jewelry;
+      case 'weapon': return MarketplaceCategory.weapons;
+      case 'vehicle': return MarketplaceCategory.vehicles;
+      case 'electronic': return MarketplaceCategory.electronics;
+      case 'instrument': return MarketplaceCategory.instruments;
+      case 'realEstate': return MarketplaceCategory.realEstates;
+      case 'jewelry': return MarketplaceCategory.jewelry;
+      case 'component': return MarketplaceCategory.components;
       default:
         throw Exception("Type inconnu : $type");
     }

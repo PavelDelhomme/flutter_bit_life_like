@@ -6,6 +6,8 @@ import 'package:bitlife_like/models/asset/vehicle.dart';
 import 'package:bitlife_like/models/inventory_item.dart';
 import 'package:bitlife_like/models/person/character.dart';
 
+import '../services/component_service.dart';
+
 enum MarketplaceCategory {
   realEstates,
   vehicles,
@@ -16,6 +18,7 @@ enum MarketplaceCategory {
   courses,
   electronics,
   instruments,
+  components,
 }
 
 
@@ -169,11 +172,37 @@ class Marketplace {
     ];
   }
 
-  List<MarketplaceItem> generateDailyItems(Character character) {
-    return availableCategories.expand((category) {
-      return List.generate(Random().nextInt(5) + 3, (_) => _generateItem(category, character));
+  static Future<List<MarketplaceItem>> _generateComponents() async {
+    final components = await ComponentService.loadComponents();
+    return components.map((c) {
+      return MarketplaceItem(
+        id: c.id,
+        name: c.name,
+        category: MarketplaceCategory.components,
+        price: c.value,
+        expirationDate: DateTime.now().add(Duration(days: 30)),
+      );
     }).toList();
   }
+
+
+  Future<List<MarketplaceItem>> generateDailyItems(Character character) async {
+    List<MarketplaceItem> items = [];
+
+    for (final category in availableCategories) {
+      if (category == MarketplaceCategory.components) {
+        final componentItems = await _generateComponents();
+        items.addAll(componentItems);
+      } else {
+        final generated = List.generate(Random().nextInt(5) + 3, (_) => _generateItem(category, character));
+        items.addAll(generated);
+      }
+    }
+
+    return items;
+  }
+
+
   static Map<String, double> _getRequiredSkillsForCategory(MarketplaceCategory category) {
     switch(category) {
       case MarketplaceCategory.vehicles: return {'driving': 2.0};

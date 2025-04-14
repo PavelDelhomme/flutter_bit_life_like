@@ -1,52 +1,37 @@
 [
-    {
-      "id": "rec_weapon_1",
-      "resultItemType": "weapon",
-      "requiredComponentIds": ["metal", "grip"],
-      "quantities": {
-        "metal": 2,
-        "grip": 1
-      }
-    },
-    {
-      "id": "rec_vehicle_1",
-      "resultItemType": "vehicle",
-      "requiredComponentIds": ["metal", "engine", "wheel"],
-      "quantities": {
-        "metal": 4,
-        "engine": 1,
-        "wheel": 4
-      }
-    },
-    {
-      "id": "rec_electronic_1",
-      "resultItemType": "electronic",
-      "requiredComponentIds": ["metal", "engine", "wheel"],
-      "quantities": {
-        "metal": 4,
-        "engine": 1,
-        "wheel": 4
-      }
-    },
-    {
-      "id": "rec_jewelry_1",
-      "resultItemType": "jewelry",
-      "requiredComponentIds": ["metal", "engine", "wheel"],
-      "quantities": {
-        "metal": 4,
-        "engine": 1,
-        "wheel": 4
-      }
-    },
-    {
-      "id": "rec_real_estate_1",
-      "resultItemType": "real_estate",
-      "requiredComponentIds": ["metal", "engine", "wheel"],
-      "quantities": {
-        "metal": 4,
-        "engine": 1,
-        "wheel": 4
-      }
-    }
-  ]
-  
+  {
+    "id": "rec_weapon_1",
+    "resultItemType": "weapon",
+    "requiredComponentIds": ["metal", "grip"],
+    "quantities": { "metal": 2, "grip": 1 },
+    "requiredSkills": { "crafting": 2.0 }
+  },
+  {
+    "id": "rec_vehicle_1",
+    "resultItemType": "vehicle",
+    "requiredComponentIds": ["metal", "engine", "wheel"],
+    "quantities": { "metal": 4, "engine": 1, "wheel": 4 },
+    "requiredSkills": { "mechanics": 3.0 }
+  },
+  {
+    "id": "rec_electronic_1",
+    "resultItemType": "electronic",
+    "requiredComponentIds": ["circuit_board", "battery", "microchip"],
+    "quantities": { "circuit_board": 1, "battery": 1, "microchip": 2 },
+    "requiredSkills": { "electronics": 4.0 }
+  },
+  {
+    "id": "rec_jewelry_1",
+    "resultItemType": "jewelry",
+    "requiredComponentIds": ["gold_nugget", "gemstone"],
+    "quantities": { "gold_nugget": 1, "gemstone": 1 },
+    "requiredSkills": { "jewelry": 2.0 }
+  },
+  {
+    "id": "rec_instrument_1",
+    "resultItemType": "instrument",
+    "requiredComponentIds": ["wood_plank", "string"],
+    "quantities": { "wood_plank": 2, "string": 6 },
+    "requiredSkills": { "music": 2.5 }
+  }
+]

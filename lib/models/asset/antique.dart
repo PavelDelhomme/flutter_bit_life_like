@@ -30,6 +30,9 @@ class Antique extends Asset implements InventoryItem {
     appreciationRate: 0.05,
   );
 
+  @override
+  String get type => 'antique';
+
   void authenticate() {
     if (!isAuthenticated) {
       isAuthenticated = true;
