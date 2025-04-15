@@ -1,4 +1,3 @@
-// models/asset.dart
 import 'dart:math';
 
 enum AssetType {
@@ -14,7 +13,8 @@ enum AssetType {
   instrument,
   stock,
   crypto,
-  business
+  business,
+  component
 }
 
 enum AssetCondition {

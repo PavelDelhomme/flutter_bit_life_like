@@ -1,4 +1,3 @@
-// bank_account.adapter.dart
 import 'package:hive/hive.dart';
 import 'bank_account.dart';
 

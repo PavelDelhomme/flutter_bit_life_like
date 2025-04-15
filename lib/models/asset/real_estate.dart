@@ -35,6 +35,10 @@ class RealEstate extends Asset implements InventoryItem {
     depreciationRate: 0.02, // Les propriétés immobilières se déprécient moins
     appreciationRate: 0.03, // Les propriétés immobilières peuvent prendre de la valeur
   );
+
+  @override
+  Map<String, double> get skillEffects => {};
+
   
   double calculateMonthlyProfit() {
     if (!isRented) return -maintenanceCost;

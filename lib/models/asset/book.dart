@@ -1,10 +1,25 @@
-class Book {
+import 'package:bitlife_like/models/inventory_item.dart';
+
+import 'assets.dart';
+
+class Book implements InventoryItem {
+  @override
   final String id;
   final String title;
   final String author;
-  final Map<String, double> skillEffects;
   final double readingTime; // todo trouver autre chose que ca
   final double comprehensionRequired; // 0.0-1.0
+  @override
+  final Map<String, double> skillEffects;
+
+  @override
+  double get value => skillEffects.values.fold(0, (a, b) => a + b); // ou un champ `value` direct
+
+  @override
+  String get name => title;
+
+  @override
+  AssetType get type => AssetType.book;
 
 
   Book({

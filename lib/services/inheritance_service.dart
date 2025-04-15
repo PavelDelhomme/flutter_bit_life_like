@@ -1,4 +1,3 @@
-
 import 'package:bitlife_like/models/person/character.dart';
 
 class InheritanceService {

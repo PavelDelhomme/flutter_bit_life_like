@@ -1,4 +1,3 @@
-
 import 'dart:math';
 
 import 'work/career.dart';
@@ -32,7 +31,7 @@ class Crime {
   int? sentenceYears;
   final double? fine;
   final bool isSolved;
-  
+
   Crime({
     required this.id,
     required this.type,
@@ -43,7 +42,19 @@ class Crime {
     this.fine,
     this.isSolved = false,
   });
-  
+
+  // Ajout du helper pour constructeur avec year seulement
+  Crime.fromYear({
+    required this.type,
+    required int year,
+    required this.description,
+    this.punishment,
+    this.sentenceYears,
+    this.fine,
+    this.isSolved = true,
+  })  : date = DateTime(year),
+        id = 'crime_${DateTime.now().millisecondsSinceEpoch}';
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -56,21 +67,15 @@ class Crime {
       'isSolved': isSolved,
     };
   }
-  
+
   factory Crime.fromJson(Map<String, dynamic> json) {
     return Crime(
       id: json['id'],
-      type: CrimeType.values.firstWhere(
-        (e) => e.toString() == json['type'],
-        orElse: () => CrimeType.taxEvasion
-      ),
+      type: CrimeType.values.firstWhere((e) => e.toString() == json['type']),
       date: DateTime.parse(json['date']),
       description: json['description'],
-      punishment: json['punishment'] != null 
-          ? PunishmentType.values.firstWhere(
-              (e) => e.toString() == json['punishment'],
-              orElse: () => PunishmentType.fine
-            )
+      punishment: json['punishment'] != null
+          ? PunishmentType.values.firstWhere((e) => e.toString() == json['punishment'])
           : null,
       sentenceYears: json['sentenceYears'],
       fine: json['fine'],

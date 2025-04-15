@@ -12,7 +12,7 @@ import 'package:bitlife_like/models/marketplace.dart';
 import 'package:uuid/uuid.dart';
 
 class ItemFactory {
-  final _uuid = Uuid();
+  static final _uuid = Uuid(); // <- ça corrige l'erreur
 
   static InventoryItem? createItemFromType(String type) {
     final id = _uuid.v4();

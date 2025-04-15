@@ -1,5 +1,7 @@
 import 'package:bitlife_like/models/inventory_item.dart';
 
+import '../asset/assets.dart';
+
 class CraftingComponent implements InventoryItem {
   @override
   final String id;
@@ -7,15 +9,15 @@ class CraftingComponent implements InventoryItem {
   final String name;
   @override
   final double value;
-  @override
-  final String type; // 'component'
 
   CraftingComponent({
     required this.id,
     required this.name,
     required this.value,
-    this.type = 'component',
   });
+
+  @override
+  AssetType get type => AssetType.component;
 
   @override
   Map<String, double> get skillEffects => {};

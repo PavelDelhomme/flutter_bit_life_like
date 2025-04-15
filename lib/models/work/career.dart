@@ -1,4 +1,3 @@
-// models/career.dart
 import 'dart:math';
 
 import 'package:bitlife_like/models/person/skill.dart';

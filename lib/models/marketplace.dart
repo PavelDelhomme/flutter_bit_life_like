@@ -1,9 +1,4 @@
 import 'dart:math';
-
-import 'package:bitlife_like/models/asset/book.dart';
-import 'package:bitlife_like/models/asset/jewelry.dart';
-import 'package:bitlife_like/models/asset/vehicle.dart';
-import 'package:bitlife_like/models/inventory_item.dart';
 import 'package:bitlife_like/models/person/character.dart';
 
 import '../services/component_service.dart';
@@ -80,38 +75,6 @@ class MarketplaceItem {
       expirationDate: DateTime.parse(json['expirationDate']),
     );
   }
-
-  InventoryItem convertToInventoryItem() {
-    switch (category) {
-      case MarketplaceCategory.books:
-        return Book(
-          id: id,
-          name: name,
-          price: price,
-          skillEffects: skillEffects,
-        );
-      case MarketplaceCategory.vehicles:
-        return Vehicle(
-          id: id,
-          name: name,
-          price: price,
-          skillEffects: skillEffects,
-          value: price,
-        );
-      case MarketplaceCategory.jewelry:
-        return Jewelry(
-          id: id,
-          name: name,
-          price: price,
-          skillEffects: skillEffects,
-          value: price,
-        );
-      // Ajoute les autres cas comme Antiques, Weapons, etc.
-      default:
-        throw Exception("Catégorie non prise en charge pour la conversion MarketplaceItem → InventoryItem.");
-    }
-  }
-
 }
 
 class Marketplace {

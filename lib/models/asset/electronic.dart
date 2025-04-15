@@ -1,38 +1,28 @@
 import 'package:bitlife_like/models/inventory_item.dart';
-
 import 'assets.dart';
 
 class Electronic extends Asset implements InventoryItem {
-  final String id;
-  final String ownerId;
-  final String name;
-  final double value;
-  final int age;
-  final AssetCondition condition;
-  final double maintenanceCost;
   final bool supportApplications;
   final String brand;
-  final String typeElectronic; // smartphone, laptop, server, ...
+  final String typeElectronic;
 
   Electronic({
-    required this.id,
-    required this.ownerId,
-    required this.name,
-    required this.value,
-    required this.age,
-    required this.condition,
-    required this.maintenanceCost,
+    required super.id,
+    required super.ownerId,
+    required super.name,
+    required super.value,
+    super.age = 0,
+    super.condition = AssetCondition.good,
+    super.maintenanceCost = 0.0,
     this.supportApplications = false,
     required this.brand,
-    required this.typeElectronic
-  }) : super(
-    id: id,
-    ownerId: ownerId,
-    name: name,
-    value: value,
-    type: AssetType.electronic,
-    appreciationRate: 0.05,
-  );
+    required this.typeElectronic,
+  }) : super(type: AssetType.electronic, appreciationRate: 0.05);
+
+  @override
+  Map<String, double> get skillEffects => {};
+
+
 
   factory Electronic.fromJson(Map<String, dynamic> json) {
     return Electronic(
@@ -41,12 +31,24 @@ class Electronic extends Asset implements InventoryItem {
       name: json['name'],
       value: json['value'],
       age: json['age'],
-      condition: json['condition'],
+      condition: AssetCondition.values.firstWhere(
+            (e) => e.toString() == json['condition'],
+        orElse: () => AssetCondition.good,
+      ),
       maintenanceCost: json['maintenanceCost'],
-      supportApplications: json['supportApplications'],
+      supportApplications: json['supportApplications'] ?? false,
       brand: json['brand'],
-      typeElectronic: json['tpeElectronic'],
+      typeElectronic: json['typeElectronic'],
     );
+  }
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      ...super.toJson(),
+      'supportApplications': supportApplications,
+      'brand': brand,
+      'typeElectronic': typeElectronic,
+    };
   }
 
 }

@@ -230,9 +230,9 @@
 
 // TODO : Possibilite davoir un ordinatzur et autre deblocable avec plugin
 
-// TODO :
+// TODO : Possibilité d'utiliser un ou plusieur smartphone virtuel avec simulation d'un OS, notifications, Application bancaire, bourses, achat amazon, autre etc etc.
 
-// TODO :
+// TODO : Système de licences et de fraude de license
 
 // TODO :
 

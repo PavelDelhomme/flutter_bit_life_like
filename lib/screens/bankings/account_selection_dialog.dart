@@ -1,11 +1,5 @@
-import 'dart:math';
-
-import '../../models/person/character.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
 import '../../models/economy/bank_account.dart';
-import '../../models/economy/loan.dart';
 
 class AccountSelectionDialog extends StatelessWidget {
   final List<BankAccount> accounts;

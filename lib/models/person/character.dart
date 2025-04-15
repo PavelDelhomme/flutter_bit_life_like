@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:bitlife_like/models/crafting/craftable.dart';
 import 'package:bitlife_like/models/crafting/recipe.dart';
 import 'package:bitlife_like/models/inventory_item.dart';
 import 'package:bitlife_like/models/item_factory.dart';
@@ -18,6 +17,7 @@ import '../economy/fiscality.dart';
 import '../asset/jewelry.dart';
 import '../education/education.dart';
 import '../legal.dart';
+import '../license.dart';
 import '../pet.dart';
 import '../asset/vehicle.dart';
 
@@ -74,6 +74,8 @@ class Character extends HiveObject {
   List<String> diplomas;
   List<Course> enrolledCourses = [];
   List<String> completedCourses = [];
+
+  List<License> licenses = [];
 
   // Possessions
   List<Asset> assets;
@@ -404,7 +406,7 @@ class Character extends HiveObject {
   void purchaseItem(MarketplaceItem item) {
     if (canPurchase(item)) {
       money -= item.price;
-      final converted = item.convertToInventoryItem();
+      final converted = ItemFactory.fromMarketplace(item, id);
       addToInventory(converted);
     }
   }

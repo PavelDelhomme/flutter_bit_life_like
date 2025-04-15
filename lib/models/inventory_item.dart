@@ -1,17 +1,19 @@
+import 'asset/assets.dart';
+
 abstract class InventoryItem {
   String get id;
   String get name;
   double get value;
-  String get type;
+  AssetType get type;
 
-  Map<String, double> get skillEffects => {};
+  Map<String, double> get skillEffects;
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
       'value': value,
-      'type': type,
+      'type': type.toString(),
     };
   }
 }

@@ -25,6 +25,7 @@ class CraftingService {
       resultItemType: e['resultItemType'],
       requiredComponentIds: List<String>.from(e['requiredComponentIds']),
       quantities: Map<String, int>.from(e['quantities']),
+      requiredSkills: Map<String, double>.from(e['requiredSkills'] ?? {}),
     )).toList();
   }
 

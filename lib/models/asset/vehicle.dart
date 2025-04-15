@@ -25,6 +25,9 @@ class Vehicle extends Asset implements InventoryItem {
     depreciationRate: 0.15,
   );
 
+  @override
+  Map<String, double> get skillEffects => {'driving': 3.0};
+
   
   @override
   void deteriorate() {

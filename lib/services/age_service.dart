@@ -1,5 +1,10 @@
 // services/age_service.dart
 import 'dart:math';
+import 'package:bitlife_like/models/person/skill.dart';
+import 'package:flutter/foundation.dart';
+
+import '../models/legal.dart';
+import '../models/marketplace.dart';
 import '../models/work/career.dart';
 import '../../services/events/events_decision/event_service.dart';
 
@@ -11,58 +16,109 @@ class AgeService {
   final EventService _eventService;
   final FinancialService _financialService;
   final Random _random = Random();
-  
+
   AgeService(this._eventService, this._financialService);
 
-  void ageUp(Character character) {
-    // Vieillir le personnage
+  Future<void> ageUp(Character character) async {
     character.age++;
-    
-    // Générer des événements selon l'âge
+
     List<Event> ageEvents = _eventService.generateAgeEvents(character);
     character.lifeEvents.addAll(ageEvents);
-    
-    // Gestion des possession
+
     _updateAssets(character);
-
-    // Evolution des relations
     _updateRelationships(character);
-
-    // Gestion financière
     _financialService.processYearlyFinances(character);
-
-    // Mettre à jour les statistiques
     _updateStats(character);
-    
-    // Mettre à jour le titre actuel
     _updateTitle(character);
-    
-    // Vieillir les possessions
     _ageAssets(character);
 
-    // Génération des nouveau item de marketplace
-    character.marketplaceItems.addAll(
-        Marketplace().getDailyItems('vehicles') +
-            Marketplace().getDailyItems('books')
+    final marketplace = Marketplace(
+      location: character.city,
+      availableCategories: [
+        MarketplaceCategory.vehicles,
+        MarketplaceCategory.books,
+        MarketplaceCategory.realEstates,
+        MarketplaceCategory.jewelry,
+        MarketplaceCategory.antiques,
+        MarketplaceCategory.weapons,
+        MarketplaceCategory.courses,
+        MarketplaceCategory.electronics,
+        MarketplaceCategory.instruments,
+        MarketplaceCategory.components,
+      ],
     );
 
-    // Vérification des permis expirés
-    _checkLicenses(character);
+    final newItems = await marketplace.generateDailyItems(character);
+    character.marketplaceItems.addAll(newItems);
 
+    _checkLicenses(character);
     _unlockNewSkills(character);
 
-    // Gérer les événements aléatoires potentiellement mortels
-    if (_checkDeathEvents(character)) {
-      return; // Personnage décédé
-    }
+    if (_checkDeathEvents(character)) return;
 
-    // Evenements aléatoires
     _handleRandomEvents(character);
   }
+  void _checkLicenses(Character character) {
+    final expiredLicenses = character.licenses.where((l) => l.isExpired && !l.isRevoked).toList();
+
+    for (final license in expiredLicenses) {
+      license.isRevoked = true;
+
+      character.lifeEvents.add(Event(
+        age: character.age,
+        description: "Votre licence de type ${describeEnum(license.type)} a expiré.",
+        timestamp: DateTime.now(),
+      ));
+    }
+
+    final fakeLicenses = character.licenses.where((l) => l.isFake && _random.nextDouble() < 0.1); // 10% de se faire prendre
+    for (final fake in fakeLicenses) {
+      character.criminalHistory.add(Crime.fromYear(
+        type: CrimeType.fraud,
+        year: character.age,
+        description: "Découvert avec une fausse licence de type ${describeEnum(fake.type)}.",
+      ));
+
+
+      fake.isRevoked = true;
+
+      character.lifeEvents.add(Event(
+        age: character.age,
+        description: "Vous avez été découvert avec une fausse licence (${describeEnum(fake.type)}).",
+        timestamp: DateTime.now(),
+      ));
+    }
+  }
+
 
   void _unlockNewSkills(Character character) {
     if (character.age % 5 == 0) {
       character.unlockedSkillTree = _getSkillTreeForAge(character.age);
+    }
+  }
+
+  SkillTree _getSkillTreeForAge(int age) {
+    if (age < 5) {
+      return SkillTree(tree: {}); // rien débloqué
+    } else if (age < 18) {
+      return SkillTree(tree: {
+        SkillCategory.education: [
+          SkillNode(id: 'read', name: 'Lire', description: 'Apprend à lire'),
+          SkillNode(id: 'write', name: 'Écrire', description: 'Apprend à écrire'),
+        ],
+      });
+    } else if (age < 30) {
+      return SkillTree(tree: {
+        SkillCategory.career: [
+          SkillNode(id: 'job', name: 'Trouver un emploi', description: 'Commencer une carrière'),
+        ],
+      });
+    } else {
+      return SkillTree(tree: {
+        SkillCategory.life: [
+          SkillNode(id: 'invest', name: 'Investir', description: 'Apprendre à investir son argent'),
+        ],
+      });
     }
   }
 
@@ -106,7 +162,7 @@ class AgeService {
 
   List<Event> _generateAgeEvents(Character character) {
     List<Event> events = [];
-    
+
     // Événements liés à l'âge
     if (character.age == 1) {
       events.add(Event(
@@ -145,21 +201,21 @@ class AgeService {
         timestamp: DateTime.now(),
       ));
     }
-    
+
     // Événements aléatoires basés sur l'âge
     List<Event> randomEvents = _eventService.generateRandomEvents(character);
     events.addAll(randomEvents);
-    
+
     return events;
   }
-  
+
   void _updateStats(Character character) {
     // Santé diminue légèrement avec l'âge
     if (character.age > 40) {
       double healthDecline = 0.5 + (_random.nextDouble() * 0.5);
       character.stats['health'] = (character.stats['health']! - healthDecline).clamp(0.0, 100.0);
     }
-    
+
     // Intelligence augmente pendant l'enfance et l'adolescence
     if (character.age < 25) {
       double intelligenceGain = 0.5 + (_random.nextDouble() * 1.0);
@@ -168,18 +224,18 @@ class AgeService {
       double intelligenceDecline = 0.3 + (_random.nextDouble() * 0.7);
       character.stats['intelligence'] = (character.stats['intelligence']! - intelligenceDecline).clamp(0.0, 100.0);
     }
-    
+
     // Apparence évolue différemment selon l'âge
     if (character.age > 30) {
       double appearanceDecline = 0.2 + (_random.nextDouble() * 0.4);
       character.stats['appearance'] = (character.stats['appearance']! - appearanceDecline).clamp(0.0, 100.0);
     }
-    
+
     // Bonheur fluctue aléatoirement
     double happinessChange = (_random.nextDouble() * 10.0) - 5.0; // -5 à +5
     character.stats['happiness'] = (character.stats['happiness']! + happinessChange).clamp(0.0, 100.0);
   }
-  
+
   void _updateTitle(Character character) {
     if (character.age < 3) {
       character.currentTitle = "Nourrisson";
@@ -197,25 +253,25 @@ class AgeService {
       character.currentTitle = "Adulte";
     }
   }
-  
+
   void _ageAssets(Character character) {
     for (var asset in character.assets) {
       asset.age1Year();
     }
   }
-  
+
   void _handleFinances(Character character) {
     // Calculer les revenus
     double annualIncome = 0.0;
     if (character.career != null) {
       annualIncome += character.career!.calculateAnnualIncome();
     }
-    
+
     // Revenus passifs des propriétés
     for (var asset in character.assets) {
       annualIncome += asset.monthlyIncome * 12;
     }
-    
+
     // Dépenses de maintenance pour les biens
     double annualExpenses = 0.0;
     for (var asset in character.assets) {
@@ -224,21 +280,21 @@ class AgeService {
         annualExpenses += asset.insuranceCost * 12;
       }
     }
-    
+
     // Impôts (simplifié)
     double taxAmount = annualIncome * 0.2; // 20% d'impôts
     annualExpenses += taxAmount;
-    
+
     // Solde net
     double netAmount = annualIncome - annualExpenses;
-    
+
     // Appliquer au compte bancaire principal
     if (character.bankAccounts.isNotEmpty) {
       character.bankAccounts.first.balance += netAmount;
     } else {
       character.money += netAmount;
     }
-    
+
     // Ajouter un événement financier annuel
     character.lifeEvents.add(Event(
       age: character.age,
@@ -246,7 +302,7 @@ class AgeService {
       timestamp: DateTime.now(),
     ));
   }
-  
+
   void _updateRelationships(Character character) {
     for (var relationship in character.relationships) {
       // Relations évoluent naturellement avec le temps
@@ -256,30 +312,30 @@ class AgeService {
       } else {
         relationship.deteriorate(-change);
       }
-      
+
       // Incrémenter les années de connaissance
       relationship.yearsKnown++;
     }
   }
-  
+
   bool _checkDeathEvents(Character character) {
     // Risque de mort naturelle augmente avec l'âge
     double deathRisk = 0.0;
-    
+
     if (character.age > 70) {
       deathRisk = (character.age - 70) * 0.005;
     }
-    
+
     // Santé influence le risque
     double healthFactor = (100 - character.stats['health']!) / 200; // 0 à 0.5
     deathRisk += healthFactor;
-    
+
     // Vérifier si la mort survient
     if (_random.nextDouble() < deathRisk) {
       character.isAlive = false;
       character.deathDate = DateTime.now();
       character.deathCause = "Mort naturelle";
-      
+
       character.lifeEvents.add(Event(
         age: character.age,
         description: "Je suis décédé${character.gender == 'Femme' ? 'e' : ''} de causes naturelles à l'âge de ${character.age} ans.",

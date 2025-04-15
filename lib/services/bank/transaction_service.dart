@@ -4,6 +4,7 @@ import '../../models/asset/assets.dart';
 import '../../models/economy/bank_account.dart';
 import '../../models/economy/fiscality.dart';
 import '../../models/economy/loan.dart';
+import '../../models/item_factory.dart';
 import '../../models/legal.dart';
 import '../../models/marketplace.dart';
 import '../../models/person/character.dart';
@@ -40,7 +41,7 @@ class TransactionService {
 
   static void _processCashPurchase(MarketplaceItem item, Character buyer, BankAccount account, double totalCost) {
     account.withdraw(totalCost, "Achat de ${item.name}");
-    final inventoryItem = item.convertToInventoryItem();
+    final inventoryItem = ItemFactory.fromMarketplace(item, buyer.id);
     buyer.addToInventory(inventoryItem);
     buyer.addLifeEvent("Achat de ${item.name} pour \$${totalCost.toStringAsFixed(2)}");
   }
@@ -56,7 +57,7 @@ class TransactionService {
   static void _processLoanPurchase(MarketplaceItem item, Character buyer, BankAccount account, Loan loan, double totalCost) {
     account.deposit(loan.amount, "Prêt pour achat");
     account.withdraw(totalCost, "Achat à crédit de ${item.name}");
-    final InventoryItem ownedItem = item.convertToInventoryItem(); // conversion propre
+    final InventoryItem ownedItem = ItemFactory.fromMarketplace(item, buyer.id);
     buyer.addToInventory(ownedItem);
     buyer.addLifeEvent("Achat à crédit de ${item.name} (Prêt: \$${loan.amount.toStringAsFixed(2)})");
   }

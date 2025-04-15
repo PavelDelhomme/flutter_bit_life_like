@@ -1,4 +1,6 @@
 // legal_service.dart
+import 'package:bitlife_like/models/economy/fiscality.dart';
+
 import '../../models/person/character.dart';
 import '../../models/legal.dart';
 import '../data_service.dart';
@@ -61,7 +63,9 @@ class LegalService {
           CrimeType.drugDealing: 0.65,
           CrimeType.robbery: 0.65,
           CrimeType.murder: 0.65,
-        }
+        },
+        laws: [],
+        taxSystem: TaxSystem(country: 'us'),
       ),
       LegalSystem(
           country: 'FR',
@@ -93,7 +97,9 @@ class LegalService {
             CrimeType.drugDealing: 0.65,
             CrimeType.robbery: 0.65,
             CrimeType.murder: 0.65,
-          }
+          },
+          laws: [],
+          taxSystem: TaxSystem(country: 'fr'),
       ),
       LegalSystem(
           country: 'EN',
@@ -125,7 +131,9 @@ class LegalService {
             CrimeType.drugDealing: 0.65,
             CrimeType.robbery: 0.65,
             CrimeType.murder: 0.65,
-          }
+          },
+          laws: [],
+          taxSystem: TaxSystem(country: 'en'),
       ),
       LegalSystem(
           country: 'AR',
@@ -157,7 +165,9 @@ class LegalService {
             CrimeType.drugDealing: 0.65,
             CrimeType.robbery: 0.65,
             CrimeType.murder: 0.65,
-          }
+          },
+          laws: [],
+          taxSystem: TaxSystem(country: 'ar'),
       ),
       LegalSystem(
           country: 'GR',
@@ -189,7 +199,9 @@ class LegalService {
             CrimeType.drugDealing: 0.65,
             CrimeType.robbery: 0.65,
             CrimeType.murder: 0.65,
-          }
+          },
+          laws: [],
+          taxSystem: TaxSystem(country: 'gr'),
       ),
       LegalSystem(
           country: 'RU',
@@ -221,7 +233,9 @@ class LegalService {
             CrimeType.drugDealing: 0.65,
             CrimeType.robbery: 0.65,
             CrimeType.murder: 0.65,
-          }
+          },
+          laws: [],
+          taxSystem: TaxSystem(country: 'ru'),
       )
     ];
   }

@@ -21,6 +21,12 @@ class Jewelry extends Asset implements InventoryItem {
     appreciationRate: 0.05,
   );
 
+  @override
+  Map<String, double> get skillEffects => {};
+
+  @override
+  AssetType get type => AssetType.jewelry;
+
 
   @override
   Map<String, dynamic> toJson() {

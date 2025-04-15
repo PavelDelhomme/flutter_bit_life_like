@@ -31,7 +31,10 @@ class Antique extends Asset implements InventoryItem {
   );
 
   @override
-  String get type => 'antique';
+  AssetType get type => AssetType.antique;
+
+  @override
+  Map<String, double> get skillEffects => {};
 
   void authenticate() {
     if (!isAuthenticated) {
