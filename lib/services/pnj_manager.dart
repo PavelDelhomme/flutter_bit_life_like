@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'package:bitlife_like/models/legal.dart';
 import 'package:bitlife_like/services/legal/legal_service.dart';
+import 'package:bitlife_like/services/skill_tree_manager.dart';
 
 import '../models/person/character.dart';
 import '../models/person/relationship.dart';
+import '../models/person/skill.dart';
 import 'data_service.dart';
 
 class PnjManager {
@@ -82,17 +84,19 @@ class PnjManager {
     final country = DataService.getRandomCountry();
     final cities = DataService.getCitiesForCountrySync(country);
     final birthdate = _generateBirthdate();
-    return Character(
-      fullName: DataService.getRandomName(_random.nextBool() ? 'Homme' : 'Femme'),
-      gender: _random.nextBool() ? 'Homme' : 'Femme',
-      country: country,
-      city: cities.isNotEmpty ? cities[_random.nextInt(cities.length)] : 'Inconnu',
-      birthdate: birthdate,
-      stats: generateInitialStats(),
-      isPNJ: true,
-      taxRate: DataService.getTaxRateForCountry(country),
-      zodiacSign: DataService.calculateZodiacSign(birthdate),
-    )..legalSystem = LegalService.getSystem(country);
+    final pnj =  Character(
+                  fullName: DataService.getRandomName(_random.nextBool() ? 'Homme' : 'Femme'),
+                  gender: _random.nextBool() ? 'Homme' : 'Femme',
+                  country: country,
+                  city: cities.isNotEmpty ? cities[_random.nextInt(cities.length)] : 'Inconnu',
+                  birthdate: birthdate,
+                  stats: generateInitialStats(),
+                  isPNJ: true,
+                  taxRate: DataService.getTaxRateForCountry(country),
+                  zodiacSign: DataService.calculateZodiacSign(birthdate),
+                )..legalSystem = LegalService.getSystem(country);
+    assignRandomSkills(pnj);
+    return pnj;
   }
 
   static DateTime _generateBirthdate() {
@@ -100,6 +104,24 @@ class PnjManager {
     return DateTime(now.year - _random.nextInt(50) - 18,
         _random.nextInt(12) + 1,
         _random.nextInt(28) + 1);
+  }
+
+  static void assignRandomSkills(Character pnj) {
+    final tree = SkillTreeManager().currentSkillTree.tree;
+    final random = Random();
+
+    for (var entry in tree.entries) {
+      for (var node in entry.value) {
+        if (random.nextDouble() < 0.15) { // 15% de chance
+          pnj.skills[node.skill.id] = SkillMastery(
+            skillId: node.skill.id,
+            category: node.skill.category,
+            experience: random.nextDouble() * 500, // début faible
+            lastUsed: DateTime.now(),
+          );
+        }
+      }
+    }
   }
 
 

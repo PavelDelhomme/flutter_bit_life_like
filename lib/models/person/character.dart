@@ -8,6 +8,7 @@ import 'package:bitlife_like/models/work/business.dart';
 import 'package:hive/hive.dart';
 
 import '../../services/data_service.dart';
+import '../../services/skill_tree_manager.dart';
 import '../activity.dart';
 import '../asset/antique.dart';
 import '../asset/arme.dart';
@@ -266,7 +267,7 @@ class Character extends HiveObject {
       currentTitle: json['currentTitle'],
       career: json['career'],
       educationLevel: json['educationLevel'],
-      skills: json['skills'],
+      skills: json['datas'],
       diplomas: json['diplomas'],
       assets: json['assets'],
       vehicles: json['vehicles'],
@@ -314,7 +315,7 @@ class Character extends HiveObject {
       'currentTitle': currentTitle,
       'career': career?.toJson(),
       'educationLevel': educationLevel.toString(),
-      'skills': skills.map((key, value) => MapEntry(key, value.toJson())),
+      'datas': skills.map((key, value) => MapEntry(key, value.toJson())),
       'diplomas': diplomas,
       'assets': assets.map((a) => a.toJson()).toList(),
       'vehicles': vehicles.map((v) => v.toJson()).toList(),
@@ -514,6 +515,8 @@ class Character extends HiveObject {
   }
 
 
-
+  void unlockSkills() {
+    unlockedSkillTree = SkillTreeManager().currentSkillTree;
+  }
 
 }

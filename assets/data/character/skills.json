@@ -1,0 +1,30 @@
+{
+  "technical": [
+    {
+      "id": "programming",
+      "name": "Programmation",
+      "prerequisites": {}
+    },
+    {
+      "id": "hacking",
+      "name": "Hacking",
+      "prerequisites": {
+        "programming": 4
+      }
+    }
+  ],
+  "intellectual": [
+    {
+      "id": "lecture",
+      "name": "Lecture",
+      "prerequisites": {}
+    }
+  ],
+  "social": [
+    {
+      "id": "negotiation",
+      "name": "Négociation",
+      "prerequisites": {}
+    }
+  ]
+}

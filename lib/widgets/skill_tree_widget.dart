@@ -64,8 +64,24 @@ class SkillTreePainter extends CustomPainter {
     }
   }
 
-
   void _calculatePositions(Size size) {
-    // Logique de positionnement automatique
+    const double xSpacing = 200;
+    const double ySpacing = 120;
+    double startX = 100;
+
+    int columnIndex = 0;
+    for (var category in tree.tree.keys) {
+      final nodes = tree.tree[category]!;
+      double startY = 100;
+
+      for (int i = 0; i < nodes.length; i++) {
+        final x = startX + columnIndex * xSpacing;
+        final y = startY + i * ySpacing;
+        nodePositions[nodes[i]] = Offset(x, y);
+      }
+
+      columnIndex++;
+    }
   }
+
 }

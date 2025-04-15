@@ -1,6 +1,7 @@
 // services/age_service.dart
 import 'dart:math';
 import 'package:bitlife_like/models/person/skill.dart';
+import 'package:bitlife_like/services/skill_tree_manager.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/legal.dart';
@@ -66,7 +67,7 @@ class AgeService {
 
       character.lifeEvents.add(Event(
         age: character.age,
-        description: "Votre licence de type ${describeEnum(license.type)} a expiré.",
+        description: "Votre licence de type ${license.type.name} a expiré.",
         timestamp: DateTime.now(),
       ));
     }
@@ -76,7 +77,7 @@ class AgeService {
       character.criminalHistory.add(Crime.fromYear(
         type: CrimeType.fraud,
         year: character.age,
-        description: "Découvert avec une fausse licence de type ${describeEnum(fake.type)}.",
+        description: "Découvert avec une fausse licence de type ${fake.type.name}.",
       ));
 
 
@@ -93,32 +94,7 @@ class AgeService {
 
   void _unlockNewSkills(Character character) {
     if (character.age % 5 == 0) {
-      character.unlockedSkillTree = _getSkillTreeForAge(character.age);
-    }
-  }
-
-  SkillTree _getSkillTreeForAge(int age) {
-    if (age < 5) {
-      return SkillTree(tree: {}); // rien débloqué
-    } else if (age < 18) {
-      return SkillTree(tree: {
-        SkillCategory.education: [
-          SkillNode(id: 'read', name: 'Lire', description: 'Apprend à lire'),
-          SkillNode(id: 'write', name: 'Écrire', description: 'Apprend à écrire'),
-        ],
-      });
-    } else if (age < 30) {
-      return SkillTree(tree: {
-        SkillCategory.career: [
-          SkillNode(id: 'job', name: 'Trouver un emploi', description: 'Commencer une carrière'),
-        ],
-      });
-    } else {
-      return SkillTree(tree: {
-        SkillCategory.life: [
-          SkillNode(id: 'invest', name: 'Investir', description: 'Apprendre à investir son argent'),
-        ],
-      });
+      character.unlockedSkillTree = SkillTreeManager().currentSkillTree;
     }
   }
 
@@ -397,6 +373,55 @@ class AgeService {
       }
     }
   }
+
+  SkillTree _getSkillTreeForAge(int age) {
+    Map<SkillCategory, List<SkillNode>> tree = {};
+
+    if (age >= 5 && age < 10) {
+      tree[SkillCategory.physical] = [
+        SkillNode(
+          'driving',
+          Skill(id: 'driving', name: 'Conduite', category: SkillCategory.physical),
+          {},
+        ),
+      ];
+    }
+
+    if (age >= 10 && age < 20) {
+      tree[SkillCategory.intellectual] = [
+        SkillNode(
+          'lecture',
+          Skill(id: 'lecture', name: 'Lecture', category: SkillCategory.intellectual),
+          {},
+        ),
+      ];
+      tree[SkillCategory.social] = [
+        SkillNode(
+          'negotiation',
+          Skill(id: 'negotiation', name: 'Négociation', category: SkillCategory.social),
+          {},
+        ),
+      ];
+    }
+
+    if (age >= 20) {
+      tree[SkillCategory.technical] = [
+        SkillNode(
+          'programming',
+          Skill(id: 'programming', name: 'Programmation', category: SkillCategory.technical),
+          {'lecture': 3},
+        ),
+        SkillNode(
+          'hacking',
+          Skill(id: 'hacking', name: 'Hacking', category: SkillCategory.criminal),
+          {'programming': 4},
+        ),
+      ];
+    }
+
+    return SkillTree(tree);
+  }
+
 
 
 }

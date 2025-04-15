@@ -30,6 +30,9 @@ flutter:
 
 assets:
   - assets/
-  - assets/bitlife_logo.png
-  - assets/tax_data.json
-  - assets/banks.json
+  - assets/images/bitlife_logo.png
+  - assets/data/financial/tax_data.json
+  - assets/data/financial/banks.json
+  - assets/data/character/skills.json
+  - assets/data/crafting/components.json
+  - assets/data/crafting/recipes.json

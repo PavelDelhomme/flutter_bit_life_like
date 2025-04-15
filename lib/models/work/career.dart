@@ -152,7 +152,7 @@ class Career {
       'performanceRating': performanceRating,
       'stressLevel': stressLevel,
       'workHoursPerWeek': workHoursPerWeek,
-      'skills': skills.map((skill) => skill.toJson()).toList(),
+      'datas': skills.map((skill) => skill.toJson()).toList(),
       'educationLevel': educationLevel.toString(),
       'certifications': certifications,
       'previousJobs': previousJobs,
@@ -180,7 +180,7 @@ class Career {
       performanceRating: json['performanceRating'],
       stressLevel: json['stressLevel'],
       workHoursPerWeek: json['workHoursPerWeek'],
-      skills: (json['skills'] as List)
+      skills: (json['datas'] as List)
           .map((skill) => Skill.fromJson(skill))
           .toList(),
       educationLevel: EducationLevel.values.firstWhere(
