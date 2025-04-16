@@ -12,7 +12,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'models/asset/antique.adapter.dart';
 import 'models/asset/arme.adapter.dart';
 import 'models/person/character.adapter.dart';
-import 'screens/start_screen.dart';
+import 'others/screens/start_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
