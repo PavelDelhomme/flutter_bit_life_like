@@ -1,6 +1,6 @@
-import '../../models/economy/bank_account.dart';
-import '../../models/person/character.dart';
-import '../../models/work/business.dart';
+import 'package:bitlife_like/models/economy/bank_account.dart';
+import 'package:bitlife_like/models/person/character.dart';
+import 'package:bitlife_like/models/work/business.dart';
 
 class BusinessService {
   static void createCompany(Character owner, String name, String industry, double capital) {

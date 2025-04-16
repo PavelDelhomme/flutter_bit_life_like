@@ -1,9 +1,39 @@
 import 'dart:math';
-import '../../../models/person/character.dart';
-import '../../../models/event.dart';
+import 'package:bitlife_like/services/time_age_event/time_service.dart';
+
+import 'package:bitlife_like/models/event/event.dart';
+import 'package:bitlife_like/models/person/character.dart';
+import 'package:bitlife_like/models/event/game_event.dart';
 
 class EventService {
+  static final EventService instance = EventService._internal();
+  final List<GameEvent> _events = [];
   final Random _random = Random();
+
+  factory EventService() => instance;
+
+  EventService._internal();
+
+  void addEvent(GameEvent event) {
+    _events.add(event);
+  }
+
+  void triggerYearlyEvents(int year) {
+    for (final event in _events) {
+      if (event.shouldTriggerAtYear(year)) {
+        event.trigger();
+      }
+    }
+  }
+
+  void triggerOnTickEvents() {
+    for (final event in _events) {
+      if (event.recurring && event.triggerYear <= TimeService().currentYear) {
+        event.trigger();
+      }
+    }
+  }
+
   
   // Génère un événement aléatoire unique pour un personnage
   Event? generateRandomEvent(Character character) {

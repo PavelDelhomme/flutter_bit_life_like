@@ -1,5 +1,5 @@
-import '../models/person/character.dart';
-import '../models/asset/book.dart';
+import 'package:bitlife_like/models/person/character.dart';
+import 'package:bitlife_like/models/asset/book.dart';
 
 class BookManager {
   static void readBook(Character character, Book book) {

@@ -25,7 +25,7 @@ import '../asset/vehicle.dart';
 import 'relationship.dart';
 import '../work/career.dart';
 import '../asset/assets.dart';
-import '../event.dart';
+import '../event/event.dart';
 import '../asset/real_estate.dart';
 
 @HiveType(typeId: 0)

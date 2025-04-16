@@ -1,6 +1,6 @@
-import '../screens/character_creation_screen.dart';
+import 'package:bitlife_like/screens/character_creation_screen.dart';
 import 'package:flutter/material.dart';
-import '../models/person/character.dart';
+import 'package:bitlife_like/models/person/character.dart';
 import 'main_game_screen.dart';
 
 class StartScreen extends StatelessWidget {

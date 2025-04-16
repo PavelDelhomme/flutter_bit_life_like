@@ -1,9 +1,9 @@
 // legal_service.dart
 import 'package:bitlife_like/models/economy/fiscality.dart';
 
-import '../../models/person/character.dart';
-import '../../models/legal.dart';
-import '../data_service.dart';
+import 'package:bitlife_like/models/person/character.dart';
+import 'package:bitlife_like/models/legal.dart';
+import 'package:bitlife_like/services/data_service.dart';
 
 class LegalService {
   static final Map<String, LegalSystem> _systems = {};

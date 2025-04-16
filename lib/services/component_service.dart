@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import '../models/crafting/component.dart';
+import 'package:bitlife_like/models/crafting/component.dart';
 
 class ComponentService {
   static Future<List<CraftingComponent>> loadComponents() async {

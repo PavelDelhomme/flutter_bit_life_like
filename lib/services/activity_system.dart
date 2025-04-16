@@ -1,9 +1,23 @@
 import 'dart:math';
 
-import '../models/activity.dart';
-import '../models/person/character.dart';
+import 'package:bitlife_like/models/activity.dart';
+import 'package:bitlife_like/models/person/character.dart';
 
 class ActivityManager {
+  final Map<String, List<Activity>> _unlockedActivities = {};
+
+  void unlockActivity(String characterId, Activity activity) {
+    _unlockedActivities.putIfAbsent(characterId, () => []).add(activity);
+  }
+
+  List<Activity> getUnlockedActivities(String characterId) {
+    return _unlockedActivities[characterId] ?? [];
+  }
+
+  List<Activity> getActivities(String characterId) {
+    return _unlockedActivities[characterId] ?? [];
+  }
+
   static Map<ActivityType, ActivityOutcome> performActivity(Character character, Activity activity) {
     final random = Random();
     final outcome = ActivityOutcome();

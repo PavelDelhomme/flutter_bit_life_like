@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import '../models/person/character.dart';
+import 'package:bitlife_like/models/person/character.dart';
 
 class SaveManager {
   static late Box<Character> _mainCharacterBox;

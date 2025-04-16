@@ -9,7 +9,7 @@ enum SkillCategory {
   physical,
   intellectual,
   creative,
-  criminal
+  criminal,
 }
 
 class SkillTree {

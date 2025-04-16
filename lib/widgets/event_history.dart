@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/event.dart';
+import 'package:bitlife_like/models/event/event.dart';
 
 class EventHistory extends StatelessWidget {
   final List<Event> lifeEvents;

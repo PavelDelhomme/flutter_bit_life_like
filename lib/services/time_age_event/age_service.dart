@@ -4,14 +4,14 @@ import 'package:bitlife_like/models/person/skill.dart';
 import 'package:bitlife_like/services/skill_tree_manager.dart';
 import 'package:flutter/foundation.dart';
 
-import '../models/legal.dart';
-import '../models/marketplace.dart';
-import '../models/work/career.dart';
-import '../../services/events/events_decision/event_service.dart';
+import 'package:bitlife_like/models/legal.dart';
+import 'package:bitlife_like/models/marketplace.dart';
+import 'package:bitlife_like/models/work/career.dart';
 
-import '../models/person/character.dart';
-import '../models/event.dart';
-import '../../services/bank/financial_service.dart';
+import 'package:bitlife_like/models/person/character.dart';
+import 'package:bitlife_like/models/event/event.dart';
+import 'package:bitlife_like/services/bank/financial_service.dart';
+import 'events/events_decision/event_service.dart';
 
 class AgeService {
   final EventService _eventService;

@@ -1,3 +1,4 @@
+import 'package:bitlife_like/screens/plugins/plugin_manager_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bitlife_like/screens/character_creation_screen.dart';
@@ -7,13 +8,13 @@ import 'package:bitlife_like/widgets/stat_bar.dart';
 import 'package:bitlife_like/widgets/event_history.dart';
 import 'package:bitlife_like/widgets/bottom_navigation.dart';
 
-import 'package:bitlife_like/services/age_service.dart';
+import 'package:bitlife_like/services/time_age_event/age_service.dart';
 import 'package:bitlife_like/services/bank/financial_service.dart';
-import 'package:bitlife_like/services/events/events_decision/event_service.dart';
 
 import 'package:bitlife_like/models/person/stat_data.dart';
 import 'package:bitlife_like/models/person/character.dart';
 
+import 'package:bitlife_like/services/time_age_event/events/events_decision/event_service.dart';
 import 'submenus/relationships_menus/menus/relationships_screen.dart';
 import 'submenus/activities_menus/menus/activities_screen.dart';
 import 'submenus/career_menus/menus/work_screen.dart';
@@ -137,6 +138,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
                     builder: (context) =>
                     const StartScreen(savedCharacters: []),
                   ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.extension),
+              title: Text('Gestionnaire de Plugins'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PluginManagerPage()),
                 );
               },
             ),

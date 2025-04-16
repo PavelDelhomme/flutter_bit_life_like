@@ -1,5 +1,5 @@
-import '../../models/education/education.dart';
-import '../../models/person/character.dart';
+import 'package:bitlife_like/models/education/education.dart';
+import 'package:bitlife_like/models/person/character.dart';
 
 class EducationService {
   final List<Course> availableCourses;

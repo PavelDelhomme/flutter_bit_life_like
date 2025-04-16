@@ -6,8 +6,8 @@ import 'package:bitlife_like/models/inventory_item.dart';
 import 'package:bitlife_like/models/item_factory.dart';
 import 'package:bitlife_like/models/marketplace.dart';
 
-import '../models/person/character.dart';
-import '../models/crafting/recipe.dart';
+import 'package:bitlife_like/models/person/character.dart';
+import 'package:bitlife_like/models/crafting/recipe.dart';
 
 class CraftingService {
   late List<CraftingRecipe> _recipes;

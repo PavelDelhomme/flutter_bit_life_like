@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-import '../models/person/skill.dart';
+import 'package:bitlife_like/models/person/skill.dart';
 
 class SkillTreeManager {
   static final SkillTreeManager _instance = SkillTreeManager._internal();

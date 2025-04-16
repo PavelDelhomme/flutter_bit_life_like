@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import '../models/legal.dart';
-import '../models/person/character.dart';
+import 'package:bitlife_like/models/legal.dart';
+import 'package:bitlife_like/models/person/character.dart';
 
 class LicenseSystem {
   static final Map<String, Map<String, double>> _licenseRequirements = {

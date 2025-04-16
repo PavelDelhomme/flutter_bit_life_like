@@ -9,10 +9,10 @@ import 'package:bitlife_like/services/legal/legal_service.dart';
 import 'package:bitlife_like/services/skill_tree_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'models/asset/antique.adapter.dart';
-import 'models/asset/arme.adapter.dart';
-import 'models/person/character.adapter.dart';
-import 'screens/start_screen.dart';
+import 'package:bitlife_like/models/asset/antique.adapter.dart';
+import 'package:bitlife_like/models/asset/arme.adapter.dart';
+import 'package:bitlife_like/models/person/character.adapter.dart';
+import 'package:bitlife_like/screens/start_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

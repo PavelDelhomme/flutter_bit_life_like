@@ -3,9 +3,9 @@ import 'package:bitlife_like/models/legal.dart';
 import 'package:bitlife_like/services/legal/legal_service.dart';
 import 'package:bitlife_like/services/skill_tree_manager.dart';
 
-import '../models/person/character.dart';
-import '../models/person/relationship.dart';
-import '../models/person/skill.dart';
+import 'package:bitlife_like/models/person/character.dart';
+import 'package:bitlife_like/models/person/relationship.dart';
+import 'package:bitlife_like/models/person/skill.dart';
 import 'data_service.dart';
 
 class PnjManager {
