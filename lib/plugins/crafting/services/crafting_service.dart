@@ -43,13 +43,14 @@ class CraftingService {
 
     return true;
   }
-
+  /*
   bool _hasRequiredSkills(Character c, Recipe r) {
     return r.requiredSkills.entries.every((entry) {
       final level = c.skills[entry.key]?.currentLevel ?? 0;
       return level >= entry.value;
     });
   }
+   */
 
   InventoryItem? craft(Character character, Recipe recipe) {
     if (!canCraft(character, recipe)) return null;

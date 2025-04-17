@@ -7,9 +7,10 @@ class BookService {
       character.practiceSkill(skillId, exp);
     });
   }
-
+  /*
   static double _getComprehensionMultiplier(Character character, String skillId) {
     final base = character.skills[skillId]?.currentLevel ?? 0;
     return 1.0 + (base * 0.05);
   }
+   */
 }

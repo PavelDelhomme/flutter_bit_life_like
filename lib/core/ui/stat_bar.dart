@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
-
 class StatBar extends StatelessWidget {
   final String label;
   final double value;

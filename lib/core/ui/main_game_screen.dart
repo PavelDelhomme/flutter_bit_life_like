@@ -39,6 +39,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     });
   }
    */
+  /*
   void _showAgeUpDialog() {
     showDialog(
       context: context,
@@ -54,12 +55,14 @@ class _MainGameScreenState extends State<MainGameScreen> {
       ),
     );
   }
+   */
 
-
+  /*
   void _navigateTo(String routeName)
   {
     Navigator.pushNamed(context, routeName);
   }
+   */
 
   @override
   Widget build(BuildContext context) {

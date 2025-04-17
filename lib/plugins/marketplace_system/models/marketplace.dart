@@ -20,7 +20,7 @@ class Marketplace {
     required this.availableCategories,
     this.priceMultiplier = 1.0,
   });
-
+  /*
   static List<MarketplaceItem> _generateVehicles() {
     return [
       MarketplaceItem(
@@ -35,6 +35,8 @@ class Marketplace {
     ];
   }
 
+   */
+  /*
   static List<MarketplaceItem> _generateBooks() {
     return [
       MarketplaceItem(
@@ -49,6 +51,8 @@ class Marketplace {
     ];
   }
 
+   */
+  /*
   static List<MarketplaceItem> _generateWeapons() {
     return [
       MarketplaceItem(
@@ -62,6 +66,8 @@ class Marketplace {
       ),
     ];
   }
+
+   */
 
   static Future<List<MarketplaceItem>> _generateComponents() async {
     final components = await ComponentService.loadComponents();
