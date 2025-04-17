@@ -31,6 +31,7 @@ class Book implements InventoryItem {
     this.comprehensionRequired = 0.5,
   });
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,

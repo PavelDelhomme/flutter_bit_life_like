@@ -23,6 +23,7 @@ class CraftingPlugin extends GamePlugin implements HasRoutes {
   @override
   void apply(GamePluginContext context) {}
 
+  @override
   Map<String, WidgetBuilder> getRoutes() {
     return {
       "/crafting": (context) => CraftingScreen(), // screen à créer

@@ -10,7 +10,7 @@ class BookListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final character = GameStateService.instance.character;
     final books = GameStateService.instance.inventory
-        .where((item) => item is Book)
+        .whereType<Book>()
         .cast<Book>()
         .toList();
 
