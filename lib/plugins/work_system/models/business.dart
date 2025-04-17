@@ -1,5 +1,6 @@
-import 'package:bitlife_like/models/asset/real_estate.dart';
-import 'package:bitlife_like/models/person/character.dart';
+
+import '../../../core/models/character.dart';
+import '../../assets_extended/models/real_estate.dart';
 
 class BusinessLoan {
   final String businessId;

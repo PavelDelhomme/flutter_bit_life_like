@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-import '../../../../zothers/models/asset/antique.dart';
+
+import '../antique.dart';
 
 class AntiqueAdapter extends TypeAdapter<Antique> {
   @override

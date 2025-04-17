@@ -4,8 +4,8 @@ import 'dart:io';
 import '../../../core/models/character.dart';
 import '../../../core/shared/inventory_item.dart';
 import '../../../core/shared/item_factory.dart';
-import '../../marketplace/models/marketplace_enum.dart';
-import '../../marketplace/models/marketplace_item.dart';
+import '../../marketplace_system/models/marketplace_enum.dart';
+import '../../marketplace_system/models/marketplace_item.dart';
 import '../models/component.dart';
 import '../models/recipe.dart';
 

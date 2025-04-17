@@ -1,5 +1,6 @@
-import 'package:bitlife_like/models/person/character.dart';
-import 'package:bitlife_like/models/person/relationship.dart';
+
+import '../models/character.dart';
+import '../models/relationship.dart';
 
 class RelationshipService {
   static void establishFamilyRelations(Character parent, Character child) {

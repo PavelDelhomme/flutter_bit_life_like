@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:bitlife_like/models/person/character.dart';
-import 'package:bitlife_like/services/pnj_manager.dart';
+import 'package:bitlife_like/core/services/pnj_manager.dart';
 
 import '../../core/models/relationship.dart';
+import '../models/character.dart';
 
 class DataService {
   static final Map<String, List<String>> _cachedCities = {};

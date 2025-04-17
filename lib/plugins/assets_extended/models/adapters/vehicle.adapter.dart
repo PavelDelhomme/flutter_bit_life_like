@@ -1,5 +1,6 @@
-import 'package:bitlife_like/models/asset/vehicle.dart';
 import 'package:hive/hive.dart';
+
+import '../vehicle.dart';
 
 class VehicleAdapter extends TypeAdapter<Vehicle> {
   @override

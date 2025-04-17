@@ -1,6 +1,6 @@
-import 'package:bitlife_like/models/inventory_item.dart';
 
-import '../../../zothers/models/asset/assets.dart';
+import '../../../core/models/asset.dart';
+import '../../../core/shared/inventory_item.dart';
 
 class Jewelry extends Asset implements InventoryItem {
   String material;

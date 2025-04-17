@@ -1,8 +1,9 @@
 import 'dart:math';
 import 'dart:convert';
-import '../asset/real_estate.dart';
 import '../../../core/models/character.dart';
 import 'package:flutter/services.dart';
+
+import '../../plugins/assets_extended/models/real_estate.dart';
 
 class TaxSystem {
   final String country;

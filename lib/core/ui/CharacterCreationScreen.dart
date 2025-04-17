@@ -1,9 +1,10 @@
 import 'dart:math';
-import '../../models/event.dart';
 import 'package:flutter/material.dart';
-import '../../models/person/character.dart';
-import '../../services/data_service.dart';
-import 'main_game_screen.dart';
+
+import '../models/character.dart';
+import '../models/event.dart';
+import '../services/data_service.dart';
+import 'MainGameScreen.dart';
 
 class CharacterCreationScreen extends StatefulWidget {
   const CharacterCreationScreen({super.key});

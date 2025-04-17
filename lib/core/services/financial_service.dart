@@ -1,12 +1,12 @@
 import 'dart:math';
-import '../../models/asset/antique.dart';
-import '../../models/asset/real_estate.dart';
-import '../../models/legal.dart';
-
-import '../../models/economy/bank_account.dart' as models;
+//import '../../models/economy/bank_account.dart' as models;
 import '../../../core/models/character.dart';
 import '../../../core/models/event.dart';
-import '../data_service.dart';
+import '../../plugins/assets_extended/models/antique.dart';
+import '../../plugins/assets_extended/models/real_estate.dart';
+import '../shared/bank_account.dart' as models;
+import '../shared/legal.dart';
+import 'data_service.dart';
 
 
 class FinancialService {

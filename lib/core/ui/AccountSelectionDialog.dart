@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../models/economy/bank_account.dart';
+
+import '../shared/bank_account.dart';
 
 class AccountSelectionDialog extends StatelessWidget {
   final List<BankAccount> accounts;

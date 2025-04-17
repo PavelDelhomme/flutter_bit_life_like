@@ -1,7 +1,9 @@
 import 'dart:math';
-import 'package:bitlife_like/models/person/character.dart';
 
+import '../../../core/models/character.dart';
 import 'marketplace.dart';
+import 'marketplace_enum.dart';
+import 'marketplace_item.dart';
 
 abstract class Market {
   final String location;

@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:bitlife_like/models/person/skill.dart';
+import '../../../core/models/skill.dart';
 
 enum EducationLevel {
   none,

@@ -1,4 +1,5 @@
-import 'package:bitlife_like/models/person/character.dart';
+
+import 'package:bitlife_like/core/models/character.dart';
 
 class InheritanceService {
   static void transfertAssets(Character deceased, Character heir) {

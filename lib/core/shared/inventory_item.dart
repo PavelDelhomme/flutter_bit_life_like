@@ -1,4 +1,4 @@
-import 'asset/assets.dart';
+import 'package:bitlife_like/core/models/asset.dart';
 
 abstract class InventoryItem {
   String get id;

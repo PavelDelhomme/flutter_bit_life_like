@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-import '../../../../zothers/models/asset/assets.dart';
+
+import '../../../../core/models/asset.dart';
 
 class AssetAdapter extends TypeAdapter<Asset> {
   @override

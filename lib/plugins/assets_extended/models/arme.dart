@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import '../../../zothers/models/asset/assets.dart';
-import '../../../zothers/models/inventory_item.dart';
+import '../../../core/models/asset.dart';
+import '../../../core/shared/inventory_item.dart';
 
 class Arme extends Asset implements InventoryItem {
   String weaponType;

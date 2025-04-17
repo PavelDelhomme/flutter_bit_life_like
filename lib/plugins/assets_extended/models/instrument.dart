@@ -1,5 +1,6 @@
-import '../inventory_item.dart';
-import 'assets.dart';
+
+import '../../../core/models/asset.dart';
+import '../../../core/shared/inventory_item.dart';
 
 class Instrument extends Asset implements InventoryItem {
   final String typeInstrument;

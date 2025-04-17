@@ -1,10 +1,32 @@
 import 'dart:math';
+import 'package:bitlife_like/core/models/skill.dart';
+import 'package:bitlife_like/core/models/skill_tree.dart';
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-import '../services/skill_tree_manager.dart';
-import '../shared/bank_account.dart';
+import 'package:bitlife_like/core/services/data_service.dart';
+import 'package:bitlife_like/core/services/skill_tree_manager.dart';
+import 'package:bitlife_like/core/shared/bank_account.dart';
+import 'package:bitlife_like/core/shared/inventory_item.dart';
+import 'package:bitlife_like/core/shared/item_factory.dart';
+import 'package:bitlife_like/core/shared/legal.dart';
+import 'package:bitlife_like/core/shared/pet.dart';
+import 'package:bitlife_like/core/shared/tax_system.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/antique.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/arme.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/jewelry.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/real_estate.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/vehicle.dart';
+import 'package:bitlife_like/plugins/book_system/models/book.dart';
+import 'package:bitlife_like/plugins/education/models/education.dart';
+import 'package:bitlife_like/plugins/marketplace_system/models/marketplace_item.dart';
+import 'package:bitlife_like/plugins/work_system/models/business.dart';
+import 'package:bitlife_like/plugins/work_system/models/career.dart';
 import 'activity.dart';
+import 'package:bitlife_like/plugins/crafting/models/recipe.dart';
 
+import 'asset.dart';
+import 'license.dart';
 import 'relationship.dart';
 import 'event.dart';
 
@@ -462,7 +484,7 @@ class Character extends HiveObject {
     inventory.removeWhere((item) => item.id == itemId);
   }
 
-  InventoryItem? craftItem(List<InventoryItem> providedItems, CraftingRecipe recipe) {
+  InventoryItem? craftItem(List<InventoryItem> providedItems, Recipe recipe) {
     final providedIds = providedItems.map((e) => e.id).toList();
 
     // Vérifie que tous les composants requis sont présents en quantité suffisante
@@ -499,4 +521,18 @@ class Character extends HiveObject {
     unlockedSkillTree = SkillTreeManager().currentSkillTree;
   }
 
+}
+
+class StatData {
+  final String label;
+  final IconData icon;
+  final double value;
+  final Color color;
+
+  StatData({
+    required this.label,
+    required this.icon,
+    required this.value,
+    required this.color,
+  });
 }

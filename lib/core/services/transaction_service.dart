@@ -1,13 +1,11 @@
-import 'package:bitlife_like/models/inventory_item.dart';
-
-import '../../models/asset/assets.dart';
-import '../../models/economy/bank_account.dart';
-import '../../models/economy/fiscality.dart';
-import '../../models/economy/loan.dart';
-import '../../models/item_factory.dart';
-import '../../models/legal.dart';
-import '../../models/marketplace.dart';
 import '../../../core/models/character.dart';
+import '../../plugins/marketplace_system/models/marketplace_item.dart';
+import '../models/asset.dart';
+import '../shared/bank_account.dart';
+import '../shared/inventory_item.dart';
+import '../shared/item_factory.dart';
+import '../shared/loan.dart';
+import '../shared/tax_system.dart';
 
 class TransactionService {
   static void purchaseItem({

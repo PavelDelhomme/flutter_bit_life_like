@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-import '../../../../zothers/models/asset/arme.dart';
+
+import '../arme.dart';
 
 class ArmeAdapter extends TypeAdapter<Arme> {
   @override

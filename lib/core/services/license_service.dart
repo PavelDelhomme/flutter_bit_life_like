@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import '../models/legal.dart';
 import '../../core/models/character.dart';
+import '../shared/legal.dart';
 
 class LicenseService {
   static final Map<String, Map<String, double>> _licenseRequirements = {

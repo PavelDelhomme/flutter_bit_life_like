@@ -1,5 +1,6 @@
-import 'package:bitlife_like/models/asset/real_estate.dart';
 import 'package:hive/hive.dart';
+
+import '../real_estate.dart';
 
 class RealEstateAdapter extends TypeAdapter<RealEstate> {
   @override

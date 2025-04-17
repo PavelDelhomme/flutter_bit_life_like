@@ -1,15 +1,20 @@
-import 'package:bitlife_like/models/asset/arme.dart';
-import 'package:bitlife_like/models/asset/assets.dart';
-import 'package:bitlife_like/models/asset/book.dart';
-import 'package:bitlife_like/models/asset/electronic.dart';
-import 'package:bitlife_like/models/asset/instrument.dart';
-import 'package:bitlife_like/models/asset/jewelry.dart';
-import 'package:bitlife_like/models/asset/real_estate.dart';
-import 'package:bitlife_like/models/asset/vehicle.dart';
-import 'package:bitlife_like/models/crafting/component.dart';
-import 'package:bitlife_like/models/inventory_item.dart';
-import 'package:bitlife_like/models/marketplace.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/arme.dart';
+import 'package:bitlife_like/plugins/book_system/models/book.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/electronic.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/instrument.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/jewelry.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/real_estate.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/vehicle.dart';
+import 'package:bitlife_like/core/shared/inventory_item.dart';
+import 'package:bitlife_like/plugins/crafting/models/component.dart';
+import 'package:bitlife_like/plugins/crafting/models/craftable.dart';
+import 'package:bitlife_like/plugins/marketplace_system/models/marketplace.dart';
 import 'package:uuid/uuid.dart';
+
+import 'package:bitlife_like/plugins/marketplace_system/models/marketplace_enum.dart';
+import 'package:bitlife_like/core/models/asset.dart';
+
+import '../../plugins/marketplace_system/models/marketplace_item.dart';
 
 class ItemFactory {
   static final _uuid = Uuid(); // <- ça corrige l'erreur
@@ -76,7 +81,7 @@ class ItemFactory {
           value: 10000,
         );
       case 'component':
-        return CraftingComponent(
+        return Component(
           id: id,
           name: "Composant universel",
           value: 100,
@@ -155,7 +160,7 @@ class ItemFactory {
           value: item.price,
         );
       case MarketplaceCategory.components:
-        return CraftingComponent(
+        return Component(
           id: item.id,
           name: item.name,
           value: item.price,

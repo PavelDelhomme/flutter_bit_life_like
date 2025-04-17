@@ -1,12 +1,14 @@
 import 'dart:math';
-import 'package:bitlife_like/models/legal.dart';
-import 'package:bitlife_like/services/legal/legal_service.dart';
-import 'package:bitlife_like/services/skill_tree_manager.dart';
+
+import 'package:bitlife_like/core/services/skill_tree_manager.dart';
 
 import '../../core/models/character.dart';
 import '../../core/models/relationship.dart';
 import '../../core/models/skill.dart';
+import '../models/skill_tree.dart';
+import '../shared/legal.dart';
 import 'data_service.dart';
+import 'legal_service.dart';
 
 class PnjManager {
   static final _random = Random();

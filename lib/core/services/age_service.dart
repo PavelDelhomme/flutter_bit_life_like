@@ -1,17 +1,18 @@
-// services/age_service.dart
 import 'dart:math';
-import 'package:bitlife_like/models/person/skill.dart';
-import 'package:bitlife_like/services/skill_tree_manager.dart';
+import 'package:bitlife_like/core/models/skill.dart';
+import 'package:bitlife_like/core/services/skill_tree_manager.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../others/models/legal.dart';
-import '../../others/models/marketplace.dart';
-import '../../others/models/work/career.dart';
-import '../../services/events/events_decision/event_service.dart';
 
+import '../../plugins/marketplace_system/models/marketplace.dart';
+import '../../plugins/marketplace_system/models/marketplace_enum.dart';
+import '../../plugins/work_system/models/career.dart';
 import '../models/character.dart';
 import '../models/event.dart';
-import '../../services/bank/financial_service.dart';
+import '../models/skill_tree.dart';
+import '../shared/legal.dart';
+import 'event_service.dart';
+import 'financial_service.dart';
 
 class AgeService {
   final EventService _eventService;

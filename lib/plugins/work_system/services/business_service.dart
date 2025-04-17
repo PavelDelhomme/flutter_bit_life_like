@@ -1,5 +1,5 @@
-import '../../models/economy/bank_account.dart';
 import '../../../core/models/character.dart';
+import '../../../core/shared/bank_account.dart';
 import '../../../plugins/work_system/models/business.dart';
 
 class BusinessService {

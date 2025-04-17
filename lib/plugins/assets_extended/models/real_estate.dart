@@ -1,7 +1,7 @@
 import 'dart:math';
-import 'package:bitlife_like/models/inventory_item.dart';
 
-import 'assets.dart';
+import '../../../core/models/asset.dart';
+import '../../../core/shared/inventory_item.dart';
 
 class RealEstate extends Asset implements InventoryItem {
   String location;

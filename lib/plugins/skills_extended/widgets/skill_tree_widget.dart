@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/models/skill.dart';
+import '../../../core/models/skill_tree.dart';
 
 class SkillTreeWidget extends StatelessWidget {
   final SkillTree tree;

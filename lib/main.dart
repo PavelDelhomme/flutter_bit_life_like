@@ -1,18 +1,17 @@
-import 'package:bitlife_like/models/asset/assets.adapter.dart';
-import 'package:bitlife_like/models/asset/jewelry.adapter.dart';
-import 'package:bitlife_like/models/asset/real_estate.adapter.dart';
-import 'package:bitlife_like/models/asset/vehicle.adapter.dart';
-import 'package:bitlife_like/models/economy/bank_account.adapter.dart';
-import 'package:bitlife_like/models/legal.dart';
-import 'package:bitlife_like/services/data_service.dart';
-import 'package:bitlife_like/services/legal/legal_service.dart';
-import 'package:bitlife_like/services/skill_tree_manager.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/adapters/antique.adapter.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/adapters/arme.adapter.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/adapters/assets.adapter.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/adapters/jewelry.adapter.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/adapters/real_estate.adapter.dart';
+import 'package:bitlife_like/plugins/assets_extended/models/adapters/vehicle.adapter.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'models/asset/antique.adapter.dart';
-import 'models/asset/arme.adapter.dart';
-import 'models/person/character.adapter.dart';
-import 'others/screens/start_screen.dart';
+import 'core/models/character.adapter.dart';
+import 'core/services/data_service.dart';
+import 'core/services/legal_service.dart';
+import 'core/services/skill_tree_manager.dart';
+import 'core/shared/legal.dart';
+import 'core/ui/StartScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
