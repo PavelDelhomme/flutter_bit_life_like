@@ -1,27 +1,21 @@
+import 'package:flutter/material.dart';
+import '../../core/plugin/game_plugin.dart';
+import '../../core/plugin/game_plugin_context.dart';
+import '../../core/plugin/plugin_menu_entry.dart';
 
-
-import 'package:bitlife_like/core/plugin/game_plugin.dart';
-import 'package:bitlife_like/core/plugin/game_plugin_context.dart';
-
-class BookSystemPlugin extends GamePlugin {
+class BookPlugin extends GamePlugin {
   @override
-  String get id => 'book_system';
-
-  @override
-  String get name => "Système de Lecture";
-
-  @override
-  void onRegister() {
-    // Chargement des données init etc
-  }
-
-  @override
-  void onGameStart() {
-    // Actions a faire au début du jeu
-  }
-
-  @override
-  void apply(GamePluginContext context) {
-    // Injecter ici dans EventService et SKillmanager etc...
+  List<PluginMenuEntry> buildDrawerEntries(GamePluginContext context) {
+    return [
+      PluginMenuEntry(
+        title: 'Bibliothèque',
+        icon: Icons.menu_book,
+        onTap: () {
+          Navigator.of(context.navigatorKey.currentContext!).push(
+            MaterialPageRoute(builder: (_) => BookLibraryScreen()),
+          );
+        },
+      )
+    ];
   }
 }
