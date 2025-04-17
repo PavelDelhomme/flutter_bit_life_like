@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import '../../../core/models/character.dart';
-import 'marketplace.dart';
 import 'marketplace_enum.dart';
 import 'marketplace_item.dart';
 

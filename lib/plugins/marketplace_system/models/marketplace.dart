@@ -8,11 +8,11 @@ import 'marketplace_item.dart';
 class Marketplace {
   final String location;
   final List<MarketplaceCategory> availableCategories;
-  final Map<String, List<MarketplaceItem>> _marketCategories = {
-    'vehicles': _generateVehicles(),
-    'books': _generateBooks(),
-    'weapons': _generateWeapons(),
-  };
+  // final Map<String, List<MarketplaceItem>> _marketCategories = {
+  //   'vehicles': _generateVehicles(),
+  //   'books': _generateBooks(),
+  //   'weapons': _generateWeapons(),
+  // };
   final double priceMultiplier;
 
   Marketplace({

@@ -1,6 +1,7 @@
-
 import 'package:bitlife_like/core/models/character.dart';
 import 'package:bitlife_like/core/services/event_service.dart';
+
+import '../services/game_state_service.dart';
 
 class GamePluginContext {
   final Character mainCharacter;

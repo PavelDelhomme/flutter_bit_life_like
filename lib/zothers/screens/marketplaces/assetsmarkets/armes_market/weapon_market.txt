@@ -1,6 +1,6 @@
 import 'package:bitlife_like/models/marketplace.dart';
 import 'package:flutter/material.dart';
-import '../../marketplace_screen.dart';
+import '../../marketplace_screen.txt';
 
 class WeaponsMarketScreen extends StatelessWidget {
   const WeaponsMarketScreen({super.key});

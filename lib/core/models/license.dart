@@ -1,6 +1,3 @@
-import 'dart:math';
-import 'package:flutter/foundation.dart';
-
 enum LicenseType {
   driving,
   gun,

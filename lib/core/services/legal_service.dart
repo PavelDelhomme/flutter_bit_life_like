@@ -1,4 +1,3 @@
-
 import '../../../core/models/character.dart';
 import '../shared/legal.dart';
 import '../shared/tax_system.dart';

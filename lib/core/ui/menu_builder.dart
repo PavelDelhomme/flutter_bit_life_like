@@ -12,15 +12,11 @@ class MenuBuilder {
     required this.context,
   });
 
-  List buildMainDrawerEntries() {
-    return plugins
-        .expand((plugin) => plugin.buildDrawerEntries(context))
-        .toList();
+  List<PluginMenuEntry> buildMainDrawerEntries() {
+    return plugins.expand((plugin) => plugin.buildDrawerEntries(context)).toList();
   }
 
-  List buildBottomItems() {
-    return plugins
-        .expand((plugin) => plugin.buildBottomNavigationItems(context))
-        .toList();
+  List<BottomNavigationBarItem> buildBottomItems() {
+    return plugins.expand((plugin) => plugin.buildBottomBarItems(context)).toList();
   }
 }

@@ -322,7 +322,7 @@ class LegalSystem {
     switch (punishment) {
       case PunishmentType.fine:
         double fineAmount = character.calculateTotalIncome() * 0.3;
-        character.money -= fineAmount;
+        character.withdraw(fineAmount);
         character.addLifeEvent("Condamné(e) pour ${crimeType.toString()} avec une amende de \$${fineAmount.toStringAsFixed(2)}");
         break;
       case PunishmentType.probation:
@@ -363,12 +363,12 @@ class LegalSystem {
     bool success = Random().nextDouble() < successRate;
 
     if (success) {
-      character.money -= amount;
+      character.withdraw(amount);
       character.addLifeEvent("A soudoyé un officiel avec \$${amount.toStringAsFixed(2)} et a évité des poursuites");
       return true;
     } else {
       // Le pot-de-vin a échoué et aggrave la situation
-      character.money -= amount;
+      character.withdraw(amount);
       character.addLifeEvent("A tenté de soudoyer un officiel avec \$${amount.toStringAsFixed(2)} et a été pris sur le fait");
 
       // Ajouter un nouveau crime pour tentative de corruption
@@ -386,7 +386,7 @@ class LegalSystem {
 
     if (Random().nextDouble() < auditChance) {
       final fineAmount = (character.actualIncome - character.declaredIncome) * inheritanceTaxRate; // Amende basée sur le taux d'héritage
-      character.money -= fineAmount;
+      character.withdraw(fineAmount);
 
       character.addLifeEvent(
           "Audit fiscal : Une fraude a été détectée. Amende de \$${fineAmount.toStringAsFixed(2)}."

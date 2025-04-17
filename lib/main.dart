@@ -1,3 +1,5 @@
+import 'package:bitlife_like/core/services/game_state_service.dart';
+import 'package:bitlife_like/plugin_manager.dart';
 import 'package:bitlife_like/plugins/assets_extended/models/adapters/antique.adapter.dart';
 import 'package:bitlife_like/plugins/assets_extended/models/adapters/arme.adapter.dart';
 import 'package:bitlife_like/plugins/assets_extended/models/adapters/assets.adapter.dart';
@@ -10,8 +12,10 @@ import 'core/models/character.adapter.dart';
 import 'core/services/data_service.dart';
 import 'core/services/legal_service.dart';
 import 'core/services/skill_tree_manager.dart';
+import 'core/shared/adapters/bank_account.adapter.dart';
 import 'core/shared/legal.dart';
-import 'core/ui/StartScreen.dart';
+import 'core/ui/character_creation_screen.dart';
+import 'core/ui/start_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,8 +55,14 @@ class BitLifeApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const StartScreen(savedCharacters: []),
       debugShowCheckedModeBanner: false,
+      navigatorKey: GameStateService.instance.navigatorKey,
+      home: const StartScreen(savedCharacters: []),
+      routes: {
+        '/start': (context) => const StartScreen(savedCharacters: []),
+        '/characterCreation': (context) => CharacterCreationScreen(),
+        ...PluginManager.instance.getAllRoutes(),
+      },
     );
   }
 }

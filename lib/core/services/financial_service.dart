@@ -1,5 +1,4 @@
 import 'dart:math';
-//import '../../models/economy/bank_account.dart' as models;
 import '../../../core/models/character.dart';
 import '../../../core/models/event.dart';
 import '../../plugins/assets_extended/models/antique.dart';
@@ -54,7 +53,7 @@ class FinancialService {
         accountNumber: mainAccount.accountNumber,
       ));
     } else {
-      character.money += netAmount;
+      character.deposit(netAmount);
     }
 
     // Générer un événement financier annuel
@@ -256,7 +255,7 @@ class FinancialService {
         if (character.bankAccounts.isNotEmpty) {
           character.bankAccounts.first.balance -= fine;
         } else {
-          character.money -= fine;
+          character.withdraw(fine);
         }
 
         character.addLifeEvent("Contrôle fiscal : fraude détectée avec une amende de \$${fine.toStringAsFixed(2)}");
@@ -290,7 +289,7 @@ class FinancialService {
     final taxRate = DataService.getTaxRateForCountry(character.country);
     final taxAmount = income * taxRate;
 
-    character.money -= taxAmount;
+    character.withdraw(taxAmount);
     character.declaredIncome += income;
 
     character.addLifeEvent(

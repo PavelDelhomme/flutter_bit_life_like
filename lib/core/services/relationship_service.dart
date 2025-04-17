@@ -1,4 +1,3 @@
-
 import '../models/character.dart';
 import '../models/relationship.dart';
 

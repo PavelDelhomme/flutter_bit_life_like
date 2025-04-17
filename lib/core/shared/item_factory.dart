@@ -7,8 +7,6 @@ import 'package:bitlife_like/plugins/assets_extended/models/real_estate.dart';
 import 'package:bitlife_like/plugins/assets_extended/models/vehicle.dart';
 import 'package:bitlife_like/core/shared/inventory_item.dart';
 import 'package:bitlife_like/plugins/crafting/models/component.dart';
-import 'package:bitlife_like/plugins/crafting/models/craftable.dart';
-import 'package:bitlife_like/plugins/marketplace_system/models/marketplace.dart';
 import 'package:uuid/uuid.dart';
 
 import 'package:bitlife_like/plugins/marketplace_system/models/marketplace_enum.dart';

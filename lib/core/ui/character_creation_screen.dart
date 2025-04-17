@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import '../models/character.dart';
 import '../models/event.dart';
 import '../services/data_service.dart';
-import 'MainGameScreen.dart';
+import '../services/game_state_service.dart';
+import 'main_game_screen.dart';
 
 class CharacterCreationScreen extends StatefulWidget {
   const CharacterCreationScreen({super.key});
@@ -19,6 +20,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   String _selectedCountry = 'France';
   String _selectedCity = 'Paris';
   List<String> _cities = ['Paris', 'Lyon', 'Marseille'];
+  // ignore: unused_field
   bool _randomCharacter = false;
 
   @override
@@ -110,7 +112,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => MainGameScreen(character: character),
+        builder: (context) {
+          final gameState = GameStateService.instance;
+          gameState.character = character;
+          return const MainGameScreen();
+        }
       ),
     );
   }

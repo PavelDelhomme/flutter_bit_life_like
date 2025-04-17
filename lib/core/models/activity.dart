@@ -7,7 +7,7 @@ enum ActivityType {
   intellectual,
   creative,
   criminal,
-  SpendTime,
+  spendTime,
   negocation,
   driving,
   piloting,
@@ -124,7 +124,7 @@ class Activity {
       name: json['name'],
       type: ActivityType.values.firstWhere(
             (e) => e.toString() == json['type'],
-        orElse: () => ActivityType.SpendTime,
+        orElse: () => ActivityType.spendTime,
       ),
       skillRequirements: json['skillRequirements'],
       skillGains: json['skillGains'],

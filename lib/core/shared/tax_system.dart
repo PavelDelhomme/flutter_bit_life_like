@@ -1,7 +1,5 @@
 import 'dart:math';
-import 'dart:convert';
 import '../../../core/models/character.dart';
-import 'package:flutter/services.dart';
 
 import '../../plugins/assets_extended/models/real_estate.dart';
 
@@ -18,7 +16,7 @@ class TaxSystem {
   late double secondariesResidenceTaxRate;
 
   TaxSystem({required this.country});
-
+  /*
   Future<void> _loadTaxData() async {
     final data = await rootBundle.loadString('assets/tax_data.json');
     final taxData = json.decode(data)[country];
@@ -37,6 +35,7 @@ class TaxSystem {
     primaryResidenceTaxRate = taxData['primaryResidenceTaxRate'];
     secondariesResidenceTaxRate = taxData['secondariesResidenceTaxRate'];
   }
+   */
 
   double calculateIncomeTax(double income) {
     double tax = 0;
@@ -64,7 +63,7 @@ class TaxSystem {
     if (isAudited && discrepancy > 0.1) {
       // Fraude détectée
       double fine = (character.actualIncome - character.declaredIncome) * 1.5;
-      character.money -= fine;
+      character.withdraw(fine);
       character.addLifeEvent("Contrôle fiscal : fraude détectée. Amende de \$${fine.toStringAsFixed(2)}");
       return true;
     }

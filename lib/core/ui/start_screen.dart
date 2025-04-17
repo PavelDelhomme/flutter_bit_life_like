@@ -1,8 +1,9 @@
+import 'package:bitlife_like/core/services/game_state_service.dart';
 import 'package:flutter/material.dart';
 
 import '../models/character.dart';
-import 'CharacterCreationScreen.dart';
-import 'MainGameScreen.dart';
+import 'character_creation_screen.dart';
+import 'main_game_screen.dart';
 
 
 class StartScreen extends StatelessWidget {
@@ -72,7 +73,11 @@ class StartScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MainGameScreen(character: character),
+                        builder: (context) {
+                          final gameState = GameStateService.instance;
+                          gameState.character = character;
+                          return MainGameScreen();
+                        },
                       ),
                     );
                   },

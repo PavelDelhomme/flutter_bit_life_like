@@ -1,7 +1,5 @@
 import 'dart:math';
-import 'package:bitlife_like/core/models/skill.dart';
 import 'package:bitlife_like/core/services/skill_tree_manager.dart';
-import 'package:flutter/foundation.dart';
 
 
 import '../../plugins/marketplace_system/models/marketplace.dart';
@@ -9,7 +7,6 @@ import '../../plugins/marketplace_system/models/marketplace_enum.dart';
 import '../../plugins/work_system/models/career.dart';
 import '../models/character.dart';
 import '../models/event.dart';
-import '../models/skill_tree.dart';
 import '../shared/legal.dart';
 import 'event_service.dart';
 import 'financial_service.dart';
@@ -86,7 +83,7 @@ class AgeService {
 
       character.lifeEvents.add(Event(
         age: character.age,
-        description: "Vous avez été découvert avec une fausse licence (${describeEnum(fake.type)}).",
+        description: "Vous avez été découvert avec une fausse licence ($fake.type).",
         timestamp: DateTime.now(),
       ));
     }
@@ -107,7 +104,7 @@ class AgeService {
       // Maintenance automatique si l'arget est disponible
       if (character.money >= asset.maintenanceCost && _random.nextDouble() < 0.7) {
         asset.maintain();
-        character.money -= asset.maintenanceCost;
+        character.withdraw(asset.maintenanceCost);
       } else {
         asset.deteriorate();
       }
@@ -124,19 +121,21 @@ class AgeService {
 
       // Revenus locatifs
       if (properti.isRented) {
-        character.money += properti.monthlyRent * 12; // Paiement des impots on verra mais jamais automatique le personnage doit déclarer ou valider quelque chose qui se fera automatiquement et peux traffiquer ce qu'il souhaite avec pourcentage d'être pris l'année d'après et le reste de sa vie bref
+        double impots = properti.monthlyRent * 12;
+        character.withdraw(impots); // Paiement des impots on verra mais jamais automatique le personnage doit déclarer ou valider quelque chose qui se fera automatiquement et peux traffiquer ce qu'il souhaite avec pourcentage d'être pris l'année d'après et le reste de sa vie bref
       }
 
       // Frais de maintenance
       if (character.money >= properti.maintenanceCost) {
         properti.maintain();
-        character.money -= properti.maintenanceCost;
+        double maintenanceCost = properti.maintenanceCost;
+        character.withdraw(maintenanceCost);
       } else {
         properti.deteriorate();
       }
     }
   }
-
+  /*
   List<Event> _generateAgeEvents(Character character) {
     List<Event> events = [];
 
@@ -185,6 +184,7 @@ class AgeService {
 
     return events;
   }
+   */
 
   void _updateStats(Character character) {
     // Santé diminue légèrement avec l'âge
@@ -237,6 +237,7 @@ class AgeService {
     }
   }
 
+  /*
   void _handleFinances(Character character) {
     // Calculer les revenus
     double annualIncome = 0.0;
@@ -269,7 +270,7 @@ class AgeService {
     if (character.bankAccounts.isNotEmpty) {
       character.bankAccounts.first.balance += netAmount;
     } else {
-      character.money += netAmount;
+      character.deposit(netAmount);
     }
 
     // Ajouter un événement financier annuel
@@ -279,6 +280,8 @@ class AgeService {
       timestamp: DateTime.now(),
     ));
   }
+  */
+
 
   void _updateRelationships(Character character) {
     for (var relationship in character.relationships) {
@@ -374,7 +377,7 @@ class AgeService {
       }
     }
   }
-
+  /*
   SkillTree _getSkillTreeForAge(int age) {
     Map<SkillCategory, List<SkillNode>> tree = {};
 
@@ -422,7 +425,6 @@ class AgeService {
 
     return SkillTree(tree);
   }
-
-
+   */
 
 }

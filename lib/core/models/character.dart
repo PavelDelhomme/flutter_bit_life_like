@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:bitlife_like/core/models/skill.dart';
 import 'package:bitlife_like/core/models/skill_tree.dart';
-import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import 'package:bitlife_like/core/services/data_service.dart';
@@ -29,6 +28,7 @@ import 'asset.dart';
 import 'license.dart';
 import 'relationship.dart';
 import 'event.dart';
+import 'package:bitlife_like/core/services/inheritance_service.dart'; // AJOUTE CECI !
 
 @HiveType(typeId: 0)
 class Character extends HiveObject {
@@ -47,7 +47,7 @@ class Character extends HiveObject {
 
   Map<String, double> stats;
 
-  double money;
+  // double money;
   // Map<String, BankAccount> bankAccounts = {};
   List<BankAccount> bankAccounts = [];
   double creditScore;
@@ -119,7 +119,6 @@ class Character extends HiveObject {
     this.deathDate,
     this.deathCause,
     required this.stats,
-    this.money = 0,
     //Map<String, List<BankAccount>>? bankAccounts,
     List<BankAccount>? bankAccounts,
     List<Business>? businesses,
@@ -172,6 +171,8 @@ class Character extends HiveObject {
   businesses = businesses ?? [],
   lifeEvents = lifeEvents ?? [];
 
+  double get money => bankAccounts.fold(0.0, (sum, acc) => sum + acc.balance);
+
   double calculateTotalIncome() {
     double total = 0;
     if (career != null) {
@@ -201,30 +202,21 @@ class Character extends HiveObject {
     ));
   }
 
-  // Changement vers le personnage d'un enfant (héritage)
-  Character switchToChild() {
+
+  Character switchToChild({bool autoDeclare = true, bool simulatedFraud = false, double? customDeclaredAmount}) {
     if (children.isEmpty) {
       throw Exception("Pas d'enfants disponibles pour hériter");
     }
 
-    // Sélectionner un enfant (par défaut le premier)
-    Character heir = children.first;
+    final Character heir = children.first;
 
-    // Transfert d'héritage - appliquer taxes selon pays
-    double inheritanceTax = 0.3; // 30% par défaut
-    double inheritedAmount = money * (1 - inheritanceTax);
-    heir.money = inheritedAmount;
-
-    addLifeEvent("Je suis décédé(e) et mon héritage est passé à ${heir.fullName}");
-    heir.addLifeEvent("J'ai hérité de \$${inheritedAmount.toStringAsFixed(2)} de $fullName");
-
-    // Transfert des propriétés
-    for (var properti in properties) {
-      properti.transfertOwnership(this, heir);
-      heir.properties.add(properti);
-    }
-    isPNJ = true;
-    return heir;
+    return InheritanceService.processInheritance(
+      deceased: this,
+      heir: heir,
+      autoDeclare: autoDeclare,
+      simulatedFraud: simulatedFraud,
+      customDeclaredAmount: customDeclaredAmount,
+    );
   }
 
   void ageUp() {
@@ -252,7 +244,6 @@ class Character extends HiveObject {
       deathDate: json['deathDate'] != null ? DateTime.parse(json['deathDate']) : null,
       deathCause: json['deathCause'],
       stats: json['stats'],
-      money: json['money'],
       // bankAccounts: (json['bankAccounts'] as Map<String, dynamic>).map(
       //         (key, value) => MapEntry(key, BankAccount.fromJson(value as Map<String, dynamic>))
       // ),
@@ -355,9 +346,11 @@ class Character extends HiveObject {
     }
   }
 
+  /*
   double _getLearningRate() {
     return 1.0 + (stats['intelligence'] ?? 0.5) * 0.01; // Exemple basé sur la statistique d'intelligence
   }
+   */
 
   void learnFromBook(Book book) {
     book.skillEffects.forEach((skillId, exp) {
@@ -365,11 +358,12 @@ class Character extends HiveObject {
     });
   }
 
-
+  /*
   SkillCategory _getSkillCategory(String skillId) {
     // Logique de mapping entre skillId et category
     return SkillCategory.technical;
   }
+   */
 
 
   void practiceSkill(String skillId, double hours) {
@@ -408,19 +402,20 @@ class Character extends HiveObject {
 
   void purchaseItem(MarketplaceItem item) {
     if (canPurchase(item)) {
-      money -= item.price;
+      bankAccounts.first.balance -= item.price;
       final converted = ItemFactory.fromMarketplace(item, id);
       addToInventory(converted);
     }
   }
 
 
-
+  /*
   void _applyItemEffects(MarketplaceItem item) {
     item.skillEffects.forEach((skillId, exp) {
       improveSkill(skillId, exp);
     });
   }
+   */
 
   bool canPurchase(MarketplaceItem item) {
     return item.canPurchase(this);
@@ -465,8 +460,8 @@ class Character extends HiveObject {
       double inheritanceTax = tax.calculateInheritanceTax(account.balance);
       double netAmount = account.balance - inheritanceTax;
 
-      this.money += netAmount;
-      deceased.money -= account.balance;
+      deposit(netAmount);
+      deceased.withdraw(account.balance);
 
       addLifeEvent("Héritage de ${account.balance.toStringAsFixed(2)} (taxe: ${inheritanceTax.toStringAsFixed(2)})");
     }
@@ -521,18 +516,30 @@ class Character extends HiveObject {
     unlockedSkillTree = SkillTreeManager().currentSkillTree;
   }
 
-}
 
-class StatData {
-  final String label;
-  final IconData icon;
-  final double value;
-  final Color color;
+  void deposit(double amount) {
+    if (bankAccounts.isEmpty) {
+      bankAccounts.add(BankAccount(
+        id: 'acc_${DateTime.now().millisecondsSinceEpoch}',
+        accountNumber: '0000 0000 0000',
+        bankName: 'Banque Générale',
+        accountType: AccountType.checking,
+        minimumAge: 0,
+        balance: amount,
+      ));
+    } else {
+      bankAccounts.first.balance += amount;
+    }
+  }
 
-  StatData({
-    required this.label,
-    required this.icon,
-    required this.value,
-    required this.color,
-  });
+  bool withdraw(double amount) {
+    for (var account in bankAccounts) {
+      if (account.balance >= amount) {
+        account.balance -= amount;
+        return true;
+      }
+    }
+    return false;
+  }
+
 }

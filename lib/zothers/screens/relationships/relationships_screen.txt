@@ -2,7 +2,7 @@ import '../../../models/person/character.dart';
 import '../../../models/pet.dart';
 import '../../../models/person/relationship.dart';
 import '../../../models/asset/assets.dart';
-import '../main_game_screen.dart';
+import '../main_game_screen.text';
 import 'package:flutter/material.dart';
 
 

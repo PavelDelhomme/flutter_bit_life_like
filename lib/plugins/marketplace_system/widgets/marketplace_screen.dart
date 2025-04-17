@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/shared/bank_account.dart';
 import '../../../core/models/character.dart';
-import '../../../core/ui/AccountSelectionDialog.dart';
+import '../../../core/ui/account_selection_dialog.dart';
 import '../models/marketplace_item.dart';
 
 class MarketplaceScreen extends StatelessWidget {

@@ -64,7 +64,7 @@ class TransactionService {
     final transferTax = taxSystem.calculateTransferTax(asset.value);
 
     if (from.money >= transferTax) {
-      from.money -= transferTax;
+      from.withdraw(transferTax);
       asset.transferOwnership(to.id);
       from.assets.remove(asset);
       to.assets.add(asset);
