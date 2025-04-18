@@ -3,6 +3,8 @@ import 'package:bitlife_like/core/services/event_service.dart';
 import 'package:bitlife_like/core/services/age_service.dart';
 import 'package:bitlife_like/core/services/financial_service.dart';
 import 'package:bitlife_like/core/shared/inventory_item.dart';
+import 'package:bitlife_like/core/system/world/world_engine.dart';
+import 'package:bitlife_like/plugin_manager.dart';
 import 'package:flutter/material.dart';
 
 class GameStateService {
@@ -33,5 +35,17 @@ class GameStateService {
 
   set character(Character c) {
     mainCharacter = c;
+  }
+
+  void initializeWorld() {
+    _generateInitialPopulation();
+    _timeService.onYearPassed = _onYearPassed;
+
+    for (final plugin in PluginManager.instance.plugins) {
+      plugin.onGameStart();
+      SimulationManager().registerTask((year) {
+        plugin.onYearPassed?.call(year); // si défini
+      });
+    }
   }
 }

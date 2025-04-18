@@ -1,4 +1,7 @@
+import 'dart:ffi';
 import 'dart:math';
+import 'package:bitlife_like/core/system/game_event.dart';
+
 import '../models/character.dart';
 import '../models/event.dart';
 
@@ -199,5 +202,16 @@ class EventService {
     }
     
     return events;
+  }
+
+  void handleGlobalEvents(List<GameEvent> events, Character character) {
+    for (var event in events) {
+      if (event.type == 'pandemic') {
+        if (Random().nextDouble() < 0.3) {
+          character.stats['health'] = (character.stats['health']! - 20).clamp(0, 100);
+          character.addLifeEvent("J'ai attapé une maladie durant la pandémie.");
+        }
+      }
+    }
   }
 }
