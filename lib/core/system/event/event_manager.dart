@@ -1,3 +1,5 @@
+import 'package:bitlife_like/core/system/world/npc_manager.dart';
+
 import '../game_event.dart';
 
 class EventManager {
@@ -5,9 +7,17 @@ class EventManager {
 
   void triggerWorldEvents(int year) {
     if (year % 5 == 0) {
-      _globalEvents.add(GameEvent.global('Une cris économique mondiale secoue les marchés'));
+      final crisis = GameEvent(
+        type: 'economic_crisis',
+        description: 'Une crise économique mondiale secoue les marchés',
+      );
+      _globalEvents.add(crisis);
     }
-    // propagation aux PNJ
+    for (var event in _globalEvents) {
+      for (var pnj in NPCManager().allNPCs) {
+        pnj.reactToGlobalEvent(event);
+      }
+    }
   }
 
   List<GameEvent> getGlobalEvents() => _globalEvents;

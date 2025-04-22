@@ -1,16 +1,18 @@
 import 'package:bitlife_like/core/services/game_state_service.dart';
 
+import '../system/world/world_engine.dart';
+
 class TimeService {
   void Function()? onYearPassed;
 
-  void ageUpWorld() {
-    GameStateService.instance.ageService.ageUp(character)
-    GameStateService.instance.ageService.ageUpAll(characters); // Je peux faire le ageup poiur tout les character donc lesPNJ avec ceci denfaite
+  void ageUpWorld() async {
+    final gameState = GameStateService.instance;
+    await gameState.ageService.ageUp(gameState.character);
+    await gameState.ageService.ageUpAll(WorldEngine.instance.allPNJ);
 
-    if (onYearPassed != null) {
-      onYearPassed!();
-    }
+    onYearPassed?.call();
   }
+
 
   DateTime _currentTime = DateTime.now();
 

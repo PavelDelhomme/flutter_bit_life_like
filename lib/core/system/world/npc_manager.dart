@@ -1,11 +1,12 @@
 import 'package:bitlife_like/core/models/character.dart';
+import 'package:bitlife_like/core/services/pnj_manager.dart';
 
 class NPCManager {
   final List<Character> allNPCs = [];
 
   void generateInitialNPCs() {
     for (int i = 0; i < 100; i++) {
-      allNPCs.add(Character.randomNPC());
+      allNPCs.add(PnjManager.generatePNJ());
     }
   }
 

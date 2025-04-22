@@ -4,10 +4,10 @@ import 'package:bitlife_like/core/models/character.dart';
 import 'package:bitlife_like/core/services/game_state_service.dart';
 import 'package:bitlife_like/core/services/pnj_manager.dart';
 import 'package:bitlife_like/core/services/time_service.dart';
-import 'package:bitlife_like/core/system/world/simulation_manager.dart';
-import 'package:bitlife_like/core/system/world/npc_manager.dart';
 import 'package:bitlife_like/core/system/event/event_manager.dart';
+import 'package:bitlife_like/core/system/world/npc_manager.dart';
 
+import '../../services/pnj_action_service.dart';
 import '../game_event.dart';
 
 class WorldEngine {
@@ -21,6 +21,8 @@ class WorldEngine {
   void initializeWorld() {
     _generateInitialPopulation();
     _timeService.onYearPassed = _onYearPassed;
+    NPCManager().allNPCs.clear();
+    NPCManager().allNPCs.addAll(_allPNJ);
   }
 
   void _generateInitialPopulation() {
@@ -31,6 +33,8 @@ class WorldEngine {
   }
 
   void _onYearPassed() {
+    final actionService = PnjActionService();
+
     final year = _timeService.currentTime.year;
 
     // Vieillissement des PNJs
@@ -42,6 +46,7 @@ class WorldEngine {
     // Application aux pnj (propagation)
     for (final pnj in _allPNJ.where((p) => p.isAlive)) {
       _applyWorldEventsToPNJ(pnj, EventManager().getGlobalEvents());
+      actionService.performDailyActions(pnj);
     }
 
     _maintainPopulation();
@@ -57,6 +62,9 @@ class WorldEngine {
     }
   }
 
+  List<Character> getNearbyPNJ(Character player) {
+    return _allPNJ.where((p) => p.city == player.city && p.isAlive).toList();
+  }
 
   void _maintainPopulation() {
     _allPNJ.removeWhere((pnj) => !pnj.isAlive);

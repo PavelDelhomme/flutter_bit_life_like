@@ -7,6 +7,8 @@ import 'package:bitlife_like/core/system/world/world_engine.dart';
 import 'package:bitlife_like/plugin_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../system/world/simulation_manager.dart';
+
 class GameStateService {
   Character? mainCharacter;
   final EventService eventService = EventService();

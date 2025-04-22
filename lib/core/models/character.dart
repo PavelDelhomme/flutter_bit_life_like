@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:bitlife_like/core/models/skill.dart';
 import 'package:bitlife_like/core/models/skill_tree.dart';
+import 'package:bitlife_like/core/system/game_event.dart';
 import 'package:hive/hive.dart';
 
 import 'package:bitlife_like/core/services/data_service.dart';
@@ -540,6 +541,18 @@ class Character extends HiveObject {
       }
     }
     return false;
+  }
+
+  void reactToGlobalEvent(GameEvent event) {
+    switch (event.type) {
+      case 'economic_crisis':
+        if (Random().nextDouble() < 0.5) {
+          stats['happiness'] = (stats['happiness']! - 10).clamp(0, 100);
+          addLifeEvent("J'ai été affecté·e par une crise économique.");
+        }
+        break;
+    // Ajoute d'autres types d'événements ici selon plugins ou type de monde
+    }
   }
 
 }
