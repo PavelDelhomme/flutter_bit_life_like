@@ -14,4 +14,10 @@ abstract class GamePlugin extends PluginBase {
   List<BottomNavigationBarItem> buildBottomBarItems(GamePluginContext context) {
     return [];
   }
+
+  List<Widget> getWorkMenuEntries(BuildContext context) => [];
+  List<Widget> getAssetsMenuEntries(BuildContext context) => [];
+  List<Widget> getActivitiesMenuEntries(BuildContext context) => [];
+  List<Widget> getRelationshipsMenuEntries(BuildContext context) => [];
+
 }

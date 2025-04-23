@@ -554,5 +554,4 @@ class Character extends HiveObject {
     // Ajoute d'autres types d'événements ici selon plugins ou type de monde
     }
   }
-
 }

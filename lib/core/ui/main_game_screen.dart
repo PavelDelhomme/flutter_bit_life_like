@@ -1,3 +1,4 @@
+import 'package:bitlife_like/core/ui/stat_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:bitlife_like/core/services/game_state_service.dart';
 import 'package:bitlife_like/core/services/age_service.dart';
@@ -7,6 +8,13 @@ import 'package:bitlife_like/core/services/event_service.dart';
 //import 'package:bitlife_like/core/shared/stat_data.dart';
 import 'package:bitlife_like/plugin_manager.dart';
 import 'package:bitlife_like/core/models/character.dart';
+
+import '../../plugins/career_plugins/work_system/screen/work_screen.dart';
+import '../../plugins/core_plugins/activity_plugin/widgets/activities_screen.dart';
+import '../../plugins/core_plugins/assets_extended/widgets/assets_screen.dart';
+import '../../plugins/social_plugins/vie_familiale/widgets/relationships_screen.dart';
+import 'bottom_navigation.dart';
+import 'event_history.dart';
 
 class MainGameScreen extends StatefulWidget {
   const MainGameScreen({super.key});
@@ -106,28 +114,21 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 style: const TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
-            /*ListTile(
+            ListTile(
               leading: const Icon(Icons.save),
               title: const Text("Sauvegarder"),
               onTap: () {
-                GameStateService.instance.saveGame();
+                // TODO: Ajouter GameStateService.instance.saveGame();
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: const Icon(Icons.add),
+              leading: const Icon(Icons.restart_alt),
               title: const Text("Nouvelle vie"),
               onTap: () {
                 Navigator.pushReplacementNamed(context, '/characterCreation');
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.people),
-              title: const Text("Mes vies"),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, '/start');
-              },
-            ),*/
             ...PluginManager.instance.getMainMenuItems(context).map((entry) => ListTile(
               leading: Icon(entry.icon),
               title: Text(entry.title),
@@ -136,7 +137,90 @@ class _MainGameScreenState extends State<MainGameScreen> {
           ],
         ),
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          // En-tête personnage
+          Container(
+            color: Colors.red.shade100,
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 32,
+                  child: Icon(Icons.person),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(_character.fullName, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text("${_character.age} ans - ${_character.currentTitle}"),
+                    ],
+                  ),
+                ),
+                Text('${_character.money.toStringAsFixed(0)} \$'),
+              ],
+            ),
+          ),
+
+          // Event history
+          Expanded(child: EventHistory(lifeEvents: _character.lifeEvents)),
+
+          // Stat bar
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: Column(
+              children: [
+                StatBar(
+                  label: "Santé",
+                  value: _character.stats['health'] ?? 0,
+                  icon: Icons.favorite,
+                  color: Colors.red,
+                ),
+                StatBar(
+                  label: "Bonheur",
+                  value: _character.stats['happiness'] ?? 0,
+                  icon: Icons.emoji_emotions,
+                  color: Colors.amber,
+                ),
+                StatBar(
+                  label: "Intelligence",
+                  value: _character.stats['intelligence'] ?? 0,
+                  icon: Icons.psychology,
+                  color: Colors.blue,
+                ),
+                StatBar(
+                  label: "Apparence",
+                  value: _character.stats['appearance'] ?? 0,
+                  icon: Icons.face,
+                  color: Colors.pink,
+                ),
+              ],
+            ),
+          ),
+
+          // Bottom nav
+          BottomNavigation(
+            onAgePressed: () async {
+              await GameStateService.instance.ageService.ageUp(_character);
+              setState(() {}); // Mettre à jour l’écran après le vieillissement
+            },
+            onWorkPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const WorkScreen()));
+            },
+            onAssetsPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const AssetsScreen()));
+            },
+            onRelationsPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const RelationshipsScreen()));
+            },
+            onActivitiesPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const ActivitiesScreen()));
+            },
+          )
+        ],
+      ),
     );
   }
 }

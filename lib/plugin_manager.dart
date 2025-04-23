@@ -94,4 +94,9 @@ class PluginManager {
 
 
   List<GamePlugin> get plugins => _plugins;
+
+  List<Widget> getWorkMenuItems(BuildContext context) {
+    return plugins.expand((plugin) => plugin.getWorkMenuEntries(context)).toList();
+  }
+
 }
