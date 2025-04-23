@@ -1,4 +1,4 @@
-import 'package:bitlife_like/plugins/book_system/plugin.dart';
+import 'package:bitlife_like/plugins/core_plugins/book_system/plugin.dart';
 import 'package:flutter/material.dart';
 
 import 'core/plugin/game_plugin.dart';

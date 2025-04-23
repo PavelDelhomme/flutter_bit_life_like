@@ -1,11 +1,11 @@
 import 'package:bitlife_like/core/services/game_state_service.dart';
 import 'package:bitlife_like/plugin_manager.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/adapters/antique.adapter.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/adapters/arme.adapter.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/adapters/assets.adapter.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/adapters/jewelry.adapter.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/adapters/real_estate.adapter.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/adapters/vehicle.adapter.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/adapters/antique.adapter.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/adapters/arme.adapter.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/adapters/assets.adapter.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/adapters/jewelry.adapter.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/adapters/real_estate.adapter.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/adapters/vehicle.adapter.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'core/models/character.adapter.dart';

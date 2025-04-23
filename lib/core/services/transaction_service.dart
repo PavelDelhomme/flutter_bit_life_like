@@ -1,5 +1,5 @@
 import '../../../core/models/character.dart';
-import '../../plugins/marketplace_system/models/marketplace_item.dart';
+import '../../plugins/tech_plugins/marketplace_system/models/marketplace_item.dart';
 import '../models/asset.dart';
 import '../shared/bank_account.dart';
 import '../shared/inventory_item.dart';

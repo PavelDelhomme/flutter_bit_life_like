@@ -40,8 +40,7 @@ class GameStateService {
   }
 
   void initializeWorld() {
-    _generateInitialPopulation();
-    _timeService.onYearPassed = _onYearPassed;
+    WorldEngine.instance.initializeWorld();
 
     for (final plugin in PluginManager.instance.plugins) {
       plugin.onGameStart();

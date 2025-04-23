@@ -2,9 +2,9 @@ import 'dart:math';
 import 'package:bitlife_like/core/services/skill_tree_manager.dart';
 
 
-import '../../plugins/marketplace_system/models/marketplace.dart';
-import '../../plugins/marketplace_system/models/marketplace_enum.dart';
-import '../../plugins/work_system/models/career.dart';
+import '../../plugins/tech_plugins/marketplace_system/models/marketplace.dart';
+import '../../plugins/tech_plugins/marketplace_system/models/marketplace_enum.dart';
+import '../../plugins/career_plugins/work_system/models/career.dart';
 import '../models/character.dart';
 import '../models/event.dart';
 import '../shared/legal.dart';

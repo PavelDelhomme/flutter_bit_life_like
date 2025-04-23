@@ -1,8 +1,8 @@
 import 'dart:math';
 import '../../../core/models/character.dart';
 import '../../../core/models/event.dart';
-import '../../plugins/assets_extended/models/antique.dart';
-import '../../plugins/assets_extended/models/real_estate.dart';
+import '../../plugins/core_plugins/assets_extended/models/antique.dart';
+import '../../plugins/core_plugins/assets_extended/models/real_estate.dart';
 import '../shared/bank_account.dart' as models;
 import '../shared/legal.dart';
 import 'data_service.dart';
