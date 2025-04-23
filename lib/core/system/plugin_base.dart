@@ -6,11 +6,14 @@ abstract class PluginBase {
   /// Nom du plugin
   String get name;
   String get id;
-  /// Icône (optionnelle) à afficher dans les menus
+
+  /// Icône pour le menu (obligatoire)
   IconData get icon;
 
-  /// Appelé au démarrage du jeu
+  /// Enregistrement (à l'initialisation du jeu)
   void onRegister(GamePluginContext context);
+
+  /// Appelé au lancement du jeu
   void onGameStart();
 
   /// Appelé à chaque changement d’année

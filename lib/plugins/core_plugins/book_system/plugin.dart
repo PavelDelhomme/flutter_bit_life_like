@@ -37,7 +37,6 @@ class BookSystemPlugin extends GamePlugin implements HasRoutes {
         title: "Livres",
         icon: icon,
         onTap: () {
-          //Navigator.pushNamed(context.gameState.navigatorKey.currentContext!, "/books");
           Navigator.pushNamed(
             GameStateService.instance.navigatorKey.currentContext!,
             "/books",
