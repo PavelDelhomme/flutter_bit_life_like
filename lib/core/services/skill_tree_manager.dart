@@ -11,7 +11,7 @@ class SkillTreeManager {
   late SkillTree currentSkillTree;
 
   Future<void> loadSkillTree() async {
-    final data = await rootBundle.loadString('assets/data/skills.json');
+    final data = await rootBundle.loadString('assets/data/character/skills.json');
     final decoded = json.decode(data) as Map<String, dynamic>;
 
     final Map<SkillCategory, List<SkillNode>> tree = {};
@@ -23,7 +23,8 @@ class SkillTreeManager {
       final List<SkillNode> nodes = (entry.value as List).map((jsonNode) {
         final id = jsonNode['id'];
         final name = jsonNode['name'];
-        final prereqs = Map<String, double>.from(jsonNode['prerequisites'] ?? {});
+        final rawPrereqs = Map<String, dynamic>.from(jsonNode['prerequisites'] ?? {});
+        final prereqs = rawPrereqs.map((key, value) => MapEntry(key, (value as num).toDouble()));
 
         return SkillNode(
           id,
