@@ -15,7 +15,10 @@ class CraftingPlugin extends GamePlugin implements HasRoutes {
   String get name => 'Crafting';
 
   @override
-  void onRegister() {}
+  IconData get icon => Icons.build;
+
+  @override
+  void onRegister(GamePluginContext context) {}
 
   @override
   void onGameStart() {}
@@ -35,7 +38,7 @@ class CraftingPlugin extends GamePlugin implements HasRoutes {
     return [
       PluginMenuEntry(
         title: "Crafting",
-        icon: Icons.build,
+        icon: icon,
         onTap: () {
           Navigator.pushNamed(
             GameStateService.instance.navigatorKey.currentContext!,

@@ -17,7 +17,7 @@ class NPCManager {
     }
   }
 
-  List<Character> get charactersNearPlayer(Character player) {
+  List<Character> charactersNearPlayer(Character player) {
     return allNPCs.where((npc) => npc.city == player.city).toList();
   }
 }

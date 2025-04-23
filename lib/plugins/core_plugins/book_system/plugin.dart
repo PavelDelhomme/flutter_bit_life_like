@@ -8,19 +8,20 @@ import '../../../core/services/game_state_service.dart';
 
 class BookSystemPlugin extends GamePlugin implements HasRoutes {
   @override
-  void apply(GamePluginContext context) {}
-
-  @override
   String get id => "book_system";
-
   @override
   String get name => "Système de livres";
+  @override
+  IconData get icon => Icons.menu_book;
 
   @override
-  void onRegister() {}
+  void onRegister(GamePluginContext context) {}
 
   @override
   void onGameStart() {}
+
+  @override
+  void apply(GamePluginContext context) {}
 
   @override
   Map<String, WidgetBuilder> getRoutes() {
@@ -34,7 +35,7 @@ class BookSystemPlugin extends GamePlugin implements HasRoutes {
     return [
       PluginMenuEntry(
         title: "Livres",
-        icon: Icons.menu_book,
+        icon: icon,
         onTap: () {
           //Navigator.pushNamed(context.gameState.navigatorKey.currentContext!, "/books");
           Navigator.pushNamed(

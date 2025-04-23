@@ -2,8 +2,17 @@ import 'dart:math';
 import '../models/character.dart';
 
 class PnjActionService {
+  static final PnjActionService _instance = PnjActionService._internal();
+  static PnjActionService get instance => _instance;
+
+  PnjActionService._internal();
+
   final Random _random = Random();
 
+  bool _shouldTakeAction(double chance) {
+    return _random.nextDouble() < chance;
+  }
+  
   void performDailyActions(Character pnj) {
     if (!pnj.isAlive) return;
 
@@ -17,4 +26,14 @@ class PnjActionService {
 
     // Possibilité d’ajouter : travail, crime, politique, achats, etc.
   }
+
+  void performAnnualAction(Character pnj) {
+    // Exemple
+    if (pnj.age > 60 && _shouldTakeAction(0.2)) {
+      pnj.addLifeEvent("Je pense à la retraite...");
+    }
+
+    // TODO: Appels à plugins
+  }
+
 }

@@ -33,7 +33,7 @@ class WorldEngine {
   }
 
   void _onYearPassed() {
-    final actionService = PnjActionService();
+    final actionService = PnjActionService.instance;
 
     final year = _timeService.currentTime.year;
 

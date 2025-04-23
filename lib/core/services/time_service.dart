@@ -8,7 +8,7 @@ class TimeService {
   void ageUpWorld() async {
     final gameState = GameStateService.instance;
     await gameState.ageService.ageUp(gameState.character);
-    await gameState.ageService.ageUpAll(WorldEngine.instance.allPNJ);
+    gameState.ageService.ageUpAll(WorldEngine.instance.allPNJ);
 
     onYearPassed?.call();
   }

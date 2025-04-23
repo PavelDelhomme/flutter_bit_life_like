@@ -1,4 +1,5 @@
 import 'package:bitlife_like/plugins/core_plugins/book_system/plugin.dart';
+import 'package:bitlife_like/plugins/tech_plugins/crafting/plugin.dart';
 import 'package:flutter/material.dart';
 
 import 'core/plugin/game_plugin.dart';
@@ -26,10 +27,15 @@ class PluginManager {
     _plugins.clear();
     _plugins.addAll([
       BookSystemPlugin(),
+      CraftingPlugin(),
     ]);
 
     for (var plugin in _plugins) {
-      plugin.onRegister();
+      plugin.onRegister(GamePluginContext(
+        mainCharacter: GameStateService.instance.character,
+        gameState: GameStateService.instance,
+        eventService: GameStateService.instance.eventService,
+      ));
     }
   }
 
