@@ -11,10 +11,10 @@ class CharacterCreationScreen extends StatefulWidget {
   const CharacterCreationScreen({super.key});
 
   @override
-  _CharacterCreationScreenState createState() => _CharacterCreationScreenState();
+  CharacterCreationScreenState createState() => CharacterCreationScreenState();
 }
 
-class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
+class CharacterCreationScreenState extends State<CharacterCreationScreen> {
   final TextEditingController _nameController = TextEditingController();
   String _selectedGender = 'Homme';
   String _selectedCountry = 'France';
