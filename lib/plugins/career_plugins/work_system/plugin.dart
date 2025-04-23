@@ -28,7 +28,7 @@ class WorkSystemPlugin extends GamePlugin {
   List<Widget> getWorkMenuEntries(BuildContext context) {
     return [
       ListTile(
-        leading: const Icon(Icons.store),
+        leading: const Icon(Icons.search),
         title: const Text("Marché de l'emploi"),
         onTap: () {
           Navigator.push(

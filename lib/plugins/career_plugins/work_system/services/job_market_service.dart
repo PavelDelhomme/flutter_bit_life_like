@@ -1,5 +1,8 @@
 import 'package:bitlife_like/core/models/character.dart';
 import '../models/career.dart';
+import 'dart:math';
+
+import '../models/job_offre.dart';
 
 class JobMarketService {
   static final JobMarketService _instance = JobMarketService._internal();
@@ -7,20 +10,30 @@ class JobMarketService {
 
   JobMarketService._internal();
 
-  final List<Career> _availableJobs = [
-    Career(jobTitle: "Développeur Junior", annualSalary: 30000),
-    Career(jobTitle: "Caissier", annualSalary: 22000),
-    Career(jobTitle: "Infirmier", annualSalary: 28000),
-    Career(jobTitle: "Enseignant", annualSalary: 27000),
-    Career(jobTitle: "Consultant", annualSalary: 40000),
-  ];
+  final List<JobOffer> _offers = List.generate(6, (index) {
+    return JobOffer(
+      id: "job_$index",
+      title: ["Développeur", "Médecin", "Infirmier", "Professeur", "Livreur", "Commercial"][index],
+      companyName: ["Tech Corp", "MédiSanté", "Clinique Bio", "Lycée Victor Hugo", "SpeedEx", "Sales4U"][index],
+      salary: 24000.0 + Random().nextDouble(),
+    );
+  });
 
-  List<Career> getJobsForCharacter(Character character) {
-    return _availableJobs; // plus tard : filtrage selon diplômes, compétences
+  List<JobOffer> getAvailableJobs(Character character) {
+    // À améliorer plus tard avec filtres/diplômes
+    return _offers;
   }
 
-  void applyToJob(Character character, Career job) {
-    character.career = job;
-    character.addLifeEvent("J'ai obtenu un emploi comme ${job.jobTitle} !");
+  void applyToJob(Character character, JobOffer offer) {
+    final newCareer = Career(
+      id: 'career_${DateTime.now().millisecondsSinceEpoch}',
+      characterId: character.id,
+      companyName: offer.companyName,
+      jobTitle: offer.title,
+      salary: offer.salary,
+    );
+
+    character.career = newCareer;
+    character.addLifeEvent("J'ai obtenu un poste chez ${offer.companyName} en tant que ${offer.title} !");
   }
 }

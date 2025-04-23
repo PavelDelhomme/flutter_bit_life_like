@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bitlife_like/core/services/game_state_service.dart';
-import '../models/career.dart';
+import '../models/job_offre.dart';
 import '../services/job_market_service.dart';
 
 class JobMarketScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class JobMarketScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final character = GameStateService.instance.character;
-    final jobs = JobMarketService.instance.getJobsForCharacter(character);
+    final jobs = JobMarketService.instance.getAvailableJobs(character);
 
     return Scaffold(
       appBar: AppBar(
@@ -19,13 +19,13 @@ class JobMarketScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: jobs.length,
         itemBuilder: (context, index) {
-          final job = jobs[index];
+          final offer = jobs[index];
           return Card(
             child: ListTile(
               leading: const Icon(Icons.work),
-              title: Text(job.jobTitle),
-              subtitle: Text("Salaire : \$${job.annualSalary.toStringAsFixed(0)} / an"),
-              onTap: () => _applyToJob(context, job),
+              title: Text('${offer.title} chez ${offer.companyName}'),
+              subtitle: Text("Salaire : \$${offer.salary.toStringAsFixed(0)} / an"),
+              onTap: () => _confirmApplication(context, offer),
             ),
           );
         },
@@ -33,14 +33,14 @@ class JobMarketScreen extends StatelessWidget {
     );
   }
 
-  void _applyToJob(BuildContext context, Career job) {
+  void _confirmApplication(BuildContext context, JobOffer offer) {
     final character = GameStateService.instance.character;
 
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: Text("Postuler pour ${job.jobTitle} ?"),
-        content: Text("Salaire annuel : \$${job.annualSalary.toStringAsFixed(0)}"),
+        title: Text("Postuler chez ${offer.companyName} ?"),
+        content: Text("Poste : ${offer.title}\nSalaire : \$${offer.salary.toStringAsFixed(0)}"),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -48,9 +48,9 @@ class JobMarketScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              JobMarketService.instance.applyToJob(character, job);
+              JobMarketService.instance.applyToJob(character, offer);
               Navigator.pop(context);
-              Navigator.pop(context); // Fermer l’écran
+              Navigator.pop(context); // retour au menu travail
             },
             child: const Text("Postuler"),
           ),
