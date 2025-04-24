@@ -386,7 +386,7 @@ class BankingSystem {
   }
 
   Future<void> _loadBankData() async {
-    final data = await rootBundle.loadString("assets/banks.json");
+    final data = await rootBundle.loadString("assets/data/financial/banks.json");
     final bankData = json.decode(data)[country];
 
     regulations = bankData['bankingRegulations'];

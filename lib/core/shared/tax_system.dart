@@ -18,7 +18,7 @@ class TaxSystem {
   TaxSystem({required this.country});
   /*
   Future<void> _loadTaxData() async {
-    final data = await rootBundle.loadString('assets/tax_data.json');
+    final data = await rootBundle.loadString('assets/data/financial/tax_data.json');
     final taxData = json.decode(data)[country];
 
     incomeTaxBrackets = (taxData['incomeTax'] as List)

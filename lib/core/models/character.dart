@@ -106,34 +106,43 @@ class Character extends HiveObject {
 
   LegalSystem? legalSystem;
 
+  List<String> activePluginIds = [];
+
   Character({
     String? id,
     required this.fullName,
     required this.gender,
     required this.country,
-    this.taxRate = 0.30,
     required this.city,
-    this.age = 0,
     required this.birthdate,
     required this.zodiacSign,
+    required this.stats,
+    this.age = 0,
+    this.creditScore = 700,
+    this.declaredIncome = 0,
+    this.actualIncome = 0,
+    this.yearsInPrison = 0,
+    this.taxRate = 0.30,
+    this.auditProbability = 0.0,
+    this.currentTitle = "Nourrisson",
     this.isAlive = true,
+    this.hasCriminalRecord = false,
+    this.isPNJ = false,
+    this.educationLevel = EducationLevel.none,
+    List<String>? activePluginIds,
+    this.legalSystem,
     this.deathDate,
     this.deathCause,
-    required this.stats,
+    this.career,
     //Map<String, List<BankAccount>>? bankAccounts,
     List<BankAccount>? bankAccounts,
     List<Business>? businesses,
-    this.creditScore = 700,
     List<Relationship>? relationships,
     List<Character>? parents,
     List<Character>? siblings,
     List<Character>? children,
     List<Character>? partners,
     List<Pet>? pets,
-    this.currentTitle = "Nourrisson",
-    this.career,
-    this.educationLevel = EducationLevel.none,
-    Map<String, SkillMastery>? skills,
     List<String>? diplomas,
     List<Asset>? assets,
     List<Vehicle>? vehicles,
@@ -141,16 +150,10 @@ class Character extends HiveObject {
     List<Jewelry>? jewelries,
     List<Antique>? antiques,
     List<Arme>? armes,
-    this.declaredIncome = 0,
-    this.actualIncome = 0,
-    this.hasCriminalRecord = false,
+    Map<String, SkillMastery>? skills,
     List<Crime>? criminalHistory,
-    this.yearsInPrison = 0,
     List<OffshoreAccount>? offshoreAccounts,
     List<Event>? lifeEvents,
-    this.isPNJ = false,
-    this.legalSystem,
-    this.auditProbability = 0.0,
   }) :
   id = id ?? 'char_${DateTime.now().millisecondsSinceEpoch}_${Random().nextInt(10000)}',
   relationships = relationships ?? [],
@@ -170,6 +173,7 @@ class Character extends HiveObject {
   criminalHistory = criminalHistory ?? [],
   offshoreAccounts = offshoreAccounts ?? [],
   businesses = businesses ?? [],
+  activePluginIds = List<String>.from(activePluginIds ?? []),
   lifeEvents = lifeEvents ?? [];
 
   double get money => bankAccounts.fold(0.0, (sum, acc) => sum + acc.balance);
@@ -244,7 +248,7 @@ class Character extends HiveObject {
       isAlive: json['isAlive'],
       deathDate: json['deathDate'] != null ? DateTime.parse(json['deathDate']) : null,
       deathCause: json['deathCause'],
-      stats: json['stats'],
+      stats: (json['stats'] as Map).map((key, value) => MapEntry(key.toString(), (value as num).toDouble())),
       // bankAccounts: (json['bankAccounts'] as Map<String, dynamic>).map(
       //         (key, value) => MapEntry(key, BankAccount.fromJson(value as Map<String, dynamic>))
       // ),
@@ -288,6 +292,7 @@ class Character extends HiveObject {
       lifeEvents: json['lifeEvents'],
       isPNJ: json['isPNJ'],
       legalSystem: json['legalSystem'],
+      activePluginIds: List<String>.from(json['activePluginIds'] ?? []),
     );
   }
 
@@ -336,6 +341,7 @@ class Character extends HiveObject {
       'lifeEvents': lifeEvents.map((e) => e.toJson()).toList(),
       'isPNJ': isPNJ,
       'legalSystem': legalSystem?.toJson(),
+      'activePluginIds': activePluginIds,
     };
   }
 

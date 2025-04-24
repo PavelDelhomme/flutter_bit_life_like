@@ -25,7 +25,7 @@ class BookSystemPlugin extends GamePlugin implements HasRoutes {
   @override
   Map<String, WidgetBuilder> getRoutes() {
     return {
-      "/books": (context) => BookListScreen(), // screen à créer
+      "/books": (context) => BookListScreen(),
     };
   }
 

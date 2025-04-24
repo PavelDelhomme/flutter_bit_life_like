@@ -37,13 +37,25 @@ void main() async {
     ..registerAdapter(BankAccountAdapter())
   ;
   await SaveManager.initialize();
-
-  // Préchargement des données
   await DataService.preloadCities();
   await SkillTreeManager().loadSkillTree();
   LegalService.initialize(await LegalSystem.loadDefaultSystems());
 
   final allCharacters = SaveManager.getAllMainCharacters().where((c) => !c.isPNJ).toList();
+
+  if (allCharacters.isNotEmpty) {
+    GameStateService.instance.setCharacter(allCharacters.first);
+    GameStateService.instance.initializeWorld();
+
+    PluginManager.instance.registerAll();
+    PluginManager.instance.startGamePlugins(
+      GamePluginContext(
+        mainCharacter: GameStateService.instance.character,
+        gameState: GameStateService.instance,
+        eventService: GameStateService.instance.eventService,
+      ),
+    );
+  }
 
   runApp(BitLifeApp(
     initialCharacter: allCharacters.isNotEmpty ? allCharacters.first : null,

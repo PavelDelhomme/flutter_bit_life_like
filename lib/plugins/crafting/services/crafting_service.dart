@@ -17,7 +17,7 @@ class CraftingService {
   }
 
   void _loadRecipes() {
-    final file = File('assets/recipes.json');
+    final file = File('assets/data/crafting/recipes.json');
     final jsonString = file.readAsStringSync();
     final List<dynamic> jsonData = jsonDecode(jsonString);
     _recipes = jsonData.map((e) => Recipe(
