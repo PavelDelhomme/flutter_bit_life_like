@@ -1,7 +1,7 @@
 import 'dart:math';
 import '../../../core/models/character.dart';
 
-import '../../plugins/assets_extended/models/real_estate.dart';
+import '../../plugins/core_plugins/assets_extended/models/real_estate.dart';
 
 class TaxSystem {
   final String country;

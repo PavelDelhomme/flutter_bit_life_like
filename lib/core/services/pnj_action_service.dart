@@ -1,43 +1,39 @@
+import 'dart:math';
 import '../models/character.dart';
 
 class PnjActionService {
-  static final _instance = PnjActionService._internal();
+  static final PnjActionService _instance = PnjActionService._internal();
   static PnjActionService get instance => _instance;
 
   PnjActionService._internal();
 
+  final Random _random = Random();
 
+  bool _shouldTakeAction(double chance) {
+    return _random.nextDouble() < chance;
+  }
+  
   void performDailyActions(Character pnj) {
     if (!pnj.isAlive) return;
 
-    // Exemple : chercher du travail, déménager, se marier, etc.
-    if (pnj.age >= 18 && pnj.career == null && _shouldTakeAction(0.3)) {
-      pnj.addLifeEvent("J'ai commencé à chercher un emploi.");
-      // Ajout logique métier future ici
+    if (_random.nextDouble() < 0.05) {
+      pnj.addLifeEvent("J'ai fait une rencontre inattendue.");
     }
 
-    if (_shouldTakeAction(0.2)) {
-      pnj.stats['happiness'] = (pnj.stats['happiness']! + 5).clamp(0, 100);
+    if (_random.nextDouble() < 0.03) {
+      pnj.stats['happiness'] = (pnj.stats['happiness']! + 2).clamp(0, 100);
     }
 
-    // TODO : plugins pourront intercepter ce moment
+    // Possibilité d’ajouter : travail, crime, politique, achats, etc.
   }
 
   void performAnnualAction(Character pnj) {
-    if (!pnj.isAlive) return;
-
-    // Exemple : chercher du travail, déménager, se marier, etc.
-    if (pnj.age >= 18 && pnj.career == null && _shouldTakeAction(0.3)) {
-      pnj.addLifeEvent("J'ai commencé à chercher un emploi.");
-      // Ajout logique métier future ici
+    // Exemple
+    if (pnj.age > 60 && _shouldTakeAction(0.2)) {
+      pnj.addLifeEvent("Je pense à la retraite...");
     }
 
-    if (_shouldTakeAction(0.2)) {
-      pnj.stats['happiness'] = (pnj.stats['happiness']! + 5).clamp(0, 100);
-    }
-
-    // TODO : plugins pourront intercepter ce moment
+    // TODO: Appels à plugins
   }
 
-  bool _shouldTakeAction(double chance) => (chance > 0 && chance >= (DateTime.now().millisecond % 100) / 100.0);
 }

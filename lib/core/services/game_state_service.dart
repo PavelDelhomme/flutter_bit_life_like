@@ -45,7 +45,7 @@ class GameStateService {
     for (final plugin in PluginManager.instance.plugins) {
       plugin.onGameStart();
       SimulationManager().registerTask((year) {
-        plugin.onYearPassed.call(); // si défini
+        plugin.onYearPassed(year);
       });
     }
   }

@@ -7,10 +7,8 @@ class EventManager {
 
   void triggerWorldEvents(int year) {
     if (year % 5 == 0) {
-      final crisis = GameEvent(
-        type: 'economic_crisis',
-        description: 'Une crise économique mondiale secoue les marchés',
-        payload: {},
+      final crisis = GameEvent.global(
+        'Une crise économique mondiale secoue les marchés',
       );
       _globalEvents.add(crisis);
     }

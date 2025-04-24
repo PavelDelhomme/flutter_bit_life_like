@@ -1,18 +1,18 @@
-import 'package:bitlife_like/plugins/assets_extended/models/arme.dart';
-import 'package:bitlife_like/plugins/book_system/models/book.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/electronic.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/instrument.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/jewelry.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/real_estate.dart';
-import 'package:bitlife_like/plugins/assets_extended/models/vehicle.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/arme.dart';
+import 'package:bitlife_like/plugins/core_plugins/book_system/models/book.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/electronic.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/instrument.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/jewelry.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/real_estate.dart';
+import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/vehicle.dart';
 import 'package:bitlife_like/core/shared/inventory_item.dart';
-import 'package:bitlife_like/plugins/crafting/models/component.dart';
+import 'package:bitlife_like/plugins/tech_plugins/crafting/models/component.dart';
 import 'package:uuid/uuid.dart';
 
-import 'package:bitlife_like/plugins/marketplace_system/models/marketplace_enum.dart';
+import 'package:bitlife_like/plugins/tech_plugins/marketplace_system/models/marketplace_enum.dart';
 import 'package:bitlife_like/core/models/asset.dart';
 
-import '../../plugins/marketplace_system/models/marketplace_item.dart';
+import '../../plugins/tech_plugins/marketplace_system/models/marketplace_item.dart';
 
 class ItemFactory {
   static final _uuid = Uuid(); // <- ça corrige l'erreur

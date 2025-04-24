@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:bitlife_like/core/shared/tax_system.dart';
 
 import '../../core/models/character.dart';
-import '../../plugins/work_system/models/career.dart';
+import '../../plugins/career_plugins/work_system/models/career.dart';
 
 enum CrimeType {
   taxEvasion,
