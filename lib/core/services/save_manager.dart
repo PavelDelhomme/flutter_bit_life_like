@@ -11,7 +11,7 @@ class SaveManager {
   }
 
   static Future<void> saveMainCharacter(Character character) async {
-    await _mainCharacterBox.put('current', character);
+    await _mainCharacterBox.put(character.id, character);
   }
 
   static Future<Character?> loadMainCharacter() async {

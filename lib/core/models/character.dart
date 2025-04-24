@@ -350,7 +350,7 @@ class Character extends HiveObject {
     if (isPNJ) {
       await Hive.box<Character>('pnjs').put(id, this);
     } else {
-      await Hive.box<Character>('main_characters').put('current', this);
+      await Hive.box<Character>('main_characters').put(id, this);
     }
   }
 
