@@ -34,22 +34,31 @@ class PluginManager {
 
   final List<GamePlugin> _plugins = [];
 
+  final List<GamePlugin> _availablePlugins = [
+    BookSystemPlugin(),
+    CraftingPlugin(),
+    DailyLifePlugin(),
+    LogementPlugin(),
+    WorkSystemPlugin(),
+    AssetsExtendedPlugin(),
+    ActivityPlugin(),
+    EducationPlugin(),
+    JusticePlugin(),
+    VieAdministrativePlugin(),
+    VieFamilialePlugin(),
+    MarketplaceSystemPlugin(),
+  ];
   void registerAll() {
-    _plugins.clear();
-    _plugins.addAll([
-      BookSystemPlugin(),
-      CraftingPlugin(),
-      DailyLifePlugin(),
-      LogementPlugin(),
-      WorkSystemPlugin(),
-      AssetsExtendedPlugin(),
-      ActivityPlugin(),
-      EducationPlugin(),
-      JusticePlugin(),
-      VieAdministrativePlugin(),
-      VieFamilialePlugin(),
-      MarketplaceSystemPlugin(),
-    ]);
+    _activePlugins.clear();
+
+    final character = GameStateService.instance.character;
+    final idsToActivate = character.activePluginIds.toSet();
+
+    for (var plugin in _availablePlugins) {
+      if (idsToActivate.contains(plugin.id)) {
+        _activePlugins.add(plugin);
+      }
+    }
 
     final context = GamePluginContext(
       mainCharacter: GameStateService.instance.character,
@@ -57,10 +66,11 @@ class PluginManager {
       eventService: GameStateService.instance.eventService,
     );
 
-    for (var plugin in _plugins) {
+    for (var plugin in _activePlugins) {
       plugin.onRegister(context);
     }
   }
+
 
   void startGamePlugins(GamePluginContext context) {
     for (var plugin in _plugins) {
@@ -92,6 +102,34 @@ class PluginManager {
     return routes;
   }
 
+  void setPluginActive(GamePlugin plugin, bool activate) {
+    final character = GameStateService.instance.character;
+
+    if (activate) {
+      if (!_activePlugins.any((p) => p.id == plugin.id)) {
+        _activePlugins.add(plugin);
+        plugin.onRegister(
+          GamePluginContext(
+            mainCharacter: character,
+            gameState: GameStateService.instance,
+            eventService: GameStateService.instance.eventService,
+          ),
+        );
+      }
+
+      if (!character.activePluginIds.contains(plugin.id)) {
+        character.activePluginIds.add(plugin.id);
+      }
+    } else {
+      _activePlugins.removeWhere((p) => p.id == plugin.id);
+      character.activePluginIds.remove(plugin.id);
+    }
+
+    character.save(); // important !
+  }
+
 
   List<GamePlugin> get plugins => _plugins;
+  List<GamePlugin> get availablePlugins => _availablePlugins;
+  final List<GamePlugin> _activePlugins = [];
 }
