@@ -25,6 +25,7 @@ void main() async {
 
   // Initialisation Hive
   await Hive.initFlutter();
+  await Hive.deleteBoxFromDisk('main_characters');
 
   Hive
     ..registerAdapter(CharacterAdapter())
@@ -34,8 +35,8 @@ void main() async {
     ..registerAdapter(RealEstateAdapter())
     ..registerAdapter(JewelryAdapter())
     ..registerAdapter(VehicleAdapter())
-    ..registerAdapter(BankAccountAdapter())
-  ;
+    ..registerAdapter(BankAccountAdapter());
+
   await SaveManager.initialize();
   await DataService.preloadCities();
   await SkillTreeManager().loadSkillTree();
@@ -61,7 +62,6 @@ void main() async {
     initialCharacter: allCharacters.isNotEmpty ? allCharacters.first : null,
     savedCharacters: allCharacters,
   ));
-
 }
 
 class BitLifeApp extends StatelessWidget {
@@ -72,21 +72,8 @@ class BitLifeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (initialCharacter != null) {
-      GameStateService.instance.setCharacter(initialCharacter!);
-      GameStateService.instance.initializeWorld();
-
-      PluginManager.instance.registerAll();
-      PluginManager.instance.startGamePlugins(
-        GamePluginContext(
-          mainCharacter: GameStateService.instance.character,
-          gameState: GameStateService.instance,
-          eventService: GameStateService.instance.eventService,
-        ),
-      );
-    }
     return MaterialApp(
-      title: 'BitLife Clone',
+      title: 'BitLife Like',
       theme: ThemeData(
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -97,7 +84,7 @@ class BitLifeApp extends StatelessWidget {
       routes: {
         '/start': (context) => StartScreen(savedCharacters: savedCharacters),
         '/characterCreation': (context) => CharacterCreationScreen(),
-        ...PluginManager.instance.getAllRoutes(),
+        ...PluginManager.instance.getAllRoutes(), // <- routes dynamiques des plugins
       },
     );
   }
