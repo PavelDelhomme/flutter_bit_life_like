@@ -28,11 +28,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-assets:
-  - assets/
-  - assets/images/bitlife_logo.png
-  - assets/data/financial/tax_data.json
-  - assets/data/financial/banks.json
-  - assets/data/character/skills.json
-  - assets/data/crafting/components.json
-  - assets/data/crafting/recipes.json
+  assets:
+    - assets/
+    - assets/images/bitlife_logo.png
+    - assets/data/financial/tax_data.json
+    - assets/data/financial/banks.json
+    - assets/data/character/skills.json
+    - assets/data/crafting/components.json
+    - assets/data/crafting/recipes.json

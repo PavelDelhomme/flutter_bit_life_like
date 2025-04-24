@@ -1,7 +1,10 @@
-import 'character_creation_screen.dart';
+import 'package:bitlife_like/core/services/game_state_service.dart';
 import 'package:flutter/material.dart';
-import '../../models/person/character.dart';
-import 'main_game_screen.dart';
+
+import '../../models/character.dart';
+import '../creation_screens/character_creation_screen.dart';
+import '../main_game_screen.dart';
+
 
 class StartScreen extends StatelessWidget {
   final List<Character> savedCharacters;
@@ -43,40 +46,44 @@ class StartScreen extends StatelessWidget {
           ),
           Expanded(
             child: savedCharacters.isEmpty
-              ? const Center(
-                child: Text(
-                  "Aucune vie en cours",
-                  style: TextStyle(color: Colors.white),
-                ),
-              )
-              : ListView.builder(
-                itemCount: savedCharacters.length,
-                itemBuilder: (context, index) {
-                  final character = savedCharacters[index];
-                  return ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.blue,
-                      child: Text(character.fullName[0]),
-                    ),
-                    title: Text(
-                      character.fullName,
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    subtitle: Text(
-                      '${character.age} ans - ${character.currentTitle}',
-                      style: const TextStyle(color: Colors.white70),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MainGameScreen(character: character),
-                        ),
-                      );
-                    },
-                  );
-                },
+                ? const Center(
+              child: Text(
+                "Aucune vie en cours",
+                style: TextStyle(color: Colors.white),
               ),
+            )
+                : ListView.builder(
+              itemCount: savedCharacters.length,
+              itemBuilder: (context, index) {
+                final character = savedCharacters[index];
+                return ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.blue,
+                    child: Text(character.fullName[0]),
+                  ),
+                  title: Text(
+                    character.fullName,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  subtitle: Text(
+                    '${character.age} ans - ${character.currentTitle}',
+                    style: const TextStyle(color: Colors.white70),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          final gameState = GameStateService.instance;
+                          gameState.character = character;
+                          return MainGameScreen();
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),

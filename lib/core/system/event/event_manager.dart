@@ -10,6 +10,7 @@ class EventManager {
       final crisis = GameEvent(
         type: 'economic_crisis',
         description: 'Une crise économique mondiale secoue les marchés',
+        payload: {},
       );
       _globalEvents.add(crisis);
     }

@@ -1,11 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-import '../models/character.dart';
-import '../models/event.dart';
-import '../services/data_service.dart';
-import '../services/game_state_service.dart';
-import 'main_game_screen.dart';
+import '../../models/character.dart';
+import '../../models/event.dart';
+import '../../services/data_service.dart';
+import '../../services/game_state_service.dart';
+import '../main_game_screen.dart';
 
 class CharacterCreationScreen extends StatefulWidget {
   const CharacterCreationScreen({super.key});
@@ -70,7 +70,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   }
 
 
-  void _createCharacter() {
+  void _createCharacter() async {
     final name = _nameController.text.trim();
     if (name.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -108,16 +108,16 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       ),
     );
 
+    await character.save();
+
+    final gameState = GameStateService.instance;
+    gameState.character = character;
+
+    if (!mounted) return;
     // Navigation vers l'écran principal du jeu
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (context) {
-          final gameState = GameStateService.instance;
-          gameState.character = character;
-          return const MainGameScreen();
-        }
-      ),
+      MaterialPageRoute(builder: (context) => const MainGameScreen()),
     );
   }
 

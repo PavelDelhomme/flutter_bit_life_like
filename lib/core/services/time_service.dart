@@ -5,7 +5,7 @@ import '../system/world/world_engine.dart';
 class TimeService {
   void Function()? onYearPassed;
 
-  void ageUpWorld() async {
+  Future<void> ageUpWorld() async {
     final gameState = GameStateService.instance;
     await gameState.ageService.ageUp(gameState.character);
     await gameState.ageService.ageUpAll(WorldEngine.instance.allPNJ);

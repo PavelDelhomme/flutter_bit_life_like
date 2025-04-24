@@ -261,7 +261,17 @@ class Character extends HiveObject {
       currentTitle: json['currentTitle'],
       career: json['career'],
       educationLevel: json['educationLevel'],
-      skills: json['datas'],
+      skills: (json['datas'] as Map<String, dynamic>?)?.map(
+            (key, value) => MapEntry(key, SkillMastery(
+          skillId: value['skillId'],
+          experience: (value['experience'] as num).toDouble(),
+          lastUsed: DateTime.parse(value['lastUsed']),
+          category: SkillCategory.values.firstWhere(
+                (e) => e.toString() == value['category'],
+            orElse: () => SkillCategory.technical, // fallback
+          ),
+        )),
+      ) ?? {},
       diplomas: json['diplomas'],
       assets: json['assets'],
       vehicles: json['vehicles'],
@@ -548,10 +558,14 @@ class Character extends HiveObject {
       case 'economic_crisis':
         if (Random().nextDouble() < 0.5) {
           stats['happiness'] = (stats['happiness']! - 10).clamp(0, 100);
-          addLifeEvent("J'ai été affecté·e par une crise économique.");
+          addLifeEvent("J'ai été affecté·e par une crise économique : ${event.description}");
         }
         break;
-    // Ajoute d'autres types d'événements ici selon plugins ou type de monde
+      case 'war':
+        // a définir plus tard
+        break;
+      default:
+        break;
     }
   }
 

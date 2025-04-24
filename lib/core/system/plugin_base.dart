@@ -4,4 +4,6 @@ abstract class PluginBase {
 
   void onRegister();
   void onGameStart();
+
+  void onYearPassed() {}
 }

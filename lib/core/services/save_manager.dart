@@ -40,4 +40,8 @@ class SaveManager {
     await _mainCharacterBox.clear();
     await _pnjBox.clear();
   }
+
+  static List<Character> getAllMainCharacters() {
+    return _mainCharacterBox.values.toList();
+  }
 }

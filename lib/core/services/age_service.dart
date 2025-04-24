@@ -350,7 +350,7 @@ class AgeService {
     await character.save();
   }
 
-  void ageUpAll(List<Character> characters) {
+  Future<void> ageUpAll(List<Character> characters) async {
     for (final character in characters) {
       if (character.isAlive) {
         character.age++;

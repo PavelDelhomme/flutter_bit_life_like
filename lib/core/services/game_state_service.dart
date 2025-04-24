@@ -40,13 +40,12 @@ class GameStateService {
   }
 
   void initializeWorld() {
-    _generateInitialPopulation();
-    _timeService.onYearPassed = _onYearPassed;
+    WorldEngine.instance.initializeWorld();
 
     for (final plugin in PluginManager.instance.plugins) {
       plugin.onGameStart();
       SimulationManager().registerTask((year) {
-        plugin.onYearPassed?.call(year); // si défini
+        plugin.onYearPassed.call(); // si défini
       });
     }
   }

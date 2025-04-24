@@ -33,7 +33,7 @@ class BookSystemPlugin extends GamePlugin implements HasRoutes {
   List<PluginMenuEntry> buildDrawerEntries(GamePluginContext context) {
     return [
       PluginMenuEntry(
-        title: "Livres",
+        title: "Bibliothèque",
         icon: Icons.menu_book,
         onTap: () {
           //Navigator.pushNamed(context.gameState.navigatorKey.currentContext!, "/books");

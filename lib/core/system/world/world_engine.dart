@@ -33,7 +33,7 @@ class WorldEngine {
   }
 
   void _onYearPassed() {
-    final actionService = PnjActionService();
+    final actionService = PnjActionService.instance;
 
     final year = _timeService.currentTime.year;
 
@@ -47,6 +47,7 @@ class WorldEngine {
     for (final pnj in _allPNJ.where((p) => p.isAlive)) {
       _applyWorldEventsToPNJ(pnj, EventManager().getGlobalEvents());
       actionService.performDailyActions(pnj);
+      PnjActionService.instance.performAnnualAction(pnj);
     }
 
     _maintainPopulation();
