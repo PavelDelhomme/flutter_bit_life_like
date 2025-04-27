@@ -1,12 +1,18 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:bitlife_like/core/services/pnj_manager.dart';
+import 'package:flutter/services.dart';
 
 import '../../core/models/relationship.dart';
 import '../models/character.dart';
+import '../shared/tax_system.dart';
 
 class DataService {
+  static final Random _random = Random();
   static final Map<String, List<String>> _cachedCities = {};
+  static List<String> _cachedCountries = [];
+  static Map<String, double> _cachedTaxRates = {};
 
   static Future<void> preloadCities() async {
     final countries = await getCountries();
@@ -15,30 +21,53 @@ class DataService {
     }
   }
 
+  static Future<void> _preloadTaxRates() async {
+    final String data = await rootBundle.loadString('assets/data/financial/tax_data.json');
+    final Map<String, dynamic> jsonData = json.decode(data);
+    _cachedTaxRates = {
+      for (var entry in jsonData.entries)
+        entry.key: (entry.value['corporateTax'] as num).toDouble()
+    };
+  }
 
   static List<String> getCitiesForCountrySync(String country) {
     return _cachedCities[country] ?? [];
   }
 
   static Future<List<String>> getCountries() async {
-    // Données temporaires
-    return Future.value(['France', 'États-Unis', 'Japon', 'Viêt Nam']);
+    final String data = await rootBundle.loadString('assets/data/countries.json');
+    final Map<String, dynamic> jsonData = json.decode(data);
+    return jsonData.keys.toList();
   }
 
+
   static Future<List<String>> getCitiesForCountry(String country) async {
-    await Future.delayed(Duration(milliseconds: 100)); // Simulation de latence
-    switch (country) {
-      case 'France':
-        return ['Paris', 'Lyon', 'Marseille', 'Bordeaux', 'Rennes'];
-      case 'États-Unis':
-        return ['New York', 'Los Angeles', 'Chicago', 'Miami'];
-      case 'Japon':
-        return ['Tokyo', 'Osaka', 'Kyoto', 'Sapporo'];
-      case 'Viêt Nam':
-        return ['Hanoï', 'Hô Chi Minh-Ville', 'Da Nang', 'Can Tho'];
-      default:
-        return ['Ville inconnue'];
+    try {
+      final String data = await rootBundle.loadString('assets/data/cities/$country.json');
+      final Map<String, dynamic> jsonData = json.decode(data);
+      return List<String>.from(jsonData['cities']);
+    } catch (_) {
+      return ['Ville inconnue'];
     }
+  }
+
+  static Future<Map<String, List<Map<String, dynamic>>>> loadCompanyCatalog() async {
+    final String data = await rootBundle.loadString('assets/data/company_catalog.json');
+    final Map<String, dynamic> jsonData = json.decode(data);
+    return jsonData.map((key, value) => MapEntry(
+        key, List<Map<String, dynamic>>.from(value)
+    ));
+  }
+
+  static Future<TaxSystem> loadTaxSystem(String country) async {
+    final String data = await rootBundle.loadString('assets/data/financial/tax_data.json');
+    final Map<String, dynamic> jsonData = json.decode(data);
+
+    if (!jsonData.containsKey(country)) {
+      throw Exception('Aucune donnée fiscale trouvée pour le pays : $country');
+    }
+
+    return TaxSystem.fromJson(jsonData[country], country);
   }
 
   static String getRandomName(String gender) {
@@ -51,28 +80,22 @@ class DataService {
         : femaleNames[random.nextInt(femaleNames.length)];
   }
 
+
   static String getRandomCountry() {
-    final countries = ['France', 'États-Unis', 'Japon', 'Viêt Nam'];
-    return countries[Random().nextInt(countries.length)];
+    if (_cachedCountries.isEmpty) return 'France';
+    return _cachedCountries[_random.nextInt(_cachedCountries.length)];
   }
 
   static Future<String> getRandomCityForCountry(String country) async {
     final cities = await getCitiesForCountry(country);
     return cities.isNotEmpty
-        ? cities[Random().nextInt(cities.length)]
-        : 'Inconnu';
+        ? cities[_random.nextInt(cities.length)]
+        : 'Ville inconnue';
   }
 
 
-  static final Map<String, double> _countryTaxRates = {
-    'France': 0.30,
-    'États-Unis': 0.28,
-    'Japon': 0.35,
-    'Viêt Nam': 0.25,
-  };
-
   static double getTaxRateForCountry(String country) {
-    return _countryTaxRates[country] ?? 0.30; // valeur par défaut
+    return _cachedTaxRates[country] ?? 0.30;
   }
 
   static Future<String> getRandomCityForCountryAsync(String country) async {

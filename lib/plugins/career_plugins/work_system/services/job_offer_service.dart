@@ -4,6 +4,9 @@ import 'package:bitlife_like/core/models/character.dart';
 import 'package:bitlife_like/plugins/career_plugins/entreprise/services/business_service.dart';
 import 'package:bitlife_like/plugins/career_plugins/work_system/models/joboffer.dart';
 
+import '../../../../core/models/company.dart';
+import '../../../../core/shared/company_service.dart';
+
 
 class JobOfferService {
   static final JobOfferService _instance = JobOfferService._internal();
@@ -16,9 +19,33 @@ class JobOfferService {
   // Générer une liste d'offres d'emploi
   List<JobOffer> generateJobOffers(Character character) {
     final List<JobOffer> offers = [];
+    final allCompanies = CompanyService.instance.companies.where((c) => !c.isGovernmentOwned).toList();
 
-    // Liste de métiers possibles (exemple de base)
-    final jobTitles = [
+    if (allCompanies.isEmpty) {
+      return offers;
+    }
+
+    // Génère 3 à 5 offres
+    int numberOfOffers = 3 + _random.nextInt(3);
+
+
+    for (int i = 0; i < numberOfOffers; i++) {
+      final company = allCompanies[_random.nextInt(allCompanies.length)];
+      final title = _randomJobTitle();
+      final salary = _estimateSalary(company);
+
+      offers.add(JobOffer(
+        title: title,
+        salary: salary,
+        company: company.name,
+      ));
+    }
+
+    return offers;
+  }
+
+  String _randomJobTitle() {
+    final titles = [
       "Développeur",
       "Chef de projet",
       "Analyste financier",
@@ -27,41 +54,13 @@ class JobOfferService {
       "Ingénieur mécanique",
       "Marketing Specialist",
     ];
-
-    // Génère 3 à 5 offres
-    int numberOfOffers = 3 + _random.nextInt(3);
-
-    for (int i = 0; i < numberOfOffers; i++) {
-      final title = jobTitles[_random.nextInt(jobTitles.length)];
-      final salary = 25000 + _random.nextInt(50000); // salaire entre 25k et 75k
-
-      final companyName = _generateRandomCompanyName();
-
-      // Crée une entreprise associée
-      BusinessService.createCompany(character, companyName, _randomIndustry(), 50000 + _random.nextInt(50000));
-
-      offers.add(JobOffer(
-        title: title,
-        salary: salary.toDouble(),
-        company: companyName,
-      ));
-    }
-
-    return offers;
+    return titles[_random.nextInt(titles.length)];
   }
 
-  // Générer un nom d'entreprise
-  String _generateRandomCompanyName() {
-    final prefixes = ["Global", "Nova", "Techno", "Alpha", "Prime", "Next", "Eco"];
-    final suffixes = ["Corp", "Solutions", "Industries", "Group", "Systems"];
 
-    return "${prefixes[_random.nextInt(prefixes.length)]} ${suffixes[_random.nextInt(suffixes.length)]}";
+  double _estimateSalary(Company company) {
+    double base = (25000 + _random.nextInt(50000)) as double;
+    double factor = 1 + (company.size.index * 0.2); // Plus l'entreprise est grande, mieux payé
+    return base * factor;
   }
-
-  // Générer un secteur d'activité aléatoire
-  String _randomIndustry() {
-    final industries = ["Technologie", "Finance", "Immobilier", "Marketing", "Consulting"];
-    return industries[_random.nextInt(industries.length)];
-  }
-
 }

@@ -18,7 +18,8 @@ class Company {
   late final double expenses; // Dépenses annuelles
   final List<Employee> employees; // Liste des employés
   final List<Product> products; // Produits ou service vendus doit pouvoir vendre des produits et des services
-  final double marketShare; // Part de marché dans son secteur
+  final List<Company> acquiredCompanies; // Liste des entreprises fusionnées ou rachetées
+  late final double marketShare; // Part de marché dans son secteur
   final double publicReputation; // Réputation gobal
   final TaxSystem taxSystem; // Taxes de l'entreprise
   final List<Law> currentLaws; // Lois influencant l'entreprise
@@ -70,6 +71,7 @@ class Company {
     required this.researchInvestment,
     required this.sustainabilityScore,
     required this.isGovernmentOwned,
+    required this.acquiredCompanies,
   });
 
   /// 💰 Calcule le bénéfice net après taxes
@@ -137,6 +139,7 @@ class Company {
       'industries': industries,
       'type': type.toString(),
       'size': size.toString(),
+      'acquiredCompanies': acquiredCompanies,
       'capital': capital,
       'valuation': valuation,
       'revenue': revenue,
@@ -192,6 +195,7 @@ class Company {
       researchInvestment: (json['researchInvestment'] as num).toDouble(),
       sustainabilityScore: (json['sustainabilityScore'] as num).toDouble(),
       isGovernmentOwned: json['isGovernmentOwned'],
+      acquiredCompanies: List<Company>.from(json['acquiredCompanies']),
     );
   }
 }

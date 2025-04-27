@@ -14,11 +14,12 @@ class JobSearchScreen extends StatelessWidget {
 
     // TODO: récupérer les jobs proposés (plus tard dynamique par WorkService)
     final List<JobOffer> jobOffers = [
-      JobOffer(title: 'Développeur Junior', salary: 30000),
-      JobOffer(title: 'Vendeur', salary: 25000),
-      JobOffer(title: 'Assistant Marketing', salary: 28000),
-      JobOffer(title: 'Employé Administratif', salary: 24000),
+      JobOffer(title: 'Développeur Junior', salary: 30000, company: "TechNova"),
+      JobOffer(title: 'Vendeur', salary: 25000, company: "RetailMax"),
+      JobOffer(title: 'Assistant Marketing', salary: 28000, company: "MarketGroup"),
+      JobOffer(title: 'Employé Administratif', salary: 24000, company: "AdminPro"),
     ];
+
 
     return Scaffold(
       appBar: AppBar(title: const Text('Recherche d\'emploi')),

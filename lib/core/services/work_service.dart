@@ -11,10 +11,10 @@ class WorkService {
 
   List<JobOffer> generateJobOffers() {
     return [
-      JobOffer(title: 'Ingénieur', salary: 40000),
-      JobOffer(title: 'Médecin', salary: 50000),
-      JobOffer(title: 'Consultant', salary: 45000),
-      JobOffer(title: 'Commercial', salary: 30000),
+      JobOffer(title: 'Ingénieur', salary: 40000, company: "Global Corp"),
+      JobOffer(title: 'Médecin', salary: 50000, company: "Health Solutions"),
+      JobOffer(title: 'Consultant', salary: 45000, company: "Consulting Plus"),
+      JobOffer(title: 'Commercial', salary: 30000, company: "SalesForce Inc."),
     ];
   }
 
