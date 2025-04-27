@@ -1,16 +1,31 @@
 import 'package:bitlife_like/core/services/game_state_service.dart';
+import 'package:bitlife_like/core/services/save_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/character.dart';
 import '../creation_screens/character_creation_screen.dart';
 import '../main_game_screen.dart';
 
+class StartScreen extends StatefulWidget {
+  const StartScreen({super.key});
 
-class StartScreen extends StatelessWidget {
-  final List<Character> savedCharacters;
+  @override
+  State<StartScreen> createState() => _StartScreenState();
+}
 
-  const StartScreen({super.key, required this.savedCharacters});
+class _StartScreenState extends State<StartScreen> {
+  List<Character> savedCharacters = [];
 
+  @override
+  void initState() {
+    super.initState();
+    loadCharacters();
+  }
+
+  void loadCharacters() {
+    savedCharacters = SaveManager.getAllMainCharacters().where((c) => !c.isPNJ).toList();
+    setState(() {});
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -14,10 +14,6 @@ class SaveManager {
     await _mainCharacterBox.put(character.id, character);
   }
 
-  static Future<Character?> loadMainCharacter() async {
-    return _mainCharacterBox.get('current');
-  }
-
   static Future<void> savePNJs(List<Character> pnjs) async {
     await _pnjBox.putAll(Map.fromEntries(
         pnjs.map((p) => MapEntry(p.id, p))

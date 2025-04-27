@@ -58,17 +58,11 @@ void main() async {
     );
   }
 
-  runApp(BitLifeApp(
-    initialCharacter: allCharacters.isNotEmpty ? allCharacters.first : null,
-    savedCharacters: allCharacters,
-  ));
+  runApp(const BitLifeApp());
 }
 
 class BitLifeApp extends StatelessWidget {
-  final Character? initialCharacter;
-  final List<Character> savedCharacters;
-
-  const BitLifeApp({super.key, required this.initialCharacter, required this.savedCharacters});
+  const BitLifeApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +74,9 @@ class BitLifeApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       navigatorKey: GameStateService.instance.navigatorKey,
-      home: StartScreen(savedCharacters: savedCharacters),
+      home: const StartScreen(),
       routes: {
-        '/start': (context) => StartScreen(savedCharacters: savedCharacters),
+        '/start': (context) => StartScreen(),
         '/characterCreation': (context) => CharacterCreationScreen(),
         ...PluginManager.instance.getAllRoutes(), // <- routes dynamiques des plugins
       },

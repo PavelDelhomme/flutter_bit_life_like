@@ -5,6 +5,7 @@ import '../../models/character.dart';
 import '../../models/event.dart';
 import '../../services/data_service.dart';
 import '../../services/game_state_service.dart';
+import '../../services/save_manager.dart';
 import '../main_game_screen.dart';
 
 class CharacterCreationScreen extends StatefulWidget {
@@ -108,7 +109,7 @@ class CharacterCreationScreenState extends State<CharacterCreationScreen> {
       ),
     );
 
-    await character.save();
+    await SaveManager.saveMainCharacter(character);
 
     final gameState = GameStateService.instance;
     gameState.character = character;
