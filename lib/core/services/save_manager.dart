@@ -9,6 +9,9 @@ class SaveManager {
     _mainCharacterBox = await Hive.openBox<Character>('main_characters');
     _pnjBox = await Hive.openBox<Character>('pnjs');
   }
+  static Future<void> setCurrentMainCharacter(Character character) async {
+    await _mainCharacterBox.put('current', character);
+  }
 
   static Future<void> saveMainCharacter(Character character) async {
     await _mainCharacterBox.put(character.id, character);

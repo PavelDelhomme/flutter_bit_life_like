@@ -110,6 +110,7 @@ class CharacterCreationScreenState extends State<CharacterCreationScreen> {
     );
 
     await SaveManager.saveMainCharacter(character);
+    await SaveManager.setCurrentMainCharacter(character);
 
     final gameState = GameStateService.instance;
     gameState.character = character;

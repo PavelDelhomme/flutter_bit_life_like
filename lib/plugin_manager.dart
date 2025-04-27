@@ -1,6 +1,3 @@
-import 'package:bitlife_like/plugins/core_plugins/activity_plugin/plugin.dart';
-import 'package:bitlife_like/plugins/core_plugins/book_system/plugin.dart';
-import 'package:bitlife_like/plugins/tech_plugins/crafting/plugin.dart';
 import 'package:flutter/material.dart';
 
 import 'core/plugin/game_plugin.dart';
@@ -9,15 +6,18 @@ import 'core/plugin/plugin_menu_entry.dart';
 import 'core/services/game_state_service.dart';
 import 'core/plugin/has_routes.dart';
 
-import 'package:bitlife_like/plugins/tech_plugins/marketplace_system/plugin.dart';
-import 'package:bitlife_like/plugins/career_plugins/work_system/plugin.dart';
-import 'package:bitlife_like/plugins/social_plugins/education/plugin.dart';
 import 'package:bitlife_like/plugins/core_plugins/assets_extended/plugin.dart';
 import 'package:bitlife_like/plugins/core_plugins/daily_life/plugin.dart';
 import 'package:bitlife_like/plugins/core_plugins/logement/plugin.dart';
-import 'package:bitlife_like/plugins/social_plugins/justice/plugin.dart';
+import 'package:bitlife_like/plugins/core_plugins/activity_plugin/plugin.dart';
+import 'package:bitlife_like/plugins/core_plugins/book_system/plugin.dart';
+import 'package:bitlife_like/plugins/career_plugins/work_system/plugin.dart';
+import 'package:bitlife_like/plugins/social_plugins/education/plugin.dart';
 import 'package:bitlife_like/plugins/social_plugins/vie_administrative/plugin.dart';
+import 'package:bitlife_like/plugins/social_plugins/justice/plugin.dart';
 import 'package:bitlife_like/plugins/social_plugins/vie_familiale/plugin.dart';
+import 'package:bitlife_like/plugins/tech_plugins/crafting/plugin.dart';
+import 'package:bitlife_like/plugins/tech_plugins/marketplace_system/plugin.dart';
 
 final List<GamePlugin> allPlugins = [
   // Ajouter tous les plugins manuellement ou en les auto-chargeant depuis le système de fichiers
@@ -32,7 +32,6 @@ class PluginManager {
   static PluginManager get instance => _instance;
   PluginManager._internal();
 
-  final List<GamePlugin> _plugins = [];
 
   final List<GamePlugin> _availablePlugins = [
     BookSystemPlugin(),
@@ -73,7 +72,7 @@ class PluginManager {
 
 
   void startGamePlugins(GamePluginContext context) {
-    for (var plugin in _plugins) {
+    for (var plugin in _activePlugins) {
       plugin.apply(context);
       plugin.onGameStart();
     }
@@ -87,14 +86,14 @@ class PluginManager {
       eventService: gameState.eventService,
     );
 
-    return _plugins
+    return _activePlugins
         .expand((plugin) => plugin.buildDrawerEntries(pluginContext))
         .toList();
   }
 
   Map<String, WidgetBuilder> getAllRoutes() {
     final Map<String, WidgetBuilder> routes = {};
-    for (final plugin in _plugins) {
+    for (final plugin in _activePlugins) {
       if (plugin is HasRoutes) {
         routes.addAll((plugin as HasRoutes).getRoutes());
       }
@@ -129,7 +128,7 @@ class PluginManager {
   }
 
 
-  List<GamePlugin> get plugins => _plugins;
+  List<GamePlugin> get plugins => _activePlugins;
   List<GamePlugin> get availablePlugins => _availablePlugins;
   final List<GamePlugin> _activePlugins = [];
 }

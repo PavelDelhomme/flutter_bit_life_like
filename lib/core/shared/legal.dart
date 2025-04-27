@@ -86,6 +86,22 @@ class Crime {
 }
 
 
+class Law {
+  final String id;
+  final String name;
+  final double complianceCost; // Coût pour respecter la loi
+  final double penalty; // Amende si non-respect
+  final bool isMandatory;
+
+  Law({
+    required this.id,
+    required this.name,
+    required this.complianceCost,
+    required this.penalty,
+    this.isMandatory = true,
+  });
+}
+
 class LegalSystem {
   final String country;
   final double prisonStrictness; // 0.0 (laxiste) à 1.0 (strict)

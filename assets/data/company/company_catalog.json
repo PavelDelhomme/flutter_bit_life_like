@@ -1,0 +1,260 @@
+{
+  "France": [
+    {
+      "name": "TinyWorks Paris",
+      "industry": "Services",
+      "scale": "local",
+      "startingCapital": 10000,
+      "type": "AutoEntreprise"
+    },
+    {
+      "name": "Spark Studios France",
+      "industry": "Technologie",
+      "scale": "local",
+      "startingCapital": 50000,
+      "type": "Startup"
+    },
+    {
+      "name": "BrightLeaf Conseil",
+      "industry": "Consulting",
+      "scale": "national",
+      "startingCapital": 200000,
+      "type": "PME"
+    },
+    {
+      "name": "GreenSky Industries",
+      "industry": "Industrie",
+      "scale": "national",
+      "startingCapital": 1000000,
+      "type": "ETI"
+    },
+    {
+      "name": "Titanium Systems",
+      "industry": "Technologie",
+      "scale": "international",
+      "startingCapital": 10000000,
+      "type": "Corporation"
+    },
+    {
+      "name": "MegaCorp United France",
+      "industry": "Automobile",
+      "scale": "global",
+      "startingCapital": 50000000,
+      "type": "Multinationale"
+    },
+    {
+      "name": "Continental Systems France",
+      "industry": "Energies",
+      "scale": "global",
+      "startingCapital": 150000000,
+      "type": "Conglomerat"
+    },
+    {
+      "name": "Solaris Conglomerate France",
+      "industry": "Technologie",
+      "scale": "global",
+      "startingCapital": 250000000,
+      "type": "Holding"
+    },
+    {
+      "name": "EDF",
+      "industry": "Énergie",
+      "scale": "national",
+      "startingCapital": 400000000,
+      "type": "Public"
+    },
+    {
+      "name": "Coopérative Agricole Française",
+      "industry": "Agroalimentaire",
+      "scale": "local",
+      "startingCapital": 150000,
+      "type": "Cooperative"
+    },
+    {
+      "name": "Médecins Sans Frontières",
+      "industry": "Humanitaire",
+      "scale": "international",
+      "startingCapital": 5000000,
+      "type": "NGO"
+    },
+    {
+      "name": "Omniverse Corporation France",
+      "industry": "Technologie",
+      "scale": "global",
+      "startingCapital": 1000000000,
+      "type": "Megacorporation"
+    }
+  ],
+  "États-Unis": [
+    {
+      "name": "TinyWorks USA",
+      "industry": "Services",
+      "scale": "local",
+      "startingCapital": 12000,
+      "type": "AutoEntreprise"
+    },
+    {
+      "name": "AlphaBuds",
+      "industry": "Technologie",
+      "scale": "local",
+      "startingCapital": 75000,
+      "type": "Startup"
+    },
+    {
+      "name": "PixeLion",
+      "industry": "Design",
+      "scale": "national",
+      "startingCapital": 250000,
+      "type": "PME"
+    },
+    {
+      "name": "SunCore Solutions",
+      "industry": "Énergies renouvelables",
+      "scale": "national",
+      "startingCapital": 2000000,
+      "type": "ETI"
+    },
+    {
+      "name": "Quantum Peak",
+      "industry": "Technologies",
+      "scale": "international",
+      "startingCapital": 20000000,
+      "type": "Corporation"
+    },
+    {
+      "name": "Infinity Solutions",
+      "industry": "Télécoms",
+      "scale": "global",
+      "startingCapital": 80000000,
+      "type": "Multinationale"
+    },
+    {
+      "name": "GlobalDomination Ltd",
+      "industry": "Technologie",
+      "scale": "global",
+      "startingCapital": 180000000,
+      "type": "Conglomerat"
+    },
+    {
+      "name": "HyperContinental Group",
+      "industry": "Industrie",
+      "scale": "global",
+      "startingCapital": 300000000,
+      "type": "Holding"
+    },
+    {
+      "name": "US Postal Service",
+      "industry": "Logistique",
+      "scale": "national",
+      "startingCapital": 600000000,
+      "type": "Public"
+    },
+    {
+      "name": "Farmers Union USA",
+      "industry": "Agriculture",
+      "scale": "national",
+      "startingCapital": 200000,
+      "type": "Cooperative"
+    },
+    {
+      "name": "Red Cross USA",
+      "industry": "Humanitaire",
+      "scale": "international",
+      "startingCapital": 7000000,
+      "type": "NGO"
+    },
+    {
+      "name": "Ultimate Continuum Systems",
+      "industry": "Technologie",
+      "scale": "global",
+      "startingCapital": 2000000000,
+      "type": "Megacorporation"
+    }
+  ],
+  "Japon": [
+    {
+      "name": "MiniWave Tokyo",
+      "industry": "Services",
+      "scale": "local",
+      "startingCapital": 8000,
+      "type": "AutoEntreprise"
+    },
+    {
+      "name": "NextRoots",
+      "industry": "Technologie",
+      "scale": "local",
+      "startingCapital": 60000,
+      "type": "Startup"
+    },
+    {
+      "name": "CoreLink Japan",
+      "industry": "Consulting",
+      "scale": "national",
+      "startingCapital": 300000,
+      "type": "PME"
+    },
+    {
+      "name": "VisionAxis",
+      "industry": "Automobile",
+      "scale": "national",
+      "startingCapital": 1500000,
+      "type": "ETI"
+    },
+    {
+      "name": "Aurora Dynamics",
+      "industry": "Technologie",
+      "scale": "international",
+      "startingCapital": 12000000,
+      "type": "Corporation"
+    },
+    {
+      "name": "AstroWave Technologies",
+      "industry": "Technologie",
+      "scale": "global",
+      "startingCapital": 70000000,
+      "type": "Multinationale"
+    },
+    {
+      "name": "WorldLink Technologies",
+      "industry": "Télécoms",
+      "scale": "global",
+      "startingCapital": 160000000,
+      "type": "Conglomerat"
+    },
+    {
+      "name": "Solaris Conglomerate Japan",
+      "industry": "Energies renouvelables",
+      "scale": "global",
+      "startingCapital": 320000000,
+      "type": "Holding"
+    },
+    {
+      "name": "Japan Railways",
+      "industry": "Transports",
+      "scale": "national",
+      "startingCapital": 450000000,
+      "type": "Public"
+    },
+    {
+      "name": "Rice Cooperative Japan",
+      "industry": "Agroalimentaire",
+      "scale": "local",
+      "startingCapital": 180000,
+      "type": "Cooperative"
+    },
+    {
+      "name": "Doctors Without Borders Japan",
+      "industry": "Humanitaire",
+      "scale": "international",
+      "startingCapital": 8000000,
+      "type": "NGO"
+    },
+    {
+      "name": "InfinityVerse Holdings Japan",
+      "industry": "Technologie",
+      "scale": "global",
+      "startingCapital": 1800000000,
+      "type": "Megacorporation"
+    }
+  ]
+}

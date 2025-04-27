@@ -36,3 +36,4 @@ flutter:
     - assets/data/character/skills.json
     - assets/data/crafting/components.json
     - assets/data/crafting/recipes.json
+    - assets/data/company/company_catalog.json

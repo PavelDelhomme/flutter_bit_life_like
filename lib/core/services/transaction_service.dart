@@ -16,22 +16,18 @@ class TransactionService {
   }) {
     final taxSystem = buyer.legalSystem?.taxSystem ?? TaxSystem(country: buyer.country);
 
-    // Calcul des taxes
     final tax = taxSystem.calculateVAT(item.price);
     final totalCost = item.price + tax;
 
     if (account.balance >= totalCost * downPayment) {
-      // Achat comptant
       _processCashPurchase(item, buyer, account, totalCost);
     } else {
-      // Demande de prêt
       final loan = _applyForLoan(account, totalCost, buyer);
       if (loan != null) {
         _processLoanPurchase(item, buyer, account, loan, totalCost);
       }
     }
 
-    // Application des effets de l'item
     item.skillEffects.forEach((skillId, exp) {
       buyer.improveSkill(skillId, exp);
     });

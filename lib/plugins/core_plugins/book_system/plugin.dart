@@ -1,3 +1,4 @@
+import 'package:bitlife_like/core/plugin/activity_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:bitlife_like/core/plugin/game_plugin.dart';
 import 'package:bitlife_like/core/plugin/game_plugin_context.dart';
@@ -6,7 +7,7 @@ import 'package:bitlife_like/plugins/core_plugins/book_system/screens/book_list_
 import '../../../core/plugin/has_routes.dart';
 import '../../../core/services/game_state_service.dart';
 
-class BookSystemPlugin extends GamePlugin implements HasRoutes {
+class BookSystemPlugin extends GamePlugin implements HasRoutes, ActivityProvider {
   @override
   String get id => "book_system";
   @override
@@ -29,7 +30,7 @@ class BookSystemPlugin extends GamePlugin implements HasRoutes {
       "/books": (context) => BookListScreen(), // screen à créer
     };
   }
-
+  /*
   @override
   List<PluginMenuEntry> buildDrawerEntries(GamePluginContext context) {
     return [
@@ -43,6 +44,28 @@ class BookSystemPlugin extends GamePlugin implements HasRoutes {
           );
         },
       )
+    ];
+  }
+   */
+
+  @override
+  List<PluginMenuEntry> buildDrawerEntries(GamePluginContext context) {
+    return [];
+  }
+
+  @override
+  List<ActivityEntry> getActivities() {
+    return [
+      ActivityEntry(
+        title: "Lire un livre",
+        icon: Icons.menu_book,
+        onTap: () {
+          Navigator.push(
+            GameStateService.instance.navigatorKey.currentContext!,
+            MaterialPageRoute(builder: (_) => const BookListScreen()),
+          );
+        },
+      ),
     ];
   }
 }

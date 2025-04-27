@@ -20,7 +20,7 @@ import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/vehicle
 import 'package:bitlife_like/plugins/core_plugins/book_system/models/book.dart';
 import 'package:bitlife_like/plugins/social_plugins/education/models/education.dart';
 import 'package:bitlife_like/plugins/tech_plugins/marketplace_system/models/marketplace_item.dart';
-import 'package:bitlife_like/plugins/career_plugins/work_system/models/business.dart';
+import 'package:bitlife_like/plugins/career_plugins/entreprise/models/business.dart';
 import 'package:bitlife_like/plugins/career_plugins/work_system/models/career.dart';
 import 'activity.dart';
 import 'package:bitlife_like/plugins/tech_plugins/crafting/models/recipe.dart';

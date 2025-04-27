@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'dart:io';
+import 'package:flutter/services.dart';
 
 import '../models/component.dart';
 
 class ComponentService {
   static Future<List<Component>> loadComponents() async {
-    final file = File('assets/data/crafting/components.json');
-    final jsonString = await file.readAsString();
+    final jsonString = await rootBundle.loadString("assets/data/crafting/components.json");
     final List<dynamic> data = jsonDecode(jsonString);
     return data.map((c) => Component(
       id: c['id'],

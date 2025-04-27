@@ -8,7 +8,7 @@ class TaxSystem {
   late List<IncomeTaxBracket> incomeTaxBrackets;
   late double vatRate;
   late double capitalGainsTaxRate;
-  late double coporateTaxRate;
+  late double corporateTaxRate;
   late double propertyTaxRate;
   late double inheritanceTaxRate;
   late double transferTaxRate;
@@ -93,7 +93,7 @@ class TaxSystem {
 
     taxSystem.vatRate = json['vat'];
     taxSystem.capitalGainsTaxRate = json['capitalGains'];
-    taxSystem.coporateTaxRate = json['corporateTax'];
+    taxSystem.corporateTaxRate = json['corporateTax'];
     taxSystem.propertyTaxRate = json['propertyTax'];
     taxSystem.inheritanceTaxRate = json['inheritanceTax'];
     taxSystem.transferTaxRate = json['transferTax'];
@@ -109,7 +109,7 @@ class TaxSystem {
       'incomeTax': incomeTaxBrackets.map((b) => b.toJson()).toList(),
       'vat': vatRate,
       'capitalGains': capitalGainsTaxRate,
-      'corporateTax': coporateTaxRate,
+      'corporateTax': corporateTaxRate,
       'propertyTax': propertyTaxRate,
       'inheritanceTax': inheritanceTaxRate,
       'transferTax': transferTaxRate,

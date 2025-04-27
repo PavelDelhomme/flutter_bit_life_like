@@ -135,56 +135,6 @@ class AgeService {
       }
     }
   }
-  /*
-  List<Event> _generateAgeEvents(Character character) {
-    List<Event> events = [];
-
-    // Événements liés à l'âge
-    if (character.age == 1) {
-      events.add(Event(
-        age: character.age,
-        description: "J'ai dit mes premiers mots.",
-        timestamp: DateTime.now(),
-      ));
-    } else if (character.age == 3) {
-      events.add(Event(
-        age: character.age,
-        description: "Je commence à aller à la maternelle.",
-        timestamp: DateTime.now(),
-      ));
-    } else if (character.age == 6) {
-      events.add(Event(
-        age: character.age,
-        description: "Je commence l'école primaire.",
-        timestamp: DateTime.now(),
-      ));
-    } else if (character.age == 11) {
-      events.add(Event(
-        age: character.age,
-        description: "Je commence le collège.",
-        timestamp: DateTime.now(),
-      ));
-    } else if (character.age == 15) {
-      events.add(Event(
-        age: character.age,
-        description: "Je commence le lycée.",
-        timestamp: DateTime.now(),
-      ));
-    } else if (character.age == 18) {
-      events.add(Event(
-        age: character.age,
-        description: "Je suis maintenant majeur${character.gender == 'Femme' ? 'e' : ''}.",
-        timestamp: DateTime.now(),
-      ));
-    }
-
-    // Événements aléatoires basés sur l'âge
-    List<Event> randomEvents = _eventService.generateRandomEvents(character);
-    events.addAll(randomEvents);
-
-    return events;
-  }
-   */
 
   void _updateStats(Character character) {
     // Santé diminue légèrement avec l'âge
@@ -236,52 +186,6 @@ class AgeService {
       asset.age1Year();
     }
   }
-
-  /*
-  void _handleFinances(Character character) {
-    // Calculer les revenus
-    double annualIncome = 0.0;
-    if (character.career != null) {
-      annualIncome += character.career!.calculateAnnualIncome();
-    }
-
-    // Revenus passifs des propriétés
-    for (var asset in character.assets) {
-      annualIncome += asset.monthlyIncome * 12;
-    }
-
-    // Dépenses de maintenance pour les biens
-    double annualExpenses = 0.0;
-    for (var asset in character.assets) {
-      annualExpenses += asset.maintenanceCost * 12;
-      if (asset.isInsured) {
-        annualExpenses += asset.insuranceCost * 12;
-      }
-    }
-
-    // Impôts (simplifié)
-    double taxAmount = annualIncome * 0.2; // 20% d'impôts
-    annualExpenses += taxAmount;
-
-    // Solde net
-    double netAmount = annualIncome - annualExpenses;
-
-    // Appliquer au compte bancaire principal
-    if (character.bankAccounts.isNotEmpty) {
-      character.bankAccounts.first.balance += netAmount;
-    } else {
-      character.deposit(netAmount);
-    }
-
-    // Ajouter un événement financier annuel
-    character.lifeEvents.add(Event(
-      age: character.age,
-      description: "Bilan financier annuel: Revenus \$${annualIncome.toStringAsFixed(2)}, Dépenses \$${annualExpenses.toStringAsFixed(2)}",
-      timestamp: DateTime.now(),
-    ));
-  }
-  */
-
 
   void _updateRelationships(Character character) {
     for (var relationship in character.relationships) {
@@ -377,54 +281,4 @@ class AgeService {
       }
     }
   }
-  /*
-  SkillTree _getSkillTreeForAge(int age) {
-    Map<SkillCategory, List<SkillNode>> tree = {};
-
-    if (age >= 5 && age < 10) {
-      tree[SkillCategory.physical] = [
-        SkillNode(
-          'driving',
-          Skill(id: 'driving', name: 'Conduite', category: SkillCategory.physical),
-          {},
-        ),
-      ];
-    }
-
-    if (age >= 10 && age < 20) {
-      tree[SkillCategory.intellectual] = [
-        SkillNode(
-          'lecture',
-          Skill(id: 'lecture', name: 'Lecture', category: SkillCategory.intellectual),
-          {},
-        ),
-      ];
-      tree[SkillCategory.social] = [
-        SkillNode(
-          'negotiation',
-          Skill(id: 'negotiation', name: 'Négociation', category: SkillCategory.social),
-          {},
-        ),
-      ];
-    }
-
-    if (age >= 20) {
-      tree[SkillCategory.technical] = [
-        SkillNode(
-          'programming',
-          Skill(id: 'programming', name: 'Programmation', category: SkillCategory.technical),
-          {'lecture': 3},
-        ),
-        SkillNode(
-          'hacking',
-          Skill(id: 'hacking', name: 'Hacking', category: SkillCategory.criminal),
-          {'programming': 4},
-        ),
-      ];
-    }
-
-    return SkillTree(tree);
-  }
-   */
-
 }

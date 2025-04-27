@@ -1,7 +1,10 @@
 import 'package:bitlife_like/core/ui/events_screens/event_history.dart';
 import 'package:bitlife_like/core/ui/navigation_screens/bottom_navigation.dart';
+import 'package:bitlife_like/core/ui/profile_screens/profile_screen.dart';
+import 'package:bitlife_like/core/ui/relationships_screens/relationships_screen.dart';
 import 'package:bitlife_like/core/ui/stats_screens/stat_bar.dart';
 import 'package:bitlife_like/core/ui/widgets/game_drawer.dart';
+import 'package:bitlife_like/core/ui/work_screens/work_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bitlife_like/core/services/game_state_service.dart';
 import 'package:bitlife_like/core/services/age_service.dart';
@@ -12,6 +15,8 @@ import 'package:bitlife_like/core/services/event_service.dart';
 import 'package:bitlife_like/core/models/character.dart';
 
 import '../../plugin_manager.dart';
+import 'activities_screen/activites_screen.dart';
+import 'capital_screens/capital_screen.dart';
 
 class MainGameScreen extends StatefulWidget {
   const MainGameScreen({super.key});
@@ -62,30 +67,41 @@ class _MainGameScreenState extends State<MainGameScreen> {
       drawer: GameDrawer(character: _character),
       body: Column(
         children: [
-          // Entete personnage
-          Container(
-            color: Colors.red.shade100,
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              children: [
-                const CircleAvatar(
-                  radius: 32,
-                  child: Icon(Icons.person),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(_character.fullName, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                      Text("${_character.age} ans - ${_character.currentTitle}"),
-                    ],
-                  ),
-                ),
-                Text('${_character.money.toStringAsFixed(0)} \$'),
-              ],
-            ),
-          ),
+         // En-tête personnage
+         GestureDetector(
+           onTap: _navigateToProfileScreen,
+           child: InkWell(
+             onTap: () {
+               Navigator.push(
+                 context,
+                 MaterialPageRoute(builder: (_) => ProfileScreen(character: _character)),
+               );
+             },
+             child: Container(
+               color: Colors.red.shade100,
+               padding: const EdgeInsets.all(12),
+               child: Row(
+                 children: [
+                   const CircleAvatar(
+                     radius: 32,
+                     child: Icon(Icons.person),
+                   ),
+                   const SizedBox(width: 12),
+                   Expanded(
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+                         Text(_character.fullName, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                         Text("${_character.age} ans - ${_character.currentTitle}"),
+                       ],
+                     ),
+                   ),
+                   Text('${_character.money.toStringAsFixed(0)} \$'),
+                 ],
+               ),
+             ),
+           ),
+         ),
 
           // Event history
           Expanded(child: EventHistory(lifeEvents: _character.lifeEvents)),
@@ -139,22 +155,38 @@ class _MainGameScreenState extends State<MainGameScreen> {
     );
   }
 
+  void _navigateToProfileScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => ProfileScreen(character: _character)),
+    );
+  }
 
   void _navigateToWorkScreen() {
-    return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => WorkScreen(character: _character)),
+    );
   }
 
   void _navigateToAssetsScreen() {
-    return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => CapitalScreen(character: _character)),
+    );
   }
 
-
   void _navigateToRelationsScreen() {
-    return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => RelationshipsScreen(character: _character)),
+    );
   }
 
   void _navigateToActivitiesScreen() {
-    return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => ActivitiesScreen(character: _character)),
+    );
   }
-
 }

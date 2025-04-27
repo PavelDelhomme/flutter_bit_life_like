@@ -1,16 +1,241 @@
 {
   "FR": {
     "bankingRegulations": {
-      "checking": {"minAge":  18, "openingFee":  50},
-      "business": {"minAge":  21, "openingFee":  200},
+      "checking": {"minAge": 18, "openingFee": 50},
+      "business": {"minAge": 21, "openingFee": 200}
     },
     "banks": [
       {
         "name": "BNP Paribas",
         "types": ["checking", "savings", "business"],
-        "interestRates": {"checking":  0.1, "savings":  1.5, "business": 0.5},
-        "loanConditions": {"personal":  5.0, "business":  3.5}
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 3.8,
+          "business": 4.5
+        },
+        "loanConditions": {
+          "personal": 5.0,
+          "business": 3.5
+        }
+      },
+      {
+        "name": "Société Générale",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 3.5,
+          "business": 4.2
+        },
+        "loanConditions": {
+          "personal": 5.2,
+          "business": 3.7
+        }
+      }
+    ]
+  },
+  "US": {
+    "bankingRegulations": {
+      "checking": {"minAge": 18, "openingFee": 25},
+      "business": {"minAge": 21, "openingFee": 100}
+    },
+    "banks": [
+      {
+        "name": "Bank of America",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.05,
+          "savings": 0.5,
+          "business": 5.0
+        },
+        "loanConditions": {
+          "personal": 6.5,
+          "business": 4.0
+        }
+      },
+      {
+        "name": "Wells Fargo",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.05,
+          "savings": 0.6,
+          "business": 5.2
+        },
+        "loanConditions": {
+          "personal": 6.8,
+          "business": 4.2
+        }
+      }
+    ]
+  },
+  "JP": {
+    "bankingRegulations": {
+      "checking": {"minAge": 18, "openingFee": 0},
+      "business": {"minAge": 21, "openingFee": 100}
+    },
+    "banks": [
+      {
+        "name": "Mizuho Bank",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.01,
+          "savings": 0.12,
+          "business": 1.5
+        },
+        "loanConditions": {
+          "personal": 2.0,
+          "business": 1.2
+        }
+      },
+      {
+        "name": "Sumitomo Mitsui Banking Corporation",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.01,
+          "savings": 0.1,
+          "business": 1.4
+        },
+        "loanConditions": {
+          "personal": 2.2,
+          "business": 1.3
+        }
+      }
+    ]
+  },
+  "CN": {
+    "bankingRegulations": {
+      "checking": { "minAge": 18, "openingFee": 10 },
+      "business": { "minAge": 21, "openingFee": 100 }
+    },
+    "banks": [
+      {
+        "name": "Bank of China",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 3.1,
+          "business": 4.0
+        },
+        "loanConditions": {
+          "personal": 4.5,
+          "business": 3.0
+        }
+      },
+      {
+        "name": "Industrial and Commercial Bank of China",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 3.0,
+          "business": 3.8
+        },
+        "loanConditions": {
+          "personal": 4.7,
+          "business": 3.2
+        }
+      }
+    ]
+  },
+  "DE": {
+    "bankingRegulations": {
+      "checking": {"minAge": 18, "openingFee": 30},
+      "business": {"minAge": 21, "openingFee": 150}
+    },
+    "banks": [
+      {
+        "name": "Deutsche Bank",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 2.5,
+          "business": 3.5
+        },
+        "loanConditions": {
+          "personal": 4.0,
+          "business": 2.5
+        }
+      },
+      {
+        "name": "Commerzbank",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 2.4,
+          "business": 3.4
+        },
+        "loanConditions": {
+          "personal": 4.2,
+          "business": 2.7
+        }
+      }
+    ]
+  },
+  "BR": {
+    "bankingRegulations": {
+      "checking": {"minAge": 18, "openingFee": 20},
+      "business": {"minAge": 21, "openingFee": 80}
+    },
+    "banks": [
+      {
+        "name": "Banco do Brasil",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 3.09,
+          "business": 14.25
+        },
+        "loanConditions": {
+          "personal": 20.0,
+          "business": 15.0
+        }
+      },
+      {
+        "name": "Itaú Unibanco",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 3.0,
+          "business": 14.0
+        },
+        "loanConditions": {
+          "personal": 19.5,
+          "business": 14.5
+        }
+      }
+    ]
+  },
+  "IN": {
+    "bankingRegulations": {
+      "checking": {"minAge": 18, "openingFee": 10},
+      "business": {"minAge": 21, "openingFee": 100}
+    },
+    "banks": [
+      {
+        "name": "State Bank of India",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 6.5,
+          "business": 7.0
+        },
+        "loanConditions": {
+          "personal": 9.0,
+          "business": 7.5
+        }
+      },
+      {
+        "name": "HDFC Bank",
+        "types": ["checking", "savings", "business"],
+        "interestRates": {
+          "checking": 0.1,
+          "savings": 6.4,
+          "business": 6.8
+        },
+        "loanConditions": {
+          "personal": 8.8,
+          "business": 7.2
+        }
       }
     ]
   }
+
 }

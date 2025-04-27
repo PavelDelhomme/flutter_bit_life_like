@@ -1,4 +1,4 @@
-import 'business.dart';
+import '../../entreprise/models/business.dart';
 
 class Multinational {
   final String id;
