@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:bitlife_like/core/services/game_state_service.dart';
-
+import 'package:bitlife_like/core/services/work_service.dart';
+import 'package:bitlife_like/plugins/career_plugins/work_system/services/job_offer_service.dart';
 import '../models/joboffer.dart';
 
-
-class JobSearchScreen extends StatelessWidget {
-
+class JobSearchScreen extends StatefulWidget {
   const JobSearchScreen({super.key});
 
   @override
+  State<JobSearchScreen> createState() => _JobSearchScreenState();
+}
+
+class _JobSearchScreenState extends State<JobSearchScreen> {
+  List<JobOffer> jobOffers = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadOffers();
+  }
+
+  void _loadOffers() {
+    jobOffers = JobOfferService().generateJobOffers(GameStateService.instance.character);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final character = GameStateService.instance.character; // ✅ Prend le personnage courant
-
-    // TODO: récupérer les jobs proposés (plus tard dynamique par WorkService)
-    final List<JobOffer> jobOffers = [
-      JobOffer(title: 'Développeur Junior', salary: 30000, company: "TechNova"),
-      JobOffer(title: 'Vendeur', salary: 25000, company: "RetailMax"),
-      JobOffer(title: 'Assistant Marketing', salary: 28000, company: "MarketGroup"),
-      JobOffer(title: 'Employé Administratif', salary: 24000, company: "AdminPro"),
-    ];
-
-
     return Scaffold(
       appBar: AppBar(title: const Text('Recherche d\'emploi')),
       body: ListView.separated(
@@ -31,12 +36,12 @@ class JobSearchScreen extends StatelessWidget {
           final job = jobOffers[index];
           return ListTile(
             title: Text(job.title),
-            subtitle: Text('${job.salary} €/an'),
+            subtitle: Text('${job.salary.toStringAsFixed(0)} €/an - ${job.company}'),
             trailing: const Icon(Icons.work),
             onTap: () {
-              // Ici on pourrait postuler directement
+              WorkService().applyForJob(GameStateService.instance.character, job);
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Candidature envoyée pour ${job.title}!')),
+                SnackBar(content: Text('Candidature envoyée pour ${job.title} chez ${job.company}!')),
               );
               Navigator.pop(context);
             },
@@ -46,4 +51,3 @@ class JobSearchScreen extends StatelessWidget {
     );
   }
 }
-

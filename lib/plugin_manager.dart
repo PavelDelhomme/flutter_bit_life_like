@@ -127,6 +127,10 @@ class PluginManager {
     character.save(); // important !
   }
 
+  bool isPluginEnabled(String pluginId) {
+    return _activePlugins.any((p) => p.id == pluginId);
+  }
+
 
   List<GamePlugin> get plugins => _activePlugins;
   List<GamePlugin> get availablePlugins => _availablePlugins;

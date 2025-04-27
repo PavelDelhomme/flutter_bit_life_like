@@ -1,12 +1,9 @@
 import 'dart:math';
 
 import 'package:bitlife_like/core/models/character.dart';
-import 'package:bitlife_like/plugins/career_plugins/entreprise/services/business_service.dart';
+import 'package:bitlife_like/core/services/data_service.dart';
+import 'package:bitlife_like/core/shared/company_service.dart';
 import 'package:bitlife_like/plugins/career_plugins/work_system/models/joboffer.dart';
-
-import '../../../../core/models/company.dart';
-import '../../../../core/shared/company_service.dart';
-
 
 class JobOfferService {
   static final JobOfferService _instance = JobOfferService._internal();
@@ -14,28 +11,48 @@ class JobOfferService {
   JobOfferService._internal();
 
   final Random _random = Random();
+  Map<String, List<Map<String, dynamic>>> _jobCatalog = {};
 
+  double _crisisFactor = 1.0;
+  final Map<String, double> _industryBoost = {};
 
-  // Générer une liste d'offres d'emploi
+  void applyCrisisModifier(double factor) {
+    _crisisFactor = factor;
+  }
+
+  void applyIndustryBoost(String industry, double boost) {
+    _industryBoost[industry] = boost;
+  }
+
+  Future<void> loadJobCatalog() async {
+    _jobCatalog = await DataService.loadJobCatalog();
+  }
+
   List<JobOffer> generateJobOffers(Character character) {
     final List<JobOffer> offers = [];
+
     final allCompanies = CompanyService.instance.companies.where((c) => !c.isGovernmentOwned).toList();
+    if (allCompanies.isEmpty || _jobCatalog.isEmpty) return offers;
 
-    if (allCompanies.isEmpty) {
-      return offers;
-    }
-
-    // Génère 3 à 5 offres
     int numberOfOffers = 3 + _random.nextInt(3);
-
 
     for (int i = 0; i < numberOfOffers; i++) {
       final company = allCompanies[_random.nextInt(allCompanies.length)];
-      final title = _randomJobTitle();
-      final salary = _estimateSalary(company);
+      final industry = company.industries.isNotEmpty ? company.industries.first : 'Divers';
+
+      final jobsInIndustry = _jobCatalog[industry] ?? _randomFallbackJobs();
+      final jobData = jobsInIndustry[_random.nextInt(jobsInIndustry.length)];
+
+      double salary = _randomSalary(jobData['minSalary'], jobData['maxSalary']);
+
+      if (_industryBoost.containsKey(industry)) {
+        salary *= (1 + _industryBoost[industry]!);
+      }
+      salary *= _crisisFactor;
+
 
       offers.add(JobOffer(
-        title: title,
+        title: jobData['title'],
         salary: salary,
         company: company.name,
       ));
@@ -44,23 +61,15 @@ class JobOfferService {
     return offers;
   }
 
-  String _randomJobTitle() {
-    final titles = [
-      "Développeur",
-      "Chef de projet",
-      "Analyste financier",
-      "Commercial",
-      "Designer",
-      "Ingénieur mécanique",
-      "Marketing Specialist",
+  List<Map<String, dynamic>> _randomFallbackJobs() {
+    // Si pas d'industrie associée
+    return [
+      {"title": "Employé polyvalent", "minSalary": 20000, "maxSalary": 40000},
+      {"title": "Assistant administratif", "minSalary": 25000, "maxSalary": 45000},
     ];
-    return titles[_random.nextInt(titles.length)];
   }
 
-
-  double _estimateSalary(Company company) {
-    double base = (25000 + _random.nextInt(50000)) as double;
-    double factor = 1 + (company.size.index * 0.2); // Plus l'entreprise est grande, mieux payé
-    return base * factor;
+  double _randomSalary(num min, num max) {
+    return min.toDouble() + _random.nextInt((max.toDouble() - min.toDouble()).toInt());
   }
 }

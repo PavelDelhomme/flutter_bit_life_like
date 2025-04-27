@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class Event {
   final int age;
   final String description;
@@ -34,6 +36,40 @@ class Event {
       effects: Map<String, dynamic>.from(json['effects']),
       location: json['location'],
       involvedCharacters: List<String>.from(json['involvedCharacters']),
+    );
+  }
+}
+
+
+class WorldEvent {
+  final String id;
+  final String name;
+  final String description;
+  final String type;
+  final double chance;
+  final Map<String, dynamic> effects;
+
+  WorldEvent({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.type,
+    required this.chance,
+    required this.effects,
+  });
+
+  bool shouldTrigger() {
+    return Random().nextDouble() < chance;
+  }
+
+  factory WorldEvent.fromJson(Map<String, dynamic> json) {
+    return WorldEvent(
+      id: json['id'],
+      name: json['name'],
+      description: json['description'],
+      type: json['type'],
+      chance: (json['chance'] as num).toDouble(),
+      effects: Map<String, dynamic>.from(json['effects']),
     );
   }
 }

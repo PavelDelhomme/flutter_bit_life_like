@@ -30,7 +30,7 @@ class CompanyService {
               country: country,
               cities: [city],
               industries: [companyData['industry']],
-              type: CompanyType.Corporation,
+              type: CompanyType.corporation,
               size: _estimateCompanySize(companyData['startingCapital']),
               capital: (companyData['startingCapital'] as num).toDouble(),
               valuation: (companyData['startingCapital'] as num).toDouble() * 1.5,
@@ -110,26 +110,27 @@ class CompanyService {
   }
 
   void _simulateAcquisitions(Company company) {
-    if (company.capital > company.valuation * 2 && _companies.length > 1) {
-      final potentialTargets = _companies
-          .where((c) => c != company && c.country == company.country && !c.isGovernmentOwned)
-          .toList();
-
+    if (company.capital > company.valuation * 1.5 && _companies.length > 1) {
+      final potentialTargets = _companies.where((c) => c != company && c.country == company.country && !c.isGovernmentOwned).toList();
       if (potentialTargets.isNotEmpty) {
         final target = potentialTargets[_random.nextInt(potentialTargets.length)];
-        double acquisitionCost = target.valuation * (1.2 + _random.nextDouble() * 0.3);
+        final acquisitionCost = target.valuation * (1.1 + _random.nextDouble() * 0.2);
 
         if (company.capital >= acquisitionCost) {
           company.capital -= acquisitionCost;
-          company.acquiredCompanies.add(target);
           company.valuation += target.valuation * 0.8;
           company.revenue += target.revenue;
           company.marketShare += target.marketShare * 0.5;
+          company.acquiredCompanies.add(target);
           _companies.remove(target);
+
+          // Life Event
+          // TODO: déclencher un GameEvent futur si tu veux afficher "Fusion : [company] a acquis [target]"
         }
       }
     }
   }
+
 
   void _simulateIPO(Company company) {
     if (!company.hasIPO && company.valuation > 100000000) {

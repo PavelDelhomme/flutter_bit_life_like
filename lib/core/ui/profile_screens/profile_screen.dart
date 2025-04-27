@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../models/character.dart';
-import '../banking_screens/account_selection_dialog.dart';
 import '../skills_screens/skill_tree_screen.dart';
 
 class ProfileScreen extends StatelessWidget {

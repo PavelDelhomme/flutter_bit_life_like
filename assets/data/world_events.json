@@ -1,0 +1,35 @@
+[
+  {
+    "id": "economic_crisis",
+    "name": "Crise économique mondiale",
+    "description": "Les marchés financiers s'effondrent à l'échelle mondiale.",
+    "type": "crisis",
+    "chance": 0.02,
+    "effects": {
+      "salary_multiplier": 0.7,
+      "employment_rate": -0.3
+    }
+  },
+  {
+    "id": "tech_boom",
+    "name": "Boom technologique",
+    "description": "L'innovation technologique explose, créant une demande massive pour les travailleurs du secteur tech.",
+    "type": "boom",
+    "chance": 0.03,
+    "effects": {
+      "tech_jobs_multiplier": 1.5,
+      "startup_creation_rate": 0.1
+    }
+  },
+  {
+    "id": "pandemic",
+    "name": "Pandémie mondiale",
+    "description": "Une pandémie perturbe gravement l'économie et les modes de vie.",
+    "type": "pandemic",
+    "chance": 0.01,
+    "effects": {
+      "health_drop": 0.2,
+      "employment_rate": -0.2
+    }
+  }
+]

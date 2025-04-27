@@ -6,6 +6,7 @@ import 'package:bitlife_like/core/services/pnj_manager.dart';
 import 'package:bitlife_like/core/services/time_service.dart';
 import 'package:bitlife_like/core/system/event/event_manager.dart';
 import 'package:bitlife_like/core/system/world/npc_manager.dart';
+import 'package:bitlife_like/plugins/career_plugins/work_system/services/job_offer_service.dart';
 
 import '../../services/pnj_action_service.dart';
 import '../game_event.dart';
@@ -32,13 +33,14 @@ class WorldEngine {
     }
   }
 
-  void _onYearPassed() {
+  Future<void> _onYearPassed() async {
     final actionService = PnjActionService.instance;
-
     final year = _timeService.currentTime.year;
 
     // Vieillissement des PNJs
     GameStateService.instance.ageService.ageUpAll(_allPNJ);
+
+    updateEmploymentMarket();
 
     // Evenement mondiaux
     EventManager().triggerWorldEvents(year);
@@ -47,7 +49,7 @@ class WorldEngine {
     for (final pnj in _allPNJ.where((p) => p.isAlive)) {
       _applyWorldEventsToPNJ(pnj, EventManager().getGlobalEvents());
       actionService.performDailyActions(pnj);
-      PnjActionService.instance.performAnnualAction(pnj);
+      await PnjActionService.instance.performAnnualAction(pnj);
     }
 
     _maintainPopulation();
@@ -71,6 +73,18 @@ class WorldEngine {
     _allPNJ.removeWhere((pnj) => !pnj.isAlive);
     while (_allPNJ.length < 200) {
       _allPNJ.add(PnjManager.generatePNJ());
+    }
+  }
+
+  void updateEmploymentMarket() {
+    final events = EventManager().getGlobalEvents();
+
+    for (var event in events) {
+      if (event.type == "economic_crisis") {
+        JobOfferService().applyCrisisModifier(0.7);
+      } else if (event.type == "tech_boom") {
+        JobOfferService().applyIndustryBoost("Technologie", 0.2);
+      }
     }
   }
 

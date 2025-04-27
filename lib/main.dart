@@ -10,7 +10,6 @@ import 'package:bitlife_like/plugins/core_plugins/assets_extended/models/adapter
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'core/models/character.adapter.dart';
-import 'core/models/character.dart';
 import 'core/plugin/game_plugin_context.dart';
 import 'core/services/data_service.dart';
 import 'core/services/legal_service.dart';

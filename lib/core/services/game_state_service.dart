@@ -5,6 +5,8 @@ import 'package:bitlife_like/core/services/financial_service.dart';
 import 'package:bitlife_like/core/shared/inventory_item.dart';
 import 'package:bitlife_like/core/system/world/world_engine.dart';
 import 'package:bitlife_like/plugin_manager.dart';
+import 'package:bitlife_like/plugins/career_plugins/work_system/models/job.dart';
+import 'package:bitlife_like/plugins/career_plugins/work_system/services/job_offer_service.dart';
 import 'package:flutter/material.dart';
 
 import '../system/world/simulation_manager.dart';
@@ -12,11 +14,12 @@ import '../system/world/simulation_manager.dart';
 class GameStateService {
   Character? mainCharacter;
   final EventService eventService = EventService();
+  final JobOfferService jobOfferService = JobOfferService();
   late final AgeService ageService;
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   GameStateService._privateConstructor() {
-    ageService = AgeService(eventService, FinancialService());
+    ageService = AgeService(eventService, FinancialService(), jobOfferService);
   }
 
   static final GameStateService _instance = GameStateService._privateConstructor();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../plugin_manager.dart';
 import '../../models/character.dart';
 
 class WorkScreen extends StatelessWidget {
@@ -8,6 +9,9 @@ class WorkScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!PluginManager.instance.isPluginEnabled('work_system_plugin')) {
+      return const Scaffold(body: Center(child: Text("Le plugin carrière est désactivé.")));
+    }
     return Scaffold(
       appBar: AppBar(title: const Text("Carrière")),
       body: character.career == null

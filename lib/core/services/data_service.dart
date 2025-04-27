@@ -14,9 +14,21 @@ class DataService {
   static List<String> _cachedCountries = [];
   static Map<String, double> _cachedTaxRates = {};
 
+  static Future<void> preloadData() async {
+    await preloadCountries();
+    await preloadCities();
+    await _preloadTaxRates();
+  }
+
+  static Future<void> preloadCountries() async {
+    final String data = await rootBundle.loadString('assets/data/countries.json');
+    final Map<String, dynamic> jsonData = json.decode(data);
+    _cachedCountries = jsonData.keys.toList();
+  }
+
+
   static Future<void> preloadCities() async {
-    final countries = await getCountries();
-    for (final country in countries) {
+    for (final country in _cachedCountries) {
       _cachedCities[country] = await getCitiesForCountry(country);
     }
   }
@@ -30,16 +42,30 @@ class DataService {
     };
   }
 
+  static Future<Map<String, List<Map<String, dynamic>>>> loadJobCatalog() async {
+    try {
+      final String data = await rootBundle.loadString('assets/data/work/jobs_catalog.json');
+      final Map<String, dynamic> jsonData = json.decode(data);
+      return jsonData.map((key, value) => MapEntry(
+          key, List<Map<String, dynamic>>.from(value)
+      ));
+    } catch (_) {
+      return {}; // ← En cas d'erreur
+    }
+  }
+
   static List<String> getCitiesForCountrySync(String country) {
     return _cachedCities[country] ?? [];
   }
 
   static Future<List<String>> getCountries() async {
+    if (_cachedCountries.isNotEmpty) return _cachedCountries;
+
     final String data = await rootBundle.loadString('assets/data/countries.json');
     final Map<String, dynamic> jsonData = json.decode(data);
-    return jsonData.keys.toList();
+    _cachedCountries = jsonData.keys.toList();
+    return _cachedCountries;
   }
-
 
   static Future<List<String>> getCitiesForCountry(String country) async {
     try {
@@ -164,7 +190,6 @@ class DataService {
       RelationshipType.child: 'Enfant',
     }[type] ?? '';
   }
-
 }
 
 

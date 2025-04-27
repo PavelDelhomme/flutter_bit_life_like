@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:bitlife_like/core/services/skill_tree_manager.dart';
+import 'package:bitlife_like/plugins/career_plugins/work_system/services/job_offer_service.dart';
 
 
 import '../../plugins/tech_plugins/marketplace_system/models/marketplace.dart';
@@ -14,9 +15,10 @@ import 'financial_service.dart';
 class AgeService {
   final EventService _eventService;
   final FinancialService _financialService;
+  final JobOfferService _jobOfferService;
   final Random _random = Random();
 
-  AgeService(this._eventService, this._financialService);
+  AgeService(this._eventService, this._financialService, this._jobOfferService);
 
   Future<void> ageUp(Character character) async {
     character.age++;
@@ -27,6 +29,7 @@ class AgeService {
     _updateAssets(character);
     _updateRelationships(character);
     _financialService.processYearlyFinances(character);
+    _jobOfferService.loadJobCatalog();
     _updateStats(character);
     _updateTitle(character);
     _ageAssets(character);

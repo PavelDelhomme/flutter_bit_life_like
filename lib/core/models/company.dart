@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bitlife_like/core/shared/legal.dart';
 import 'package:bitlife_like/core/shared/tax_system.dart';
 import 'package:bitlife_like/plugins/career_plugins/entreprise/models/business.dart';
@@ -202,18 +200,18 @@ class Company {
 
 
 enum CompanyType {
-  AutoEntreprise,
-  Startup,
-  PME,
-  ETI, // ENtreprise de taille intermédiaire
-  Corporation,
-  Multinationale,
-  Conglomerat,
-  Holding,
-  Public,
-  Cooperative,
-  NGO, // ONG
-  Megacorporation, // Pour les taills "impossibles"
+  autoEntreprise,
+  startup,
+  pme,
+  eti, // ENtreprise de taille intermédiaire
+  corporation,
+  multinationale,
+  conglomerat,
+  holding,
+  public,
+  cooperative,
+  ngo, // ONG
+  megacorporation, // Pour les taills "impossibles"
 }
 
 enum CompanySize {
